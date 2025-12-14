@@ -1,26 +1,39 @@
 import os
-import yaml
 from jinja2 import Environment, FileSystemLoader
 
 class PromptManager:
     def __init__(self, prompt_dir="prompts"):
-        # Tell Jinja2 to look for templates starting inside the 'prompts' folder
+        self.prompt_dir = prompt_dir
         self.env = Environment(loader=FileSystemLoader(prompt_dir))
     
-    def build(self, prompt_path, variables):
-        try:
-            # Load the raw YAML file as a text template
-            template = self.env.get_template(prompt_path)
-            
-            # Replace {{ variable }} with data and runs {% include %}
-            # Result is a string that looks like valid YAML.
-            rendered_yaml = template.render(**variables)
-            
-            # Parse the rendered YAML string into a real messages dictionary
-            config = yaml.safe_load(rendered_yaml)
-            return config
-            
-        except Exception as e:
-            print(f"❌ Error building prompt: {e}")
-            print(f"Failed YAML:\n{rendered_yaml}") 
-            return None
+    def render(self, template_path, variables):
+        """Render a single template file with variables."""
+        template = self.env.get_template(template_path)
+        return template.render(**variables)
+    
+    def build(self, workflow_path, variables):
+        """
+        Build a messages list from a workflow directory.
+        
+        Expects:
+          - {workflow_path}/system.md  (optional)
+          - {workflow_path}/user.md    (required)
+        """
+        messages = []
+        
+        # System message (optional)
+        system_path = f"{workflow_path}/system.md"
+        if os.path.exists(os.path.join(self.prompt_dir, system_path)):
+            messages.append({
+                "role": "system",
+                "content": self.render(system_path, variables)
+            })
+        
+        # User message (required)
+        user_path = f"{workflow_path}/user.md"
+        messages.append({
+            "role": "user", 
+            "content": self.render(user_path, variables)
+        })
+        
+        return {"messages": messages}
