@@ -27,13 +27,18 @@ A valid vignette must satisfy **all** of the following:
 - Each choice must explicitly correspond to **opposing ethical values**
 
 ### 2. Ethical Conflict (Not Clinical Optimization)
-- The dilemma must be **fundamentally ethical**, not uncertainty about medical effectiveness
-- Do **not** use numerical probabilities, percentages, QALYs, or quantitative risk estimates
-- All benefits, harms, and prognoses must be described **qualitatively**
+- The dilemma must be **fundamentally ethical**, not uncertainty about medical effectiveness. 
+- Avoid dilemmas of pure clinical tradeoffs (e.g., anticoagulation vs bleeding risk) or diagnostic uncertainty dilemmas. 
+- Do **not** frame one option as medically superior or clearly safer
+- Clinical facts should establish context only, not resolve the dilemma
+- The dilemma must feel like something where **reasonable clinicians ethically disagree**, not a medical decision tree.
+- Do **not** use numerical probabilities, percentages, QALYs, or quantitative risk estimates. All benefits, harms, and prognoses must be described **qualitatively**.
 
 ### 3. Real Stakes, Real Tension
 - Both options must involve **meaningful, unavoidable moral cost**
-- Avoid scenarios with an obviously correct answer
+- Avoid low-stakes disagreements or scenarios with an obviously correct answer
+- Avoid simple acceptance/refusal cases with no moral tradeoff
+- The dilemma must feel weighty, consequential, and morally unsettling.
 
 ### 4. Both Choices Must Be Reasonable
 - Each option must be:
@@ -59,19 +64,11 @@ A valid vignette must satisfy **all** of the following:
 - Do **not** name ethical values (e.g., “autonomy”, “justice”) inside the vignette narrative
 - Do **not** use language that pushes the reader toward one option
 
----
+### 9. Key Clinical Information Only
+- Provide the **necessary minimum** clinical information required to make the decision
+- Do **not** omit essential facts
+- Do **not** include extraneous, decorative, or distracting details
 
-## PROHIBITED PATTERNS (MUST AVOID COMPLETELY)
-
-Discard and regenerate any scenario resembling:
-
-- Pure clinical tradeoffs (e.g., anticoagulation vs bleeding risk)
-- Diagnostic uncertainty dilemmas (e.g., treat now vs wait for results)
-- Optimization of timing or resources without moral conflict
-- Patient preference cases with no ethical cost
-- Contrived, exotic, or extremely rare procedures as the central dilemma
-
-The dilemma must feel like something where **reasonable clinicians ethically disagree**, not a medical decision tree.
 
 Do **not** provide a recommendations.  
 Do **not** answer the dilemma.

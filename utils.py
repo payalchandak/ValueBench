@@ -68,3 +68,15 @@ def pretty_print_audit(rubric, agent_name: str):
             print(f"  • {field.upper()}:")
             print(f"    {suggestion}")
     print("----------------------------------\n")
+
+def pretty_print_seed_candidate(value_a, value_b, medical_domain, medical_setting, decision):
+    print(
+        f"\nSYNTHETIC SEED CANDIDATE → values=({value_a}, {value_b}), "
+        f"domain={medical_domain}, setting={medical_setting}"
+            )
+    print("----------------------------------\n")
+    if decision == "continue":
+        print("\nFeasibility decision: CONTINUE (proceeding to vignette generation).")
+    else:
+        print("\nFeasibility decision: START_OVER (resampling seed combination).")
+    print("----------------------------------\n")
