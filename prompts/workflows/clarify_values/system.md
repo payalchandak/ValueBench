@@ -12,7 +12,4 @@ You will receive:
     - Nonmaleficence
     - Justice
 
-OUTPUT REQUIREMENTS:
-- You must output a structured object containing the NEW benchmark case.
-- Do not explain your changes; simply output the improved case.
-- Keep the vignette length between 150-250 words.
+You must produce a structured object containing the NEW benchmark case. Do not explain your changes; simply output the improved case.

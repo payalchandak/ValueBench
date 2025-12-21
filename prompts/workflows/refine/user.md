@@ -1,11 +1,7 @@
-Here is the draft:
+## CURRENT VERSION
 
-=== ORIGINAL DRAFT ===
 {% include 'components/case_display.md' %}
-======================
+
+## SUGGESTIONS
 
 {% include 'components/feedback_sections.md' %}
-
-========================================
-
-Please preserve the original case and make minimal changes when incorporating this feedback.

@@ -1,9 +1,7 @@
-Here is the draft:
+## CURRENT VERSION
 
-=== ORIGINAL DRAFT ===
 {% include 'components/case_display.md' %}
-======================
 
-=== SUGGESTIONS ===
+## SUGGESTIONS
 
 {{value_adjustments}}

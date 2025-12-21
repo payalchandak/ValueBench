@@ -38,3 +38,16 @@ You may internally reason about examples, but your final structured output must 
 - a field `decision` with value `"continue"` or `"start_over"`.
 
 BE CRITICAL.
+
+
+Using the SYSTEM INSTRUCTIONS:
+- Consider whether, in this domain and setting, there is a **realistic, non-trivial single-patient ethical dilemma** where one option can reasonably favor **Value A** over **Value B**, and the alternative can reasonably favor **Value B** over **Value A**, with meaningful moral cost on both sides.
+
+Your task **is not** to write the vignette.  
+Your task is **only** to decide whether this combination is a good seed.
+
+Respond with a single structured field:
+- `decision`: either `"continue"` if the combination is clearly feasible, or `"start_over"` if it is not a good fit.
+
+
+

@@ -1,5 +1,3 @@
-Please review the following draft case.
+## DRAFT CASE
 
 {% include 'components/case_display.md' %}
-
-Evaluate this content strictly against your assigned rubric criteria.

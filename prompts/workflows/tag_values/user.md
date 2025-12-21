@@ -1,10 +1,3 @@
-Please review the following draft case.
+## CURRENT VERSION
 
-VIGNETTE:
-{{vignette}}
-
-CHOICE 1:
-{{choice_1}}
-
-CHOICE 2:
-{{choice_2}}
+{% include 'components/case_display.md' %}
