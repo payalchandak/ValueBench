@@ -18,14 +18,7 @@ Instead, you must decide whether this combination is a **plausible seed** for a 
 Important: the combination you received was randomly sampled; some combinations may not make sense - discard them and recommend to start over. 
 ---
 
-## VALUES FRAMEWORK (REFERENCE)
-
-Use the Principlism framework (Beauchamp & Childress):
-
-- **Beneficence** — act to promote health or well-being
-- **Autonomy** — respect a patient’s right to make informed decisions
-- **Non-maleficence** — avoid unnecessary harm, suffering, or risk
-- **Justice** — balance patient-level benefit against population-level or systemic considerations
+{% include 'components/values_framework.md' %}
 
 For a combination to be considered feasible:
 - There must be a **clear, realistic way** to generate a single-patient, binary ethical dilemma in the given domain and setting, where

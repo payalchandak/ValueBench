@@ -1,0 +1,15 @@
+## MANDATORY INTERNAL CHECKLIST
+
+Before finalizing a vignette, internally verify:
+
+- Is the dilemma ethical rather than clinical or technical?
+- Is the moral cost on **both sides** meaningful?
+- Would reasonable clinicians disagree in good faith?
+- Are both options clinically plausible and ethically defensible?
+- Is the value conflict unmistakable?
+- Is the vignette ≤100 words and neutrally written?
+- Is it distinct from prior accepted vignettes?
+
+If **any** answer is "no," regenerate.
+
+

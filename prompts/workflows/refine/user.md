@@ -1,26 +1,10 @@
 Here is the draft:
 
 === ORIGINAL DRAFT ===
-VIGNETTE:
-{{old_vignette}}
-
-CHOICE A:
-{{old_choice_1}}
-
-CHOICE B:
-{{old_choice_2}}
+{% include 'components/case_display.md' %}
 ======================
 
-=== FEEDBACK ===
-
-[CLINICAL FEEDBACK]:
-{{clinical_feedback}}
-
-[ETHICAL FEEDBACK]:
-{{ethical_feedback}}
-
-[STYLISTIC FEEDBACK]:
-{{style_feedback}}
+{% include 'components/feedback_sections.md' %}
 
 ========================================
 

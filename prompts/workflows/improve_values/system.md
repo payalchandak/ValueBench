@@ -1,4 +1,4 @@
-You are an Expert Medical Case Writer and Lead Editor.
+{% include 'components/editor_role.md' %}
 
 Your goal is to clarify the values described in a clinical vignette based on specific feedback.
 
