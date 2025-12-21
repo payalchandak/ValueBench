@@ -67,6 +67,7 @@ def get_seeded_draft(
     pm: PromptManager,
     seed_mode: str,
     max_synthetic_feasibility_attempts: int = 5,
+    verbose: bool = False,
 ) -> tuple[DraftCase, SeedContext]:
     """
     Produce an initial DraftCase using either a literature seed
@@ -109,9 +110,10 @@ def get_seeded_draft(
                 response_model=FeasibilityDecision,
             )
             decision = feasibility_decision.decision
-            pretty_print_seed_candidate(
-                value_a, value_b, medical_domain, medical_setting, decision
-            )
+            if verbose:
+                pretty_print_seed_candidate(
+                    value_a, value_b, medical_domain, medical_setting, decision
+                )
 
             if decision == "continue":
                 break
@@ -140,7 +142,8 @@ def get_seeded_draft(
         messages=draft_prompt,
         response_model=DraftCase,
     )
-    pretty_print_case(draft)
+    if verbose:
+        pretty_print_case(draft)
     return draft, seed_context
 
 @hydra.main(version_base=None, config_path="config", config_name="generator")
@@ -151,7 +154,7 @@ def main(cfg: DictConfig) -> None:
     pm = PromptManager()
 
     draft, seed_context = get_seeded_draft(
-        llm, pm, cfg.seed_mode, cfg.max_synthetic_feasibility_attempts
+        llm, pm, cfg.seed_mode, cfg.max_synthetic_feasibility_attempts, cfg.verbose
     )
 
     # Initialize the CaseRecord for record keeping
@@ -179,7 +182,8 @@ def main(cfg: DictConfig) -> None:
             "an experienced clinician in the relevant medical field.",
             draft
         )
-        pretty_print_audit(clinical_rubric, "Clinical")
+        if cfg.verbose:
+            pretty_print_audit(clinical_rubric, "Clinical")
 
         ethical_rubric, ethical_feedback = evaluate_rubric(
             llm,
@@ -188,7 +192,8 @@ def main(cfg: DictConfig) -> None:
             "Medical Ethics Professor specializing in principlist values",
             draft
         )
-        pretty_print_audit(ethical_rubric, "Ethical")
+        if cfg.verbose:
+            pretty_print_audit(ethical_rubric, "Ethical")
 
         stylistic_rubric, stylistic_feedback = evaluate_rubric(
             llm,
@@ -197,7 +202,8 @@ def main(cfg: DictConfig) -> None:
             "Senior Medical Editor",
             draft
         )
-        pretty_print_audit(stylistic_rubric, "Stylistic")
+        if cfg.verbose:
+            pretty_print_audit(stylistic_rubric, "Stylistic")
 
         # Update the latest record entry with evaluations and feedback for refinement
         latest_record = case_record.refinement_history[-1]
@@ -226,7 +232,8 @@ def main(cfg: DictConfig) -> None:
             response_model=DraftCase,
         )
 
-        pretty_print_case(refined, f"REFINED CASE (Iter {i+1})")
+        if cfg.verbose:
+            pretty_print_case(refined, f"REFINED CASE (Iter {i+1})")
         draft = refined
         
         # Log the refined draft as a new version
@@ -249,7 +256,8 @@ def main(cfg: DictConfig) -> None:
         messages=value_tags_prompt,
         response_model=BenchmarkCandidate,
     )
-    pretty_print_case(case_with_values, "CASE WITH VALUES")
+    if cfg.verbose:
+        pretty_print_case(case_with_values, "CASE WITH VALUES")
 
     # Log the tagged case
     case_record.refinement_history.append(IterationRecord(
@@ -284,7 +292,8 @@ def main(cfg: DictConfig) -> None:
             value_validations[value] = value_rubric
             
             if not value_rubric.overall_pass:
-                pretty_print_audit(value_rubric, value)
+                if cfg.verbose:
+                    pretty_print_audit(value_rubric, value)
                 value_adjustments.append(
                     (value, value_rubric.failing_suggested_changes)
                 )
@@ -316,7 +325,8 @@ def main(cfg: DictConfig) -> None:
 
     case_record.status = "completed"
     
-    pretty_print_case(case_with_values, "FINAL CASE")
+    if cfg.verbose:
+        pretty_print_case(case_with_values, "FINAL CASE")
     
     # Save the complete case record
     save_case_record(case_record)
