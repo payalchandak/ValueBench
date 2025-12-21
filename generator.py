@@ -1,7 +1,8 @@
-import argparse
 import json
 import random
 
+import hydra
+from omegaconf import DictConfig
 from all_the_llms import LLM
 from dotenv import load_dotenv
 from prompt_manager import PromptManager
@@ -19,10 +20,6 @@ from prompts.components.synthetic_components import (
 )
 from utils import *
 from utils import evaluate_rubric
-
-
-# Choose whether to seed from a raw literature case ("literature") or a synthetic seed vignette ("synthetic").
-SEED_MODE = "literature"  # options: "literature", "synthetic"
 
 def _load_random_within_patient_case(
     unified_cases_path: str = "unified_ethics_cases.json",
@@ -49,21 +46,6 @@ def _load_random_within_patient_case(
     return chosen["case"].strip(), chosen["value_1"], chosen["value_2"]
 
 
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(
-        description="Generate benchmark cases with either literature-based or synthetic seeding."
-    )
-    parser.add_argument(
-        "--seed-mode",
-        choices=["literature", "synthetic"],
-        default=None,
-        help=(
-            "Seeding strategy: 'literature' samples a raw case from unified_ethics_cases.json; "
-            "'synthetic' samples values + domain + setting. "
-            f"Defaults to SEED_MODE={SEED_MODE!r} if not provided."
-        ),
-    )
-    return parser.parse_args()
 
 
 def get_seeded_draft(
@@ -134,21 +116,20 @@ def get_seeded_draft(
     pretty_print_case(draft)
     return draft
 
-def main() -> None:
+@hydra.main(version_base=None, config_path="config", config_name="generator")
+def main(cfg: DictConfig) -> None:
     load_dotenv()
-    args = parse_args()
 
-    llm = LLM("claude-sonnet-4.5")
+    llm = LLM(cfg.model_name)
     pm = PromptManager()
 
-    # Allow CLI to override the module-level default SEED_MODE if desired.
-    seed_mode = args.seed_mode or SEED_MODE
-
-    draft = get_seeded_draft(llm, pm, seed_mode)
+    draft = get_seeded_draft(
+        llm, pm, cfg.seed_mode, cfg.max_synthetic_feasibility_attempts
+    )
 
     # todo: embedding based diversity gate
 
-    for _ in range(2):
+    for _ in range(cfg.refinement_iterations):
         clinical_rubric, clinical_feedback = evaluate_rubric(
             llm,
             pm,
