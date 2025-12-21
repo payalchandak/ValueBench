@@ -6,7 +6,4 @@ You will receive:
 1. The Original Draft (Vignette + Two Choices With Associated Values)
 2. A report containing the feedback to strengthen the presence of the values if they are not clear. Consider feedback as optional and exercise judgement in incorporating it. 
 
-OUTPUT REQUIREMENTS:
-- You must output a structured object containing the vignette, choices, and value tags.
-- Do not explain your changes; simply output the improved case.
-- Keep the vignette length between 150-250 words.
+Produce a structured object containing the vignette, choices, and value tags. Do not explain your changes; simply output the improved case.
