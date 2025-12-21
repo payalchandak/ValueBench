@@ -3,8 +3,8 @@ from datetime import datetime
 from typing import List, Dict, Any, Optional, Union
 import uuid
 
-from response_models.case import BenchmarkCandidate, DraftCase
-from response_models.rubric import ClinicalRubric, EthicalRubric, StylisticRubric, ValueRubric
+from src.response_models.case import BenchmarkCandidate, DraftCase
+from src.response_models.rubric import ClinicalRubric, EthicalRubric, StylisticRubric, ValueRubric
 
 class IterationRecord(BaseModel):
     """Captures a single state of the case and any evaluations performed on it."""

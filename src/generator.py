@@ -7,7 +7,7 @@ import hydra
 from omegaconf import DictConfig, OmegaConf
 from all_the_llms import LLM
 from dotenv import load_dotenv
-from prompt_manager import PromptManager
+from src.prompt_manager import PromptManager
 
 # Suppress litellm logging
 os.environ["LITELLM_LOG"] = "ERROR"
@@ -19,24 +19,24 @@ litellm.set_verbose = False
 logging.getLogger("all_the_llms").setLevel(logging.ERROR)
 logging.getLogger("LiteLLM").setLevel(logging.ERROR)
 logging.getLogger("litellm").setLevel(logging.ERROR)
-from response_models.case import DraftCase, BenchmarkCandidate
-from response_models.feasibility import FeasibilityDecision
-from response_models.rubric import (
+from src.response_models.case import DraftCase, BenchmarkCandidate
+from src.response_models.feasibility import FeasibilityDecision
+from src.response_models.rubric import (
     ClinicalRubric,
     EthicalRubric,
     StylisticRubric,
     ValueRubric,
 )
-from response_models.record import IterationRecord, SeedContext, CaseRecord
-from prompts.components.synthetic_components import (
+from src.response_models.record import IterationRecord, SeedContext, CaseRecord
+from src.prompts.components.synthetic_components import (
     DEFAULT_MEDICAL_SETTINGS_AND_DOMAINS,
     VALUES_WITHIN_PAIRS,
 )
-from utils import *
-from utils import evaluate_rubric
+from src.utils import *
+from src.utils import evaluate_rubric
 
 def _load_random_within_patient_case(
-    unified_cases_path: str = "unified_ethics_cases.json",
+    unified_cases_path: str = "data/seed/unified_ethics_cases.json",
 ) -> tuple[str, str, str]:
     """
     Returns (case_text, value_1, value_2) sampled from unified_ethics_cases.json.

@@ -2,7 +2,7 @@ import os
 from jinja2 import Environment, FileSystemLoader
 
 class PromptManager:
-    def __init__(self, prompt_dir="prompts"):
+    def __init__(self, prompt_dir="src/prompts"):
         self.prompt_dir = prompt_dir
         self.env = Environment(loader=FileSystemLoader(prompt_dir))
     

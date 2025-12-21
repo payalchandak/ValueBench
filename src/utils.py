@@ -6,7 +6,7 @@ import os
 from datetime import datetime
 
 
-def save_case_record(record, output_dir: str = "cases"):
+def save_case_record(record, output_dir: str = "data/cases"):
     """
     Saves a CaseRecord to a JSON file.
     """
