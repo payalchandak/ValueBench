@@ -18,6 +18,7 @@ from prompts.components.synthetic_components import (
     VALUES_WITHIN_PAIRS,
 )
 from utils import *
+from utils import evaluate_rubric
 
 
 # Choose whether to seed from a raw literature case ("literature") or a synthetic seed vignette ("synthetic").
@@ -148,72 +149,35 @@ def main() -> None:
     # todo: embedding based diversity gate
 
     for _ in range(2):
-        clinical_rubric_prompt = pm.build_messages(
-            "workflows/rubric",
-            {
-                "role_name": "an experienced clinician in the relevant medical field.",
-                "rubric_criteria": format_criteria(ClinicalRubric),
-                "vignette": draft.vignette,
-                "choice_1": draft.choice_1,
-                "choice_2": draft.choice_2,
-            },
-        )
-        clinical_rubric = llm.structured_completion(
-            messages=clinical_rubric_prompt,
-            response_model=ClinicalRubric,
+        clinical_rubric, clinical_feedback = evaluate_rubric(
+            llm,
+            pm,
+            ClinicalRubric,
+            "an experienced clinician in the relevant medical field.",
+            draft
         )
         print(f"Passing: {clinical_rubric.overall_pass}")
         pretty_print_audit(clinical_rubric, "Clinical")
 
-        ethical_rubric_prompt = pm.build_messages(
-            "workflows/rubric",
-            {
-                "role_name": "Medical Ethics Professor specializing in principlist values",
-                "rubric_criteria": format_criteria(EthicalRubric),
-                "vignette": draft.vignette,
-                "choice_1": draft.choice_1,
-                "choice_2": draft.choice_2,
-            },
-        )
-        ethical_rubric = llm.structured_completion(
-            messages=ethical_rubric_prompt,
-            response_model=EthicalRubric,
+        ethical_rubric, ethical_feedback = evaluate_rubric(
+            llm,
+            pm,
+            EthicalRubric,
+            "Medical Ethics Professor specializing in principlist values",
+            draft
         )
         print(f"Passing: {ethical_rubric.overall_pass}")
         pretty_print_audit(ethical_rubric, "Ethical")
 
-        stylistic_rubric_prompt = pm.build_messages(
-            "workflows/rubric",
-            {
-                "role_name": "Senior Medical Editor",
-                "rubric_criteria": format_criteria(StylisticRubric),
-                "vignette": draft.vignette,
-                "choice_1": draft.choice_1,
-                "choice_2": draft.choice_2,
-            },
-        )
-        stylistic_rubric = llm.structured_completion(
-            messages=stylistic_rubric_prompt,
-            response_model=StylisticRubric,
+        stylistic_rubric, stylistic_feedback = evaluate_rubric(
+            llm,
+            pm,
+            StylisticRubric,
+            "Senior Medical Editor",
+            draft
         )
         print(f"Passing: {stylistic_rubric.overall_pass}")
         pretty_print_audit(stylistic_rubric, "Stylistic")
-
-        clinical_feedback = (
-            clinical_rubric.all_suggested_changes
-            if not clinical_rubric.overall_pass
-            else "No issues detected."
-        )
-        ethical_feedback = (
-            ethical_rubric.all_suggested_changes
-            if not ethical_rubric.overall_pass
-            else "No issues detected."
-        )
-        stylistic_feedback = (
-            stylistic_rubric.all_suggested_changes
-            if not stylistic_rubric.overall_pass
-            else "No issues detected."
-        )
         refine_prompt = pm.build_messages(
             "workflows/refine",
             {

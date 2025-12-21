@@ -2,6 +2,47 @@ from pydantic import BaseModel
 from typing import Type, Optional
 import textwrap
 
+
+def evaluate_rubric(llm, pm, rubric_type: Type[BaseModel], role_name: str, draft) -> tuple[BaseModel, str]:
+    """
+    Evaluate a case against a specific rubric.
+    
+    Args:
+        llm: Language model instance for structured completion
+        pm: PromptManager instance for building messages
+        rubric_type: The rubric model class (e.g., ClinicalRubric, EthicalRubric)
+        role_name: The role description for the evaluator
+        draft: The case to evaluate (must have vignette, choice_1, choice_2 attributes)
+    
+    Returns:
+        A tuple of (rubric, feedback) where:
+        - rubric: An instance of rubric_type with the evaluation results
+        - feedback: String with suggested changes or "No issues detected."
+    """
+    rubric_prompt = pm.build_messages(
+        "workflows/rubric",
+        {
+            "role_name": role_name,
+            "rubric_criteria": format_criteria(rubric_type),
+            "vignette": draft.vignette,
+            "choice_1": draft.choice_1,
+            "choice_2": draft.choice_2,
+        },
+    )
+    rubric = llm.structured_completion(
+        messages=rubric_prompt,
+        response_model=rubric_type,
+    )
+    
+    feedback = (
+        rubric.all_suggested_changes
+        if not rubric.overall_pass
+        else "No issues detected."
+    )
+    
+    return rubric, feedback
+
+
 def format_criteria(model: Type[BaseModel]) -> str:
     """
     Converts a Pydantic model's fields into a clean Markdown checklist.
