@@ -1,4 +1,5 @@
 import argparse
+import json
 import random
 
 from all_the_llms import LLM
@@ -20,7 +21,31 @@ from utils import *
 
 
 # Choose whether to seed from a raw literature case ("literature") or a synthetic seed vignette ("synthetic").
-SEED_MODE = "synthetic"  # options: "literature", "synthetic"
+SEED_MODE = "literature"  # options: "literature", "synthetic"
+
+def _load_random_within_patient_case(
+    unified_cases_path: str = "unified_ethics_cases.json",
+) -> tuple[str, str, str]:
+    """
+    Returns (case_text, value_1, value_2) sampled from unified_ethics_cases.json.
+
+    "within" cases correspond to patient-level dilemmas using the Principlism values
+    (Autonomy, Beneficence, Non-maleficence, Justice).
+    """
+    with open(unified_cases_path, "r") as f:
+        cases = json.load(f)
+
+    within_patient_cases = [c for c in cases if c.get("scenario_type") == "within"]
+
+    if not within_patient_cases:
+        raise ValueError(
+            f"No 'within' patient cases found in {unified_cases_path!r}. "
+            "Expected entries with scenario_type='within' and value_1/value_2 in "
+            "{autonomy, beneficence, non-maleficence, justice}."
+        )
+
+    chosen = random.choice(within_patient_cases)
+    return chosen["case"].strip(), chosen["value_1"], chosen["value_2"]
 
 
 def parse_args() -> argparse.Namespace:
@@ -32,7 +57,7 @@ def parse_args() -> argparse.Namespace:
         choices=["literature", "synthetic"],
         default=None,
         help=(
-            "Seeding strategy: 'literature' reads from seed.txt; "
+            "Seeding strategy: 'literature' samples a raw case from unified_ethics_cases.json; "
             "'synthetic' samples values + domain + setting. "
             f"Defaults to SEED_MODE={SEED_MODE!r} if not provided."
         ),
@@ -48,15 +73,17 @@ def get_seeded_draft(
 ) -> DraftCase:
     """
     Produce an initial DraftCase using either a literature seed
-    (raw case text from seed.txt) or a synthetic specification of
+    (raw case text sampled from unified_ethics_cases.json) or a synthetic specification of
     values + domain + setting.
     """
     if seed_mode == "literature":
-        # Literature-based seeding: read a raw clinical/ethics case from seed.txt
-        with open("seed.txt", "r") as f:
-            seed_text = f.read().strip()
+        # Literature-based seeding: sample a raw clinical/ethics case from unified_ethics_cases.json
+        seed_text, value_1, value_2 = _load_random_within_patient_case()
 
-        draft_prompt = pm.build_messages("workflows/seed_literature", {"seed": seed_text})
+        draft_prompt = pm.build_messages(
+            "workflows/seed_literature",
+            {"seed": seed_text, "value_1": value_1, "value_2": value_2},
+        )
     else:
         # Synthetic seeding: sample a bounded number of times from value pairs and
         # curated (setting, domain) pairs, with a feasibility gate to avoid bad combos.
@@ -110,7 +137,7 @@ def main() -> None:
     load_dotenv()
     args = parse_args()
 
-    llm = LLM("gpt-5-mini", routing_judge="gpt-5-mini")
+    llm = LLM("claude-sonnet-4.5")
     pm = PromptManager()
 
     # Allow CLI to override the module-level default SEED_MODE if desired.
