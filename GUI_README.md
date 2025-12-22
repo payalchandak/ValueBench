@@ -1,6 +1,6 @@
 # ValueBench Case Evaluator GUI
 
-A modern web-based GUI for evaluating ethical case scenarios with value alignment tracking.
+A web-based GUI for evaluating ethical case scenarios with value alignment tracking.
 
 ## Features
 
@@ -57,12 +57,6 @@ The interface will be available at `http://127.0.0.1:7860`
 5. **Navigation**: Use "⏭️ Next Case" to skip to the next case without making a decision
 
 6. **Statistics**: Click "📊 Statistics" to view your evaluation progress
-
-## UI Layout
-
-The interface matches the wireframe design:
-- **Left/Center**: Editable vignette box and two choice displays
-- **Right**: Approve/Reject buttons and LLM edit request area
 
 ## Deployment to HuggingFace Spaces
 

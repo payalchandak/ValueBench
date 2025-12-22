@@ -4,7 +4,25 @@ Medical ethics case review system.
 
 ## First-Time Setup
 
-### Step 1: Create the Conda Environment
+### Option 1: Using uv (Recommended - Fastest)
+
+This project uses [uv](https://github.com/astral-sh/uv) for package management. See [UV_README.md](UV_README.md) for detailed instructions.
+
+**Quick start:**
+```bash
+# Install uv (one-time setup)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Set up the project
+uv sync
+
+# Run the application
+uv run python app.py
+# OR
+uv run python example_cli.py
+```
+
+### Option 2: Using Conda (Traditional)
 
 Open your terminal and run these commands:
 
@@ -19,7 +37,21 @@ conda activate hvp
 pip install -r requirements.txt
 ```
 
-### Step 2: Verify Installation
+### Option 3: Using pip + venv
+
+```bash
+# Create virtual environment
+python -m venv .venv
+
+# Activate the environment
+source .venv/bin/activate  # On macOS/Linux
+.venv\Scripts\activate      # On Windows
+
+# Install required packages
+pip install -r requirements.txt
+```
+
+### Verify Installation
 
 ```bash
 # Make sure you're in the ValueBench directory
