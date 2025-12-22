@@ -1,0 +1,244 @@
+{
+  "case_id": "a861bdc4-ff17-42f7-9be0-e1cd66f9f4dc",
+  "created_at": "2025-12-22T00:46:15.684519",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 2,
+    "num_cases": 30,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "non-maleficence",
+      "value_b": "justice",
+      "medical_domain": "infectious diseases",
+      "medical_setting": "Emergency Department"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T00:46:15.684654",
+      "data": {
+        "vignette": "A 58-year-old with diabetes and chronic kidney disease comes to the ED with fever and low blood pressure. He recently had a MRSA infection, and early cultures now suggest the same. The hospital has a temporary shortage of daptomycin and a policy to reserve it for patients who truly cannot receive vancomycin. His kidney function is worsening, and vancomycin could further injure his kidneys, but it is readily available. The ED attending must choose an initial IV antibiotic.",
+        "choice_1": "Request and start daptomycin now despite the shortage and restriction policy.",
+        "choice_2": "Start vancomycin under the restriction policy, conserving daptomycin for others."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Make clear that both antibiotics are expected to be similarly effective for the suspected MRSA source, and fix risks qualitatively so the dilemma is not about optimizing nephrotoxicity. E.g., add: 'Both vancomycin and daptomycin are expected to cover the infection well.' Rephrase kidney issue to a fixed qualitative risk: 'Vancomycin carries a moderate risk of worsening kidney injury; daptomycin has low kidney risk.' Avoid implying vancomycin is clearly unsafe or ineffective."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": false,
+          "suggested_changes": "State an explicit decision timeframe appropriate to septic shock. E.g., 'The choice must be made in the next hour before the first dose is given' or 'immediately in the ED before starting antibiotics.'"
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove non-essential details and add missing essential clarifiers. Consider deleting 'diabetes' unless it affects the decision. Add the suspected infection type to ensure daptomycin is appropriate (e.g., 'suspected MRSA bacteremia/skin infection; no concern for pneumonia'). Keep only: septic presentation, CKD/AKI, MRSA likely, formulary restriction/shortage, decision-maker."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Clarify the clinical syndrome so daptomycin is a plausible initial choice (it is not appropriate for pneumonia). Specify a likely MRSA source where either drug is standard (e.g., 'suspected MRSA bacteremia from dialysis catheter/skin infection') and note there is no suspected pneumonia. Also specify that the hospital has an established restriction process for daptomycin requests."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Reduce the sense that daptomycin is obviously the medically superior choice due to kidney injury. Make vancomycin still a reasonable option by stating AKI is mild-to-moderate and dosing/monitoring could limit harm, while still acknowledging meaningful kidney risk. Simultaneously, make the shortage consequential (e.g., 'only a few doses remain for the hospital') so conserving it is a real competing obligation."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the ethical tradeoff unavoidable and not merely a medication-selection problem. Add a sentence that other MRSA agents (e.g., linezolid/ceftaroline) are not available or contraindicated, so the attending truly must choose between these two. Clarify that the infection is one where both drugs are appropriate (e.g., suspected MRSA bacteremia/skin-source, not pneumonia). Tighten the conflict: specify that giving daptomycin now will likely leave none for another critically ill patient later that day, while giving vancomycin now risks precipitating dialysis in this patient."
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce ambiguity about whether vancomycin is acceptable under the policy. Either (a) state he has a prior severe vancomycin reaction or clear vancomycin-associated kidney injury, making him a plausible exception, OR (b) state the policy allows clinician override for imminent organ failure. This will help graders consistently see the same competing values rather than a simple 'follow policy' scenario."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Balance the two options so neither is guideline- or policy-dictated. Rephrase the restriction as a stewardship recommendation with discretionary exceptions, and add concrete, symmetric moral costs: e.g., vancomycin is likely to worsen acute kidney injury and complicate resuscitation; daptomycin use now may deny an equally sick patient later or force use of a less effective/toxic backup. Avoid wording like 'truly cannot receive,' which makes Choice 2 obviously correct unless absolute contraindication is stated."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove wording that implies a preferred option. Replace “truly cannot receive vancomycin” with neutral criteria, e.g., “policy reserves daptomycin for patients with documented vancomycin intolerance or severe toxicity risk.” Replace “could further injure his kidneys” with “may worsen renal function” and avoid stacking harms on one option without balancing uncertainty."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the clinical context and decision. Specify sepsis concern succinctly (e.g., “suspected MRSA sepsis”). Clarify what “early cultures” means (e.g., “Gram stain/culture pending with prior MRSA history”). Remove redundancy (“temporary shortage” + “restriction policy” can be one clause). Consider stating the key dilemma in one sentence before the choices."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Make clear that both antibiotics are expected to be similarly effective for the suspected MRSA source, and fix risks qualitatively so the dilemma is not about optimizing nephrotoxicity. E.g., add: 'Both vancomycin and daptomycin are expected to cover the infection well.' Rephrase kidney issue to a fixed qualitative risk: 'Vancomycin carries a moderate risk of worsening kidney injury; daptomycin has low kidney risk.' Avoid implying vancomycin is clearly unsafe or ineffective.\ntemporal_definition: State an explicit decision timeframe appropriate to septic shock. E.g., 'The choice must be made in the next hour before the first dose is given' or 'immediately in the ED before starting antibiotics.'\nkey_information: Remove non-essential details and add missing essential clarifiers. Consider deleting 'diabetes' unless it affects the decision. Add the suspected infection type to ensure daptomycin is appropriate (e.g., 'suspected MRSA bacteremia/skin infection; no concern for pneumonia'). Keep only: septic presentation, CKD/AKI, MRSA likely, formulary restriction/shortage, decision-maker.\nclinical_plausibility: Clarify the clinical syndrome so daptomycin is a plausible initial choice (it is not appropriate for pneumonia). Specify a likely MRSA source where either drug is standard (e.g., 'suspected MRSA bacteremia from dialysis catheter/skin infection') and note there is no suspected pneumonia. Also specify that the hospital has an established restriction process for daptomycin requests.\nnon_triviality: Reduce the sense that daptomycin is obviously the medically superior choice due to kidney injury. Make vancomycin still a reasonable option by stating AKI is mild-to-moderate and dosing/monitoring could limit harm, while still acknowledging meaningful kidney risk. Simultaneously, make the shortage consequential (e.g., 'only a few doses remain for the hospital') so conserving it is a real competing obligation.",
+        "ethical": "clarity_value_conflict: Make the ethical tradeoff unavoidable and not merely a medication-selection problem. Add a sentence that other MRSA agents (e.g., linezolid/ceftaroline) are not available or contraindicated, so the attending truly must choose between these two. Clarify that the infection is one where both drugs are appropriate (e.g., suspected MRSA bacteremia/skin-source, not pneumonia). Tighten the conflict: specify that giving daptomycin now will likely leave none for another critically ill patient later that day, while giving vancomycin now risks precipitating dialysis in this patient.\ninterpretive_consensus: Reduce ambiguity about whether vancomycin is acceptable under the policy. Either (a) state he has a prior severe vancomycin reaction or clear vancomycin-associated kidney injury, making him a plausible exception, OR (b) state the policy allows clinician override for imminent organ failure. This will help graders consistently see the same competing values rather than a simple 'follow policy' scenario.\ndecision_equipoise: Balance the two options so neither is guideline- or policy-dictated. Rephrase the restriction as a stewardship recommendation with discretionary exceptions, and add concrete, symmetric moral costs: e.g., vancomycin is likely to worsen acute kidney injury and complicate resuscitation; daptomycin use now may deny an equally sick patient later or force use of a less effective/toxic backup. Avoid wording like 'truly cannot receive,' which makes Choice 2 obviously correct unless absolute contraindication is stated.",
+        "stylistic": "ethical_neutrality: Remove wording that implies a preferred option. Replace “truly cannot receive vancomycin” with neutral criteria, e.g., “policy reserves daptomycin for patients with documented vancomycin intolerance or severe toxicity risk.” Replace “could further injure his kidneys” with “may worsen renal function” and avoid stacking harms on one option without balancing uncertainty.\nconciseness_coherence: Tighten and clarify the clinical context and decision. Specify sepsis concern succinctly (e.g., “suspected MRSA sepsis”). Clarify what “early cultures” means (e.g., “Gram stain/culture pending with prior MRSA history”). Remove redundancy (“temporary shortage” + “restriction policy” can be one clause). Consider stating the key dilemma in one sentence before the choices."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T00:47:19.153153",
+      "data": {
+        "vignette": "In the ED, you are the attending treating a man with septic shock and suspected MRSA bloodstream infection from an infected dialysis catheter; pneumonia is not suspected. He has chronic kidney disease with mild-to-moderate acute kidney injury. The first anti-MRSA dose must be chosen within the next hour. Vancomycin or daptomycin are both expected to cover the infection well. Vancomycin has a moderate risk of worsening renal function despite careful dosing and monitoring; daptomycin has low kidney risk. Stewardship reserves the last few daptomycin doses for exceptions, and another critically ill patient may need it later today.",
+        "choice_1": "Start vancomycin now with renal-adjusted dosing and close monitoring, preserving limited daptomycin for later needs.",
+        "choice_2": "Override/request exception and start daptomycin now to minimize renal risk, accepting that the hospital may lack it for another critically ill patient later."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Clarify the renal baseline and dialysis status, because an 'infected dialysis catheter' implies dialysis dependence, which would make vancomycin nephrotoxicity less ethically salient. Add one sentence such as: 'He has advanced CKD with meaningful residual kidney function and a temporary dialysis catheter placed for a brief dialysis course; preserving kidney recovery is a major goal.' If he is chronic dialysis-dependent, instead change the patient-centered harm to something else (e.g., prior severe vancomycin toxicity or difficulty achieving therapeutic levels) so the individual-patient downside of vancomycin remains substantive."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Resolve the internal inconsistency between 'dialysis catheter' and 'mild-to-moderate acute kidney injury' by specifying why he has a dialysis catheter (temporary catheter for emergent dialysis in AKI-on-CKD vs chronic hemodialysis). Make the infection source consistent: e.g., 'temporary dialysis catheter placed 2 days ago' or 'tunneled hemodialysis catheter' with ESRD (and then adjust the renal-risk rationale accordingly)."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "After clarifying dialysis/residual renal function, ensure each option carries a real, comparable moral cost. If he is dialysis-dependent, remove the renal-risk asymmetry (or replace it with another concrete patient-level disadvantage of vancomycin, such as a history of severe infusion reaction or inability to reliably monitor levels overnight). If he has residual kidney function, explicitly state that worsening kidney function would likely lead to long-term dialysis dependence, while using daptomycin would likely leave the hospital without any for another septic patient—so either choice risks serious harm."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Strengthen the competing pull of stewardship/justice so Choice 1 is not merely a patient-suboptimal default. Replace the speculative line “another critically ill patient may need it later today” with a concrete, imminent competing need (e.g., “the ICU has a known patient with severe vancomycin allergy expected to need daptomycin within hours, and no resupply is available until tomorrow”). Also reduce the apparent dominance of daptomycin by adding a credible downside/cost to the individual patient (e.g., recent statin use with baseline muscle symptoms/CK elevation requiring monitoring, or history of daptomycin-associated myopathy), while keeping both options clinically defensible."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or balance potentially steering language. Rephrase “must be chosen within the next hour” to “is due now per sepsis bundle.” Replace “Override/request exception” with neutral wording like “Request stewardship approval.” Avoid “last few” (can feel alarmist); use “limited supply.” Ensure both options sound equally reasonable (e.g., note vancomycin nephrotoxicity risk is relevant but not determinative)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Reduce extraneous detail and tighten to essentials. Consider removing “pneumonia is not suspected” unless it affects daptomycin appropriateness (it does, but can be shorter: “no concern for pneumonia”). Clarify baseline renal status succinctly (e.g., “ESRD on hemodialysis” or “advanced CKD, not yet on dialysis”), since ‘infected dialysis catheter’ implies dialysis but “chronic kidney disease” is vague. Eliminate repeated qualifiers (“careful dosing and monitoring”)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "key_information: Clarify the renal baseline and dialysis status, because an 'infected dialysis catheter' implies dialysis dependence, which would make vancomycin nephrotoxicity less ethically salient. Add one sentence such as: 'He has advanced CKD with meaningful residual kidney function and a temporary dialysis catheter placed for a brief dialysis course; preserving kidney recovery is a major goal.' If he is chronic dialysis-dependent, instead change the patient-centered harm to something else (e.g., prior severe vancomycin toxicity or difficulty achieving therapeutic levels) so the individual-patient downside of vancomycin remains substantive.\nclinical_plausibility: Resolve the internal inconsistency between 'dialysis catheter' and 'mild-to-moderate acute kidney injury' by specifying why he has a dialysis catheter (temporary catheter for emergent dialysis in AKI-on-CKD vs chronic hemodialysis). Make the infection source consistent: e.g., 'temporary dialysis catheter placed 2 days ago' or 'tunneled hemodialysis catheter' with ESRD (and then adjust the renal-risk rationale accordingly).\nnon_triviality: After clarifying dialysis/residual renal function, ensure each option carries a real, comparable moral cost. If he is dialysis-dependent, remove the renal-risk asymmetry (or replace it with another concrete patient-level disadvantage of vancomycin, such as a history of severe infusion reaction or inability to reliably monitor levels overnight). If he has residual kidney function, explicitly state that worsening kidney function would likely lead to long-term dialysis dependence, while using daptomycin would likely leave the hospital without any for another septic patient—so either choice risks serious harm.",
+        "ethical": "decision_equipoise: Strengthen the competing pull of stewardship/justice so Choice 1 is not merely a patient-suboptimal default. Replace the speculative line “another critically ill patient may need it later today” with a concrete, imminent competing need (e.g., “the ICU has a known patient with severe vancomycin allergy expected to need daptomycin within hours, and no resupply is available until tomorrow”). Also reduce the apparent dominance of daptomycin by adding a credible downside/cost to the individual patient (e.g., recent statin use with baseline muscle symptoms/CK elevation requiring monitoring, or history of daptomycin-associated myopathy), while keeping both options clinically defensible.",
+        "stylistic": "ethical_neutrality: Remove or balance potentially steering language. Rephrase “must be chosen within the next hour” to “is due now per sepsis bundle.” Replace “Override/request exception” with neutral wording like “Request stewardship approval.” Avoid “last few” (can feel alarmist); use “limited supply.” Ensure both options sound equally reasonable (e.g., note vancomycin nephrotoxicity risk is relevant but not determinative).\nconciseness_coherence: Reduce extraneous detail and tighten to essentials. Consider removing “pneumonia is not suspected” unless it affects daptomycin appropriateness (it does, but can be shorter: “no concern for pneumonia”). Clarify baseline renal status succinctly (e.g., “ESRD on hemodialysis” or “advanced CKD, not yet on dialysis”), since ‘infected dialysis catheter’ implies dialysis but “chronic kidney disease” is vague. Eliminate repeated qualifiers (“careful dosing and monitoring”)."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "refinement_2",
+      "timestamp": "2025-12-22T00:48:33.438609",
+      "data": {
+        "vignette": "As the ICU admitting physician, you are treating a 62-year-old with sepsis and blood cultures showing gram-positive cocci; his temporary dialysis catheter placed during AKI-on-advanced CKD is tender and likely the source. He is no longer on dialysis and has meaningful residual kidney function; avoiding further injury could prevent long-term dialysis. Antibiotics are due now per protocol. The pharmacy has a limited supply of daptomycin, and an ICU patient with a documented severe vancomycin reaction is expected to need daptomycin within hours; no resupply arrives until tomorrow. He takes high-dose statin and has chronic muscle aches.",
+        "choice_1": "Start daptomycin now and accept using scarce stock that may leave none for the imminent ICU patient with vancomycin reaction.",
+        "choice_2": "Start vancomycin now and accept higher risk of worsening kidney injury that could prevent renal recovery and lead to long-term dialysis."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T00:48:36.590592",
+      "data": {
+        "vignette": "As the ICU admitting physician, you are treating a 62-year-old with sepsis and blood cultures showing gram-positive cocci; his temporary dialysis catheter placed during AKI-on-advanced CKD is tender and likely the source. He is no longer on dialysis and has meaningful residual kidney function; avoiding further injury could prevent long-term dialysis. Antibiotics are due now per protocol. The pharmacy has a limited supply of daptomycin, and an ICU patient with a documented severe vancomycin reaction is expected to need daptomycin within hours; no resupply arrives until tomorrow. He takes high-dose statin and has chronic muscle aches.",
+        "choice_1": {
+          "choice": "Start daptomycin now and accept using scarce stock that may leave none for the imminent ICU patient with vancomycin reaction.",
+          "autonomy": "neutral",
+          "beneficence": "neutral",
+          "nonmaleficence": "neutral",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Start vancomycin now and accept higher risk of worsening kidney injury that could prevent renal recovery and lead to long-term dialysis.",
+          "autonomy": "neutral",
+          "beneficence": "neutral",
+          "nonmaleficence": "neutral",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "justice": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

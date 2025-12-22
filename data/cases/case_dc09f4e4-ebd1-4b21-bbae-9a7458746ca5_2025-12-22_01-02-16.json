@@ -1,0 +1,284 @@
+{
+  "case_id": "dc09f4e4-ebd1-4b21-bbae-9a7458746ca5",
+  "created_at": "2025-12-22T00:59:55.893079",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 2,
+    "num_cases": 30,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "autonomy",
+      "value_b": "non-maleficence",
+      "medical_domain": "general internal medicine",
+      "medical_setting": "Emergency Department"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T00:59:55.893275",
+      "data": {
+        "vignette": "In the ED, a middle-aged patient arrives with severe dehydration and confusion from untreated diabetes. After fluids, they become lucid and consistently explain they must leave immediately to care for a dependent at home. The ED attending believes stopping treatment now could lead to rapid deterioration, coma, or death, but the patient demonstrates understanding of these risks and refuses further IV insulin, monitoring, or admission. Security is available, and an emergency hold could be pursued, though it would require physical restraint and forced treatment.",
+        "choice_1": "Initiate an emergency hold and keep the patient for continued treatment, using restraint if needed.",
+        "choice_2": "Honor the refusal and allow discharge after counseling and arranging the safest possible follow-up."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove prognostic uncertainty language and fix risks qualitatively. E.g., replace “The ED attending believes stopping treatment now could lead to rapid deterioration” with “Without continued IV insulin and monitoring, deterioration to coma or death is likely in the next several hours despite initial fluids.” Also name the condition explicitly (e.g., “diabetic ketoacidosis/hyperosmolar crisis”) so the clinical effectiveness of treatment is not in question."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": false,
+          "suggested_changes": "Add a clear decision timeframe/urgency tied to the presentation. E.g., “A decision is needed now in the ED before the patient leaves,” or “within the next hour,” and specify that leaving would mean stopping IV insulin/monitoring immediately."
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Tighten to essential facts only and keep the narrative ≤100 words. Delete nonessential elements like “Security is available” unless directly relevant; instead state succinctly that forced treatment would require restraints. Include only: current diagnosis, current mental status/capacity assessment, immediate risk if leaving, and the reason for refusal (dependent at home)."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, the patient is lucid and demonstrates understanding, making forced treatment/hold ethically and legally hard to justify, so Choice 1 becomes weak. Make capacity genuinely borderline or contested in a realistic way (e.g., fluctuating delirium, inability to explain consequences consistently, persistent severe metabolic derangement, or concern for impaired executive function), OR reframe Choice 1 as a time-limited hold for reassessment of capacity rather than forced treatment. Ensure both options are defensible: (A) brief hold to stabilize/assess capacity vs (B) discharge respecting a consistently capable refusal."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "As written, the patient is lucid and demonstrates understanding of risks, so most clinicians would view forced treatment/hold as unjustified; the dilemma becomes one-sided. To restore equipoise, introduce a credible, persistent concern that makes overriding refusal ethically defensible without making it a pure capacity test. For example: (1) replace “they become lucid and… demonstrate understanding” with “they are intermittently lucid and cannot reliably repeat back the risks; capacity is unclear,” OR (2) add that the dependent is a young child alone and the patient refuses to allow contact/verification, creating urgent safety concerns; OR (3) state the patient’s decision-making fluctuates and may worsen quickly without treatment, making the window for assessment narrow. Keep both options clinically plausible and avoid implying one is clearly correct."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or neutralize language that implicitly favors detention/treatment. For example: change “untreated diabetes” to “diabetes with suspected hyperglycemic crisis,” change “must leave immediately” to “requests to leave to provide care for a dependent,” and replace “forced treatment” with “treatment without the patient’s consent.” Consider balancing phrasing by noting potential harms of detention (e.g., distress, loss of trust) without emotive terms."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove prognostic uncertainty language and fix risks qualitatively. E.g., replace “The ED attending believes stopping treatment now could lead to rapid deterioration” with “Without continued IV insulin and monitoring, deterioration to coma or death is likely in the next several hours despite initial fluids.” Also name the condition explicitly (e.g., “diabetic ketoacidosis/hyperosmolar crisis”) so the clinical effectiveness of treatment is not in question.\ntemporal_definition: Add a clear decision timeframe/urgency tied to the presentation. E.g., “A decision is needed now in the ED before the patient leaves,” or “within the next hour,” and specify that leaving would mean stopping IV insulin/monitoring immediately.\nkey_information: Tighten to essential facts only and keep the narrative ≤100 words. Delete nonessential elements like “Security is available” unless directly relevant; instead state succinctly that forced treatment would require restraints. Include only: current diagnosis, current mental status/capacity assessment, immediate risk if leaving, and the reason for refusal (dependent at home).\nnon_triviality: As written, the patient is lucid and demonstrates understanding, making forced treatment/hold ethically and legally hard to justify, so Choice 1 becomes weak. Make capacity genuinely borderline or contested in a realistic way (e.g., fluctuating delirium, inability to explain consequences consistently, persistent severe metabolic derangement, or concern for impaired executive function), OR reframe Choice 1 as a time-limited hold for reassessment of capacity rather than forced treatment. Ensure both options are defensible: (A) brief hold to stabilize/assess capacity vs (B) discharge respecting a consistently capable refusal.",
+        "ethical": "decision_equipoise: As written, the patient is lucid and demonstrates understanding of risks, so most clinicians would view forced treatment/hold as unjustified; the dilemma becomes one-sided. To restore equipoise, introduce a credible, persistent concern that makes overriding refusal ethically defensible without making it a pure capacity test. For example: (1) replace “they become lucid and… demonstrate understanding” with “they are intermittently lucid and cannot reliably repeat back the risks; capacity is unclear,” OR (2) add that the dependent is a young child alone and the patient refuses to allow contact/verification, creating urgent safety concerns; OR (3) state the patient’s decision-making fluctuates and may worsen quickly without treatment, making the window for assessment narrow. Keep both options clinically plausible and avoid implying one is clearly correct.",
+        "stylistic": "ethical_neutrality: Remove or neutralize language that implicitly favors detention/treatment. For example: change “untreated diabetes” to “diabetes with suspected hyperglycemic crisis,” change “must leave immediately” to “requests to leave to provide care for a dependent,” and replace “forced treatment” with “treatment without the patient’s consent.” Consider balancing phrasing by noting potential harms of detention (e.g., distress, loss of trust) without emotive terms."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T01:00:52.382999",
+      "data": {
+        "vignette": "An ED physician treats a 42-year-old with type 1 diabetes and diabetic ketoacidosis (anion-gap acidosis, ketones, dehydration) on IV fluids and insulin. After partial improvement, he requests to leave to care for a 6-year-old at home and refuses staff contacting anyone. He is intermittently disoriented and cannot consistently explain the consequences of stopping treatment; capacity is unclear and may worsen quickly. Without continued IV insulin and monitoring, deterioration to coma or death is likely within hours. A decision is needed now before he leaves; detaining him would require restraints.",
+        "choice_1": "Place a time-limited hold to continue treatment and reassess decision-making capacity while arranging a safety plan for the dependent.",
+        "choice_2": "Respect his refusal and discharge now, stopping IV insulin/monitoring, with clear return precautions and offers of social-work support."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften prognostic certainty and replace with qualitative, fixed descriptors; avoid near-deterministic language. Edit “deterioration to coma or death is likely within hours” to “there is a high risk of rapid deterioration, including coma or death, over the next several hours if treatment stops.” Clarify that continued IV insulin/monitoring is expected to be effective (e.g., “continued treatment is expected to stabilize him”)."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Trim to essential facts and remove redundancy. You can drop parenthetical lab descriptors (“anion-gap acidosis, ketones, dehydration”) and “partial improvement” unless it affects capacity/urgency. Add one essential capacity anchor (e.g., orientation, ability to understand/communicate choice) and omit extra. Example: “DKA on IV insulin; still acidotic; intermittently disoriented and cannot repeat risks/benefits.”"
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, the medical risk is framed as so imminent that discharge seems clearly wrong, making the choice lopsided. Reduce the immediacy/inevitability and make both options clinically defensible: specify he has improved, vitals stable, closing gap but still needs monitoring; risk is high but not certain. Alternatively, specify he meets minimal safe discharge criteria except for capacity concern, or that he could potentially transition to subcutaneous insulin with close follow-up, making discharge ethically/clinically arguable."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance so neither option is effectively dictated by imminent life-threatening risk plus likely incapacity. Suggested edits: (1) Make capacity more borderline: state he is oriented, can repeat back the key risks/benefits, but is adamant about leaving for childcare; add brief note that delirium is improving with treatment. (2) Soften the near-certain catastrophic outcome: replace “coma or death is likely within hours” with qualitative but less deterministic language (e.g., “may deteriorate quickly without monitoring”). (3) Make discharge clinically plausible: add that he has partially closed the gap, can tolerate oral intake, has long-acting insulin available, and can return within a short window for reassessment. (4) Increase the ethical cost of holding: specify significant distress/trauma risk from restraints, limited security staffing, and potential harm to the child if he is detained without any alternative caregiver arranged."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Soften outcome-loaded phrasing that nudges toward detention. Replace “deterioration to coma or death is likely within hours” with a more neutral qualitative statement (e.g., “he may deteriorate rapidly without ongoing insulin and monitoring”). Replace “would require restraints” with neutral language (e.g., “may require involuntary measures/security assistance”). Consider adding a balancing statement that continued treatment also carries burdens/harms (e.g., “a hold would override his expressed wishes and may escalate agitation”)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten to essential decision-relevant facts; remove extra clinical descriptors that don’t affect the ethics. Delete parenthetical “(anion-gap acidosis, ketones, dehydration)” and “partial improvement” unless it changes the dilemma. Condense capacity description to one sentence (e.g., “He is intermittently disoriented and cannot reliably describe risks/alternatives.”). Ensure the narrative stays ≤100 words after edits."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften prognostic certainty and replace with qualitative, fixed descriptors; avoid near-deterministic language. Edit “deterioration to coma or death is likely within hours” to “there is a high risk of rapid deterioration, including coma or death, over the next several hours if treatment stops.” Clarify that continued IV insulin/monitoring is expected to be effective (e.g., “continued treatment is expected to stabilize him”).\nkey_information: Trim to essential facts and remove redundancy. You can drop parenthetical lab descriptors (“anion-gap acidosis, ketones, dehydration”) and “partial improvement” unless it affects capacity/urgency. Add one essential capacity anchor (e.g., orientation, ability to understand/communicate choice) and omit extra. Example: “DKA on IV insulin; still acidotic; intermittently disoriented and cannot repeat risks/benefits.”\nnon_triviality: As written, the medical risk is framed as so imminent that discharge seems clearly wrong, making the choice lopsided. Reduce the immediacy/inevitability and make both options clinically defensible: specify he has improved, vitals stable, closing gap but still needs monitoring; risk is high but not certain. Alternatively, specify he meets minimal safe discharge criteria except for capacity concern, or that he could potentially transition to subcutaneous insulin with close follow-up, making discharge ethically/clinically arguable.",
+        "ethical": "decision_equipoise: Rebalance so neither option is effectively dictated by imminent life-threatening risk plus likely incapacity. Suggested edits: (1) Make capacity more borderline: state he is oriented, can repeat back the key risks/benefits, but is adamant about leaving for childcare; add brief note that delirium is improving with treatment. (2) Soften the near-certain catastrophic outcome: replace “coma or death is likely within hours” with qualitative but less deterministic language (e.g., “may deteriorate quickly without monitoring”). (3) Make discharge clinically plausible: add that he has partially closed the gap, can tolerate oral intake, has long-acting insulin available, and can return within a short window for reassessment. (4) Increase the ethical cost of holding: specify significant distress/trauma risk from restraints, limited security staffing, and potential harm to the child if he is detained without any alternative caregiver arranged.",
+        "stylistic": "ethical_neutrality: Soften outcome-loaded phrasing that nudges toward detention. Replace “deterioration to coma or death is likely within hours” with a more neutral qualitative statement (e.g., “he may deteriorate rapidly without ongoing insulin and monitoring”). Replace “would require restraints” with neutral language (e.g., “may require involuntary measures/security assistance”). Consider adding a balancing statement that continued treatment also carries burdens/harms (e.g., “a hold would override his expressed wishes and may escalate agitation”).\nconciseness_coherence: Tighten to essential decision-relevant facts; remove extra clinical descriptors that don’t affect the ethics. Delete parenthetical “(anion-gap acidosis, ketones, dehydration)” and “partial improvement” unless it changes the dilemma. Condense capacity description to one sentence (e.g., “He is intermittently disoriented and cannot reliably describe risks/alternatives.”). Ensure the narrative stays ≤100 words after edits."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "refinement_2",
+      "timestamp": "2025-12-22T01:01:40.500095",
+      "data": {
+        "vignette": "In the ED, a 34-year-old man is being treated for diabetic ketoacidosis with IV insulin and frequent labs. His vital signs are stable, he is eating, and the metabolic gap is improving but not yet resolved; continued treatment is expected to stabilize him. He insists on leaving now to pick up his toddler and says no one else can. He is oriented and can repeat that stopping treatment could lead to rapid worsening, but staff note fluctuating attention and agitation. You are the attending physician deciding whether he can leave.",
+        "choice_1": "Permit discharge against medical advice with transition to subcutaneous insulin, clear return precautions, and rapid follow-up planning.",
+        "choice_2": "Initiate a temporary medical hold to continue IV insulin and monitoring despite his objection, using involuntary measures if needed."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T01:01:43.582021",
+      "data": {
+        "vignette": "In the ED, a 34-year-old man is being treated for diabetic ketoacidosis with IV insulin and frequent labs. His vital signs are stable, he is eating, and the metabolic gap is improving but not yet resolved; continued treatment is expected to stabilize him. He insists on leaving now to pick up his toddler and says no one else can. He is oriented and can repeat that stopping treatment could lead to rapid worsening, but staff note fluctuating attention and agitation. You are the attending physician deciding whether he can leave.",
+        "choice_1": {
+          "choice": "Permit discharge against medical advice with transition to subcutaneous insulin, clear return precautions, and rapid follow-up planning.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Initiate a temporary medical hold to continue IV insulin and monitoring despite his objection, using involuntary measures if needed.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Make the value conflict explicit by sharpening the patient’s decision-making capacity uncertainty and the medical risk of leaving. Add objective evidence of encephalopathy (e.g., pH still low, anion gap still elevated, ketones present, intermittent confusion) and note a focused capacity evaluation showing inconsistent understanding/appreciation. Clarify that staff explored alternatives for childcare (calling family/social work) but he refuses or no options. Ensure choices explicitly contrast respecting expressed refusal (autonomy) vs overriding due to lack of capacity to prevent serious harm (nonmaleficence/beneficence)."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Clarify the decisional-capacity question and imminence of risk: include current DKA severity (pH/bicarb/anion gap/ketones), what remains incomplete, and what could happen if IV insulin is stopped. Specify concrete signs of impaired capacity (e.g., confusion about consequences, inability to sustain a choice, delirium from acidosis) versus merely being upset. Add efforts to support autonomy (offer to call family/social work/ride, childcare resources) and make the two options explicitly hinge on whether he has capacity vs requires a temporary hold for life-threatening risk."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 4,
+      "step_description": "final_improvement",
+      "timestamp": "2025-12-22T01:02:16.624968",
+      "data": {
+        "vignette": "A 34-year-old man with type 1 diabetes was admitted to the ICU overnight with severe diabetic ketoacidosis (DKA) after running out of insulin. On arrival he was tachypneic with Kussmaul respirations and dehydrated. After 8 hours of IV insulin and fluids, he is improved but not yet out of DKA: venous pH is 7.12, bicarbonate 10 mEq/L, anion gap 18 (down from 30), and serum beta‑hydroxybutyrate remains elevated; urine ketones are still positive. Nurses report he has intermittent confusion—at times he asks to go home “because I already got the insulin shot,” then minutes later says he never received any treatment. He repeatedly removes his IV and telemetry leads.\n\nLate morning, he insists on leaving against medical advice because he needs to pick up his 4-year-old from daycare. The team conducts a focused capacity assessment. He can state his name and the date but cannot consistently explain what DKA is, why IV insulin must continue until the anion gap closes, or the likely consequences of stopping treatment; when asked to repeat back the risks, he alternates between “I’ll be fine, I’ll just drink water” and “I could die, but I have to go anyway,” and he cannot describe a feasible plan to obtain insulin or get to follow-up. Social work and nursing offer to call the daycare, contact family/friends for childcare, arrange a hospital phone call, and explore emergency childcare resources; he refuses to provide contacts and declines these options, saying staff are “trying to trap” him. The treating physician is concerned that leaving now could lead to rapid recurrence/worsening of acidosis, cerebral edema, arrhythmia, coma, and death.",
+        "choice_1": {
+          "choice": "Respect his stated wish to leave AMA: explain the medical risks, provide written instructions and prescriptions for insulin/supplies, attempt to arrange transportation and follow-up, and discharge him if he continues to refuse care.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Determine he lacks decisional capacity due to ongoing metabolic encephalopathy and place a temporary medical hold to continue life-saving IV insulin and monitoring until the anion gap closes; continue attempts to address his childcare concern through social work and reassess capacity frequently.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

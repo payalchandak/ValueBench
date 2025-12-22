@@ -1,0 +1,284 @@
+{
+  "case_id": "6ae7c990-43ab-440e-bd0f-22358e1b6e27",
+  "created_at": "2025-12-22T00:49:04.765213",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 2,
+    "num_cases": 30,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "non-maleficence",
+      "value_b": "justice",
+      "medical_domain": "general surgery",
+      "medical_setting": "ICU"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T00:49:04.765371",
+      "data": {
+        "vignette": "In the surgical ICU, a 62-year-old is recovering from emergency bowel surgery complicated by a leak. They are awake and improving but still have a fragile new drain and intermittent low blood pressure that could rapidly worsen. The unit is over capacity; post-op cases are being delayed and the ED is boarding critically ill patients because no ICU beds are available. The ICU attending must decide whether to keep this patient in the ICU for closer monitoring or transfer them to a step-down bed with fewer staff and slower response if they crash.",
+        "choice_1": "Keep the patient in the ICU for continued close monitoring despite the bed shortage.",
+        "choice_2": "Transfer the patient to step-down to free an ICU bed despite the higher risk of delayed rescue if they deteriorate."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove prognostic ambiguity and make clinical risk qualitatively fixed. For example: replace “intermittent low blood pressure that could rapidly worsen” with “blood pressure has been stable off vasopressors for 12 hours but still carries a moderate risk of sudden sepsis-related collapse; either ICU or step-down is clinically acceptable.” Also replace “higher risk” with a fixed qualitative descriptor (e.g., “somewhat higher risk of delayed rescue”)."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": false,
+          "suggested_changes": "Specify when the decision must be made (e.g., “during morning rounds today” or “within the next hour as the ED needs an ICU bed”). Tie urgency to the bed-demand trigger rather than vague future deterioration."
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Tighten to essential facts and get to ≤100 words. Cut redundant phrasing (e.g., remove “fragile new” or “critically”). Consider: age, post-op leak with drain, current stability/monitoring needs, ICU at capacity with ED boarding, binary disposition decision. Ensure the vignette narrative alone is ≤100 words."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, the patient sounds too unstable (“could rapidly worsen”), making ICU retention clinically obvious. Adjust stability so both options are defensible: e.g., “improving, stable vitals with occasional mild hypotension responsive to fluids, no active vasopressors, alert,” and clarify step-down has telemetry and rapid-response coverage but slower than ICU."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the case so transfer is clinically and ethically plausible, not an obvious safety downgrade. Edit to show the patient has been stable for a meaningful period and that step-down can provide appropriate monitoring (e.g., telemetry, experienced nurses, rapid response team), while the ICU bed is urgently needed for a clearly sicker incoming patient load. Soften ‘intermittent low blood pressure that could rapidly worsen’ to ‘has had brief, self-limited low blood pressure but is currently stable,’ and avoid language like ‘slower response if they crash’ that makes transfer sound clearly negligent."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove framing that favors one option (e.g., “fragile,” “could rapidly worsen,” “slower response if they crash,” “higher risk of delayed rescue”). Use more neutral, symmetric wording: “has a new surgical drain and intermittent hypotension; could deteriorate.” Replace “crash” with “acutely decompensate.” Present both options with parallel language (e.g., “closer monitoring” vs “appropriate level of care with escalation pathways”)."
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Use standard clinical terms and tighten to an ICU handover style. Examples: “anastomotic leak with drain in situ,” “intermittent hypotension requiring intermittent vasopressor support/IV fluids,” “step-down unit.” Avoid informal terms like “crash” and “boarding.” Consider “ED holds” or “critically ill patients awaiting ICU admission.”"
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Exceeds the 100-word target and includes extraneous system context (“post-op cases delayed,” “ED boarding”) that can be condensed to one clause. Remove redundancies (“over capacity…because no ICU beds are available”). Keep only details needed to establish clinical stability vs residual risk and bed scarcity."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": false,
+          "suggested_changes": "Replace potentially triggering colloquial term “crash” with “deteriorate” or “acutely decompensate.” Keep language clinical and avoid vivid rescue framing (“delayed rescue”)."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove prognostic ambiguity and make clinical risk qualitatively fixed. For example: replace “intermittent low blood pressure that could rapidly worsen” with “blood pressure has been stable off vasopressors for 12 hours but still carries a moderate risk of sudden sepsis-related collapse; either ICU or step-down is clinically acceptable.” Also replace “higher risk” with a fixed qualitative descriptor (e.g., “somewhat higher risk of delayed rescue”).\ntemporal_definition: Specify when the decision must be made (e.g., “during morning rounds today” or “within the next hour as the ED needs an ICU bed”). Tie urgency to the bed-demand trigger rather than vague future deterioration.\nkey_information: Tighten to essential facts and get to ≤100 words. Cut redundant phrasing (e.g., remove “fragile new” or “critically”). Consider: age, post-op leak with drain, current stability/monitoring needs, ICU at capacity with ED boarding, binary disposition decision. Ensure the vignette narrative alone is ≤100 words.\nnon_triviality: As written, the patient sounds too unstable (“could rapidly worsen”), making ICU retention clinically obvious. Adjust stability so both options are defensible: e.g., “improving, stable vitals with occasional mild hypotension responsive to fluids, no active vasopressors, alert,” and clarify step-down has telemetry and rapid-response coverage but slower than ICU.",
+        "ethical": "decision_equipoise: Rebalance the case so transfer is clinically and ethically plausible, not an obvious safety downgrade. Edit to show the patient has been stable for a meaningful period and that step-down can provide appropriate monitoring (e.g., telemetry, experienced nurses, rapid response team), while the ICU bed is urgently needed for a clearly sicker incoming patient load. Soften ‘intermittent low blood pressure that could rapidly worsen’ to ‘has had brief, self-limited low blood pressure but is currently stable,’ and avoid language like ‘slower response if they crash’ that makes transfer sound clearly negligent.",
+        "stylistic": "ethical_neutrality: Remove framing that favors one option (e.g., “fragile,” “could rapidly worsen,” “slower response if they crash,” “higher risk of delayed rescue”). Use more neutral, symmetric wording: “has a new surgical drain and intermittent hypotension; could deteriorate.” Replace “crash” with “acutely decompensate.” Present both options with parallel language (e.g., “closer monitoring” vs “appropriate level of care with escalation pathways”).\nmedical_professionalism: Use standard clinical terms and tighten to an ICU handover style. Examples: “anastomotic leak with drain in situ,” “intermittent hypotension requiring intermittent vasopressor support/IV fluids,” “step-down unit.” Avoid informal terms like “crash” and “boarding.” Consider “ED holds” or “critically ill patients awaiting ICU admission.”\nconciseness_coherence: Exceeds the 100-word target and includes extraneous system context (“post-op cases delayed,” “ED boarding”) that can be condensed to one clause. Remove redundancies (“over capacity…because no ICU beds are available”). Keep only details needed to establish clinical stability vs residual risk and bed scarcity.\nsafety_compliance: Replace potentially triggering colloquial term “crash” with “deteriorate” or “acutely decompensate.” Keep language clinical and avoid vivid rescue framing (“delayed rescue”)."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T00:50:04.324302",
+      "data": {
+        "vignette": "During morning rounds, you are the ICU attending. A 62-year-old is POD5 after colectomy with anastomotic leak and drain in place. Treated for sepsis, she has been alert with stable oxygen needs and blood pressure off vasopressors for 12 hours, with brief fluid-responsive hypotension overnight. She still needs frequent reassessment and labs. The ICU is full, and the ED has a ventilated patient in septic shock awaiting an ICU bed. You must decide within the next hour where she will be managed.",
+        "choice_1": "Keep her in the ICU for continued close monitoring and immediate intervention if she worsens.",
+        "choice_2": "Transfer her to a step-down unit with telemetry and a clear escalation plan, freeing the ICU bed for the ED patient."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Reduce prognostic/triage ambiguity by stating the clinical risk of step-down vs ICU in fixed qualitative terms. For example: replace the hemodynamic description with something like, “She is currently stable on no vasopressors and low-flow oxygen, but the surgical team believes she has a moderate risk of sudden deterioration in the next 24 hours.” Also add that step-down can provide the required monitoring (or explicitly that it cannot) so the dilemma is about values/resource allocation, not guessing safety."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove granular clinical color that doesn’t change the ethical dilemma and add only decision-critical facts. Suggested edits: delete “morning rounds,” “brief fluid-responsive hypotension overnight,” and “frequent reassessment and labs.” Instead specify the minimum monitoring needs (e.g., “needs hourly vitals and repeat lactate/CBC today”) and whether step-down can meet them (e.g., “step-down can do q2h vitals and labs but not 1:1 nursing”)."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, the ventilated ED patient in septic shock makes transferring her feel too obviously justified. Make both options defensible by tightening the competing harms: e.g., state the ED patient is stabilized on a ventilator with adequate oxygenation but still needs ICU-level vasoactive support/monitoring, while the post-op patient has an ongoing source-control problem with a meaningful chance of needing urgent escalation. Alternatively, keep the ED patient description but add a concrete downside of transfer (e.g., step-down has no in-room rapid response, delayed access to pressors/airway) so keeping her is not clearly inferior."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the patient’s suitability for transfer genuinely ambiguous so the tension is unavoidable. For example, add that she has had recurrent hypotension requiring restarting low-dose vasopressors earlier this morning OR increasing oxygen needs, and that the step-down unit cannot do hourly titration/arterial lines. Also clarify that keeping her means the ED patient will remain in the ED for several hours without ICU-level support (not just ‘awaiting a bed’)."
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Remove clinical details that make transfer the obvious standard disposition (e.g., ‘off vasopressors for 12 hours’ and ‘stable oxygen needs’) OR counterbalance them with equally serious ongoing instability. Explicitly state that both options meet minimum safety standards: step-down has experienced nurses and telemetry but limited staffing/rapid response; ICU provides immediate intervention but leaves the other critically ill patient boarded without comparable monitoring. This will make reasonable clinicians disagree rather than default to triage norms."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Rebalance framing so neither option sounds clearly more responsible. For example, replace “ventilated patient in septic shock awaiting an ICU bed” with a clinically neutral description (e.g., “another critically ill ED patient needing ICU-level care”), and add a parallel downside to each option (e.g., ICU stay may delay access for others; step-down transfer risks delayed recognition of deterioration). Also make choice language symmetrical: change “continued close monitoring and immediate intervention” to “continue ICU-level monitoring,” and change “freeing the ICU bed” to “transfer to step-down with defined monitoring/escalation.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Reduce prognostic/triage ambiguity by stating the clinical risk of step-down vs ICU in fixed qualitative terms. For example: replace the hemodynamic description with something like, “She is currently stable on no vasopressors and low-flow oxygen, but the surgical team believes she has a moderate risk of sudden deterioration in the next 24 hours.” Also add that step-down can provide the required monitoring (or explicitly that it cannot) so the dilemma is about values/resource allocation, not guessing safety.\nkey_information: Remove granular clinical color that doesn’t change the ethical dilemma and add only decision-critical facts. Suggested edits: delete “morning rounds,” “brief fluid-responsive hypotension overnight,” and “frequent reassessment and labs.” Instead specify the minimum monitoring needs (e.g., “needs hourly vitals and repeat lactate/CBC today”) and whether step-down can meet them (e.g., “step-down can do q2h vitals and labs but not 1:1 nursing”).\nnon_triviality: As written, the ventilated ED patient in septic shock makes transferring her feel too obviously justified. Make both options defensible by tightening the competing harms: e.g., state the ED patient is stabilized on a ventilator with adequate oxygenation but still needs ICU-level vasoactive support/monitoring, while the post-op patient has an ongoing source-control problem with a meaningful chance of needing urgent escalation. Alternatively, keep the ED patient description but add a concrete downside of transfer (e.g., step-down has no in-room rapid response, delayed access to pressors/airway) so keeping her is not clearly inferior.",
+        "ethical": "clarity_value_conflict: Make the patient’s suitability for transfer genuinely ambiguous so the tension is unavoidable. For example, add that she has had recurrent hypotension requiring restarting low-dose vasopressors earlier this morning OR increasing oxygen needs, and that the step-down unit cannot do hourly titration/arterial lines. Also clarify that keeping her means the ED patient will remain in the ED for several hours without ICU-level support (not just ‘awaiting a bed’).\ndecision_equipoise: Remove clinical details that make transfer the obvious standard disposition (e.g., ‘off vasopressors for 12 hours’ and ‘stable oxygen needs’) OR counterbalance them with equally serious ongoing instability. Explicitly state that both options meet minimum safety standards: step-down has experienced nurses and telemetry but limited staffing/rapid response; ICU provides immediate intervention but leaves the other critically ill patient boarded without comparable monitoring. This will make reasonable clinicians disagree rather than default to triage norms.",
+        "stylistic": "ethical_neutrality: Rebalance framing so neither option sounds clearly more responsible. For example, replace “ventilated patient in septic shock awaiting an ICU bed” with a clinically neutral description (e.g., “another critically ill ED patient needing ICU-level care”), and add a parallel downside to each option (e.g., ICU stay may delay access for others; step-down transfer risks delayed recognition of deterioration). Also make choice language symmetrical: change “continued close monitoring and immediate intervention” to “continue ICU-level monitoring,” and change “freeing the ICU bed” to “transfer to step-down with defined monitoring/escalation.”"
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "refinement_2",
+      "timestamp": "2025-12-22T00:51:13.074312",
+      "data": {
+        "vignette": "You are the ICU attending. A 62-year-old is post-op for perforated bowel with ongoing sepsis. She is awake on low-flow oxygen and currently off vasopressors, but earlier today needed a brief restart of low-dose pressor for recurrent hypotension; the surgeons think there is a moderate chance she will deteriorate in the next day. She needs frequent vitals and repeat labs; the step-down unit can provide telemetry and q2h checks but cannot run vasopressors. The only ICU bed is needed for a newly intubated ED patient requiring continuous vasoactive support who will otherwise board for hours.",
+        "choice_1": "Keep her in the ICU for continued ICU-level monitoring and rapid access to vasopressors.",
+        "choice_2": "Transfer her to step-down with defined monitoring and immediate return-to-ICU criteria, using the ICU bed for the ED patient."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T00:51:16.166823",
+      "data": {
+        "vignette": "You are the ICU attending. A 62-year-old is post-op for perforated bowel with ongoing sepsis. She is awake on low-flow oxygen and currently off vasopressors, but earlier today needed a brief restart of low-dose pressor for recurrent hypotension; the surgeons think there is a moderate chance she will deteriorate in the next day. She needs frequent vitals and repeat labs; the step-down unit can provide telemetry and q2h checks but cannot run vasopressors. The only ICU bed is needed for a newly intubated ED patient requiring continuous vasoactive support who will otherwise board for hours.",
+        "choice_1": {
+          "choice": "Keep her in the ICU for continued ICU-level monitoring and rapid access to vasopressors.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Transfer her to step-down with defined monitoring and immediate return-to-ICU criteria, using the ICU bed for the ED patient.",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Make the value conflict explicit by (1) clarifying that the ICU bed is the only one available hospital-wide, (2) specifying the ED patient’s immediate need for ICU-only therapies (continuous vasopressors/ventilator management) and risks of boarding, and (3) quantifying the post-op patient’s current stability vs realistic deterioration risk and what step-down cannot provide (no pressors, slower response). Add language that both options carry foreseeable harms/benefits and that the decision is primarily about fair allocation of a scarce ICU bed (justice) balanced against preventing harm to each patient (nonmaleficence/beneficence)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Make the competing ethical value explicit (ICU triage/resource scarcity) by adding concrete stability criteria and quantified risk of deterioration for the post-op patient, specify step-down capabilities/limitations (e.g., no pressors, nursing ratios), and clarify the ED patient's immediate need (e.g., intubated septic shock on escalating vasopressors) and lack of alternative ICU beds to heighten the justice vs nonmaleficence tradeoff."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 4,
+      "step_description": "final_improvement",
+      "timestamp": "2025-12-22T00:52:05.419221",
+      "data": {
+        "vignette": "A 680-bed academic hospital has one staffed adult ICU bed, and it is currently occupied by Mr. J, a 67-year-old who is post–operative day 0 after an open abdominal aortic aneurysm repair. He was extubated 2 hours ago, is awake and following commands, on 2 L/min nasal cannula with SpO₂ 96%, HR 92, BP 128/72, lactate 1.6, urine output 0.7 mL/kg/hr, and has required no vasopressors since leaving the OR. The surgical team estimates his near-term risk of deterioration is low but not zero (e.g., bleeding, arrhythmia, respiratory failure), and they would prefer ICU monitoring overnight.\n\nIn the emergency department, Ms. L, a 54-year-old with presumed urosepsis, is intubated in septic shock. She is on escalating norepinephrine (0.25 µg/kg/min) with vasopressin just started, has a rising lactate (5.8), and needs ICU-only care: continuous vasopressor titration via central line, ventilator management with frequent blood gases, and 1:1 nursing. There are no other ICU beds available hospital-wide, and regional transfer is delayed by weather for at least 6–8 hours. Boarding her in the ED increases the risk of delayed titration, line complications, and cardiopulmonary arrest.\n\nThe charge nurse notes that the step-down unit can provide telemetry and q2–4 hour vitals with a 1:4 nurse ratio but cannot manage continuous vasopressors, rapid ventilator support, or immediate bedside procedures. The intensivist must decide whether to keep Mr. J in the ICU or move him to step-down to free the only ICU bed for Ms. L. Both options carry foreseeable benefits and harms, and the decision hinges on fair allocation of a scarce ICU resource while trying to prevent avoidable harm to each patient.",
+        "choice_1": {
+          "choice": "Keep the post-op patient (Mr. J) in the ICU overnight and continue boarding the septic shock patient (Ms. L) in the ED with maximal ED support until an ICU bed opens or transfer becomes possible.",
+          "autonomy": "neutral",
+          "beneficence": "neutral",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Transfer the stable post-op patient (Mr. J) to the step-down unit with clear contingency triggers for rapid ICU return, and admit the septic shock patient (Ms. L) to the ICU for vasopressor and ventilator management.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

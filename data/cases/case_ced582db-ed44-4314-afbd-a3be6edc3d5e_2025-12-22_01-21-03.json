@@ -1,0 +1,250 @@
+{
+  "case_id": "ced582db-ed44-4314-afbd-a3be6edc3d5e",
+  "created_at": "2025-12-22T01:18:40.319376",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 2,
+    "num_cases": 30,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "non-maleficence",
+      "value_b": "justice",
+      "medical_domain": "pulmonology",
+      "medical_setting": "Emergency Department"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T01:18:40.319516",
+      "data": {
+        "vignette": "In a crowded ED, a man with hemoptysis, fever, and a chest X‑ray showing cavities is strongly suspected to have pulmonary TB. He is anxious, intermittently pulls off oxygen, and repeatedly tries to leave the unit. Only one negative‑pressure room is available, and security can hold him there until public health evaluation, but this may require sedating or restraining him and keeps the room unavailable for other patients needing airborne isolation. The ED attending must decide what to do now.",
+        "choice_1": "Avoid restraints/sedation and manage him without enforced airborne isolation, even if he leaves the ED.",
+        "choice_2": "Enforce airborne isolation using the negative‑pressure room with security and, if needed, sedation/restraints until evaluation."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Reduce diagnostic/prognostic ambiguity so the dilemma isn’t about whether he truly has TB. Replace “strongly suspected” with a qualitative, fixed statement such as: “findings make active, contagious pulmonary TB very likely; if he leaves unmasked, others are at high risk.” Also state that isolation would be effective at limiting exposure, and avoid introducing new clinical uncertainty (e.g., remove oxygen detail unless essential)."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Rewrite both choices as concrete, mutually exclusive orders. For example:\n- Choice 1: “Do not restrain or sedate; allow him to leave if he insists; give a surgical mask and provide discharge instructions; immediately notify infection control/public health.”\n- Choice 2: “Place him on an emergency involuntary hold for suspected contagious TB; move him to the negative-pressure room; use security and the least restrictive restraints/sedation as needed until public health evaluation.”"
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove extraneous details that don’t affect the ethical tension (e.g., “intermittently pulls off oxygen” unless hypoxic status changes capacity/urgency). Add only essential missing facts: whether he has decision-making capacity, whether he will wear a mask voluntarily, and expected time to public health evaluation (e.g., “within a few hours” vs “overnight”), because these directly shape the ethical stakes."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Clarify the legal/operational mechanism that makes enforced isolation realistic (e.g., “under the hospital’s emergency public-health hold policy” or “under state communicable disease detention authority, pending public health officer evaluation”). Specify that negative-pressure capacity is limited but available now, and that public health evaluation is imminent (hours) to avoid an implausible indefinite ED detention."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Make both options ethically/clinically defensible by softening Choice 1 from effectively permitting uncontrolled exposure. Add mitigating steps (masking, escorted exit, rapid follow-up, immediate reporting) and clarify that restraints/sedation carry significant foreseeable harms (e.g., delirium, aspiration, trauma) and consume the only isolation room needed for another high-risk patient. Also specify capacity is intact and he is refusing isolation, so enforced detention is ethically weighty rather than a straightforward capacity-based decision."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance so neither option is the obvious default for suspected contagious TB. Edits: (1) Reduce diagnostic certainty: change “strongly suspected” to “possible TB vs necrotizing pneumonia,” and note smear/NAAT pending with no confirmed exposure. (2) Make Choice 1 ethically/clinically defensible: specify he will be given a surgical mask, counseled, and offered expedited outpatient/public health follow-up if he leaves. (3) Increase moral cost of Choice 2: add that he is not violent but is delirious/hypoxic, has high restraint/sedation risk (e.g., severe COPD or OSA), and prolonged holding may worsen his condition. (4) Strengthen the justice tradeoff: specify an imminently arriving immunocompromised patient also needs the only negative-pressure room, so using it for him will expose others or delay care. Keep language qualitative and avoid citing laws or numerical risks."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify ethically essential facts. Remove potentially extraneous detail (e.g., delete “intermittently pulls off oxygen” and possibly “crowded” unless it affects staffing/space). Add one sentence clarifying mental status/capacity and whether he understands and can repeat back the risks of leaving vs staying (e.g., “He is alert, oriented, and can describe the reasons for isolation,” or, if not, state delirium/intoxication). Ensure the public-health evaluation timeframe is implied without extra wording, keeping the vignette ≤100 words."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Reduce diagnostic/prognostic ambiguity so the dilemma isn’t about whether he truly has TB. Replace “strongly suspected” with a qualitative, fixed statement such as: “findings make active, contagious pulmonary TB very likely; if he leaves unmasked, others are at high risk.” Also state that isolation would be effective at limiting exposure, and avoid introducing new clinical uncertainty (e.g., remove oxygen detail unless essential).\ndistinctness_actionability: Rewrite both choices as concrete, mutually exclusive orders. For example:\n- Choice 1: “Do not restrain or sedate; allow him to leave if he insists; give a surgical mask and provide discharge instructions; immediately notify infection control/public health.”\n- Choice 2: “Place him on an emergency involuntary hold for suspected contagious TB; move him to the negative-pressure room; use security and the least restrictive restraints/sedation as needed until public health evaluation.”\nkey_information: Remove extraneous details that don’t affect the ethical tension (e.g., “intermittently pulls off oxygen” unless hypoxic status changes capacity/urgency). Add only essential missing facts: whether he has decision-making capacity, whether he will wear a mask voluntarily, and expected time to public health evaluation (e.g., “within a few hours” vs “overnight”), because these directly shape the ethical stakes.\nclinical_plausibility: Clarify the legal/operational mechanism that makes enforced isolation realistic (e.g., “under the hospital’s emergency public-health hold policy” or “under state communicable disease detention authority, pending public health officer evaluation”). Specify that negative-pressure capacity is limited but available now, and that public health evaluation is imminent (hours) to avoid an implausible indefinite ED detention.\nnon_triviality: Make both options ethically/clinically defensible by softening Choice 1 from effectively permitting uncontrolled exposure. Add mitigating steps (masking, escorted exit, rapid follow-up, immediate reporting) and clarify that restraints/sedation carry significant foreseeable harms (e.g., delirium, aspiration, trauma) and consume the only isolation room needed for another high-risk patient. Also specify capacity is intact and he is refusing isolation, so enforced detention is ethically weighty rather than a straightforward capacity-based decision.",
+        "ethical": "decision_equipoise: Rebalance so neither option is the obvious default for suspected contagious TB. Edits: (1) Reduce diagnostic certainty: change “strongly suspected” to “possible TB vs necrotizing pneumonia,” and note smear/NAAT pending with no confirmed exposure. (2) Make Choice 1 ethically/clinically defensible: specify he will be given a surgical mask, counseled, and offered expedited outpatient/public health follow-up if he leaves. (3) Increase moral cost of Choice 2: add that he is not violent but is delirious/hypoxic, has high restraint/sedation risk (e.g., severe COPD or OSA), and prolonged holding may worsen his condition. (4) Strengthen the justice tradeoff: specify an imminently arriving immunocompromised patient also needs the only negative-pressure room, so using it for him will expose others or delay care. Keep language qualitative and avoid citing laws or numerical risks.",
+        "stylistic": "conciseness_coherence: Tighten and clarify ethically essential facts. Remove potentially extraneous detail (e.g., delete “intermittently pulls off oxygen” and possibly “crowded” unless it affects staffing/space). Add one sentence clarifying mental status/capacity and whether he understands and can repeat back the risks of leaving vs staying (e.g., “He is alert, oriented, and can describe the reasons for isolation,” or, if not, state delirium/intoxication). Ensure the public-health evaluation timeframe is implied without extra wording, keeping the vignette ≤100 words."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T01:19:54.509189",
+      "data": {
+        "vignette": "You are the ED attending. A 46-year-old man has weeks of cough, weight loss, and cavitary upper-lobe changes; a rapid TB test is positive and confirmatory sputum testing is pending. Staff believe active, contagious TB is very likely, and isolation would markedly limit exposure. He is alert, oriented, and can explain the risks, but refuses to stay and says he will leave without a mask. The only negative-pressure room is available now, but an immunocompromised transplant patient is expected to need it soon. Public health can evaluate him within a few hours.",
+        "choice_1": "Do not restrain or detain him; offer a mask and counseling, allow discharge if he insists, arrange rapid follow-up, and immediately notify infection control/public health.",
+        "choice_2": "Initiate an emergency public-health hold; place him in the negative-pressure room and use security and the least restrictive restraints/sedation as needed until public health evaluation."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Reduce prognostic/diagnostic ambiguity so the dilemma isn’t about “how likely is it TB.” Rephrase to fix likelihood qualitatively and explicitly: e.g., “Rapid NAAT is positive and clinicians judge active pulmonary TB and contagiousness to be high; if he leaves unmasked, exposure risk to others is high.” Remove/limit “confirmatory sputum pending” or add “confirmation will not change immediate infection-control precautions.” Avoid language like “very likely” without anchoring to “high.”"
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add one essential fact to keep the decision ethical (not medical necessity): state he is medically stable and does not otherwise need admission (e.g., “vitals stable, no hypoxia, safe for outpatient treatment if compliant”). Consider removing minor clinical descriptors that don’t change the decision (e.g., either keep imaging OR symptom trio) to minimize clutter."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Make both options more ethically and clinically defensible by reducing how clearly dangerous the patient is and by adding uncertainty/constraints on detention: e.g., change 'a rapid TB test is positive and confirmatory sputum testing is pending' to 'a rapid test is equivocal/indeterminate and confirmatory sputum is pending, but imaging and symptoms raise concern.' Add that 'local policy allows temporary holds only with public health order' or 'ED physician cannot legally detain without imminent threat,' so hold is ethically costly and potentially improper. Alternatively, increase the cost of discharge by stating the patient plans to use crowded public transport/shelter tonight, and increase the cost of holding by stating the transplant patient is arriving now and will be placed in a non-ideal room if the TB patient occupies negative pressure, so justice tradeoff is sharper. Ensure public health cannot arrive for many hours (not 'within a few hours') to avoid making detention the obvious choice."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Reduce language that implicitly blames or heightens alarm. Replace “active, contagious TB is very likely” with “active pulmonary TB is suspected.” Replace “isolation would markedly limit exposure” with “airborne isolation is recommended to reduce transmission risk.” Replace “will leave without a mask” with “declines to wear a mask if he leaves.” Avoid attributing consensus pressure (“Staff believe…”) by attributing to clinical assessment (“Your assessment is…”)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Reduce prognostic/diagnostic ambiguity so the dilemma isn’t about “how likely is it TB.” Rephrase to fix likelihood qualitatively and explicitly: e.g., “Rapid NAAT is positive and clinicians judge active pulmonary TB and contagiousness to be high; if he leaves unmasked, exposure risk to others is high.” Remove/limit “confirmatory sputum pending” or add “confirmation will not change immediate infection-control precautions.” Avoid language like “very likely” without anchoring to “high.”\nkey_information: Add one essential fact to keep the decision ethical (not medical necessity): state he is medically stable and does not otherwise need admission (e.g., “vitals stable, no hypoxia, safe for outpatient treatment if compliant”). Consider removing minor clinical descriptors that don’t change the decision (e.g., either keep imaging OR symptom trio) to minimize clutter.",
+        "ethical": "decision_equipoise: Make both options more ethically and clinically defensible by reducing how clearly dangerous the patient is and by adding uncertainty/constraints on detention: e.g., change 'a rapid TB test is positive and confirmatory sputum testing is pending' to 'a rapid test is equivocal/indeterminate and confirmatory sputum is pending, but imaging and symptoms raise concern.' Add that 'local policy allows temporary holds only with public health order' or 'ED physician cannot legally detain without imminent threat,' so hold is ethically costly and potentially improper. Alternatively, increase the cost of discharge by stating the patient plans to use crowded public transport/shelter tonight, and increase the cost of holding by stating the transplant patient is arriving now and will be placed in a non-ideal room if the TB patient occupies negative pressure, so justice tradeoff is sharper. Ensure public health cannot arrive for many hours (not 'within a few hours') to avoid making detention the obvious choice.",
+        "stylistic": "ethical_neutrality: Reduce language that implicitly blames or heightens alarm. Replace “active, contagious TB is very likely” with “active pulmonary TB is suspected.” Replace “isolation would markedly limit exposure” with “airborne isolation is recommended to reduce transmission risk.” Replace “will leave without a mask” with “declines to wear a mask if he leaves.” Avoid attributing consensus pressure (“Staff believe…”) by attributing to clinical assessment (“Your assessment is…”)."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "refinement_2",
+      "timestamp": "2025-12-22T01:20:37.369104",
+      "data": {
+        "vignette": "You are the ED attending. A man with cough, weight loss, and upper‑lobe cavitary changes has a rapid TB NAAT reported positive; your assessment is that active pulmonary TB and contagiousness are high, and confirmation would not change immediate precautions. He is hemodynamically stable, not hypoxic, and could be treated as an outpatient if he complies. He insists on leaving tonight for a crowded shelter and declines to wear a mask. Public health cannot respond until morning, and hospital policy allows detention only with a public health order. A lung‑transplant recipient is arriving now and needs the only negative‑pressure room.",
+        "choice_1": "Keep him in airborne isolation and prevent him from leaving while urgently seeking a public health order, using the negative‑pressure room.",
+        "choice_2": "Discharge him despite refusal of masking, after counseling and notifying public health, and reserve the negative‑pressure room for the transplant recipient."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T01:20:55.720062",
+      "data": {
+        "vignette": "You are the ED attending. A man with cough, weight loss, and upper‑lobe cavitary changes has a rapid TB NAAT reported positive; your assessment is that active pulmonary TB and contagiousness are high, and confirmation would not change immediate precautions. He is hemodynamically stable, not hypoxic, and could be treated as an outpatient if he complies. He insists on leaving tonight for a crowded shelter and declines to wear a mask. Public health cannot respond until morning, and hospital policy allows detention only with a public health order. A lung‑transplant recipient is arriving now and needs the only negative‑pressure room.",
+        "choice_1": {
+          "choice": "Keep him in airborne isolation and prevent him from leaving while urgently seeking a public health order, using the negative‑pressure room.",
+          "autonomy": "violates",
+          "beneficence": "neutral",
+          "nonmaleficence": "neutral",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Discharge him despite refusal of masking, after counseling and notifying public health, and reserve the negative‑pressure room for the transplant recipient.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

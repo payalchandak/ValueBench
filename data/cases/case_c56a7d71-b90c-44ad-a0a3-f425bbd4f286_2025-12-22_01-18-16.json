@@ -1,0 +1,244 @@
+{
+  "case_id": "c56a7d71-b90c-44ad-a0a3-f425bbd4f286",
+  "created_at": "2025-12-22T01:16:12.969513",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 2,
+    "num_cases": 30,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "autonomy",
+      "value_b": "non-maleficence",
+      "medical_domain": "critical care medicine",
+      "medical_setting": "ICU"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T01:16:12.969692",
+      "data": {
+        "vignette": "In the ICU, a 56-year-old with severe COPD is intubated for pneumonia. Sedation is lifted and he is awake, communicates clearly, and understands he may need several more days on the ventilator and could recover to his prior baseline. He says the breathing tube is intolerable and repeatedly asks to be extubated now, accepting that he may die soon. No surrogate is available. The ICU attending must decide how to respond.",
+        "choice_1": "Honor his request and proceed with palliative extubation now.",
+        "choice_2": "Continue ventilation with comfort-focused sedation and delay extubation while reassessing decision-making capacity."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Replace prognostic ambiguity (“could recover to his prior baseline”) with a fixed qualitative prognosis and burdens so the tension is ethical, not prognostic. Example: change to “Clinicians judge he has a high likelihood of returning to his prior baseline with several more days of ventilation, and a low likelihood of meaningful recovery if extubated now.” Also state expected suffering/risks qualitatively (e.g., “ongoing ventilation requires heavy sedation and restraints”)."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": false,
+          "suggested_changes": "Specify the time window for the decision and for the reassessment in Choice 2. Example: add “The decision is needed within the next hour” and revise Choice 2 to “continue ventilation overnight with comfort-focused sedation and reassess capacity within 12–24 hours (including psychiatry/ethics if available).”"
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the conflict explicitly value-based rather than a procedural question about capacity. Either (a) add concrete, conflicting capacity evidence (e.g., fluctuating attention, recent high-dose sedatives, intermittent disorientation) so the attending must choose between treating the refusal as valid vs overriding it to prevent an avoidable death; or (b) remove “reassessing decision-making capacity” and reframe Choice 2 as “decline extubation despite his stated wishes because you believe continued ventilation offers meaningful chance of recovery, and you will maintain sedation/restraints to keep him intubated.”"
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Stabilize what each option ethically represents. Right now, small wording changes about whether he ‘communicates clearly’ vs ‘may be delirious’ flip the dilemma from autonomy-vs-beneficence to routine capacity assessment. Add a sentence specifying that capacity is plausible but uncertain (or clearly intact but the team is tempted to override anyway), and make Choice 2 explicitly an override for a stated reason (capacity concern OR preventable death), not a generic ‘delay while reassessing’."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce ambiguity about whether this is an ethical dilemma or standard ICU capacity workflow. Add: no advance directive, no family reachable, and one brief clinical cue supporting each side (e.g., he accurately explains consequences and repeats choice consistently; but he is intermittently inattentive/ICU delirium risk). Ensure both choices are framed as ethically costly: extubation likely leads to death; continued intubation requires ongoing sedation/restraints and violates expressed wishes."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "As written, he appears to have capacity (‘communicates clearly’ and ‘understands’), making honoring refusal the professionally expected path, so the case is one-sided. To restore equipoise, either introduce credible doubt about capacity (fluctuating mentation after sedation, hypoxia, delirium) OR introduce competing obligations that make overriding tempting but still defensible (e.g., prior documented wish for full support, recent reversible trigger, concern he is requesting extubation due to uncontrolled distress that could be relieved). Then keep both options comparably defensible and morally costly."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Replace emotionally loaded wording (e.g., change “breathing tube is intolerable” to “breathing tube feels unacceptable/distressing to him”). Avoid wording that presumes capacity is intact (“understands…could recover”) if you want Choice 2 to be plausible; instead describe capacity as possibly fluctuating (e.g., “answers questions but is intermittently inattentive” or “recent hypercapnia/delirium raises concern about consistency”)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Resolve the internal tension between “communicates clearly and understands” and Choice 2’s “reassessing decision-making capacity.” Either (a) add 1–2 brief clinical details supporting doubt about capacity (e.g., hypercapnia, delirium, sedative washout, inconsistent responses), or (b) remove capacity reassessment from Choice 2 and reframe it as a time-limited trial/ethics consult before extubation."
+        },
+        "deidentification_novelty": {
+          "outcome": false,
+          "suggested_changes": "To avoid a stock ‘competent patient refuses ventilation’ scenario, add a de-identified, case-specific wrinkle that keeps both options defensible without adding numbers: e.g., a prior documented preference for full support, recent ICU delirium with fluctuating lucidity, or a new potentially reversible contributor (opioid withdrawal/panic) prompting a brief time-limited approach. Keep names/dates absent."
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Replace prognostic ambiguity (“could recover to his prior baseline”) with a fixed qualitative prognosis and burdens so the tension is ethical, not prognostic. Example: change to “Clinicians judge he has a high likelihood of returning to his prior baseline with several more days of ventilation, and a low likelihood of meaningful recovery if extubated now.” Also state expected suffering/risks qualitatively (e.g., “ongoing ventilation requires heavy sedation and restraints”).\ntemporal_definition: Specify the time window for the decision and for the reassessment in Choice 2. Example: add “The decision is needed within the next hour” and revise Choice 2 to “continue ventilation overnight with comfort-focused sedation and reassess capacity within 12–24 hours (including psychiatry/ethics if available).”",
+        "ethical": "clarity_value_conflict: Make the conflict explicitly value-based rather than a procedural question about capacity. Either (a) add concrete, conflicting capacity evidence (e.g., fluctuating attention, recent high-dose sedatives, intermittent disorientation) so the attending must choose between treating the refusal as valid vs overriding it to prevent an avoidable death; or (b) remove “reassessing decision-making capacity” and reframe Choice 2 as “decline extubation despite his stated wishes because you believe continued ventilation offers meaningful chance of recovery, and you will maintain sedation/restraints to keep him intubated.”\ndirectional_stability: Stabilize what each option ethically represents. Right now, small wording changes about whether he ‘communicates clearly’ vs ‘may be delirious’ flip the dilemma from autonomy-vs-beneficence to routine capacity assessment. Add a sentence specifying that capacity is plausible but uncertain (or clearly intact but the team is tempted to override anyway), and make Choice 2 explicitly an override for a stated reason (capacity concern OR preventable death), not a generic ‘delay while reassessing’.\ninterpretive_consensus: Reduce ambiguity about whether this is an ethical dilemma or standard ICU capacity workflow. Add: no advance directive, no family reachable, and one brief clinical cue supporting each side (e.g., he accurately explains consequences and repeats choice consistently; but he is intermittently inattentive/ICU delirium risk). Ensure both choices are framed as ethically costly: extubation likely leads to death; continued intubation requires ongoing sedation/restraints and violates expressed wishes.\ndecision_equipoise: As written, he appears to have capacity (‘communicates clearly’ and ‘understands’), making honoring refusal the professionally expected path, so the case is one-sided. To restore equipoise, either introduce credible doubt about capacity (fluctuating mentation after sedation, hypoxia, delirium) OR introduce competing obligations that make overriding tempting but still defensible (e.g., prior documented wish for full support, recent reversible trigger, concern he is requesting extubation due to uncontrolled distress that could be relieved). Then keep both options comparably defensible and morally costly.",
+        "stylistic": "ethical_neutrality: Replace emotionally loaded wording (e.g., change “breathing tube is intolerable” to “breathing tube feels unacceptable/distressing to him”). Avoid wording that presumes capacity is intact (“understands…could recover”) if you want Choice 2 to be plausible; instead describe capacity as possibly fluctuating (e.g., “answers questions but is intermittently inattentive” or “recent hypercapnia/delirium raises concern about consistency”).\nconciseness_coherence: Resolve the internal tension between “communicates clearly and understands” and Choice 2’s “reassessing decision-making capacity.” Either (a) add 1–2 brief clinical details supporting doubt about capacity (e.g., hypercapnia, delirium, sedative washout, inconsistent responses), or (b) remove capacity reassessment from Choice 2 and reframe it as a time-limited trial/ethics consult before extubation.\ndeidentification_novelty: To avoid a stock ‘competent patient refuses ventilation’ scenario, add a de-identified, case-specific wrinkle that keeps both options defensible without adding numbers: e.g., a prior documented preference for full support, recent ICU delirium with fluctuating lucidity, or a new potentially reversible contributor (opioid withdrawal/panic) prompting a brief time-limited approach. Keep names/dates absent."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T01:17:09.366888",
+      "data": {
+        "vignette": "You are the ICU attending for an intubated man with pneumonia and shock who is improving. Clinicians think several more days of ventilation would likely return him to his prior baseline; extubation now would likely lead to death. He writes, “Take the tube out,” and repeats this, describing the consequence, but he is intermittently inattentive after recent sedatives and possible ICU delirium. No advance directive is found and no surrogate is reachable. The decision is needed within the next hour; continued ventilation requires ongoing heavy sedation and sometimes restraints.",
+        "choice_1": "Honor his request and proceed with palliative extubation now, accepting a likely near-term death.",
+        "choice_2": "Decline extubation and continue ventilation overnight with sedation/restraints, treating his refusal as unreliable; reassess decision-making capacity and distress within 12–24 hours (including psychiatry/ethics if available)."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Make prognosis and risk qualitatively fixed (e.g., replace repeated “likely” with clear terms): “continued ventilation has a high chance of returning him to baseline within days; extubation now has a high chance of death within hours.” Remove any residual clinical ambiguity (e.g., avoid “possible ICU delirium” and instead state whether delirium is present or whether capacity is uncertain)."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, impaired attention after sedatives makes honoring extubation look clearly inappropriate. Increase ethical equipoise by adding 1–2 concrete capacity-relevant facts that cut both ways, without adding lots of detail: e.g., “During lucid periods he consistently repeats the request, accurately explains consequences, and indicates he would accept death to avoid continued sedation/restraints,” but “he also has fluctuating attention and no prior documented wishes/surrogate.” Alternatively, specify that sedation/restraints are already causing significant distress/trauma risk, making continued ventilation ethically costly, while still leaving genuine concern about decisional reliability."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Stabilize the ethical meaning by tightening the capacity facts so small wording changes won’t flip the dilemma. Specify a few concrete capacity indicators (e.g., consistently oriented across several checks, able to paraphrase risks/alternatives, communicates a stable reason) OR explicitly state he cannot sustain attention long enough for an assessment. Also clarify whether any reversible factors (residual sedation, hypoxia, pain) have been addressed before the decision point."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce ambiguity that will make graders disagree about whether this is mainly a capacity/consent question vs a beneficence question. Add one sentence clarifying the team’s best current capacity judgment (e.g., 'Capacity is uncertain: he can state the consequence but cannot maintain attention long enough to compare options' OR 'Two clinicians find he meets capacity despite intubation'). Clarify that no emergent reversible condition is driving the request (e.g., uncontrolled dyspnea/anxiety) or explicitly state that distress is driving it."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance so neither option is the obvious default. Soften the near-certainty of good outcome with continued ventilation (change 'several more days…would likely return him to prior baseline' to 'could recover but may face prolonged ventilation, ICU complications, or significant disability'). Also add meaningful harms to continuing ventilation beyond 'sedation/restraints' (e.g., high risk of prolonged delirium, moral injury of forced treatment, escalating vasopressors). Alternatively, make extubation ethically weighty without being framed as straightforward death (e.g., possibility he survives but with severe distress). Keep all outcome language qualitative and avoid making one path clearly medically superior."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Reduce persuasive framing by balancing prognostic language and avoiding asymmetry. For example, change “several more days of ventilation would likely return him to his prior baseline; extubation now would likely lead to death” to “continued ventilation may allow recovery; extubation carries a high risk of death.” Also avoid value-laden juxtaposition like “heavy sedation and sometimes restraints” without parallel burdening language for extubation; add a neutral counterpart such as “extubation would shift care to comfort-focused measures.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten to remove time-pressure embellishment and repeated elements while preserving the dilemma. Combine sentences: e.g., “He is intermittently inattentive after sedatives; delirium is suspected” (omit ‘recent’/‘possible’ redundancy). Remove “and repeats this” and “describing the consequence” (state once that he can paraphrase risks). Consider replacing “within the next hour” with “urgent decision” to avoid unnecessary specificity."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Make prognosis and risk qualitatively fixed (e.g., replace repeated “likely” with clear terms): “continued ventilation has a high chance of returning him to baseline within days; extubation now has a high chance of death within hours.” Remove any residual clinical ambiguity (e.g., avoid “possible ICU delirium” and instead state whether delirium is present or whether capacity is uncertain).\nnon_triviality: As written, impaired attention after sedatives makes honoring extubation look clearly inappropriate. Increase ethical equipoise by adding 1–2 concrete capacity-relevant facts that cut both ways, without adding lots of detail: e.g., “During lucid periods he consistently repeats the request, accurately explains consequences, and indicates he would accept death to avoid continued sedation/restraints,” but “he also has fluctuating attention and no prior documented wishes/surrogate.” Alternatively, specify that sedation/restraints are already causing significant distress/trauma risk, making continued ventilation ethically costly, while still leaving genuine concern about decisional reliability.",
+        "ethical": "directional_stability: Stabilize the ethical meaning by tightening the capacity facts so small wording changes won’t flip the dilemma. Specify a few concrete capacity indicators (e.g., consistently oriented across several checks, able to paraphrase risks/alternatives, communicates a stable reason) OR explicitly state he cannot sustain attention long enough for an assessment. Also clarify whether any reversible factors (residual sedation, hypoxia, pain) have been addressed before the decision point.\ninterpretive_consensus: Reduce ambiguity that will make graders disagree about whether this is mainly a capacity/consent question vs a beneficence question. Add one sentence clarifying the team’s best current capacity judgment (e.g., 'Capacity is uncertain: he can state the consequence but cannot maintain attention long enough to compare options' OR 'Two clinicians find he meets capacity despite intubation'). Clarify that no emergent reversible condition is driving the request (e.g., uncontrolled dyspnea/anxiety) or explicitly state that distress is driving it.\ndecision_equipoise: Rebalance so neither option is the obvious default. Soften the near-certainty of good outcome with continued ventilation (change 'several more days…would likely return him to prior baseline' to 'could recover but may face prolonged ventilation, ICU complications, or significant disability'). Also add meaningful harms to continuing ventilation beyond 'sedation/restraints' (e.g., high risk of prolonged delirium, moral injury of forced treatment, escalating vasopressors). Alternatively, make extubation ethically weighty without being framed as straightforward death (e.g., possibility he survives but with severe distress). Keep all outcome language qualitative and avoid making one path clearly medically superior.",
+        "stylistic": "ethical_neutrality: Reduce persuasive framing by balancing prognostic language and avoiding asymmetry. For example, change “several more days of ventilation would likely return him to his prior baseline; extubation now would likely lead to death” to “continued ventilation may allow recovery; extubation carries a high risk of death.” Also avoid value-laden juxtaposition like “heavy sedation and sometimes restraints” without parallel burdening language for extubation; add a neutral counterpart such as “extubation would shift care to comfort-focused measures.”\nconciseness_coherence: Tighten to remove time-pressure embellishment and repeated elements while preserving the dilemma. Combine sentences: e.g., “He is intermittently inattentive after sedatives; delirium is suspected” (omit ‘recent’/‘possible’ redundancy). Remove “and repeats this” and “describing the consequence” (state once that he can paraphrase risks). Consider replacing “within the next hour” with “urgent decision” to avoid unnecessary specificity."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "refinement_2",
+      "timestamp": "2025-12-22T01:18:04.905840",
+      "data": {
+        "vignette": "You are the ICU attending for a 58-year-old with severe pneumonia, intubated and lightly sedated. Infection is improving; continued ventilation may allow recovery but could require prolonged support with complications. Despite stopping sedatives, he has fluctuating attention. In several lucid checks he is oriented, writes “remove tube,” accurately explains that he may die, and says he accepts that to avoid further forced treatment; at other times he cannot sustain a conversation. Pain and oxygenation are optimized. He has no advance directive or reachable surrogate. Capacity remains uncertain.",
+        "choice_1": "Proceed with extubation and transition to comfort-focused care based on his repeated requests during lucid periods.",
+        "choice_2": "Continue ventilation despite his requests while pursuing further capacity assessment and urgent ethics/guardianship pathways."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T01:18:08.169708",
+      "data": {
+        "vignette": "You are the ICU attending for a 58-year-old with severe pneumonia, intubated and lightly sedated. Infection is improving; continued ventilation may allow recovery but could require prolonged support with complications. Despite stopping sedatives, he has fluctuating attention. In several lucid checks he is oriented, writes “remove tube,” accurately explains that he may die, and says he accepts that to avoid further forced treatment; at other times he cannot sustain a conversation. Pain and oxygenation are optimized. He has no advance directive or reachable surrogate. Capacity remains uncertain.",
+        "choice_1": {
+          "choice": "Proceed with extubation and transition to comfort-focused care based on his repeated requests during lucid periods.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Continue ventilation despite his requests while pursuing further capacity assessment and urgent ethics/guardianship pathways.",
+          "autonomy": "violates",
+          "beneficence": "neutral",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

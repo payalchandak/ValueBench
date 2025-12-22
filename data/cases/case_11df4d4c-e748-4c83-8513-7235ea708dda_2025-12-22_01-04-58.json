@@ -1,0 +1,284 @@
+{
+  "case_id": "11df4d4c-e748-4c83-8513-7235ea708dda",
+  "created_at": "2025-12-22T01:02:29.564227",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 2,
+    "num_cases": 30,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "beneficence",
+      "value_b": "justice",
+      "medical_domain": "general surgery",
+      "medical_setting": "ICU"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T01:02:29.564359",
+      "data": {
+        "vignette": "A 62-year-old is in the surgical ICU after emergency colectomy for perforation. They remain ventilated with ongoing shock and need continuous dialysis and 1:1 nursing, but are slowly improving and the team believes survival to discharge is possible with several more ICU days. The hospital has opened surge protocols and expects multiple trauma admissions overnight; ICU beds are functionally fixed. The ICU attending must decide whether to keep full ICU-level support for this patient or begin de-escalation planning to free capacity.",
+        "choice_1": "Continue full ICU-level support and delay transfer/limitations while recovery remains possible.",
+        "choice_2": "Initiate de-escalation (earlier transfer and/or limits on escalation) to preserve ICU capacity during the surge."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Reduce prognostic ambiguity so the tension is not about \"how likely\" recovery is. Replace \"slowly improving\"/\"team believes survival to discharge is possible\" with fixed qualitative statements (e.g., \"physiologic trajectory is improving but would require several more ICU days; chances of survival are moderate\" or \"survival is possible but not likely\"). Also clarify that both options are clinically acceptable under existing surge/triage policy, so the dilemma is not framed as standard care vs substandard care."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make the options concrete, mutually exclusive orders. Replace \"de-escalation planning\" and \"earlier transfer and/or limits\" with a specific action (e.g., \"continue CRRT, vasopressors, ventilation in ICU\" vs \"set a ceiling of care: no re-intubation/escalation, stop CRRT if worsening, and transfer to step-down/palliative bed now\"). Avoid \"and/or\" wording."
+        },
+        "temporal_definition": {
+          "outcome": false,
+          "suggested_changes": "Specify the decision point and urgency explicitly (e.g., \"within the next hour\" or \"before the expected trauma arrivals tonight\"). Clarify that an ICU bed must be freed now to meet surge needs."
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove or tighten non-essential descriptors and add only essential missing facts that drive the ethical tension. Consider adding one sentence on patient wishes/decision-making status (e.g., \"no advance directive and no reachable surrogate\" or \"previously stated they want all life-prolonging treatment\"), and specify whether a triage/surge policy exists that permits limiting ICU use. Trim surgical backstory if word count/clarity is an issue."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, de-escalating an improving postoperative patient can read like clearly inferior care. Make both options defensible by anchoring Choice 2 in an accepted institutional surge triage pathway (e.g., \"crisis standards\"/\"triage officer\" guidance) and clarifying that continuing full support will likely prevent admission of imminently salvageable trauma patients. Alternatively, make the patient's prognosis more limited (qualitatively) so that limiting escalation is a reasonable, debated option rather than abandonment."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 2 a single, concrete action so small wording changes don’t shift the ethical meaning. For example, replace “Initiate de-escalation (earlier transfer and/or limits on escalation)” with either (a) “Transfer the patient out of the ICU today despite ongoing ventilator/vasopressor needs,” or (b) “Set a ceiling of care: no further escalation (no new vasopressors, no re-intubation if extubated), even if they worsen,” but not both."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Clarify the patient’s decision-making context and what counts as ‘full support’ vs ‘de-escalation.’ Add 1–2 phrases such as: “The patient lacks capacity; no surrogate is reachable and no advance directive is on file,” and specify the contested resource (e.g., “only one ICU bed and one dialysis-capable nurse will be available overnight”). This reduces disagreement over whether the conflict is primarily about bedside safety/quality, consent, or crisis triage."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Remove elements that make one option feel dictated by protocol or obviously improper. Either (1) state that surge protocols are activated but do not mandate withdrawal/transfer and leave discretion to the attending/triage officer, or (2) introduce a countervailing obligation that makes continued ICU care ethically costly (e.g., “two unstable trauma patients are en route with no transfer options”). Also avoid ‘team believes survival is possible’ sounding like the clear default—balance by adding that recovery would require prolonged high-intensity support with uncertain trajectory."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Clarify what 'de-escalation' specifically entails and make it clinically coherent with the patient’s current instability. For example, replace 'begin de-escalation planning to free capacity' with either (a) 'set a ceiling of care (no further escalation such as additional vasopressors or reintubation) if the patient worsens' or (b) 'attempt transfer to step-down only if off vasopressors and stable.' Avoid bundling multiple actions ('earlier transfer and/or limits on escalation') into one option; pick a single, concrete action so the two choices are clearly comparable."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Reduce prognostic ambiguity so the tension is not about \"how likely\" recovery is. Replace \"slowly improving\"/\"team believes survival to discharge is possible\" with fixed qualitative statements (e.g., \"physiologic trajectory is improving but would require several more ICU days; chances of survival are moderate\" or \"survival is possible but not likely\"). Also clarify that both options are clinically acceptable under existing surge/triage policy, so the dilemma is not framed as standard care vs substandard care.\ndistinctness_actionability: Make the options concrete, mutually exclusive orders. Replace \"de-escalation planning\" and \"earlier transfer and/or limits\" with a specific action (e.g., \"continue CRRT, vasopressors, ventilation in ICU\" vs \"set a ceiling of care: no re-intubation/escalation, stop CRRT if worsening, and transfer to step-down/palliative bed now\"). Avoid \"and/or\" wording.\ntemporal_definition: Specify the decision point and urgency explicitly (e.g., \"within the next hour\" or \"before the expected trauma arrivals tonight\"). Clarify that an ICU bed must be freed now to meet surge needs.\nkey_information: Remove or tighten non-essential descriptors and add only essential missing facts that drive the ethical tension. Consider adding one sentence on patient wishes/decision-making status (e.g., \"no advance directive and no reachable surrogate\" or \"previously stated they want all life-prolonging treatment\"), and specify whether a triage/surge policy exists that permits limiting ICU use. Trim surgical backstory if word count/clarity is an issue.\nnon_triviality: As written, de-escalating an improving postoperative patient can read like clearly inferior care. Make both options defensible by anchoring Choice 2 in an accepted institutional surge triage pathway (e.g., \"crisis standards\"/\"triage officer\" guidance) and clarifying that continuing full support will likely prevent admission of imminently salvageable trauma patients. Alternatively, make the patient's prognosis more limited (qualitatively) so that limiting escalation is a reasonable, debated option rather than abandonment.",
+        "ethical": "directional_stability: Make Choice 2 a single, concrete action so small wording changes don’t shift the ethical meaning. For example, replace “Initiate de-escalation (earlier transfer and/or limits on escalation)” with either (a) “Transfer the patient out of the ICU today despite ongoing ventilator/vasopressor needs,” or (b) “Set a ceiling of care: no further escalation (no new vasopressors, no re-intubation if extubated), even if they worsen,” but not both.\ninterpretive_consensus: Clarify the patient’s decision-making context and what counts as ‘full support’ vs ‘de-escalation.’ Add 1–2 phrases such as: “The patient lacks capacity; no surrogate is reachable and no advance directive is on file,” and specify the contested resource (e.g., “only one ICU bed and one dialysis-capable nurse will be available overnight”). This reduces disagreement over whether the conflict is primarily about bedside safety/quality, consent, or crisis triage.\ndecision_equipoise: Remove elements that make one option feel dictated by protocol or obviously improper. Either (1) state that surge protocols are activated but do not mandate withdrawal/transfer and leave discretion to the attending/triage officer, or (2) introduce a countervailing obligation that makes continued ICU care ethically costly (e.g., “two unstable trauma patients are en route with no transfer options”). Also avoid ‘team believes survival is possible’ sounding like the clear default—balance by adding that recovery would require prolonged high-intensity support with uncertain trajectory.",
+        "stylistic": "conciseness_coherence: Clarify what 'de-escalation' specifically entails and make it clinically coherent with the patient’s current instability. For example, replace 'begin de-escalation planning to free capacity' with either (a) 'set a ceiling of care (no further escalation such as additional vasopressors or reintubation) if the patient worsens' or (b) 'attempt transfer to step-down only if off vasopressors and stable.' Avoid bundling multiple actions ('earlier transfer and/or limits on escalation') into one option; pick a single, concrete action so the two choices are clearly comparable."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T01:03:37.500190",
+      "data": {
+        "vignette": "A 68-year-old is 5 days post–bowel surgery with septic shock, mechanically ventilated, on low-dose norepinephrine, and receiving CRRT for acute kidney injury. Over the past 12 hours, physiology is improving, but they are expected to need several more days of ICU-level support. They lack capacity; no advance directive is on file and no surrogate is reachable. Surge triage is activated and allows clinician discretion. Within the next hour, two unstable trauma patients are arriving; only one ICU bed and one dialysis-capable nurse are available.",
+        "choice_1": "Continue full ICU support (ventilation, vasopressors, and CRRT) and keep the patient in the ICU, accepting that the incoming trauma patients may have delayed ICU access.",
+        "choice_2": "Invoke the surge triage pathway for this patient: stop CRRT, set no-escalation limits (DNR/DNI; no additional vasopressors or re-intubation), and transfer out of the ICU now to free the bed and dialysis-capable staffing."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Reduce prognostic ambiguity and make effectiveness assumptions qualitative and fixed. E.g., add: 'With continued ICU support, survival to discharge is likely with a reasonable chance of returning to baseline; stopping CRRT and limiting escalation is expected to lead to death within days.' Remove vague phrasing like 'physiology is improving' unless paired with a clear qualitative prognosis."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make each option a single, concrete, mutually exclusive order set rather than a bundle. For Choice 2, specify the exact action: either (a) withdraw CRRT and extubate to comfort-focused care and transfer to ward/hospice, OR (b) reclassify as non-ICU-eligible and transfer to a designated surge step-down area with specified support limits. Avoid combining 'stop CRRT' + 'DNR/DNI' + 'no pressors' + 'transfer' unless framed as one standardized pathway."
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Trim to only facts needed for the ethical decision and clarify missing essentials. Delete decorative details (e.g., exact postop day) unless needed; keep: current ICU resources used (vent + CRRT), lack of surrogate/AD, surge policy status, and the immediate competing demand. Add the minimal operational detail needed for Choice 2 to be implementable (where the patient can be transferred and what monitoring/support is available there)."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Fix the feasibility of transferring a mechanically ventilated patient out of the ICU. Either change the patient to 'recently extubated on high-flow oxygen' if transfer is intended, or specify transfer to a 'surge critical care area' that can manage ventilation but is short the dialysis nurse (so freeing dialysis staffing is the key). Alternatively, make Choice 2 explicitly include planned terminal extubation/comfort care before transfer."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Strengthen that both options are ethically/clinically defensible. As written, the patient is improving, making de-escalation look like premature withdrawal. Add that surge triage criteria prioritize patients with the highest expected short-term benefit, and that the incoming trauma patients have a high likelihood of survival with immediate ICU care. Conversely, clarify that the current patient will still likely survive if continued, creating genuine moral cost either way."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Make the actions and ethical stakes less dependent on specific labels like “surge triage” and “clinician discretion,” which can imply a preset policy outcome. Rephrase Choice 2 as an explicit withdrawal/withholding plan tied to resource scarcity (e.g., “withdraw dialysis and limit life-sustaining treatments to palliative-focused care to reallocate ICU-level resources”), and clarify whether transfer risks imminent death or substantial suffering. Ensure Choice 1 and Choice 2 remain the same ethical meaning if wording changes (e.g., specify ‘continue all current life support’ vs ‘de-escalate/withdraw to free ICU resources’)."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Clarify the patient’s prognosis and burdens in qualitative terms to reduce ambiguity about whether continuing ICU care is reasonable (e.g., “likely to recover with ongoing support” vs “uncertain recovery but not clearly futile”). Also clarify what ‘transfer out of ICU’ entails (step-down? ward?) and what care continues (comfort measures, antibiotics, oxygen). This will help graders consistently see the conflict as individual-focused duties vs resource stewardship, rather than as futility or abandonment."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Reduce cues that make one option obviously correct. Currently, ‘improving physiology’ biases toward continuing; ‘two unstable trauma patients arriving’ biases toward reallocating. Balance by adding that trauma patients’ prognosis is uncertain without ICU, and that stopping CRRT/no-escalation could foreseeably shorten life or cause distress, while continuing may substantially endanger others’ access. Also remove/soften ‘allows clinician discretion’ and instead state there is no clear protocol preference, to avoid a policy-determined answer."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Reduce language that implicitly prioritizes the incoming patients. For example, change “two unstable trauma patients” to “two critically ill patients” (or “two emergent ICU admissions”) and remove moral-loading phrases like “accepting that… may have delayed ICU access.” Rephrase to symmetric consequences (e.g., “which may limit ICU availability for the incoming patients” vs “which risks clinical deterioration for the current patient”)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and remove non-essential qualifiers to improve readability and avoid narrative padding. Suggested edits: (1) delete “Within the next hour” unless timing is essential; (2) compress physiologic trend to one clause (e.g., “improving over 12 hours but still ICU-dependent”); (3) avoid listing every modality twice—state “continue current life-sustaining therapies” vs repeating ventilation/pressors/CRRT; (4) clarify the triage policy basis in fewer words (e.g., “surge triage permits clinician-directed reallocation”)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Reduce prognostic ambiguity and make effectiveness assumptions qualitative and fixed. E.g., add: 'With continued ICU support, survival to discharge is likely with a reasonable chance of returning to baseline; stopping CRRT and limiting escalation is expected to lead to death within days.' Remove vague phrasing like 'physiology is improving' unless paired with a clear qualitative prognosis.\ndistinctness_actionability: Make each option a single, concrete, mutually exclusive order set rather than a bundle. For Choice 2, specify the exact action: either (a) withdraw CRRT and extubate to comfort-focused care and transfer to ward/hospice, OR (b) reclassify as non-ICU-eligible and transfer to a designated surge step-down area with specified support limits. Avoid combining 'stop CRRT' + 'DNR/DNI' + 'no pressors' + 'transfer' unless framed as one standardized pathway.\nkey_information: Trim to only facts needed for the ethical decision and clarify missing essentials. Delete decorative details (e.g., exact postop day) unless needed; keep: current ICU resources used (vent + CRRT), lack of surrogate/AD, surge policy status, and the immediate competing demand. Add the minimal operational detail needed for Choice 2 to be implementable (where the patient can be transferred and what monitoring/support is available there).\nclinical_plausibility: Fix the feasibility of transferring a mechanically ventilated patient out of the ICU. Either change the patient to 'recently extubated on high-flow oxygen' if transfer is intended, or specify transfer to a 'surge critical care area' that can manage ventilation but is short the dialysis nurse (so freeing dialysis staffing is the key). Alternatively, make Choice 2 explicitly include planned terminal extubation/comfort care before transfer.\nnon_triviality: Strengthen that both options are ethically/clinically defensible. As written, the patient is improving, making de-escalation look like premature withdrawal. Add that surge triage criteria prioritize patients with the highest expected short-term benefit, and that the incoming trauma patients have a high likelihood of survival with immediate ICU care. Conversely, clarify that the current patient will still likely survive if continued, creating genuine moral cost either way.",
+        "ethical": "directional_stability: Make the actions and ethical stakes less dependent on specific labels like “surge triage” and “clinician discretion,” which can imply a preset policy outcome. Rephrase Choice 2 as an explicit withdrawal/withholding plan tied to resource scarcity (e.g., “withdraw dialysis and limit life-sustaining treatments to palliative-focused care to reallocate ICU-level resources”), and clarify whether transfer risks imminent death or substantial suffering. Ensure Choice 1 and Choice 2 remain the same ethical meaning if wording changes (e.g., specify ‘continue all current life support’ vs ‘de-escalate/withdraw to free ICU resources’).\ninterpretive_consensus: Clarify the patient’s prognosis and burdens in qualitative terms to reduce ambiguity about whether continuing ICU care is reasonable (e.g., “likely to recover with ongoing support” vs “uncertain recovery but not clearly futile”). Also clarify what ‘transfer out of ICU’ entails (step-down? ward?) and what care continues (comfort measures, antibiotics, oxygen). This will help graders consistently see the conflict as individual-focused duties vs resource stewardship, rather than as futility or abandonment.\ndecision_equipoise: Reduce cues that make one option obviously correct. Currently, ‘improving physiology’ biases toward continuing; ‘two unstable trauma patients arriving’ biases toward reallocating. Balance by adding that trauma patients’ prognosis is uncertain without ICU, and that stopping CRRT/no-escalation could foreseeably shorten life or cause distress, while continuing may substantially endanger others’ access. Also remove/soften ‘allows clinician discretion’ and instead state there is no clear protocol preference, to avoid a policy-determined answer.",
+        "stylistic": "ethical_neutrality: Reduce language that implicitly prioritizes the incoming patients. For example, change “two unstable trauma patients” to “two critically ill patients” (or “two emergent ICU admissions”) and remove moral-loading phrases like “accepting that… may have delayed ICU access.” Rephrase to symmetric consequences (e.g., “which may limit ICU availability for the incoming patients” vs “which risks clinical deterioration for the current patient”).\nconciseness_coherence: Tighten and remove non-essential qualifiers to improve readability and avoid narrative padding. Suggested edits: (1) delete “Within the next hour” unless timing is essential; (2) compress physiologic trend to one clause (e.g., “improving over 12 hours but still ICU-dependent”); (3) avoid listing every modality twice—state “continue current life-sustaining therapies” vs repeating ventilation/pressors/CRRT; (4) clarify the triage policy basis in fewer words (e.g., “surge triage permits clinician-directed reallocation”)."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "refinement_2",
+      "timestamp": "2025-12-22T01:04:19.372362",
+      "data": {
+        "vignette": "You are the ICU attending during a surge. A 62-year-old with postoperative sepsis and acute kidney injury is intubated and on continuous dialysis, with no surrogate or advance directive. With ongoing ICU support, survival to discharge is likely with a reasonable chance of returning to baseline; stopping dialysis and ending ventilatory support is expected to lead to death within days. The ICU is full, and two emergent ICU admissions are awaiting beds and dialysis-capable care.",
+        "choice_1": "Continue current ICU life-sustaining treatments (ventilation and continuous dialysis) and keep the patient in the ICU.",
+        "choice_2": "Stop continuous dialysis and perform terminal extubation, transition to comfort-focused care, and transfer out of the ICU to free dialysis-capable ICU resources."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T01:04:21.386358",
+      "data": {
+        "vignette": "You are the ICU attending during a surge. A 62-year-old with postoperative sepsis and acute kidney injury is intubated and on continuous dialysis, with no surrogate or advance directive. With ongoing ICU support, survival to discharge is likely with a reasonable chance of returning to baseline; stopping dialysis and ending ventilatory support is expected to lead to death within days. The ICU is full, and two emergent ICU admissions are awaiting beds and dialysis-capable care.",
+        "choice_1": {
+          "choice": "Continue current ICU life-sustaining treatments (ventilation and continuous dialysis) and keep the patient in the ICU.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Stop continuous dialysis and perform terminal extubation, transition to comfort-focused care, and transfer out of the ICU to free dialysis-capable ICU resources.",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Make the underlying value conflict explicit (justice/resource allocation vs beneficence/nonmaleficence toward an individual patient). Add a brief note that extensive efforts to locate a surrogate/advance directive have failed, the patient’s prognosis with continued support is good, and that withdrawing life-sustaining treatment would be done primarily to reallocate scarce dialysis-capable ICU resources to other imminently dying patients. Ensure both options are comparably specific and clearly contrast continued best-interest care for this patient versus reallocating resources under surge/crisis conditions."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Clarify which ethical value(s) are being tested and make the conflict explicit: specify that crisis standards/triage policy permits (or does not permit) reassessment and reallocation of dialysis-capable ICU resources; document prognosis for this patient versus the two waiting patients; include that the patient is unrepresented despite reasonable efforts to locate a surrogate and that an ethics/triage committee is available. Ensure the options reflect a realistic dilemma (e.g., continue as time-limited trial vs initiate triage-guided reallocation/withdrawal) rather than withdrawing solely for bed availability without policy support."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 4,
+      "step_description": "final_improvement",
+      "timestamp": "2025-12-22T01:04:58.556600",
+      "data": {
+        "vignette": "During a regional disaster, a hospital ICU is operating under declared crisis standards of care. Only one dialysis-capable ICU room remains available, and all continuous renal replacement therapy (CRRT) machines are in use.\n\nA 56-year-old man was admitted 36 hours ago with septic shock from a perforated diverticulitis. After source control surgery, antibiotics, and vasopressors, he is now hemodynamically improving and following commands on minimal sedation. He has acute kidney injury requiring CRRT, but the ICU team expects meaningful recovery and hospital discharge with continued support (estimated short-term survival >80%).\n\nThe patient is unrepresented: he arrived alone, has no emergency contacts listed, and has no advance directive in the chart. Social work has checked the wallet/phone, contacted the listed primary care clinic, searched state registries, and called local shelters; no surrogate has been found. The patient is intermittently delirious and lacks decision-making capacity. An ethics consult and the hospital’s triage committee are available.\n\nTwo other patients in the ED are waiting for a dialysis-capable ICU bed: (1) a 28-year-old with crush injury and hyperkalemia who is expected to survive if started on CRRT within hours; and (2) a 42-year-old with toxin-induced rhabdomyolysis and refractory acidosis who also has a good chance of survival with timely CRRT. The triage policy allows reassessment and potential reallocation of scarce ICU/CRRT resources when doing so is expected to save more lives, but it also requires due process (triage committee review) and documentation that the current patient’s prognosis is substantially worse than those waiting.\n\nThe ICU attending must decide whether to continue life-sustaining treatment for the unrepresented patient or initiate triage-guided reallocation of dialysis-capable ICU resources.",
+        "choice_1": {
+          "choice": "Continue CRRT and ICU-level life-sustaining treatment for this patient as a time-limited trial based on his favorable prognosis, while documenting best-interest reasoning, continuing intensive efforts to locate a surrogate/advance directive, optimizing delirium management to reassess capacity, and requesting ethics consultation; reassess clinical trajectory and resource status at a predefined interval per crisis policy but do not withdraw CRRT solely to free the dialysis-capable bed at this time.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Activate the hospital’s crisis standards triage process immediately: refer the case to the triage committee for reassessment and, if the policy criteria are deemed met, plan to withdraw CRRT (and transition to comfort-focused care with palliative support) primarily to reallocate the dialysis-capable ICU bed/CRRT capacity to the two waiting patients who are expected to benefit, documenting the decision pathway and continuing surrogate search in parallel.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}
