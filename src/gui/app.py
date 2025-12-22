@@ -9,22 +9,19 @@ Works both locally and can be deployed on HuggingFace Spaces.
 import os
 import gradio as gr
 from typing import Optional, Tuple, Dict, Any
-from pathlib import Path
 
 from src.case_loader import CaseLoader
 from src.evaluation_store import EvaluationStore
 from src.response_models.case import BenchmarkCandidate, ChoiceWithValues
 
-# Custom CSS for font settings
-custom_css = """
-    * {
-        font-family: 'Helvetica', 'ui-sans-serif', 'system-ui', sans-serif !important;
-    }
-    
-    code, pre, .monospace {
-        font-family: 'Courier New', 'ui-monospace', monospace !important;
-    }
-"""
+
+class CustomTheme(gr.themes.Soft):
+    """Custom theme with Arial font, based on Soft theme."""
+    def __init__(self):
+        super().__init__(
+            font="Arial",
+            font_mono="Courier New",
+        )
 
 
 class CaseEvaluatorGUI:
@@ -34,9 +31,6 @@ class CaseEvaluatorGUI:
         """Initialize the GUI application."""
         self.loader = CaseLoader(cases_dir)
         self.store = EvaluationStore(evaluations_dir)
-        self.current_case_id: Optional[str] = None
-        self.current_case_record = None
-        self.current_username: Optional[str] = None
         
     def get_value_color(self, value: str) -> str:
         """Get color indicator for value alignment."""
@@ -62,19 +56,21 @@ class CaseEvaluatorGUI:
         ]
         return "\n".join(lines)
     
-    def initialize_session(self, username: str) -> Tuple[str, Dict[str, Any]]:
+    def initialize_session(self, username: str, session_state: Dict[str, Any]) -> Tuple[str, Dict[str, Any], Dict[str, Any]]:
         """Initialize user session and load first case."""
         if not username or not username.strip():
-            return "❌ Error: Username is required", {}
+            return "❌ Error: Username is required", {}, session_state
         
         username = username.strip().lower()
         
         # Validate username (lowercase letters only)
         if not username.replace('_', '').replace('-', '').isalnum():
-            return "❌ Error: Username must contain only lowercase letters, numbers, hyphens, or underscores", {}
+            return "❌ Error: Username must contain only lowercase letters, numbers, hyphens, or underscores", {}, session_state
         
         try:
-            self.current_username = username
+            # Initialize session state
+            session_state = session_state.copy() if session_state else {}
+            session_state['username'] = username
             self.store.load_or_create_session(username)
             
             # Get unreviewed cases
@@ -85,24 +81,26 @@ class CaseEvaluatorGUI:
             
             if not unreviewed_ids:
                 stats = self.store.get_statistics(self.loader)
-                return f"✅ All cases have been reviewed!\n\n📊 Statistics:\n  Total reviewed: {stats['total_reviewed']}\n  ✓ Approved: {stats['approved']}\n  ✗ Rejected: {stats['rejected']}\n  ✏ With edits: {stats['with_edits']}", {}
+                return f"✅ All cases have been reviewed!\n\n📊 Statistics:\n  Total reviewed: {stats['total_reviewed']}\n  ✓ Approved: {stats['approved']}\n  ✗ Rejected: {stats['rejected']}\n  ✏ With edits: {stats['with_edits']}", {}, session_state
             
             # Load first unreviewed case
-            self.current_case_id = unreviewed_ids[0]
-            return self.load_case(self.current_case_id)
+            case_id = unreviewed_ids[0]
+            return self.load_case(case_id, session_state)
             
         except Exception as e:
-            return f"❌ Error initializing session: {str(e)}", {}
+            return f"❌ Error initializing session: {str(e)}", {}, session_state
     
-    def load_case(self, case_id: str) -> Tuple[str, Dict[str, Any]]:
+    def load_case(self, case_id: str, session_state: Dict[str, Any]) -> Tuple[str, Dict[str, Any], Dict[str, Any]]:
         """Load a case and return formatted display data."""
         try:
             case_record = self.loader.get_case_by_id(case_id)
             if not case_record or not case_record.final_case:
-                return f"❌ Case {case_id[:12]}... not found or incomplete", {}
+                return f"❌ Case {case_id[:12]}... not found or incomplete", {}, session_state
             
-            self.current_case_id = case_id
-            self.current_case_record = case_record
+            # Update session state
+            session_state = session_state.copy() if session_state else {}
+            session_state['case_id'] = case_id
+            session_state['case_record'] = case_record
             final = case_record.final_case
             
             # Get progress info
@@ -125,23 +123,29 @@ class CaseEvaluatorGUI:
             # Format status with tag and progress
             status_info = f"Status: {status_tag}\n\n📊 Progress: {reviewed_count}/{len(benchmark_cases)} cases reviewed"
             
-            return status_info, {
+            case_data = {
                 "vignette": final.vignette,
                 "choice_1": self.format_choice_display(final.choice_1, "Choice A"),
                 "choice_2": self.format_choice_display(final.choice_2, "Choice B"),
                 "case_id": case_id
             }
             
+            # Store case_data in session_state for easy access
+            session_state['case_data'] = case_data
+            
+            return status_info, case_data, session_state
+            
         except Exception as e:
-            return f"❌ Error loading case: {str(e)}", {}
+            return f"❌ Error loading case: {str(e)}", {}, session_state
     
-    def get_next_case(self) -> Tuple[str, Dict[str, Any], str]:
+    def get_next_case(self, session_state: Dict[str, Any]) -> Tuple[str, Dict[str, Any], str, Dict[str, Any]]:
         """Load the next case (can be reviewed or unreviewed)."""
-        if not self.current_username:
-            return "❌ Please initialize session first", {}, ""
+        if not session_state or not session_state.get('username'):
+            return "❌ Please initialize session first", {}, "", session_state
         
-        if not self.current_case_id:
-            return "❌ No active case to navigate from", {}, ""
+        case_id = session_state.get('case_id')
+        if not case_id:
+            return "❌ No active case to navigate from", {}, "", session_state
         
         try:
             all_cases = self.loader.get_all_cases()
@@ -149,29 +153,30 @@ class CaseEvaluatorGUI:
             all_case_ids = [c.case_id for c in benchmark_cases]
             
             # Find current case index
-            if self.current_case_id not in all_case_ids:
-                return "❌ Current case not found in case list", {}, ""
+            if case_id not in all_case_ids:
+                return "❌ Current case not found in case list", {}, "", session_state
             
-            current_index = all_case_ids.index(self.current_case_id)
+            current_index = all_case_ids.index(case_id)
             
             if current_index == len(all_case_ids) - 1:
-                return "ℹ️ Already at the last case", {}, ""
+                return "ℹ️ Already at the last case", {}, "", session_state
             
             # Load next case
             next_case_id = all_case_ids[current_index + 1]
-            progress_info, case_data = self.load_case(next_case_id)
-            return progress_info, case_data, ""
+            progress_info, case_data, updated_state = self.load_case(next_case_id, session_state)
+            return progress_info, case_data, "", updated_state
             
         except Exception as e:
-            return f"❌ Error loading next case: {str(e)}", {}, ""
+            return f"❌ Error loading next case: {str(e)}", {}, "", session_state
     
-    def get_previous_case(self) -> Tuple[str, Dict[str, Any], str]:
+    def get_previous_case(self, session_state: Dict[str, Any]) -> Tuple[str, Dict[str, Any], str, Dict[str, Any]]:
         """Load the previous case (can be reviewed or unreviewed)."""
-        if not self.current_username:
-            return "❌ Please initialize session first", {}, ""
+        if not session_state or not session_state.get('username'):
+            return "❌ Please initialize session first", {}, "", session_state
         
-        if not self.current_case_id:
-            return "❌ No active case to navigate from", {}, ""
+        case_id = session_state.get('case_id')
+        if not case_id:
+            return "❌ No active case to navigate from", {}, "", session_state
         
         try:
             all_cases = self.loader.get_all_cases()
@@ -179,32 +184,38 @@ class CaseEvaluatorGUI:
             all_case_ids = [c.case_id for c in benchmark_cases]
             
             # Find current case index
-            if self.current_case_id not in all_case_ids:
-                return "❌ Current case not found in case list", {}, ""
+            if case_id not in all_case_ids:
+                return "❌ Current case not found in case list", {}, "", session_state
             
-            current_index = all_case_ids.index(self.current_case_id)
+            current_index = all_case_ids.index(case_id)
             
             if current_index == 0:
-                return "ℹ️ Already at the first case", {}, ""
+                return "ℹ️ Already at the first case", {}, "", session_state
             
             # Load previous case
             previous_case_id = all_case_ids[current_index - 1]
-            progress_info, case_data = self.load_case(previous_case_id)
-            return progress_info, case_data, ""
+            progress_info, case_data, updated_state = self.load_case(previous_case_id, session_state)
+            return progress_info, case_data, "", updated_state
             
         except Exception as e:
-            return f"❌ Error loading previous case: {str(e)}", {}, ""
+            return f"❌ Error loading previous case: {str(e)}", {}, "", session_state
     
-    def approve_case(self, edited_vignette: Optional[str] = None) -> Tuple[str, Dict[str, Any], str]:
+    def approve_case(self, edited_vignette: Optional[str], session_state: Dict[str, Any]) -> Tuple[str, Dict[str, Any], str, Dict[str, Any]]:
         """Approve the current case, optionally with edits."""
-        if not self.current_case_id or not self.current_username:
-            return "❌ No active case or session", {}, ""
+        if not session_state or not session_state.get('case_id') or not session_state.get('username'):
+            return "❌ No active case or session", {}, "", session_state
         
         try:
+            case_id = session_state.get('case_id')
+            case_record = session_state.get('case_record')
+            
+            if not case_record:
+                return "❌ Case record not found in session", {}, "", session_state
+            
             # Create edited case if vignette was modified
             edited_case = None
             if edited_vignette and edited_vignette.strip():
-                final = self.current_case_record.final_case
+                final = case_record.final_case
                 if edited_vignette.strip() != final.vignette.strip():
                     edited_case = BenchmarkCandidate(
                         vignette=edited_vignette.strip(),
@@ -214,7 +225,7 @@ class CaseEvaluatorGUI:
             
             # Record evaluation
             self.store.record_evaluation(
-                case_id=self.current_case_id,
+                case_id=case_id,
                 decision="approve",
                 case_loader=self.loader,
                 updated_case=edited_case,
@@ -223,21 +234,23 @@ class CaseEvaluatorGUI:
             
             # Load next case
             message = "✅ Case approved" + (" with edits" if edited_case else "")
-            progress_info, case_data, _ = self.get_next_case()
-            return f"{message}\n\n{progress_info}", case_data, ""
+            progress_info, case_data, _, updated_state = self.get_next_case(session_state)
+            return f"{message}\n\n{progress_info}", case_data, "", updated_state
             
         except Exception as e:
-            return f"❌ Error approving case: {str(e)}", {}, ""
+            return f"❌ Error approving case: {str(e)}", {}, "", session_state
     
-    def reject_case(self, rejection_notes: str) -> Tuple[str, Dict[str, Any], str]:
+    def reject_case(self, rejection_notes: str, session_state: Dict[str, Any]) -> Tuple[str, Dict[str, Any], str, Dict[str, Any]]:
         """Reject the current case with notes."""
-        if not self.current_case_id or not self.current_username:
-            return "❌ No active case or session", {}, ""
+        if not session_state or not session_state.get('case_id') or not session_state.get('username'):
+            return "❌ No active case or session", {}, "", session_state
         
         try:
+            case_id = session_state.get('case_id')
+            
             # Record evaluation
             self.store.record_evaluation(
-                case_id=self.current_case_id,
+                case_id=case_id,
                 decision="reject",
                 case_loader=self.loader,
                 updated_case=None,
@@ -245,11 +258,11 @@ class CaseEvaluatorGUI:
             )
             
             # Load next case
-            progress_info, case_data, _ = self.get_next_case()
-            return f"✅ Case rejected\n\n{progress_info}", case_data, ""
+            progress_info, case_data, _, updated_state = self.get_next_case(session_state)
+            return f"✅ Case rejected\n\n{progress_info}", case_data, "", updated_state
             
         except Exception as e:
-            return f"❌ Error rejecting case: {str(e)}", {}, ""
+            return f"❌ Error rejecting case: {str(e)}", {}, "", session_state
     
     def request_llm_edits(self, edit_request: str) -> str:
         """Request edits via LLM (placeholder for future implementation)."""
@@ -260,9 +273,9 @@ class CaseEvaluatorGUI:
         # For now, return a placeholder message
         return f"📝 LLM edit request received:\n\n{edit_request}\n\n(LLM editing feature coming soon. You can manually edit the vignette above.)"
     
-    def get_statistics(self) -> str:
+    def get_statistics(self, session_state: Dict[str, Any]) -> str:
         """Get evaluation statistics."""
-        if not self.current_username:
+        if not session_state or not session_state.get('username'):
             return "❌ Please initialize session first"
         
         try:
@@ -314,7 +327,7 @@ def create_interface():
         with gr.Row():
             with gr.Column(scale=3):
                 # Main content area - Vignette (editable)
-                gr.Markdown("### Vignette - (You can directly edit)")
+                gr.Markdown("### Vignette")
                 vignette_editor = gr.Textbox(
                     label="",
                     placeholder="Vignette will appear here... You can edit it directly.",
@@ -367,12 +380,12 @@ def create_interface():
                 close_stats_btn = gr.Button("✕ Close", variant="secondary", size="sm")
             stats_content = gr.Markdown("")
         
-        # Hidden state to track case data
-        case_data_state = gr.State({})
+        # Hidden state to track session data (username, case_id, case_record, etc.)
+        session_state = gr.State({})
         
         # Event handlers
-        def on_init(username):
-            progress_info, case_data = app.initialize_session(username)
+        def on_init(username, state):
+            progress_info, case_data, updated_state = app.initialize_session(username, state)
             if case_data:
                 return (
                     progress_info,  # status_output
@@ -380,7 +393,7 @@ def create_interface():
                     case_data.get("choice_1", ""),  # choice_1_display
                     case_data.get("choice_2", ""),  # choice_2_display
                     "",  # progress_display (removed duplicate)
-                    case_data,  # case_data_state
+                    updated_state,  # session_state
                     ""  # llm_response
                 )
             else:
@@ -390,12 +403,12 @@ def create_interface():
                     "**Choice A**\n\n(No case loaded)",
                     "**Choice B**\n\n(No case loaded)",
                     "",
-                    {},
+                    updated_state,
                     ""
                 )
         
-        def on_approve(vignette, case_data):
-            progress_info, new_case_data, _ = app.approve_case(vignette)
+        def on_approve(vignette, state):
+            progress_info, new_case_data, _, updated_state = app.approve_case(vignette, state)
             if new_case_data:
                 return (
                     progress_info,  # status_output
@@ -403,22 +416,24 @@ def create_interface():
                     new_case_data.get("choice_1", ""),  # choice_1_display
                     new_case_data.get("choice_2", ""),  # choice_2_display
                     "",  # progress_display (removed duplicate)
-                    new_case_data,  # case_data_state
+                    updated_state,  # session_state
                     ""  # llm_response
                 )
             else:
+                # Fallback to current state data if available
+                case_data = state.get('case_data', {}) if state else {}
                 return (
                     progress_info,
                     vignette,
                     case_data.get("choice_1", ""),
                     case_data.get("choice_2", ""),
                     "",
-                    case_data,
+                    state,
                     ""
                 )
         
-        def on_reject(notes, case_data):
-            progress_info, new_case_data, _ = app.reject_case(notes)
+        def on_reject(notes, state):
+            progress_info, new_case_data, _, updated_state = app.reject_case(notes, state)
             if new_case_data:
                 return (
                     progress_info,  # status_output
@@ -426,22 +441,24 @@ def create_interface():
                     new_case_data.get("choice_1", ""),  # choice_1_display
                     new_case_data.get("choice_2", ""),  # choice_2_display
                     "",  # progress_display (removed duplicate)
-                    new_case_data,  # case_data_state
+                    updated_state,  # session_state
                     ""  # llm_response
                 )
             else:
+                # Fallback to current state data if available
+                case_data = state.get('case_data', {}) if state else {}
                 return (
                     progress_info,
                     case_data.get("vignette", ""),
                     case_data.get("choice_1", ""),
                     case_data.get("choice_2", ""),
                     "",
-                    case_data,
+                    state,
                     ""
                 )
         
-        def on_previous_case(case_data):
-            progress_info, new_case_data, _ = app.get_previous_case()
+        def on_previous_case(state):
+            progress_info, new_case_data, _, updated_state = app.get_previous_case(state)
             if new_case_data:
                 return (
                     progress_info,  # status_output
@@ -449,22 +466,24 @@ def create_interface():
                     new_case_data.get("choice_1", ""),  # choice_1_display
                     new_case_data.get("choice_2", ""),  # choice_2_display
                     "",  # progress_display (removed duplicate)
-                    new_case_data,  # case_data_state
+                    updated_state,  # session_state
                     ""  # llm_response
                 )
             else:
+                # Fallback to current state data if available
+                case_data = state.get('case_data', {}) if state else {}
                 return (
                     progress_info,
                     case_data.get("vignette", ""),
                     case_data.get("choice_1", ""),
                     case_data.get("choice_2", ""),
                     "",
-                    case_data,
+                    state,
                     ""
                 )
         
-        def on_next_case(case_data):
-            progress_info, new_case_data, _ = app.get_next_case()
+        def on_next_case(state):
+            progress_info, new_case_data, _, updated_state = app.get_next_case(state)
             if new_case_data:
                 return (
                     progress_info,  # status_output
@@ -472,17 +491,19 @@ def create_interface():
                     new_case_data.get("choice_1", ""),  # choice_1_display
                     new_case_data.get("choice_2", ""),  # choice_2_display
                     "",  # progress_display (removed duplicate)
-                    new_case_data,  # case_data_state
+                    updated_state,  # session_state
                     ""  # llm_response
                 )
             else:
+                # Fallback to current state data if available
+                case_data = state.get('case_data', {}) if state else {}
                 return (
                     progress_info,
                     case_data.get("vignette", ""),
                     case_data.get("choice_1", ""),
                     case_data.get("choice_2", ""),
                     "",
-                    case_data,
+                    state,
                     ""
                 )
         
@@ -490,8 +511,8 @@ def create_interface():
             response = app.request_llm_edits(request)
             return response
         
-        def on_stats():
-            stats_text = app.get_statistics()
+        def on_stats(state):
+            stats_text = app.get_statistics(state)
             return gr.Column(visible=True), stats_text
         
         def close_stats():
@@ -500,14 +521,14 @@ def create_interface():
         # Wire up events
         init_btn.click(
             fn=on_init,
-            inputs=[username_input],
-            outputs=[status_output, vignette_editor, choice_1_display, choice_2_display, progress_display, case_data_state, llm_response]
+            inputs=[username_input, session_state],
+            outputs=[status_output, vignette_editor, choice_1_display, choice_2_display, progress_display, session_state, llm_response]
         )
         
         approve_btn.click(
             fn=on_approve,
-            inputs=[vignette_editor, case_data_state],
-            outputs=[status_output, vignette_editor, choice_1_display, choice_2_display, progress_display, case_data_state, llm_response]
+            inputs=[vignette_editor, session_state],
+            outputs=[status_output, vignette_editor, choice_1_display, choice_2_display, progress_display, session_state, llm_response]
         )
         
         # Rejection notes input (initially hidden)
@@ -526,9 +547,9 @@ def create_interface():
         def hide_reject_section():
             return gr.Row(visible=False)
         
-        def on_confirm_reject(notes, case_data):
+        def on_confirm_reject(notes, state):
             # Get the result from on_reject (7 values)
-            status, vignette, choice1, choice2, progress, new_case_data, llm_resp = on_reject(notes, case_data)
+            status, vignette, choice1, choice2, progress, updated_state, llm_resp = on_reject(notes, state)
             # Return all values including hiding the reject section and clearing notes
             return (
                 status,  # status_output
@@ -536,7 +557,7 @@ def create_interface():
                 choice1,  # choice_1_display
                 choice2,  # choice_2_display
                 progress,  # progress_display
-                new_case_data,  # case_data_state
+                updated_state,  # session_state
                 llm_resp,  # llm_response
                 gr.Row(visible=False),  # reject_section
                 ""  # reject_notes (clear it)
@@ -549,8 +570,8 @@ def create_interface():
         
         confirm_reject_btn.click(
             fn=on_confirm_reject,
-            inputs=[reject_notes, case_data_state],
-            outputs=[status_output, vignette_editor, choice_1_display, choice_2_display, progress_display, case_data_state, llm_response, reject_section, reject_notes]
+            inputs=[reject_notes, session_state],
+            outputs=[status_output, vignette_editor, choice_1_display, choice_2_display, progress_display, session_state, llm_response, reject_section, reject_notes]
         )
         
         cancel_reject_btn.click(
@@ -560,14 +581,14 @@ def create_interface():
         
         previous_case_btn.click(
             fn=on_previous_case,
-            inputs=[case_data_state],
-            outputs=[status_output, vignette_editor, choice_1_display, choice_2_display, progress_display, case_data_state, llm_response]
+            inputs=[session_state],
+            outputs=[status_output, vignette_editor, choice_1_display, choice_2_display, progress_display, session_state, llm_response]
         )
         
         next_case_btn.click(
             fn=on_next_case,
-            inputs=[case_data_state],
-            outputs=[status_output, vignette_editor, choice_1_display, choice_2_display, progress_display, case_data_state, llm_response]
+            inputs=[session_state],
+            outputs=[status_output, vignette_editor, choice_1_display, choice_2_display, progress_display, session_state, llm_response]
         )
         
         request_edit_btn.click(
@@ -578,7 +599,7 @@ def create_interface():
         
         stats_btn.click(
             fn=on_stats,
-            inputs=[],
+            inputs=[session_state],
             outputs=[stats_modal, stats_content]
         )
         
@@ -598,11 +619,14 @@ if __name__ == "__main__":
     # Create and launch interface
     demo = create_interface()
     
+    # Create theme instance
+    theme = CustomTheme()
+    
     # Launch with appropriate settings
     if is_spaces:
         # For HuggingFace Spaces
-        demo.launch(server_name="0.0.0.0", server_port=7860, share=False, theme=gr.themes.Soft(), css=custom_css)
+        demo.launch(server_name="0.0.0.0", server_port=7860, share=False, theme=theme)
     else:
         # For local development
-        demo.launch(server_name="127.0.0.1", server_port=7860, share=False, theme=gr.themes.Soft(), css=custom_css)
+        demo.launch(server_name="127.0.0.1", server_port=7860, share=False, theme=theme)
 
