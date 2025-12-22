@@ -39,7 +39,7 @@ class CaseEvaluation(BaseModel):
 
 class UserSession(BaseModel):
     """User evaluation session - lightweight tracking only."""
-    user_email: str
+    username: str
     session_id: str
     started_at: str
     last_updated: str
@@ -75,56 +75,55 @@ class EvaluationStore:
         self.evaluations_dir.mkdir(exist_ok=True, parents=True)
         self.current_session: Optional[UserSession] = None
     
-    def _sanitize_email(self, email: str) -> str:
-        """Convert email to a safe filename."""
-        # Replace @ and . with underscores, remove other special chars
-        safe_name = re.sub(r'[^\w\-.]', '_', email.lower())
-        return safe_name
+    def _sanitize_username(self, username: str) -> str:
+        """Sanitize username for safe filename (should already be valid)."""
+        # Username should already be lowercase letters only, but ensure it's safe
+        return username.lower()
     
-    def _get_session_file_path(self, email: str) -> Path:
+    def _get_session_file_path(self, username: str) -> Path:
         """Get the file path for a user's session."""
-        safe_email = self._sanitize_email(email)
-        return self.evaluations_dir / f"session_{safe_email}.json"
+        safe_username = self._sanitize_username(username)
+        return self.evaluations_dir / f"session_{safe_username}.json"
     
-    def load_or_create_session(self, user_email: str) -> UserSession:
+    def load_or_create_session(self, username: str) -> UserSession:
         """
         Load an existing session or create a new one.
         
         Args:
-            user_email: User's email address
+            username: User's username (lowercase letters only)
             
         Returns:
             UserSession object
         """
-        if not self._validate_email(user_email):
-            raise ValueError(f"Invalid email format: {user_email}")
+        if not self._validate_username(username):
+            raise ValueError(f"Invalid username format: {username}. Username must contain only lowercase letters.")
         
-        session_file = self._get_session_file_path(user_email)
+        session_file = self._get_session_file_path(username)
         
         if session_file.exists():
             session = self._load_session_from_file(session_file)
             session.last_updated = datetime.now().isoformat()
-            print(f"✓ Loaded existing session for {user_email}")
+            print(f"✓ Loaded existing session for {username}")
             print(f"  - {len(session.reviewed_case_ids)} cases previously reviewed")
         else:
-            session = self._create_new_session(user_email)
-            print(f"✓ Created new session for {user_email}")
+            session = self._create_new_session(username)
+            print(f"✓ Created new session for {username}")
         
         self.current_session = session
         return session
     
-    def _validate_email(self, email: str) -> bool:
-        """Basic email validation."""
-        pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
-        return re.match(pattern, email) is not None
+    def _validate_username(self, username: str) -> bool:
+        """Validate username contains only lowercase letters."""
+        pattern = r'^[a-z]+$'
+        return re.match(pattern, username) is not None
     
-    def _create_new_session(self, user_email: str) -> UserSession:
+    def _create_new_session(self, username: str) -> UserSession:
         """Create a new user session."""
         now = datetime.now().isoformat()
-        session_id = f"{self._sanitize_email(user_email)}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+        session_id = f"{self._sanitize_username(username)}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
         
         return UserSession(
-            user_email=user_email,
+            username=username,
             session_id=session_id,
             started_at=now,
             last_updated=now,
@@ -137,7 +136,7 @@ class EvaluationStore:
             data = json.load(f)
         
         return UserSession(
-            user_email=data['user_email'],
+            username=data['username'],
             session_id=data['session_id'],
             started_at=data['started_at'],
             last_updated=data['last_updated'],
@@ -158,11 +157,11 @@ class EvaluationStore:
             raise ValueError("No session to save")
         
         session.last_updated = datetime.now().isoformat()
-        session_file = self._get_session_file_path(session.user_email)
+        session_file = self._get_session_file_path(session.username)
         
         # Convert to dict for JSON serialization
         session_dict = {
-            'user_email': session.user_email,
+            'username': session.username,
             'session_id': session.session_id,
             'started_at': session.started_at,
             'last_updated': session.last_updated,
@@ -209,7 +208,7 @@ class EvaluationStore:
             # Add evaluation to the case record
             case_record.add_human_evaluation(
                 decision=decision,
-                evaluator=self.current_session.user_email,
+                evaluator=self.current_session.username,
                 updated_case=updated_case,
                 notes=notes
             )
@@ -350,7 +349,7 @@ class EvaluationStore:
                 with open(session_file, 'r', encoding='utf-8') as f:
                     data = json.load(f)
                     sessions.append({
-                        'email': data.get('user_email', 'unknown'),
+                        'username': data.get('username', 'unknown'),
                         'session_id': data.get('session_id', 'unknown'),
                         'started_at': data.get('started_at', 'unknown'),
                         'last_updated': data.get('last_updated', 'unknown'),
@@ -369,20 +368,20 @@ def main():
     
     store = EvaluationStore()
     
-    # Test email prompt
+    # Test username prompt
     print("\nEvaluation Store Test")
     print("-" * 80)
     
     if len(sys.argv) > 1:
-        email = sys.argv[1]
+        username = sys.argv[1]
     else:
-        email = input("Enter your email: ").strip()
+        username = input("Enter your username (lowercase letters only): ").strip()
     
     try:
-        session = store.load_or_create_session(email)
+        session = store.load_or_create_session(username)
         
         print(f"\nSession Info:")
-        print(f"  Email: {session.user_email}")
+        print(f"  Username: {session.username}")
         print(f"  Session ID: {session.session_id}")
         print(f"  Started: {session.started_at}")
         
@@ -401,7 +400,7 @@ def main():
         print("\n" + "-" * 80)
         print("\nAll Sessions:")
         for s in store.list_all_sessions():
-            print(f"  - {s['email']}: {s['num_evaluations']} evaluations (updated: {s['last_updated'][:19]})")
+            print(f"  - {s['username']}: {s['num_evaluations']} evaluations (updated: {s['last_updated'][:19]})")
         
     except ValueError as e:
         print(f"\n✗ Error: {e}", file=sys.stderr)

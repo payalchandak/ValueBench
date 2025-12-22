@@ -77,7 +77,7 @@ class CaseRecord(BaseModel):
         
         Args:
             decision: "approve" or "reject"
-            evaluator: User email or identifier
+            evaluator: Username of the evaluator
             updated_case: Optional edited version of the case
             notes: Optional evaluation notes
             

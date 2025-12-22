@@ -28,12 +28,12 @@ def simple_cli_demo():
     store = EvaluationStore("data/evaluations")
     
     # Step 2: User identification
-    email = input("\nEnter your email: ").strip()
-    if not email:
-        print("Error: Email required")
+    username = input("\nEnter your username (lowercase letters only): ").strip()
+    if not username:
+        print("Error: Username required")
         return
     
-    session = store.load_or_create_session(email)
+    session = store.load_or_create_session(username)
     
     # Step 3: Get unreviewed cases
     all_cases = loader.get_all_cases()
