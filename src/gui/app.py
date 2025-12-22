@@ -44,10 +44,10 @@ class CaseEvaluatorGUI:
             choice.choice,
             "",
             "**Value Alignments:**",
-            f"  {self.get_value_color(choice.autonomy)} Autonomy:       {choice.autonomy}\n",
-            f"  {self.get_value_color(choice.beneficence)} Beneficence:    {choice.beneficence}\n",
-            f"  {self.get_value_color(choice.nonmaleficence)} Nonmaleficence: {choice.nonmaleficence}\n",
-            f"  {self.get_value_color(choice.justice)} Justice:        {choice.justice}",
+            f"\n  {self.get_value_color(choice.autonomy)} Autonomy:       {choice.autonomy}",
+            f"\n  {self.get_value_color(choice.beneficence)} Beneficence:    {choice.beneficence}",
+            f"\n  {self.get_value_color(choice.nonmaleficence)} Nonmaleficence: {choice.nonmaleficence}",
+            f"\n  {self.get_value_color(choice.justice)} Justice:        {choice.justice}",
         ]
         return "\n".join(lines)
     
