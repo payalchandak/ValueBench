@@ -24,11 +24,6 @@ class CaseMetadata:
     vignette_preview: Optional[str] = None
 
 
-class CaseLoadError(Exception):
-    """Custom exception for case loading errors."""
-    pass
-
-
 class CaseLoader:
     """
     Loads and manages case files from the dataset directory.
@@ -47,10 +42,10 @@ class CaseLoader:
         self.cases_dir = Path(cases_dir)
         
         if not self.cases_dir.exists():
-            raise CaseLoadError(f"Cases directory not found: {self.cases_dir}")
+            raise RuntimeError(f"Cases directory not found: {self.cases_dir}")
         
         if not self.cases_dir.is_dir():
-            raise CaseLoadError(f"Cases path is not a directory: {self.cases_dir}")
+            raise RuntimeError(f"Cases path is not a directory: {self.cases_dir}")
     
     def scan_cases(self) -> List[Path]:
         """
@@ -79,9 +74,9 @@ class CaseLoader:
             return CaseRecord(**data)
         
         except json.JSONDecodeError as e:
-            raise CaseLoadError(f"Invalid JSON in {file_path.name}: {e}")
+            raise RuntimeError(f"Invalid JSON in {file_path.name}: {e}")
         except Exception as e:
-            raise CaseLoadError(f"Error loading {file_path.name}: {e}")
+            raise RuntimeError(f"Error loading {file_path.name}: {e}")
     
     def load_case_metadata(self, file_path: Path) -> Optional[CaseMetadata]:
         """
@@ -132,7 +127,7 @@ class CaseLoader:
             try:
                 case = self.load_case(file_path)
                 cases.append(case)
-            except CaseLoadError as e:
+            except RuntimeError as e:
                 print(f"[Warning] {e}")
         
         return cases
@@ -169,7 +164,7 @@ class CaseLoader:
                 case = self.load_case(file_path)
                 if case.case_id == case_id:
                     return case
-            except CaseLoadError:
+            except RuntimeError:
                 continue
         
         return None
@@ -205,7 +200,7 @@ def main():
         
         print("\n" + "-" * 80)
         
-    except CaseLoadError as e:
+    except RuntimeError as e:
         print(f"\n✗ Error: {e}", file=sys.stderr)
         sys.exit(1)
 
