@@ -1,0 +1,256 @@
+{
+  "case_id": "48ab62b3-c74f-45a1-bce1-c2276ae2ff74",
+  "created_at": "2025-12-22T00:25:59.814148",
+  "version": "1.0",
+  "model_name": "claude-sonnet-4.5",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "claude-sonnet-4.5",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 2,
+    "num_cases": 10,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "beneficence",
+      "value_b": "non-maleficence",
+      "medical_domain": "oncology",
+      "medical_setting": "Outpatient Clinic"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T00:25:59.814299",
+      "data": {
+        "vignette": "A 72-year-old woman with metastatic pancreatic cancer has progressive disease despite two lines of chemotherapy. She remains functional and expresses a strong desire to \"keep fighting.\" A third-line regimen is available but offers a very small chance of tumor response and commonly causes debilitating nausea, neuropathy, and fatigue that could significantly diminish her remaining quality of life. Her oncologist must decide whether to recommend this additional chemotherapy. The patient is fully informed and decision-capable.",
+        "choice_1": "Recommend the third-line chemotherapy regimen",
+        "choice_2": "Recommend transitioning to symptom management without further chemotherapy"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or rephrase 'very small chance of tumor response' to avoid quantitative framing. Use qualitative language like 'low likelihood of benefit' or 'minimal expected response.' Also clarify whether 'commonly causes' toxicity means it is certain or highly likely—use consistent qualitative terms like 'high risk of' to avoid clinical ambiguity about probability."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": false,
+          "suggested_changes": "Add explicit temporal framing such as 'The oncologist must decide at today's clinic visit whether to recommend...' or 'A decision is needed before scheduling the next treatment cycle.'"
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "The case as written leans heavily toward transitioning to symptom management, which many would consider standard of care given 'very small chance' of benefit and 'debilitating' toxicity. To make both options genuinely defensible, either: (1) describe the chance of benefit as 'uncertain but possible' rather than 'very small,' or (2) add a balancing factor such as 'the patient has few symptoms currently and highly values time, even if quality is reduced' to make chemotherapy more reasonable. Ensure the clinical facts do not strongly favor one choice."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "The vignette does not present a genuine ethical conflict. Because the patient is 'fully informed and decision-capable' and has 'express[ed] a strong desire to keep fighting,' the oncologist's role is to support her autonomous choice, not to decide for her. Reframe so that the patient's wishes are ambiguous, conflicted, or unknown, OR create a scenario where respecting autonomy conflicts with another value (e.g., the patient insists on treatment the physician believes is futile or harmful, creating tension between autonomy and non-maleficence). As written, this is a shared decision-making scenario, not an ethical dilemma."
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Different reviewers will disagree on what the core conflict is. Some will see autonomy vs. beneficence/non-maleficence; others will see this as a clinical effectiveness question (low-benefit chemo). The phrase 'very small chance' invites interpretation: is this futile or just low-yield? Clarify the ethical stakes by making the patient's decision-making capacity, understanding, or authenticity of preference uncertain, OR by adding a second moral cost (e.g., family burden, resource use). As written, the conflict is ambiguous between clinical judgment and ethical tension."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "The scenario is one-sided toward honoring patient autonomy. Standard oncology practice supports offering the patient her preferred option when she is informed and capable. To create equipoise, introduce a factor that makes honoring her request ethically costly—e.g., the patient may not fully appreciate the severity of side effects despite counseling, or family members report she is acting out of fear rather than genuine preference, or resource constraints are relevant. Without such tension, Choice 1 is the clear, guideline-supported answer."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove the emotionally charged phrase 'keep fighting' (line 3), which is presented in quotes as if this is the patient's exact words and may push the reader toward offering treatment. Replace with neutral phrasing such as 'wishes to pursue further treatment options' or 'prefers to continue active therapy.' Also remove 'debilitating' before 'nausea, neuropathy, and fatigue' as it is an emotionally weighted adjective that biases against Choice 1. Use 'severe' or simply list the side effects without modifier."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or rephrase 'very small chance of tumor response' to avoid quantitative framing. Use qualitative language like 'low likelihood of benefit' or 'minimal expected response.' Also clarify whether 'commonly causes' toxicity means it is certain or highly likely—use consistent qualitative terms like 'high risk of' to avoid clinical ambiguity about probability.\ntemporal_definition: Add explicit temporal framing such as 'The oncologist must decide at today's clinic visit whether to recommend...' or 'A decision is needed before scheduling the next treatment cycle.'\nnon_triviality: The case as written leans heavily toward transitioning to symptom management, which many would consider standard of care given 'very small chance' of benefit and 'debilitating' toxicity. To make both options genuinely defensible, either: (1) describe the chance of benefit as 'uncertain but possible' rather than 'very small,' or (2) add a balancing factor such as 'the patient has few symptoms currently and highly values time, even if quality is reduced' to make chemotherapy more reasonable. Ensure the clinical facts do not strongly favor one choice.",
+        "ethical": "clarity_value_conflict: The vignette does not present a genuine ethical conflict. Because the patient is 'fully informed and decision-capable' and has 'express[ed] a strong desire to keep fighting,' the oncologist's role is to support her autonomous choice, not to decide for her. Reframe so that the patient's wishes are ambiguous, conflicted, or unknown, OR create a scenario where respecting autonomy conflicts with another value (e.g., the patient insists on treatment the physician believes is futile or harmful, creating tension between autonomy and non-maleficence). As written, this is a shared decision-making scenario, not an ethical dilemma.\ninterpretive_consensus: Different reviewers will disagree on what the core conflict is. Some will see autonomy vs. beneficence/non-maleficence; others will see this as a clinical effectiveness question (low-benefit chemo). The phrase 'very small chance' invites interpretation: is this futile or just low-yield? Clarify the ethical stakes by making the patient's decision-making capacity, understanding, or authenticity of preference uncertain, OR by adding a second moral cost (e.g., family burden, resource use). As written, the conflict is ambiguous between clinical judgment and ethical tension.\ndecision_equipoise: The scenario is one-sided toward honoring patient autonomy. Standard oncology practice supports offering the patient her preferred option when she is informed and capable. To create equipoise, introduce a factor that makes honoring her request ethically costly—e.g., the patient may not fully appreciate the severity of side effects despite counseling, or family members report she is acting out of fear rather than genuine preference, or resource constraints are relevant. Without such tension, Choice 1 is the clear, guideline-supported answer.",
+        "stylistic": "ethical_neutrality: Remove the emotionally charged phrase 'keep fighting' (line 3), which is presented in quotes as if this is the patient's exact words and may push the reader toward offering treatment. Replace with neutral phrasing such as 'wishes to pursue further treatment options' or 'prefers to continue active therapy.' Also remove 'debilitating' before 'nausea, neuropathy, and fatigue' as it is an emotionally weighted adjective that biases against Choice 1. Use 'severe' or simply list the side effects without modifier."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T00:26:33.144710",
+      "data": {
+        "vignette": "A 68-year-old woman with metastatic pancreatic cancer has completed two lines of chemotherapy without significant response. Her oncologist is considering a third-line regimen. The patient is fully informed and decisionally capable. She states she wants to continue chemotherapy, though her understanding of prognosis and treatment burden appears incomplete despite repeated discussions. The regimen carries high risk of severe nausea, neuropathy, and fatigue, with uncertain but possible tumor response. She currently has mild symptoms and good functional status. The oncologist must decide today whether to recommend this treatment.",
+        "choice_1": "Recommend the third-line chemotherapy regimen as requested by the patient.",
+        "choice_2": "Recommend transition to symptom-focused care without further chemotherapy."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Replace 'uncertain but possible tumor response' with a clear qualitative statement such as 'low likelihood of tumor response' or 'high likelihood of tumor response'. The phrase 'uncertain but possible' introduces clinical ambiguity about effectiveness, making this a prognostic dilemma rather than purely ethical. Also clarify whether 'without significant response' to prior lines suggests this patient is unlikely to respond, or whether third-line still offers meaningful benefit."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove 'She currently has mild symptoms and good functional status' OR explain why this is essential to the ethical decision. If the patient is asymptomatic with good function, it may be unclear why symptom-focused care is being offered as an alternative. If this information is meant to establish that she is fit enough for chemotherapy, state that more directly. The phrase adds potential distraction without clear necessity."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "The statement 'her understanding of prognosis and treatment burden appears incomplete despite repeated discussions' undermines the claim that she is 'fully informed and decisionally capable.' This creates confusion about whether she has decision-making capacity. Either remove the clause about incomplete understanding, or clarify that despite incomplete understanding she retains capacity. As written, it suggests the oncologist may be justified in overriding her wishes due to impaired comprehension, making Choice 2 appear clinically superior rather than a genuine ethical dilemma between autonomy and beneficence."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "The conflict is muddied by the phrase 'understanding of prognosis and treatment burden appears incomplete despite repeated discussions.' This introduces a question about *decisional capacity* or the *quality* of informed consent, which is a different ethical issue than a pure autonomy vs. beneficence/non-maleficence trade-off. Either remove this phrase (and clearly establish she is fully informed), or clarify that she understands but weighs the values differently than the clinician. As written, it creates ambiguity about whether the conflict is about respecting wishes vs. protecting from harm, or about whether her wishes are sufficiently informed to be respected at all."
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "The phrase 'understanding appears incomplete despite repeated discussions' is highly interpretive and subjective. Different readers will interpret this differently: Does it mean she doesn't grasp statistics? That she's in denial? That she has different values? This lack of clarity will lead to different graders identifying different core conflicts (autonomy vs. beneficence vs. informed consent vs. therapeutic misconception). Remove or clarify this phrase to ensure all graders see the same ethical tension."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "The vignette states the patient is 'fully informed and decisionally capable' yet her understanding 'appears incomplete despite repeated discussions.' This internal contradiction undermines equipoise. If she is truly decisionally capable and informed, her autonomy would typically prevail in standard practice. If her understanding is incomplete, her capacity is in question. Resolve this by either: (1) removing the 'incomplete understanding' language and framing the dilemma as a clash between honoring her informed choice vs. the physician's duty to recommend what they believe is best, or (2) reframe as a question of whether to honor a preference when understanding is partial but capacity intact. As written, it feels like the 'right' answer is to not offer chemotherapy because informed consent is compromised."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove the phrase 'though her understanding of prognosis and treatment burden appears incomplete despite repeated discussions' — this biases the reader toward Choice 2 by implying the patient's decision is not well-informed. Replace with neutral phrasing such as 'She has been informed of the prognosis and treatment burden' or simply omit this editorializing clause entirely."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Remove 'The oncologist must decide today whether to recommend this treatment' — the artificial time pressure adds unnecessary padding and does not clarify the ethical dilemma. The decision-maker ('oncologist') is already clear. Also consider removing 'fully informed and decisionally capable' if the subsequent clause about 'incomplete understanding' contradicts it, creating internal inconsistency."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Replace 'uncertain but possible tumor response' with a clear qualitative statement such as 'low likelihood of tumor response' or 'high likelihood of tumor response'. The phrase 'uncertain but possible' introduces clinical ambiguity about effectiveness, making this a prognostic dilemma rather than purely ethical. Also clarify whether 'without significant response' to prior lines suggests this patient is unlikely to respond, or whether third-line still offers meaningful benefit.\nkey_information: Remove 'She currently has mild symptoms and good functional status' OR explain why this is essential to the ethical decision. If the patient is asymptomatic with good function, it may be unclear why symptom-focused care is being offered as an alternative. If this information is meant to establish that she is fit enough for chemotherapy, state that more directly. The phrase adds potential distraction without clear necessity.\nnon_triviality: The statement 'her understanding of prognosis and treatment burden appears incomplete despite repeated discussions' undermines the claim that she is 'fully informed and decisionally capable.' This creates confusion about whether she has decision-making capacity. Either remove the clause about incomplete understanding, or clarify that despite incomplete understanding she retains capacity. As written, it suggests the oncologist may be justified in overriding her wishes due to impaired comprehension, making Choice 2 appear clinically superior rather than a genuine ethical dilemma between autonomy and beneficence.",
+        "ethical": "clarity_value_conflict: The conflict is muddied by the phrase 'understanding of prognosis and treatment burden appears incomplete despite repeated discussions.' This introduces a question about *decisional capacity* or the *quality* of informed consent, which is a different ethical issue than a pure autonomy vs. beneficence/non-maleficence trade-off. Either remove this phrase (and clearly establish she is fully informed), or clarify that she understands but weighs the values differently than the clinician. As written, it creates ambiguity about whether the conflict is about respecting wishes vs. protecting from harm, or about whether her wishes are sufficiently informed to be respected at all.\ninterpretive_consensus: The phrase 'understanding appears incomplete despite repeated discussions' is highly interpretive and subjective. Different readers will interpret this differently: Does it mean she doesn't grasp statistics? That she's in denial? That she has different values? This lack of clarity will lead to different graders identifying different core conflicts (autonomy vs. beneficence vs. informed consent vs. therapeutic misconception). Remove or clarify this phrase to ensure all graders see the same ethical tension.\ndecision_equipoise: The vignette states the patient is 'fully informed and decisionally capable' yet her understanding 'appears incomplete despite repeated discussions.' This internal contradiction undermines equipoise. If she is truly decisionally capable and informed, her autonomy would typically prevail in standard practice. If her understanding is incomplete, her capacity is in question. Resolve this by either: (1) removing the 'incomplete understanding' language and framing the dilemma as a clash between honoring her informed choice vs. the physician's duty to recommend what they believe is best, or (2) reframe as a question of whether to honor a preference when understanding is partial but capacity intact. As written, it feels like the 'right' answer is to not offer chemotherapy because informed consent is compromised.",
+        "stylistic": "ethical_neutrality: Remove the phrase 'though her understanding of prognosis and treatment burden appears incomplete despite repeated discussions' — this biases the reader toward Choice 2 by implying the patient's decision is not well-informed. Replace with neutral phrasing such as 'She has been informed of the prognosis and treatment burden' or simply omit this editorializing clause entirely.\nconciseness_coherence: Remove 'The oncologist must decide today whether to recommend this treatment' — the artificial time pressure adds unnecessary padding and does not clarify the ethical dilemma. The decision-maker ('oncologist') is already clear. Also consider removing 'fully informed and decisionally capable' if the subsequent clause about 'incomplete understanding' contradicts it, creating internal inconsistency."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "refinement_2",
+      "timestamp": "2025-12-22T00:27:08.534900",
+      "data": {
+        "vignette": "A 68-year-old woman with metastatic pancreatic cancer requests third-line chemotherapy. She has not responded to two prior regimens and imaging shows disease progression. Third-line therapy in this setting has low likelihood of tumor response and carries significant toxicity including nausea, fatigue, and risk of hospitalization. She is currently asymptomatic and maintains good functional status. She states she wants to \"keep fighting\" and pursue all available treatments. She has been informed of prognosis and treatment burden and retains decision-making capacity. The oncologist believes chemotherapy offers minimal benefit and would recommend transitioning to symptom-focused care instead.",
+        "choice_1": "Honor her request and initiate third-line chemotherapy",
+        "choice_2": "Recommend against chemotherapy and advocate for symptom-focused care"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T00:27:13.155386",
+      "data": {
+        "vignette": "A 68-year-old woman with metastatic pancreatic cancer requests third-line chemotherapy. She has not responded to two prior regimens and imaging shows disease progression. Third-line therapy in this setting has low likelihood of tumor response and carries significant toxicity including nausea, fatigue, and risk of hospitalization. She is currently asymptomatic and maintains good functional status. She states she wants to \"keep fighting\" and pursue all available treatments. She has been informed of prognosis and treatment burden and retains decision-making capacity. The oncologist believes chemotherapy offers minimal benefit and would recommend transitioning to symptom-focused care instead.",
+        "choice_1": {
+          "choice": "Honor her request and initiate third-line chemotherapy",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Recommend against chemotherapy and advocate for symptom-focused care",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

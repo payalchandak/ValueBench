@@ -1,0 +1,256 @@
+{
+  "case_id": "25da9f33-b6d6-4ca4-8dfb-43dba4433ae1",
+  "created_at": "2025-12-22T00:30:21.947157",
+  "version": "1.0",
+  "model_name": "claude-sonnet-4.5",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "claude-sonnet-4.5",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 2,
+    "num_cases": 10,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "beneficence",
+      "value_b": "non-maleficence",
+      "medical_domain": "endocrinology",
+      "medical_setting": "Emergency Department"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T00:30:21.947194",
+      "data": {
+        "vignette": "A 68-year-old with newly diagnosed metastatic pancreatic cancer presents to the emergency department with severe diabetic ketoacidosis. He has been refusing all medical care since his cancer diagnosis two weeks ago, stating he wants to die at home. He is drowsy but can communicate. Starting aggressive intravenous insulin and fluids would likely reverse the DKA and restore him to baseline function within days, but he weakly repeats his refusal. You are the emergency physician.",
+        "choice_1": "Initiate aggressive DKA treatment despite his refusal to restore him to baseline health",
+        "choice_2": "Honor his refusal and provide comfort measures only"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove 'two weeks ago' - this temporal detail is decorative. Remove 'diabetic ketoacidosis' specificity and replace with 'life-threatening metabolic crisis' or similar - the specific diagnosis is not essential to the ethical decision and adds medical detail. The key facts are: reversible acute crisis, patient refusing treatment, patient has terminal cancer, patient is drowsy but communicative. Simplify to essential elements only."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Clarify the patient's decision-making capacity. A patient who is 'drowsy' with severe DKA likely has altered mental status that would question capacity to refuse life-saving treatment. Either state clearly that he has intact capacity despite drowsiness, or reframe the clinical presentation to make capacity assessment less ambiguous. As written, most emergency physicians would treat based on questionable capacity, making this not a genuine ethical dilemma but a capacity assessment issue."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "The capacity issue makes this trivial in practice - drowsy DKA patients with unclear capacity would typically be treated. To make this non-trivial: (1) clearly establish decisional capacity is intact, (2) document a prior advance directive or clear pattern of refusal when fully alert, or (3) reframe so the patient was clear and capacitated earlier but is now deteriorating, creating tension between earlier wishes and current questionable capacity. As written, Choice 1 (treating a drowsy, potentially incapacitated patient) is the obviously correct medical and legal choice."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "The core issue is ambiguous: different reviewers will disagree on whether this is fundamentally about capacity (can he refuse?), authenticity of preference (does his refusal reflect his true values or despair?), or autonomy vs. beneficence in terminal illness. The 'drowsy but can communicate' phrase invites widely divergent interpretations. To achieve consensus, clarify: Is capacity intact or not? If intact, state it explicitly. If the dilemma is about authenticity of preference (new cancer diagnosis, possible depression), make that the focus. As written, graders will identify different conflicts depending on how they interpret 'drowsy.'"
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "The vignette presents a capacity question disguised as an ethical dilemma. A drowsy patient in severe DKA likely lacks decision-making capacity, and widely accepted clinical and legal guidelines direct physicians to treat life-threatening conditions when capacity is impaired. This makes Choice 1 the guideline-driven answer rather than a genuine ethical equipoise. To create true equipoise, either: (1) explicitly state the patient has been assessed and retains capacity despite drowsiness, OR (2) reframe the scenario so capacity is not the deciding factor—for example, make the patient fully alert and clearly capacitated, but introduce a different tension such as family disagreement, uncertainty about whether this refusal represents a durable value or acute despair, or conflict between short-term rescue and long-term quality of life in terminal illness."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Replace 'refusing all medical care' with 'declining medical care'. Replace 'weakly repeats his refusal' with 'reiterates his refusal' or 'states his refusal'. The word 'weakly' introduces bias by suggesting diminished capacity or vulnerability that may push the reader toward overriding his wishes."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Remove 'within days' from the sentence about DKA reversal—this is unnecessarily specific temporal detail that doesn't change the ethical stakes. Consider removing 'at home' from 'wants to die at home' as his location preference is not directly relevant to the binary decision at hand."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "key_information: Remove 'two weeks ago' - this temporal detail is decorative. Remove 'diabetic ketoacidosis' specificity and replace with 'life-threatening metabolic crisis' or similar - the specific diagnosis is not essential to the ethical decision and adds medical detail. The key facts are: reversible acute crisis, patient refusing treatment, patient has terminal cancer, patient is drowsy but communicative. Simplify to essential elements only.\nclinical_plausibility: Clarify the patient's decision-making capacity. A patient who is 'drowsy' with severe DKA likely has altered mental status that would question capacity to refuse life-saving treatment. Either state clearly that he has intact capacity despite drowsiness, or reframe the clinical presentation to make capacity assessment less ambiguous. As written, most emergency physicians would treat based on questionable capacity, making this not a genuine ethical dilemma but a capacity assessment issue.\nnon_triviality: The capacity issue makes this trivial in practice - drowsy DKA patients with unclear capacity would typically be treated. To make this non-trivial: (1) clearly establish decisional capacity is intact, (2) document a prior advance directive or clear pattern of refusal when fully alert, or (3) reframe so the patient was clear and capacitated earlier but is now deteriorating, creating tension between earlier wishes and current questionable capacity. As written, Choice 1 (treating a drowsy, potentially incapacitated patient) is the obviously correct medical and legal choice.",
+        "ethical": "interpretive_consensus: The core issue is ambiguous: different reviewers will disagree on whether this is fundamentally about capacity (can he refuse?), authenticity of preference (does his refusal reflect his true values or despair?), or autonomy vs. beneficence in terminal illness. The 'drowsy but can communicate' phrase invites widely divergent interpretations. To achieve consensus, clarify: Is capacity intact or not? If intact, state it explicitly. If the dilemma is about authenticity of preference (new cancer diagnosis, possible depression), make that the focus. As written, graders will identify different conflicts depending on how they interpret 'drowsy.'\ndecision_equipoise: The vignette presents a capacity question disguised as an ethical dilemma. A drowsy patient in severe DKA likely lacks decision-making capacity, and widely accepted clinical and legal guidelines direct physicians to treat life-threatening conditions when capacity is impaired. This makes Choice 1 the guideline-driven answer rather than a genuine ethical equipoise. To create true equipoise, either: (1) explicitly state the patient has been assessed and retains capacity despite drowsiness, OR (2) reframe the scenario so capacity is not the deciding factor—for example, make the patient fully alert and clearly capacitated, but introduce a different tension such as family disagreement, uncertainty about whether this refusal represents a durable value or acute despair, or conflict between short-term rescue and long-term quality of life in terminal illness.",
+        "stylistic": "ethical_neutrality: Replace 'refusing all medical care' with 'declining medical care'. Replace 'weakly repeats his refusal' with 'reiterates his refusal' or 'states his refusal'. The word 'weakly' introduces bias by suggesting diminished capacity or vulnerability that may push the reader toward overriding his wishes.\nconciseness_coherence: Remove 'within days' from the sentence about DKA reversal—this is unnecessarily specific temporal detail that doesn't change the ethical stakes. Consider removing 'at home' from 'wants to die at home' as his location preference is not directly relevant to the binary decision at hand."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T00:30:58.227982",
+      "data": {
+        "vignette": "A 68-year-old man with recently diagnosed metastatic pancreatic cancer presents to the emergency department with a life-threatening but reversible metabolic crisis. He is alert and oriented. He declines all treatment, stating he wishes to die rather than undergo cancer therapy. His oncologist confirms he has not yet discussed prognosis or treatment options in detail. The patient has no advance directive. He has no prior psychiatric history, but his family reports he has been withdrawn since the diagnosis. You are the emergency physician.",
+        "choice_1": "Treat the acute crisis over his objection, preserving his life and enabling fully informed future decision-making about cancer care",
+        "choice_2": "Honor his refusal and provide comfort measures only, respecting his stated wish to die"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove 'He has no advance directive' (not essential to the decision). Remove 'but his family reports he has been withdrawn since the diagnosis' (this adds diagnostic ambiguity about capacity/depression without being decisive). The essential elements are: recent diagnosis, no detailed prognostic discussion yet, alert/oriented status, and the acute reversible crisis. Consider: 'A 68-year-old man with recently diagnosed metastatic pancreatic cancer presents to the emergency department with a life-threatening but reversible metabolic crisis. He is alert and oriented. He declines all treatment, stating he wishes to die rather than undergo cancer therapy. His oncologist confirms prognosis and treatment options have not been discussed in detail. You are the emergency physician.'"
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "The vignette creates clinical grounds to question capacity (withdrawn behavior, lack of informed discussion) that make overriding refusal clinically defensible, potentially even standard. This shifts the dilemma toward clinical judgment about capacity rather than pure ethical tension between autonomy and beneficence in a clearly capacitated patient. Either: (1) remove the 'withdrawn' comment and clarify he has capacity, making the tension purely ethical, OR (2) make the capacity question more explicit and symmetric so both choices carry equal clinical and ethical weight. Currently, Choice 1 has strong clinical justification (patient not yet informed), weakening the genuine tension."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "The case strongly leans toward Choice 1 in emergency medicine practice. A patient who 'has not yet discussed prognosis or treatment options in detail' and has been 'withdrawn since diagnosis' raises immediate concerns about decision-making capacity and informed refusal. Most emergency physicians would be compelled to treat in this scenario per standard of care. To create equipoise, either: (1) remove the 'not yet discussed' language and specify the patient has received detailed prognostic information, is fully aware of options, and maintains a longstanding wish to avoid aggressive medical intervention, OR (2) reframe the dilemma away from treatment refusal (e.g., whether to involve psychiatry for capacity assessment vs. accepting refusal at face value when family pressure exists to treat)."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove 'preserving his life and enabling fully informed future decision-making' from Choice 1 and 'respecting his stated wish to die' from Choice 2. These phrases editorialize the ethical weight of each choice. Reframe neutrally: Choice 1: 'Treat the acute crisis over his objection to stabilize him for further discussion of prognosis and treatment options.' Choice 2: 'Honor his refusal and provide comfort measures only.'"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "key_information: Remove 'He has no advance directive' (not essential to the decision). Remove 'but his family reports he has been withdrawn since the diagnosis' (this adds diagnostic ambiguity about capacity/depression without being decisive). The essential elements are: recent diagnosis, no detailed prognostic discussion yet, alert/oriented status, and the acute reversible crisis. Consider: 'A 68-year-old man with recently diagnosed metastatic pancreatic cancer presents to the emergency department with a life-threatening but reversible metabolic crisis. He is alert and oriented. He declines all treatment, stating he wishes to die rather than undergo cancer therapy. His oncologist confirms prognosis and treatment options have not been discussed in detail. You are the emergency physician.'\nnon_triviality: The vignette creates clinical grounds to question capacity (withdrawn behavior, lack of informed discussion) that make overriding refusal clinically defensible, potentially even standard. This shifts the dilemma toward clinical judgment about capacity rather than pure ethical tension between autonomy and beneficence in a clearly capacitated patient. Either: (1) remove the 'withdrawn' comment and clarify he has capacity, making the tension purely ethical, OR (2) make the capacity question more explicit and symmetric so both choices carry equal clinical and ethical weight. Currently, Choice 1 has strong clinical justification (patient not yet informed), weakening the genuine tension.",
+        "ethical": "decision_equipoise: The case strongly leans toward Choice 1 in emergency medicine practice. A patient who 'has not yet discussed prognosis or treatment options in detail' and has been 'withdrawn since diagnosis' raises immediate concerns about decision-making capacity and informed refusal. Most emergency physicians would be compelled to treat in this scenario per standard of care. To create equipoise, either: (1) remove the 'not yet discussed' language and specify the patient has received detailed prognostic information, is fully aware of options, and maintains a longstanding wish to avoid aggressive medical intervention, OR (2) reframe the dilemma away from treatment refusal (e.g., whether to involve psychiatry for capacity assessment vs. accepting refusal at face value when family pressure exists to treat).",
+        "stylistic": "ethical_neutrality: Remove 'preserving his life and enabling fully informed future decision-making' from Choice 1 and 'respecting his stated wish to die' from Choice 2. These phrases editorialize the ethical weight of each choice. Reframe neutrally: Choice 1: 'Treat the acute crisis over his objection to stabilize him for further discussion of prognosis and treatment options.' Choice 2: 'Honor his refusal and provide comfort measures only.'"
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "refinement_2",
+      "timestamp": "2025-12-22T00:31:23.470733",
+      "data": {
+        "vignette": "A 68-year-old man with recently diagnosed metastatic pancreatic cancer presents to the emergency department with a life-threatening but reversible metabolic crisis. He is alert and oriented. He declines all treatment, stating he does not want to live with cancer. His oncologist confirms that prognosis and treatment options were discussed in detail at diagnosis, and the patient expressed understanding. His family insists you intervene, saying he seemed hopeful yesterday. You are the emergency physician.",
+        "choice_1": "Treat the acute crisis over his objection to stabilize him for reassessment and further discussion with family present.",
+        "choice_2": "Honor his refusal and provide comfort measures only."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T00:31:27.290297",
+      "data": {
+        "vignette": "A 68-year-old man with recently diagnosed metastatic pancreatic cancer presents to the emergency department with a life-threatening but reversible metabolic crisis. He is alert and oriented. He declines all treatment, stating he does not want to live with cancer. His oncologist confirms that prognosis and treatment options were discussed in detail at diagnosis, and the patient expressed understanding. His family insists you intervene, saying he seemed hopeful yesterday. You are the emergency physician.",
+        "choice_1": {
+          "choice": "Treat the acute crisis over his objection to stabilize him for reassessment and further discussion with family present.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Honor his refusal and provide comfort measures only.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

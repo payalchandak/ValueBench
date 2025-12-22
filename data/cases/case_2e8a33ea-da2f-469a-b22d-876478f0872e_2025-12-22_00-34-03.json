@@ -1,0 +1,256 @@
+{
+  "case_id": "2e8a33ea-da2f-469a-b22d-876478f0872e",
+  "created_at": "2025-12-22T00:32:52.536641",
+  "version": "1.0",
+  "model_name": "claude-sonnet-4.5",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "claude-sonnet-4.5",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 2,
+    "num_cases": 10,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "autonomy",
+      "value_b": "non-maleficence",
+      "medical_domain": "general internal medicine",
+      "medical_setting": "Emergency Department"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T00:32:52.536676",
+      "data": {
+        "vignette": "A 72-year-old man with advanced COPD presents to the emergency department with severe respiratory distress. He is alert and oriented, stating clearly that he does not want intubation or mechanical ventilation under any circumstances. His respiratory status is rapidly deteriorating. The treating physician believes that without intubation in the next hour, he will likely suffer a prolonged, distressing death by asphyxiation. Short-term ventilation could stabilize him through this acute exacerbation, potentially allowing recovery to his baseline functional status. The physician must decide how to proceed.",
+        "choice_1": "Respect the patient's explicit refusal and provide comfort measures only, allowing natural progression despite the likelihood of a distressing death",
+        "choice_2": "Proceed with intubation to prevent imminent suffering and death, overriding the patient's stated wishes in this emergent situation"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "The vignette is too clinically weighted toward intubation. The phrase 'Short-term ventilation could stabilize him through this acute exacerbation, potentially allowing recovery to his baseline functional status' presents intubation as clearly medically superior. This needs to be neutralized. Suggest: 'Intubation may stabilize him temporarily, though the outcome remains uncertain.' Also, the specific timeframe 'in the next hour' introduces unnecessary prognostic precision - change to 'imminently' or 'soon'."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove the phrase 'prolonged, distressing death by asphyxiation' which is overly graphic and emotionally loaded. Replace with 'will likely die within hours' or similar neutral phrasing. The word 'asphyxiation' adds unnecessary clinical detail that doesn't change the decision. Also remove 'potentially allowing recovery to his baseline functional status' and replace with 'may allow recovery' - the baseline functional status detail is extraneous."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Choice 2 is not defensible in modern medical ethics or law. An alert, oriented patient with decision-making capacity refusing a specific intervention cannot and should not be overridden except in cases of imminent harm to others or clear incapacity. The phrase 'overriding the patient's stated wishes' makes this option legally and ethically indefensible, not genuinely debatable. To make this a valid dilemma, either: (1) introduce genuine ambiguity about capacity (e.g., 'appears alert but family questions if hypercapnia is impairing judgment'), or (2) reframe the dilemma entirely (e.g., sedation level that might suppress respiration vs. tolerating severe dyspnea)."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "In modern clinical practice and medical ethics, overriding a competent, alert, and oriented adult patient's explicit refusal of life-sustaining treatment is not ethically defensible and violates widely accepted legal and ethical standards. This is not genuinely debatable among reasonable clinicians. To create equipoise, either: (1) introduce decision-making capacity concerns (e.g., 'He appears confused and his statements are inconsistent'), (2) make the patient unable to communicate clearly at the moment of decision (e.g., 'He stated this preference days ago but is now unconscious and recent comments to family suggested he might reconsider'), or (3) reframe around a prospective decision (e.g., discussing intubation before he explicitly refuses, with him expressing ambivalence)."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove 'prolonged, distressing death by asphyxiation' and replace with 'death from respiratory failure within the hour'. Remove 'explicit' before 'refusal'. Change 'prevent imminent suffering and death' to 'stabilize respiratory status'. The current language uses emotionally charged terms that bias toward intubation by emphasizing the suffering of non-intervention."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "The vignette is 91 words but contains redundancy. 'He is alert and oriented' can be shortened to 'He is alert'. 'In the next hour' appears twice (once in vignette, once implied). Remove 'The physician must decide how to proceed' as it adds no information—this is already implied by the case structure."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": false,
+          "suggested_changes": "Replace 'prolonged, distressing death by asphyxiation' with 'death from respiratory failure'. The phrase 'death by asphyxiation' is graphic and may trigger content filters. Use clinical terminology: 'progressive hypoxemia' or 'respiratory failure' instead."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: The vignette is too clinically weighted toward intubation. The phrase 'Short-term ventilation could stabilize him through this acute exacerbation, potentially allowing recovery to his baseline functional status' presents intubation as clearly medically superior. This needs to be neutralized. Suggest: 'Intubation may stabilize him temporarily, though the outcome remains uncertain.' Also, the specific timeframe 'in the next hour' introduces unnecessary prognostic precision - change to 'imminently' or 'soon'.\nkey_information: Remove the phrase 'prolonged, distressing death by asphyxiation' which is overly graphic and emotionally loaded. Replace with 'will likely die within hours' or similar neutral phrasing. The word 'asphyxiation' adds unnecessary clinical detail that doesn't change the decision. Also remove 'potentially allowing recovery to his baseline functional status' and replace with 'may allow recovery' - the baseline functional status detail is extraneous.\nnon_triviality: Choice 2 is not defensible in modern medical ethics or law. An alert, oriented patient with decision-making capacity refusing a specific intervention cannot and should not be overridden except in cases of imminent harm to others or clear incapacity. The phrase 'overriding the patient's stated wishes' makes this option legally and ethically indefensible, not genuinely debatable. To make this a valid dilemma, either: (1) introduce genuine ambiguity about capacity (e.g., 'appears alert but family questions if hypercapnia is impairing judgment'), or (2) reframe the dilemma entirely (e.g., sedation level that might suppress respiration vs. tolerating severe dyspnea).",
+        "ethical": "decision_equipoise: In modern clinical practice and medical ethics, overriding a competent, alert, and oriented adult patient's explicit refusal of life-sustaining treatment is not ethically defensible and violates widely accepted legal and ethical standards. This is not genuinely debatable among reasonable clinicians. To create equipoise, either: (1) introduce decision-making capacity concerns (e.g., 'He appears confused and his statements are inconsistent'), (2) make the patient unable to communicate clearly at the moment of decision (e.g., 'He stated this preference days ago but is now unconscious and recent comments to family suggested he might reconsider'), or (3) reframe around a prospective decision (e.g., discussing intubation before he explicitly refuses, with him expressing ambivalence).",
+        "stylistic": "ethical_neutrality: Remove 'prolonged, distressing death by asphyxiation' and replace with 'death from respiratory failure within the hour'. Remove 'explicit' before 'refusal'. Change 'prevent imminent suffering and death' to 'stabilize respiratory status'. The current language uses emotionally charged terms that bias toward intubation by emphasizing the suffering of non-intervention.\nconciseness_coherence: The vignette is 91 words but contains redundancy. 'He is alert and oriented' can be shortened to 'He is alert'. 'In the next hour' appears twice (once in vignette, once implied). Remove 'The physician must decide how to proceed' as it adds no information—this is already implied by the case structure.\nsafety_compliance: Replace 'prolonged, distressing death by asphyxiation' with 'death from respiratory failure'. The phrase 'death by asphyxiation' is graphic and may trigger content filters. Use clinical terminology: 'progressive hypoxemia' or 'respiratory failure' instead."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T00:33:24.926639",
+      "data": {
+        "vignette": "A 78-year-old man with advanced COPD presents with severe respiratory distress. He is alert but dyspneic, repeatedly stating he does not want intubation. Without mechanical ventilation, he will likely die from respiratory failure within hours. Intubation may stabilize him temporarily, though the outcome and duration of ventilation remain uncertain. His family is present and urges all interventions. His prior statements about life-sustaining treatment have been inconsistent, and it is unclear whether worsening hypercapnia is affecting his judgment. The treating physician must decide whether to proceed with intubation.",
+        "choice_1": "Respect his current refusal and provide comfort measures only",
+        "choice_2": "Proceed with intubation given concern that hypercapnia may be impairing his decision-making capacity"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove the phrase 'the outcome and duration of ventilation remain uncertain.' This introduces clinical ambiguity about effectiveness and prognosis that shifts the dilemma toward prognostic uncertainty rather than pure ethical tension. Replace with a qualitative statement such as 'Intubation may stabilize him temporarily, though he is unlikely to be weaned from the ventilator' or 'Intubation would likely provide temporary stabilization.' Fix the certainty of clinical facts so the tension is purely ethical (autonomy vs. beneficence/capacity concerns)."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove 'His prior statements about life-sustaining treatment have been inconsistent.' This introduces unnecessary ambiguity about his values history that does not clearly inform the current decision. The key tension is between his current refusal and concerns about capacity due to hypercapnia. Either omit this phrase entirely or replace with a concrete fact if values history is essential (e.g., 'He previously documented a preference against prolonged mechanical ventilation')."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "The phrase 'unclear whether worsening hypercapnia is affecting his judgment' creates instability. If hypercapnia is clearly impairing capacity, intubation becomes medically paternalistic but not genuinely debatable. If he has clear capacity, overriding him is ethically indefensible. Reframe to establish that he has borderline or fluctuating capacity with genuine clinical uncertainty about decisional ability—not just speculation. For example: 'He scored borderline on capacity assessment, with fluctuating alertness. It is unclear whether he fully grasps the immediacy of death without intervention.' This anchors the dilemma in a clinical judgment call about capacity, not a hypothetical concern."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "The vignette states 'His prior statements about life-sustaining treatment have been inconsistent,' which is vague and opens interpretive variance. Did he previously refuse intubation? Accept it conditionally? Change his mind multiple times? Specify the nature of inconsistency to reduce ambiguity. For example: 'He previously told his family he would accept short-term ventilation, but told his primary care doctor last year he never wanted to be on a machine.' This makes the conflict between current refusal and prior expressed preferences more concrete and interpretable."
+        },
+        "decision_equipoise": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Remove 'His family is present and urges all interventions.' This adds pressure but does not change the binary decision about capacity and consent. The core dilemma is patient refusal vs. impaired capacity—family preference is a distracting detail. Also remove 'His prior statements about life-sustaining treatment have been inconsistent' as this introduces ambiguity without adding necessary clinical context for the capacity determination."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove the phrase 'the outcome and duration of ventilation remain uncertain.' This introduces clinical ambiguity about effectiveness and prognosis that shifts the dilemma toward prognostic uncertainty rather than pure ethical tension. Replace with a qualitative statement such as 'Intubation may stabilize him temporarily, though he is unlikely to be weaned from the ventilator' or 'Intubation would likely provide temporary stabilization.' Fix the certainty of clinical facts so the tension is purely ethical (autonomy vs. beneficence/capacity concerns).\nkey_information: Remove 'His prior statements about life-sustaining treatment have been inconsistent.' This introduces unnecessary ambiguity about his values history that does not clearly inform the current decision. The key tension is between his current refusal and concerns about capacity due to hypercapnia. Either omit this phrase entirely or replace with a concrete fact if values history is essential (e.g., 'He previously documented a preference against prolonged mechanical ventilation').",
+        "ethical": "directional_stability: The phrase 'unclear whether worsening hypercapnia is affecting his judgment' creates instability. If hypercapnia is clearly impairing capacity, intubation becomes medically paternalistic but not genuinely debatable. If he has clear capacity, overriding him is ethically indefensible. Reframe to establish that he has borderline or fluctuating capacity with genuine clinical uncertainty about decisional ability—not just speculation. For example: 'He scored borderline on capacity assessment, with fluctuating alertness. It is unclear whether he fully grasps the immediacy of death without intervention.' This anchors the dilemma in a clinical judgment call about capacity, not a hypothetical concern.\ninterpretive_consensus: The vignette states 'His prior statements about life-sustaining treatment have been inconsistent,' which is vague and opens interpretive variance. Did he previously refuse intubation? Accept it conditionally? Change his mind multiple times? Specify the nature of inconsistency to reduce ambiguity. For example: 'He previously told his family he would accept short-term ventilation, but told his primary care doctor last year he never wanted to be on a machine.' This makes the conflict between current refusal and prior expressed preferences more concrete and interpretable.",
+        "stylistic": "conciseness_coherence: Remove 'His family is present and urges all interventions.' This adds pressure but does not change the binary decision about capacity and consent. The core dilemma is patient refusal vs. impaired capacity—family preference is a distracting detail. Also remove 'His prior statements about life-sustaining treatment have been inconsistent' as this introduces ambiguity without adding necessary clinical context for the capacity determination."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "refinement_2",
+      "timestamp": "2025-12-22T00:33:52.345668",
+      "data": {
+        "vignette": "A 72-year-old man with severe COPD presents to the emergency department with worsening respiratory failure. He refuses intubation, clearly stating he does not want to be on a ventilator. He scored borderline on capacity assessment, with fluctuating alertness due to rising CO2 levels. It is unclear whether he fully grasps that he will likely die within hours without intubation. He previously told his family he would accept short-term ventilation but told his primary care doctor last year he never wanted to be on a machine. You are his treating physician.",
+        "choice_1": "Respect his current refusal and provide comfort-focused care",
+        "choice_2": "Proceed with intubation based on concerns about impaired decision-making capacity"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T00:33:56.854876",
+      "data": {
+        "vignette": "A 72-year-old man with severe COPD presents to the emergency department with worsening respiratory failure. He refuses intubation, clearly stating he does not want to be on a ventilator. He scored borderline on capacity assessment, with fluctuating alertness due to rising CO2 levels. It is unclear whether he fully grasps that he will likely die within hours without intubation. He previously told his family he would accept short-term ventilation but told his primary care doctor last year he never wanted to be on a machine. You are his treating physician.",
+        "choice_1": {
+          "choice": "Respect his current refusal and provide comfort-focused care",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Proceed with intubation based on concerns about impaired decision-making capacity",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

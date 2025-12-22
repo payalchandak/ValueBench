@@ -1,0 +1,256 @@
+{
+  "case_id": "a901b133-33e7-477b-a40a-5d56a4a24425",
+  "created_at": "2025-12-22T00:24:23.043583",
+  "version": "1.0",
+  "model_name": "claude-sonnet-4.5",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "claude-sonnet-4.5",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 2,
+    "num_cases": 10,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "non-maleficence",
+      "value_b": "justice",
+      "medical_domain": "pediatrics",
+      "medical_setting": "General Ward"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T00:24:23.043717",
+      "data": {
+        "vignette": "A 4-year-old with sickle cell disease is admitted for pain crisis requiring high-dose opioids and intensive nursing care. The child has had six similar admissions this year. The nursing manager reports that this patient's complex needs consistently require two-to-one nursing ratios, frequently pulling staff from other pediatric patients on the ward. Several routine discharges have been delayed, and elective admissions postponed. The attending physician must decide whether to continue the current intensive ward-based management or transition to a less resource-intensive protocol that may provide adequate but reduced pain control and monitoring.",
+        "choice_1": "Continue current intensive management with high-dose opioids and two-to-one nursing coverage",
+        "choice_2": "Transition to reduced-intensity protocol with standard nursing ratios and moderate-dose analgesia"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "The phrase 'may provide adequate but reduced pain control' introduces clinical uncertainty about effectiveness. Replace with qualitative certainty, e.g., 'will provide reduced pain control and monitoring' or 'provides lower pain control but is medically safe.' The dilemma should be ethical (individual need vs. resource allocation), not prognostic uncertainty about adequacy."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": false,
+          "suggested_changes": "Add explicit temporal framing. For example: 'The attending physician must decide today whether to continue...' or 'The attending physician must decide for the remainder of this admission whether to continue...'"
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove extraneous details that do not affect the decision: delete 'six similar admissions this year' (adds context but not essential to the immediate ethical tension), delete 'Several routine discharges have been delayed, and elective admissions postponed' (overly descriptive of downstream effects already implied by resource strain). Focus only on: current admission, current resource use (2:1 nursing), that this pulls staff from other patients, and the two management options."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 suggests substandard care ('adequate but reduced' implies clinical compromise), making it appear medically inferior. Rephrase Choice 2 to be clinically defensible: e.g., 'Transition to standard-intensity protocol with one-to-one nursing and guideline-based analgesia that meets typical sickle cell crisis management.' This frames the tension as individual optimization vs. equitable resource distribution, not good care vs. poor care."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "The vignette conflates clinical optimization (what provides best pain control) with resource allocation. Reframe to create a clearer ethical tension. For example: specify that the intensive protocol is medically standard of care for this severity of crisis, and that the 'reduced-intensity protocol' is not simply a different clinical approach but a rationing decision that compromises this patient's care to benefit others. Alternatively, clarify that both protocols are medically reasonable but differ in their ethical commitments (patient-centered beneficence vs. distributive justice). As written, it reads more like 'which treatment works better' than 'whose needs take priority.'"
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Different readers may disagree on what the core conflict is. Is this about clinical judgment (dose optimization), resource stewardship (fairness in allocation), or quality vs. quantity of care? The vignette does not clearly signal whether the 'reduced protocol' is: (a) a reasonable alternative standard of care, (b) a rationing measure that compromises quality, or (c) a shift from aggressive to conservative management. Clarify the nature of the trade-off to ensure graders identify the same ethical tension."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "The framing is skewed toward Choice 1. The phrase 'may provide adequate but reduced pain control' implies Choice 2 is medically inferior, making it hard to defend. To achieve equipoise, either: (1) clarify that both protocols are clinically acceptable standard-of-care options with different resource footprints, or (2) make explicit that the trade-off is between optimizing this patient's care vs. enabling care for multiple other patients with serious needs. Without this, Choice 2 reads as substandard care, not a defensible ethical alternative."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove 'complex needs consistently require' and 'frequently pulling staff' which frame the patient as burdensome. Replace with neutral phrasing: 'This patient's care requires two-to-one nursing ratios, which reallocates staff from other pediatric patients.' Change 'may provide adequate but reduced pain control' to 'provides moderate pain control' to avoid suggesting Choice 2 is suboptimal."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Remove 'The nursing manager reports that' (unnecessary attribution). Remove 'Several routine discharges have been delayed, and elective admissions postponed' as this duplicates the resource strain already established by staff reallocation. The vignette is currently 91 words but contains redundant framing."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: The phrase 'may provide adequate but reduced pain control' introduces clinical uncertainty about effectiveness. Replace with qualitative certainty, e.g., 'will provide reduced pain control and monitoring' or 'provides lower pain control but is medically safe.' The dilemma should be ethical (individual need vs. resource allocation), not prognostic uncertainty about adequacy.\ntemporal_definition: Add explicit temporal framing. For example: 'The attending physician must decide today whether to continue...' or 'The attending physician must decide for the remainder of this admission whether to continue...'\nkey_information: Remove extraneous details that do not affect the decision: delete 'six similar admissions this year' (adds context but not essential to the immediate ethical tension), delete 'Several routine discharges have been delayed, and elective admissions postponed' (overly descriptive of downstream effects already implied by resource strain). Focus only on: current admission, current resource use (2:1 nursing), that this pulls staff from other patients, and the two management options.\nnon_triviality: As written, Choice 2 suggests substandard care ('adequate but reduced' implies clinical compromise), making it appear medically inferior. Rephrase Choice 2 to be clinically defensible: e.g., 'Transition to standard-intensity protocol with one-to-one nursing and guideline-based analgesia that meets typical sickle cell crisis management.' This frames the tension as individual optimization vs. equitable resource distribution, not good care vs. poor care.",
+        "ethical": "clarity_value_conflict: The vignette conflates clinical optimization (what provides best pain control) with resource allocation. Reframe to create a clearer ethical tension. For example: specify that the intensive protocol is medically standard of care for this severity of crisis, and that the 'reduced-intensity protocol' is not simply a different clinical approach but a rationing decision that compromises this patient's care to benefit others. Alternatively, clarify that both protocols are medically reasonable but differ in their ethical commitments (patient-centered beneficence vs. distributive justice). As written, it reads more like 'which treatment works better' than 'whose needs take priority.'\ninterpretive_consensus: Different readers may disagree on what the core conflict is. Is this about clinical judgment (dose optimization), resource stewardship (fairness in allocation), or quality vs. quantity of care? The vignette does not clearly signal whether the 'reduced protocol' is: (a) a reasonable alternative standard of care, (b) a rationing measure that compromises quality, or (c) a shift from aggressive to conservative management. Clarify the nature of the trade-off to ensure graders identify the same ethical tension.\ndecision_equipoise: The framing is skewed toward Choice 1. The phrase 'may provide adequate but reduced pain control' implies Choice 2 is medically inferior, making it hard to defend. To achieve equipoise, either: (1) clarify that both protocols are clinically acceptable standard-of-care options with different resource footprints, or (2) make explicit that the trade-off is between optimizing this patient's care vs. enabling care for multiple other patients with serious needs. Without this, Choice 2 reads as substandard care, not a defensible ethical alternative.",
+        "stylistic": "ethical_neutrality: Remove 'complex needs consistently require' and 'frequently pulling staff' which frame the patient as burdensome. Replace with neutral phrasing: 'This patient's care requires two-to-one nursing ratios, which reallocates staff from other pediatric patients.' Change 'may provide adequate but reduced pain control' to 'provides moderate pain control' to avoid suggesting Choice 2 is suboptimal.\nconciseness_coherence: Remove 'The nursing manager reports that' (unnecessary attribution). Remove 'Several routine discharges have been delayed, and elective admissions postponed' as this duplicates the resource strain already established by staff reallocation. The vignette is currently 91 words but contains redundant framing."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T00:24:58.861918",
+      "data": {
+        "vignette": "A 16-year-old with sickle cell disease is admitted for severe vaso-occlusive crisis requiring two-to-one nursing and high-dose parenteral analgesia. This is the sixth crisis admission this year. The intensive protocol is standard care for this severity but reallocates nursing staff from other pediatric patients with urgent needs. A reduced-intensity protocol with one-to-one nursing and standard analgesia is medically safe and effective for typical crises but provides lower pain control than the current regimen. The attending physician must decide for the remainder of this admission whether to continue the intensive protocol or transition to the reduced-intensity protocol.",
+        "choice_1": "Continue the intensive protocol with two-to-one nursing and high-dose analgesia",
+        "choice_2": "Transition to reduced-intensity protocol with one-to-one nursing and standard analgesia"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "The vignette states the reduced-intensity protocol is 'medically safe and effective for typical crises' but then contrasts it with the intensive protocol for 'this severity.' This creates clinical ambiguity: is the patient's current severity typical or not? Is the reduced protocol clinically appropriate now or not? Reframe to eliminate clinical effectiveness debate. For example: 'Both protocols are medically safe. The intensive protocol provides superior pain control. The reduced protocol provides adequate but lower pain relief and frees nursing resources for other patients.' Remove any language suggesting one protocol is clinically superior or more appropriate for 'this severity.'"
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": false,
+          "suggested_changes": "Add explicit temporal framing such as 'The decision must be made now for the next 24 hours' or 'for the remainder of this 3-day expected admission.' The phrase 'for the remainder of this admission' is vague—admissions can last days to weeks."
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove 'This is the sixth crisis admission this year'—this detail suggests chronic recurrent disease but does not affect the immediate resource allocation decision. Remove the phrase 'reallocates nursing staff from other pediatric patients with urgent needs'—this explicitly frames the ethical tension rather than letting it emerge from clinical facts. Simply state the patient's current condition and the two protocols available."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "The phrase 'two-to-one nursing' is not standard terminology in clinical practice. Use 'one-to-two nurse-to-patient ratio' or simply state 'dedicated one-on-one nursing care with additional support' if needed. Also clarify what 'high-dose parenteral analgesia' means in context—is this PCA, continuous infusion, or frequent boluses? The claim that a 'reduced-intensity protocol' is 'medically safe and effective' while simultaneously providing 'lower pain control' creates internal contradiction—inadequate pain control in sickle cell crisis is not considered safe or effective standard care."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "The vignette states the intensive protocol 'is standard care for this severity,' which makes transitioning to a reduced protocol seem clinically inferior or substandard. This undermines equipoise. Reframe so both options are clinically defensible: 'Both protocols are within standard care. The intensive protocol maximizes individual pain relief. The reduced protocol provides effective pain management while preserving nursing capacity for other critically ill patients.' Ensure neither option appears obviously inferior."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "This is fundamentally a clinical optimization problem, not an ethical dilemma. The vignette states one option is 'standard care for this severity' and the other is 'medically safe and effective for typical crises'—this frames it as a medical determination of what this patient's severity warrants, not a genuine values conflict. The resource allocation angle (nursing reallocation) is mentioned but underdeveloped—there's no clear harm to other patients specified. Reframe to remove references to 'standard care for this severity' and make explicit, concrete harms to identified other patients (e.g., 'delaying scheduled chemotherapy for two other children' or 'postponing post-operative monitoring'). The severity language suggests one option is medically indicated, which violates the constraint that neither option should be clinically superior."
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "The core conflict is unclear because it mixes clinical judgment (what severity warrants what protocol) with resource allocation (impact on other patients) without clearly establishing either. Readers may interpret this as: (1) a clinical decision about appropriate pain management intensity, (2) a justice vs. beneficence conflict, or (3) implicit bias concern (sickle cell, frequent admissions). Clarify by either removing the 'standard care for this severity' framing and making it purely about resource allocation with concrete harms to other patients, OR removing the resource angle entirely and focusing on a different ethical tension (e.g., autonomy vs. non-maleficence if patient demands intensive protocol despite risks)."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "The vignette states the intensive protocol is 'standard care for this severity'—this creates a strong presumption that continuing it is the correct answer per accepted protocols. Remove the phrase 'standard care for this severity' and instead establish clinical equipoise by noting that both protocols have been used for crises of this severity in practice, with ongoing professional debate about the threshold for escalation. The 'sixth crisis this year' detail also biases toward rationing, suggesting the patient has already received substantial resources."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or rephrase 'reallocates nursing staff from other pediatric patients with urgent needs' — this framing is emotionally weighted and pushes the reader toward choice 2 by invoking guilt about resource use. Replace with neutral wording such as 'requires allocation of additional nursing staff' or 'is resource-intensive.'"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "The phrase 'two-to-one nursing' is used twice and 'reduced-intensity protocol' is introduced abruptly without clear differentiation from standard care. Clarify whether the reduced-intensity protocol is standard care or below it. Also, 'medically safe and effective for typical crises' is confusing—if this is the sixth severe crisis, is it typical? Remove contradictory language and streamline the comparison between protocols."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: The vignette states the reduced-intensity protocol is 'medically safe and effective for typical crises' but then contrasts it with the intensive protocol for 'this severity.' This creates clinical ambiguity: is the patient's current severity typical or not? Is the reduced protocol clinically appropriate now or not? Reframe to eliminate clinical effectiveness debate. For example: 'Both protocols are medically safe. The intensive protocol provides superior pain control. The reduced protocol provides adequate but lower pain relief and frees nursing resources for other patients.' Remove any language suggesting one protocol is clinically superior or more appropriate for 'this severity.'\ntemporal_definition: Add explicit temporal framing such as 'The decision must be made now for the next 24 hours' or 'for the remainder of this 3-day expected admission.' The phrase 'for the remainder of this admission' is vague—admissions can last days to weeks.\nkey_information: Remove 'This is the sixth crisis admission this year'—this detail suggests chronic recurrent disease but does not affect the immediate resource allocation decision. Remove the phrase 'reallocates nursing staff from other pediatric patients with urgent needs'—this explicitly frames the ethical tension rather than letting it emerge from clinical facts. Simply state the patient's current condition and the two protocols available.\nclinical_plausibility: The phrase 'two-to-one nursing' is not standard terminology in clinical practice. Use 'one-to-two nurse-to-patient ratio' or simply state 'dedicated one-on-one nursing care with additional support' if needed. Also clarify what 'high-dose parenteral analgesia' means in context—is this PCA, continuous infusion, or frequent boluses? The claim that a 'reduced-intensity protocol' is 'medically safe and effective' while simultaneously providing 'lower pain control' creates internal contradiction—inadequate pain control in sickle cell crisis is not considered safe or effective standard care.\nnon_triviality: The vignette states the intensive protocol 'is standard care for this severity,' which makes transitioning to a reduced protocol seem clinically inferior or substandard. This undermines equipoise. Reframe so both options are clinically defensible: 'Both protocols are within standard care. The intensive protocol maximizes individual pain relief. The reduced protocol provides effective pain management while preserving nursing capacity for other critically ill patients.' Ensure neither option appears obviously inferior.",
+        "ethical": "clarity_value_conflict: This is fundamentally a clinical optimization problem, not an ethical dilemma. The vignette states one option is 'standard care for this severity' and the other is 'medically safe and effective for typical crises'—this frames it as a medical determination of what this patient's severity warrants, not a genuine values conflict. The resource allocation angle (nursing reallocation) is mentioned but underdeveloped—there's no clear harm to other patients specified. Reframe to remove references to 'standard care for this severity' and make explicit, concrete harms to identified other patients (e.g., 'delaying scheduled chemotherapy for two other children' or 'postponing post-operative monitoring'). The severity language suggests one option is medically indicated, which violates the constraint that neither option should be clinically superior.\ninterpretive_consensus: The core conflict is unclear because it mixes clinical judgment (what severity warrants what protocol) with resource allocation (impact on other patients) without clearly establishing either. Readers may interpret this as: (1) a clinical decision about appropriate pain management intensity, (2) a justice vs. beneficence conflict, or (3) implicit bias concern (sickle cell, frequent admissions). Clarify by either removing the 'standard care for this severity' framing and making it purely about resource allocation with concrete harms to other patients, OR removing the resource angle entirely and focusing on a different ethical tension (e.g., autonomy vs. non-maleficence if patient demands intensive protocol despite risks).\ndecision_equipoise: The vignette states the intensive protocol is 'standard care for this severity'—this creates a strong presumption that continuing it is the correct answer per accepted protocols. Remove the phrase 'standard care for this severity' and instead establish clinical equipoise by noting that both protocols have been used for crises of this severity in practice, with ongoing professional debate about the threshold for escalation. The 'sixth crisis this year' detail also biases toward rationing, suggesting the patient has already received substantial resources.",
+        "stylistic": "ethical_neutrality: Remove or rephrase 'reallocates nursing staff from other pediatric patients with urgent needs' — this framing is emotionally weighted and pushes the reader toward choice 2 by invoking guilt about resource use. Replace with neutral wording such as 'requires allocation of additional nursing staff' or 'is resource-intensive.'\nconciseness_coherence: The phrase 'two-to-one nursing' is used twice and 'reduced-intensity protocol' is introduced abruptly without clear differentiation from standard care. Clarify whether the reduced-intensity protocol is standard care or below it. Also, 'medically safe and effective for typical crises' is confusing—if this is the sixth severe crisis, is it typical? Remove contradictory language and streamline the comparison between protocols."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "refinement_2",
+      "timestamp": "2025-12-22T00:25:44.196075",
+      "data": {
+        "vignette": "A 9-year-old with sickle cell disease presents with severe vaso-occlusive pain crisis requiring hospital admission. Two treatment approaches are available. The intensive protocol uses continuous IV opioid infusion with dedicated one-on-one nursing monitoring. The standard protocol uses scheduled IV opioid dosing with routine nursing checks. Both protocols are medically acceptable for crises of this severity, though clinical practice varies. The intensive protocol provides superior pain relief. The standard protocol provides effective pain management and allows nursing staff to remain available for two other children: one requiring post-operative monitoring after emergency appendectomy, the other needing close observation during acute asthma exacerbation. You are the attending physician and must choose the pain management approach for the next 48 hours.",
+        "choice_1": "Use the intensive protocol with continuous IV opioids and dedicated one-on-one nursing",
+        "choice_2": "Use the standard protocol with scheduled IV opioids and routine nursing checks"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T00:25:48.410139",
+      "data": {
+        "vignette": "A 9-year-old with sickle cell disease presents with severe vaso-occlusive pain crisis requiring hospital admission. Two treatment approaches are available. The intensive protocol uses continuous IV opioid infusion with dedicated one-on-one nursing monitoring. The standard protocol uses scheduled IV opioid dosing with routine nursing checks. Both protocols are medically acceptable for crises of this severity, though clinical practice varies. The intensive protocol provides superior pain relief. The standard protocol provides effective pain management and allows nursing staff to remain available for two other children: one requiring post-operative monitoring after emergency appendectomy, the other needing close observation during acute asthma exacerbation. You are the attending physician and must choose the pain management approach for the next 48 hours.",
+        "choice_1": {
+          "choice": "Use the intensive protocol with continuous IV opioids and dedicated one-on-one nursing",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Use the standard protocol with scheduled IV opioids and routine nursing checks",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}
