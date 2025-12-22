@@ -44,9 +44,9 @@ class CaseEvaluatorGUI:
             choice.choice,
             "",
             "**Value Alignments:**",
-            f"  {self.get_value_color(choice.autonomy)} Autonomy:       {choice.autonomy}",
-            f"  {self.get_value_color(choice.beneficence)} Beneficence:    {choice.beneficence}",
-            f"  {self.get_value_color(choice.nonmaleficence)} Nonmaleficence: {choice.nonmaleficence}",
+            f"  {self.get_value_color(choice.autonomy)} Autonomy:       {choice.autonomy}\n",
+            f"  {self.get_value_color(choice.beneficence)} Beneficence:    {choice.beneficence}\n",
+            f"  {self.get_value_color(choice.nonmaleficence)} Nonmaleficence: {choice.nonmaleficence}\n",
             f"  {self.get_value_color(choice.justice)} Justice:        {choice.justice}",
         ]
         return "\n".join(lines)
@@ -239,7 +239,7 @@ def create_interface():
     """Create and launch the Gradio interface."""
     app = CaseEvaluatorGUI()
     
-    with gr.Blocks(title="ValueBench Case Evaluator", theme=gr.themes.Soft()) as demo:
+    with gr.Blocks(title="ValueBench Case Evaluator") as demo:
         gr.Markdown("# 🏥 ValueBench Case Evaluator")
         gr.Markdown("Evaluate ethical case scenarios with value alignment tracking.")
         
@@ -503,8 +503,8 @@ if __name__ == "__main__":
     # Launch with appropriate settings
     if is_spaces:
         # For HuggingFace Spaces
-        demo.launch(server_name="0.0.0.0", server_port=7860, share=False)
+        demo.launch(server_name="0.0.0.0", server_port=7860, share=False, theme=gr.themes.Soft())
     else:
         # For local development
-        demo.launch(server_name="127.0.0.1", server_port=7860, share=False)
+        demo.launch(server_name="127.0.0.1", server_port=7860, share=False, theme=gr.themes.Soft())
 
