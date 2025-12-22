@@ -6,6 +6,7 @@ This demonstrates how to use the modular components to build
 your rich/prompt_toolkit-based evaluator.
 """
 
+import os
 from src.case_loader import CaseLoader
 from src.evaluation_store import EvaluationStore
 from src.response_models.case import BenchmarkCandidate, ChoiceWithValues
@@ -52,12 +53,23 @@ def simple_cli_demo():
         show_statistics(store, loader)
         return
     
-    # Step 4: Review loop
+    # Step 4: Review loop - Keep reviewing until user quits or all cases done
     print(f"\n{len(unreviewed_ids)} case(s) remaining to review")
     print("\nStarting review session...")
-    print("(In a full UI, you'd see rich panels with syntax highlighting)")
+    print("(Press 'q' at any time to quit)")
+    input("\nPress Enter to begin...")
     
-    for case_id in unreviewed_ids[:1]:  # Just show first case in demo
+    cases_reviewed_this_session = 0
+    
+    for idx, case_id in enumerate(unreviewed_ids):
+        # Refresh unreviewed list dynamically
+        all_case_ids = [c.case_id for c in benchmark_cases]
+        current_unreviewed = store.get_unreviewed_cases(all_case_ids)
+        
+        # Skip if already reviewed
+        if case_id not in current_unreviewed:
+            continue
+        
         case = loader.get_case_by_id(case_id)
         
         # Only evaluate benchmark candidates with value tags, not draft cases
@@ -67,9 +79,20 @@ def simple_cli_demo():
             
         final = case.final_case
         
+        # Clear screen and show fresh case
+        os.system('clear' if os.name != 'nt' else 'cls')
+        
+        # Show header with progress
+        print("=" * 70)
+        print("CASE EVALUATOR - Review Session")
+        print("=" * 70)
+        print(f"Progress: {len(benchmark_cases) - len(current_unreviewed)}/{len(benchmark_cases)} cases reviewed")
+        print(f"This session: {cases_reviewed_this_session} cases reviewed")
+        print(f"Remaining: {len(current_unreviewed)} cases")
+        
         # Display case (in rich, this would be a beautiful panel)
         print("\n" + "─" * 70)
-        print(f"CASE: {case_id[:12]}...")
+        print(f"CASE: {case_id[:12]}... ({idx + 1}/{len(unreviewed_ids)})")
         print("─" * 70)
         print(f"\nVIGNETTE:\n{final.vignette}\n")
         
@@ -104,7 +127,11 @@ def simple_cli_demo():
         
         decision = input("\nYour choice: ").strip().lower()
         
-        if decision == 'a':
+        if decision == 'q':
+            print("\nQuitting...")
+            break
+            
+        elif decision == 'a':
             store.record_evaluation(
                 case_id=case_id,
                 decision="approve",
@@ -112,7 +139,9 @@ def simple_cli_demo():
                 updated_case=None,
                 notes=None
             )
+            cases_reviewed_this_session += 1
             print("✓ Approved")
+            input("\nPress Enter to continue to next case...")
         
         elif decision == 'e':
             print("\n(In full UI, you'd get a text editor with prompt_toolkit)")
@@ -134,7 +163,9 @@ def simple_cli_demo():
                 updated_case=edited_case,
                 notes="Manually edited vignette" if edited_case else None
             )
+            cases_reviewed_this_session += 1
             print("✓ Approved with edits" if edited_case else "✓ Approved")
+            input("\nPress Enter to continue to next case...")
         
         elif decision == 'r':
             notes = input("Rejection reason: ").strip()
@@ -145,19 +176,36 @@ def simple_cli_demo():
                 updated_case=None,
                 notes=notes
             )
+            cases_reviewed_this_session += 1
             print("✓ Rejected")
-        
-        elif decision == 'q':
-            print("\nQuitting...")
-            break
+            input("\nPress Enter to continue to next case...")
         
         else:
-            print("Invalid option")
+            print("Invalid option - skipping case")
+            input("\nPress Enter to continue...")
     
-    # Show statistics
+    # Clear screen and show final statistics
+    os.system('clear' if os.name != 'nt' else 'cls')
+    print("=" * 70)
+    print("REVIEW SESSION COMPLETE")
+    print("=" * 70)
+    print(f"\n✓ Reviewed {cases_reviewed_this_session} case(s) this session")
+    
+    # Show overall statistics
     show_statistics(store, loader)
+    
+    # Check if there are more cases to review
+    all_case_ids = [c.case_id for c in benchmark_cases]
+    remaining = store.get_unreviewed_cases(all_case_ids)
+    
+    if remaining:
+        print(f"\n📋 {len(remaining)} case(s) still pending review")
+        print("   Run this script again to continue.")
+    else:
+        print("\n🎉 All cases have been reviewed!")
+    
     print("\n" + "=" * 70)
-    print("Session saved. Run again to continue reviewing.")
+    print("Session saved.")
     print("=" * 70)
 
 
