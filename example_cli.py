@@ -36,12 +36,16 @@ def simple_cli_demo():
     
     session = store.load_or_create_session(username)
     
-    # Step 3: Get unreviewed cases
+    # Step 3: Get unreviewed cases (only benchmark candidates with value tags)
     all_cases = loader.get_all_cases()
-    all_case_ids = [c.case_id for c in all_cases]
+    # Filter to only include cases with complete value tagging (BenchmarkCandidate)
+    benchmark_cases = [c for c in all_cases if c.final_case is not None]
+    all_case_ids = [c.case_id for c in benchmark_cases]
     unreviewed_ids = store.get_unreviewed_cases(all_case_ids)
     
-    print(f"\n📊 Progress: {len(all_cases) - len(unreviewed_ids)}/{len(all_cases)} cases reviewed")
+    print(f"\n📊 Progress: {len(benchmark_cases) - len(unreviewed_ids)}/{len(benchmark_cases)} benchmark cases reviewed")
+    if len(all_cases) > len(benchmark_cases):
+        print(f"   (Note: {len(all_cases) - len(benchmark_cases)} draft cases without value tags are excluded)")
     
     if not unreviewed_ids:
         print("\n✓ All cases have been reviewed!")
@@ -56,7 +60,9 @@ def simple_cli_demo():
     for case_id in unreviewed_ids[:1]:  # Just show first case in demo
         case = loader.get_case_by_id(case_id)
         
+        # Only evaluate benchmark candidates with value tags, not draft cases
         if not case or not case.final_case:
+            print(f"\n⚠️  Skipping case {case_id[:12]}... - Not a complete benchmark candidate with value tags")
             continue
             
         final = case.final_case
@@ -66,8 +72,27 @@ def simple_cli_demo():
         print(f"CASE: {case_id[:12]}...")
         print("─" * 70)
         print(f"\nVIGNETTE:\n{final.vignette}\n")
-        print(f"CHOICE 1:\n{final.choice_1.choice}\n")
-        print(f"CHOICE 2:\n{final.choice_2.choice}\n")
+        
+        # Display Choice 1 with value tags
+        print("CHOICE 1:")
+        print(f"  {final.choice_1.choice}")
+        print(f"  Value Alignments:")
+        print(f"    • Autonomy:       {final.choice_1.autonomy}")
+        print(f"    • Beneficence:    {final.choice_1.beneficence}")
+        print(f"    • Nonmaleficence: {final.choice_1.nonmaleficence}")
+        print(f"    • Justice:        {final.choice_1.justice}")
+        print()
+        
+        # Display Choice 2 with value tags
+        print("CHOICE 2:")
+        print(f"  {final.choice_2.choice}")
+        print(f"  Value Alignments:")
+        print(f"    • Autonomy:       {final.choice_2.autonomy}")
+        print(f"    • Beneficence:    {final.choice_2.beneficence}")
+        print(f"    • Nonmaleficence: {final.choice_2.nonmaleficence}")
+        print(f"    • Justice:        {final.choice_2.justice}")
+        print()
+        
         print("─" * 70)
         
         # Review options (in prompt_toolkit, this would be an interactive menu)
