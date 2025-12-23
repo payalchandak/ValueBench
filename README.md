@@ -1,6 +1,16 @@
 # ValueBench
 
-Medical ethics case review system.
+A medical ethics case generation and evaluation system that creates, refines, and validates synthetic ethical dilemmas for training and benchmarking purposes.
+
+## Overview
+
+ValueBench is a modular system for:
+- **Generating** medical ethics cases with complex value conflicts
+- **Tagging** cases with ethical principle alignments (autonomy, beneficence, nonmaleficence, justice)
+- **Evaluating** case quality through human review
+- **Managing** the full lifecycle from draft to validated benchmark cases
+
+The system uses LLMs to generate realistic medical vignettes with two ethically challenging choices, then tags how each choice aligns with established bioethics principles.
 
 ## First-Time Setup
 
@@ -49,7 +59,7 @@ uv run python example_cli.py
 
 ### How to Review
 
-1. **Enter your name** when prompted (use lowercase letters only, e.g., `john` or `sarah`)
+1. **Enter your name** when prompted (use lowercase letters only, e.g., `zak` or `becca`)
    - This creates your personal review session that saves your progress
 
 2. **Review each case:**
@@ -68,11 +78,16 @@ uv run python example_cli.py
 
 4. **Make your decision:**
    - Type `a` and press Enter to **Approve** the case as-is
-   - Type `e` and press Enter to **Edit** the case before approving
    - Type `r` and press Enter to **Reject** the case (you'll be asked for a reason)
    - Type `q` and press Enter to **Quit** (your progress is automatically saved)
 
-5. **Your progress is saved automatically** in `data/evaluations/session_<yourname>.json`
+5. **Provide feedback** (for both approve/reject):
+   - Select problem categories if applicable: clinical, ethical, legal, stylistic, other
+   - Add detailed comments (required for rejections, optional for approvals)
+
+6. **Your progress is saved automatically** in:
+   - Session file: `data/evaluations/sessions/session_<yourname>.json`
+   - Individual case evaluations: `data/evaluations/case_evaluations/<yourname>/`
 
 ### Tips for Reviewers
 
@@ -80,6 +95,7 @@ uv run python example_cli.py
 - The tool shows you how many cases you've reviewed and how many remain
 - Take breaks as needed - there's no rush
 - If a case seems unrealistic or poorly written, reject it and explain why
+- Only completed benchmark candidates (with value tags) are shown for review
 
 ### Submitting Your Reviews
 
@@ -104,9 +120,36 @@ git push
 
 **Note: This requires API keys and is not needed for case review.**
 
+### Basic Generation
+
 ```bash
 uv run python -m src.generator
 ```
 
-Edit `src/config/generator.yaml` to change generation settings.
+### Configuration
 
+Edit `src/config/generator.yaml` to customize:
+- Number of cases to generate
+- Which workflows to run (seed, refine, tag_values, etc.)
+- LLM models to use for each stage
+- Generation parameters
+
+### Generation Workflows
+
+Available workflows in `src/prompts/workflows/`:
+
+- **seed_synthetic** - Generate initial cases from scratch
+- **seed_literature** - Generate cases from research papers
+- **refine** - Improve case quality with expert feedback
+- **tag_values** - Assign ethical principle alignments
+- **rubric** - Evaluate case quality against rubric
+- **clarify_values** - Clarify ambiguous value conflicts
+- **improve_values** - Improve value representation
+
+### Prompt Components
+
+Reusable prompt components in `src/prompts/components/`:
+- Ethical framework definitions (autonomy, beneficence, etc.)
+- Output structure requirements
+- Hard constraints and quality checks
+- Case display templates
