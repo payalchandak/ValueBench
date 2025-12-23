@@ -125,7 +125,6 @@ def simple_cli_demo():
         # Review options (in prompt_toolkit, this would be an interactive menu)
         print("\nOptions:")
         print("  [a] Approve as-is")
-        print("  [e] Edit then approve")
         print("  [r] Reject")
         print("  [q] Quit (case will remain unreviewed)")
         
@@ -145,30 +144,6 @@ def simple_cli_demo():
             )
             cases_reviewed_this_session += 1
             print("✓ Approved")
-            input("\nPress Enter to continue to next case...")
-        
-        elif decision == 'e':
-            print("\n(In full UI, you'd get a text editor with prompt_toolkit)")
-            edited_vignette = input("Enter edited vignette (or press Enter to skip): ").strip()
-            
-            # Create edited version of the case
-            edited_case = None
-            if edited_vignette:
-                edited_case = BenchmarkCandidate(
-                    vignette=edited_vignette,
-                    choice_1=final.choice_1,
-                    choice_2=final.choice_2
-                )
-            
-            store.record_evaluation(
-                case_id=case_id,
-                decision="approve",
-                case_loader=loader,
-                updated_case=edited_case,
-                notes="Manually edited vignette" if edited_case else None
-            )
-            cases_reviewed_this_session += 1
-            print("✓ Approved with edits" if edited_case else "✓ Approved")
             input("\nPress Enter to continue to next case...")
         
         elif decision == 'r':
