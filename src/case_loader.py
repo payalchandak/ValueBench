@@ -169,13 +169,36 @@ class CaseLoader:
         
         return None
     
+    def get_active_cases(self) -> List[CaseRecord]:
+        """
+        Load all cases with status='active'.
+        
+        Returns:
+            List of active CaseRecord objects
+        """
+        all_cases = self.get_all_cases()
+        return [c for c in all_cases if c.status == "active"]
+    
+    def get_cases_by_status(self, status: str) -> List[CaseRecord]:
+        """
+        Load all cases with a specific status.
+        
+        Args:
+            status: Status to filter by ('active', 'deprecated', 'deleted', etc.)
+            
+        Returns:
+            List of CaseRecord objects with that status
+        """
+        all_cases = self.get_all_cases()
+        return [c for c in all_cases if c.status == status]
+    
     def save_case(self, case_record: CaseRecord, overwrite_existing: bool = True) -> Path:
         """
-        Save a case record to disk.
+        Save a case record using content-addressable filename: case_{uuid}_{hash}.json
         
         Args:
             case_record: The CaseRecord to save
-            overwrite_existing: If True, overwrites existing file with same case_id
+            overwrite_existing: If True, overwrites/renames existing file with same case_id
             
         Returns:
             Path to the saved file
@@ -183,9 +206,14 @@ class CaseLoader:
         Raises:
             RuntimeError: If file exists and overwrite_existing is False
         """
-        from datetime import datetime
+        # Compute content hash for filename
+        try:
+            content_hash = case_record.compute_content_hash()
+        except ValueError:
+            # Fallback for cases without final_case (drafts)
+            content_hash = "draft"
         
-        # Try to find existing file for this case_id
+        # Find existing file with this case_id
         existing_file = None
         for file_path in self.scan_cases():
             try:
@@ -197,27 +225,30 @@ class CaseLoader:
             except Exception:
                 continue
         
-        # Determine file path
-        if existing_file and overwrite_existing:
-            file_path = existing_file
-        elif existing_file and not overwrite_existing:
-            raise RuntimeError(
-                f"Case {case_record.case_id} already exists at {existing_file}. "
-                f"Set overwrite_existing=True to update it."
-            )
-        else:
-            # Create new file
-            timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-            filename = f"case_{case_record.case_id}_{timestamp}.json"
-            file_path = self.cases_dir / filename
+        # Generate new filename with content hash
+        filename = f"case_{case_record.case_id}_{content_hash}.json"
+        new_file_path = self.cases_dir / filename
         
-        # Save with proper JSON encoding
+        # Handle existing file
+        if existing_file:
+            if not overwrite_existing:
+                raise RuntimeError(
+                    f"Case {case_record.case_id} already exists at {existing_file}. "
+                    f"Set overwrite_existing=True to update it."
+                )
+        
+        # Save with proper JSON encoding (write first, then delete old file)
         try:
-            with open(file_path, 'w', encoding='utf-8') as f:
+            with open(new_file_path, 'w', encoding='utf-8') as f:
                 json.dump(case_record.model_dump(), f, indent=2, ensure_ascii=False, default=str)
-            return file_path
+            
+            # Only delete old file after successful write
+            if existing_file and existing_file != new_file_path:
+                existing_file.unlink()
+            
+            return new_file_path
         except Exception as e:
-            raise RuntimeError(f"Error saving case to {file_path}: {e}")
+            raise RuntimeError(f"Error saving case to {new_file_path}: {e}")
 
 
 def main():

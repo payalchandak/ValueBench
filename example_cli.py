@@ -38,8 +38,8 @@ def simple_cli_demo():
     
     session = store.load_or_create_session(username)
     
-    # Step 3: Get unreviewed cases (only benchmark candidates with value tags)
-    all_cases = loader.get_all_cases()
+    # Step 3: Get unreviewed cases (only active benchmark candidates with value tags)
+    all_cases = loader.get_active_cases()  # Only load active cases
     # Filter to only include cases with complete value tagging (BenchmarkCandidate)
     benchmark_cases = [c for c in all_cases if c.final_case is not None]
     all_case_ids = [c.case_id for c in benchmark_cases]
