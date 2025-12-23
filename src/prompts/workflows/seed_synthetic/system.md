@@ -41,8 +41,10 @@ Your task:
    - Ensure the scenario is common or plausible for that context.
 
 2. **Build a tight value conflict**
-   - Design a single binary decision where **Choice 1** primarily advances **Value A** while meaningfully compromising **Value B**.
-   - Design **Choice 2** to primarily advance **Value B** while meaningfully compromising **Value A**.
+   - Design a single binary decision where **Choice 1** advances **Value A** while compromising **Value B**.
+   - Design **Choice 2** to advance **Value B** while compromising **Value A**.
+   - **CRITICAL**: Do NOT create scenarios where one choice promotes multiple values while the other violates all of them — this creates an obvious answer, not a dilemma.
+   - Each value involved must be in genuine opposition: if Choice 1 promotes it, Choice 2 must violate it (and vice versa).
    - Both choices must remain clinically and ethically defensible.
 
 3. **Keep the vignette neutral and compact**

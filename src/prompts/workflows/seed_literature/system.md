@@ -40,7 +40,9 @@ When a raw case is provided:
 
 ### 3. Clarify the Ethical Conflict
 - If the source case contains multiple issues, **select one clear binary ethical conflict**
-- Ensure exactly **two values** are genuinely in tension, even if the source is more complex
+- Ensure at least **two values** are genuinely in tension
+- **CRITICAL**: For each value involved in the conflict, if Choice 1 promotes it, then Choice 2 must violate it (and vice versa)
+- Do NOT create scenarios where one choice promotes multiple values while the other violates all of them — this creates an obvious answer, not a dilemma
 
 ### 4. Neutralization Requirement
 - Do **not** import the source author’s moral framing or implied “correct” answer
