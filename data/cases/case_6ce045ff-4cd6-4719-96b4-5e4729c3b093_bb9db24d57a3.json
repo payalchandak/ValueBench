@@ -1,0 +1,203 @@
+{
+  "case_id": "6ce045ff-4cd6-4719-96b4-5e4729c3b093",
+  "created_at": "2025-12-22T22:25:08.330222",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "beneficence",
+      "value_b": "justice",
+      "medical_domain": "general internal medicine",
+      "medical_setting": "ICU"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:25:08.330241",
+      "data": {
+        "vignette": "During a winter respiratory surge, the medical ICU is operating at maximum capacity with several critically ill patients boarding in the emergency department and additional transfer requests from smaller hospitals. A 68-year-old man with severe COPD was admitted to the ICU with pneumonia, was intubated, and is now improving: he is awake, hemodynamically stable, and on minimal ventilator support, but he still needs frequent suctioning, close monitoring during spontaneous breathing trials, and rapid response if he tires or aspirates. The step-down unit can care for ventilated patients but has fewer nurses and less respiratory therapy coverage overnight. The ICU attending, following a hospital surge policy reviewed by a triage officer, must decide whether to keep him in the ICU until he is safely extubated or move him out now to open an ICU bed for other patients expected to need immediate intensive support.",
+        "choice_1": "Keep the patient in the ICU until he is extubated and clearly stable, even if that prolongs ICU bed occupancy during the surge.",
+        "choice_2": "Transfer the patient now to the step-down unit for ongoing ventilator weaning to free an ICU bed, accepting the increased chance of deterioration without ICU-level staffing."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove language that implies one option is medically ‘correct’ or clearly safer. Edits:\n- In Choice 1, change “until he is extubated and clearly stable” to “through the next planned spontaneous breathing trials/extubation attempt,” avoiding “clearly/safely stable.”\n- In Choice 2, replace “accepting the increased chance of deterioration” with a neutral description of the tradeoff: e.g., “with less frequent bedside monitoring and respiratory therapy coverage overnight, which could delay recognition of respiratory fatigue or aspiration.”\n- In the vignette, avoid phrasing like “rapid response if he tires” that can read as ICU-required; instead specify he is on minimal settings and “may still need prompt intervention if he fails a breathing trial,” keeping it factual."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Make the transfer option more clinically/ethically defensible so it’s not obviously inferior. Add 1–2 stabilizing details and clarify step-down capability:\n- Add: “He is on low FiO2/PEEP, has strong cough, and has tolerated a brief spontaneous breathing trial.”\n- Clarify step-down: “The step-down unit routinely manages stable intubated patients on volume/pressure support with a standardized weaning protocol and on-call RT coverage.”\n- Clarify ICU need on the other side without implying certainty: “Several patients in the ED are likely to require ICU-level support imminently (e.g., vasopressors or emergent ventilation).”\nThese changes preserve the ethical tension (individual safety vs capacity needs) without making one choice clinically obvious."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Reduce framing that makes one option clearly medically safer/\"correct\". Replace \"accepting the increased chance of deterioration\" with more neutral language (e.g., \"accepting a higher monitoring burden and less immediate backup if he deteriorates\"). Add a countervailing cost to Choice 1 that is comparably weighty and concrete (e.g., \"keeping him may force the ED to manage another unstable patient on a ventilator or delay a time-sensitive ICU transfer\"). Also soften the implication that surge policy/triage officer dictates the answer: clarify that policy provides guidance but leaves discretion, and that both ICU and step-down are within policy criteria for this clinical state."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Reduce wording that implies one option is clinically 'safer' or that the other is knowingly inferior. For example: (1) change 'until he is safely extubated' to 'until he completes extubation and remains stable off the ventilator'; (2) change 'accepting the increased chance of deterioration without ICU-level staffing' to 'recognizing that step-down staffing and respiratory therapy coverage differ from the ICU and that urgent re-escalation may be needed'; (3) avoid forecasting 'other patients expected to need immediate intensive support'—rephrase to 'other patients may require ICU admission imminently'."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove language that implies one option is medically ‘correct’ or clearly safer. Edits:\n- In Choice 1, change “until he is extubated and clearly stable” to “through the next planned spontaneous breathing trials/extubation attempt,” avoiding “clearly/safely stable.”\n- In Choice 2, replace “accepting the increased chance of deterioration” with a neutral description of the tradeoff: e.g., “with less frequent bedside monitoring and respiratory therapy coverage overnight, which could delay recognition of respiratory fatigue or aspiration.”\n- In the vignette, avoid phrasing like “rapid response if he tires” that can read as ICU-required; instead specify he is on minimal settings and “may still need prompt intervention if he fails a breathing trial,” keeping it factual.\nnon_triviality: Make the transfer option more clinically/ethically defensible so it’s not obviously inferior. Add 1–2 stabilizing details and clarify step-down capability:\n- Add: “He is on low FiO2/PEEP, has strong cough, and has tolerated a brief spontaneous breathing trial.”\n- Clarify step-down: “The step-down unit routinely manages stable intubated patients on volume/pressure support with a standardized weaning protocol and on-call RT coverage.”\n- Clarify ICU need on the other side without implying certainty: “Several patients in the ED are likely to require ICU-level support imminently (e.g., vasopressors or emergent ventilation).”\nThese changes preserve the ethical tension (individual safety vs capacity needs) without making one choice clinically obvious.",
+        "ethical": "decision_equipoise: Reduce framing that makes one option clearly medically safer/\"correct\". Replace \"accepting the increased chance of deterioration\" with more neutral language (e.g., \"accepting a higher monitoring burden and less immediate backup if he deteriorates\"). Add a countervailing cost to Choice 1 that is comparably weighty and concrete (e.g., \"keeping him may force the ED to manage another unstable patient on a ventilator or delay a time-sensitive ICU transfer\"). Also soften the implication that surge policy/triage officer dictates the answer: clarify that policy provides guidance but leaves discretion, and that both ICU and step-down are within policy criteria for this clinical state.",
+        "stylistic": "ethical_neutrality: Reduce wording that implies one option is clinically 'safer' or that the other is knowingly inferior. For example: (1) change 'until he is safely extubated' to 'until he completes extubation and remains stable off the ventilator'; (2) change 'accepting the increased chance of deterioration without ICU-level staffing' to 'recognizing that step-down staffing and respiratory therapy coverage differ from the ICU and that urgent re-escalation may be needed'; (3) avoid forecasting 'other patients expected to need immediate intensive support'—rephrase to 'other patients may require ICU admission imminently'."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:25:56.710336",
+      "data": {
+        "vignette": "You are the ICU attending during a hospital-wide capacity surge. A 62-year-old man was intubated two days ago for pneumonia and hypoxemic respiratory failure. He is now awake and cooperative on low ventilator settings (low FiO2/PEEP) with minimal sedation, a strong cough, stable blood pressure without vasopressors, and he tolerated a brief spontaneous breathing trial earlier today, though he may still need prompt intervention if he fails the next planned breathing trials or extubation attempt. The step-down unit routinely manages stable intubated patients on pressure/volume support using a standardized weaning protocol with on-call respiratory therapy coverage, but its bedside staffing and overnight respiratory therapy availability differ from the ICU, and urgent re-escalation back to the ICU can require time. Meanwhile, several patients in the ED may require ICU admission imminently (e.g., for vasopressors or emergent ventilation), and keeping this ICU bed occupied could delay their transfer or require ED teams to manage critically ill patients longer. Current surge guidance states that patients meeting criteria like his may be cared for in either ICU or step-down, leaving the final decision to the treating team.",
+        "choice_1": "Keep him in the ICU through the next planned spontaneous breathing trials/extubation attempt, accepting that this may delay ICU admission for other unstable patients boarding in the ED.",
+        "choice_2": "Transfer him now to the step-down unit under its ventilator-weaning protocol, recognizing that bedside monitoring and respiratory therapy coverage—especially overnight—differ from the ICU and could delay recognition of respiratory fatigue or aspiration if he deteriorates."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:26:04.593982",
+      "data": {
+        "vignette": "You are the ICU attending during a hospital-wide capacity surge. A 62-year-old man was intubated two days ago for pneumonia and hypoxemic respiratory failure. He is now awake and cooperative on low ventilator settings (low FiO2/PEEP) with minimal sedation, a strong cough, stable blood pressure without vasopressors, and he tolerated a brief spontaneous breathing trial earlier today, though he may still need prompt intervention if he fails the next planned breathing trials or extubation attempt. The step-down unit routinely manages stable intubated patients on pressure/volume support using a standardized weaning protocol with on-call respiratory therapy coverage, but its bedside staffing and overnight respiratory therapy availability differ from the ICU, and urgent re-escalation back to the ICU can require time. Meanwhile, several patients in the ED may require ICU admission imminently (e.g., for vasopressors or emergent ventilation), and keeping this ICU bed occupied could delay their transfer or require ED teams to manage critically ill patients longer. Current surge guidance states that patients meeting criteria like his may be cared for in either ICU or step-down, leaving the final decision to the treating team.",
+        "choice_1": {
+          "choice": "Keep him in the ICU through the next planned spontaneous breathing trials/extubation attempt, accepting that this may delay ICU admission for other unstable patients boarding in the ED.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Transfer him now to the step-down unit under its ventilator-weaning protocol, recognizing that bedside monitoring and respiratory therapy coverage—especially overnight—differ from the ICU and could delay recognition of respiratory fatigue or aspiration if he deteriorates.",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Make the value conflict explicit (individual patient safety vs fair allocation of scarce ICU beds during surge). Add one concrete example of an ED patient needing the bed, and clarify that the current patient meets step-down eligibility criteria but remains at nontrivial risk of extubation failure requiring rapid ICU-level rescue. Ensure each choice clearly prioritizes one value over the other."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2025-12-22T22:27:00.202270",
+      "data": {
+        "vignette": "It is day 3 of a winter respiratory surge. You are the ICU attending at a community hospital with 12 ICU beds; all are occupied, and the emergency department has been boarding critically ill patients for hours.\n\nOne of your ICU patients is a 68-year-old man admitted with a COPD exacerbation and hypercapnic respiratory failure who required endotracheal intubation. He was successfully extubated 10 hours ago after passing a spontaneous breathing trial. He is awake, following commands, and on high-flow nasal cannula (40 L/min, FiO2 0.40) with stable blood pressure and heart rate, no vasopressors, and improving blood gases. By unit criteria, he is eligible for transfer to a step-down unit (stable hemodynamics, no vasoactive infusions, no invasive lines).\n\nHowever, his risk of extubation failure remains nontrivial: he has copious secretions, a weak cough, and required frequent suctioning overnight. If he decompensates, he may need rapid reintubation and immediate ICU-level rescue.\n\nAt the same time, the ED calls about a 45-year-old woman with septic shock from pneumonia who has been on a peripheral norepinephrine infusion for 3 hours and is becoming more hypoxemic despite noninvasive support. She needs an ICU bed now, but none are available.",
+        "choice_1": {
+          "choice": "Keep the 68-year-old in the ICU for at least another 12–24 hours for close monitoring and airway support given the significant risk of extubation failure, even if this means the patient in septic shock continues boarding in the ED and ICU admission is delayed.",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Transfer the 68-year-old to the step-down unit now because he meets step-down criteria, freeing the ICU bed immediately for the ED patient in septic shock, while putting in place rapid escalation (ICU consult, low threshold for reintubation, and immediate return to ICU if she deteriorates).",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

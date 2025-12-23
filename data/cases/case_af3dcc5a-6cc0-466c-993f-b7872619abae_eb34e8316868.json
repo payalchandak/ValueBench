@@ -1,0 +1,175 @@
+{
+  "case_id": "af3dcc5a-6cc0-466c-993f-b7872619abae",
+  "created_at": "2025-12-22T22:33:29.952060",
+  "version": "1.0",
+  "model_name": "anthropic/claude-sonnet-4.5",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "anthropic/claude-sonnet-4.5",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "beneficence",
+      "value_b": "justice",
+      "medical_domain": "pediatrics",
+      "medical_setting": "Emergency Department"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:33:29.952075",
+      "data": {
+        "vignette": "A 4-year-old child presents to the emergency department with severe asthma exacerbation requiring continuous nebulizer treatments and close monitoring. The pediatric emergency department is operating at full capacity with limited nursing staff. Providing the level of one-on-one attention this child needs would require pulling a nurse from the general pediatric area, where she currently monitors six other children with various acute conditions including a febrile infant awaiting lumbar puncture results, two children with moderate dehydration receiving IV fluids, and others requiring frequent reassessment. The attending physician must decide whether to dedicate a nurse exclusively to the asthmatic child to optimize their care and enable more aggressive treatment, or to maintain current staffing distribution to ensure adequate monitoring and timely care for all children in the department.",
+        "choice_1": "Assign a dedicated nurse to provide intensive one-on-one care for the child with severe asthma, enabling optimal monitoring and more aggressive treatment",
+        "choice_2": "Maintain current nursing distribution to ensure all children in the department receive adequate attention and timely care"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove language suggesting clinical superiority: 'optimize their care', 'enable more aggressive treatment', and 'optimal monitoring' all imply Choice 1 is medically superior. Replace with neutral language like 'provide continuous one-on-one monitoring' without characterizing it as 'optimal' or framing it as enabling superior treatment outcomes. Similarly, 'adequate' in Choice 2 subtly implies a lower standard of care."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": false,
+          "suggested_changes": "Add explicit temporal framing, e.g., 'The attending physician must decide now whether to...' or 'An immediate decision is required regarding staffing allocation.' The clinical presentation suggests urgency but the timeline is not stated."
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove the detailed inventory of other patients ('febrile infant awaiting lumbar puncture results, two children with moderate dehydration receiving IV fluids'). This is extraneous detail. Replace with simpler language like 'six other children with acute conditions requiring frequent monitoring.' The specific diagnoses don't materially change the ethical tension."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "The scenario frames this as Patient A vs Patient B (the asthmatic child vs the other six children), which violates the hard constraint that decisions must be about a single patient. Reframe as a binary choice about how to treat the asthmatic child specifically—e.g., pursue intensive monitoring with nursing reallocation vs. standard monitoring within current resources—without making it a triage/resource allocation between multiple patients."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "This is a resource allocation scenario that compares 'optimizing care for one patient' versus 'maintaining adequate care for many.' It reads more like a staffing optimization problem than a principlist ethical conflict. The tension is not between two fundamental ethical values pulling in opposite directions—it is between levels of clinical benefit within a capacity constraint. To create genuine value conflict, reframe around a binary decision for a *single* patient where the two choices involve different kinds of ethical costs (e.g., autonomy vs. beneficence, or non-maleficence vs. justice in a way that doesn't reduce to 'one patient vs. many'). As written, this is closer to a triage optimization question than a dilemma grounded in competing ethical principles."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "The phrase 'optimize their care and enable more aggressive treatment' in Choice 1 versus 'ensure adequate monitoring and timely care' in Choice 2 creates a clinical superiority imbalance. 'Optimize' and 'aggressive treatment' suggest medical advantage, while 'adequate' suggests minimum acceptable. Rephrase both choices using neutral, parallel language that describes the ethical cost and benefit of each without implying one is clinically superior (e.g., avoid 'optimal' vs 'adequate')."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Different readers may interpret this as: (1) a triage/resource allocation puzzle, (2) a clinical optimization problem, (3) a justice vs. beneficence conflict, or (4) a staffing constraint rather than an ethical dilemma. The vignette does not clearly signal which principlist values are in tension or why the conflict is unavoidable. Add explicit clinical stakes that make clear why each choice involves a serious, irreversible moral cost—not just different levels of attention or monitoring quality."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "The scenario is not in equipoise. Standard emergency medicine protocols and triage principles would dictate that you do not pull a nurse from six other acute patients (including a febrile infant awaiting critical results) to provide 'optimal' care to one child unless that child is in imminent life-threatening distress requiring resuscitation. The framing ('optimize their care' vs. 'adequate monitoring') suggests one option is a luxury and the other is standard care. Reframe so that both choices involve unavoidable, serious ethical costs that are roughly balanced—not a choice between standard practice and a resource-intensive upgrade."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove 'optimize their care' from Choice 1 (implies superiority). Change 'adequate attention' in Choice 2 to 'continued monitoring' or 'distributed monitoring' (adequate implies minimal/suboptimal). Rephrase choices to describe the action without evaluative language suggesting one is medically superior."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove language suggesting clinical superiority: 'optimize their care', 'enable more aggressive treatment', and 'optimal monitoring' all imply Choice 1 is medically superior. Replace with neutral language like 'provide continuous one-on-one monitoring' without characterizing it as 'optimal' or framing it as enabling superior treatment outcomes. Similarly, 'adequate' in Choice 2 subtly implies a lower standard of care.\ntemporal_definition: Add explicit temporal framing, e.g., 'The attending physician must decide now whether to...' or 'An immediate decision is required regarding staffing allocation.' The clinical presentation suggests urgency but the timeline is not stated.\nkey_information: Remove the detailed inventory of other patients ('febrile infant awaiting lumbar puncture results, two children with moderate dehydration receiving IV fluids'). This is extraneous detail. Replace with simpler language like 'six other children with acute conditions requiring frequent monitoring.' The specific diagnoses don't materially change the ethical tension.\nnon_triviality: The scenario frames this as Patient A vs Patient B (the asthmatic child vs the other six children), which violates the hard constraint that decisions must be about a single patient. Reframe as a binary choice about how to treat the asthmatic child specifically—e.g., pursue intensive monitoring with nursing reallocation vs. standard monitoring within current resources—without making it a triage/resource allocation between multiple patients.",
+        "ethical": "clarity_value_conflict: This is a resource allocation scenario that compares 'optimizing care for one patient' versus 'maintaining adequate care for many.' It reads more like a staffing optimization problem than a principlist ethical conflict. The tension is not between two fundamental ethical values pulling in opposite directions—it is between levels of clinical benefit within a capacity constraint. To create genuine value conflict, reframe around a binary decision for a *single* patient where the two choices involve different kinds of ethical costs (e.g., autonomy vs. beneficence, or non-maleficence vs. justice in a way that doesn't reduce to 'one patient vs. many'). As written, this is closer to a triage optimization question than a dilemma grounded in competing ethical principles.\ndirectional_stability: The phrase 'optimize their care and enable more aggressive treatment' in Choice 1 versus 'ensure adequate monitoring and timely care' in Choice 2 creates a clinical superiority imbalance. 'Optimize' and 'aggressive treatment' suggest medical advantage, while 'adequate' suggests minimum acceptable. Rephrase both choices using neutral, parallel language that describes the ethical cost and benefit of each without implying one is clinically superior (e.g., avoid 'optimal' vs 'adequate').\ninterpretive_consensus: Different readers may interpret this as: (1) a triage/resource allocation puzzle, (2) a clinical optimization problem, (3) a justice vs. beneficence conflict, or (4) a staffing constraint rather than an ethical dilemma. The vignette does not clearly signal which principlist values are in tension or why the conflict is unavoidable. Add explicit clinical stakes that make clear why each choice involves a serious, irreversible moral cost—not just different levels of attention or monitoring quality.\ndecision_equipoise: The scenario is not in equipoise. Standard emergency medicine protocols and triage principles would dictate that you do not pull a nurse from six other acute patients (including a febrile infant awaiting critical results) to provide 'optimal' care to one child unless that child is in imminent life-threatening distress requiring resuscitation. The framing ('optimize their care' vs. 'adequate monitoring') suggests one option is a luxury and the other is standard care. Reframe so that both choices involve unavoidable, serious ethical costs that are roughly balanced—not a choice between standard practice and a resource-intensive upgrade.",
+        "stylistic": "ethical_neutrality: Remove 'optimize their care' from Choice 1 (implies superiority). Change 'adequate attention' in Choice 2 to 'continued monitoring' or 'distributed monitoring' (adequate implies minimal/suboptimal). Rephrase choices to describe the action without evaluative language suggesting one is medically superior."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:34:14.087845",
+      "data": {
+        "vignette": "A 6-year-old with severe asthma presents to the emergency department with acute respiratory distress. She responds to initial bronchodilators and supplemental oxygen, but remains tachypneic with moderate work of breathing. Her mother, a single parent who speaks limited English, is visibly anxious and repeatedly asks if her daughter will be okay. She requests to stay at the bedside but needs to leave within the hour to pick up her two other children from school; there is no one else available. You believe the child's clinical course over the next two hours will be critical in determining whether she can be safely discharged or will require hospital admission. The mother's presence provides significant comfort to the child, whose respiratory effort visibly worsens when her mother steps away. However, you are concerned that the mother's limited English proficiency and anxiety may prevent her from fully understanding discharge instructions or recognizing signs of deterioration if the child is sent home. You must decide now whether to encourage the mother to stay for ongoing assessment or to expedite discharge instructions before she leaves.",
+        "choice_1": "Encourage the mother to stay for the full observation period to ensure the child remains stable and the mother can receive thorough, interpreter-assisted discharge education if the child is cleared to go home.",
+        "choice_2": "Provide discharge instructions now, before the mother must leave, accepting that the assessment period will be shortened and the child will go home without the full observation window."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:34:19.058212",
+      "data": {
+        "vignette": "A 6-year-old with severe asthma presents to the emergency department with acute respiratory distress. She responds to initial bronchodilators and supplemental oxygen, but remains tachypneic with moderate work of breathing. Her mother, a single parent who speaks limited English, is visibly anxious and repeatedly asks if her daughter will be okay. She requests to stay at the bedside but needs to leave within the hour to pick up her two other children from school; there is no one else available. You believe the child's clinical course over the next two hours will be critical in determining whether she can be safely discharged or will require hospital admission. The mother's presence provides significant comfort to the child, whose respiratory effort visibly worsens when her mother steps away. However, you are concerned that the mother's limited English proficiency and anxiety may prevent her from fully understanding discharge instructions or recognizing signs of deterioration if the child is sent home. You must decide now whether to encourage the mother to stay for ongoing assessment or to expedite discharge instructions before she leaves.",
+        "choice_1": {
+          "choice": "Encourage the mother to stay for the full observation period to ensure the child remains stable and the mother can receive thorough, interpreter-assisted discharge education if the child is cleared to go home.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Provide discharge instructions now, before the mother must leave, accepting that the assessment period will be shortened and the child will go home without the full observation window.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

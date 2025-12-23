@@ -1,0 +1,203 @@
+{
+  "case_id": "6d6a4566-f7b5-4ec8-94dd-0c3d545c92f2",
+  "created_at": "2025-12-22T22:29:45.238217",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "autonomy",
+      "value_b": "beneficence",
+      "medical_domain": "pulmonology",
+      "medical_setting": "Emergency Department"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:29:45.238297",
+      "data": {
+        "vignette": "In the Emergency Department, you are the attending physician caring for a 62-year-old with severe COPD who arrives in acute respiratory distress and rising carbon dioxide levels. They are awake, oriented, and can clearly explain their wishes. After a brief trial of noninvasive ventilation, they say the mask feels unbearable and repeatedly refuse any further ventilatory support, including intubation, stating they would rather “take my chances” and not be restrained. Their adult child arrives and pleads for you to “do everything,” arguing the patient always bounces back after flares and may regret refusing once they are more short of breath. The team believes ventilatory support could stabilize the patient and likely allow discharge back to baseline, but proceeding against the patient’s stated refusal would require sedation and physical restraint in the ED.\n\nAs the treating physician, you must decide whether to honor the patient’s refusal now or to proceed with escalating ventilatory support despite the refusal to try to prevent a potentially reversible death.",
+        "choice_1": "Respect the patient’s refusal and stop noninvasive ventilation, focusing on symptom relief and supportive care even if respiratory failure worsens.",
+        "choice_2": "Proceed with escalation to ventilatory support (including sedation/restraint and possible intubation) despite the patient’s refusal to treat the acute, potentially reversible exacerbation."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove outcome-leaning language that frames escalation as clearly successful. Change “ventilatory support could stabilize the patient and likely allow discharge back to baseline” to something like “ventilatory support might stabilize the episode but would involve burdens (ICU stay, discomfort, delirium risk) and may or may not return them to baseline.” Avoid phrasing like “prevent a potentially reversible death” that implies the ethically ‘correct’ choice; rephrase to “address a potentially reversible exacerbation.”"
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 2 a single, concrete, implementable order set rather than “escalation…possible intubation.” For example: “Sedate as needed, apply restraints if required, and perform endotracheal intubation with mechanical ventilation despite refusal.” Alternatively, if the intended action is continued NIV with sedation, state that explicitly. Ensure Choice 1 explicitly includes “no intubation and no further NIV” if that’s intended."
+        },
+        "temporal_definition": {
+          "outcome": false,
+          "suggested_changes": "Add an explicit decision time horizon consistent with ED respiratory failure, e.g., “within the next 15–30 minutes as CO2 is rising and they are tiring,” or “before leaving the resuscitation bay.”"
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, the patient is clearly decision-capable (“awake, oriented, can clearly explain”), making forced intubation/restraint ethically and legally hard to defend; this risks making Choice 2 obviously wrong. To restore genuine difficulty, add credible uncertainty about capacity or voluntariness (e.g., worsening hypercapnic encephalopathy, fluctuating attention, panic/claustrophobia affecting ability to weigh risks, inability to repeat back consequences), or conflicting prior expressed wishes/advance directive, or a long-standing pattern of refusing when distressed but later endorsing life-prolonging treatment. Alternatively, frame Choice 2 as a time-limited trial agreed to previously or via substituted judgment if capacity is impaired."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Revise to avoid a near-automatic requirement to honor a clearly capacitated refusal. Make the patient’s decision-making capacity genuinely uncertain or contested in a clinically plausible way (e.g., hypercapnic encephalopathy with waxing/waning attention, inability to retain/recall information, or intermittent confusion), or introduce credible evidence of prior preferences that conflict with the current refusal (e.g., prior documented statement accepting short-term intubation for reversible COPD flares). Also soften outcome-laden phrasing that makes escalation look clearly medically superior (change “likely allow discharge back to baseline” to “may stabilize them but carries meaningful burdens and uncertain recovery”), and specify a bounded alternative (e.g., time-limited trial of ventilatory support with sedation vs honoring refusal now) so both choices remain ethically defensible."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften persuasive/emotionally loaded phrasing that nudges toward escalation. Examples: change “mask feels unbearable” to “finds the mask intolerable,” change “pleads” to “requests,” and remove “do everything.” Replace “likely allow discharge back to baseline” with a more balanced statement such as “may improve gas exchange and could allow recovery, but requires invasive measures that the patient is refusing.” Also avoid framing death as the primary counterfactual (“prevent a potentially reversible death”); instead say “to treat a potentially reversible exacerbation.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten to a single, lean paragraph by removing repetitive elements and keeping only decision-relevant facts. For example, drop “repeatedly,” “clearly,” and “after flares,” and avoid re-stating the refusal multiple ways. Clarify the clinical trigger for questioning capacity (if any) in one clause (e.g., ‘increasing somnolence’ or ‘still fully oriented’), and keep the decision sentence brief."
+        },
+        "deidentification_novelty": {
+          "outcome": false,
+          "suggested_changes": "Increase novelty and reduce ‘textbook’ recognizability by adding a distinctive but non-identifying clinical/ethical wrinkle that doesn’t predetermine the answer (e.g., a pre-existing but unsigned POLST discussed previously, a documented prior ICU stay where the patient accepted intubation then later said they would not again, or limited English requiring an interpreter creating time pressure). Avoid stock phrasing like “do everything” and “bounces back,” which mirrors common teaching cases."
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove outcome-leaning language that frames escalation as clearly successful. Change “ventilatory support could stabilize the patient and likely allow discharge back to baseline” to something like “ventilatory support might stabilize the episode but would involve burdens (ICU stay, discomfort, delirium risk) and may or may not return them to baseline.” Avoid phrasing like “prevent a potentially reversible death” that implies the ethically ‘correct’ choice; rephrase to “address a potentially reversible exacerbation.”\ndistinctness_actionability: Make Choice 2 a single, concrete, implementable order set rather than “escalation…possible intubation.” For example: “Sedate as needed, apply restraints if required, and perform endotracheal intubation with mechanical ventilation despite refusal.” Alternatively, if the intended action is continued NIV with sedation, state that explicitly. Ensure Choice 1 explicitly includes “no intubation and no further NIV” if that’s intended.\ntemporal_definition: Add an explicit decision time horizon consistent with ED respiratory failure, e.g., “within the next 15–30 minutes as CO2 is rising and they are tiring,” or “before leaving the resuscitation bay.”\nnon_triviality: As written, the patient is clearly decision-capable (“awake, oriented, can clearly explain”), making forced intubation/restraint ethically and legally hard to defend; this risks making Choice 2 obviously wrong. To restore genuine difficulty, add credible uncertainty about capacity or voluntariness (e.g., worsening hypercapnic encephalopathy, fluctuating attention, panic/claustrophobia affecting ability to weigh risks, inability to repeat back consequences), or conflicting prior expressed wishes/advance directive, or a long-standing pattern of refusing when distressed but later endorsing life-prolonging treatment. Alternatively, frame Choice 2 as a time-limited trial agreed to previously or via substituted judgment if capacity is impaired.",
+        "ethical": "decision_equipoise: Revise to avoid a near-automatic requirement to honor a clearly capacitated refusal. Make the patient’s decision-making capacity genuinely uncertain or contested in a clinically plausible way (e.g., hypercapnic encephalopathy with waxing/waning attention, inability to retain/recall information, or intermittent confusion), or introduce credible evidence of prior preferences that conflict with the current refusal (e.g., prior documented statement accepting short-term intubation for reversible COPD flares). Also soften outcome-laden phrasing that makes escalation look clearly medically superior (change “likely allow discharge back to baseline” to “may stabilize them but carries meaningful burdens and uncertain recovery”), and specify a bounded alternative (e.g., time-limited trial of ventilatory support with sedation vs honoring refusal now) so both choices remain ethically defensible.",
+        "stylistic": "ethical_neutrality: Remove or soften persuasive/emotionally loaded phrasing that nudges toward escalation. Examples: change “mask feels unbearable” to “finds the mask intolerable,” change “pleads” to “requests,” and remove “do everything.” Replace “likely allow discharge back to baseline” with a more balanced statement such as “may improve gas exchange and could allow recovery, but requires invasive measures that the patient is refusing.” Also avoid framing death as the primary counterfactual (“prevent a potentially reversible death”); instead say “to treat a potentially reversible exacerbation.”\nconciseness_coherence: Tighten to a single, lean paragraph by removing repetitive elements and keeping only decision-relevant facts. For example, drop “repeatedly,” “clearly,” and “after flares,” and avoid re-stating the refusal multiple ways. Clarify the clinical trigger for questioning capacity (if any) in one clause (e.g., ‘increasing somnolence’ or ‘still fully oriented’), and keep the decision sentence brief.\ndeidentification_novelty: Increase novelty and reduce ‘textbook’ recognizability by adding a distinctive but non-identifying clinical/ethical wrinkle that doesn’t predetermine the answer (e.g., a pre-existing but unsigned POLST discussed previously, a documented prior ICU stay where the patient accepted intubation then later said they would not again, or limited English requiring an interpreter creating time pressure). Avoid stock phrasing like “do everything” and “bounces back,” which mirrors common teaching cases."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:30:46.029423",
+      "data": {
+        "vignette": "An older adult with severe COPD arrives in the ED in acute hypercapnic respiratory failure. Noninvasive ventilation has been started, but they find the mask intolerable and keep pulling it off; their speech is pressured and tangential, and over the last hour they have become intermittently drowsy and unable to consistently repeat back what could happen if breathing worsens. The respiratory therapist reports rising CO2 and increasing fatigue, and the team believes a short period of mechanical ventilation could treat a potentially reversible exacerbation but would require ICU admission, sedation, and may or may not return the patient to their prior level of function. In the chart is a recent pulmonology note describing a prior ICU stay where the patient later said they would accept temporary intubation again for a severe flare, though they also voiced fear of being kept on machines; no signed POLST is available, and a family member has not yet arrived. As the treating emergency physician, you must decide within the next 20–30 minutes whether to honor the current refusal or proceed based on concern that the patient’s capacity is impaired by hypercapnia and distress.",
+        "choice_1": "Stop NIV and do not intubate; treat symptoms and focus on comfort while continuing attempts to clarify goals as time allows.",
+        "choice_2": "Sedate as needed (and use restraints if required) to perform endotracheal intubation and initiate mechanical ventilation as a time-limited trial despite the current refusal."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:30:54.728235",
+      "data": {
+        "vignette": "An older adult with severe COPD arrives in the ED in acute hypercapnic respiratory failure. Noninvasive ventilation has been started, but they find the mask intolerable and keep pulling it off; their speech is pressured and tangential, and over the last hour they have become intermittently drowsy and unable to consistently repeat back what could happen if breathing worsens. The respiratory therapist reports rising CO2 and increasing fatigue, and the team believes a short period of mechanical ventilation could treat a potentially reversible exacerbation but would require ICU admission, sedation, and may or may not return the patient to their prior level of function. In the chart is a recent pulmonology note describing a prior ICU stay where the patient later said they would accept temporary intubation again for a severe flare, though they also voiced fear of being kept on machines; no signed POLST is available, and a family member has not yet arrived. As the treating emergency physician, you must decide within the next 20–30 minutes whether to honor the current refusal or proceed based on concern that the patient’s capacity is impaired by hypercapnia and distress.",
+        "choice_1": {
+          "choice": "Stop NIV and do not intubate; treat symptoms and focus on comfort while continuing attempts to clarify goals as time allows.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Sedate as needed (and use restraints if required) to perform endotracheal intubation and initiate mechanical ventilation as a time-limited trial despite the current refusal.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Explicitly frame the core value conflict: (1) respecting a contemporaneous refusal that may be non-capacitous versus (2) overriding it based on impaired decision-making capacity and previously expressed willingness for time-limited intubation. Add brief, concrete indicators of incapacity (e.g., inability to understand/appreciate/reason/communicate consistently) and a note that the situation is emergent with no surrogate immediately reachable. Ensure each choice clearly represents either honoring refusal/comfort-focused care or proceeding with intubation as a time-limited trial with planned reassessment and safeguards."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Make the autonomy–beneficence conflict more explicit by (1) quoting the patient's current refusal and reasons; (2) stating what elements of decision-making capacity are impaired (understanding/appreciation/communication) due to hypercapnia/delirium; (3) clarifying the stakes and time pressure (risk of arrest/death without ventilatory support vs risks of sedation/restraints/ICU course); and (4) sharpening the choices to explicitly contrast honoring the apparent refusal versus overriding it based on presumed incapacity and prior expressed willingness for a time-limited trial."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2025-12-22T22:31:26.643161",
+      "data": {
+        "vignette": "A 68-year-old man with severe COPD and chronic hypercapnia is brought to the ED in acute respiratory distress. He is tachypneic, using accessory muscles, and increasingly somnolent. ABG shows pH 7.18, PaCO₂ 92 mmHg, PaO₂ 54 mmHg on high-flow oxygen. Despite BiPAP, his mental status fluctuates; he pulls off the mask and alternates between agitation and confusion. When the resident explains that he may need a breathing tube to prevent respiratory arrest, he repeatedly says, “No tube—don’t put me on machines,” but seconds later cannot repeat back what was explained, cannot describe the consequences of refusing, and gives inconsistent answers about what he wants. The chart documents that three months ago, during a pulmonary clinic visit while stable, he stated he would accept a *time-limited trial of intubation* for a reversible exacerbation but would not want prolonged life support. His daughter is listed as health care proxy, but the team cannot reach her despite multiple calls, and the patient is decompensating with imminent risk of arrest if ventilatory support is not escalated.",
+        "choice_1": {
+          "choice": "Honor the patient’s contemporaneous refusal of intubation, transition to comfort-focused treatment (opioids/anxiolysis, supplemental oxygen as tolerated), and do not intubate even if he deteriorates.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Determine that the patient currently lacks decision-making capacity due to hypercapnic delirium; proceed with intubation as an emergency, *time-limited trial* consistent with his previously expressed wishes, with sedation/restraints only as necessary, frequent reassessment, and a plan to revisit goals of care as soon as a surrogate is reached.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

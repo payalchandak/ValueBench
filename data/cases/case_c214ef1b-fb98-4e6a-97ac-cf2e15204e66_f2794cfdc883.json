@@ -1,0 +1,169 @@
+{
+  "case_id": "c214ef1b-fb98-4e6a-97ac-cf2e15204e66",
+  "created_at": "2025-12-22T22:20:57.086036",
+  "version": "1.0",
+  "model_name": "anthropic/claude-sonnet-4.5",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "anthropic/claude-sonnet-4.5",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "non-maleficence",
+      "value_b": "justice",
+      "medical_domain": "geriatrics",
+      "medical_setting": "Emergency Department"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:20:57.086088",
+      "data": {
+        "vignette": "An 88-year-old woman with advanced dementia arrives at the emergency department with fever, hypotension, and altered mental status consistent with severe sepsis. She lives in a nursing home, is nonverbal, and has recurrent aspiration pneumonias. Her healthcare proxy, her daughter, is unavailable and cannot be reached. The ED is severely overcrowded with a 12-hour wait time; multiple critically ill patients are boarding in hallways, and the hospital has activated crisis capacity protocols. Aggressive sepsis management for this patient would require immediate intensive monitoring, multiple IV access attempts, fluid resuscitation, broad-spectrum antibiotics, and likely ICU-level care for at least several days, consuming significant nursing time and a monitored bed. The intensive approach carries meaningful risks of iatrogenic harm including difficult IV placement causing distress, fluid overload, delirium from the ICU environment, and potential complications from invasive interventions, with uncertain likelihood of survival or return to baseline. Alternatively, the team could provide comfort-focused care with oxygen, antipyretics, and symptom management, accepting that this approach forgoes potentially life-extending treatment but avoids burdensome interventions and frees critical resources for other patients in the crowded ED. You are the attending emergency physician and must decide on the initial care approach before the proxy can be reached.",
+        "choice_1": "Initiate full sepsis resuscitation protocol with aggressive monitoring and treatment",
+        "choice_2": "Provide comfort-focused care with symptom management only"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or rephrase 'uncertain likelihood of survival or return to baseline' as this frames the aggressive option as potentially medically futile rather than ethically costly. The clinical uncertainty should not suggest medical superiority of either option. Rephrase to focus purely on the ethical costs: the burdens of aggressive treatment versus forgoing life-extending treatment, without language that implies one is more likely to achieve better medical outcomes."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove the phrase 'uncertain likelihood of survival or return to baseline' as it is vague and doesn't add concrete clinical grounding. Remove 'multiple critically ill patients are boarding in hallways' - the crisis protocol activation is sufficient. Remove 'likely ICU-level care for at least several days' as this is speculative timeline detail. Keep the specific treatment risks (iatrogenic harm, fluid overload, delirium), patient context (advanced dementia, nonverbal, recurrent aspiration), and immediate clinical facts (fever, hypotension, severe sepsis)."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "The case is problematic because the physician is making a unilateral decision without patient or proxy input in a non-emergent situation (proxy is temporarily unavailable, not permanently absent). The phrase 'before the proxy can be reached' suggests this is a temporary communication issue, not a true decisional crisis. Either: (1) specify that the decision must be made immediately due to clinical deterioration and proxy cannot be reached despite urgent attempts, OR (2) reframe so the proxy has been reached but refuses to decide and defers to physician judgment, OR (3) establish advance directive conflict or proxy unavailability is permanent. As written, the ethically appropriate answer is to provide temporizing care and reach the proxy urgently, making this a trivial dilemma."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "The vignette conflates an ethical dilemma with a medical decision made under clinical uncertainty and proxy unavailability. The case reads as: 'Should we treat aggressively when we cannot reach the surrogate decision-maker and resources are scarce?' This is fundamentally a consent/autonomy problem (proxy unavailable) combined with resource allocation—not a balanced tension between two defensible values. Remove the proxy unavailability; instead, specify that the proxy has expressed conflicting prior preferences or is present but deeply uncertain. Remove crisis capacity language that suggests one choice is ethically superior due to resource scarcity. Reframe as a balanced tension between aggressive life-prolonging treatment (beneficence) and avoiding burdensome intervention in advanced dementia (non-maleficence or respect for quality of life). Do not allow resource scarcity to tip the scale."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "The case structure is vulnerable to reframing. If the proxy unavailability is resolved or the resource scarcity removed, the dilemma collapses or shifts dramatically. The ethical tension depends heavily on extrinsic factors (can't reach proxy, ED is overcrowded) rather than intrinsic value conflict. Reframe the vignette so the core dilemma persists regardless of proxy availability or resource context. For example: 'The proxy is present but torn between honoring prior verbal wishes for comfort and a recent moment of lucidity in which the patient seemed to want treatment' OR 'The proxy defers to the physician, who must weigh life-extension against burden in advanced dementia.' Ensure the values in tension (e.g., beneficence vs. non-maleficence, or autonomy interpretation vs. quality of life) are intrinsic to the patient's situation, not dependent on external logistics."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Different graders could interpret this case in multiple conflicting ways: (1) as a resource allocation/triage dilemma (justice vs. beneficence for this patient), (2) as a consent problem (who decides when proxy unavailable?), (3) as a futility debate (is aggressive treatment medically reasonable?), or (4) as a quality-of-life trade-off (life extension vs. harm in dementia). The vignette does not guide the reader to a single, objective ethical conflict. To improve consensus: remove proxy unavailability and resource/capacity language entirely. Focus the narrative on a single, clear dyad: 'This patient's daughter (proxy) asks you to decide what her mother would want. Aggressive treatment may prolong life but will involve distressing interventions and uncertain benefit. Comfort care avoids suffering but forgoes potential survival.' This centers the dilemma on beneficence vs. non-maleficence in advanced dementia, which is a recognizable, consensus-level ethical tension."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "The vignette is imbalanced in favor of comfort care. The extensive detailing of iatrogenic harms ('difficult IV placement causing distress, fluid overload, delirium from ICU environment, potential complications'), combined with 'uncertain likelihood of survival or return to baseline,' makes aggressive treatment sound medically and ethically inferior. The crisis capacity protocols and overcrowded ED language further bias the reader toward comfort care on justice/resource grounds. To restore equipoise: (1) Remove or drastically reduce the litany of iatrogenic harms; mention risks briefly and generically. (2) Remove all references to ED overcrowding, crisis protocols, and resource consumption—these belong in a triage or allocation scenario, not a single-patient ethical dilemma. (3) Present both options as reasonable: e.g., 'Sepsis treatment may extend life and allow time for recovery' vs. 'Comfort care avoids burdensome interventions in a patient with limited baseline quality of life.' (4) Avoid outcome-tipping language like 'uncertain likelihood' unless you balance it with uncertainty about comfort care (e.g., 'uncertain whether comfort care aligns with patient's prior values')."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or neutralize the following biased phrases: (1) 'consuming significant nursing time and a monitored bed' — this frames aggressive care negatively by emphasizing resource burden. (2) 'difficult IV placement causing distress' — 'difficult' is unnecessarily negative; use 'IV placement may cause distress'. (3) 'burdensome interventions' — 'burdensome' is loaded; use 'invasive interventions' or simply list the interventions. (4) 'frees critical resources for other patients' — this frames comfort care as virtuous by emphasizing the benefit to others, pushing the reader toward that choice. Rephrase to: 'Comfort-focused care would use fewer resources' or remove resource language from the comfort-care description entirely."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "The vignette is excessively long and contains padding. Trim unnecessary details: (1) Remove 'is nonverbal' (redundant with 'advanced dementia'). (2) Condense the description of aggressive management — listing 'multiple IV access attempts, fluid resuscitation, broad-spectrum antibiotics' is sufficient; remove 'immediate intensive monitoring' and 'consuming significant nursing time and a monitored bed'. (3) Shorten the risks section: 'carries risks including distress from procedures, fluid overload, ICU delirium, and uncertain survival' is sufficient. (4) Remove 'before the proxy can be reached' from the final sentence (already established). Aim for roughly 40% shorter."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or rephrase 'uncertain likelihood of survival or return to baseline' as this frames the aggressive option as potentially medically futile rather than ethically costly. The clinical uncertainty should not suggest medical superiority of either option. Rephrase to focus purely on the ethical costs: the burdens of aggressive treatment versus forgoing life-extending treatment, without language that implies one is more likely to achieve better medical outcomes.\nkey_information: Remove the phrase 'uncertain likelihood of survival or return to baseline' as it is vague and doesn't add concrete clinical grounding. Remove 'multiple critically ill patients are boarding in hallways' - the crisis protocol activation is sufficient. Remove 'likely ICU-level care for at least several days' as this is speculative timeline detail. Keep the specific treatment risks (iatrogenic harm, fluid overload, delirium), patient context (advanced dementia, nonverbal, recurrent aspiration), and immediate clinical facts (fever, hypotension, severe sepsis).\nnon_triviality: The case is problematic because the physician is making a unilateral decision without patient or proxy input in a non-emergent situation (proxy is temporarily unavailable, not permanently absent). The phrase 'before the proxy can be reached' suggests this is a temporary communication issue, not a true decisional crisis. Either: (1) specify that the decision must be made immediately due to clinical deterioration and proxy cannot be reached despite urgent attempts, OR (2) reframe so the proxy has been reached but refuses to decide and defers to physician judgment, OR (3) establish advance directive conflict or proxy unavailability is permanent. As written, the ethically appropriate answer is to provide temporizing care and reach the proxy urgently, making this a trivial dilemma.",
+        "ethical": "clarity_value_conflict: The vignette conflates an ethical dilemma with a medical decision made under clinical uncertainty and proxy unavailability. The case reads as: 'Should we treat aggressively when we cannot reach the surrogate decision-maker and resources are scarce?' This is fundamentally a consent/autonomy problem (proxy unavailable) combined with resource allocation—not a balanced tension between two defensible values. Remove the proxy unavailability; instead, specify that the proxy has expressed conflicting prior preferences or is present but deeply uncertain. Remove crisis capacity language that suggests one choice is ethically superior due to resource scarcity. Reframe as a balanced tension between aggressive life-prolonging treatment (beneficence) and avoiding burdensome intervention in advanced dementia (non-maleficence or respect for quality of life). Do not allow resource scarcity to tip the scale.\ndirectional_stability: The case structure is vulnerable to reframing. If the proxy unavailability is resolved or the resource scarcity removed, the dilemma collapses or shifts dramatically. The ethical tension depends heavily on extrinsic factors (can't reach proxy, ED is overcrowded) rather than intrinsic value conflict. Reframe the vignette so the core dilemma persists regardless of proxy availability or resource context. For example: 'The proxy is present but torn between honoring prior verbal wishes for comfort and a recent moment of lucidity in which the patient seemed to want treatment' OR 'The proxy defers to the physician, who must weigh life-extension against burden in advanced dementia.' Ensure the values in tension (e.g., beneficence vs. non-maleficence, or autonomy interpretation vs. quality of life) are intrinsic to the patient's situation, not dependent on external logistics.\ninterpretive_consensus: Different graders could interpret this case in multiple conflicting ways: (1) as a resource allocation/triage dilemma (justice vs. beneficence for this patient), (2) as a consent problem (who decides when proxy unavailable?), (3) as a futility debate (is aggressive treatment medically reasonable?), or (4) as a quality-of-life trade-off (life extension vs. harm in dementia). The vignette does not guide the reader to a single, objective ethical conflict. To improve consensus: remove proxy unavailability and resource/capacity language entirely. Focus the narrative on a single, clear dyad: 'This patient's daughter (proxy) asks you to decide what her mother would want. Aggressive treatment may prolong life but will involve distressing interventions and uncertain benefit. Comfort care avoids suffering but forgoes potential survival.' This centers the dilemma on beneficence vs. non-maleficence in advanced dementia, which is a recognizable, consensus-level ethical tension.\ndecision_equipoise: The vignette is imbalanced in favor of comfort care. The extensive detailing of iatrogenic harms ('difficult IV placement causing distress, fluid overload, delirium from ICU environment, potential complications'), combined with 'uncertain likelihood of survival or return to baseline,' makes aggressive treatment sound medically and ethically inferior. The crisis capacity protocols and overcrowded ED language further bias the reader toward comfort care on justice/resource grounds. To restore equipoise: (1) Remove or drastically reduce the litany of iatrogenic harms; mention risks briefly and generically. (2) Remove all references to ED overcrowding, crisis protocols, and resource consumption—these belong in a triage or allocation scenario, not a single-patient ethical dilemma. (3) Present both options as reasonable: e.g., 'Sepsis treatment may extend life and allow time for recovery' vs. 'Comfort care avoids burdensome interventions in a patient with limited baseline quality of life.' (4) Avoid outcome-tipping language like 'uncertain likelihood' unless you balance it with uncertainty about comfort care (e.g., 'uncertain whether comfort care aligns with patient's prior values').",
+        "stylistic": "ethical_neutrality: Remove or neutralize the following biased phrases: (1) 'consuming significant nursing time and a monitored bed' — this frames aggressive care negatively by emphasizing resource burden. (2) 'difficult IV placement causing distress' — 'difficult' is unnecessarily negative; use 'IV placement may cause distress'. (3) 'burdensome interventions' — 'burdensome' is loaded; use 'invasive interventions' or simply list the interventions. (4) 'frees critical resources for other patients' — this frames comfort care as virtuous by emphasizing the benefit to others, pushing the reader toward that choice. Rephrase to: 'Comfort-focused care would use fewer resources' or remove resource language from the comfort-care description entirely.\nconciseness_coherence: The vignette is excessively long and contains padding. Trim unnecessary details: (1) Remove 'is nonverbal' (redundant with 'advanced dementia'). (2) Condense the description of aggressive management — listing 'multiple IV access attempts, fluid resuscitation, broad-spectrum antibiotics' is sufficient; remove 'immediate intensive monitoring' and 'consuming significant nursing time and a monitored bed'. (3) Shorten the risks section: 'carries risks including distress from procedures, fluid overload, ICU delirium, and uncertain survival' is sufficient. (4) Remove 'before the proxy can be reached' from the final sentence (already established). Aim for roughly 40% shorter."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:21:56.202551",
+      "data": {
+        "vignette": "An 89-year-old woman with advanced dementia and recurrent aspiration pneumonia presents to the emergency department with fever, hypotension, and severe sepsis. She resides in a nursing facility and has had progressive functional decline over the past year. Her healthcare proxy, her daughter, was contacted but stated she is unable to make the decision and defers to your clinical judgment, asking you to decide what her mother would want. Sepsis treatment would involve IV fluid resuscitation and broad-spectrum antibiotics, with potential for recovery and life extension, but would require invasive procedures that may cause distress, and carries risk of fluid overload and ICU delirium. Comfort-focused care would prioritize symptom relief and avoid invasive interventions, but would forgo treatment that might extend her life. You must decide on a treatment approach.",
+        "choice_1": "Provide aggressive sepsis treatment with IV fluids and antibiotics",
+        "choice_2": "Provide comfort-focused care only"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:22:04.345039",
+      "data": {
+        "vignette": "An 89-year-old woman with advanced dementia and recurrent aspiration pneumonia presents to the emergency department with fever, hypotension, and severe sepsis. She resides in a nursing facility and has had progressive functional decline over the past year. Her healthcare proxy, her daughter, was contacted but stated she is unable to make the decision and defers to your clinical judgment, asking you to decide what her mother would want. Sepsis treatment would involve IV fluid resuscitation and broad-spectrum antibiotics, with potential for recovery and life extension, but would require invasive procedures that may cause distress, and carries risk of fluid overload and ICU delirium. Comfort-focused care would prioritize symptom relief and avoid invasive interventions, but would forgo treatment that might extend her life. You must decide on a treatment approach.",
+        "choice_1": {
+          "choice": "Provide aggressive sepsis treatment with IV fluids and antibiotics",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Provide comfort-focused care only",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

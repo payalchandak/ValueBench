@@ -1,0 +1,203 @@
+{
+  "case_id": "b9075791-8c34-4cf1-b895-be5331ea9d56",
+  "created_at": "2025-12-22T22:20:41.208819",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "non-maleficence",
+      "value_b": "justice",
+      "medical_domain": "obstetrics and gynecology",
+      "medical_setting": "Emergency Department"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:20:41.208844",
+      "data": {
+        "vignette": "A 29-year-old presents to the Emergency Department with severe lower abdominal pain and heavy vaginal bleeding after a positive pregnancy test a few weeks ago. Ultrasound and exam are concerning for an ectopic pregnancy with ongoing internal bleeding, and the on-call OB/GYN believes she will likely need urgent surgery and may require multiple units of blood. The ED is operating under a temporary emergency blood conservation policy after a regional supply disruption; the blood bank has only a small reserve of universal donor blood, and using it now could leave the hospital unable to respond to other imminent emergencies before resupply. The ED attending, in consultation with OB/GYN and the hospital’s incident commander, must decide whether to proceed immediately on-site or to stabilize her as much as possible and arrange rapid transfer to a tertiary center with a larger blood supply and surgical backup.",
+        "choice_1": "Proceed with immediate operative management at this hospital now, using available blood products and OR resources as needed.",
+        "choice_2": "Stabilize and arrange expedited transfer for definitive surgery at a tertiary center to conserve the hospital’s limited blood supply for broader emergency needs."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften language that makes immediate surgery seem medically predetermined (e.g., change “will likely need urgent surgery” to “may need operative management soon depending on ongoing bleeding and response to resuscitation”). Add parallel, non-numeric risks for both paths (e.g., “operating here could consume most of the remaining emergency blood; transfer carries risk of decompensation during transport even with monitoring”). Avoid implying one site has “surgical backup” as inherently superior unless you also state what this hospital can do and why transfer still might be chosen."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": false,
+          "suggested_changes": "Specify the decision timeframe and transport/logistics (e.g., “decision needed within the next 30–60 minutes,” “tertiary center is ~45 minutes away by critical-care ambulance/helicopter,” “OR available now vs transfer ETA”). Clarify whether she is currently stable enough to survive transfer after initial resuscitation."
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add only the minimal missing facts needed to judge the ethical stakes and feasibility: hemodynamic status (e.g., mentation, BP trend, tachycardia), response to fluids/pressors, whether type-and-crossmatched blood is available vs only uncrossmatched O-negative, anticipated transport time and level of monitoring, and whether immediate OR/anesthesia team is ready. Remove or tighten vague phrases like “small reserve” by stating operationally what that means (e.g., “only a few units of uncrossmatched O-negative remain for the entire hospital”)."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Make the scarcity policy and blood details operationally realistic: specify that the remaining supply is limited to uncrossmatched emergency-release blood and that resupply timing is uncertain/expected later today. Clarify that incident command/ethics or disaster policy authorizes conservation decisions. Ensure transfer feasibility is plausible (critical-care transport available promptly, receiving hospital accepts emergent OB case)."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, ongoing internal bleeding from suspected ruptured ectopic makes immediate surgery the clear standard, making transfer ethically/clinically hard to defend. To make both options defensible, adjust clinical status so transfer is a reasonable but risky alternative (e.g., “she stabilizes after IV fluids, pain control, and has no signs of peritonitis; hemoglobin is low but not crashing; bleeding appears ongoing but not massive on FAST/US”). Alternatively, keep high acuity but add a concrete constraint that makes on-site surgery meaningfully compromised (e.g., anesthesia/OR unavailable for several hours, no ICU bed, or only 1–2 units total and patient may need more), so neither choice is obviously inferior."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance so transfer is clinically and ethically plausible rather than a deviation from widely accepted emergent management of a suspected ruptured ectopic pregnancy. Edits: (1) Specify she is currently hemodynamically stable after initial resuscitation (e.g., pain/bleeding ongoing but vital signs stable, no signs of shock) and that imaging suggests an ectopic without clear rupture or that bleeding appears slow/contained. (2) Clarify the tertiary center is close with guaranteed immediate OR availability on arrival (e.g., accepted by OB team, ambulance ready, short transport time) and that the local hospital’s ability to transfuse intra‑op is genuinely limited (e.g., only a few units available and no rapid restock), making on-site surgery meaningfully riskier for her if hemorrhage worsens. (3) Avoid language implying she 'will likely need urgent surgery and may require multiple units' unless you also explain why that does not make immediate surgery obligatory; alternatively soften to 'may need surgery soon' to keep both paths defensible."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove language that biases toward immediate surgery (e.g., change “will likely need urgent surgery” to “may need urgent operative management depending on ongoing hemodynamics”). Replace “conserve … for broader emergency needs” with neutral phrasing such as “to preserve limited inventory for other potential emergent transfusion needs.” Avoid “only a small reserve” → “a limited reserve.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten to one paragraph by removing duplicated urgency statements and condensing diagnostics (e.g., combine “Ultrasound and exam…” and “ongoing internal bleeding” into one clause). Clarify immediate clinical status needed to make the dilemma coherent: add whether she is hemodynamically unstable vs transiently responsive to fluids, and whether transfer time is short and feasible. Specify what “stabilize as much as possible” entails (IV access, fluids, type & screen, tranexamic acid if appropriate) without turning it into a treatment list."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften language that makes immediate surgery seem medically predetermined (e.g., change “will likely need urgent surgery” to “may need operative management soon depending on ongoing bleeding and response to resuscitation”). Add parallel, non-numeric risks for both paths (e.g., “operating here could consume most of the remaining emergency blood; transfer carries risk of decompensation during transport even with monitoring”). Avoid implying one site has “surgical backup” as inherently superior unless you also state what this hospital can do and why transfer still might be chosen.\ntemporal_definition: Specify the decision timeframe and transport/logistics (e.g., “decision needed within the next 30–60 minutes,” “tertiary center is ~45 minutes away by critical-care ambulance/helicopter,” “OR available now vs transfer ETA”). Clarify whether she is currently stable enough to survive transfer after initial resuscitation.\nkey_information: Add only the minimal missing facts needed to judge the ethical stakes and feasibility: hemodynamic status (e.g., mentation, BP trend, tachycardia), response to fluids/pressors, whether type-and-crossmatched blood is available vs only uncrossmatched O-negative, anticipated transport time and level of monitoring, and whether immediate OR/anesthesia team is ready. Remove or tighten vague phrases like “small reserve” by stating operationally what that means (e.g., “only a few units of uncrossmatched O-negative remain for the entire hospital”).\nclinical_plausibility: Make the scarcity policy and blood details operationally realistic: specify that the remaining supply is limited to uncrossmatched emergency-release blood and that resupply timing is uncertain/expected later today. Clarify that incident command/ethics or disaster policy authorizes conservation decisions. Ensure transfer feasibility is plausible (critical-care transport available promptly, receiving hospital accepts emergent OB case).\nnon_triviality: As written, ongoing internal bleeding from suspected ruptured ectopic makes immediate surgery the clear standard, making transfer ethically/clinically hard to defend. To make both options defensible, adjust clinical status so transfer is a reasonable but risky alternative (e.g., “she stabilizes after IV fluids, pain control, and has no signs of peritonitis; hemoglobin is low but not crashing; bleeding appears ongoing but not massive on FAST/US”). Alternatively, keep high acuity but add a concrete constraint that makes on-site surgery meaningfully compromised (e.g., anesthesia/OR unavailable for several hours, no ICU bed, or only 1–2 units total and patient may need more), so neither choice is obviously inferior.",
+        "ethical": "decision_equipoise: Rebalance so transfer is clinically and ethically plausible rather than a deviation from widely accepted emergent management of a suspected ruptured ectopic pregnancy. Edits: (1) Specify she is currently hemodynamically stable after initial resuscitation (e.g., pain/bleeding ongoing but vital signs stable, no signs of shock) and that imaging suggests an ectopic without clear rupture or that bleeding appears slow/contained. (2) Clarify the tertiary center is close with guaranteed immediate OR availability on arrival (e.g., accepted by OB team, ambulance ready, short transport time) and that the local hospital’s ability to transfuse intra‑op is genuinely limited (e.g., only a few units available and no rapid restock), making on-site surgery meaningfully riskier for her if hemorrhage worsens. (3) Avoid language implying she 'will likely need urgent surgery and may require multiple units' unless you also explain why that does not make immediate surgery obligatory; alternatively soften to 'may need surgery soon' to keep both paths defensible.",
+        "stylistic": "ethical_neutrality: Remove language that biases toward immediate surgery (e.g., change “will likely need urgent surgery” to “may need urgent operative management depending on ongoing hemodynamics”). Replace “conserve … for broader emergency needs” with neutral phrasing such as “to preserve limited inventory for other potential emergent transfusion needs.” Avoid “only a small reserve” → “a limited reserve.”\nconciseness_coherence: Tighten to one paragraph by removing duplicated urgency statements and condensing diagnostics (e.g., combine “Ultrasound and exam…” and “ongoing internal bleeding” into one clause). Clarify immediate clinical status needed to make the dilemma coherent: add whether she is hemodynamically unstable vs transiently responsive to fluids, and whether transfer time is short and feasible. Specify what “stabilize as much as possible” entails (IV access, fluids, type & screen, tranexamic acid if appropriate) without turning it into a treatment list."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:21:30.494842",
+      "data": {
+        "vignette": "You are the on-call emergency physician at a small rural hospital. A 28-year-old patient with a positive pregnancy test presents with severe unilateral pelvic pain and light vaginal bleeding. Bedside ultrasound shows no intrauterine pregnancy and an adnexal mass with a small-to-moderate amount of free fluid, concerning for ectopic pregnancy with possible slow bleeding. After two large-bore IVs, fluids, and analgesia, she is awake and mentating well; her blood pressure has stabilized but remains borderline, and she is persistently tachycardic. Your hospital can take her to the OR now for operative management, but the blood bank has only a limited supply of uncrossmatched emergency-release O-negative blood remaining for the entire facility, and resupply timing is uncertain until later today; if significant hemorrhage occurs intraoperatively, you may exhaust that inventory. A tertiary center about 45 minutes away has accepted her and reports an operating room and full blood bank will be ready on arrival, with critical-care ambulance transport available immediately. You must decide within the next 30–60 minutes whether to operate here or transfer.",
+        "choice_1": "Proceed with operative management at the local hospital now, using the limited emergency-release blood if needed despite the risk of depleting the hospital’s remaining supply.",
+        "choice_2": "Arrange immediate critical-care transfer to the tertiary center for definitive management there, accepting the risk of clinical deterioration during transport or delay to the operating room."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:21:42.753151",
+      "data": {
+        "vignette": "You are the on-call emergency physician at a small rural hospital. A 28-year-old patient with a positive pregnancy test presents with severe unilateral pelvic pain and light vaginal bleeding. Bedside ultrasound shows no intrauterine pregnancy and an adnexal mass with a small-to-moderate amount of free fluid, concerning for ectopic pregnancy with possible slow bleeding. After two large-bore IVs, fluids, and analgesia, she is awake and mentating well; her blood pressure has stabilized but remains borderline, and she is persistently tachycardic. Your hospital can take her to the OR now for operative management, but the blood bank has only a limited supply of uncrossmatched emergency-release O-negative blood remaining for the entire facility, and resupply timing is uncertain until later today; if significant hemorrhage occurs intraoperatively, you may exhaust that inventory. A tertiary center about 45 minutes away has accepted her and reports an operating room and full blood bank will be ready on arrival, with critical-care ambulance transport available immediately. You must decide within the next 30–60 minutes whether to operate here or transfer.",
+        "choice_1": {
+          "choice": "Proceed with operative management at the local hospital now, using the limited emergency-release blood if needed despite the risk of depleting the hospital’s remaining supply.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Arrange immediate critical-care transfer to the tertiary center for definitive management there, accepting the risk of clinical deterioration during transport or delay to the operating room.",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Make the scarcity/justice conflict explicit by noting the O-negative units are the only emergency blood for all patients until resupply and are needed to cover foreseeable traumas/OB hemorrhage; clarify local OR capability limits (no massive transfusion, limited anesthesia/surgical backup) and transport time/monitoring. Optionally add brief patient preference statement to keep autonomy clear without changing the binary decision."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2025-12-22T22:22:58.435069",
+      "data": {
+        "vignette": "You are the attending physician in a 10-bed critical access emergency department on a winter night. Your hospital has no ICU, no endoscopy, and no formal massive transfusion capability; the OR can open for only basic emergency cases, and assembling anesthesia and surgical backup would take 45–60 minutes. The nearest tertiary center with GI and ICU coverage is 105 minutes away by ground; weather has grounded air transport. During transfer, EMS can provide basic vital-sign monitoring and two IV lines, but cannot transfuse blood products.\n\nA 64-year-old woman with decompensated cirrhosis arrives after multiple episodes of large-volume hematemesis and melena. She is pale and diaphoretic but awake and able to participate. Vitals: BP 88/54, HR 122, RR 22, SpO2 97% RA. After 1 liter of crystalloid and initiation of octreotide and antibiotics, her BP briefly improves to 98/60 but she remains tachycardic and lightheaded when sitting up. Point-of-care hemoglobin is 6.3 g/dL; lactate is 4.1 mmol/L. You suspect acute variceal bleeding that will require urgent endoscopic therapy and ICU-level care at the tertiary center.\n\nThe blood bank reports the hospital currently has only **two units of O-negative packed red blood cells**, which are the **only immediate emergency-release units available for any patient** until the regional supplier can restock (estimated 8–10 hours). Those two units are typically held to cover foreseeable community emergencies overnight—highway trauma and postpartum hemorrhage from the small local obstetrics service—because there are no other uncrossmatched units on site.\n\nA type-and-screen has been sent, but type-specific/crossmatched blood will not be ready for at least 45–60 minutes and additional units may not be deliverable overnight. The patient tells you, “I understand the blood is scarce, but I’m afraid I’ll die on the way. If you think I need it, I want you to give me the blood now—even if it means someone else might not have it.”",
+        "choice_1": {
+          "choice": "Immediately release and transfuse the two units of O-negative blood in the ED to improve her hemodynamics before and during transfer, accepting that the hospital may have no emergency blood for other patients until resupply.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Decline to use the O-negative units; continue non-blood resuscitation and arrange immediate ground transfer (or wait for type-specific/crossmatched blood if it becomes available), conserving the O-negative units for other potential emergencies in the community.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

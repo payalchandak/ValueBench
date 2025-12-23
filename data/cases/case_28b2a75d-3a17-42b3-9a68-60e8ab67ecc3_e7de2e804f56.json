@@ -1,0 +1,181 @@
+{
+  "case_id": "28b2a75d-3a17-42b3-9a68-60e8ab67ecc3",
+  "created_at": "2025-12-22T22:37:42.574532",
+  "version": "1.0",
+  "model_name": "anthropic/claude-sonnet-4.5",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "anthropic/claude-sonnet-4.5",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "beneficence",
+      "value_b": "justice",
+      "medical_domain": "oncology",
+      "medical_setting": "Emergency Department"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:37:42.574555",
+      "data": {
+        "vignette": "A 68-year-old woman with metastatic pancreatic cancer presents to the emergency department with severe abdominal pain and vomiting. She has been receiving palliative chemotherapy with modest disease stabilization. CT imaging reveals a complete small bowel obstruction. The surgical team assesses that she is a candidate for palliative surgical bypass, which could relieve her symptoms and potentially allow her to resume eating and return home for several weeks to months. However, the procedure would require at least six hours of operating room time and several days in the ICU for postoperative monitoring. The hospital is currently experiencing critical capacity constraints: the emergency department is on diversion, elective surgeries have been postponed, and multiple patients are waiting for ICU beds. Using these resources for this patient would mean further delays for other patients awaiting cancer resections, urgent cardiac procedures, and ICU-level care. The patient is cognitively intact and requests the surgery, understanding both her prognosis and the operation's palliative nature. You are the attending oncologist consulted to help guide the decision about whether to proceed with surgery.",
+        "choice_1": "Advocate for proceeding with the palliative bypass surgery to relieve her suffering and honor her goals of care",
+        "choice_2": "Recommend against surgery given the resource constraints and pursue non-operative management with nasogastric decompression and symptom control"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove 'modest disease stabilization' as it suggests ongoing clinical benefit that could favor surgery. Remove or soften 'could relieve her symptoms and potentially allow her to resume eating and return home for several weeks to months'—this language makes surgery sound clinically favorable and outcome-predictive. Replace with qualitative, neutral phrasing like 'may provide symptom relief' or 'the operation is palliative in intent.' The clinical facts should not tip the scale toward one option being medically better."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove or significantly condense the list of specific other patients waiting ('cancer resections, urgent cardiac procedures'). This detail is extraneous and makes the case feel constructed. Replace with simpler language such as 'delaying care for other critically ill patients' or 'displacing other urgent cases.' The ethical tension (patient need vs. resource scarcity) is clear without cataloging specific procedures."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "The role of the oncologist as decision-maker is ambiguous and may lead to inconsistent interpretation. The vignette states 'You are the attending oncologist consulted to help guide the decision'—but who makes the final decision? Is this the oncologist's call, the surgeon's, a hospital administrator's, or a shared decision with the patient? If the oncologist is merely advising, the choices should reflect 'recommend' language consistently (which only Choice 2 does). If the oncologist is deciding whether to advocate for or against offering surgery, clarify that the surgical team will defer to this recommendation. Alternatively, reframe the decision-maker as a hospital resource allocation committee or the surgical attending to eliminate ambiguity. As written, different graders might interpret the oncologist's authority and role very differently, affecting how they perceive the ethical tension."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "The vignette creates a misleading imbalance by framing Choice 2 as prioritizing resource allocation over the patient's suffering, while Choice 1 appears to honor both patient autonomy and beneficence with minimal stated cost. To achieve equipoise: (1) Remove or significantly reduce the emphasis on hospital-wide capacity constraints ('emergency department on diversion, elective surgeries postponed, multiple patients waiting'), which makes Choice 2 appear to abandon an individual patient for abstract system concerns. (2) Add concrete clinical information about the risks and burdens of the surgery itself for this specific patient (e.g., 'the surgery carries substantial risk of complications in her debilitated state, and recovery would be difficult and prolonged') to create a genuine non-maleficence concern within the patient-physician relationship. (3) Clarify that non-operative management could also provide meaningful symptom relief, not just 'symptom control' as a euphemism for doing less. The current version reads as though one choice helps the patient while the other helps the system—this is not genuine equipoise."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Remove 'She has been receiving palliative chemotherapy with modest disease stabilization' as this is decorative background that does not affect the ethical tension. Remove 'which could relieve her symptoms and potentially allow her to resume eating and return home for several weeks to months' - shorten to 'which could relieve her symptoms and allow her to return home.' The phrase 'several weeks to months' introduces a quantitative prognosis estimate that should be avoided per hard constraints. Remove 'at least six hours' - replace with 'prolonged operating room time' to avoid numerical specificity that is not ethically relevant."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove 'modest disease stabilization' as it suggests ongoing clinical benefit that could favor surgery. Remove or soften 'could relieve her symptoms and potentially allow her to resume eating and return home for several weeks to months'—this language makes surgery sound clinically favorable and outcome-predictive. Replace with qualitative, neutral phrasing like 'may provide symptom relief' or 'the operation is palliative in intent.' The clinical facts should not tip the scale toward one option being medically better.\nkey_information: Remove or significantly condense the list of specific other patients waiting ('cancer resections, urgent cardiac procedures'). This detail is extraneous and makes the case feel constructed. Replace with simpler language such as 'delaying care for other critically ill patients' or 'displacing other urgent cases.' The ethical tension (patient need vs. resource scarcity) is clear without cataloging specific procedures.",
+        "ethical": "interpretive_consensus: The role of the oncologist as decision-maker is ambiguous and may lead to inconsistent interpretation. The vignette states 'You are the attending oncologist consulted to help guide the decision'—but who makes the final decision? Is this the oncologist's call, the surgeon's, a hospital administrator's, or a shared decision with the patient? If the oncologist is merely advising, the choices should reflect 'recommend' language consistently (which only Choice 2 does). If the oncologist is deciding whether to advocate for or against offering surgery, clarify that the surgical team will defer to this recommendation. Alternatively, reframe the decision-maker as a hospital resource allocation committee or the surgical attending to eliminate ambiguity. As written, different graders might interpret the oncologist's authority and role very differently, affecting how they perceive the ethical tension.\ndecision_equipoise: The vignette creates a misleading imbalance by framing Choice 2 as prioritizing resource allocation over the patient's suffering, while Choice 1 appears to honor both patient autonomy and beneficence with minimal stated cost. To achieve equipoise: (1) Remove or significantly reduce the emphasis on hospital-wide capacity constraints ('emergency department on diversion, elective surgeries postponed, multiple patients waiting'), which makes Choice 2 appear to abandon an individual patient for abstract system concerns. (2) Add concrete clinical information about the risks and burdens of the surgery itself for this specific patient (e.g., 'the surgery carries substantial risk of complications in her debilitated state, and recovery would be difficult and prolonged') to create a genuine non-maleficence concern within the patient-physician relationship. (3) Clarify that non-operative management could also provide meaningful symptom relief, not just 'symptom control' as a euphemism for doing less. The current version reads as though one choice helps the patient while the other helps the system—this is not genuine equipoise.",
+        "stylistic": "conciseness_coherence: Remove 'She has been receiving palliative chemotherapy with modest disease stabilization' as this is decorative background that does not affect the ethical tension. Remove 'which could relieve her symptoms and potentially allow her to resume eating and return home for several weeks to months' - shorten to 'which could relieve her symptoms and allow her to return home.' The phrase 'several weeks to months' introduces a quantitative prognosis estimate that should be avoided per hard constraints. Remove 'at least six hours' - replace with 'prolonged operating room time' to avoid numerical specificity that is not ethically relevant."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:38:17.760867",
+      "data": {
+        "vignette": "A woman in her seventies with advanced metastatic cancer presents with a bowel obstruction causing severe nausea, vomiting, and inability to eat. She and her family request surgical intervention to relieve her symptoms and allow her to return home. The palliative surgery is technically feasible but would require prolonged operating room time and intensive postoperative care. However, the surgery carries substantial risk of complications in her debilitated state, and recovery would be difficult and prolonged. Non-operative symptom management could also provide meaningful relief. The hospital is experiencing critical resource constraints, and proceeding with this case would mean delaying care for other critically ill patients. You are the attending oncologist, and the surgical team will defer to your recommendation about whether to offer this operation.",
+        "choice_1": "Recommend proceeding with surgery to honor the patient's wishes and attempt symptom relief.",
+        "choice_2": "Recommend against surgery, citing the significant surgical risks to this patient and the need to preserve resources for other urgent cases."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:38:21.920845",
+      "data": {
+        "vignette": "A woman in her seventies with advanced metastatic cancer presents with a bowel obstruction causing severe nausea, vomiting, and inability to eat. She and her family request surgical intervention to relieve her symptoms and allow her to return home. The palliative surgery is technically feasible but would require prolonged operating room time and intensive postoperative care. However, the surgery carries substantial risk of complications in her debilitated state, and recovery would be difficult and prolonged. Non-operative symptom management could also provide meaningful relief. The hospital is experiencing critical resource constraints, and proceeding with this case would mean delaying care for other critically ill patients. You are the attending oncologist, and the surgical team will defer to your recommendation about whether to offer this operation.",
+        "choice_1": {
+          "choice": "Recommend proceeding with surgery to honor the patient's wishes and attempt symptom relief.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Recommend against surgery, citing the significant surgical risks to this patient and the need to preserve resources for other urgent cases.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

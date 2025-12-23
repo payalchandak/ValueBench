@@ -1,0 +1,174 @@
+{
+  "case_id": "e7df41ab-c657-482e-920e-cddf3b977f2a",
+  "created_at": "2025-12-22T22:18:44.656615",
+  "version": "1.0",
+  "model_name": "anthropic/claude-sonnet-4.5",
+  "generator_config": {
+    "seed_mode": "literature",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "anthropic/claude-sonnet-4.5",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 10,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 27:\nCONSENT AND HIV\nScenario 1\nA newly qualified nurse is cannulating a very intoxicated patient in the Accident and\nEmergency department (A&E). She misses the vein on the first attempt and whilst trying\nagain the patient moves his arm away and she stabs the end of the cannula in her finger. The\nnurse washes her wound out for 10 minutes under running water and then goes to speak to\nthe sister in charge about the needlestick injury policy.\n\nScenario 2\nA homosexual man presents to his GP over a period of months with multiple different infec-\ntions. The first few occasions he is treated with antibiotics or antifungals. On his fourth\nappointment he expresses concern that he keeps getting ill and has lost a bit of weight. He\nwould like to know whether there is anything else causing these infections other than being\nbusy and having a stressful job with a poor work–life balance. The GP agrees to do some\nblood tests but does not elaborate on what she is testing for.\n\nScenario 3\nA 24-year-old male has attended his local A&E department following a minor injury on a\nnight out. He thinks he may have broken his ankle and is requesting an X-ray. The triage\nnurse also mentions that they are doing routine HIV screening for every A&E attendee and\nwould like to know whether he would like a test.\n\nQuestions\n• What should be done in the above scenarios?\n• Should specific consent be needed for HIV testing?",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:18:44.656648",
+      "data": {
+        "vignette": "A 34-year-old man is brought to the emergency department after a minor motor vehicle collision. He is alert but moderately intoxicated, with slurred speech and a strong odor of alcohol. He is cooperative but impulsive, frequently moving during the examination. While attempting to place an intravenous catheter, you inadvertently sustain a needlestick injury when the patient suddenly pulls his arm away. Post-exposure prophylaxis for bloodborne pathogens is most effective when started within hours, and current guidelines recommend testing the source patient for HIV and hepatitis to guide treatment decisions. However, the patient's intoxication impairs his capacity to provide informed consent for blood testing. You are the treating emergency physician and must decide how to proceed.",
+        "choice_1": "Obtain blood for HIV and hepatitis testing from the IV catheter already placed, without seeking consent, to guide your post-exposure prophylaxis decision.",
+        "choice_2": "Wait until the patient is sober to obtain informed consent for testing, and start empiric post-exposure prophylaxis in the interim based on risk stratification alone."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften 'Post-exposure prophylaxis for bloodborne pathogens is most effective when started within hours.' This creates urgency that suggests waiting is medically inferior. Replace with: 'Post-exposure prophylaxis guidelines recommend testing the source patient for HIV and hepatitis to help guide treatment decisions.' The clinical time sensitivity should not resolve the ethical tension—both options (test now vs. wait for consent) must remain medically reasonable."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "The scenario creates a false equipoise because Choice 2 explicitly states empiric post-exposure prophylaxis will be started anyway, which substantially undermines the urgency and stakes of obtaining source patient testing. This makes the dilemma less about competing values and more about whether to obtain potentially helpful information vs. wait—but the core medical intervention (prophylaxis) proceeds either way. To restore equipoise, either: (1) Remove the mention of 'empiric post-exposure prophylaxis' from Choice 2 and frame it as waiting to test with no interim treatment, which heightens the temporal/safety stakes, OR (2) Reframe the entire case around a different testing scenario where empiric treatment is not available or not as straightforward, making source patient testing genuinely critical to the physician's safety decisions."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Remove 'frequently moving during the examination' and 'while attempting to place an intravenous catheter' — these details are unnecessary padding. The needlestick happened; the mechanism doesn't affect the ethical decision. Condense to: 'During IV placement, you sustain a needlestick injury when the patient suddenly moves his arm.' Also remove 'current guidelines recommend testing the source patient' — this subtly frames Choice 1 as guideline-concordant and thus medically superior. Replace with: 'Testing the source patient for HIV and hepatitis can inform treatment choice.'"
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften 'Post-exposure prophylaxis for bloodborne pathogens is most effective when started within hours.' This creates urgency that suggests waiting is medically inferior. Replace with: 'Post-exposure prophylaxis guidelines recommend testing the source patient for HIV and hepatitis to help guide treatment decisions.' The clinical time sensitivity should not resolve the ethical tension—both options (test now vs. wait for consent) must remain medically reasonable.",
+        "ethical": "decision_equipoise: The scenario creates a false equipoise because Choice 2 explicitly states empiric post-exposure prophylaxis will be started anyway, which substantially undermines the urgency and stakes of obtaining source patient testing. This makes the dilemma less about competing values and more about whether to obtain potentially helpful information vs. wait—but the core medical intervention (prophylaxis) proceeds either way. To restore equipoise, either: (1) Remove the mention of 'empiric post-exposure prophylaxis' from Choice 2 and frame it as waiting to test with no interim treatment, which heightens the temporal/safety stakes, OR (2) Reframe the entire case around a different testing scenario where empiric treatment is not available or not as straightforward, making source patient testing genuinely critical to the physician's safety decisions.",
+        "stylistic": "conciseness_coherence: Remove 'frequently moving during the examination' and 'while attempting to place an intravenous catheter' — these details are unnecessary padding. The needlestick happened; the mechanism doesn't affect the ethical decision. Condense to: 'During IV placement, you sustain a needlestick injury when the patient suddenly moves his arm.' Also remove 'current guidelines recommend testing the source patient' — this subtly frames Choice 1 as guideline-concordant and thus medically superior. Replace with: 'Testing the source patient for HIV and hepatitis can inform treatment choice.'"
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:19:09.311624",
+      "data": {
+        "vignette": "A 42-year-old physician sustains a needlestick injury while placing an IV in a patient brought to the emergency department by police for acute methamphetamine intoxication. The patient is agitated, shouting, and intermittently pulling at monitoring equipment. He lacks capacity to consent to medical care. Post-exposure prophylaxis guidelines recommend testing the source patient for HIV and hepatitis to inform treatment decisions, but this requires a blood draw. The patient is physically resisting procedures and would require physical restraint or sedation to obtain blood. You are the treating emergency physician and must decide how to proceed with your own post-exposure management.",
+        "choice_1": "Obtain blood from the source patient now using restraint or sedation to allow testing that will guide your post-exposure prophylaxis regimen",
+        "choice_2": "Defer testing the source patient until he regains capacity to consent, and manage your exposure based on risk stratification without source patient serology"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:19:13.521287",
+      "data": {
+        "vignette": "A 42-year-old physician sustains a needlestick injury while placing an IV in a patient brought to the emergency department by police for acute methamphetamine intoxication. The patient is agitated, shouting, and intermittently pulling at monitoring equipment. He lacks capacity to consent to medical care. Post-exposure prophylaxis guidelines recommend testing the source patient for HIV and hepatitis to inform treatment decisions, but this requires a blood draw. The patient is physically resisting procedures and would require physical restraint or sedation to obtain blood. You are the treating emergency physician and must decide how to proceed with your own post-exposure management.",
+        "choice_1": {
+          "choice": "Obtain blood from the source patient now using restraint or sedation to allow testing that will guide your post-exposure prophylaxis regimen",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Defer testing the source patient until he regains capacity to consent, and manage your exposure based on risk stratification without source patient serology",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

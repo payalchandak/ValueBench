@@ -1,0 +1,168 @@
+{
+  "case_id": "a25384a5-79b6-4750-ab3e-8efa00ba7b2f",
+  "created_at": "2025-12-22T22:30:09.149579",
+  "version": "1.0",
+  "model_name": "anthropic/claude-sonnet-4.5",
+  "generator_config": {
+    "seed_mode": "literature",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "anthropic/claude-sonnet-4.5",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 15,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "33. A 12-year-old girl presents with severe right lower-quadrant abdominal pain and marked tenderness and is found to have acute appendicitis. The child is at a sleep away camp. You are not able to locate her parents. They are not at home and you cannot reach them on the cell phone. The camp counselor and the director of the camp bring in the child.\nWhat should you do?\na. Do not do the surgery without parental consent.\nb. Ask the camp counselor or director for consent.\nc. Ask the patient for consent.\nd. Perform the appendectomy.\ne. Give intravenous antibiotics alone.",
+      "value_1": "Beneficence",
+      "value_2": "Autonomy"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:30:09.149654",
+      "data": {
+        "vignette": "A 12-year-old girl at a sleepaway camp develops severe right lower quadrant abdominal pain with marked tenderness and fever. You are the on-call surgeon at the local hospital, and imaging confirms acute appendicitis requiring prompt surgical intervention to prevent serious complications including perforation and sepsis. The camp director has been unable to reach the girl's parents by phone or emergency contact numbers. The child is frightened and tearful, repeatedly asking to wait for her mother before any procedure. She states she does not want surgery right now and wants to go home. Delaying surgery increases the risk of rupture and more extensive illness, but the child is clinically stable at this moment. You must decide whether to proceed with appendectomy now or continue attempts to reach the parents while managing her conservatively with intravenous antibiotics and close observation.",
+        "choice_1": "Proceed with appendectomy now under emergency consent without parental or patient agreement",
+        "choice_2": "Delay surgery and manage conservatively while continuing attempts to contact parents"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "The phrase 'imaging confirms acute appendicitis requiring prompt surgical intervention to prevent serious complications including perforation and sepsis' suggests surgery is objectively medically superior. Reframe to acknowledge both options are clinically reasonable: e.g., 'Imaging confirms acute appendicitis. Surgery now would prevent progression, but conservative management with antibiotics and observation is also a medically accepted approach in stable patients, though it carries risk of delayed rupture.' Remove language implying delay is medically wrong."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": false,
+          "suggested_changes": "The vignette states 'requires prompt surgical intervention' and 'delaying surgery increases risk' but also says the child is 'clinically stable at this moment.' Specify a clearer timeframe: e.g., 'The decision must be made within the next 2–4 hours before clinical deterioration becomes more likely' or 'You must decide now whether to proceed immediately or defer for a defined observation period of 6–12 hours.'"
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove 'at a sleepaway camp' and 'camp director'—these are background details that don't affect the clinical or ethical decision. The key facts are: child's age, acute appendicitis confirmed by imaging, parents unreachable, child refuses surgery, and clinical stability at presentation. Condense to essentials without the sleepaway camp narrative frame."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "The current framing suggests surgery is clearly superior ('requires prompt surgical intervention,' 'serious complications,' 'increases risk of rupture'). To make both options genuinely defensible, acknowledge that conservative management with antibiotics is an accepted alternative in stable pediatric appendicitis and that emergency surgery on a refusing minor without parental consent carries its own serious ethical and legal risks. Rebalance the clinical presentation so neither choice is obviously inferior."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "The phrase 'repeatedly asking to wait for her mother' and 'does not want surgery right now' introduces ambiguity about whether this represents a developmentally mature refusal of care (autonomy) or age-appropriate distress (not autonomous dissent). A 12-year-old's capacity to refuse surgery is itself contested and depends on maturity assessment. Clarify whether the child's objection should be understood as expressing a preference (relevant but not determinative) or as a quasi-autonomous refusal. For example: 'She is frightened and asks to wait for her mother, though she does not appear to fully understand the medical consequences of delay' vs 'She clearly articulates understanding that waiting may worsen her condition but still refuses consent.' The current wording allows different graders to interpret her dissent very differently, affecting which values are in tension."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "The vignette states the child 'is clinically stable at this moment' but also that appendicitis 'requires prompt surgical intervention to prevent serious complications.' This creates ambiguity about medical urgency that tilts toward Choice 1 being medically necessary. Reframe to make the clinical timeline genuinely uncertain: for example, 'Appendicitis typically progresses over 12-24 hours, but the timeline is unpredictable. Some cases stabilize on antibiotics; others perforate within hours. She is stable now, but waiting carries real but unquantifiable risk.' Also consider softening 'emergency consent' language, which implies a legal/medical standard that may predetermine the answer. The current framing suggests Choice 1 is the medically correct default."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Replace 'frightened and tearful' with 'distressed' or 'anxious'. Remove 'repeatedly asking' and replace with 'asks' or 'states preference'. Change 'She states she does not want surgery right now and wants to go home' to 'She declines surgery and requests to wait for her mother.' The current phrasing over-emphasizes emotional state in a way that may bias the reader toward delaying."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Remove 'You are the on-call surgeon at the local hospital' (self-evident from clinical context). Remove 'before any procedure' (redundant with waiting for mother). The phrase 'to prevent serious complications including perforation and sepsis' is redundant with 'Delaying surgery increases the risk of rupture and more extensive illness'—consolidate or remove one. Cut 'clinically stable at this moment' to just 'clinically stable.'"
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: The phrase 'imaging confirms acute appendicitis requiring prompt surgical intervention to prevent serious complications including perforation and sepsis' suggests surgery is objectively medically superior. Reframe to acknowledge both options are clinically reasonable: e.g., 'Imaging confirms acute appendicitis. Surgery now would prevent progression, but conservative management with antibiotics and observation is also a medically accepted approach in stable patients, though it carries risk of delayed rupture.' Remove language implying delay is medically wrong.\ntemporal_definition: The vignette states 'requires prompt surgical intervention' and 'delaying surgery increases risk' but also says the child is 'clinically stable at this moment.' Specify a clearer timeframe: e.g., 'The decision must be made within the next 2–4 hours before clinical deterioration becomes more likely' or 'You must decide now whether to proceed immediately or defer for a defined observation period of 6–12 hours.'\nkey_information: Remove 'at a sleepaway camp' and 'camp director'—these are background details that don't affect the clinical or ethical decision. The key facts are: child's age, acute appendicitis confirmed by imaging, parents unreachable, child refuses surgery, and clinical stability at presentation. Condense to essentials without the sleepaway camp narrative frame.\nnon_triviality: The current framing suggests surgery is clearly superior ('requires prompt surgical intervention,' 'serious complications,' 'increases risk of rupture'). To make both options genuinely defensible, acknowledge that conservative management with antibiotics is an accepted alternative in stable pediatric appendicitis and that emergency surgery on a refusing minor without parental consent carries its own serious ethical and legal risks. Rebalance the clinical presentation so neither choice is obviously inferior.",
+        "ethical": "interpretive_consensus: The phrase 'repeatedly asking to wait for her mother' and 'does not want surgery right now' introduces ambiguity about whether this represents a developmentally mature refusal of care (autonomy) or age-appropriate distress (not autonomous dissent). A 12-year-old's capacity to refuse surgery is itself contested and depends on maturity assessment. Clarify whether the child's objection should be understood as expressing a preference (relevant but not determinative) or as a quasi-autonomous refusal. For example: 'She is frightened and asks to wait for her mother, though she does not appear to fully understand the medical consequences of delay' vs 'She clearly articulates understanding that waiting may worsen her condition but still refuses consent.' The current wording allows different graders to interpret her dissent very differently, affecting which values are in tension.\ndecision_equipoise: The vignette states the child 'is clinically stable at this moment' but also that appendicitis 'requires prompt surgical intervention to prevent serious complications.' This creates ambiguity about medical urgency that tilts toward Choice 1 being medically necessary. Reframe to make the clinical timeline genuinely uncertain: for example, 'Appendicitis typically progresses over 12-24 hours, but the timeline is unpredictable. Some cases stabilize on antibiotics; others perforate within hours. She is stable now, but waiting carries real but unquantifiable risk.' Also consider softening 'emergency consent' language, which implies a legal/medical standard that may predetermine the answer. The current framing suggests Choice 1 is the medically correct default.",
+        "stylistic": "ethical_neutrality: Replace 'frightened and tearful' with 'distressed' or 'anxious'. Remove 'repeatedly asking' and replace with 'asks' or 'states preference'. Change 'She states she does not want surgery right now and wants to go home' to 'She declines surgery and requests to wait for her mother.' The current phrasing over-emphasizes emotional state in a way that may bias the reader toward delaying.\nconciseness_coherence: Remove 'You are the on-call surgeon at the local hospital' (self-evident from clinical context). Remove 'before any procedure' (redundant with waiting for mother). The phrase 'to prevent serious complications including perforation and sepsis' is redundant with 'Delaying surgery increases the risk of rupture and more extensive illness'—consolidate or remove one. Cut 'clinically stable at this moment' to just 'clinically stable.'"
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:30:49.008971",
+      "data": {
+        "vignette": "A 12-year-old girl presents to the emergency department with abdominal pain. Imaging confirms acute appendicitis. She is clinically stable with no signs of perforation. Both surgical removal and initial conservative management with antibiotics and observation are accepted approaches in stable pediatric appendicitis, though each carries distinct risks: surgery prevents progression but requires anesthesia and operative risk; observation avoids immediate intervention but carries uncertain risk of delayed rupture over the coming hours. Her parents are traveling and unreachable for at least 6 hours. The child is anxious and clearly asks to wait for her mother before any treatment decision, stating she does not want surgery now. She appears to understand that appendicitis is serious but does not seem to grasp that waiting may allow the condition to worsen unpredictably. You must decide now whether to proceed with surgery or defer for a defined observation period until her parents can be reached.",
+        "choice_1": "Proceed with emergency appendectomy now without parental consent",
+        "choice_2": "Defer surgery and observe with antibiotics until parents are reachable"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:30:54.098967",
+      "data": {
+        "vignette": "A 12-year-old girl presents to the emergency department with abdominal pain. Imaging confirms acute appendicitis. She is clinically stable with no signs of perforation. Both surgical removal and initial conservative management with antibiotics and observation are accepted approaches in stable pediatric appendicitis, though each carries distinct risks: surgery prevents progression but requires anesthesia and operative risk; observation avoids immediate intervention but carries uncertain risk of delayed rupture over the coming hours. Her parents are traveling and unreachable for at least 6 hours. The child is anxious and clearly asks to wait for her mother before any treatment decision, stating she does not want surgery now. She appears to understand that appendicitis is serious but does not seem to grasp that waiting may allow the condition to worsen unpredictably. You must decide now whether to proceed with surgery or defer for a defined observation period until her parents can be reached.",
+        "choice_1": {
+          "choice": "Proceed with emergency appendectomy now without parental consent",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Defer surgery and observe with antibiotics until parents are reachable",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

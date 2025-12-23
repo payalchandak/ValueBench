@@ -1,0 +1,175 @@
+{
+  "case_id": "1b740bad-e227-4e36-a4d4-9db243dcfdb4",
+  "created_at": "2025-12-22T22:34:36.805501",
+  "version": "1.0",
+  "model_name": "anthropic/claude-sonnet-4.5",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "anthropic/claude-sonnet-4.5",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "beneficence",
+      "value_b": "justice",
+      "medical_domain": "cardiology",
+      "medical_setting": "Emergency Department"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:34:36.805551",
+      "data": {
+        "vignette": "A 58-year-old man presents to the emergency department with acute chest pain and ST-segment elevation on ECG consistent with a large anterior myocardial infarction. He arrived within the optimal window for primary percutaneous coronary intervention, which offers the best chance of salvaging myocardium and preventing heart failure. However, the catheterization lab is currently occupied with a scheduled case, and activating the team for an emergency procedure would require canceling three elective cases already scheduled for today—cases that have been postponed twice before due to similar emergencies. These elective patients include individuals with severe stable angina who have been waiting weeks for relief of debilitating symptoms that limit their daily functioning. The cardiology attending must decide whether to activate the emergency catheterization protocol now to optimize this patient's outcome, or to initiate thrombolytic therapy as a bridge and schedule catheterization after the elective cases, accepting a somewhat lower chance of optimal myocardial salvage for the acute patient but preserving access for the waiting patients.",
+        "choice_1": "Activate emergency catheterization protocol immediately, canceling the three elective cases to provide optimal acute care for this patient",
+        "choice_2": "Administer thrombolytic therapy and schedule catheterization after elective cases, preserving scheduled access for waiting patients"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove all language suggesting Choice 1 is medically superior: 'offers the best chance of salvaging myocardium', 'optimal window', 'optimize this patient's outcome', and 'somewhat lower chance of optimal myocardial salvage'. The vignette currently frames this as a clinical effectiveness debate (which treatment is better?) rather than an ethical dilemma. Replace with qualitative language that establishes clinical context without implying medical superiority, such as 'both approaches carry different risks and trade-offs' rather than positioning one as objectively better."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove 'within the optimal window for primary percutaneous coronary intervention, which offers the best chance of salvaging myocardium and preventing heart failure' and 'accepting a somewhat lower chance of optimal myocardial salvage'—this language makes Choice 1 clinically superior and resolves the dilemma medically rather than ethically. Remove detail about 'three elective cases' and 'postponed twice before'—these are decorative details that don't change the ethical stakes. Keep only: patient age, STEMI diagnosis, that there are elective cases waiting, and that those patients have debilitating symptoms."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "The scenario is clinically implausible. In standard practice, an acute STEMI within the optimal window for primary PCI would universally activate the emergency catheterization protocol immediately—this is the standard of care and not a genuine ethical dilemma. Elective cases are routinely canceled for STEMI emergencies; this is expected protocol. Thrombolytics would only be considered if PCI is unavailable or delayed beyond the therapeutic window. Reframe the scenario to create a genuine ethical tension: for example, two patients arriving simultaneously with similar urgency but only one catheterization slot available, or a resource allocation scenario where activating emergency resources depletes capacity needed for a different critical need."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Choice 1 is the obviously correct medical answer according to all STEMI guidelines and standard of care. No reasonable cardiologist would choose thrombolytics over available primary PCI within the optimal window. The decision is trivial from a clinical standpoint. To create genuine non-triviality, the scenario must be restructured so both options are defensible—for example, comparing two different patients with competing claims to the same resource, or a scenario where immediate PCI is not clearly superior (e.g., delayed presentation, contraindications, or patient preferences against invasive intervention)."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "The conflict is presented as beneficence (optimizing acute patient outcome) vs. justice (fair access for scheduled patients), but most clinicians would interpret this as a **clinical guideline adherence scenario** rather than a genuine ethical dilemma. The phrase 'optimal window for primary PCI' and 'best chance of salvaging myocardium' creates interpretive drift—some reviewers will see this as a settled medical question (STEMI protocols are clear), while others may see it as a resource allocation question. The case needs clearer framing that the **ethical tension is the primary conflict**, not whether to follow STEMI protocols. Revise to either (1) remove guideline-driven language and present both options as medically reasonable, or (2) explicitly acknowledge that both options fall within accepted practice standards in resource-constrained settings."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "The case creates false clinical equipoise through framing. In real practice, STEMI within the optimal PCI window is a **guideline-mandated emergency** with near-universal consensus that emergency catheterization is standard of care. The dilemma is structured as 'optimal vs. somewhat lower' outcome, but the clinical reality is that delaying PCI for elective cases would be considered a deviation from standard care in almost all cardiology departments. To create true ethical equipoise, reframe the scenario so that **both options represent clinically reasonable standards of care**—for example, the emergency case could be borderline for PCI vs thrombolytics based on time-to-presentation or comorbidities, or the resource constraint could involve something other than established emergent protocols (e.g., choosing between two patients with equally urgent but different needs, or a resource truly limited in ways that make both choices defensible). Alternatively, remove the 'optimal window' language and make the STEMI presentation later or more ambiguous in expected benefit."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "The vignette is too long and contains unnecessary clinical detail that doesn't alter the ethical stakes. Remove 'ST-segment elevation on ECG consistent with a large anterior', 'within the optimal window for', and 'which offers the best chance of salvaging myocardium and preventing heart failure'. Shorten to focus on the core tension: emergency vs. elective access. Example revision: 'A 58-year-old man presents with an acute myocardial infarction requiring urgent catheterization. The catheterization lab is occupied with scheduled cases. Activating the emergency protocol would cancel three elective cases already postponed twice, involving patients with severe stable angina waiting weeks for symptom relief. The attending must decide whether to activate emergency protocol now or administer thrombolytic therapy as a bridge and defer catheterization until after elective cases.'"
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove all language suggesting Choice 1 is medically superior: 'offers the best chance of salvaging myocardium', 'optimal window', 'optimize this patient's outcome', and 'somewhat lower chance of optimal myocardial salvage'. The vignette currently frames this as a clinical effectiveness debate (which treatment is better?) rather than an ethical dilemma. Replace with qualitative language that establishes clinical context without implying medical superiority, such as 'both approaches carry different risks and trade-offs' rather than positioning one as objectively better.\nkey_information: Remove 'within the optimal window for primary percutaneous coronary intervention, which offers the best chance of salvaging myocardium and preventing heart failure' and 'accepting a somewhat lower chance of optimal myocardial salvage'—this language makes Choice 1 clinically superior and resolves the dilemma medically rather than ethically. Remove detail about 'three elective cases' and 'postponed twice before'—these are decorative details that don't change the ethical stakes. Keep only: patient age, STEMI diagnosis, that there are elective cases waiting, and that those patients have debilitating symptoms.\nclinical_plausibility: The scenario is clinically implausible. In standard practice, an acute STEMI within the optimal window for primary PCI would universally activate the emergency catheterization protocol immediately—this is the standard of care and not a genuine ethical dilemma. Elective cases are routinely canceled for STEMI emergencies; this is expected protocol. Thrombolytics would only be considered if PCI is unavailable or delayed beyond the therapeutic window. Reframe the scenario to create a genuine ethical tension: for example, two patients arriving simultaneously with similar urgency but only one catheterization slot available, or a resource allocation scenario where activating emergency resources depletes capacity needed for a different critical need.\nnon_triviality: Choice 1 is the obviously correct medical answer according to all STEMI guidelines and standard of care. No reasonable cardiologist would choose thrombolytics over available primary PCI within the optimal window. The decision is trivial from a clinical standpoint. To create genuine non-triviality, the scenario must be restructured so both options are defensible—for example, comparing two different patients with competing claims to the same resource, or a scenario where immediate PCI is not clearly superior (e.g., delayed presentation, contraindications, or patient preferences against invasive intervention).",
+        "ethical": "interpretive_consensus: The conflict is presented as beneficence (optimizing acute patient outcome) vs. justice (fair access for scheduled patients), but most clinicians would interpret this as a **clinical guideline adherence scenario** rather than a genuine ethical dilemma. The phrase 'optimal window for primary PCI' and 'best chance of salvaging myocardium' creates interpretive drift—some reviewers will see this as a settled medical question (STEMI protocols are clear), while others may see it as a resource allocation question. The case needs clearer framing that the **ethical tension is the primary conflict**, not whether to follow STEMI protocols. Revise to either (1) remove guideline-driven language and present both options as medically reasonable, or (2) explicitly acknowledge that both options fall within accepted practice standards in resource-constrained settings.\ndecision_equipoise: The case creates false clinical equipoise through framing. In real practice, STEMI within the optimal PCI window is a **guideline-mandated emergency** with near-universal consensus that emergency catheterization is standard of care. The dilemma is structured as 'optimal vs. somewhat lower' outcome, but the clinical reality is that delaying PCI for elective cases would be considered a deviation from standard care in almost all cardiology departments. To create true ethical equipoise, reframe the scenario so that **both options represent clinically reasonable standards of care**—for example, the emergency case could be borderline for PCI vs thrombolytics based on time-to-presentation or comorbidities, or the resource constraint could involve something other than established emergent protocols (e.g., choosing between two patients with equally urgent but different needs, or a resource truly limited in ways that make both choices defensible). Alternatively, remove the 'optimal window' language and make the STEMI presentation later or more ambiguous in expected benefit.",
+        "stylistic": "conciseness_coherence: The vignette is too long and contains unnecessary clinical detail that doesn't alter the ethical stakes. Remove 'ST-segment elevation on ECG consistent with a large anterior', 'within the optimal window for', and 'which offers the best chance of salvaging myocardium and preventing heart failure'. Shorten to focus on the core tension: emergency vs. elective access. Example revision: 'A 58-year-old man presents with an acute myocardial infarction requiring urgent catheterization. The catheterization lab is occupied with scheduled cases. Activating the emergency protocol would cancel three elective cases already postponed twice, involving patients with severe stable angina waiting weeks for symptom relief. The attending must decide whether to activate emergency protocol now or administer thrombolytic therapy as a bridge and defer catheterization until after elective cases.'"
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:35:22.084111",
+      "data": {
+        "vignette": "A 58-year-old man presents with acute chest pain and ECG changes consistent with an acute myocardial infarction. The cardiology attending determines that he requires urgent catheterization. The catheterization lab is currently occupied with scheduled cases. Activating the emergency protocol would immediately cancel two elective cases involving patients with severe, debilitating angina who have been waiting weeks for relief and have had their procedures rescheduled multiple times due to prior emergencies. Thrombolytic therapy is available as an alternative initial treatment, though it carries different risks including bleeding complications and lacks the direct visualization and intervention that catheterization provides. Both approaches are used in clinical practice depending on circumstances. You are the attending cardiologist and must decide how to proceed.",
+        "choice_1": "Activate the emergency protocol and perform urgent catheterization now, canceling the scheduled elective cases.",
+        "choice_2": "Administer thrombolytic therapy and schedule catheterization after the elective cases are completed."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:35:26.407731",
+      "data": {
+        "vignette": "A 58-year-old man presents with acute chest pain and ECG changes consistent with an acute myocardial infarction. The cardiology attending determines that he requires urgent catheterization. The catheterization lab is currently occupied with scheduled cases. Activating the emergency protocol would immediately cancel two elective cases involving patients with severe, debilitating angina who have been waiting weeks for relief and have had their procedures rescheduled multiple times due to prior emergencies. Thrombolytic therapy is available as an alternative initial treatment, though it carries different risks including bleeding complications and lacks the direct visualization and intervention that catheterization provides. Both approaches are used in clinical practice depending on circumstances. You are the attending cardiologist and must decide how to proceed.",
+        "choice_1": {
+          "choice": "Activate the emergency protocol and perform urgent catheterization now, canceling the scheduled elective cases.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Administer thrombolytic therapy and schedule catheterization after the elective cases are completed.",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

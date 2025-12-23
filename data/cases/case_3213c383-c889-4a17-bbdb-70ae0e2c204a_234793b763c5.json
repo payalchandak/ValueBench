@@ -1,0 +1,175 @@
+{
+  "case_id": "3213c383-c889-4a17-bbdb-70ae0e2c204a",
+  "created_at": "2025-12-22T22:23:18.172934",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "beneficence",
+      "value_b": "justice",
+      "medical_domain": "oncology",
+      "medical_setting": "Emergency Department"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:23:18.173003",
+      "data": {
+        "vignette": "In a crowded Emergency Department during a respiratory surge, a 45-year-old patient with acute myeloid leukemia presents five days after starting induction chemotherapy with fever and low blood pressure. After fluids and antibiotics, they are awake and talking but remain borderline unstable, and the ED team expects they may soon need continuous blood-pressure support and very close monitoring. The hospital has a strict ICU admission policy because only a few beds remain; patients who are not yet on vasopressors are usually managed in step-down or held in the ED, and exceptions are discouraged to preserve capacity for unpredictable arrivals. The patient’s oncologist argues that this complication is potentially reversible and asks the ED physician to secure an ICU bed now rather than “waiting for them to crash,” but doing so would require overriding the usual triage process and could worsen access for other patients later that night. The ED physician must decide what to do.",
+        "choice_1": "Escalate to secure an ICU bed immediately for this patient, even if it requires making an exception to the usual ICU triage policy.",
+        "choice_2": "Follow the usual ICU triage policy by managing the patient in step-down/ED while awaiting clear ICU-level criteria or arranging transfer, accepting the possibility of deterioration in the meantime."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or neutralize language that implies the patient is a clearly better ICU candidate or that delaying is obviously wrong. Edit: change “this complication is potentially reversible” to a more neutral formulation such as “this complication may be reversible but carries significant risk even with ICU care.” Replace the quoted phrase “waiting for them to crash” with neutral wording like “waiting until they meet standard ICU criteria.” Ensure both options’ clinical merits are presented as uncertain (e.g., add that early ICU may not prevent deterioration and that step-down can provide close monitoring)."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": false,
+          "suggested_changes": "State a clear decision window tied to the patient’s trajectory and bed availability, e.g., “The ICU charge nurse needs an accept/decline decision within the next 30 minutes,” or “an ICU bed is available now but may be reassigned within an hour.” Clarify that deterioration could occur in the next few hours so the urgency is explicit."
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Reduce language that makes one option feel mandated by policy. Replace “strict ICU admission policy…exceptions are discouraged” with “a surge-time triage guideline that usually reserves ICU beds for patients already needing vasopressors, but allows clinician discretion case-by-case.” Add a concrete, ethically weighty countervailing risk to Choice 1 (e.g., an incoming trauma/respiratory failure patient expected later; or another current patient already meeting ICU criteria waiting for a bed) so securing the bed now plausibly harms others. Add a concrete, ethically weighty countervailing reassurance for Choice 2 (e.g., step-down can provide 1:2 nursing, invasive monitoring, and start vasopressors there, but with limits) so it is not framed as simply “waiting for them to crash.” Rephrase the oncologist quote to neutral wording (e.g., “early ICU monitoring may prevent deterioration”) to avoid steering."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or neutralize value-laden phrasing that nudges toward early ICU admission. Replace the quoted phrase “waiting for them to crash” with a clinically neutral alternative (e.g., “waiting for further hemodynamic deterioration” or “waiting until ICU-level criteria are met”). Consider deleting or softening scene-setting terms like “crowded” if not essential, or rephrase to a neutral operational statement (e.g., “During a respiratory surge, ICU capacity is limited”)."
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Replace colloquial language with standard clinical terminology: change “crash” to “acute decompensation/hemodynamic deterioration.” Consider specifying the level of care with standard terms (e.g., “ICU” vs “step-down/telemetry”) and describe anticipated interventions professionally (e.g., “vasopressor infusion via central access” rather than “continuous blood-pressure support”)."
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or neutralize language that implies the patient is a clearly better ICU candidate or that delaying is obviously wrong. Edit: change “this complication is potentially reversible” to a more neutral formulation such as “this complication may be reversible but carries significant risk even with ICU care.” Replace the quoted phrase “waiting for them to crash” with neutral wording like “waiting until they meet standard ICU criteria.” Ensure both options’ clinical merits are presented as uncertain (e.g., add that early ICU may not prevent deterioration and that step-down can provide close monitoring).\ntemporal_definition: State a clear decision window tied to the patient’s trajectory and bed availability, e.g., “The ICU charge nurse needs an accept/decline decision within the next 30 minutes,” or “an ICU bed is available now but may be reassigned within an hour.” Clarify that deterioration could occur in the next few hours so the urgency is explicit.",
+        "ethical": "decision_equipoise: Reduce language that makes one option feel mandated by policy. Replace “strict ICU admission policy…exceptions are discouraged” with “a surge-time triage guideline that usually reserves ICU beds for patients already needing vasopressors, but allows clinician discretion case-by-case.” Add a concrete, ethically weighty countervailing risk to Choice 1 (e.g., an incoming trauma/respiratory failure patient expected later; or another current patient already meeting ICU criteria waiting for a bed) so securing the bed now plausibly harms others. Add a concrete, ethically weighty countervailing reassurance for Choice 2 (e.g., step-down can provide 1:2 nursing, invasive monitoring, and start vasopressors there, but with limits) so it is not framed as simply “waiting for them to crash.” Rephrase the oncologist quote to neutral wording (e.g., “early ICU monitoring may prevent deterioration”) to avoid steering.",
+        "stylistic": "ethical_neutrality: Remove or neutralize value-laden phrasing that nudges toward early ICU admission. Replace the quoted phrase “waiting for them to crash” with a clinically neutral alternative (e.g., “waiting for further hemodynamic deterioration” or “waiting until ICU-level criteria are met”). Consider deleting or softening scene-setting terms like “crowded” if not essential, or rephrase to a neutral operational statement (e.g., “During a respiratory surge, ICU capacity is limited”).\nmedical_professionalism: Replace colloquial language with standard clinical terminology: change “crash” to “acute decompensation/hemodynamic deterioration.” Consider specifying the level of care with standard terms (e.g., “ICU” vs “step-down/telemetry”) and describe anticipated interventions professionally (e.g., “vasopressor infusion via central access” rather than “continuous blood-pressure support”)."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:24:01.812099",
+      "data": {
+        "vignette": "You are the hospitalist on call during a respiratory surge when ICU capacity is limited. A 62-year-old man with metastatic lung cancer on palliative-intent chemotherapy is admitted with presumed bacterial sepsis from pneumonia. He is awake and wants “everything done,” and his outpatient oncologist says that early ICU-level monitoring and rapid escalation might help if his condition worsens, but acknowledges the trajectory is uncertain. On the ward he has persistent low blood pressure despite fluids and is requiring increasing oxygen; he is not yet on vasopressors and is still mentating well. An ICU bed is open right now, but the ICU charge nurse needs an accept/decline decision within 30 minutes or the bed will be reassigned. The hospital is using a surge-time triage guideline that usually reserves ICU beds for patients already needing vasopressors or ventilatory support, but allows clinician discretion case-by-case. You are also aware that the ED has a patient with severe trauma who may soon require an ICU bed, and another inpatient already meets ICU criteria and is waiting for transfer. The current complication may be reversible but carries significant risk even with ICU care; conversely, early ICU transfer may not prevent deterioration. The step-down unit can provide 1:2 nursing, continuous monitoring, frequent labs, and can start vasopressors there if needed, but has limits on invasive ventilation and staffing for rapid procedures. You must decide where to place this patient now.",
+        "choice_1": "Accept the ICU bed now for close monitoring and faster escalation if hemodynamics worsen, even though he does not yet meet usual surge-time criteria and doing so may delay ICU care for others.",
+        "choice_2": "Keep him in step-down with enhanced monitoring and a clear escalation plan, waiting to transfer to ICU if he develops ICU-level needs, even though he could deteriorate before a bed is available."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:24:11.472114",
+      "data": {
+        "vignette": "You are the hospitalist on call during a respiratory surge when ICU capacity is limited. A 62-year-old man with metastatic lung cancer on palliative-intent chemotherapy is admitted with presumed bacterial sepsis from pneumonia. He is awake and wants “everything done,” and his outpatient oncologist says that early ICU-level monitoring and rapid escalation might help if his condition worsens, but acknowledges the trajectory is uncertain. On the ward he has persistent low blood pressure despite fluids and is requiring increasing oxygen; he is not yet on vasopressors and is still mentating well. An ICU bed is open right now, but the ICU charge nurse needs an accept/decline decision within 30 minutes or the bed will be reassigned. The hospital is using a surge-time triage guideline that usually reserves ICU beds for patients already needing vasopressors or ventilatory support, but allows clinician discretion case-by-case. You are also aware that the ED has a patient with severe trauma who may soon require an ICU bed, and another inpatient already meets ICU criteria and is waiting for transfer. The current complication may be reversible but carries significant risk even with ICU care; conversely, early ICU transfer may not prevent deterioration. The step-down unit can provide 1:2 nursing, continuous monitoring, frequent labs, and can start vasopressors there if needed, but has limits on invasive ventilation and staffing for rapid procedures. You must decide where to place this patient now.",
+        "choice_1": {
+          "choice": "Accept the ICU bed now for close monitoring and faster escalation if hemodynamics worsen, even though he does not yet meet usual surge-time criteria and doing so may delay ICU care for others.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Keep him in step-down with enhanced monitoring and a clear escalation plan, waiting to transfer to ICU if he develops ICU-level needs, even though he could deteriorate before a bed is available.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "neutral",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

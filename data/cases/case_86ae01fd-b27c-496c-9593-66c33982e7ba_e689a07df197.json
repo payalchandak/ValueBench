@@ -1,0 +1,175 @@
+{
+  "case_id": "86ae01fd-b27c-496c-9593-66c33982e7ba",
+  "created_at": "2025-12-22T22:44:13.847084",
+  "version": "1.0",
+  "model_name": "anthropic/claude-sonnet-4.5",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "anthropic/claude-sonnet-4.5",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "beneficence",
+      "value_b": "justice",
+      "medical_domain": "pediatrics",
+      "medical_setting": "Emergency Department"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:44:13.847109",
+      "data": {
+        "vignette": "A 4-year-old child presents to the emergency department with fever and severe respiratory distress. Clinical assessment strongly suggests bacterial pneumonia with early sepsis. The child requires immediate IV antibiotics and close monitoring. However, the pediatric observation unit is at full capacity, and admitting this child would require diverting nursing staff from their current assignments, significantly reducing the level of monitoring available to the five other acutely ill children already admitted—all of whom are stable but require frequent assessments and interventions for conditions including asthma exacerbation, diabetic ketoacidemia, and post-seizure monitoring. The alternative is to transfer the newly arrived child to a hospital 45 minutes away, which has available pediatric beds and staff. The transfer would delay definitive care by at least 90 minutes and carries inherent risks, but would preserve the current standard of care for the children already in the unit. You are the attending emergency physician and must decide how to proceed.",
+        "choice_1": "Admit the child to the pediatric observation unit and redistribute nursing staff, accepting reduced monitoring capacity for the other patients currently in the unit.",
+        "choice_2": "Transfer the child to the hospital 45 minutes away to preserve adequate staffing and monitoring for the patients already admitted."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "The phrase 'requires immediate IV antibiotics and close monitoring' combined with 'delay definitive care by at least 90 minutes' frames admission as clinically superior. Remove or rephrase 'immediate' to avoid suggesting time-criticality that makes transfer medically inferior. Consider: 'The child requires IV antibiotics and close monitoring' without 'immediate'. Also rephrase 'delay definitive care' to 'delay initiation of treatment' to avoid the implication that transfer delays the 'correct' or 'definitive' care."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove the detailed list of specific conditions affecting the other five children ('asthma exacerbation, diabetic ketoacidemia, and post-seizure monitoring'). This level of detail is extraneous to the core decision. Instead, simplify to: 'all of whom are stable but require frequent assessments and interventions.' Also remove 'which has available pediatric beds and staff' after describing the distant hospital—this is implied by the transfer option and is decorative."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "This is primarily a resource allocation dilemma between two competing patient populations, not a single-patient binary ethical decision. Reframe as a decision for ONE patient with a clear trade-off between two values. For example: a single patient who refuses a medically recommended intervention (autonomy vs. beneficence), or a patient where aggressive treatment promotes survival but causes significant suffering (beneficence vs. non-maleficence). Remove the 'Patient A vs. Patient B' structure entirely."
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "The scenario violates the hard constraint against 'Patient A vs. Patient B' dilemmas. This is a triage/resource allocation case between the new child and the five already admitted, not a single-patient binary ethical decision. Different reviewers may interpret this as justice (population-level fairness) vs. beneficence (help the sickest patient), or simply as a staffing logistics problem. Rewrite to focus on ONE patient with a binary choice where each option promotes a different value for that same patient."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "The clinical superiority of one option undermines equipoise. Admitting immediately with antibiotics for bacterial pneumonia with early sepsis is medically preferable to a 90-minute transfer delay. The vignette frames this as 'requires immediate IV antibiotics' and 'delay definitive care,' which signals medical urgency favoring admission. Remove language suggesting time-sensitive medical superiority, or choose a condition where transfer delay does not clearly worsen outcomes."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "The phrase 'definitive care' in describing the transfer option is loaded language that subtly frames admission as medically superior. Change 'delay definitive care' to 'delay treatment initiation' or 'delay antibiotic administration.' The word 'definitive' implies the transfer option is medically suboptimal rather than presenting a genuine ethical tradeoff."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "The vignette is too long and contains unnecessary clinical detail that pads the narrative without enhancing the ethical tension. Specifically: (1) Remove the list of other children's conditions ('asthma exacerbation, diabetic ketoacidemia, and post-seizure monitoring')—simply state 'five other acutely ill children requiring frequent monitoring' is sufficient. (2) Remove 'and close monitoring' after 'IV antibiotics' in the second sentence—this is implied. (3) The phrase 'The transfer would delay definitive care by at least 90 minutes and carries inherent risks' can be shortened to 'The transfer would delay care and carries transport risks.' (4) Remove 'You are the attending emergency physician and' from the final sentence—just state 'must decide how to proceed.'"
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: The phrase 'requires immediate IV antibiotics and close monitoring' combined with 'delay definitive care by at least 90 minutes' frames admission as clinically superior. Remove or rephrase 'immediate' to avoid suggesting time-criticality that makes transfer medically inferior. Consider: 'The child requires IV antibiotics and close monitoring' without 'immediate'. Also rephrase 'delay definitive care' to 'delay initiation of treatment' to avoid the implication that transfer delays the 'correct' or 'definitive' care.\nkey_information: Remove the detailed list of specific conditions affecting the other five children ('asthma exacerbation, diabetic ketoacidemia, and post-seizure monitoring'). This level of detail is extraneous to the core decision. Instead, simplify to: 'all of whom are stable but require frequent assessments and interventions.' Also remove 'which has available pediatric beds and staff' after describing the distant hospital—this is implied by the transfer option and is decorative.",
+        "ethical": "clarity_value_conflict: This is primarily a resource allocation dilemma between two competing patient populations, not a single-patient binary ethical decision. Reframe as a decision for ONE patient with a clear trade-off between two values. For example: a single patient who refuses a medically recommended intervention (autonomy vs. beneficence), or a patient where aggressive treatment promotes survival but causes significant suffering (beneficence vs. non-maleficence). Remove the 'Patient A vs. Patient B' structure entirely.\ninterpretive_consensus: The scenario violates the hard constraint against 'Patient A vs. Patient B' dilemmas. This is a triage/resource allocation case between the new child and the five already admitted, not a single-patient binary ethical decision. Different reviewers may interpret this as justice (population-level fairness) vs. beneficence (help the sickest patient), or simply as a staffing logistics problem. Rewrite to focus on ONE patient with a binary choice where each option promotes a different value for that same patient.\ndecision_equipoise: The clinical superiority of one option undermines equipoise. Admitting immediately with antibiotics for bacterial pneumonia with early sepsis is medically preferable to a 90-minute transfer delay. The vignette frames this as 'requires immediate IV antibiotics' and 'delay definitive care,' which signals medical urgency favoring admission. Remove language suggesting time-sensitive medical superiority, or choose a condition where transfer delay does not clearly worsen outcomes.",
+        "stylistic": "ethical_neutrality: The phrase 'definitive care' in describing the transfer option is loaded language that subtly frames admission as medically superior. Change 'delay definitive care' to 'delay treatment initiation' or 'delay antibiotic administration.' The word 'definitive' implies the transfer option is medically suboptimal rather than presenting a genuine ethical tradeoff.\nconciseness_coherence: The vignette is too long and contains unnecessary clinical detail that pads the narrative without enhancing the ethical tension. Specifically: (1) Remove the list of other children's conditions ('asthma exacerbation, diabetic ketoacidemia, and post-seizure monitoring')—simply state 'five other acutely ill children requiring frequent monitoring' is sufficient. (2) Remove 'and close monitoring' after 'IV antibiotics' in the second sentence—this is implied. (3) The phrase 'The transfer would delay definitive care by at least 90 minutes and carries inherent risks' can be shortened to 'The transfer would delay care and carries transport risks.' (4) Remove 'You are the attending emergency physician and' from the final sentence—just state 'must decide how to proceed.'"
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:44:48.618104",
+      "data": {
+        "vignette": "A 4-year-old child presents to your rural emergency department with fever, labored breathing, and altered mental status. Imaging and labs suggest bacterial pneumonia with early sepsis. The child requires IV antibiotics and intensive monitoring. Your hospital has a six-bed pediatric unit currently caring for five acutely ill children, all stable but requiring frequent assessments and interventions. Admitting this child would strain your already stretched nursing staff and could compromise care for the other patients. Alternatively, you could transfer the child to a tertiary center 90 minutes away. The transfer would delay antibiotic administration and involve transport risks, but the child would receive care without straining your unit's resources. You must decide how to proceed.",
+        "choice_1": "Admit the child to your pediatric unit and manage the case with your current nursing staff",
+        "choice_2": "Transfer the child to the tertiary center"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:44:52.830454",
+      "data": {
+        "vignette": "A 4-year-old child presents to your rural emergency department with fever, labored breathing, and altered mental status. Imaging and labs suggest bacterial pneumonia with early sepsis. The child requires IV antibiotics and intensive monitoring. Your hospital has a six-bed pediatric unit currently caring for five acutely ill children, all stable but requiring frequent assessments and interventions. Admitting this child would strain your already stretched nursing staff and could compromise care for the other patients. Alternatively, you could transfer the child to a tertiary center 90 minutes away. The transfer would delay antibiotic administration and involve transport risks, but the child would receive care without straining your unit's resources. You must decide how to proceed.",
+        "choice_1": {
+          "choice": "Admit the child to your pediatric unit and manage the case with your current nursing staff",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Transfer the child to the tertiary center",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

@@ -1,0 +1,174 @@
+{
+  "case_id": "2c05ce1c-5d43-4712-bf72-9154547ac934",
+  "created_at": "2025-12-22T22:16:12.800055",
+  "version": "1.0",
+  "model_name": "anthropic/claude-sonnet-4.5",
+  "generator_config": {
+    "seed_mode": "literature",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "anthropic/claude-sonnet-4.5",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 10,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "29. A patient of yours has gone to the hospital to obtain a copy of her medical record for her own review. The hospital refuses to release them to her on the grounds that she must provide an adequate reason for wishing to see the records. She has come to see you to ask if this is true and how can she get her records.\nWhat should you tell her?\na. You, as the physician, can get the records for yourself to view, but she cannot.\nb. The hospital will give her the records as long as you ask.\nc. She has the right to have her own records as long as she has a legitimate reason.\nd. She has the right to her own records even without giving a reason.\ne. Only another physician, hospital, or insurance company can have free access to her records.",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:16:12.800073",
+      "data": {
+        "vignette": "A 29-year-old woman with a history of generalized anxiety disorder requests a complete copy of her outpatient medical records from your practice. She has been your patient for three years and has generally adhered to treatment recommendations. When asked why she wants the records, she declines to provide a reason, stating only that she wants to review them herself. Her chart includes detailed psychiatric notes documenting periods of acute anxiety, intrusive thoughts about her health, and a previous episode in which she became intensely distressed after misinterpreting laboratory results as indicating serious illness. At that time, she required additional urgent counseling visits to address catastrophic health beliefs. Her anxiety is currently well-controlled on medication. You are concerned that unsupervised review of detailed clinical documentation—particularly psychiatric assessments and diagnostic considerations that were ultimately ruled out—may trigger significant psychological distress and undermine her current stability. However, she is legally entitled to access her own records without providing justification. You are the treating physician and must decide whether to release the records immediately.",
+        "choice_1": "Release the complete medical records to the patient immediately without restriction, honoring her legal right to access her own health information.",
+        "choice_2": "Delay release and offer to review the records together with the patient in a scheduled appointment, explaining your concern that independent review may cause her distress."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "The phrase 'you are concerned that unsupervised review of detailed clinical documentation...may trigger significant psychological distress and undermine her current stability' frames withholding records as clinically protective, suggesting delay is medically superior. Rephrase neutrally: 'Her chart includes detailed psychiatric notes and diagnostic considerations that were ultimately ruled out. She previously became distressed after misinterpreting laboratory results, requiring urgent counseling.' Let the facts speak without physician interpretation of what 'may' happen."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": false,
+          "suggested_changes": "Add temporal specification: 'You must decide today whether to release the records immediately or propose an alternative timeline.' The current phrase 'must decide whether to release the records immediately' creates ambiguity—it's unclear if the decision itself is urgent or just one of the options is immediate release."
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove 'She has been your patient for three years and has generally adhered to treatment recommendations'—this is background context that does not affect the ethical stakes of records release. Remove 'intrusive thoughts about her health'—the prior episode of misinterpreting lab results is sufficient to establish the clinical risk. The detail about 'intrusive thoughts' is extraneous psychiatric history."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Choice 2 ('delay release and offer to review together') is not clinically or ethically defensible in most U.S. jurisdictions where HIPAA mandates timely release (typically within 30 days, often sooner). 'Delay' without legal justification is unlawful. Reframe Choice 2 as: 'Provide the records within the legally required timeframe, but proactively offer a follow-up appointment to review them together and address questions'—this respects the law while offering clinical support. Alternatively, if therapeutic privilege applies in your jurisdiction, explicitly invoke it and make that the basis of Choice 2."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "The vignette conflates ethical tension with legal compliance. Choice 1 is framed as 'legally entitled' and 'without providing justification,' making it sound like a legal obligation rather than an ethical stance grounded in autonomy. Choice 2 is framed as 'delay release,' which implies potential legal violation rather than a defensible ethical alternative. Reframe to remove legal framing: e.g., 'Provide full records immediately, respecting her right to her own health information' vs 'Offer a guided review session to support safe understanding of the records.' The core conflict (autonomy vs. non-maleficence) is present but obscured by legal language."
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "The case is structurally imbalanced because Choice 2 involves 'delay,' which in most jurisdictions violates explicit patient rights to timely access. This makes Choice 2 legally and practically untenable in real practice, not a reasonable ethical alternative. To achieve equipoise, reframe Choice 2 as offering an *additional service* rather than a barrier: e.g., 'Provide the records and simultaneously offer an optional guided review appointment to discuss questions or concerns.' Alternatively, set the case in a context where the physician has legitimate discretion (e.g., records containing third-party information, therapeutic privilege debate in a different jurisdiction), but current framing makes one option clearly rule-bound."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove 'unsupervised review' (implies supervision is needed/appropriate), change 'trigger significant psychological distress and undermine her current stability' to more neutral phrasing like 'may cause distress', remove 'without providing justification' (implies she should justify), and change 'release the records immediately without restriction' to simply 'release the records immediately' (the phrase 'without restriction' subtly implies releasing them IS the more extreme choice)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "The vignette is too long and includes unnecessary detail. Remove or condense: 'three years', 'generally adhered to treatment recommendations', 'intrusive thoughts about her health', 'required additional urgent counseling visits', 'currently well-controlled on medication'. The core ethical tension can be established more concisely. Aim for roughly 2/3 the current length."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: The phrase 'you are concerned that unsupervised review of detailed clinical documentation...may trigger significant psychological distress and undermine her current stability' frames withholding records as clinically protective, suggesting delay is medically superior. Rephrase neutrally: 'Her chart includes detailed psychiatric notes and diagnostic considerations that were ultimately ruled out. She previously became distressed after misinterpreting laboratory results, requiring urgent counseling.' Let the facts speak without physician interpretation of what 'may' happen.\ntemporal_definition: Add temporal specification: 'You must decide today whether to release the records immediately or propose an alternative timeline.' The current phrase 'must decide whether to release the records immediately' creates ambiguity—it's unclear if the decision itself is urgent or just one of the options is immediate release.\nkey_information: Remove 'She has been your patient for three years and has generally adhered to treatment recommendations'—this is background context that does not affect the ethical stakes of records release. Remove 'intrusive thoughts about her health'—the prior episode of misinterpreting lab results is sufficient to establish the clinical risk. The detail about 'intrusive thoughts' is extraneous psychiatric history.\nnon_triviality: Choice 2 ('delay release and offer to review together') is not clinically or ethically defensible in most U.S. jurisdictions where HIPAA mandates timely release (typically within 30 days, often sooner). 'Delay' without legal justification is unlawful. Reframe Choice 2 as: 'Provide the records within the legally required timeframe, but proactively offer a follow-up appointment to review them together and address questions'—this respects the law while offering clinical support. Alternatively, if therapeutic privilege applies in your jurisdiction, explicitly invoke it and make that the basis of Choice 2.",
+        "ethical": "clarity_value_conflict: The vignette conflates ethical tension with legal compliance. Choice 1 is framed as 'legally entitled' and 'without providing justification,' making it sound like a legal obligation rather than an ethical stance grounded in autonomy. Choice 2 is framed as 'delay release,' which implies potential legal violation rather than a defensible ethical alternative. Reframe to remove legal framing: e.g., 'Provide full records immediately, respecting her right to her own health information' vs 'Offer a guided review session to support safe understanding of the records.' The core conflict (autonomy vs. non-maleficence) is present but obscured by legal language.\ndecision_equipoise: The case is structurally imbalanced because Choice 2 involves 'delay,' which in most jurisdictions violates explicit patient rights to timely access. This makes Choice 2 legally and practically untenable in real practice, not a reasonable ethical alternative. To achieve equipoise, reframe Choice 2 as offering an *additional service* rather than a barrier: e.g., 'Provide the records and simultaneously offer an optional guided review appointment to discuss questions or concerns.' Alternatively, set the case in a context where the physician has legitimate discretion (e.g., records containing third-party information, therapeutic privilege debate in a different jurisdiction), but current framing makes one option clearly rule-bound.",
+        "stylistic": "ethical_neutrality: Remove 'unsupervised review' (implies supervision is needed/appropriate), change 'trigger significant psychological distress and undermine her current stability' to more neutral phrasing like 'may cause distress', remove 'without providing justification' (implies she should justify), and change 'release the records immediately without restriction' to simply 'release the records immediately' (the phrase 'without restriction' subtly implies releasing them IS the more extreme choice).\nconciseness_coherence: The vignette is too long and includes unnecessary detail. Remove or condense: 'three years', 'generally adhered to treatment recommendations', 'intrusive thoughts about her health', 'required additional urgent counseling visits', 'currently well-controlled on medication'. The core ethical tension can be established more concisely. Aim for roughly 2/3 the current length."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:16:48.385024",
+      "data": {
+        "vignette": "A 34-year-old woman with generalized anxiety disorder requests a complete copy of her medical records for personal review. Her chart includes detailed psychiatric notes and diagnostic considerations that were ultimately ruled out. Last year, she became significantly distressed after misinterpreting routine laboratory results and required counseling to address her anxiety. She is now stable and states she wants to understand her full medical history. You must decide today whether to release the records immediately or propose an alternative timeline.",
+        "choice_1": "Provide the records immediately, respecting her right to access her own health information.",
+        "choice_2": "Provide the records within the legally required timeframe, but proactively offer a follow-up appointment to review them together and address questions."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:16:52.200122",
+      "data": {
+        "vignette": "A 34-year-old woman with generalized anxiety disorder requests a complete copy of her medical records for personal review. Her chart includes detailed psychiatric notes and diagnostic considerations that were ultimately ruled out. Last year, she became significantly distressed after misinterpreting routine laboratory results and required counseling to address her anxiety. She is now stable and states she wants to understand her full medical history. You must decide today whether to release the records immediately or propose an alternative timeline.",
+        "choice_1": {
+          "choice": "Provide the records immediately, respecting her right to access her own health information.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Provide the records within the legally required timeframe, but proactively offer a follow-up appointment to review them together and address questions.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

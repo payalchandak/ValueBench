@@ -1,0 +1,168 @@
+{
+  "case_id": "1d2cef30-5810-4949-a657-8d15c86a1b66",
+  "created_at": "2025-12-22T22:23:51.009040",
+  "version": "1.0",
+  "model_name": "anthropic/claude-sonnet-4.5",
+  "generator_config": {
+    "seed_mode": "literature",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "anthropic/claude-sonnet-4.5",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 15,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "Case 15-4\nPromoting Patients’ Rights by Denying Insurance Coverage\nAn 88-year-old man, Cletis Bumgartner, was admitted to the hospital in a\ncoma due to cerebral hemorrhage. Despite a portable DNAR (do-not-attempt-\nresuscitation) form signed by his daughter, who was his legally authorized\ndecision-maker, Mr. Bumgartner received cardiopulmonary resuscitation\nin the emergency room. He was then admitted to the intensive care unit. The\nprimary care physician and consultant neurologist authorized extubation\nand removal of the respirator but then declined to insist on this because\nDennis Havens, the consultant pulmonologist, insisted that Mr. Bumgartner\nwas not “brain dead.” Without any change in his condition, Mr. Bumgartner\ndied three days later.\nHorton Pickering was the case reviewer for the insurance company,\nwhich was part of an HMO system. He refused to pay the costs for the three\ndays of “extended care” because of the valid DNAR on the chart. Mr. Pickering\nclaimed that the patient should not have been admitted to intensive care\nand that overuse of facilities and services were not the responsibility of\nthe HMO.",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:23:51.009094",
+      "data": {
+        "vignette": "An 82-year-old man with a witnessed massive intracerebral hemorrhage arrives at the emergency department in a coma. His daughter, who holds durable power of attorney for healthcare, presents a signed and witnessed portable do-not-resuscitate order. Despite this, the emergency team intubated and resuscitated the patient during initial stabilization. He was then admitted to the ICU on mechanical ventilation. The consulting neurologist confirms a devastating prognosis with no meaningful chance of recovery, though the patient does not meet formal brain death criteria. The daughter reaffirms her father's prior wishes to avoid aggressive life-sustaining treatment and requests withdrawal of support. The patient remains comatose and stable on the ventilator. As the insurance medical director reviewing this case in real time, you must decide whether to authorize continued ICU-level reimbursement. Authorizing payment ensures the clinical team can continue current management without external pressure, allowing them to navigate family discussions and end-of-life decisions according to their usual standards of care. Denying coverage would enforce the documented advance directive by creating financial and administrative pressure to withdraw treatment the patient explicitly refused, but it imposes institutional consequences on a case where resuscitation has already occurred.",
+        "choice_1": "Authorize continued ICU reimbursement, allowing the clinical team to proceed without coverage-related pressure",
+        "choice_2": "Deny coverage for ICU care initiated against a valid advance directive, enforcing the patient's documented refusal"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "The phrase 'no meaningful chance of recovery' strongly suggests that continued ICU care is medically futile and clinically unjustified, making withdrawal the objectively correct clinical choice. Replace with qualitative language that preserves clinical uncertainty or ambiguity about timeline/suffering without declaring futility, such as 'extremely poor prognosis' or 'devastating injury with unlikely recovery.' Also remove 'does not meet formal brain death criteria'—this is a clinical fact but introduces a red herring suggesting the patient might have some potential for improvement, which contradicts the 'no meaningful chance' statement."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "The choices are framed as insurance authorization decisions, which are not implementable medical orders. A clinician cannot 'authorize reimbursement' or 'deny coverage'—these are administrative/financial actions, not clinical interventions. Reframe as concrete medical orders such as: 'Continue mechanical ventilation and full ICU care' versus 'Initiate comfort-focused extubation per advance directive.'"
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove the extraneous detail about the insurance medical director role and coverage authorization framework, which is not clinically relevant to the ethical dilemma. The core decision is about continuing vs. withdrawing life support in a patient with an advance directive. Remove phrases like 'enforce the documented advance directive by creating financial and administrative pressure'—this is decorative administrative framing, not clinical stakes. Focus on: patient's DNR/advance directive, devastating prognosis, daughter's request for withdrawal, and current ventilator dependence."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "The scenario contains a fundamental clinical-administrative implausibility. Insurance medical directors do not make real-time authorization decisions for ongoing ICU care in emergency situations, nor do they use coverage denial as a mechanism to 'enforce advance directives.' This is not how healthcare reimbursement works. Coverage denials occur retrospectively or for planned admissions, not as active clinical decision leverage during ongoing critical care. Reframe this as a decision by the attending physician or ICU team regarding continuation vs. withdrawal of mechanical ventilation, which is the actual clinical decision at hand."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "The vignette presents a patient with a valid DNR order who explicitly refused aggressive life-sustaining treatment, now receiving exactly that treatment against his documented wishes, with 'no meaningful chance of recovery.' This makes withdrawal the obviously correct choice from both ethical and legal standpoints. To create genuine tension, either: (1) introduce ambiguity about the advance directive's applicability (e.g., was it intended for this specific scenario?), (2) add countervailing family wishes (e.g., daughter now wavers or other family members disagree), or (3) reframe the prognosis to be uncertain rather than 'no meaningful chance,' so continuing treatment is clinically defensible."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "The vignette conflates institutional/financial policy with bedside ethics. The decision-maker is an insurance medical director using reimbursement as a lever to influence clinical care—this is about healthcare system governance, not a direct clinical-ethical dilemma. Reframe the decision-maker as the attending ICU physician deciding whether to continue life support or honor the advance directive and withdraw, which creates a clearer autonomy vs. non-maleficence (or beneficence) conflict without the insurance intermediary layer."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "The ethical stakes shift depending on interpretation of the insurance role. If denying coverage is seen as 'enforcing autonomy,' it sounds ethically motivated. If seen as 'weaponizing reimbursement,' it sounds coercive. The same choice maps onto different values depending on how one reads the insurance director's intent. Simplify by removing the insurance intermediary and making the decision a direct clinical one (e.g., attending physician deciding whether to extubate or continue support)."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Different reviewers would disagree on what values are in conflict. Some might see autonomy vs. non-maleficence (honoring refusal vs. avoiding harm of withdrawal). Others might see justice (resource stewardship) vs. professional integrity (not using financial pressure to dictate bedside decisions). Others might focus on the procedural issue of who should make end-of-life decisions (clinicians vs. payers). The value conflict is not objective or stable. Reframe with a single, clear decision-maker (clinician) and unambiguous tension (e.g., surrogate requesting withdrawal vs. physician belief that patient might have limited recovery potential)."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "The case is not balanced. A valid, witnessed portable DNR held by a legal surrogate who reaffirms the patient's wishes, combined with neurologist-confirmed devastating prognosis and no chance of recovery, makes continued ICU care ethically and legally indefensible in most jurisdictions. The intubation was described as occurring 'despite' the DNR during 'initial stabilization'—this reads as an error to be corrected, not a genuine dilemma. Remove the suggestion that resuscitation violated the DNR, or add clinical uncertainty about prognosis, or introduce a family conflict that creates real tension."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove language that frames one option as protective/collaborative and the other as coercive. Replace 'allowing them to navigate family discussions and end-of-life decisions according to their usual standards of care' (positive framing for Choice 1) with neutral language like 'continues current treatment pending team assessment.' Replace 'creating financial and administrative pressure' and 'imposes institutional consequences' (negative framing for Choice 2) with neutral language like 'discontinues reimbursement for treatment inconsistent with the advance directive.'"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "The vignette contains unnecessary explanatory detail that pads the narrative. Remove 'though the patient does not meet formal brain death criteria' (not essential to the dilemma). Condense the final sentence describing both outcomes—it currently provides extended justification for each choice rather than simply stating them. Shorten to essential facts only."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: The phrase 'no meaningful chance of recovery' strongly suggests that continued ICU care is medically futile and clinically unjustified, making withdrawal the objectively correct clinical choice. Replace with qualitative language that preserves clinical uncertainty or ambiguity about timeline/suffering without declaring futility, such as 'extremely poor prognosis' or 'devastating injury with unlikely recovery.' Also remove 'does not meet formal brain death criteria'—this is a clinical fact but introduces a red herring suggesting the patient might have some potential for improvement, which contradicts the 'no meaningful chance' statement.\ndistinctness_actionability: The choices are framed as insurance authorization decisions, which are not implementable medical orders. A clinician cannot 'authorize reimbursement' or 'deny coverage'—these are administrative/financial actions, not clinical interventions. Reframe as concrete medical orders such as: 'Continue mechanical ventilation and full ICU care' versus 'Initiate comfort-focused extubation per advance directive.'\nkey_information: Remove the extraneous detail about the insurance medical director role and coverage authorization framework, which is not clinically relevant to the ethical dilemma. The core decision is about continuing vs. withdrawing life support in a patient with an advance directive. Remove phrases like 'enforce the documented advance directive by creating financial and administrative pressure'—this is decorative administrative framing, not clinical stakes. Focus on: patient's DNR/advance directive, devastating prognosis, daughter's request for withdrawal, and current ventilator dependence.\nclinical_plausibility: The scenario contains a fundamental clinical-administrative implausibility. Insurance medical directors do not make real-time authorization decisions for ongoing ICU care in emergency situations, nor do they use coverage denial as a mechanism to 'enforce advance directives.' This is not how healthcare reimbursement works. Coverage denials occur retrospectively or for planned admissions, not as active clinical decision leverage during ongoing critical care. Reframe this as a decision by the attending physician or ICU team regarding continuation vs. withdrawal of mechanical ventilation, which is the actual clinical decision at hand.\nnon_triviality: The vignette presents a patient with a valid DNR order who explicitly refused aggressive life-sustaining treatment, now receiving exactly that treatment against his documented wishes, with 'no meaningful chance of recovery.' This makes withdrawal the obviously correct choice from both ethical and legal standpoints. To create genuine tension, either: (1) introduce ambiguity about the advance directive's applicability (e.g., was it intended for this specific scenario?), (2) add countervailing family wishes (e.g., daughter now wavers or other family members disagree), or (3) reframe the prognosis to be uncertain rather than 'no meaningful chance,' so continuing treatment is clinically defensible.",
+        "ethical": "clarity_value_conflict: The vignette conflates institutional/financial policy with bedside ethics. The decision-maker is an insurance medical director using reimbursement as a lever to influence clinical care—this is about healthcare system governance, not a direct clinical-ethical dilemma. Reframe the decision-maker as the attending ICU physician deciding whether to continue life support or honor the advance directive and withdraw, which creates a clearer autonomy vs. non-maleficence (or beneficence) conflict without the insurance intermediary layer.\ndirectional_stability: The ethical stakes shift depending on interpretation of the insurance role. If denying coverage is seen as 'enforcing autonomy,' it sounds ethically motivated. If seen as 'weaponizing reimbursement,' it sounds coercive. The same choice maps onto different values depending on how one reads the insurance director's intent. Simplify by removing the insurance intermediary and making the decision a direct clinical one (e.g., attending physician deciding whether to extubate or continue support).\ninterpretive_consensus: Different reviewers would disagree on what values are in conflict. Some might see autonomy vs. non-maleficence (honoring refusal vs. avoiding harm of withdrawal). Others might see justice (resource stewardship) vs. professional integrity (not using financial pressure to dictate bedside decisions). Others might focus on the procedural issue of who should make end-of-life decisions (clinicians vs. payers). The value conflict is not objective or stable. Reframe with a single, clear decision-maker (clinician) and unambiguous tension (e.g., surrogate requesting withdrawal vs. physician belief that patient might have limited recovery potential).\ndecision_equipoise: The case is not balanced. A valid, witnessed portable DNR held by a legal surrogate who reaffirms the patient's wishes, combined with neurologist-confirmed devastating prognosis and no chance of recovery, makes continued ICU care ethically and legally indefensible in most jurisdictions. The intubation was described as occurring 'despite' the DNR during 'initial stabilization'—this reads as an error to be corrected, not a genuine dilemma. Remove the suggestion that resuscitation violated the DNR, or add clinical uncertainty about prognosis, or introduce a family conflict that creates real tension.",
+        "stylistic": "ethical_neutrality: Remove language that frames one option as protective/collaborative and the other as coercive. Replace 'allowing them to navigate family discussions and end-of-life decisions according to their usual standards of care' (positive framing for Choice 1) with neutral language like 'continues current treatment pending team assessment.' Replace 'creating financial and administrative pressure' and 'imposes institutional consequences' (negative framing for Choice 2) with neutral language like 'discontinues reimbursement for treatment inconsistent with the advance directive.'\nconciseness_coherence: The vignette contains unnecessary explanatory detail that pads the narrative. Remove 'though the patient does not meet formal brain death criteria' (not essential to the dilemma). Condense the final sentence describing both outcomes—it currently provides extended justification for each choice rather than simply stating them. Shorten to essential facts only."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:24:44.722187",
+      "data": {
+        "vignette": "A 72-year-old man with severe COPD is brought to the emergency department after a witnessed cardiac arrest at home. His daughter presents a valid portable DNR order signed weeks prior, but EMS had already initiated resuscitation. He is now intubated and mechanically ventilated in the ICU following return of spontaneous circulation. Neurologic examination shows minimal responsiveness. The consulting neurologist documents devastating anoxic brain injury with an extremely poor prognosis for meaningful recovery. The daughter, his healthcare proxy, requests withdrawal of mechanical ventilation in accordance with his advance directive, stating he explicitly refused prolonged life support. Other family members are unreachable and their views unknown. You are the ICU attending physician. Continuing ventilator support may extend his life but prolongs a condition he specifically refused; withdrawing now honors his documented wishes but forecloses any small possibility of unexpected neurologic improvement.",
+        "choice_1": "Continue mechanical ventilation and full ICU care pending further family input and clinical reassessment",
+        "choice_2": "Initiate comfort-focused extubation per advance directive and surrogate request"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:24:49.119617",
+      "data": {
+        "vignette": "A 72-year-old man with severe COPD is brought to the emergency department after a witnessed cardiac arrest at home. His daughter presents a valid portable DNR order signed weeks prior, but EMS had already initiated resuscitation. He is now intubated and mechanically ventilated in the ICU following return of spontaneous circulation. Neurologic examination shows minimal responsiveness. The consulting neurologist documents devastating anoxic brain injury with an extremely poor prognosis for meaningful recovery. The daughter, his healthcare proxy, requests withdrawal of mechanical ventilation in accordance with his advance directive, stating he explicitly refused prolonged life support. Other family members are unreachable and their views unknown. You are the ICU attending physician. Continuing ventilator support may extend his life but prolongs a condition he specifically refused; withdrawing now honors his documented wishes but forecloses any small possibility of unexpected neurologic improvement.",
+        "choice_1": {
+          "choice": "Continue mechanical ventilation and full ICU care pending further family input and clinical reassessment",
+          "autonomy": "violates",
+          "beneficence": "neutral",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Initiate comfort-focused extubation per advance directive and surrogate request",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

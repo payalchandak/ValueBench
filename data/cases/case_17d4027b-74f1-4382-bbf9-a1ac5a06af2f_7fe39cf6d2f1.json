@@ -1,0 +1,175 @@
+{
+  "case_id": "17d4027b-74f1-4382-bbf9-a1ac5a06af2f",
+  "created_at": "2025-12-22T22:31:29.551211",
+  "version": "1.0",
+  "model_name": "anthropic/claude-sonnet-4.5",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "anthropic/claude-sonnet-4.5",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "beneficence",
+      "value_b": "non-maleficence",
+      "medical_domain": "infectious diseases",
+      "medical_setting": "Outpatient Clinic"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:31:29.551239",
+      "data": {
+        "vignette": "A 32-year-old woman with newly diagnosed HIV presents to the outpatient infectious diseases clinic. Her CD4 count is moderately reduced, and she meets criteria for antiretroviral therapy (ART) initiation. She has a documented history of severe neuropsychiatric reactions to efavirenz during a previous brief trial, including suicidal ideation that resolved after discontinuation. The current recommended first-line regimen for her resistance profile and insurance coverage includes efavirenz, which offers the best chance of durable viral suppression and prevention of AIDS-related complications. Alternative regimens are available but have higher pill burden, require more frequent monitoring for metabolic and renal toxicities, and may have lower barriers to resistance if adherence is imperfect. The patient expresses significant anxiety about the neuropsychiatric effects recurring but also fears disease progression. You are the treating infectious diseases physician and must decide on the initial ART regimen.",
+        "choice_1": "Initiate the efavirenz-based regimen with close monitoring for neuropsychiatric effects, given its superior efficacy and durability for this patient's viral suppression.",
+        "choice_2": "Prescribe an alternative regimen that avoids efavirenz to prevent recurrence of serious neuropsychiatric harm, accepting the trade-offs in efficacy, complexity, and resistance risk."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or rephrase 'offers the best chance of durable viral suppression', 'superior efficacy and durability', and 'lower barriers to resistance if adherence is imperfect'. These phrases frame efavirenz as medically superior, turning this into a clinical optimization problem rather than an ethical dilemma. Replace with neutral language: 'both regimens are effective for viral suppression' or 'the efavirenz regimen is effective but carries neuropsychiatric risk; the alternative regimen is also effective but has different side effects and monitoring needs.' The current wording makes Choice 2 sound medically inferior, which resolves the dilemma clinically rather than ethically."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove 'insurance coverage' detail—it introduces justice/resource allocation tension that isn't developed as the core dilemma. Remove 'resistance profile' unless you specify what it is and why it matters. The phrase 'CD4 count is moderately reduced' is vague—specify whether this creates urgency (e.g., 'CD4 200' suggests moderate immunosuppression vs 'CD4 350' is less urgent). The insurance detail distracts from the beneficence vs non-maleficence tension."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "This scenario is clinically outdated. Efavirenz has not been a recommended first-line agent in high-income settings for years (WHO and major guidelines moved away from it due to neuropsychiatric toxicity). Modern integrase inhibitors (e.g., dolutegravir, bictegravir) are now standard first-line, have superior tolerability, equivalent or better efficacy, and higher barriers to resistance. Rewrite using a current clinical dilemma in HIV care, such as: immediate ART start vs delayed start pending resistance testing in a patient with suspected transmitted resistance, or long-acting injectable ART vs daily oral in a patient with adherence concerns but needle phobia."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, the case frames efavirenz as clearly superior medically (better efficacy, durability, resistance barrier) while the patient has documented severe harm (suicidal ideation) from it previously. In real practice, NO clinician would re-challenge efavirenz in this scenario—re-exposing a patient to a drug that caused suicidal ideation is not defensible when equivalent alternatives exist. This makes Choice 1 obviously unreasonable. To fix: either update the clinical scenario to reflect modern ART options where trade-offs are genuinely balanced, or construct a different HIV dilemma where both choices are truly defensible."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "The vignette presents a clinical optimization dilemma disguised as an ethical conflict. The core tension is between two medication regimens with different medical risk-benefit profiles (efficacy vs. side effects), not a genuine clash of ethical principles. Reframe to create true value tension—for example, a conflict between respecting the patient's explicit refusal of efavirenz (autonomy) versus the physician's clinical judgment that it is medically necessary to prevent serious harm (beneficence/non-maleficence). Currently, both choices pursue the same value (beneficence) through different clinical pathways."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "The ethical 'direction' is unstable because the dilemma depends entirely on how one weighs clinical risk data (prior suicidality vs. resistance risk), not on stable value commitments. Small changes to the severity of prior reaction or the characterization of alternative regimens would flip which choice seems reasonable. To stabilize: ground the dilemma in a clear autonomy-beneficence conflict (e.g., patient refuses treatment entirely vs. clinician recommendation) rather than in comparative pharmacology."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Different graders would disagree on what the core conflict is: Is it beneficence vs. non-maleficence? Autonomy vs. beneficence? Clinical judgment vs. risk aversion? The patient 'expresses significant anxiety' but does not clearly refuse or demand anything, leaving the conflict ambiguous. Clarify: Does the patient refuse efavirenz, or is the physician paternalistically overriding her hesitation? Make the value clash explicit and unambiguous by specifying the patient's stated preference and the physician's conflicting judgment."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "The case is clinically one-sided: prescribing a medication that previously caused suicidal ideation violates basic standards of care and patient safety. No reasonable clinician would re-challenge with efavirenz after documented severe neuropsychiatric reaction including suicidality. The phrase 'superior efficacy' inappropriately frames efavirenz as medically correct despite the documented serious adverse event. Remove language suggesting efavirenz is the better choice, and either: (1) make the patient's prior reaction ambiguous or less severe, or (2) reframe entirely around a different dilemma where both options are genuinely defensible."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove 'superior efficacy and durability' from Choice 1, as it frames efavirenz as medically superior. Rephrase to: 'Initiate the efavirenz-based regimen with close monitoring for neuropsychiatric effects.' In the vignette, change 'offers the best chance of durable viral suppression' to 'is expected to provide effective viral suppression' and remove 'may have lower barriers to resistance if adherence is imperfect' as this frames the alternative as inferior. The current framing suggests Choice 1 is medically correct, undermining the ethical tension."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "The vignette is overly long and contains unnecessary clinical detail. Condense to approximately one paragraph by removing: specifics about 'resistance profile and insurance coverage', details about 'pill burden' and 'more frequent monitoring for metabolic and renal toxicities', and the phrase 'if adherence is imperfect'. Focus on: patient's HIV diagnosis, CD4 status indicating ART need, documented severe neuropsychiatric reaction to efavirenz (suicidal ideation), availability of alternative regimens with different risk profiles, and patient's expressed anxiety."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or rephrase 'offers the best chance of durable viral suppression', 'superior efficacy and durability', and 'lower barriers to resistance if adherence is imperfect'. These phrases frame efavirenz as medically superior, turning this into a clinical optimization problem rather than an ethical dilemma. Replace with neutral language: 'both regimens are effective for viral suppression' or 'the efavirenz regimen is effective but carries neuropsychiatric risk; the alternative regimen is also effective but has different side effects and monitoring needs.' The current wording makes Choice 2 sound medically inferior, which resolves the dilemma clinically rather than ethically.\nkey_information: Remove 'insurance coverage' detail—it introduces justice/resource allocation tension that isn't developed as the core dilemma. Remove 'resistance profile' unless you specify what it is and why it matters. The phrase 'CD4 count is moderately reduced' is vague—specify whether this creates urgency (e.g., 'CD4 200' suggests moderate immunosuppression vs 'CD4 350' is less urgent). The insurance detail distracts from the beneficence vs non-maleficence tension.\nclinical_plausibility: This scenario is clinically outdated. Efavirenz has not been a recommended first-line agent in high-income settings for years (WHO and major guidelines moved away from it due to neuropsychiatric toxicity). Modern integrase inhibitors (e.g., dolutegravir, bictegravir) are now standard first-line, have superior tolerability, equivalent or better efficacy, and higher barriers to resistance. Rewrite using a current clinical dilemma in HIV care, such as: immediate ART start vs delayed start pending resistance testing in a patient with suspected transmitted resistance, or long-acting injectable ART vs daily oral in a patient with adherence concerns but needle phobia.\nnon_triviality: As written, the case frames efavirenz as clearly superior medically (better efficacy, durability, resistance barrier) while the patient has documented severe harm (suicidal ideation) from it previously. In real practice, NO clinician would re-challenge efavirenz in this scenario—re-exposing a patient to a drug that caused suicidal ideation is not defensible when equivalent alternatives exist. This makes Choice 1 obviously unreasonable. To fix: either update the clinical scenario to reflect modern ART options where trade-offs are genuinely balanced, or construct a different HIV dilemma where both choices are truly defensible.",
+        "ethical": "clarity_value_conflict: The vignette presents a clinical optimization dilemma disguised as an ethical conflict. The core tension is between two medication regimens with different medical risk-benefit profiles (efficacy vs. side effects), not a genuine clash of ethical principles. Reframe to create true value tension—for example, a conflict between respecting the patient's explicit refusal of efavirenz (autonomy) versus the physician's clinical judgment that it is medically necessary to prevent serious harm (beneficence/non-maleficence). Currently, both choices pursue the same value (beneficence) through different clinical pathways.\ndirectional_stability: The ethical 'direction' is unstable because the dilemma depends entirely on how one weighs clinical risk data (prior suicidality vs. resistance risk), not on stable value commitments. Small changes to the severity of prior reaction or the characterization of alternative regimens would flip which choice seems reasonable. To stabilize: ground the dilemma in a clear autonomy-beneficence conflict (e.g., patient refuses treatment entirely vs. clinician recommendation) rather than in comparative pharmacology.\ninterpretive_consensus: Different graders would disagree on what the core conflict is: Is it beneficence vs. non-maleficence? Autonomy vs. beneficence? Clinical judgment vs. risk aversion? The patient 'expresses significant anxiety' but does not clearly refuse or demand anything, leaving the conflict ambiguous. Clarify: Does the patient refuse efavirenz, or is the physician paternalistically overriding her hesitation? Make the value clash explicit and unambiguous by specifying the patient's stated preference and the physician's conflicting judgment.\ndecision_equipoise: The case is clinically one-sided: prescribing a medication that previously caused suicidal ideation violates basic standards of care and patient safety. No reasonable clinician would re-challenge with efavirenz after documented severe neuropsychiatric reaction including suicidality. The phrase 'superior efficacy' inappropriately frames efavirenz as medically correct despite the documented serious adverse event. Remove language suggesting efavirenz is the better choice, and either: (1) make the patient's prior reaction ambiguous or less severe, or (2) reframe entirely around a different dilemma where both options are genuinely defensible.",
+        "stylistic": "ethical_neutrality: Remove 'superior efficacy and durability' from Choice 1, as it frames efavirenz as medically superior. Rephrase to: 'Initiate the efavirenz-based regimen with close monitoring for neuropsychiatric effects.' In the vignette, change 'offers the best chance of durable viral suppression' to 'is expected to provide effective viral suppression' and remove 'may have lower barriers to resistance if adherence is imperfect' as this frames the alternative as inferior. The current framing suggests Choice 1 is medically correct, undermining the ethical tension.\nconciseness_coherence: The vignette is overly long and contains unnecessary clinical detail. Condense to approximately one paragraph by removing: specifics about 'resistance profile and insurance coverage', details about 'pill burden' and 'more frequent monitoring for metabolic and renal toxicities', and the phrase 'if adherence is imperfect'. Focus on: patient's HIV diagnosis, CD4 status indicating ART need, documented severe neuropsychiatric reaction to efavirenz (suicidal ideation), availability of alternative regimens with different risk profiles, and patient's expressed anxiety."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:32:22.198417",
+      "data": {
+        "vignette": "A 29-year-old woman is diagnosed with HIV and needs to start antiretroviral therapy. She is clinically stable but has moderate immunosuppression. Six months ago, she briefly took an efavirenz-based regimen as post-exposure prophylaxis following a known HIV exposure, but discontinued it after two weeks due to severe depression and intrusive suicidal thoughts. Those symptoms resolved completely after stopping. She now presents for treatment of confirmed HIV infection. She tells you she is terrified of feeling that way again and asks not to be given efavirenz. However, baseline resistance testing shows she has transmitted resistance to integrase inhibitors, which are the current standard first-line agents. An efavirenz-based regimen remains fully active against her virus. Alternative regimens that avoid both efavirenz and integrase inhibitors are effective but require more complex dosing and monitoring, and carry their own risks including metabolic and renal toxicity. You must decide on a treatment plan today.",
+        "choice_1": "Recommend the efavirenz-based regimen with close psychiatric monitoring and support, explaining that it is the most straightforward active option for her resistant virus.",
+        "choice_2": "Prescribe an alternative regimen that avoids efavirenz, respecting her explicit request despite the added complexity and different toxicity profile."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:32:27.106114",
+      "data": {
+        "vignette": "A 29-year-old woman is diagnosed with HIV and needs to start antiretroviral therapy. She is clinically stable but has moderate immunosuppression. Six months ago, she briefly took an efavirenz-based regimen as post-exposure prophylaxis following a known HIV exposure, but discontinued it after two weeks due to severe depression and intrusive suicidal thoughts. Those symptoms resolved completely after stopping. She now presents for treatment of confirmed HIV infection. She tells you she is terrified of feeling that way again and asks not to be given efavirenz. However, baseline resistance testing shows she has transmitted resistance to integrase inhibitors, which are the current standard first-line agents. An efavirenz-based regimen remains fully active against her virus. Alternative regimens that avoid both efavirenz and integrase inhibitors are effective but require more complex dosing and monitoring, and carry their own risks including metabolic and renal toxicity. You must decide on a treatment plan today.",
+        "choice_1": {
+          "choice": "Recommend the efavirenz-based regimen with close psychiatric monitoring and support, explaining that it is the most straightforward active option for her resistant virus.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Prescribe an alternative regimen that avoids efavirenz, respecting her explicit request despite the added complexity and different toxicity profile.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

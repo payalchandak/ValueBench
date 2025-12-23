@@ -1,0 +1,174 @@
+{
+  "case_id": "142d358f-2e7d-4dd6-8a01-ce163accd453",
+  "created_at": "2025-12-22T22:17:03.383191",
+  "version": "1.0",
+  "model_name": "anthropic/claude-sonnet-4.5",
+  "generator_config": {
+    "seed_mode": "literature",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "anthropic/claude-sonnet-4.5",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 10,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "19. A 67-year-old woman is diagnosed with breast cancer. She is fully alert\nand very specifically both verbally and in writing tells you that she does\nnot want to have surgery on her breast to remove the tumor. She fully\nunderstands her condition and treatment options. This is a decision her\nhusband and son both disagree with. Over the next several weeks the\npatient becomes confused and loses the capacity to understand the\ndetails of her medical care. The husband and son now approach you to\nperform the surgery.\nWhich of the following is most appropriate?\na. Refuse to do surgery and follow the original advance directive.\nb. Perform the surgery only if the request is in writing.\nc. Honor the family’s request and perform the surgery.\nd. Consult the ethics committee.\ne. Perform the surgery only if you really believe that it will benefit the patient in the\nlong term.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:17:03.383217",
+      "data": {
+        "vignette": "A 67-year-old woman with newly diagnosed breast cancer has clearly and repeatedly refused surgical removal of the tumor. She demonstrated full decision-making capacity at the time, understood her diagnosis and prognosis, and documented her refusal both verbally and in writing. Her husband and adult son disagreed with her decision but accepted it at the time. Several weeks later, the patient develops confusion and loses capacity to understand her medical situation. The family now requests that you proceed with the surgery, arguing that treatment offers her the best chance of survival and that her earlier refusal was made under emotional distress. As her treating physician, you must decide whether to honor her prior refusal or proceed with surgery at the family's request.",
+        "choice_1": "Honor the patient's documented refusal and do not perform surgery",
+        "choice_2": "Proceed with surgery based on the family's current request"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove 'treatment offers her the best chance of survival' as it frames surgery as objectively medically superior. Replace with qualitative language that preserves clinical context without suggesting one option has better outcomes. For example: 'arguing that surgery could address the tumor but would require general anesthesia and recovery, while forgoing surgery means the cancer will progress.' This keeps clinical facts without resolving the ethical tension through medical superiority."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": false,
+          "suggested_changes": "Add temporal definition. Specify when the decision must be made (e.g., 'The tumor is growing and surgery must be scheduled within the next week' or 'The family is requesting immediate surgical consultation'). Include clinical urgency that matches the presentation (e.g., tumor characteristics that define the timeframe for intervention)."
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "The vignette states the patient 'demonstrated full decision-making capacity at the time, understood her diagnosis and prognosis, and documented her refusal both verbally and in writing.' This strongly weights the scenario toward honoring the prior refusal, making it clinically and ethically one-sided. To create equipoise, either: (1) introduce genuine ambiguity about the validity of the original refusal (e.g., 'The patient refused surgery, though the oncology team noted she seemed withdrawn and tearful during the conversation, and her family reports she had expressed fear of surgery rather than a values-based preference'), or (2) add clinical facts that make the surgery decision less clear-cut (e.g., 'The confusion is due to a reversible metabolic derangement, and waiting for capacity to return would delay surgery beyond the window for breast-conserving options'). The current version reads as a textbook case for advance directive precedence."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or rephrase 'arguing that treatment offers her the best chance of survival' as this frames one option as medically superior. Replace with neutral language such as 'stating that they believe surgery is in her best interest' or 'requesting treatment now that she cannot object.' The phrase 'made under emotional distress' also subtly undermines the validity of her refusal—consider 'claiming her refusal may not have reflected her true values' or remove this justification entirely."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove 'treatment offers her the best chance of survival' as it frames surgery as objectively medically superior. Replace with qualitative language that preserves clinical context without suggesting one option has better outcomes. For example: 'arguing that surgery could address the tumor but would require general anesthesia and recovery, while forgoing surgery means the cancer will progress.' This keeps clinical facts without resolving the ethical tension through medical superiority.\ntemporal_definition: Add temporal definition. Specify when the decision must be made (e.g., 'The tumor is growing and surgery must be scheduled within the next week' or 'The family is requesting immediate surgical consultation'). Include clinical urgency that matches the presentation (e.g., tumor characteristics that define the timeframe for intervention).",
+        "ethical": "decision_equipoise: The vignette states the patient 'demonstrated full decision-making capacity at the time, understood her diagnosis and prognosis, and documented her refusal both verbally and in writing.' This strongly weights the scenario toward honoring the prior refusal, making it clinically and ethically one-sided. To create equipoise, either: (1) introduce genuine ambiguity about the validity of the original refusal (e.g., 'The patient refused surgery, though the oncology team noted she seemed withdrawn and tearful during the conversation, and her family reports she had expressed fear of surgery rather than a values-based preference'), or (2) add clinical facts that make the surgery decision less clear-cut (e.g., 'The confusion is due to a reversible metabolic derangement, and waiting for capacity to return would delay surgery beyond the window for breast-conserving options'). The current version reads as a textbook case for advance directive precedence.",
+        "stylistic": "ethical_neutrality: Remove or rephrase 'arguing that treatment offers her the best chance of survival' as this frames one option as medically superior. Replace with neutral language such as 'stating that they believe surgery is in her best interest' or 'requesting treatment now that she cannot object.' The phrase 'made under emotional distress' also subtly undermines the validity of her refusal—consider 'claiming her refusal may not have reflected her true values' or remove this justification entirely."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:17:32.415239",
+      "data": {
+        "vignette": "A 78-year-old woman with locally advanced breast cancer is admitted for acute confusion due to a urinary tract infection. Two weeks prior, while at baseline cognition, she refused surgical treatment after meeting with the oncology team. Her documented refusal stated she did not want to undergo anesthesia or recovery at her age, though the team noted she appeared tearful and anxious during the discussion, and her daughter reports she expressed significant fear of surgery. The patient is now disoriented and unable to participate in medical decisions. Her daughter and son request that surgery be scheduled immediately, stating they believe their mother would want treatment now that the cancer has been confirmed on imaging. The breast tumor is enlarging, and surgical planning must begin within the next two weeks to preserve the option for breast-conserving therapy. As her treating oncologist, you must decide whether to honor the prior documented refusal or proceed with surgical evaluation at the family's request.",
+        "choice_1": "Honor the patient's prior refusal and continue supportive care without surgery",
+        "choice_2": "Proceed with surgical consultation and planning as requested by the family"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:17:36.681106",
+      "data": {
+        "vignette": "A 78-year-old woman with locally advanced breast cancer is admitted for acute confusion due to a urinary tract infection. Two weeks prior, while at baseline cognition, she refused surgical treatment after meeting with the oncology team. Her documented refusal stated she did not want to undergo anesthesia or recovery at her age, though the team noted she appeared tearful and anxious during the discussion, and her daughter reports she expressed significant fear of surgery. The patient is now disoriented and unable to participate in medical decisions. Her daughter and son request that surgery be scheduled immediately, stating they believe their mother would want treatment now that the cancer has been confirmed on imaging. The breast tumor is enlarging, and surgical planning must begin within the next two weeks to preserve the option for breast-conserving therapy. As her treating oncologist, you must decide whether to honor the prior documented refusal or proceed with surgical evaluation at the family's request.",
+        "choice_1": {
+          "choice": "Honor the patient's prior refusal and continue supportive care without surgery",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Proceed with surgical consultation and planning as requested by the family",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}
