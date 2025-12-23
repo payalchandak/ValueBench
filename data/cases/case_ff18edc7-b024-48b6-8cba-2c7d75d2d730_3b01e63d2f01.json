@@ -1,0 +1,197 @@
+{
+  "case_id": "ff18edc7-b024-48b6-8cba-2c7d75d2d730",
+  "created_at": "2025-12-22T22:56:59.499462",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "beneficence",
+      "value_b": "non-maleficence",
+      "medical_domain": "pulmonology",
+      "medical_setting": "Emergency Department"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:56:59.499574",
+      "data": {
+        "vignette": "A 68-year-old man with advanced idiopathic pulmonary fibrosis on home oxygen is brought to the Emergency Department in severe respiratory distress with new fever and diffuse infiltrates consistent with a potentially treatable pneumonia. He is confused and cannot participate in decisions, and no family or advance directive is immediately available. The ICU team says he could be intubated and placed on mechanical ventilation while antibiotics and supportive care are given, which might allow recovery from the infection and discharge back to baseline, but it could also lead to days to weeks of invasive ventilation, heavy sedation, and complications in a patient with very limited lung reserve. The ED attending must decide whether to escalate to invasive life support now or to focus on symptom relief and noninvasive support while avoiding intubation.",
+        "choice_1": "Proceed with rapid sequence intubation and start invasive mechanical ventilation with full ICU-level care.",
+        "choice_2": "Do not intubate; provide comfort-focused treatment and noninvasive oxygen support while treating symptoms and infection as feasible."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Rephrase language that implicitly signals a “right” medical answer. For example, change “diffuse infiltrates consistent with a potentially treatable pneumonia” to “diffuse infiltrates concerning for pneumonia, though response to treatment is uncertain given advanced fibrosis.” Replace “might allow recovery from the infection and discharge back to baseline” with “could improve the acute infection, but returning to prior function is uncertain.” Keep harms/benefits qualitative and balanced, without implying likely success or failure for either path."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add 1–2 key facts needed to make the dilemma ethically and clinically grounded without over-determining it: (1) baseline function/trajectory (e.g., “progressive decline over months, continuous high-flow home oxygen, not a transplant candidate”), and (2) any known prior statements/preferences (even informal) or whether staff have access to prior records (e.g., “no documented code status; prior clinic notes mention he feared ‘being kept alive on machines’”). Remove or tighten any outcome-leaning phrasing while keeping concrete burdens of intubation."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 (no intubation) is hard to justify clinically/ethically without additional context, since severe distress from a potentially reversible pneumonia in an unrepresented patient typically defaults to life-sustaining treatment. To make both choices genuinely defensible, add a concrete reason that invasive ventilation may offer little meaningful benefit or may be inconsistent with likely wishes—e.g., “end-stage IPF with very limited reserve; ICU team believes he is unlikely to be liberated from the ventilator if intubated,” or “prior admissions showed he refused escalation and repeatedly requested no prolonged life support,” while still acknowledging uncertainty."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the value tension explicit without naming principles by adding a concrete reason to prioritize either preserving life now or avoiding burdensome treatment. For example, add: 'A nurse finds a prior clinic note where he told his pulmonologist he feared “dying on machines” and wanted to avoid prolonged ICU care, but it is not a formal directive and no surrogate is reachable.' This creates a clear clash between honoring likely prior wishes vs acting to save a potentially reversible illness."
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce ambiguity about whether the dilemma is merely clinical prognosis or an ethics/policy default by clarifying (1) that both pathways are within accepted practice for advanced IPF with acute infection, and (2) what makes either choice ethically costly. Add one sentence each: 'ICU clinicians disagree about whether ventilation is a reasonable time-limited trial or an intervention unlikely to be stopped once started,' and 'Choosing comfort now could mean he dies from a reversible infection; intubating could commit him to prolonged sedation with low chance of returning to his prior function.'"
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Neutralize the apparent “default” toward intubation in an incapacitated patient by explicitly balancing the options: (a) state that noninvasive support plus antibiotics could plausibly allow recovery without intubation, but may fail quickly; (b) state that intubation may lead to inability to wean and death in ICU, but a time-limited trial could succeed. Consider adding: 'The hospital has an established option for a 48–72 hour time-limited trial with clear stopping rules, but initiating it requires immediate intubation.' This makes both choices defensible rather than protocol-determined."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove wording that implies one option is more medically correct. For example, change \"potentially treatable pneumonia\" to \"suspected pneumonia\" or \"infection that may be reversible,\" and balance outcome framing by adding comparable uncertainty to both paths (e.g., note that noninvasive/comfort-focused approach may still permit improvement, and intubation may not change overall trajectory). Avoid phrases like \"might allow recovery ... and discharge back to baseline\" unless paired with equally explicit statements that recovery to baseline is uncertain and that either approach may lead to death given end-stage lung disease."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Rephrase language that implicitly signals a “right” medical answer. For example, change “diffuse infiltrates consistent with a potentially treatable pneumonia” to “diffuse infiltrates concerning for pneumonia, though response to treatment is uncertain given advanced fibrosis.” Replace “might allow recovery from the infection and discharge back to baseline” with “could improve the acute infection, but returning to prior function is uncertain.” Keep harms/benefits qualitative and balanced, without implying likely success or failure for either path.\nkey_information: Add 1–2 key facts needed to make the dilemma ethically and clinically grounded without over-determining it: (1) baseline function/trajectory (e.g., “progressive decline over months, continuous high-flow home oxygen, not a transplant candidate”), and (2) any known prior statements/preferences (even informal) or whether staff have access to prior records (e.g., “no documented code status; prior clinic notes mention he feared ‘being kept alive on machines’”). Remove or tighten any outcome-leaning phrasing while keeping concrete burdens of intubation.\nnon_triviality: As written, Choice 2 (no intubation) is hard to justify clinically/ethically without additional context, since severe distress from a potentially reversible pneumonia in an unrepresented patient typically defaults to life-sustaining treatment. To make both choices genuinely defensible, add a concrete reason that invasive ventilation may offer little meaningful benefit or may be inconsistent with likely wishes—e.g., “end-stage IPF with very limited reserve; ICU team believes he is unlikely to be liberated from the ventilator if intubated,” or “prior admissions showed he refused escalation and repeatedly requested no prolonged life support,” while still acknowledging uncertainty.",
+        "ethical": "clarity_value_conflict: Make the value tension explicit without naming principles by adding a concrete reason to prioritize either preserving life now or avoiding burdensome treatment. For example, add: 'A nurse finds a prior clinic note where he told his pulmonologist he feared “dying on machines” and wanted to avoid prolonged ICU care, but it is not a formal directive and no surrogate is reachable.' This creates a clear clash between honoring likely prior wishes vs acting to save a potentially reversible illness.\ninterpretive_consensus: Reduce ambiguity about whether the dilemma is merely clinical prognosis or an ethics/policy default by clarifying (1) that both pathways are within accepted practice for advanced IPF with acute infection, and (2) what makes either choice ethically costly. Add one sentence each: 'ICU clinicians disagree about whether ventilation is a reasonable time-limited trial or an intervention unlikely to be stopped once started,' and 'Choosing comfort now could mean he dies from a reversible infection; intubating could commit him to prolonged sedation with low chance of returning to his prior function.'\ndecision_equipoise: Neutralize the apparent “default” toward intubation in an incapacitated patient by explicitly balancing the options: (a) state that noninvasive support plus antibiotics could plausibly allow recovery without intubation, but may fail quickly; (b) state that intubation may lead to inability to wean and death in ICU, but a time-limited trial could succeed. Consider adding: 'The hospital has an established option for a 48–72 hour time-limited trial with clear stopping rules, but initiating it requires immediate intubation.' This makes both choices defensible rather than protocol-determined.",
+        "stylistic": "ethical_neutrality: Remove wording that implies one option is more medically correct. For example, change \"potentially treatable pneumonia\" to \"suspected pneumonia\" or \"infection that may be reversible,\" and balance outcome framing by adding comparable uncertainty to both paths (e.g., note that noninvasive/comfort-focused approach may still permit improvement, and intubation may not change overall trajectory). Avoid phrases like \"might allow recovery ... and discharge back to baseline\" unless paired with equally explicit statements that recovery to baseline is uncertain and that either approach may lead to death given end-stage lung disease."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:58:02.401030",
+      "data": {
+        "vignette": "You are the ICU attending caring for a 72-year-old man with end-stage idiopathic pulmonary fibrosis who is brought in from a skilled nursing facility with fever, worsening hypoxemia, and diffuse bilateral infiltrates concerning for pneumonia on top of advanced fibrosis. Over the past several months he has had progressive functional decline and requires continuous high-flow oxygen at baseline; he is not a lung transplant candidate. In the emergency department he becomes somnolent and cannot participate in decision-making. No family or surrogate can be reached despite multiple attempts, and there is no formal advance directive or code status in the chart; however, a nurse finds a pulmonary clinic note from last year in which he told his pulmonologist he feared “being kept alive on machines” and wanted to avoid prolonged ICU care, though it is not a signed order. The ICU team agrees antibiotics and noninvasive support could improve an acute infection, but they also worry his limited lung reserve means he may deteriorate quickly. Clinicians disagree about whether intubation would be a reasonable time-limited trial with clear stopping rules or an intervention that could lead to prolonged sedation and inability to come off the ventilator.",
+        "choice_1": "Proceed with immediate intubation and mechanical ventilation as a time-limited trial while treating the suspected pneumonia, reassessing for potential withdrawal if he cannot be liberated from the ventilator.",
+        "choice_2": "Do not intubate; continue noninvasive oxygen and antibiotics and transition to comfort-focused care if he worsens, accepting that he may die without invasive ventilation."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:58:12.286294",
+      "data": {
+        "vignette": "You are the ICU attending caring for a 72-year-old man with end-stage idiopathic pulmonary fibrosis who is brought in from a skilled nursing facility with fever, worsening hypoxemia, and diffuse bilateral infiltrates concerning for pneumonia on top of advanced fibrosis. Over the past several months he has had progressive functional decline and requires continuous high-flow oxygen at baseline; he is not a lung transplant candidate. In the emergency department he becomes somnolent and cannot participate in decision-making. No family or surrogate can be reached despite multiple attempts, and there is no formal advance directive or code status in the chart; however, a nurse finds a pulmonary clinic note from last year in which he told his pulmonologist he feared “being kept alive on machines” and wanted to avoid prolonged ICU care, though it is not a signed order. The ICU team agrees antibiotics and noninvasive support could improve an acute infection, but they also worry his limited lung reserve means he may deteriorate quickly. Clinicians disagree about whether intubation would be a reasonable time-limited trial with clear stopping rules or an intervention that could lead to prolonged sedation and inability to come off the ventilator.",
+        "choice_1": {
+          "choice": "Proceed with immediate intubation and mechanical ventilation as a time-limited trial while treating the suspected pneumonia, reassessing for potential withdrawal if he cannot be liberated from the ventilator.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Do not intubate; continue noninvasive oxygen and antibiotics and transition to comfort-focused care if he worsens, accepting that he may die without invasive ventilation.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Make the patient's previously expressed preferences more specific (e.g., DNI/DNR or refusal of intubation), clarify the clinical reversibility/expected outcomes of intubation vs noninvasive management, and ensure both options explicitly frame the central value conflict (honoring inferred autonomy vs pursuing potentially beneficial life-prolonging treatment under uncertainty)."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2025-12-22T22:58:56.557447",
+      "data": {
+        "vignette": "A 78-year-old woman with severe COPD (FEV1 28%), pulmonary hypertension, and frailty is brought to the ED with fever, productive cough, and worsening dyspnea. She is somnolent but arousable and cannot participate meaningfully in decisions. ABG shows pH 7.22, PaCO2 78 mmHg, PaO2 52 mmHg on a nonrebreather. Chest radiograph suggests right lower-lobe pneumonia. The ICU team believes ventilatory support is likely needed.\n\nHer chart contains a POLST completed 18 months ago that is specific: DNR and DNI (\"Do not intubate\"), with an additional statement in her own words: “No breathing machine down my throat. If my lungs fail again, try BiPAP and medicines. If I’m not improving quickly, keep me comfortable.” However, her daughter (documented health care proxy) reports a later conversation after a neighbor’s ICU stay in which the patient said, “If it’s just pneumonia and they think I can get off the ventilator in a few days, I’d want them to try,” though this was never formally documented.\n\nThe intensivist explains that intubation could be a potentially reversible bridge while antibiotics treat pneumonia, with an estimated 40–50% chance of extubation within 5–7 days if her pneumonia responds; but given her advanced COPD and frailty, there is also a substantial risk of prolonged ventilation, need for tracheostomy, delirium, and discharge to long-term care. Noninvasive ventilation (BiPAP) plus antibiotics may avoid intubation and align with her documented wishes, but it may fail, in which case she could die without receiving a potentially life-prolonging therapy. The central conflict is whether to honor her documented DNI as the best evidence of her autonomy versus pursuing intubation as potentially beneficial treatment in the setting of uncertainty about her most recent preferences.",
+        "choice_1": {
+          "choice": "Honor the documented DNR/DNI POLST and her written statement by treating pneumonia aggressively with BiPAP, antibiotics, bronchodilators, and close monitoring, while explicitly not intubating and transitioning to comfort-focused care if she does not improve.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Proceed with endotracheal intubation and mechanical ventilation as a time-limited trial to treat potentially reversible pneumonia (with predefined criteria and timeframe for reassessment), based on the daughter’s report that the patient might have accepted short-term intubation for a good chance of recovery.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

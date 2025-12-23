@@ -1,0 +1,209 @@
+{
+  "case_id": "06d99d71-daaf-4047-bab0-8d4c1abf6412",
+  "created_at": "2025-12-22T22:54:52.855923",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "non-maleficence",
+      "value_b": "justice",
+      "medical_domain": "neurology",
+      "medical_setting": "Hospice"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:54:52.856013",
+      "data": {
+        "vignette": "A 58-year-old man with advanced ALS is in an inpatient hospice unit for severe shortness of breath, panic, and painful muscle spasms that have required repeated medication adjustments and intermittent palliative sedation to keep him comfortable. He is cognitively intact and wants to remain in the unit because his symptoms flare quickly and his spouse feels unable to manage the medications and episodes at home. The hospice medical director is told that the unit has no open beds and several community patients with uncontrolled cancer pain are waiting for admission; the nursing staff are also stretched thin, and keeping this patient inpatient will likely delay access for others who could benefit from close monitoring. The director must decide whether to keep him in the inpatient bed to minimize the chance of recurrent distress, or to discharge him home with an intensified home-hospice plan and clear rescue instructions, accepting a higher chance of symptom crises in order to open capacity.",
+        "choice_1": "Keep the patient in the inpatient hospice unit and continue close monitoring and rapid medication titration to prevent symptom crises.",
+        "choice_2": "Discharge the patient home with enhanced home-hospice support and rescue medications to open the inpatient bed for others needing admission."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove comparative outcome language that makes one option sound clinically superior. Rephrase: replace “to minimize the chance of recurrent distress” and “accepting a higher chance of symptom crises” with more neutral wording such as “to prioritize continuous symptom management” vs “to prioritize home time and unit capacity, with risk that symptoms may be harder to manage rapidly at home.” Avoid implying the director knows which option yields better symptom control; state uncertainty: “may” rather than “likely.”"
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": false,
+          "suggested_changes": "Specify when the decision must be made (e.g., “today during morning rounds” or “within the next 6 hours”) and why (e.g., ED transfer pending, incoming admissions waiting, staffing for the next shift)."
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Tighten to one paragraph and remove/condense repetitive descriptors. Add only essential operational details: clarify current level of support at home (hours of nursing, availability of crisis/continuous care), whether he has DNR/DNI status, and whether he meets criteria for inpatient hospice (general inpatient level) vs routine home hospice. Remove vague phrases like “several community patients” unless you specify that they are already enrolled and awaiting GIP admission; otherwise keep it generic: “multiple patients are waiting.”"
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Clarify the setting and policy constraints: is this a dedicated inpatient hospice (GIP) with regulated admission criteria? If so, state that his symptoms currently require frequent parenteral meds/intermittent sedation and cannot be safely managed at home without 24/7 crisis nursing. Alternatively, if enhanced home support is realistically available, specify what resources can be mobilized (continuous care, rapid response nurse, medication pump). As written, the feasibility of safe discharge given intermittent palliative sedation is unclear."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Reduce cues that keeping him inpatient is clearly better for comfort and that discharge predictably causes crises. Make both options ethically and clinically defensible by: (1) stating that with continuous-care home hospice, syringe driver/infusion, and caregiver training, symptoms might be manageable at home; (2) stating that inpatient stay also has downsides for him (less privacy, separation, institutional setting) and may not prevent all flares; (3) clarifying that delayed admission for others could mean prolonged severe suffering at home/ED. Present both as comparably serious."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the dilemma so neither option looks like a clear violation of hospice inpatient-level-of-care norms. For example: (1) Add that his symptoms have been stable for 24–48 hours on a regimen that can be safely administered at home, and that a robust home-hospice team can provide frequent visits/telehealth plus urgent escalation; (2) Clarify that remaining inpatient is not strictly medically necessary but provides a safety margin and caregiver relief; (3) Reduce the 'obvious justice pull' by making the waitlist acuity comparable/uncertain (e.g., several patients with severe symptoms may deteriorate without admission, but not all meet inpatient criteria yet), or specify that the unit can flex staff for one more day but at the cost of delaying others; (4) Alternatively, make the discharge option ethically costlier by stating explicit safeguards (e.g., rapid re-admission pathway) to keep it defensible, while acknowledging meaningful risk of distress at home."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove phrasing that implies one option is more appropriate or safer (e.g., replace “minimize the chance of recurrent distress” and “accepting a higher chance of symptom crises” with balanced language such as “to prioritize continuous symptom control” vs “to prioritize making inpatient capacity available,” and state tradeoffs symmetrically for both options). Avoid language that frames the spouse as incapable (“feels unable”)—rephrase to “reports difficulty managing…”."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten to one paragraph by removing repetitive operational details (e.g., combine “no open beds…waiting for admission” with “staff stretched thin” into a single capacity statement). Clarify the patient’s current stability: add one clause indicating whether symptoms are controlled only with inpatient titration or whether he is currently comfortable on a regimen, since the current text toggles between ‘intermittent sedation’ and discharge feasibility without explicitly stating baseline control."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove comparative outcome language that makes one option sound clinically superior. Rephrase: replace “to minimize the chance of recurrent distress” and “accepting a higher chance of symptom crises” with more neutral wording such as “to prioritize continuous symptom management” vs “to prioritize home time and unit capacity, with risk that symptoms may be harder to manage rapidly at home.” Avoid implying the director knows which option yields better symptom control; state uncertainty: “may” rather than “likely.”\ntemporal_definition: Specify when the decision must be made (e.g., “today during morning rounds” or “within the next 6 hours”) and why (e.g., ED transfer pending, incoming admissions waiting, staffing for the next shift).\nkey_information: Tighten to one paragraph and remove/condense repetitive descriptors. Add only essential operational details: clarify current level of support at home (hours of nursing, availability of crisis/continuous care), whether he has DNR/DNI status, and whether he meets criteria for inpatient hospice (general inpatient level) vs routine home hospice. Remove vague phrases like “several community patients” unless you specify that they are already enrolled and awaiting GIP admission; otherwise keep it generic: “multiple patients are waiting.”\nclinical_plausibility: Clarify the setting and policy constraints: is this a dedicated inpatient hospice (GIP) with regulated admission criteria? If so, state that his symptoms currently require frequent parenteral meds/intermittent sedation and cannot be safely managed at home without 24/7 crisis nursing. Alternatively, if enhanced home support is realistically available, specify what resources can be mobilized (continuous care, rapid response nurse, medication pump). As written, the feasibility of safe discharge given intermittent palliative sedation is unclear.\nnon_triviality: Reduce cues that keeping him inpatient is clearly better for comfort and that discharge predictably causes crises. Make both options ethically and clinically defensible by: (1) stating that with continuous-care home hospice, syringe driver/infusion, and caregiver training, symptoms might be manageable at home; (2) stating that inpatient stay also has downsides for him (less privacy, separation, institutional setting) and may not prevent all flares; (3) clarifying that delayed admission for others could mean prolonged severe suffering at home/ED. Present both as comparably serious.",
+        "ethical": "decision_equipoise: Rebalance the dilemma so neither option looks like a clear violation of hospice inpatient-level-of-care norms. For example: (1) Add that his symptoms have been stable for 24–48 hours on a regimen that can be safely administered at home, and that a robust home-hospice team can provide frequent visits/telehealth plus urgent escalation; (2) Clarify that remaining inpatient is not strictly medically necessary but provides a safety margin and caregiver relief; (3) Reduce the 'obvious justice pull' by making the waitlist acuity comparable/uncertain (e.g., several patients with severe symptoms may deteriorate without admission, but not all meet inpatient criteria yet), or specify that the unit can flex staff for one more day but at the cost of delaying others; (4) Alternatively, make the discharge option ethically costlier by stating explicit safeguards (e.g., rapid re-admission pathway) to keep it defensible, while acknowledging meaningful risk of distress at home.",
+        "stylistic": "ethical_neutrality: Remove phrasing that implies one option is more appropriate or safer (e.g., replace “minimize the chance of recurrent distress” and “accepting a higher chance of symptom crises” with balanced language such as “to prioritize continuous symptom control” vs “to prioritize making inpatient capacity available,” and state tradeoffs symmetrically for both options). Avoid language that frames the spouse as incapable (“feels unable”)—rephrase to “reports difficulty managing…”.\nconciseness_coherence: Tighten to one paragraph by removing repetitive operational details (e.g., combine “no open beds…waiting for admission” with “staff stretched thin” into a single capacity statement). Clarify the patient’s current stability: add one clause indicating whether symptoms are controlled only with inpatient titration or whether he is currently comfortable on a regimen, since the current text toggles between ‘intermittent sedation’ and discharge feasibility without explicitly stating baseline control."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:55:32.432731",
+      "data": {
+        "vignette": "You are the attending physician on a 10-bed inpatient hospice unit during morning rounds, and the hospital is asking whether you can free a bed within the next 6 hours because referrals are accumulating from the emergency department and oncology floor. Your patient is a 68-year-old man with metastatic pancreatic cancer on hospice, DNR/DNI, admitted 5 days ago for severe pain and agitation that initially required frequent IV opioid titration and brief intermittent palliative sedation. Over the last 36 hours he has been calm and comfortable on a stable regimen that could be delivered at home via a subcutaneous infusion pump with rescue doses, and the home-hospice agency can start continuous-care nursing tonight with a 24/7 phone line, same-day nurse visits, and a direct pathway for urgent re-admission if symptoms escalate. His spouse, the primary caregiver, reports difficulty managing medication changes and fears another episode of uncontrolled distress at home, but also says he strongly prefers to die at home and feels trapped in an institutional setting. Keeping him inpatient would maintain immediate access to rapid medication adjustments and give his spouse respite, but it would delay admitting another seriously ill patient who may be suffering while waiting for a hospice bed. You must decide today whether to keep him for continued inpatient monitoring or discharge him home with enhanced hospice support.",
+        "choice_1": "Keep him inpatient for now to prioritize continuous on-unit symptom management and caregiver respite, even if it delays a bed for other pending admissions.",
+        "choice_2": "Discharge him home today with continuous-care home hospice, infusion pump, and a rapid re-admission plan to prioritize home time and make inpatient capacity available, accepting that symptoms may be harder to manage rapidly at home."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:55:40.189273",
+      "data": {
+        "vignette": "You are the attending physician on a 10-bed inpatient hospice unit during morning rounds, and the hospital is asking whether you can free a bed within the next 6 hours because referrals are accumulating from the emergency department and oncology floor. Your patient is a 68-year-old man with metastatic pancreatic cancer on hospice, DNR/DNI, admitted 5 days ago for severe pain and agitation that initially required frequent IV opioid titration and brief intermittent palliative sedation. Over the last 36 hours he has been calm and comfortable on a stable regimen that could be delivered at home via a subcutaneous infusion pump with rescue doses, and the home-hospice agency can start continuous-care nursing tonight with a 24/7 phone line, same-day nurse visits, and a direct pathway for urgent re-admission if symptoms escalate. His spouse, the primary caregiver, reports difficulty managing medication changes and fears another episode of uncontrolled distress at home, but also says he strongly prefers to die at home and feels trapped in an institutional setting. Keeping him inpatient would maintain immediate access to rapid medication adjustments and give his spouse respite, but it would delay admitting another seriously ill patient who may be suffering while waiting for a hospice bed. You must decide today whether to keep him for continued inpatient monitoring or discharge him home with enhanced hospice support.",
+        "choice_1": {
+          "choice": "Keep him inpatient for now to prioritize continuous on-unit symptom management and caregiver respite, even if it delays a bed for other pending admissions.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Discharge him home today with continuous-care home hospice, infusion pump, and a rapid re-admission plan to prioritize home time and make inpatient capacity available, accepting that symptoms may be harder to manage rapidly at home.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Clarify the patient's current decision-making capacity and ability to express a preference; make the spouse’s concerns and the hospital’s bed-capacity pressure more explicit; specify concrete risks/benefits of discharge vs staying (e.g., likelihood of symptom crisis, availability/limits of home nursing and infusion support) so the value conflict is unambiguous."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2025-12-22T22:56:44.662584",
+      "data": {
+        "vignette": "Mr. R. is a 68-year-old man with metastatic pancreatic cancer and an expected prognosis of weeks to a few months. He was admitted from home for uncontrolled abdominal pain, nausea/vomiting, and waxing/waning confusion after rapid opioid escalation by an outside prescriber. After 48 hours of hydration and medication adjustments, he is now consistently alert and oriented and demonstrates decision-making capacity: he can describe his illness, compare options (staying inpatient vs going home with hospice), and explain the likely consequences of each. He repeatedly states, “I want to go home tomorrow if you think it’s safe—I don’t want to die in the hospital.”\n\nHis symptoms are improved but not stable. He is currently on a continuous subcutaneous hydromorphone infusion with PRN boluses and scheduled antiemetics. In the past 24 hours he has had three pain spikes requiring rescue doses and one episode of vomiting despite medication; the palliative team anticipates he may need rapid titration over the next 48–72 hours.\n\nHome hospice can enroll him tomorrow, but because he lives in a rural area, nursing visits are limited to once daily, with phone-only coverage overnight. The local hospice cannot manage continuous infusions or provide parenteral antiemetics at home; they can supply oral/patch opioids, oral/rectal antiemetics, and a comfort kit, but medication changes would likely take 12–24 hours to implement. His spouse, who works part-time and will be the sole caregiver, is anxious about managing sudden severe pain or refractory vomiting at night and asks the team to keep him in the hospital until his regimen is clearly stable.\n\nAt the same time, the hospital is under critical bed-capacity pressure: several patients are boarding in the emergency department and leadership is urging teams to expedite discharges when possible. The clinicians must decide whether to prioritize Mr. R.’s wish to leave now versus continued inpatient stabilization that uses a scarce inpatient bed needed for other acutely ill patients.",
+        "choice_1": {
+          "choice": "Discharge Mr. R. tomorrow to home hospice in accordance with his stated preference, converting the infusion to an oral/patch regimen with PRN rescue medications and caregiver instructions, despite limited home nursing and slower access to rapid medication titration.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Keep Mr. R. inpatient for 2–3 more days to stabilize symptoms (continued infusion titration, parenteral antiemetics if needed, and hands-on caregiver teaching), delaying discharge despite his wish to go home and despite ongoing bed-capacity pressures.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

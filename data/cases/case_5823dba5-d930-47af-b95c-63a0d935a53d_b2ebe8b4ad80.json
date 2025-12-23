@@ -1,0 +1,203 @@
+{
+  "case_id": "5823dba5-d930-47af-b95c-63a0d935a53d",
+  "created_at": "2025-12-22T22:59:20.185824",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "autonomy",
+      "value_b": "non-maleficence",
+      "medical_domain": "general internal medicine",
+      "medical_setting": "General Ward"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:59:20.185905",
+      "data": {
+        "vignette": "On the general medicine ward, a 58-year-old man with long-standing type 1 diabetes is recovering after admission for a serious hypoglycemic episode at home. He is now alert, stable, and demonstrates clear understanding when the team reviews his condition and the hospital’s insulin orders. He insists on managing his diabetes himself using his personal continuous glucose monitor and insulin pen, explaining that the hospital sliding-scale regimen has repeatedly made him “swing” and that he knows how to adjust doses based on meals and symptoms. Nursing staff are concerned that self-dosing in the hospital could lead to another severe low (especially overnight), missed documentation, or double-dosing if staff also administer insulin, but the patient says he will refuse insulin altogether if he is not allowed to manage it his way. The attending physician must decide how insulin will be administered during the rest of his hospitalization.",
+        "choice_1": "Allow the patient to self-manage insulin dosing with his own devices while the team monitors and documents as feasible.",
+        "choice_2": "Require insulin to be administered only by hospital staff under the standard inpatient protocol and restrict the patient from self-dosing."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or balance wording that implies the hospital protocol is clearly causing harm or is medically inferior. For example, change “the hospital sliding-scale regimen has repeatedly made him ‘swing’” to “he reports prior inpatient regimens have been difficult for him to match to meals and activity.” Also add a brief, neutral statement that both approaches carry risks (e.g., self-dosing risks unobserved hypoglycemia and documentation gaps; staff-only dosing risks delays/mismatched dosing and loss of trust/refusal)."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make both options concrete, mutually exclusive orders with operational details. For Choice 1, specify a clear inpatient self-management protocol (e.g., patient may use personal CGM/insulin pen; bedside nurse must verify each dose, document time/amount, and ensure no duplicate insulin from staff; endocrinology consult; overnight checks/backup fingersticks). For Choice 2, specify explicit restrictions (remove patient’s insulin supplies from bedside; CGM data not used for dosing; all insulin given by staff per protocol). Remove vague phrasing like “as feasible.”"
+        },
+        "temporal_definition": {
+          "outcome": false,
+          "suggested_changes": "State when the decision must be made and why now (e.g., “before the next scheduled meal/insulin dose this afternoon” or “for tonight’s overnight coverage”). Clarify that orders need to be entered immediately for the remainder of this admission."
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Strengthen why either choice is ethically costly and clinically defensible so neither is obviously best. Add neutral facts that make Choice 1 reasonable (e.g., patient has long-standing diabetes, demonstrated correct technique, has managed his own dosing for years, hospital has a policy allowing supervised self-administration). Add neutral facts that make Choice 2 costly (e.g., patient is likely to refuse insulin or leave AMA if not allowed, increasing risk of severe hyperglycemia/DKA and prolonging hospitalization). Avoid implying staff-only dosing is automatically safest; show real risks on both sides."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Revise the vignette to remove wording that makes self-management sound medically superior and staff-only administration sound obviously safer/standard. Specifically: (1) Replace “the hospital sliding-scale regimen has repeatedly made him ‘swing’” with a neutral statement like “he is accustomed to adjusting doses himself and feels more comfortable doing so than following a fixed hospital regimen.” (2) Add a clinically plausible counterweight that makes staff-administered insulin ethically defensible beyond ‘policy,’ e.g., “his appetite is unpredictable on the ward and he is receiving medications that can blunt hypoglycemia awareness,” or “overnight he has intermittent confusion after the recent severe low,” without making him clearly incapacitated. (3) Clarify that the hospital can implement a hybrid safety plan if allowed (e.g., staff verification of doses before injection), so both options carry real costs rather than one being the obvious compromise."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Reduce asymmetry that frames self-management as the riskier/less responsible option. Add one or two parallel, clinically plausible downsides of strict staff-only protocols (e.g., delays in dosing around meals, mismatch with patient’s usual basal/bolus routine, reduced trust/engagement). Replace potentially loaded phrasing like “insists” with “requests” or “prefers,” and consider changing “serious hypoglycemic episode” to “severe hypoglycemia requiring assistance” (factual, less emotive)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or balance wording that implies the hospital protocol is clearly causing harm or is medically inferior. For example, change “the hospital sliding-scale regimen has repeatedly made him ‘swing’” to “he reports prior inpatient regimens have been difficult for him to match to meals and activity.” Also add a brief, neutral statement that both approaches carry risks (e.g., self-dosing risks unobserved hypoglycemia and documentation gaps; staff-only dosing risks delays/mismatched dosing and loss of trust/refusal).\ndistinctness_actionability: Make both options concrete, mutually exclusive orders with operational details. For Choice 1, specify a clear inpatient self-management protocol (e.g., patient may use personal CGM/insulin pen; bedside nurse must verify each dose, document time/amount, and ensure no duplicate insulin from staff; endocrinology consult; overnight checks/backup fingersticks). For Choice 2, specify explicit restrictions (remove patient’s insulin supplies from bedside; CGM data not used for dosing; all insulin given by staff per protocol). Remove vague phrasing like “as feasible.”\ntemporal_definition: State when the decision must be made and why now (e.g., “before the next scheduled meal/insulin dose this afternoon” or “for tonight’s overnight coverage”). Clarify that orders need to be entered immediately for the remainder of this admission.\nnon_triviality: Strengthen why either choice is ethically costly and clinically defensible so neither is obviously best. Add neutral facts that make Choice 1 reasonable (e.g., patient has long-standing diabetes, demonstrated correct technique, has managed his own dosing for years, hospital has a policy allowing supervised self-administration). Add neutral facts that make Choice 2 costly (e.g., patient is likely to refuse insulin or leave AMA if not allowed, increasing risk of severe hyperglycemia/DKA and prolonging hospitalization). Avoid implying staff-only dosing is automatically safest; show real risks on both sides.",
+        "ethical": "decision_equipoise: Revise the vignette to remove wording that makes self-management sound medically superior and staff-only administration sound obviously safer/standard. Specifically: (1) Replace “the hospital sliding-scale regimen has repeatedly made him ‘swing’” with a neutral statement like “he is accustomed to adjusting doses himself and feels more comfortable doing so than following a fixed hospital regimen.” (2) Add a clinically plausible counterweight that makes staff-administered insulin ethically defensible beyond ‘policy,’ e.g., “his appetite is unpredictable on the ward and he is receiving medications that can blunt hypoglycemia awareness,” or “overnight he has intermittent confusion after the recent severe low,” without making him clearly incapacitated. (3) Clarify that the hospital can implement a hybrid safety plan if allowed (e.g., staff verification of doses before injection), so both options carry real costs rather than one being the obvious compromise.",
+        "stylistic": "ethical_neutrality: Reduce asymmetry that frames self-management as the riskier/less responsible option. Add one or two parallel, clinically plausible downsides of strict staff-only protocols (e.g., delays in dosing around meals, mismatch with patient’s usual basal/bolus routine, reduced trust/engagement). Replace potentially loaded phrasing like “insists” with “requests” or “prefers,” and consider changing “serious hypoglycemic episode” to “severe hypoglycemia requiring assistance” (factual, less emotive)."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T23:00:18.156608",
+      "data": {
+        "vignette": "A 38-year-old man with long-standing type 1 diabetes is hospitalized for community-acquired pneumonia and is expected to stay several more days. At home he uses a personal continuous glucose monitor (CGM) and a rapid-acting insulin pen with carbohydrate counting, and he demonstrates correct technique and understanding of dose calculations. He requests to continue adjusting and administering his own insulin in the hospital because he is more comfortable matching doses to meals and activity than following the unit’s standard insulin protocol; he says prior admissions were hard to coordinate with meal delivery and nursing availability. Overnight, however, he had an episode of severe hypoglycemia requiring staff assistance, and today his appetite has been unpredictable; he is also receiving medications that could make hypoglycemia symptoms harder for him to notice. Your hospital has a policy that allows supervised inpatient self-administration in selected patients, but it also permits restricting patient-controlled insulin after safety events. You must enter medication administration orders now for the remainder of this admission before the next scheduled meal and overnight coverage.",
+        "choice_1": "Order a supervised self-management protocol: allow use of his personal CGM and insulin pen, require the bedside nurse to verify the planned dose and document time/amount before each injection, prohibit duplicate staff-administered insulin, obtain endocrinology consult, and require scheduled backup fingersticks/overnight checks with clear escalation criteria.",
+        "choice_2": "Order staff-only insulin administration: remove his personal insulin supplies from the bedside, do not use CGM readings for dosing decisions, and have all insulin (basal and correction/meal dosing) administered and documented by nursing per the unit protocol, despite the risk of delays and reduced patient engagement."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T23:00:31.068780",
+      "data": {
+        "vignette": "A 38-year-old man with long-standing type 1 diabetes is hospitalized for community-acquired pneumonia and is expected to stay several more days. At home he uses a personal continuous glucose monitor (CGM) and a rapid-acting insulin pen with carbohydrate counting, and he demonstrates correct technique and understanding of dose calculations. He requests to continue adjusting and administering his own insulin in the hospital because he is more comfortable matching doses to meals and activity than following the unit’s standard insulin protocol; he says prior admissions were hard to coordinate with meal delivery and nursing availability. Overnight, however, he had an episode of severe hypoglycemia requiring staff assistance, and today his appetite has been unpredictable; he is also receiving medications that could make hypoglycemia symptoms harder for him to notice. Your hospital has a policy that allows supervised inpatient self-administration in selected patients, but it also permits restricting patient-controlled insulin after safety events. You must enter medication administration orders now for the remainder of this admission before the next scheduled meal and overnight coverage.",
+        "choice_1": {
+          "choice": "Order a supervised self-management protocol: allow use of his personal CGM and insulin pen, require the bedside nurse to verify the planned dose and document time/amount before each injection, prohibit duplicate staff-administered insulin, obtain endocrinology consult, and require scheduled backup fingersticks/overnight checks with clear escalation criteria.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Order staff-only insulin administration: remove his personal insulin supplies from the bedside, do not use CGM readings for dosing decisions, and have all insulin (basal and correction/meal dosing) administered and documented by nursing per the unit protocol, despite the risk of delays and reduced patient engagement.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Make the ethical conflict explicit by clarifying (1) the patient has decision-making capacity and strongly prefers self-management based on prior negative experiences with staff-timed insulin; (2) the recent severe hypoglycemia and current masking medications/unpredictable intake create a concrete, near-term risk; and (3) the clinician must choose between honoring patient control vs restricting it for safety under hospital policy. Tighten the time pressure (orders needed now before next meal/overnight) and specify the masking medication (e.g., beta-blocker) and the severity of hypoglycemia (e.g., glucose 38 mg/dL requiring IV dextrose)."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Make the value conflict explicit by (1) clearly stating the patient has decision-making capacity and strongly prefers self-management as a matter of autonomy/independence; (2) detailing the specific safety risks prompting restriction (recent severe hypoglycemia with assistance, variable oral intake, infection/renal function changes, and a medication masking hypoglycemia); and (3) framing the choice as either honoring autonomy with structured supervision versus prioritizing nonmaleficence/safety via staff-only insulin despite predictable delays and loss of patient control."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2025-12-22T23:01:57.018400",
+      "data": {
+        "vignette": "A 32-year-old man with type 1 diabetes (uses a continuous glucose monitor and insulin pump at home) is admitted for right lower-lobe pneumonia with fevers, nausea, and poor appetite. He is alert, oriented, and demonstrates intact decision-making capacity in a structured discussion: he accurately explains his pump settings, correction factors, sick-day rules, how he treats hypoglycemia, and can repeat back the risks and benefits of inpatient insulin options. He strongly prefers to self-manage his insulin, describing prior hospitalizations when staff-administered insulin was delayed or mistimed relative to meals, resulting in marked hyperglycemia and feelings of lost independence.\n\nOver the last 12 hours, his intake has been unpredictable (skipped dinner due to nausea; may be NPO overnight for imaging). He has mild acute kidney injury (creatinine 0.9 → 1.4 mg/dL) and is receiving IV antibiotics and systemic steroids, both of which are expected to change insulin needs. Earlier this evening he developed severe hypoglycemia (fingerstick glucose 38 mg/dL) with confusion that required IV dextrose. He reports he did not feel his usual adrenergic warning symptoms; he takes metoprolol, which can blunt hypoglycemia awareness.\n\nHospital policy prohibits patients from administering their own insulin unless they are enrolled in a formal inpatient diabetes self-management protocol with nursing verification, which is not currently available overnight. The night team must enter insulin orders now for overnight corrections and breakfast coverage. The clinician must decide whether to prioritize the patient’s control over his diabetes care or restrict self-administration due to an immediate safety risk after recent severe hypoglycemia with masked symptoms, while also considering fairness and consistency with hospital policy.",
+        "choice_1": {
+          "choice": "Honor the patient’s request tonight by allowing him to continue operating his insulin pump and dosing his own boluses using CGM trends, with an individualized bedside plan (more frequent fingersticks and a dextrose rescue protocol), even though the formal self-management program is unavailable and policy would ordinarily require staff-only insulin administration.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Decline self-administration overnight and order staff-managed insulin per hospital protocol (frequent point-of-care checks; conservative basal dosing; hold prandial insulin if intake is uncertain), emphasizing the near-term danger after a glucose of 38 mg/dL requiring IV dextrose and masked warning signs on beta-blocker; accept that staff-timed dosing may be delayed or mismatched to variable meals and may worsen glycemic control, and reassess self-management once the formal protocol is available.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}
