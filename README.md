@@ -4,30 +4,34 @@ Medical ethics case review system.
 
 ## First-Time Setup
 
-### Step 1: Create the Conda Environment
+### Install uv
 
-Open your terminal and run these commands:
+First, install `uv` - a fast Python package manager:
 
 ```bash
-# Create a new conda environment named 'hvp'
-conda create -n hvp python=3.11 -y
-
-# Activate the environment
-conda activate hvp
-
-# Install required packages
-pip install -r requirements.txt
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-### Step 2: Verify Installation
+After installation, restart your terminal or run:
 
 ```bash
-# Make sure you're in the ValueBench directory
+source $HOME/.local/bin/env
+```
+
+### Set Up the Project
+
+```bash
+# Navigate to the project
 cd /path/to/ValueBench
 
+# Install dependencies (creates virtual environment automatically)
+uv sync
+
 # Test that everything works
-python example_cli.py
+uv run python example_cli.py
 ```
+
+That's it! No need to manually activate environments. `uv run` handles everything automatically.
 
 ## Reviewing Cases (For Evaluators)
 
@@ -37,11 +41,10 @@ python example_cli.py
 
 1. Open your terminal
 2. Navigate to the ValueBench folder
-3. Activate the environment and run the review tool:
+3. Run the review tool:
 
 ```bash
-conda activate hvp
-python example_cli.py
+uv run python example_cli.py
 ```
 
 ### How to Review
@@ -102,8 +105,7 @@ git push
 **Note: This requires API keys and is not needed for case review.**
 
 ```bash
-conda activate hvp
-python -m src.generator
+uv run python -m src.generator
 ```
 
 Edit `src/config/generator.yaml` to change generation settings.
