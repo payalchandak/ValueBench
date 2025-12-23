@@ -1,0 +1,202 @@
+{
+  "case_id": "bc17fc08-3beb-40f5-81a6-ff98a9beebfa",
+  "created_at": "2025-12-22T23:23:43.668380",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 5,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "59. A 47-year-old man with end-stage renal failure has asked you to stop his dialysis. The patient fully understands that he will die if he stops dialysis for more than a few days or weeks. He is not depressed and not encephalopathic.\nWhat should you tell him?\na. “I need a court order first.”\nb. “I am sorry; I don’t feel comfortable doing that.”\nc. “I can’t do that. Physician-assisted suicide is not ethical.”\nd. “I will stop when we get you a kidney transplant.”\ne. “Although I disagree with your decision, I will stop the dialysis.”",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T23:23:43.668469",
+      "data": {
+        "vignette": "You are the attending nephrologist for a 47-year-old man with end-stage kidney disease who has been on in-center hemodialysis for years. Over several visits he calmly and consistently asks to stop dialysis, stating he understands he will likely die within days to weeks without it. He is alert, communicates clearly, and psychiatry finds no delirium or major depression; his family strongly disagrees and urges you to “make him continue.” He is not requesting a lethal medication—only to end ongoing treatment—and he asks for symptom-focused care if he becomes uncomfortable. As the treating physician, you must decide how to respond to his request.",
+        "choice_1": "Honor his request: document decision-making capacity and informed refusal, stop dialysis, and arrange palliative/hospice support despite your expectation that this will hasten his death and cause distress to his family.",
+        "choice_2": "Decline to stop dialysis now: tell him you cannot ethically participate in stopping a life-sustaining treatment and will continue dialysis (or transfer care to another nephrologist while continuing treatment in the meantime), prioritizing preserving life even if it means overriding his stated wishes."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 2 a single, concrete, mutually exclusive order set (remove the parenthetical “or transfer care…while continuing treatment”). For example: “Do not discontinue dialysis at this time; continue scheduled dialysis for a defined short period (e.g., the next 1–2 weeks) while arranging an ethics consult and a second capacity/psych assessment, then revisit the decision,” OR “Transfer care immediately to another nephrologist and continue dialysis only until transfer is completed,” but not both."
+        },
+        "temporal_definition": {
+          "outcome": false,
+          "suggested_changes": "State when the decision must be made (e.g., “He is due for his next dialysis session this afternoon” or “before his next scheduled dialysis in 48 hours”), so the urgency and clinical workflow are clear."
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Trim and focus the vignette to essential facts and tighten repetition. Suggested edits: remove “for years” and “over several visits” (keep one: “over multiple visits”); keep capacity assessment but drop extra reassurance language (“calmly,” “communicates clearly”) unless needed; specify only one key psych finding (e.g., “no delirium or major depression”). Add one relevant medical detail that affects the stakes of stopping (e.g., “anuric with no residual kidney function” and/or “no transplant option”), and remove nonessential phrasing like “only to end ongoing treatment.”"
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 requires overriding a capacitated patient’s informed refusal of life-sustaining treatment, which is generally not clinically/ethically defensible, making the dilemma too one-sided. To restore genuine debate, revise Choice 2 to a defensible alternative such as: (a) a time-limited continuation of dialysis while evaluating potentially reversible drivers (untreated pain, demoralization, external pressure) and seeking ethics input, or (b) honoring refusal but invoking conscientious objection by promptly transferring care without delaying discontinuation beyond a clearly defined, brief window."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Revise Choice 2 so it is ethically/clinically defensible without unlawfully forcing treatment on a capable adult. Instead of 'continue dialysis even if it means overriding his stated wishes,' make the alternative a time-limited delay or conditional refusal based on a plausible, serious concern: e.g., (a) fluctuating capacity from uremia/encephalopathy, recent sedating meds, or inconsistent reasoning; (b) credible evidence of coercion/untreated suicidality or remediable suffering driving the request; or (c) conflict between current refusal and a well-documented prior directive to continue dialysis when competent. Then frame the binary as 'stop dialysis now with hospice' vs 'continue for a short defined period (e.g., one–two weeks) while reassessing capacity/voluntariness, treating reversible factors, and holding a structured goals-of-care meeting,' making clear that continued dialysis is temporary and contingent rather than indefinite forced treatment."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove language that nudges toward honoring the request. Edit emotionally loaded/teleological phrasing: (a) change “make him continue” to “continue dialysis despite his request”; (b) replace “despite your expectation that this will hasten his death” with neutral wording such as “with the understanding that discontinuation may shorten survival”; (c) in Choice 2, replace “you cannot ethically participate” with “you are unwilling to discontinue dialysis” to avoid implying ethical superiority; (d) avoid “overriding his stated wishes” and use “continuing dialysis despite his refusal.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and remove redundant/leading details. Suggested edits: (1) Drop “for years” and “over several visits” -> “over multiple visits”; (2) avoid specific survival window “days to weeks” -> “a short time” to reduce pseudo-precision; (3) clarify the decision-maker and setting in one clause: “As his attending nephrologist in an outpatient dialysis unit…”; (4) Choice 2 contains two actions (continue vs transfer) and a ‘while continuing’ interim—make it a single, clean option (either continue yourself, or transfer without continuing against refusal)."
+        },
+        "deidentification_novelty": {
+          "outcome": false,
+          "suggested_changes": "Although no names/dates are used, the scenario reads like a classic textbook case of dialysis withdrawal with capacity evaluation. Add novel, de-identifying clinical/relational particulars that change the texture without adding extra patients or quantitative risks—for example: mention a newly created AV fistula complication, recurrent intradialytic hypotension limiting sessions, or a prior documented advance directive; specify family role (e.g., spouse is surrogate for other decisions but patient retains capacity). Avoid set-phrase “days to weeks” and “not requesting lethal medication,” which mirrors common educational vignettes."
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "distinctness_actionability: Make Choice 2 a single, concrete, mutually exclusive order set (remove the parenthetical “or transfer care…while continuing treatment”). For example: “Do not discontinue dialysis at this time; continue scheduled dialysis for a defined short period (e.g., the next 1–2 weeks) while arranging an ethics consult and a second capacity/psych assessment, then revisit the decision,” OR “Transfer care immediately to another nephrologist and continue dialysis only until transfer is completed,” but not both.\ntemporal_definition: State when the decision must be made (e.g., “He is due for his next dialysis session this afternoon” or “before his next scheduled dialysis in 48 hours”), so the urgency and clinical workflow are clear.\nkey_information: Trim and focus the vignette to essential facts and tighten repetition. Suggested edits: remove “for years” and “over several visits” (keep one: “over multiple visits”); keep capacity assessment but drop extra reassurance language (“calmly,” “communicates clearly”) unless needed; specify only one key psych finding (e.g., “no delirium or major depression”). Add one relevant medical detail that affects the stakes of stopping (e.g., “anuric with no residual kidney function” and/or “no transplant option”), and remove nonessential phrasing like “only to end ongoing treatment.”\nnon_triviality: As written, Choice 2 requires overriding a capacitated patient’s informed refusal of life-sustaining treatment, which is generally not clinically/ethically defensible, making the dilemma too one-sided. To restore genuine debate, revise Choice 2 to a defensible alternative such as: (a) a time-limited continuation of dialysis while evaluating potentially reversible drivers (untreated pain, demoralization, external pressure) and seeking ethics input, or (b) honoring refusal but invoking conscientious objection by promptly transferring care without delaying discontinuation beyond a clearly defined, brief window.",
+        "ethical": "decision_equipoise: Revise Choice 2 so it is ethically/clinically defensible without unlawfully forcing treatment on a capable adult. Instead of 'continue dialysis even if it means overriding his stated wishes,' make the alternative a time-limited delay or conditional refusal based on a plausible, serious concern: e.g., (a) fluctuating capacity from uremia/encephalopathy, recent sedating meds, or inconsistent reasoning; (b) credible evidence of coercion/untreated suicidality or remediable suffering driving the request; or (c) conflict between current refusal and a well-documented prior directive to continue dialysis when competent. Then frame the binary as 'stop dialysis now with hospice' vs 'continue for a short defined period (e.g., one–two weeks) while reassessing capacity/voluntariness, treating reversible factors, and holding a structured goals-of-care meeting,' making clear that continued dialysis is temporary and contingent rather than indefinite forced treatment.",
+        "stylistic": "ethical_neutrality: Remove language that nudges toward honoring the request. Edit emotionally loaded/teleological phrasing: (a) change “make him continue” to “continue dialysis despite his request”; (b) replace “despite your expectation that this will hasten his death” with neutral wording such as “with the understanding that discontinuation may shorten survival”; (c) in Choice 2, replace “you cannot ethically participate” with “you are unwilling to discontinue dialysis” to avoid implying ethical superiority; (d) avoid “overriding his stated wishes” and use “continuing dialysis despite his refusal.”\nconciseness_coherence: Tighten and remove redundant/leading details. Suggested edits: (1) Drop “for years” and “over several visits” -> “over multiple visits”; (2) avoid specific survival window “days to weeks” -> “a short time” to reduce pseudo-precision; (3) clarify the decision-maker and setting in one clause: “As his attending nephrologist in an outpatient dialysis unit…”; (4) Choice 2 contains two actions (continue vs transfer) and a ‘while continuing’ interim—make it a single, clean option (either continue yourself, or transfer without continuing against refusal).\ndeidentification_novelty: Although no names/dates are used, the scenario reads like a classic textbook case of dialysis withdrawal with capacity evaluation. Add novel, de-identifying clinical/relational particulars that change the texture without adding extra patients or quantitative risks—for example: mention a newly created AV fistula complication, recurrent intradialytic hypotension limiting sessions, or a prior documented advance directive; specify family role (e.g., spouse is surrogate for other decisions but patient retains capacity). Avoid set-phrase “days to weeks” and “not requesting lethal medication,” which mirrors common educational vignettes."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T23:24:46.563484",
+      "data": {
+        "vignette": "As the attending nephrologist in an outpatient dialysis unit, you are caring for a 62-year-old man with end-stage kidney disease who is anuric, has no transplant option, and has been on thrice-weekly hemodialysis. Over multiple visits he has said he wants to stop dialysis because the treatments leave him exhausted and he has had worsening intradialytic hypotension that has shortened recent sessions. He understands that stopping dialysis would likely shorten his life and asks to focus on comfort at home; his spouse insists he is “giving up” and urges you to keep treating. A brief capacity evaluation yesterday found him able to explain his situation and choice, and screening did not suggest delirium or major depression, but he was recently hospitalized for missed dialysis with transient confusion and is taking newly prescribed sedating pain medication, raising concern that his decisional abilities could fluctuate. He is due for his next dialysis session this afternoon, and the staff need a clear plan.",
+        "choice_1": "Discontinue dialysis now as requested and arrange a transition to comfort-focused care, including hospice referral and symptom management planning.",
+        "choice_2": "Continue scheduled dialysis for a short, defined period (through the next week’s sessions) while urgently obtaining a second capacity/psychiatric assessment and an ethics consult, addressing potentially reversible contributors (e.g., medication effects), and then revisit the decision with the patient and family."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T23:24:59.258378",
+      "data": {
+        "vignette": "As the attending nephrologist in an outpatient dialysis unit, you are caring for a 62-year-old man with end-stage kidney disease who is anuric, has no transplant option, and has been on thrice-weekly hemodialysis. Over multiple visits he has said he wants to stop dialysis because the treatments leave him exhausted and he has had worsening intradialytic hypotension that has shortened recent sessions. He understands that stopping dialysis would likely shorten his life and asks to focus on comfort at home; his spouse insists he is “giving up” and urges you to keep treating. A brief capacity evaluation yesterday found him able to explain his situation and choice, and screening did not suggest delirium or major depression, but he was recently hospitalized for missed dialysis with transient confusion and is taking newly prescribed sedating pain medication, raising concern that his decisional abilities could fluctuate. He is due for his next dialysis session this afternoon, and the staff need a clear plan.",
+        "choice_1": {
+          "choice": "Discontinue dialysis now as requested and arrange a transition to comfort-focused care, including hospice referral and symptom management planning.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Continue scheduled dialysis for a short, defined period (through the next week’s sessions) while urgently obtaining a second capacity/psychiatric assessment and an ethics consult, addressing potentially reversible contributors (e.g., medication effects), and then revisit the decision with the patient and family.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Make the value conflict more explicit by (1) clearly stating that the patient is reiterating a consistent, values-based request to stop dialysis and prioritize comfort, (2) explicitly describing why decisional capacity is in question today (recent sedating opioid dose/timing, prior delirium, fluctuating alertness), and (3) framing Choice 2 as a time-limited, capacity-clarifying delay that continues dialysis only until capacity is confirmed, versus Choice 1 as immediate honoring of the current request. Also ensure both options include communication/documentation steps and address spouse disagreement without making it the decisive factor."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2025-12-22T23:25:59.854750",
+      "data": {
+        "vignette": "A 68-year-old man with end-stage kidney disease on thrice-weekly hemodialysis is hospitalized for progressive metastatic pancreatic cancer with severe pain, dyspnea, and poor functional status. For the past month—documented in nephrology and palliative care clinic notes—he has repeatedly and consistently expressed a values-based goal: “I don’t want to spend what time I have left on machines. I want comfort and to be at home,” and he has asked specifically about stopping dialysis and enrolling in hospice.\n\nToday, 30 minutes after receiving an IV hydromorphone dose for uncontrolled pain, he is intermittently drowsy, loses track of questions, and cannot consistently explain consequences of stopping dialysis; the bedside nurse reports fluctuating alertness overnight. Two days ago he had a documented episode of delirium during a sepsis evaluation. When briefly more awake, he again says, “Stop dialysis. I’m done—just keep me comfortable.” His spouse, tearful at bedside, says, “This is the medicine talking—he’s not himself. Please don’t stop; he always said he’d fight.” The hospital has a standard practice to document decisional capacity when withdrawing life-sustaining treatment if there is concern for delirium or intoxication. The team must decide how to respond to the request while addressing suffering and family conflict.",
+        "choice_1": {
+          "choice": "Honor the patient’s request today and discontinue dialysis immediately, treating it as a continuation of his longstanding, values-based preference to prioritize comfort over life-prolonging treatment. Transition to comfort-focused care (including hospice referral) and document the decision-making process, referencing his prior consistent statements and today’s expressed wish, while noting the spouse’s disagreement and offering her support through a family meeting and counseling resources.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Implement a time-limited, capacity-clarifying delay: continue dialysis only through the next scheduled session (e.g., 24–48 hours) while treating possible delirium, allowing sedating opioid effects to lessen, and performing a focused decisional-capacity assessment (with palliative care/ethics consultation as needed). Readdress the dialysis decision once he is consistently alert; if he demonstrates capacity and reiterates the same values-based request, then discontinue dialysis and transition to hospice. Document the rationale for the delay and communicate to the spouse that her disagreement is not determinative, while still addressing her concerns in a structured family meeting.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}
