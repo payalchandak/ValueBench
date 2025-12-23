@@ -1,0 +1,175 @@
+{
+  "case_id": "69d37b24-70ba-4fe1-92c8-bdc652329220",
+  "created_at": "2025-12-22T23:09:36.363117",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "autonomy",
+      "value_b": "non-maleficence",
+      "medical_domain": "pulmonology",
+      "medical_setting": "ICU"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T23:09:36.363214",
+      "data": {
+        "vignette": "In the medical ICU, a 58-year-old man with severe COPD was intubated for hypercapnic respiratory failure. Over the past day he has become awake, can write clearly, and repeatedly refuses further sedation or physical restraints, saying he feels panicked and “trapped.” He is not yet meeting criteria for a safe extubation, and the team believes he will likely need the ventilator a bit longer, but he has been tugging at the endotracheal tube and tells staff he will pull it out if they do not remove the restraints. A bedside capacity assessment finds him oriented and able to explain that removing the tube now could lead to dangerous breathing problems and an emergency re-intubation. The ICU attending must decide how to respond.",
+        "choice_1": "Remove restraints and avoid escalating sedation, continuing to explain the risks and accepting the possibility that he may pull out the breathing tube before he is ready.",
+        "choice_2": "Keep restraints in place and increase sedation as needed to prevent self-extubation until the team judges extubation is safe."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften language that implies a clinically correct course. Rephrase 'not yet meeting criteria for a safe extubation' and 'will likely need the ventilator a bit longer' to a more uncertainty-neutral formulation, e.g., 'the team is concerned he may not tolerate extubation today and thinks continued ventilation could reduce the chance of emergent re-intubation, but this is not certain.' Avoid implying that waiting is definitively safer."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add a few essential, decision-driving facts and remove ambiguity: (1) clarify that he is not delirious (e.g., CAM-ICU negative) and that hypoxia/hypercapnia are corrected; (2) state current ventilator settings/oxygen needs in qualitative terms (e.g., 'still needs moderate ventilator support') to justify concern about extubation without turning it into a numbers debate; (3) specify whether there is an existing code status/advance directive and whether family/surrogate is available; (4) mention any feasible alternatives the team could offer (short-acting anxiolysis, nonpharmacologic measures, planned extubation with immediate NIV/high-flow, or transition to comfort-focused care) so the ethical stakes aren’t reduced to 'let him self-extubate' vs 'tie him down.' Keep it to one paragraph by trimming redundant phrasing."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 1 clinically/ethically defensible without relying on uncontrolled self-extubation. Modify it to an implementable plan such as: 'Remove restraints and avoid deep sedation; offer a time-limited trial of coaching/short-acting anxiolysis, and if he persistently refuses the tube, proceed with a planned extubation now with NIV/high-flow and re-intubation only if he consents (or clarify that he declines re-intubation).' This keeps both options defensible and genuinely difficult."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce the extent to which the case hinges on a contested/technical determination (i.e., whether a capacitous patient may be restrained/sedated). Add a clinically plausible ambiguity that different clinicians would still agree is a real dilemma rather than a straightforward rule application—for example: (a) note his capacity is borderline/fluctuating due to hypercapnia, pain, or intermittent delirium despite being oriented, OR (b) specify he is making a values-based refusal of ongoing ventilation (prefers extubation now even if it risks death) rather than a moment-to-moment threat to self-extubate. Also soften directive language like 'dangerous' and instead describe qualitatively that early extubation could lead to severe respiratory distress and urgent re-intubation."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the options so neither is clearly the 'rule-based' answer. As written, Choice 2 implies prolonged forced treatment 'until the team judges extubation is safe,' which many clinicians would view as ethically/legally indefensible if he has intact decision-making capacity; this makes the dilemma one-sided. To restore equipoise, revise either the facts or the choices:\n- Option A: Make Choice 1 an active, clinically managed plan (e.g., elective extubation now honoring his refusal of continued intubation, with aggressive symptom relief, noninvasive support if tolerated, and a clear plan about whether re-intubation would be offered only if he later consents), rather than passively 'accepting he may pull it out.'\n- Option B: Narrow Choice 2 to a time-limited emergency intervention (e.g., brief restraints/sedation for imminent self-extubation while urgently reassessing capacity, treating reversible panic/delirium, involving surrogate/ethics, and setting a short reassessment window), and explicitly acknowledge meaningful harms of sedation/restraints (e.g., worsened hypercapnia, delirium, prolonged ventilation, loss of trust).\nThese edits make both choices ethically defensible yet costly."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Replace emotionally weighted phrasing and the quoted language with more neutral clinical wording. For example, change “saying he feels panicked and ‘trapped’” to “reporting severe anxiety and distress related to the endotracheal tube and restraints.” Consider adding a neutral countervailing detail (e.g., concern for unplanned extubation leading to emergent airway intervention) without implying which choice is preferable."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Clarify the current sedation/restraint status and tighten timeline to avoid ambiguity. For example: specify whether he is currently restrained and at what sedation level (e.g., ‘on low-dose propofol with soft wrist restraints’). Remove minor redundancies (e.g., combine ‘tugging at the endotracheal tube’ with the conditional threat) and keep the vignette as a single paragraph before the choices."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften language that implies a clinically correct course. Rephrase 'not yet meeting criteria for a safe extubation' and 'will likely need the ventilator a bit longer' to a more uncertainty-neutral formulation, e.g., 'the team is concerned he may not tolerate extubation today and thinks continued ventilation could reduce the chance of emergent re-intubation, but this is not certain.' Avoid implying that waiting is definitively safer.\nkey_information: Add a few essential, decision-driving facts and remove ambiguity: (1) clarify that he is not delirious (e.g., CAM-ICU negative) and that hypoxia/hypercapnia are corrected; (2) state current ventilator settings/oxygen needs in qualitative terms (e.g., 'still needs moderate ventilator support') to justify concern about extubation without turning it into a numbers debate; (3) specify whether there is an existing code status/advance directive and whether family/surrogate is available; (4) mention any feasible alternatives the team could offer (short-acting anxiolysis, nonpharmacologic measures, planned extubation with immediate NIV/high-flow, or transition to comfort-focused care) so the ethical stakes aren’t reduced to 'let him self-extubate' vs 'tie him down.' Keep it to one paragraph by trimming redundant phrasing.\nnon_triviality: Make Choice 1 clinically/ethically defensible without relying on uncontrolled self-extubation. Modify it to an implementable plan such as: 'Remove restraints and avoid deep sedation; offer a time-limited trial of coaching/short-acting anxiolysis, and if he persistently refuses the tube, proceed with a planned extubation now with NIV/high-flow and re-intubation only if he consents (or clarify that he declines re-intubation).' This keeps both options defensible and genuinely difficult.",
+        "ethical": "interpretive_consensus: Reduce the extent to which the case hinges on a contested/technical determination (i.e., whether a capacitous patient may be restrained/sedated). Add a clinically plausible ambiguity that different clinicians would still agree is a real dilemma rather than a straightforward rule application—for example: (a) note his capacity is borderline/fluctuating due to hypercapnia, pain, or intermittent delirium despite being oriented, OR (b) specify he is making a values-based refusal of ongoing ventilation (prefers extubation now even if it risks death) rather than a moment-to-moment threat to self-extubate. Also soften directive language like 'dangerous' and instead describe qualitatively that early extubation could lead to severe respiratory distress and urgent re-intubation.\ndecision_equipoise: Rebalance the options so neither is clearly the 'rule-based' answer. As written, Choice 2 implies prolonged forced treatment 'until the team judges extubation is safe,' which many clinicians would view as ethically/legally indefensible if he has intact decision-making capacity; this makes the dilemma one-sided. To restore equipoise, revise either the facts or the choices:\n- Option A: Make Choice 1 an active, clinically managed plan (e.g., elective extubation now honoring his refusal of continued intubation, with aggressive symptom relief, noninvasive support if tolerated, and a clear plan about whether re-intubation would be offered only if he later consents), rather than passively 'accepting he may pull it out.'\n- Option B: Narrow Choice 2 to a time-limited emergency intervention (e.g., brief restraints/sedation for imminent self-extubation while urgently reassessing capacity, treating reversible panic/delirium, involving surrogate/ethics, and setting a short reassessment window), and explicitly acknowledge meaningful harms of sedation/restraints (e.g., worsened hypercapnia, delirium, prolonged ventilation, loss of trust).\nThese edits make both choices ethically defensible yet costly.",
+        "stylistic": "ethical_neutrality: Replace emotionally weighted phrasing and the quoted language with more neutral clinical wording. For example, change “saying he feels panicked and ‘trapped’” to “reporting severe anxiety and distress related to the endotracheal tube and restraints.” Consider adding a neutral countervailing detail (e.g., concern for unplanned extubation leading to emergent airway intervention) without implying which choice is preferable.\nconciseness_coherence: Clarify the current sedation/restraint status and tighten timeline to avoid ambiguity. For example: specify whether he is currently restrained and at what sedation level (e.g., ‘on low-dose propofol with soft wrist restraints’). Remove minor redundancies (e.g., combine ‘tugging at the endotracheal tube’ with the conditional threat) and keep the vignette as a single paragraph before the choices."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T23:10:40.289755",
+      "data": {
+        "vignette": "A 62-year-old man is in the ICU with severe pneumonia after several days of mechanical ventilation. He is awake, follows commands, and communicates by writing; delirium screening earlier today was negative, and his oxygen and carbon dioxide levels are currently corrected, though he still needs moderate ventilator support. He is on low-dose propofol with soft wrist restraints because he repeatedly reaches for the endotracheal tube; when sedation is lightened he reports intense distress from the tube and restraints and says he wants the tube removed today even if it means he could “stop breathing,” adding that he does not want to be re-intubated if he cannot breathe after extubation. The team worries he may not tolerate extubation now and that an urgent airway intervention could be traumatic and risky, but this is not certain. There is no advance directive on file; his spouse is on the way but not yet available, and an ethics consult would take several hours. As the attending physician, you must decide how to proceed over the next hour.",
+        "choice_1": "Honor his request with a planned extubation now, using noninvasive support (high-flow/NIV) and aggressive symptom relief as tolerated, and document that re-intubation will not be performed unless he later clearly consents.",
+        "choice_2": "Continue intubation with a short, time-limited period of restraints and deeper sedation to prevent unplanned extubation while urgently reassessing decision-making capacity, treating reversible anxiety/delirium, and seeking surrogate/ethics input before revisiting extubation and re-intubation preferences."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T23:10:48.737420",
+      "data": {
+        "vignette": "A 62-year-old man is in the ICU with severe pneumonia after several days of mechanical ventilation. He is awake, follows commands, and communicates by writing; delirium screening earlier today was negative, and his oxygen and carbon dioxide levels are currently corrected, though he still needs moderate ventilator support. He is on low-dose propofol with soft wrist restraints because he repeatedly reaches for the endotracheal tube; when sedation is lightened he reports intense distress from the tube and restraints and says he wants the tube removed today even if it means he could “stop breathing,” adding that he does not want to be re-intubated if he cannot breathe after extubation. The team worries he may not tolerate extubation now and that an urgent airway intervention could be traumatic and risky, but this is not certain. There is no advance directive on file; his spouse is on the way but not yet available, and an ethics consult would take several hours. As the attending physician, you must decide how to proceed over the next hour.",
+        "choice_1": {
+          "choice": "Honor his request with a planned extubation now, using noninvasive support (high-flow/NIV) and aggressive symptom relief as tolerated, and document that re-intubation will not be performed unless he later clearly consents.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Continue intubation with a short, time-limited period of restraints and deeper sedation to prevent unplanned extubation while urgently reassessing decision-making capacity, treating reversible anxiety/delirium, and seeking surrogate/ethics input before revisiting extubation and re-intubation preferences.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}
