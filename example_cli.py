@@ -7,6 +7,7 @@ your rich/prompt_toolkit-based evaluator.
 """
 
 import os
+import random
 from src.case_loader import CaseLoader
 from src.evaluation_store import EvaluationStore
 from src.response_models.case import BenchmarkCandidate, ChoiceWithValues
@@ -43,6 +44,9 @@ def simple_cli_demo():
     benchmark_cases = [c for c in all_cases if c.final_case is not None]
     all_case_ids = [c.case_id for c in benchmark_cases]
     unreviewed_ids = store.get_unreviewed_cases(all_case_ids)
+    
+    # Randomize case order to avoid evaluation bias
+    random.shuffle(unreviewed_ids)
     
     print(f"\n📊 Progress: {len(benchmark_cases) - len(unreviewed_ids)}/{len(benchmark_cases)} benchmark cases reviewed")
     if len(all_cases) > len(benchmark_cases):
