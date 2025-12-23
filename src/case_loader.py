@@ -11,6 +11,7 @@ from typing import List, Optional
 from dataclasses import dataclass
 
 from src.response_models.record import CaseRecord
+from src.response_models.status import GenerationStatus
 
 
 @dataclass
@@ -171,20 +172,20 @@ class CaseLoader:
     
     def get_active_cases(self) -> List[CaseRecord]:
         """
-        Load all cases with status='active'.
+        Load all cases with status='completed' (ready for evaluation).
         
         Returns:
-            List of active CaseRecord objects
+            List of completed CaseRecord objects
         """
         all_cases = self.get_all_cases()
-        return [c for c in all_cases if c.status == "active"]
+        return [c for c in all_cases if c.status == GenerationStatus.COMPLETED]
     
-    def get_cases_by_status(self, status: str) -> List[CaseRecord]:
+    def get_cases_by_status(self, status: GenerationStatus) -> List[CaseRecord]:
         """
-        Load all cases with a specific status.
+        Load all cases with a specific generation status.
         
         Args:
-            status: Status to filter by ('active', 'deprecated', 'deleted', etc.)
+            status: GenerationStatus to filter by
             
         Returns:
             List of CaseRecord objects with that status

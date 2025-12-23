@@ -7,6 +7,7 @@ import json as json_module
 
 from src.response_models.case import BenchmarkCandidate, DraftCase
 from src.response_models.rubric import ClinicalRubric, EthicalRubric, StylisticRubric, ValueRubric
+from src.response_models.status import GenerationStatus
 
 class IterationRecord(BaseModel):
     """Captures a single state of the case and any evaluations performed on it."""
@@ -55,9 +56,9 @@ class CaseRecord(BaseModel):
     # Every version of the case from seed to final output
     refinement_history: List[IterationRecord] = []
     
-    status: str = Field(
-        default="active",
-        description="Case lifecycle status: 'active', 'deprecated', 'deleted', 'pending', 'approved', 'rejected'"
+    status: GenerationStatus = Field(
+        default=GenerationStatus.DRAFT,
+        description="Generation lifecycle status"
     )
     
     @property
