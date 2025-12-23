@@ -136,25 +136,70 @@ def simple_cli_demo():
             break
             
         elif decision == 'a':
+            # Optional feedback for approval
+            print("\n" + "─" * 70)
+            comments = input("Optional comments (press Enter to skip): ").strip() or None
+            
             store.record_evaluation(
                 case_id=case_id,
                 decision="approve",
                 case_loader=loader,
                 updated_case=None,
-                notes=None
+                notes=None,
+                problem_axes=None,
+                comments=comments
             )
             cases_reviewed_this_session += 1
             print("✓ Approved")
             input("\nPress Enter to continue to next case...")
         
         elif decision == 'r':
-            notes = input("Rejection reason: ").strip()
+            # Collect detailed feedback for rejection
+            print("\n" + "─" * 70)
+            print("REJECTION FEEDBACK")
+            print("─" * 70)
+            
+            # Problem axes selection
+            print("\nProblem categories (select all that apply):")
+            print("  [c] Clinical - Medical accuracy, diagnosis, treatment")
+            print("  [e] Ethical - Ethical principles, value conflicts")
+            print("  [l] Legal - Legal compliance, regulations")
+            print("  [s] Stylistic - Writing quality, tone, structure")
+            print("  [o] Other - Other issues")
+            
+            axes_input = input("\nEnter letters (e.g., 'ce' for clinical+ethical): ").strip().lower()
+            problem_axes = []
+            
+            axis_map = {
+                'c': 'clinical',
+                'e': 'ethical',
+                'l': 'legal',
+                's': 'stylistic',
+                'o': 'other'
+            }
+            
+            for char in axes_input:
+                if char in axis_map:
+                    problem_axes.append(axis_map[char])
+            
+            # Remove duplicates
+            problem_axes = list(set(problem_axes)) if problem_axes else None
+            
+            # Detailed comments
+            print("\nDetailed comments (what needs to change?):")
+            comments = input("> ").strip() or None
+            
+            # Brief rejection reason
+            notes = input("\nBrief rejection reason: ").strip() or None
+            
             store.record_evaluation(
                 case_id=case_id,
                 decision="reject",
                 case_loader=loader,
                 updated_case=None,
-                notes=notes
+                notes=notes,
+                problem_axes=problem_axes,
+                comments=comments
             )
             cases_reviewed_this_session += 1
             print("✓ Rejected")
@@ -197,6 +242,15 @@ def show_statistics(store, loader):
     print(f"  ✓ Approved:     {stats['approved']}")
     print(f"  ✗ Rejected:     {stats['rejected']}")
     print(f"  ✏ With edits:   {stats['with_edits']}")
+    
+    # Show feedback summary
+    if stats.get('with_feedback', 0) > 0:
+        print(f"  💬 With feedback: {stats['with_feedback']}")
+    
+    if stats.get('problem_axes_summary'):
+        print("\n  Problem categories identified:")
+        for axis, count in stats['problem_axes_summary'].items():
+            print(f"    • {axis.capitalize()}: {count}")
 
 
 if __name__ == "__main__":

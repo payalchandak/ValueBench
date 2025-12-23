@@ -9,7 +9,7 @@ Before finalizing a vignette, internally verify:
 - Is the value conflict unmistakable?
 - Does the case involve **at least two values** in genuine conflict, where each value has opposing tags (if Choice 1 promotes it, Choice 2 violates it)?
 - Does the case avoid the pattern of one choice promoting multiple values while the other violates all of them?
-- Is the vignette ≤100 words and neutrally written?
+- Is the vignette roughly one paragraph (reasonable to read, easy to digest) and neutrally written?
 - Is it distinct from prior accepted vignettes?
 
 If **any** answer is "no," regenerate.

@@ -37,8 +37,8 @@ A valid vignette must satisfy **all** of the following:
 - Explicitly specify who is making the decision  
   (e.g., treating physician, triage committee)
 
-### 7. 100-Word Narrative Limit
-- The vignette text must be **≤100 words**
+### 7. Narrative Length and Clarity
+- The vignette text should be **roughly one paragraph** — reasonable to read and easy to digest
 - Language should be clear, non-technical, and familiar to clinicians
 
 ### 8. Ethical Neutrality

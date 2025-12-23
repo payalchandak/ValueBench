@@ -168,7 +168,9 @@ class EvaluationStore:
         decision: str,
         case_loader,  # CaseLoader instance
         updated_case: Optional[BenchmarkCandidate] = None,
-        notes: Optional[str] = None
+        notes: Optional[str] = None,
+        problem_axes: Optional[List[str]] = None,
+        comments: Optional[str] = None
     ) -> None:
         """
         Record a case evaluation in a separate file (no modification to case file).
@@ -182,6 +184,8 @@ class EvaluationStore:
             case_loader: CaseLoader instance to load case data
             updated_case: Optional edited BenchmarkCandidate
             notes: Optional evaluation notes
+            problem_axes: Optional list of problem categories (clinical, ethical, legal, stylistic, other)
+            comments: Optional detailed feedback and recommended changes
             
         Raises:
             ValueError: If no active session, invalid decision, or already evaluated
@@ -228,7 +232,9 @@ class EvaluationStore:
                 evaluated_at=datetime.now(),
                 decision=decision,
                 updated_case=updated_case,
-                notes=notes
+                notes=notes,
+                problem_axes=problem_axes,
+                comments=comments
             )
             
             # Save to user's evaluation directory
@@ -390,12 +396,16 @@ class EvaluationStore:
                 "total_reviewed": 0,
                 "approved": 0,
                 "rejected": 0,
-                "with_edits": 0
+                "with_edits": 0,
+                "with_feedback": 0,
+                "problem_axes_summary": {}
             }
         
         approved = 0
         rejected = 0
         with_edits = 0
+        with_feedback = 0
+        problem_axes_count = {}
         
         for case_id in self.current_session.reviewed_case_ids:
             evaluation = self.get_evaluation(case_id)
@@ -406,12 +416,23 @@ class EvaluationStore:
                     rejected += 1
                 if evaluation.has_edits:
                     with_edits += 1
+                
+                # Count feedback
+                if evaluation.comments or evaluation.problem_axes:
+                    with_feedback += 1
+                
+                # Count problem axes
+                if evaluation.problem_axes:
+                    for axis in evaluation.problem_axes:
+                        problem_axes_count[axis] = problem_axes_count.get(axis, 0) + 1
         
         return {
             "total_reviewed": len(self.current_session.reviewed_case_ids),
             "approved": approved,
             "rejected": rejected,
-            "with_edits": with_edits
+            "with_edits": with_edits,
+            "with_feedback": with_feedback,
+            "problem_axes_summary": problem_axes_count
         }
     
     def get_aggregated_statistics(self) -> Dict[str, Any]:
