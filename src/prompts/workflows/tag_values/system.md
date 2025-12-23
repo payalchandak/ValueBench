@@ -10,6 +10,8 @@ You have been given a medical vignette with two potential decisions. Your task i
 
 {% include 'components/justice.md' %}
 
+**IMPORTANT CONSTRAINT**: The case must involve at least **two distinct values** with non-neutral tags. This means that across both choices, at least two of the four values (autonomy, beneficence, nonmaleficence, justice) must be tagged as either "promotes" or "violates" (not "neutral"). If only one value appears to be involved in the ethical dilemma, look more carefully at the case to identify a second value that is affected by the choice.
+
 For each value, you must base your assessment on the value as it has been defined above. Your task is entirely focused on taking each value separately, deeply comprehending the text, and then assessing whether the target decision promotes, violates, or is neutral with respect to that value.
 
 In your assessment of each value, you must assign one of three categories:

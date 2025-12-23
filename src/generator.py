@@ -8,6 +8,7 @@ from omegaconf import DictConfig, OmegaConf
 from all_the_llms import LLM
 from dotenv import load_dotenv
 from tqdm import tqdm
+from pydantic import ValidationError
 from src.prompt_manager import PromptManager
 
 # Suppress litellm logging
@@ -245,21 +246,43 @@ def main(cfg: DictConfig) -> None:
                 data=draft
             ))
 
-        value_tags_prompt = pm.build_messages(
-            "workflows/tag_values",
-            {
-                "vignette": draft.vignette,
-                "choice_1": draft.choice_1,
-                "choice_2": draft.choice_2,
-            },
-        )
+        # Attempt value tagging with retry logic to ensure at least 2 values are involved
+        case_with_values = None
 
-        case_with_values = llm.structured_completion(
-            messages=value_tags_prompt,
-            response_model=BenchmarkCandidate,
-        )
-        if cfg.verbose:
-            pretty_print_case(case_with_values, "CASE WITH VALUES")
+        for tagging_attempt in range(cfg.max_tagging_attempts):
+            value_tags_prompt = pm.build_messages(
+                "workflows/tag_values",
+                {
+                    "vignette": draft.vignette,
+                    "choice_1": draft.choice_1,
+                    "choice_2": draft.choice_2,
+                },
+            )
+
+            try:
+                case_with_values = llm.structured_completion(
+                    messages=value_tags_prompt,
+                    response_model=BenchmarkCandidate,
+                )
+                if cfg.verbose:
+                    pretty_print_case(case_with_values, "CASE WITH VALUES")
+                break  # Success - at least 2 values are involved
+            except ValidationError as e:
+                if tagging_attempt < cfg.max_tagging_attempts - 1:
+                    if cfg.verbose:
+                        print(f"Tagging attempt {tagging_attempt + 1} failed: {e}")
+                        print("Retrying value tagging...")
+                else:
+                    # Last attempt failed - log and skip this case
+                    if cfg.verbose:
+                        print(f"All {cfg.max_tagging_attempts} tagging attempts failed. Skipping case.")
+                    case_record.status = "failed_value_tagging"
+                    save_case_record(case_record)
+                    continue
+
+        # Check if we successfully got a case
+        if case_with_values is None:
+            continue  # Skip to next case
 
         # Log the tagged case
         case_record.refinement_history.append(IterationRecord(
@@ -313,17 +336,26 @@ def main(cfg: DictConfig) -> None:
                     "value_adjustments": value_adjustments,
                 },
             )
-            case_with_values = llm.structured_completion(
-                messages=value_improvements_prompt,
-                response_model=BenchmarkCandidate,
-            )
             
-            # Log the final improved version
-            case_record.refinement_history.append(IterationRecord(
-                iteration=cfg.refinement_iterations + 2,
-                step_description="final_improvement",
-                data=case_with_values
-            ))
+            try:
+                improved_case = llm.structured_completion(
+                    messages=value_improvements_prompt,
+                    response_model=BenchmarkCandidate,
+                )
+                case_with_values = improved_case  # Use improved version if it passes validation
+                
+                # Log the final improved version
+                case_record.refinement_history.append(IterationRecord(
+                    iteration=cfg.refinement_iterations + 2,
+                    step_description="final_improvement",
+                    data=case_with_values
+                ))
+            except ValidationError as e:
+                # If improvement fails validation, keep the original tagged version
+                if cfg.verbose:
+                    print(f"Value improvement failed validation: {e}")
+                    print("Keeping original tagged version.")
+                # Note: case_with_values still contains the successfully tagged version from earlier
 
         case_record.status = "completed"
         
