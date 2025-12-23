@@ -8,15 +8,32 @@ from datetime import datetime
 
 def save_case_record(record, output_dir: str = "data/cases"):
     """
-    Saves a CaseRecord to a JSON file.
+    Saves a CaseRecord to a JSON file using content-addressable naming.
+    
+    Uses content hash of the final case for filename to enable:
+    - Version tracking (filename changes when content changes)
+    - Deduplication (same content = same filename)
+    - Integrity verification
+    
+    Args:
+        record: CaseRecord to save
+        output_dir: Directory to save to (default: "data/cases")
     """
-    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    from pathlib import Path
+    
     os.makedirs(output_dir, exist_ok=True)
     
-    filename = f"case_{record.case_id}_{timestamp}.json"
+    # Compute content hash for filename
+    try:
+        content_hash = record.compute_content_hash()
+    except ValueError:
+        # Fallback for cases without final_case (drafts)
+        content_hash = "draft"
+    
+    filename = f"case_{record.case_id}_{content_hash}.json"
     filepath = os.path.join(output_dir, filename)
     
-    with open(filepath, "w") as f:
+    with open(filepath, "w", encoding='utf-8') as f:
         # Use model_dump_json for Pydantic V2
         f.write(record.model_dump_json(indent=2))
     
