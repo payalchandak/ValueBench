@@ -22,6 +22,27 @@ Both options must be **clinically defensible and ethically costly**.
 
 You must strictly evaluate the case against the following criteria. Read the definitions carefully. If a criterion is not met, you must mark it as False.
 
+## IMPORTANT: What "Neutralize Clinical Considerations" Means
+
+When evaluating `neutralize_clinical_considerations` and `key_information`:
+
+**Flag as problematic:**
+- Language suggesting one choice has objectively superior effectiveness or outcomes
+- Numeric probabilities or risk percentages
+- Phrases implying one option is the medically correct answer
+- Truly extraneous details (unrelated medical history, decorative context)
+
+**Do NOT flag as problematic:**
+- Specific treatment risks and consequences (e.g., "radiation causes cardiac toxicity")
+- Patient characteristics relevant to stakes (age, diagnosis, timeline)
+- Concrete medical facts that differentiate the choices
+- Details explaining why each option has different ethical costs
+- Physician clinical judgment when it creates tension with patient preferences
+
+Clinical grounding ≠ Clinical superiority debate. Cases must be concrete and medically specific.
+
+---
+
 {{rubric_criteria}}
 
 INSTRUCTIONS:

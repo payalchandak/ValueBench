@@ -103,11 +103,12 @@ class ClinicalRubric(RubricBase):
         ...,
         description=(
             "Neutralization of clinical considerations. "
-            " the main tension is ethical rather than a clinical debate regarding clinical effectiveness or risk. " 
-            "The vignette avoids ambiguity about effectiveness. Any numeric probabilities of success "
-            "or risk should be replaced with qualitative appraisals such as 'high' or 'low'. "
-            "Probabilities of success and risk are fixed and qualitatively stated as high or low so that the tension "
-            "is ethical rather than prognostic."
+            "The main tension must be ethical rather than a clinical effectiveness debate. "
+            "KEEP concrete clinical facts about treatments (e.g., 'radiation carries cardiac risks', 'chemotherapy causes nausea'). "
+            "KEEP physician clinical judgments when they create ethical tension with patient preferences. "
+            "REMOVE language suggesting one option is objectively medically superior or has better outcomes. "
+            "REMOVE numeric probabilities—replace with qualitative terms like 'high risk' or 'low chance'. "
+            "The goal: establish clinical context without resolving the ethical dilemma through clinical superiority."
         ),
     )
     distinctness_actionability: Evaluation = Field(
@@ -129,10 +130,13 @@ class ClinicalRubric(RubricBase):
     key_information: Evaluation = Field(
         ...,
         description=(
-            "Key Clinical Information Only."
-            "- Provide the **necessary minimum** clinical information required to make the decision"
-            "- Do **not** omit essential facts"
-            "- Do **not** include extraneous, decorative, or distracting details "
+            "Key Clinical Information Only. "
+            "KEEP clinical facts that establish the stakes of each choice (treatment risks, side effects, outcomes). "
+            "KEEP patient-specific context needed for the decision (age, diagnosis, relevant history). "
+            "KEEP emotionally-relevant context (patient anxiety, family distress) when it affects the ethical stakes. "
+            "REMOVE background details that don't affect the choice (prior unrelated medical history). "
+            "REMOVE decorative or flowery language. "
+            "Clinical grounding is essential—don't confuse 'clinical detail' with 'extraneous detail'."
         ),
     )
     clinical_plausibility: Evaluation = Field(
