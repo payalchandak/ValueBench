@@ -17,17 +17,11 @@ class CaseEvaluation(BaseModel):
     decision: str  # "approve" or "reject"
     evaluator: str
     original_case: BenchmarkCandidate
-    updated_case: Optional[BenchmarkCandidate] = None
-    notes: Optional[str] = None
-    
-    def has_edits(self) -> bool:
-        """Check if any edits were made."""
-        return self.updated_case is not None
     
     @property
     def final_case(self) -> BenchmarkCandidate:
-        """Get the final version (edited if available, otherwise original)."""
-        return self.updated_case or self.original_case
+        """Get the final version (always original since editing is not supported)."""
+        return self.original_case
 
 
 class UserSession(BaseModel):

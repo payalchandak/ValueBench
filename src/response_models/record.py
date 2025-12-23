@@ -32,7 +32,7 @@ class IterationRecord(BaseModel):
     # Human evaluation metadata
     human_evaluation: Optional[Dict[str, Any]] = Field(
         None, 
-        description="Human evaluation metadata including decision, evaluator, and notes"
+        description="Human evaluation metadata including decision and evaluator"
     )
 
 class SeedContext(BaseModel):
@@ -108,9 +108,7 @@ class CaseRecord(BaseModel):
     def add_human_evaluation(
         self,
         decision: str,
-        evaluator: str,
-        updated_case: Optional[BenchmarkCandidate] = None,
-        notes: Optional[str] = None
+        evaluator: str
     ) -> None:
         """
         [DEPRECATED] Add a human evaluation iteration to the case record.
@@ -121,8 +119,6 @@ class CaseRecord(BaseModel):
         Args:
             decision: "approve" or "reject"
             evaluator: Username of the evaluator
-            updated_case: Optional edited version of the case
-            notes: Optional evaluation notes
             
         Raises:
             NotImplementedError: Always raised - use EvaluationStore instead

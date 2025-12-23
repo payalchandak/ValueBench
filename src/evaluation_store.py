@@ -167,8 +167,6 @@ class EvaluationStore:
         case_id: str,
         decision: str,
         case_loader,  # CaseLoader instance
-        updated_case: Optional[BenchmarkCandidate] = None,
-        notes: Optional[str] = None,
         problem_axes: Optional[List[str]] = None,
         comments: Optional[str] = None
     ) -> None:
@@ -182,8 +180,6 @@ class EvaluationStore:
             case_id: ID of the case being evaluated
             decision: "approve" or "reject"
             case_loader: CaseLoader instance to load case data
-            updated_case: Optional edited BenchmarkCandidate
-            notes: Optional evaluation notes
             problem_axes: Optional list of problem categories (clinical, ethical, legal, stylistic, other)
             comments: Optional detailed feedback and recommended changes
             
@@ -231,8 +227,6 @@ class EvaluationStore:
                 evaluator=self.current_session.username,
                 evaluated_at=datetime.now(),
                 decision=decision,
-                updated_case=updated_case,
-                notes=notes,
                 problem_axes=problem_axes,
                 comments=comments
             )
@@ -332,7 +326,7 @@ class EvaluationStore:
         evaluator: Optional[str] = None
     ) -> Optional[Dict[str, Any]]:
         """
-        Get evaluation with the case data loaded from case files.
+        Get evaluation with the case data loaded from case files (read-only).
         
         Args:
             case_id: The case ID
@@ -340,7 +334,7 @@ class EvaluationStore:
             evaluator: The evaluator's username (defaults to current session user)
             
         Returns:
-            Dict with evaluation and case data, or None if not found
+            Dict with 'evaluation' and 'case' keys, or None if not found
         """
         if evaluator is None:
             if self.current_session is None:
@@ -352,18 +346,17 @@ class EvaluationStore:
         if not evaluation:
             return None
         
-        # Load case from source
+        # Load case from source (read-only)
         case_record = case_loader.get_case_by_id(case_id)
         if not case_record:
             return None
         
-        original_case = case_record.final_case
+        # Get the original case (no editing supported)
+        case = case_record.final_case
         
         return {
             "evaluation": evaluation,
-            "original_case": original_case,
-            "final_case": evaluation.updated_case or original_case,
-            "has_edits": evaluation.has_edits
+            "case": case
         }
     
     def get_unreviewed_cases(self, all_case_ids: List[str]) -> List[str]:
@@ -396,14 +389,12 @@ class EvaluationStore:
                 "total_reviewed": 0,
                 "approved": 0,
                 "rejected": 0,
-                "with_edits": 0,
                 "with_feedback": 0,
                 "problem_axes_summary": {}
             }
         
         approved = 0
         rejected = 0
-        with_edits = 0
         with_feedback = 0
         problem_axes_count = {}
         
@@ -414,8 +405,6 @@ class EvaluationStore:
                     approved += 1
                 elif evaluation.decision == 'reject':
                     rejected += 1
-                if evaluation.has_edits:
-                    with_edits += 1
                 
                 # Count feedback
                 if evaluation.comments or evaluation.problem_axes:
@@ -424,13 +413,14 @@ class EvaluationStore:
                 # Count problem axes
                 if evaluation.problem_axes:
                     for axis in evaluation.problem_axes:
-                        problem_axes_count[axis] = problem_axes_count.get(axis, 0) + 1
+                        # Convert enum to string for display
+                        axis_str = axis.value if hasattr(axis, 'value') else str(axis)
+                        problem_axes_count[axis_str] = problem_axes_count.get(axis_str, 0) + 1
         
         return {
             "total_reviewed": len(self.current_session.reviewed_case_ids),
             "approved": approved,
             "rejected": rejected,
-            "with_edits": with_edits,
             "with_feedback": with_feedback,
             "problem_axes_summary": problem_axes_count
         }
@@ -530,7 +520,6 @@ def main():
         print(f"  Total reviewed: {stats['total_reviewed']}")
         print(f"  Approved: {stats['approved']}")
         print(f"  Rejected: {stats['rejected']}")
-        print(f"  With edits: {stats['with_edits']}")
         
         print("\n" + "-" * 80)
         print("\nAll Sessions:")

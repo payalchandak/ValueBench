@@ -35,10 +35,7 @@ class StandaloneEvaluation(BaseModel):
     # The evaluation decision
     decision: str = Field(..., description="'approve' or 'reject'")
     
-    # Optional notes
-    notes: Optional[str] = Field(None, description="Evaluator's notes or rejection reason")
-    
-    # Structured feedback (new fields)
+    # Structured feedback
     problem_axes: Optional[List[ProblemAxis]] = Field(
         None,
         description="Categories of problems identified (clinical, ethical, legal, stylistic, other)"
