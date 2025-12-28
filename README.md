@@ -34,6 +34,9 @@ source $HOME/.local/bin/env
 # Navigate to the project
 cd /path/to/ValueBench
 
+# Fix the python version
+uv python pin 3.10
+
 # Install dependencies (creates virtual environment automatically)
 uv sync
 
