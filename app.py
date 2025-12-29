@@ -9,11 +9,12 @@ It imports and launches the GUI application.
 from src.gui import create_interface
 from src.gui.app import CustomTheme
 
-# Create and launch the interface
-demo = create_interface()
+def main() -> None:
+    demo = create_interface()
+    theme = CustomTheme()
+    demo.launch(theme=theme)
 
 # For HuggingFace Spaces, Gradio will automatically detect and launch this
 if __name__ == "__main__":
-    theme = CustomTheme()
-    demo.launch(theme=theme)
+    main()
 
