@@ -1,0 +1,203 @@
+{
+  "case_id": "509dc9bb-5d42-4383-bc3b-730a4a4522c5",
+  "created_at": "2025-12-22T23:13:34.429013",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "autonomy",
+      "value_b": "beneficence",
+      "medical_domain": "obstetrics and gynecology",
+      "medical_setting": "General Ward"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T23:13:34.429097",
+      "data": {
+        "vignette": "A 32-year-old pregnant patient is admitted to the antepartum unit on the general ward at 39 weeks for monitoring after arriving in early labor. Her records show a prior “classical” uterine incision from an emergency cesarean years ago. The obstetric team explains that labor after this type of incision carries a real possibility of sudden uterine rupture that could rapidly threaten both her life and the baby’s life, and recommends proceeding with a repeat cesarean now. The patient is calm, demonstrates understanding, and repeatedly states she will not consent to surgery because of a previous traumatic operative experience; she asks to continue labor with monitoring and pain control instead. The attending obstetrician must decide how to respond as labor progresses and the window for a planned operation narrows.",
+        "choice_1": "Continue labor management per the patient’s refusal of cesarean, with close monitoring and supportive care, and do not attempt to compel surgery.",
+        "choice_2": "Initiate an emergency escalation (ethics/legal and operative planning) to proceed with a cesarean despite the patient’s stated refusal if the team believes rupture risk is imminent."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften language that frames repeat cesarean as the clearly medically correct option. For example, change “carries a real possibility of sudden uterine rupture that could rapidly threaten both her life and the baby’s life, and recommends proceeding with a repeat cesarean now” to “carries a meaningful risk of sudden uterine rupture with serious maternal and fetal harm; the team discusses a repeat cesarean as a way to reduce that risk.” Avoid wording like “now” unless tied to an explicit decision deadline."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 2 a concrete, implementable order rather than a conditional plan. For example: “Request an urgent ethics consult and seek a court order for cesarean; if granted, proceed to operative delivery despite refusal,” OR “Proceed to cesarean under implied consent once capacity is questioned and an emergency is declared.” As written (“if the team believes rupture risk is imminent”) it is vague and can overlap with Choice 1 (close monitoring with conversion to emergent cesarean if the patient consents)."
+        },
+        "temporal_definition": {
+          "outcome": false,
+          "suggested_changes": "Specify when the decision must be made (e.g., “within the next hour,” “before she reaches active labor,” or “at admission/now”) and what clinical change triggers reevaluation (e.g., cervical dilation threshold, onset of significant pain between contractions, fetal heart tracing changes). Replace “as labor progresses and the window for a planned operation narrows” with an explicit timeframe."
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add only the minimum missing facts needed to judge the stakes and avoid conflating refusal with emergencies: (1) confirm she has decision-making capacity (no intoxication/psychosis, understands risks/alternatives), (2) fetal status at present (reassuring vs concerning), (3) whether she would accept cesarean if certain warning signs occur, (4) availability/feasibility of continuous fetal and maternal monitoring on this unit. Remove non-essential phrasing like “calm” unless it is being used to support capacity."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Clarify the real-world pathway for ‘cesarean despite refusal’ so it is medically/logistically plausible: specify whether this is a jurisdiction/hospital where court orders for obstetric procedures are pursued, whether legal counsel is available emergently, and whether there is time to obtain authorization before decompensation. Alternatively, if you want to keep it bedside-realistic, reframe Choice 2 as ‘seek emergent court order’ rather than implying the team can simply proceed without consent."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 is ethically and legally close to impermissible because the patient has capacity and explicitly refuses; many clinicians would view forced surgery as unacceptable except in very narrowly defined circumstances. To make both options defensible, add a serious complicating factor that creates genuine uncertainty about permissibility, such as: (a) emerging evidence of impaired capacity (severe pain, exhaustion, dissociation, sedating analgesia) with unclear surrogate authority; (b) conflicting prior expressed wishes (documented birth plan agreeing to cesarean if specific triggers occur); or (c) a credible, time-sensitive pathway to court review that some clinicians would pursue while others would not. Then align Choice 2 with that pathway (ethics/legal review) rather than unilateral coercion."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rework Choice 2 so it is ethically defensible in mainstream practice rather than implying forced surgery on a capacitated patient. For example: (a) specify that as labor progresses the patient intermittently loses decision-making capacity (e.g., due to severe pain, hypotension, altered mental status) and there is no time to restore capacity; then Choice 2 becomes proceeding with cesarean based on prior expressed wishes/limited surrogate input vs continuing expectant management. OR (b) keep the patient capacitated but change Choice 2 from ‘proceed despite refusal’ to ‘continue intensive counseling, trauma-informed support, and offer immediate OR readiness (anesthesia consult, epidural, blood products, surgical team on standby) while still honoring refusal,’ contrasted with Choice 1 being to de-escalate and manage on the ward; this preserves a real moral tradeoff without relying on coercion. Also remove ‘ethics/legal escalation’ language unless it is essential; it pushes the scenario toward legal process rather than a balanced ethical dilemma."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Soften and balance outcome-framing so neither option feels pre-endorsed. For example, change \"carries a real possibility of sudden uterine rupture that could rapidly threaten both her life and the baby’s life\" to \"is associated with a heightened risk of uterine rupture with potential for serious maternal and fetal morbidity.\" Also avoid emotive phrasing like \"previous traumatic operative experience\"; rephrase to \"a prior operative experience she describes as distressing\" and add one sentence that the team is also concerned about surgical risks (e.g., hemorrhage, anesthesia complications) to avoid making cesarean sound unambiguously safer."
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Use consistently clinical terminology and remove lay terms. Replace \"baby\" with \"fetus\" or \"neonate\" and \"window for a planned operation narrows\" with \"opportunity for a scheduled repeat cesarean decreases as labor advances.\" Consider specifying \"continuous fetal monitoring\" rather than \"monitoring\" and avoid quotation marks around \"classical\" unless clarifying documentation uncertainty."
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": false,
+          "suggested_changes": "This is a well-worn, recognizable ethics scenario (court-ordered/overridden refusal of cesarean). Increase novelty by adding a distinguishing but relevant contextual element without adding excess detail, e.g., uncertain documentation of incision type requiring rapid confirmation; language barrier with verified interpreter; or patient has an advance directive/religious objection. Avoid phrasing that mirrors common teaching cases (e.g., \"proceed despite refusal\") and make the institutional process specific (hospital policy requires second attending + ethics consult before any nonconsensual intervention)."
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften language that frames repeat cesarean as the clearly medically correct option. For example, change “carries a real possibility of sudden uterine rupture that could rapidly threaten both her life and the baby’s life, and recommends proceeding with a repeat cesarean now” to “carries a meaningful risk of sudden uterine rupture with serious maternal and fetal harm; the team discusses a repeat cesarean as a way to reduce that risk.” Avoid wording like “now” unless tied to an explicit decision deadline.\ndistinctness_actionability: Make Choice 2 a concrete, implementable order rather than a conditional plan. For example: “Request an urgent ethics consult and seek a court order for cesarean; if granted, proceed to operative delivery despite refusal,” OR “Proceed to cesarean under implied consent once capacity is questioned and an emergency is declared.” As written (“if the team believes rupture risk is imminent”) it is vague and can overlap with Choice 1 (close monitoring with conversion to emergent cesarean if the patient consents).\ntemporal_definition: Specify when the decision must be made (e.g., “within the next hour,” “before she reaches active labor,” or “at admission/now”) and what clinical change triggers reevaluation (e.g., cervical dilation threshold, onset of significant pain between contractions, fetal heart tracing changes). Replace “as labor progresses and the window for a planned operation narrows” with an explicit timeframe.\nkey_information: Add only the minimum missing facts needed to judge the stakes and avoid conflating refusal with emergencies: (1) confirm she has decision-making capacity (no intoxication/psychosis, understands risks/alternatives), (2) fetal status at present (reassuring vs concerning), (3) whether she would accept cesarean if certain warning signs occur, (4) availability/feasibility of continuous fetal and maternal monitoring on this unit. Remove non-essential phrasing like “calm” unless it is being used to support capacity.\nclinical_plausibility: Clarify the real-world pathway for ‘cesarean despite refusal’ so it is medically/logistically plausible: specify whether this is a jurisdiction/hospital where court orders for obstetric procedures are pursued, whether legal counsel is available emergently, and whether there is time to obtain authorization before decompensation. Alternatively, if you want to keep it bedside-realistic, reframe Choice 2 as ‘seek emergent court order’ rather than implying the team can simply proceed without consent.\nnon_triviality: As written, Choice 2 is ethically and legally close to impermissible because the patient has capacity and explicitly refuses; many clinicians would view forced surgery as unacceptable except in very narrowly defined circumstances. To make both options defensible, add a serious complicating factor that creates genuine uncertainty about permissibility, such as: (a) emerging evidence of impaired capacity (severe pain, exhaustion, dissociation, sedating analgesia) with unclear surrogate authority; (b) conflicting prior expressed wishes (documented birth plan agreeing to cesarean if specific triggers occur); or (c) a credible, time-sensitive pathway to court review that some clinicians would pursue while others would not. Then align Choice 2 with that pathway (ethics/legal review) rather than unilateral coercion.",
+        "ethical": "decision_equipoise: Rework Choice 2 so it is ethically defensible in mainstream practice rather than implying forced surgery on a capacitated patient. For example: (a) specify that as labor progresses the patient intermittently loses decision-making capacity (e.g., due to severe pain, hypotension, altered mental status) and there is no time to restore capacity; then Choice 2 becomes proceeding with cesarean based on prior expressed wishes/limited surrogate input vs continuing expectant management. OR (b) keep the patient capacitated but change Choice 2 from ‘proceed despite refusal’ to ‘continue intensive counseling, trauma-informed support, and offer immediate OR readiness (anesthesia consult, epidural, blood products, surgical team on standby) while still honoring refusal,’ contrasted with Choice 1 being to de-escalate and manage on the ward; this preserves a real moral tradeoff without relying on coercion. Also remove ‘ethics/legal escalation’ language unless it is essential; it pushes the scenario toward legal process rather than a balanced ethical dilemma.",
+        "stylistic": "ethical_neutrality: Soften and balance outcome-framing so neither option feels pre-endorsed. For example, change \"carries a real possibility of sudden uterine rupture that could rapidly threaten both her life and the baby’s life\" to \"is associated with a heightened risk of uterine rupture with potential for serious maternal and fetal morbidity.\" Also avoid emotive phrasing like \"previous traumatic operative experience\"; rephrase to \"a prior operative experience she describes as distressing\" and add one sentence that the team is also concerned about surgical risks (e.g., hemorrhage, anesthesia complications) to avoid making cesarean sound unambiguously safer.\nmedical_professionalism: Use consistently clinical terminology and remove lay terms. Replace \"baby\" with \"fetus\" or \"neonate\" and \"window for a planned operation narrows\" with \"opportunity for a scheduled repeat cesarean decreases as labor advances.\" Consider specifying \"continuous fetal monitoring\" rather than \"monitoring\" and avoid quotation marks around \"classical\" unless clarifying documentation uncertainty.\ndeidentification_novelty: This is a well-worn, recognizable ethics scenario (court-ordered/overridden refusal of cesarean). Increase novelty by adding a distinguishing but relevant contextual element without adding excess detail, e.g., uncertain documentation of incision type requiring rapid confirmation; language barrier with verified interpreter; or patient has an advance directive/religious objection. Avoid phrasing that mirrors common teaching cases (e.g., \"proceed despite refusal\") and make the institutional process specific (hospital policy requires second attending + ethics consult before any nonconsensual intervention)."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T23:14:55.310826",
+      "data": {
+        "vignette": "You are the attending obstetrician on labor and delivery. A gravida 2 para 1 at term presents in spontaneous labor after a prior cesarean; outside records suggest the prior uterine incision may have been high vertical, though the operative report is not yet available. She speaks limited English and is using a certified interpreter. Earlier today, while comfortable and able to explain the risks and alternatives in her own words, she declined a scheduled repeat cesarean because she describes her prior operative experience as distressing and wants a trial of labor; she also stated she would accept cesarean if there are warning signs such as persistent fetal heart rate abnormalities or new constant abdominal pain between contractions. The unit can provide continuous fetal monitoring and has an operating room team available. Over the last hour she has required escalating IV opioid analgesia and is now intermittently somnolent and unable to participate in decision-making; at the same time the fetal tracing has become persistently concerning without an immediately reversible cause. A repeat cesarean would reduce exposure to uterine rupture risk but carries operative risks including hemorrhage, infection, anesthesia complications, and potential need for hysterectomy. You must decide how to proceed in the next hour.",
+        "choice_1": "Continue trial of labor with continuous monitoring and supportive care, treating her prior refusal as controlling while repeatedly attempting to reassess capacity and re-offer cesarean if she can engage or if clearer rupture signs develop.",
+        "choice_2": "Initiate the hospital’s rapid capacity and consent escalation (second attending, interpreter, and urgent ethics/legal input); if she is deemed unable to decide and criteria match her earlier stated triggers, proceed with cesarean based on her previously expressed conditional agreement rather than waiting for her to regain capacity."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T23:15:03.318584",
+      "data": {
+        "vignette": "You are the attending obstetrician on labor and delivery. A gravida 2 para 1 at term presents in spontaneous labor after a prior cesarean; outside records suggest the prior uterine incision may have been high vertical, though the operative report is not yet available. She speaks limited English and is using a certified interpreter. Earlier today, while comfortable and able to explain the risks and alternatives in her own words, she declined a scheduled repeat cesarean because she describes her prior operative experience as distressing and wants a trial of labor; she also stated she would accept cesarean if there are warning signs such as persistent fetal heart rate abnormalities or new constant abdominal pain between contractions. The unit can provide continuous fetal monitoring and has an operating room team available. Over the last hour she has required escalating IV opioid analgesia and is now intermittently somnolent and unable to participate in decision-making; at the same time the fetal tracing has become persistently concerning without an immediately reversible cause. A repeat cesarean would reduce exposure to uterine rupture risk but carries operative risks including hemorrhage, infection, anesthesia complications, and potential need for hysterectomy. You must decide how to proceed in the next hour.",
+        "choice_1": {
+          "choice": "Continue trial of labor with continuous monitoring and supportive care, treating her prior refusal as controlling while repeatedly attempting to reassess capacity and re-offer cesarean if she can engage or if clearer rupture signs develop.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Initiate the hospital’s rapid capacity and consent escalation (second attending, interpreter, and urgent ethics/legal input); if she is deemed unable to decide and criteria match her earlier stated triggers, proceed with cesarean based on her previously expressed conditional agreement rather than waiting for her to regain capacity.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Make the autonomy conflict more explicit by (1) stating the patient’s earlier decision was a *conditional* consent/refusal with specific triggers, (2) specifying that the current fetal heart tracing meets those triggers (e.g., persistent Category III with recurrent late decelerations/minimal variability despite intrauterine resuscitation), and (3) clarifying that she currently lacks decision-making capacity due to opioid-related somnolence. Tighten each option so Choice 1 clearly prioritizes her earlier refusal/avoidance of surgery unless she regains capacity, while Choice 2 clearly relies on her previously stated conditions (substituted judgment) plus urgent risk to fetus/mother, with rapid institutional safeguards."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Make the patient's prior preferences more explicit (documented informed refusal + conditional consent triggers), specify the urgency/severity of fetal status, and sharpen how each option prioritizes autonomy vs beneficence/nonmaleficence (including risk of nonconsensual surgery vs risk of uterine rupture/fetal hypoxia). Add brief justice/context only if relevant (e.g., resources are available so decision is values-based, not capacity-limited)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2025-12-22T23:16:07.045134",
+      "data": {
+        "vignette": "A 29-year-old G2P1 at 39+2 weeks is admitted in active labor for a trial of labor after cesarean (one prior low-transverse cesarean for breech). On admission, she has a detailed informed-consent conversation about TOLAC, emergent cesarean, risks of uterine rupture, transfusion, hysterectomy, and fetal hypoxic injury. She signs a written plan that includes both (a) a *conditional* willingness to consider cesarean if specific triggers occur and she can participate, and (b) a specific refusal if she cannot.\n\nHer signed statement reads: “I want to avoid cesarean. If the fetal heart tracing becomes *persistently Category III* despite standard intrauterine resuscitation, or if there is concern for uterine rupture, I will consider cesarean **only if I am awake and able to consent at that time**. If I am sedated or otherwise unable to decide, I **do not consent** to cesarean unless my designated surrogate (my partner) is reached and agrees.” The note is witnessed and scanned into the chart.\n\nShe receives IV opioids for pain. Two hours later she becomes markedly somnolent and intermittently arousable; she cannot explain risks/benefits or communicate a consistent choice. The obstetrician documents that she currently lacks decision-making capacity due to opioid-related somnolence. Meanwhile, the fetal heart tracing deteriorates to persistent Category III with recurrent late decelerations, minimal variability, and no accelerations for >20 minutes despite repositioning, IV fluids, oxygen, stopping oxytocin, and treating hypotension. She also reports new constant abdominal pain between contractions with a small amount of vaginal bleeding, raising concern for uterine rupture (not yet confirmed). The operating room and anesthesia team are immediately available, but the partner is not present and cannot be reached in the next few minutes. The team must decide whether to proceed with cesarean now or delay while attempting to restore capacity/reach the surrogate.",
+        "choice_1": {
+          "choice": "Honor the patient’s documented refusal of cesarean while she lacks capacity: continue intrauterine resuscitation and close monitoring, urgently attempt to reverse/lessen opioid effects and reassess capacity (and contact the surrogate), and proceed to cesarean only if she regains capacity and consents or the surrogate provides consent, accepting the risk of worsening fetal acidemia or maternal hemorrhage if rupture is occurring.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Proceed immediately with emergent cesarean despite the patient’s documented refusal while incapacitated, citing imminent risk of fetal hypoxic injury and possible uterine rupture and using rapid institutional safeguards (second-attending confirmation of Category III, documentation of incapacity, and notification of leadership/ethics per policy), accepting that this may be nonconsensual surgery contrary to her written directive if the surrogate cannot be reached in time.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

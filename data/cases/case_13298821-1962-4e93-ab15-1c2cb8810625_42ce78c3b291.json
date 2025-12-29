@@ -1,0 +1,180 @@
+{
+  "case_id": "13298821-1962-4e93-ab15-1c2cb8810625",
+  "created_at": "2025-12-22T23:19:00.931033",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "29. A patient of yours has gone to the hospital to obtain a copy of her medical record for her own review. The hospital refuses to release them to her on the grounds that she must provide an adequate reason for wishing to see the records. She has come to see you to ask if this is true and how can she get her records.\nWhat should you tell her?\na. You, as the physician, can get the records for yourself to view, but she cannot.\nb. The hospital will give her the records as long as you ask.\nc. She has the right to have her own records as long as she has a legitimate reason.\nd. She has the right to her own records even without giving a reason.\ne. Only another physician, hospital, or insurance company can have free access to her records.",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T23:19:00.931124",
+      "data": {
+        "vignette": "You are the patient’s primary care clinician in an outpatient clinic. A 30-year-old patient with a history of severe intimate partner violence is now separated from her partner but remains legally married and worries he is still monitoring her. She requests a complete printed copy of her medical record, including psychotherapy notes and detailed injury documentation, saying she wants it “for my own files and to understand what’s been written.” The health information office will release it if she insists, but staff raise concern that a hard copy could be found or coerced from her and used to harm her or worsen her safety; they ask whether you want to limit what is released or delay release until a safer plan is in place. The patient is calm, not intoxicated, and appears to understand the request, but becomes visibly upset when told anything might be withheld.",
+        "choice_1": "Approve releasing the full record now as the patient requests, while offering counseling about safeguarding it and discussing alternatives, but not restricting access.",
+        "choice_2": "Recommend limiting or delaying release of sensitive portions of the record until you and the patient can create a safety plan (e.g., viewing in-clinic, redacting certain notes, or releasing in a secure format), even if she objects."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make each option a concrete, implementable order tied to what you as the clinician can actually authorize. For example:\n- Choice 1: “Document capacity and instruct Health Information Management to release the entire designated record set today (excluding psychotherapy notes only if legally required), in printed form.”\n- Choice 2: “Invoke the permitted ‘endangerment’ exception (if applicable) and direct Health Information Management to withhold specific categories (e.g., injury photos, IPV-related notes) and instead arrange supervised in-clinic viewing or release to a secure email/portal after a safety plan visit.”\nAlso specify exactly what is being limited (which portions) rather than ‘sensitive portions’."
+        },
+        "temporal_definition": {
+          "outcome": false,
+          "suggested_changes": "State a clear decision deadline consistent with records workflows (e.g., “HIM is prepared to print the record today unless you place a restriction now,” or “The release is scheduled within 48 hours and you must decide before close of business”)."
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Trim and clarify to only what affects the decision and make the legal/clinical stakes explicit. Suggested edits:\n- Clarify whether the request is for the ‘designated record set’ and whether the chart includes psychotherapy notes or separate psychotherapy notes (which typically have different access rules).\n- Specify what specific IPV-related content is in the record that could plausibly increase risk if obtained by the spouse (e.g., safety plan details, shelter location, narrative descriptions, photos).\n- Remove/condense less decision-relevant phrasing (e.g., “for my own files and to understand what’s been written”) unless it affects the ethical tension; replace with “requests full printed record for personal copy.”"
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Fix legal/operational plausibility around record access:\n- Note that psychotherapy notes are often excluded from standard record release and may be withheld; if you intend them to be releasable, state they are part of the releaseable record in your setting.\n- Clarify what authority the clinician has versus Health Information Management (e.g., clinician can recommend/flag ‘endangerment’ review, not unilaterally redact without a defined process).\n- If delaying/withholding is contemplated, specify that it is done under a formal policy (e.g., endangerment determination, review by privacy officer) and that the patient is informed of appeal options."
+        },
+        "non_triviality": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Strengthen the plausibility and defensibility of BOTH options so the dilemma isn’t implicitly resolved by standard access-to-records norms. Edits: (1) Add a concrete, clinically credible reason to think release could lead to serious, near-term harm (e.g., the estranged spouse previously demanded paperwork, has threatened retaliation if she ‘talks to doctors,’ or has a pattern of coercive control over documents/phones). (2) Clarify that, in this setting, the clinician/records office has legitimate discretion to temporarily delay or segment particularly sensitive content when there is a credible safety threat (without turning it into a legal-technicality discussion). (3) Specify that Choice 2 is a time-limited, transparent plan (e.g., delay 48–72 hours, schedule an in-clinic review, offer secure electronic access) rather than open-ended withholding; otherwise it reads as unjustified paternalism given demonstrated decision-making capacity. (4) Consider removing or rephrasing “psychotherapy notes” to “highly sensitive counseling documentation,” since many readers will treat psychotherapy notes as categorically handled by policy, which can make the ‘right’ answer feel rule-based rather than ethically balanced."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Soften language that implicitly favors withholding. Replace \"could be found or coerced from her and used to harm her or worsen her safety\" with a more neutral, symmetric framing such as \"staff worry a hard copy might not remain private and could affect her safety.\" Also remove interpretive descriptors like \"visibly upset\" unless it is clinically tied to capacity; use \"becomes distressed\" or omit emotional reaction to avoid nudging toward Choice 2."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten to one paragraph and clarify the exact decision authority and policy basis. Specify whether you (as PCP) can legally restrict release of psychotherapy notes and under what mechanism (e.g., 'patient-access request under HIPAA; psychotherapy notes may be treated differently at this institution'). Remove minor scene-setting (e.g., \"calm, not intoxicated\") unless you explicitly connect it to decision-making capacity. Consider consolidating the staff concerns and the patient’s rationale into fewer sentences."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "distinctness_actionability: Make each option a concrete, implementable order tied to what you as the clinician can actually authorize. For example:\n- Choice 1: “Document capacity and instruct Health Information Management to release the entire designated record set today (excluding psychotherapy notes only if legally required), in printed form.”\n- Choice 2: “Invoke the permitted ‘endangerment’ exception (if applicable) and direct Health Information Management to withhold specific categories (e.g., injury photos, IPV-related notes) and instead arrange supervised in-clinic viewing or release to a secure email/portal after a safety plan visit.”\nAlso specify exactly what is being limited (which portions) rather than ‘sensitive portions’.\ntemporal_definition: State a clear decision deadline consistent with records workflows (e.g., “HIM is prepared to print the record today unless you place a restriction now,” or “The release is scheduled within 48 hours and you must decide before close of business”).\nkey_information: Trim and clarify to only what affects the decision and make the legal/clinical stakes explicit. Suggested edits:\n- Clarify whether the request is for the ‘designated record set’ and whether the chart includes psychotherapy notes or separate psychotherapy notes (which typically have different access rules).\n- Specify what specific IPV-related content is in the record that could plausibly increase risk if obtained by the spouse (e.g., safety plan details, shelter location, narrative descriptions, photos).\n- Remove/condense less decision-relevant phrasing (e.g., “for my own files and to understand what’s been written”) unless it affects the ethical tension; replace with “requests full printed record for personal copy.”\nclinical_plausibility: Fix legal/operational plausibility around record access:\n- Note that psychotherapy notes are often excluded from standard record release and may be withheld; if you intend them to be releasable, state they are part of the releaseable record in your setting.\n- Clarify what authority the clinician has versus Health Information Management (e.g., clinician can recommend/flag ‘endangerment’ review, not unilaterally redact without a defined process).\n- If delaying/withholding is contemplated, specify that it is done under a formal policy (e.g., endangerment determination, review by privacy officer) and that the patient is informed of appeal options.",
+        "ethical": "decision_equipoise: Strengthen the plausibility and defensibility of BOTH options so the dilemma isn’t implicitly resolved by standard access-to-records norms. Edits: (1) Add a concrete, clinically credible reason to think release could lead to serious, near-term harm (e.g., the estranged spouse previously demanded paperwork, has threatened retaliation if she ‘talks to doctors,’ or has a pattern of coercive control over documents/phones). (2) Clarify that, in this setting, the clinician/records office has legitimate discretion to temporarily delay or segment particularly sensitive content when there is a credible safety threat (without turning it into a legal-technicality discussion). (3) Specify that Choice 2 is a time-limited, transparent plan (e.g., delay 48–72 hours, schedule an in-clinic review, offer secure electronic access) rather than open-ended withholding; otherwise it reads as unjustified paternalism given demonstrated decision-making capacity. (4) Consider removing or rephrasing “psychotherapy notes” to “highly sensitive counseling documentation,” since many readers will treat psychotherapy notes as categorically handled by policy, which can make the ‘right’ answer feel rule-based rather than ethically balanced.",
+        "stylistic": "ethical_neutrality: Soften language that implicitly favors withholding. Replace \"could be found or coerced from her and used to harm her or worsen her safety\" with a more neutral, symmetric framing such as \"staff worry a hard copy might not remain private and could affect her safety.\" Also remove interpretive descriptors like \"visibly upset\" unless it is clinically tied to capacity; use \"becomes distressed\" or omit emotional reaction to avoid nudging toward Choice 2.\nconciseness_coherence: Tighten to one paragraph and clarify the exact decision authority and policy basis. Specify whether you (as PCP) can legally restrict release of psychotherapy notes and under what mechanism (e.g., 'patient-access request under HIPAA; psychotherapy notes may be treated differently at this institution'). Remove minor scene-setting (e.g., \"calm, not intoxicated\") unless you explicitly connect it to decision-making capacity. Consider consolidating the staff concerns and the patient’s rationale into fewer sentences."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T23:19:55.843574",
+      "data": {
+        "vignette": "You are a primary care clinician in a health system where patients can request a printed copy of the “designated record set” through Health Information Management (HIM). A 34-year-old patient with a history of intimate partner violence has separated from her spouse and has recently had several visits for injuries and counseling through your clinic. Today she submits a request for the entire designated record set in printed form; HIM tells you the packet is scheduled to be printed and released within 48 hours unless you flag a safety concern before close of business. The releasable record includes detailed narrative descriptions of assaults, body-map photos of bruising, a documented safety plan with a friend’s address, and notes about a planned shelter intake; it does not include separately sequestered psychotherapy notes. The patient demonstrates understanding of what is in the chart and insists on having a complete hard copy now, saying she needs it for “legal and personal records.” Clinic staff report that the spouse has previously demanded to see her medical paperwork and has threatened her when she “talks to doctors,” raising concern that a printed packet might not remain private. Under institutional policy, clinicians may request a time-limited “endangerment” review by the privacy officer to delay or segment release when there is a credible risk of serious harm, with notice to the patient and an appeal pathway. As the treating clinician, you must decide what to authorize before HIM processes the request.",
+        "choice_1": "Document the patient’s decision-making capacity and instruct HIM to release the full designated record set in printed form within the normal timeframe, without segmentation.",
+        "choice_2": "Request a formal endangerment review now and direct HIM to temporarily delay and segment specific IPV-related materials (e.g., injury photos and safety-plan/shelter details), offering time-limited alternatives such as supervised in-clinic review and/or secure portal release after a safety-planning visit, with notice and appeal options."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T23:20:07.203535",
+      "data": {
+        "vignette": "You are a primary care clinician in a health system where patients can request a printed copy of the “designated record set” through Health Information Management (HIM). A 34-year-old patient with a history of intimate partner violence has separated from her spouse and has recently had several visits for injuries and counseling through your clinic. Today she submits a request for the entire designated record set in printed form; HIM tells you the packet is scheduled to be printed and released within 48 hours unless you flag a safety concern before close of business. The releasable record includes detailed narrative descriptions of assaults, body-map photos of bruising, a documented safety plan with a friend’s address, and notes about a planned shelter intake; it does not include separately sequestered psychotherapy notes. The patient demonstrates understanding of what is in the chart and insists on having a complete hard copy now, saying she needs it for “legal and personal records.” Clinic staff report that the spouse has previously demanded to see her medical paperwork and has threatened her when she “talks to doctors,” raising concern that a printed packet might not remain private. Under institutional policy, clinicians may request a time-limited “endangerment” review by the privacy officer to delay or segment release when there is a credible risk of serious harm, with notice to the patient and an appeal pathway. As the treating clinician, you must decide what to authorize before HIM processes the request.",
+        "choice_1": {
+          "choice": "Document the patient’s decision-making capacity and instruct HIM to release the full designated record set in printed form within the normal timeframe, without segmentation.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Request a formal endangerment review now and direct HIM to temporarily delay and segment specific IPV-related materials (e.g., injury photos and safety-plan/shelter details), offering time-limited alternatives such as supervised in-clinic review and/or secure portal release after a safety-planning visit, with notice and appeal options.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

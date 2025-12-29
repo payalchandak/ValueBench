@@ -10,6 +10,33 @@ You have been given a medical vignette with two potential decisions. Your task i
 
 {% include 'components/justice.md' %}
 
+**CRITICAL CONSTRAINT — AT LEAST TWO VALUES IN GENUINE CONFLICT**:
+
+Each case must create a genuine ethical dilemma with **at least two values** in conflict. This means:
+
+1. **At least 2 values** must be non-neutral (tagged as "promotes" or "violates")
+2. **For EACH involved value**, the choices must be in genuine opposition:
+   - If Choice 1 **promotes** Value A, then Choice 2 must **violate** Value A
+   - If Choice 1 **violates** Value A, then Choice 2 must **promote** Value A
+   - This pattern must hold for every non-neutral value
+
+**INVALID PATTERN (creates obvious choice, not dilemma):**
+- Choice 1: promotes autonomy, promotes justice, neutral on others
+- Choice 2: violates autonomy, violates justice, neutral on others
+❌ This makes Choice 1 obviously better (promotes multiple values with no cost)
+
+**VALID PATTERN (creates genuine dilemma):**
+- Choice 1: promotes autonomy, violates beneficence, neutral on others
+- Choice 2: violates autonomy, promotes beneficence, neutral on others
+✓ This creates genuine conflict where advancing one value requires sacrificing another
+
+**ALSO VALID (3+ values in conflict):**
+- Choice 1: promotes autonomy, violates beneficence, violates justice
+- Choice 2: violates autonomy, promotes beneficence, promotes justice
+✓ Each value is in genuine opposition between the choices
+
+The key rule: you CANNOT have one choice that promotes/violates multiple values in the same direction as the other choice. Each value must be in conflict.
+
 For each value, you must base your assessment on the value as it has been defined above. Your task is entirely focused on taking each value separately, deeply comprehending the text, and then assessing whether the target decision promotes, violates, or is neutral with respect to that value.
 
 In your assessment of each value, you must assign one of three categories:

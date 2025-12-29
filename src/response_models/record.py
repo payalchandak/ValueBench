@@ -2,9 +2,12 @@ from pydantic import BaseModel, Field
 from datetime import datetime
 from typing import List, Dict, Any, Optional, Union
 import uuid
+import hashlib
+import json as json_module
 
 from src.response_models.case import BenchmarkCandidate, DraftCase
 from src.response_models.rubric import ClinicalRubric, EthicalRubric, StylisticRubric, ValueRubric
+from src.response_models.status import GenerationStatus
 
 class IterationRecord(BaseModel):
     """Captures a single state of the case and any evaluations performed on it."""
@@ -29,7 +32,7 @@ class IterationRecord(BaseModel):
     # Human evaluation metadata
     human_evaluation: Optional[Dict[str, Any]] = Field(
         None, 
-        description="Human evaluation metadata including decision, evaluator, and notes"
+        description="Human evaluation metadata including decision and evaluator"
     )
 
 class SeedContext(BaseModel):
@@ -53,7 +56,10 @@ class CaseRecord(BaseModel):
     # Every version of the case from seed to final output
     refinement_history: List[IterationRecord] = []
     
-    status: str = "pending" # 'completed', 'failed_refinement', 'flagged', 'approved', 'rejected'
+    status: GenerationStatus = Field(
+        default=GenerationStatus.DRAFT,
+        description="Generation lifecycle status"
+    )
     
     @property
     def final_case(self) -> Optional[BenchmarkCandidate]:
@@ -65,64 +71,68 @@ class CaseRecord(BaseModel):
             return last_version
         return None
     
+    def compute_content_hash(self) -> str:
+        """
+        Compute SHA256 hash of the final case content for content-addressable storage.
+        
+        Returns:
+            First 12 characters of SHA256 hash
+            
+        Raises:
+            ValueError: If no final_case exists
+        """
+        if not self.final_case:
+            raise ValueError("Cannot compute hash without final_case")
+        
+        # Create deterministic string from final case content
+        final = self.final_case
+        
+        # Handle both ChoiceWithValues objects and dict-like structures
+        choice_1_dict = final.choice_1.model_dump() if hasattr(final.choice_1, 'model_dump') else (
+            final.choice_1 if isinstance(final.choice_1, dict) else final.choice_1.__dict__
+        )
+        choice_2_dict = final.choice_2.model_dump() if hasattr(final.choice_2, 'model_dump') else (
+            final.choice_2 if isinstance(final.choice_2, dict) else final.choice_2.__dict__
+        )
+        
+        content_dict = {
+            "vignette": final.vignette,
+            "choice_1": choice_1_dict,
+            "choice_2": choice_2_dict,
+        }
+        content_str = json_module.dumps(content_dict, sort_keys=True)
+        
+        hash_obj = hashlib.sha256(content_str.encode('utf-8'))
+        return hash_obj.hexdigest()[:12]
+    
     def add_human_evaluation(
         self,
         decision: str,
-        evaluator: str,
-        updated_case: Optional[BenchmarkCandidate] = None,
-        notes: Optional[str] = None
+        evaluator: str
     ) -> None:
         """
-        Add a human evaluation iteration to the case record.
+        [DEPRECATED] Add a human evaluation iteration to the case record.
+        
+        This method is deprecated. Use EvaluationStore.record_evaluation() instead,
+        which stores evaluations separately to avoid merge conflicts.
         
         Args:
             decision: "approve" or "reject"
             evaluator: Username of the evaluator
-            updated_case: Optional edited version of the case
-            notes: Optional evaluation notes
             
         Raises:
-            ValueError: If case has no final version or already evaluated
+            NotImplementedError: Always raised - use EvaluationStore instead
         """
-        if decision not in ["approve", "reject"]:
-            raise ValueError(f"Invalid decision: {decision}. Must be 'approve' or 'reject'")
-        
-        current_case = self.final_case
-        if not current_case:
-            raise ValueError("Cannot evaluate case without a final BenchmarkCandidate")
-        
-        # Check if already evaluated (avoid duplicates)
-        if self.get_latest_evaluation() is not None:
-            raise ValueError(
-                f"Case already has a human evaluation. "
-                f"Current status: {self.status}. "
-                f"Use a different method to update existing evaluations."
-            )
-        
-        # Use edited case if provided, otherwise use current
-        final_case = updated_case if updated_case else current_case
-        iteration_num = len(self.refinement_history)
-        
-        evaluation_metadata = {
-            "decision": decision,
-            "evaluator": evaluator,
-            "notes": notes,
-            "has_edits": updated_case is not None,
-            "evaluated_at": datetime.now().isoformat()
-        }
-        
-        new_iteration = IterationRecord(
-            iteration=iteration_num,
-            step_description="human_evaluation",
-            timestamp=datetime.now(),
-            data=final_case,
-            human_evaluation=evaluation_metadata
+        import warnings
+        warnings.warn(
+            "CaseRecord.add_human_evaluation() is deprecated. "
+            "Use EvaluationStore.record_evaluation() to avoid merge conflicts.",
+            DeprecationWarning,
+            stacklevel=2
         )
-        
-        self.refinement_history.append(new_iteration)
-        
-        # Update status based on decision
-        self.status = "approved" if decision == "approve" else "rejected"
+        raise NotImplementedError(
+            "Use EvaluationStore.record_evaluation() instead to store evaluations separately."
+        )
     
     def get_latest_evaluation(self) -> Optional[Dict[str, Any]]:
         """Get the most recent human evaluation, if any."""

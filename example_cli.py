@@ -7,9 +7,11 @@ your rich/prompt_toolkit-based evaluator.
 """
 
 import os
+import random
 from src.case_loader import CaseLoader
 from src.evaluation_store import EvaluationStore
 from src.response_models.case import BenchmarkCandidate, ChoiceWithValues
+from src.response_models.status import GenerationStatus
 
 
 def simple_cli_demo():
@@ -37,12 +39,15 @@ def simple_cli_demo():
     
     session = store.load_or_create_session(username)
     
-    # Step 3: Get unreviewed cases (only benchmark candidates with value tags)
-    all_cases = loader.get_all_cases()
+    # Step 3: Get unreviewed cases (only completed benchmark candidates with value tags)
+    all_cases = loader.get_cases_by_status(GenerationStatus.COMPLETED)  # Only load completed cases
     # Filter to only include cases with complete value tagging (BenchmarkCandidate)
     benchmark_cases = [c for c in all_cases if c.final_case is not None]
     all_case_ids = [c.case_id for c in benchmark_cases]
     unreviewed_ids = store.get_unreviewed_cases(all_case_ids)
+    
+    # Randomize case order to avoid evaluation bias
+    random.shuffle(unreviewed_ids)
     
     print(f"\n📊 Progress: {len(benchmark_cases) - len(unreviewed_ids)}/{len(benchmark_cases)} benchmark cases reviewed")
     if len(all_cases) > len(benchmark_cases):
@@ -120,8 +125,7 @@ def simple_cli_demo():
         
         # Review options (in prompt_toolkit, this would be an interactive menu)
         print("\nOptions:")
-        print("  [a] Approve as-is")
-        print("  [e] Edit then approve")
+        print("  [a] Approve")
         print("  [r] Reject")
         print("  [q] Quit (case will remain unreviewed)")
         
@@ -131,53 +135,73 @@ def simple_cli_demo():
             print("\nQuitting...")
             break
             
-        elif decision == 'a':
-            store.record_evaluation(
-                case_id=case_id,
-                decision="approve",
-                case_loader=loader,
-                updated_case=None,
-                notes=None
-            )
-            cases_reviewed_this_session += 1
-            print("✓ Approved")
-            input("\nPress Enter to continue to next case...")
-        
-        elif decision == 'e':
-            print("\n(In full UI, you'd get a text editor with prompt_toolkit)")
-            edited_vignette = input("Enter edited vignette (or press Enter to skip): ").strip()
+        elif decision in ['a', 'r']:
+            decision_text = "approve" if decision == 'a' else "reject"
             
-            # Create edited version of the case
-            edited_case = None
-            if edited_vignette:
-                edited_case = BenchmarkCandidate(
-                    vignette=edited_vignette,
-                    choice_1=final.choice_1,
-                    choice_2=final.choice_2
-                )
+            # Collect feedback (same for both approve and reject)
+            print("\n" + "─" * 70)
+            print(f"FEEDBACK - {decision_text.upper()}")
+            print("─" * 70)
+            
+            # Problem axes (optional)
+            print("\nProblem categories (select all that apply, or press Enter to skip):")
+            print("  [c] Clinical - Medical accuracy, diagnosis, treatment")
+            print("  [e] Ethical - Ethical principles, value conflicts")
+            print("  [l] Legal - Legal compliance, regulations")
+            print("  [s] Stylistic - Writing quality, tone, structure")
+            print("  [o] Other - Other issues")
+            
+            axes_input = input("\nEnter letters (e.g., 'ce' for clinical+ethical): ").strip().lower()
+            problem_axes = None
+            
+            if axes_input:
+                axis_map = {
+                    'c': 'clinical',
+                    'e': 'ethical',
+                    'l': 'legal',
+                    's': 'stylistic',
+                    'o': 'other'
+                }
+                
+                # Collect valid axes, ignoring spaces and invalid characters
+                problem_axes = []
+                for char in axes_input:
+                    if char in axis_map and axis_map[char] not in problem_axes:
+                        problem_axes.append(axis_map[char])
+                
+                # If any valid categories selected, show confirmation
+                if problem_axes:
+                    print(f"  Selected: {', '.join(problem_axes)}")
+                else:
+                    problem_axes = None
+            
+            # Detailed comments (required for reject, optional for approve)
+            if decision == 'r':
+                print("\nDetailed comments (required):")
+                comments = input("> ").strip()
+                
+                # Require comments for rejections
+                while not comments:
+                    print("⚠️  Comments are required for rejections")
+                    comments = input("> ").strip()
+            else:
+                print("\nDetailed comments (optional, press Enter to skip):")
+                comments = input("> ").strip() or None
             
             store.record_evaluation(
                 case_id=case_id,
-                decision="approve",
+                decision=decision_text,
                 case_loader=loader,
-                updated_case=edited_case,
-                notes="Manually edited vignette" if edited_case else None
+                problem_axes=problem_axes,
+                comments=comments
             )
             cases_reviewed_this_session += 1
-            print("✓ Approved with edits" if edited_case else "✓ Approved")
-            input("\nPress Enter to continue to next case...")
-        
-        elif decision == 'r':
-            notes = input("Rejection reason: ").strip()
-            store.record_evaluation(
-                case_id=case_id,
-                decision="reject",
-                case_loader=loader,
-                updated_case=None,
-                notes=notes
-            )
-            cases_reviewed_this_session += 1
-            print("✓ Rejected")
+            
+            # Format success message based on whether feedback was provided
+            past_tense = "Approved" if decision == 'a' else "Rejected"
+            has_feedback = bool(problem_axes or comments)
+            feedback_msg = " with feedback" if has_feedback else ""
+            print(f"✓ {past_tense}{feedback_msg}")
             input("\nPress Enter to continue to next case...")
         
         else:
@@ -216,7 +240,15 @@ def show_statistics(store, loader):
     print(f"  Total reviewed: {stats['total_reviewed']}")
     print(f"  ✓ Approved:     {stats['approved']}")
     print(f"  ✗ Rejected:     {stats['rejected']}")
-    print(f"  ✏ With edits:   {stats['with_edits']}")
+    
+    # Show feedback summary
+    if stats.get('with_feedback', 0) > 0:
+        print(f"  💬 With feedback: {stats['with_feedback']}")
+    
+    if stats.get('problem_axes_summary'):
+        print("\n  Problem categories identified:")
+        for axis, count in stats['problem_axes_summary'].items():
+            print(f"    • {axis.capitalize()}: {count}")
 
 
 if __name__ == "__main__":

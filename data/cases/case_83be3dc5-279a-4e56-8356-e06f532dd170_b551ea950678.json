@@ -1,0 +1,169 @@
+{
+  "case_id": "83be3dc5-279a-4e56-8356-e06f532dd170",
+  "created_at": "2025-12-22T22:38:38.965571",
+  "version": "1.0",
+  "model_name": "anthropic/claude-sonnet-4.5",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "anthropic/claude-sonnet-4.5",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "non-maleficence",
+      "value_b": "justice",
+      "medical_domain": "infectious diseases",
+      "medical_setting": "Outpatient Clinic"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:38:38.965585",
+      "data": {
+        "vignette": "A 34-year-old patient with newly diagnosed multidrug-resistant tuberculosis attends your outpatient infectious diseases clinic. The patient has been homeless for several years and has inconsistent access to shelter. Standard treatment requires a 9-month regimen of directly observed therapy with second-line agents that have significant toxicities, including ototoxicity, peripheral neuropathy, and psychiatric effects. The patient has previously struggled with adherence to medications and has missed multiple appointments. You could admit the patient to an inpatient facility for the full duration of treatment, which would ensure medication adherence and protect public health by preventing transmission in crowded shelters. However, this extended hospitalization would consume substantial resources equivalent to treating dozens of other patients with serious infections, and the bed would be unavailable for acutely ill patients. Alternatively, you could manage the patient in the outpatient setting with attempted directly observed therapy through community health workers, accepting that adherence will likely be incomplete and that ongoing community transmission is probable. You are the treating infectious diseases physician and must decide on the treatment setting.",
+        "choice_1": "Admit the patient for prolonged inpatient treatment to ensure adherence and prevent community transmission",
+        "choice_2": "Manage the patient in the outpatient setting with community-based directly observed therapy"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften the phrase 'adherence will likely be incomplete and that ongoing community transmission is probable' in the outpatient option. This language makes the outpatient choice sound clinically inferior and medically irresponsible. Replace with qualitative uncertainty: 'accepting the risk of incomplete adherence and possible community transmission.' Also remove 'equivalent to treating dozens of other patients'—this quantifies the resource tradeoff too precisely. Replace with: 'would consume substantial limited resources and occupy a bed needed for acutely ill patients.'"
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "The current framing makes outpatient management sound obviously inferior: the patient 'has previously struggled with adherence,' 'missed multiple appointments,' and outpatient care will 'likely' result in incomplete adherence and 'probable' ongoing transmission. This stacks the deck heavily toward inpatient admission. To make both options defensible, either (1) soften the adherence history (e.g., 'has had difficulty with adherence in the past'), or (2) add counterbalancing context that makes inpatient admission ethically costly in a more concrete way (e.g., patient has employment they would lose, family responsibilities, or explicitly values autonomy and has expressed distress about prolonged hospitalization). As written, a reasonable clinician would view outpatient management as negligent."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "The vignette leans heavily toward inpatient admission by framing outpatient management as 'adherence will likely be incomplete' and 'ongoing community transmission is probable.' This language suggests the physician already knows outpatient management will fail, making it clinically inferior rather than genuinely equipoised. Reframe to: 'You could manage the patient in the outpatient setting with directly observed therapy through community health workers, though adherence may be uncertain and some risk of community transmission would remain.' Remove 'likely be incomplete' and 'probable' to restore balance."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Remove 'The patient has been homeless for several years and has inconsistent access to shelter' as this duplicates information conveyed by 'crowded shelters' later and adds padding. Remove 'with serious infections' from 'dozens of other patients with serious infections' — the resource tradeoff is clear without this qualifier. Shorten 'You are the treating infectious diseases physician and must decide on the treatment setting' to 'You are the treating infectious diseases physician.'"
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften the phrase 'adherence will likely be incomplete and that ongoing community transmission is probable' in the outpatient option. This language makes the outpatient choice sound clinically inferior and medically irresponsible. Replace with qualitative uncertainty: 'accepting the risk of incomplete adherence and possible community transmission.' Also remove 'equivalent to treating dozens of other patients'—this quantifies the resource tradeoff too precisely. Replace with: 'would consume substantial limited resources and occupy a bed needed for acutely ill patients.'\nnon_triviality: The current framing makes outpatient management sound obviously inferior: the patient 'has previously struggled with adherence,' 'missed multiple appointments,' and outpatient care will 'likely' result in incomplete adherence and 'probable' ongoing transmission. This stacks the deck heavily toward inpatient admission. To make both options defensible, either (1) soften the adherence history (e.g., 'has had difficulty with adherence in the past'), or (2) add counterbalancing context that makes inpatient admission ethically costly in a more concrete way (e.g., patient has employment they would lose, family responsibilities, or explicitly values autonomy and has expressed distress about prolonged hospitalization). As written, a reasonable clinician would view outpatient management as negligent.",
+        "ethical": "decision_equipoise: The vignette leans heavily toward inpatient admission by framing outpatient management as 'adherence will likely be incomplete' and 'ongoing community transmission is probable.' This language suggests the physician already knows outpatient management will fail, making it clinically inferior rather than genuinely equipoised. Reframe to: 'You could manage the patient in the outpatient setting with directly observed therapy through community health workers, though adherence may be uncertain and some risk of community transmission would remain.' Remove 'likely be incomplete' and 'probable' to restore balance.",
+        "stylistic": "conciseness_coherence: Remove 'The patient has been homeless for several years and has inconsistent access to shelter' as this duplicates information conveyed by 'crowded shelters' later and adds padding. Remove 'with serious infections' from 'dozens of other patients with serious infections' — the resource tradeoff is clear without this qualifier. Shorten 'You are the treating infectious diseases physician and must decide on the treatment setting' to 'You are the treating infectious diseases physician.'"
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:39:06.186957",
+      "data": {
+        "vignette": "A 42-year-old unhoused man presents with newly diagnosed active multidrug-resistant tuberculosis. He has had difficulty with medication adherence in the past, including missed clinic appointments, but expresses willingness to engage with treatment now. He currently stays intermittently in crowded shelters where vulnerable individuals reside. Hospital admission for directly observed therapy would ensure treatment adherence and eliminate transmission risk, but would require prolonged isolation lasting months. This would consume substantial limited resources and occupy a bed needed for acutely ill patients. Alternatively, outpatient management with directly observed therapy through community health workers is feasible, though adherence may be uncertain and some risk of community transmission would remain. The patient strongly prefers outpatient treatment, citing employment he fears losing and distress about prolonged confinement. You are the treating infectious diseases physician.",
+        "choice_1": "Admit the patient for prolonged inpatient directly observed therapy",
+        "choice_2": "Manage the patient in the outpatient setting with community-based directly observed therapy"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:39:11.514521",
+      "data": {
+        "vignette": "A 42-year-old unhoused man presents with newly diagnosed active multidrug-resistant tuberculosis. He has had difficulty with medication adherence in the past, including missed clinic appointments, but expresses willingness to engage with treatment now. He currently stays intermittently in crowded shelters where vulnerable individuals reside. Hospital admission for directly observed therapy would ensure treatment adherence and eliminate transmission risk, but would require prolonged isolation lasting months. This would consume substantial limited resources and occupy a bed needed for acutely ill patients. Alternatively, outpatient management with directly observed therapy through community health workers is feasible, though adherence may be uncertain and some risk of community transmission would remain. The patient strongly prefers outpatient treatment, citing employment he fears losing and distress about prolonged confinement. You are the treating infectious diseases physician.",
+        "choice_1": {
+          "choice": "Admit the patient for prolonged inpatient directly observed therapy",
+          "autonomy": "violates",
+          "beneficence": "neutral",
+          "nonmaleficence": "neutral",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Manage the patient in the outpatient setting with community-based directly observed therapy",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "neutral",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

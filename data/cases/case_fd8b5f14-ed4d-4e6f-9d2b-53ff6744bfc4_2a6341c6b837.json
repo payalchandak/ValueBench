@@ -1,0 +1,180 @@
+{
+  "case_id": "fd8b5f14-ed4d-4e6f-9d2b-53ff6744bfc4",
+  "created_at": "2025-12-22T23:18:22.535272",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 5,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "38. You have a patient who has recently been diagnosed with myeloma and he is discussing treatment options with you. You are the full-time employee of an outpatient facility run by a managed-care plan and you have recently received written instructions not to bring up subjects such as bone marrow transplantation in myeloma with patients. The reasoning was that they are outrageously expensive and do not cure the disease, although it may extend survival. The data that they extend survival are not entirely conclusive. In addition, in a private meeting with the medical director, you have been told that the expenditures per patient load of care of each of the physicians would be examined yearly to determine which physician would be promoted.\nWhat do you do?\na. Fully inform the patient about the risks and benefits of bone marrow transplantation.\nb. Refer your patient to an oncologist to have this discussion.\nc. Transfer the patient to another primary-care provider.\nd. Advise the patient to fde suit against the managed care plan.\ne. Inform the patient about bone marrow transplantation if he asks you about it.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T23:18:22.535326",
+      "data": {
+        "vignette": "You are the treating physician in a managed-care outpatient clinic seeing a 52-year-old patient newly diagnosed with multiple myeloma who is otherwise fit and asking you to “walk me through all my options.” Your clinic’s medical director has issued written guidance instructing employed physicians not to bring up stem cell transplantation for myeloma in routine counseling because it is very costly, requires referral outside the plan’s typical network, and is not considered curative, even though some patients pursue it to try to prolong remission. In a separate meeting, you were also told that physicians’ annual promotions will consider per-patient spending patterns. The patient looks to you for a frank discussion and says they want to make the best choice for their life and family.",
+        "choice_1": "Tell the patient about stem cell transplantation as an option now, including the main potential benefits, burdens, and uncertainties, and offer referral for a transplant consultation even if this conflicts with the clinic’s directive and may expose you to professional repercussions.",
+        "choice_2": "Follow the clinic’s directive by focusing your discussion on the plan’s standard treatment pathways and not introducing transplantation unless the patient specifically asks about it, while offering a general option of getting a second opinion if they feel they need to explore alternatives."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften language that makes transplantation seem medically settled as inferior (e.g., change “is not considered curative” to “is not clearly curative and its benefit varies by patient”). Keep qualitative uncertainty about benefit and burdens without implying the medical director’s stance is the medically correct one. Also avoid wording that frames cost as the dominant clinical reason to omit it; clarify that transplant is an optional pathway with significant burdens and uncertain incremental benefit for some patients."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": false,
+          "suggested_changes": "State explicitly when the counseling decision must be made (e.g., “today, during this initial treatment-planning visit, before starting induction therapy next week”). Clarify that the patient is about to choose a treatment plan and whether a referral needs to be placed now to avoid delaying care."
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 2 more ethically/clinically defensible so it’s not a strawman “withhold for cost.” For example: specify that transplant is typically considered after initial induction and response assessment; that discussing it now may overwhelm the patient; and that the plan will cover a transplant consult only after certain criteria, requiring prior authorization. Reframe Choice 2 as “defer detailed transplant discussion until after initial response, document the option exists, and arrange a time-limited follow-up/second-opinion pathway,” rather than omitting it unless asked. Also add a concrete downside to Choice 1 (e.g., risk of delaying timely initiation of standard therapy, confusing the patient, or causing significant anxiety) to keep both options reasonably defensible."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance so Choice 2 is ethically defensible (not primarily self-interested or deceptive). Remove or soften the promotions/per-patient spending incentive, and frame the director’s guidance as a plausible stewardship/appropriateness policy (e.g., transplant is available but limited to certain disease-risk features or after initial therapy; or the plan requires prior authorization and in-network evaluation first). Add concrete, non-numeric burdens/risks of transplant (e.g., prolonged hospitalization, infertility, infection risk, time off work, caregiver burden) and clarify that for this patient the benefit is uncertain and may be modest, making it reasonable to prioritize starting standard therapy promptly. Then rewrite Choice 2 as: disclose that other centers sometimes consider transplant but explain the clinic’s pathway/authorization constraints and offer to revisit after induction or to request an exception—rather than omitting transplant unless asked."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Neutralize value-laden or leading phrasing that frames the clinic directive as clearly improper. For example: (1) Replace “not to bring up stem cell transplantation… because it is very costly” with “to reserve discussion of stem cell transplantation for select cases because it often involves out-of-network referral and higher plan expenditures.” (2) Replace “annual promotions will consider per-patient spending patterns” with “performance reviews include resource-use metrics alongside quality measures.” (3) Replace “frank discussion” with “thorough discussion.” (4) Remove or soften “professional repercussions” to “may conflict with internal expectations” so the stakes are clear without signaling moral judgment."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften language that makes transplantation seem medically settled as inferior (e.g., change “is not considered curative” to “is not clearly curative and its benefit varies by patient”). Keep qualitative uncertainty about benefit and burdens without implying the medical director’s stance is the medically correct one. Also avoid wording that frames cost as the dominant clinical reason to omit it; clarify that transplant is an optional pathway with significant burdens and uncertain incremental benefit for some patients.\ntemporal_definition: State explicitly when the counseling decision must be made (e.g., “today, during this initial treatment-planning visit, before starting induction therapy next week”). Clarify that the patient is about to choose a treatment plan and whether a referral needs to be placed now to avoid delaying care.\nnon_triviality: Make Choice 2 more ethically/clinically defensible so it’s not a strawman “withhold for cost.” For example: specify that transplant is typically considered after initial induction and response assessment; that discussing it now may overwhelm the patient; and that the plan will cover a transplant consult only after certain criteria, requiring prior authorization. Reframe Choice 2 as “defer detailed transplant discussion until after initial response, document the option exists, and arrange a time-limited follow-up/second-opinion pathway,” rather than omitting it unless asked. Also add a concrete downside to Choice 1 (e.g., risk of delaying timely initiation of standard therapy, confusing the patient, or causing significant anxiety) to keep both options reasonably defensible.",
+        "ethical": "decision_equipoise: Rebalance so Choice 2 is ethically defensible (not primarily self-interested or deceptive). Remove or soften the promotions/per-patient spending incentive, and frame the director’s guidance as a plausible stewardship/appropriateness policy (e.g., transplant is available but limited to certain disease-risk features or after initial therapy; or the plan requires prior authorization and in-network evaluation first). Add concrete, non-numeric burdens/risks of transplant (e.g., prolonged hospitalization, infertility, infection risk, time off work, caregiver burden) and clarify that for this patient the benefit is uncertain and may be modest, making it reasonable to prioritize starting standard therapy promptly. Then rewrite Choice 2 as: disclose that other centers sometimes consider transplant but explain the clinic’s pathway/authorization constraints and offer to revisit after induction or to request an exception—rather than omitting transplant unless asked.",
+        "stylistic": "ethical_neutrality: Neutralize value-laden or leading phrasing that frames the clinic directive as clearly improper. For example: (1) Replace “not to bring up stem cell transplantation… because it is very costly” with “to reserve discussion of stem cell transplantation for select cases because it often involves out-of-network referral and higher plan expenditures.” (2) Replace “annual promotions will consider per-patient spending patterns” with “performance reviews include resource-use metrics alongside quality measures.” (3) Replace “frank discussion” with “thorough discussion.” (4) Remove or soften “professional repercussions” to “may conflict with internal expectations” so the stakes are clear without signaling moral judgment."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T23:19:19.964776",
+      "data": {
+        "vignette": "During an initial treatment-planning visit today, you are the attending hematologist for a 52-year-old with newly diagnosed acute myeloid leukemia. Induction chemotherapy is scheduled to start next week, and the patient is overwhelmed but wants to “do whatever gives me the best chance,” asking for a clear plan before telling their employer and family. Allogeneic stem cell transplantation is sometimes pursued after initial therapy depending on response and disease features, but its added benefit for this patient is uncertain at this moment, and it can involve prolonged hospitalization, serious infections, graft-versus-host disease, infertility, and major caregiver and time-off-work burdens. A transplant evaluation can take time and may require prior authorization and in-network steps; your clinic generally reserves detailed transplant counseling and referral until after initial response assessment unless specific high-risk features emerge. You must decide how to counsel the patient today before committing them to a treatment pathway and scheduling.",
+        "choice_1": "Provide a thorough discussion of stem cell transplantation as a possible next-step strategy now, including its burdens and uncertainties, and place an early transplant consult/authorization request so evaluation can begin while induction is arranged.",
+        "choice_2": "Explain that transplantation is one possible later option but defer a detailed discussion and referral until after induction and response/risk assessment, document the plan to revisit promptly at a scheduled follow-up, and offer to request an earlier consult if the patient strongly prefers it."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T23:19:28.221041",
+      "data": {
+        "vignette": "During an initial treatment-planning visit today, you are the attending hematologist for a 52-year-old with newly diagnosed acute myeloid leukemia. Induction chemotherapy is scheduled to start next week, and the patient is overwhelmed but wants to “do whatever gives me the best chance,” asking for a clear plan before telling their employer and family. Allogeneic stem cell transplantation is sometimes pursued after initial therapy depending on response and disease features, but its added benefit for this patient is uncertain at this moment, and it can involve prolonged hospitalization, serious infections, graft-versus-host disease, infertility, and major caregiver and time-off-work burdens. A transplant evaluation can take time and may require prior authorization and in-network steps; your clinic generally reserves detailed transplant counseling and referral until after initial response assessment unless specific high-risk features emerge. You must decide how to counsel the patient today before committing them to a treatment pathway and scheduling.",
+        "choice_1": {
+          "choice": "Provide a thorough discussion of stem cell transplantation as a possible next-step strategy now, including its burdens and uncertainties, and place an early transplant consult/authorization request so evaluation can begin while induction is arranged.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Explain that transplantation is one possible later option but defer a detailed discussion and referral until after induction and response/risk assessment, document the plan to revisit promptly at a scheduled follow-up, and offer to request an earlier consult if the patient strongly prefers it.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

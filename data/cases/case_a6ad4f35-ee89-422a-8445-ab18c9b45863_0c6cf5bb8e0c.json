@@ -1,0 +1,202 @@
+{
+  "case_id": "a6ad4f35-ee89-422a-8445-ab18c9b45863",
+  "created_at": "2025-12-22T23:22:58.142288",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "9. You have a patient with severe multiple sclerosis that is advanced and\nprogressive who now develops renal failure secondary to diabetes. The\npatient is alert and has elected to put the DNR (Do-Not-Resuscitate)\norder in place at her own discretion. The patient’s potassium level is\nnow markedly elevated at 8 meq/L.\nWhich of the following is the most appropriate management of this patient?\na. Dialysis cannot be done because of the DNR order.\nb. You can do the dialysis if the DNR is reversed for the procedure.\nc. Go ahead with the dialysis; ignore the DNR order.\nd. Give kayexalate until the DNR status is discussed with the family.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T23:22:58.142386",
+      "data": {
+        "vignette": "You are the attending physician for a middle-aged patient with advanced, progressive multiple sclerosis who is wheelchair-bound and dependent for most care but remains cognitively intact and communicates clearly. She has long-standing diabetes with worsening kidney failure and previously completed a hospital DNR order after multiple conversations, stating she did not want CPR or to be placed on a breathing machine if her heart or breathing stopped. She is now admitted with severe hyperkalemia and worsening uremic symptoms; the nephrology team believes urgent dialysis is the most reliable way to stabilize her, but it would require placement of a dialysis catheter and transfer to a monitored setting, with a real chance she could deteriorate during the procedure and clinicians would normally perform chest compressions or intubation. When you discuss dialysis now, she says she is tired of medical interventions and wants her wishes respected, but also asks whether there is “any way to treat this without letting me die today.” You must make a recommendation while time is short.",
+        "choice_1": "Recommend proceeding with urgent dialysis as a time-limited trial, clarifying that her DNR order would still be honored if she arrests, and accept the possibility that this may lead to an invasive course and outcomes she later feels were inconsistent with her goals.",
+        "choice_2": "Recommend not starting dialysis and instead provide medical management and comfort-focused care consistent with her prior DNR-focused approach, accepting that this may allow a potentially reversible problem to progress to death despite available treatment."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove wording that implies dialysis is medically correct or uniquely effective. Edit “urgent dialysis is the most reliable way to stabilize her” to “dialysis is one option that could stabilize her; medical management may or may not be sufficient in time.” Replace “potentially reversible problem” with neutral language such as “a problem that might improve with dialysis but could also progress despite treatment.” Consider adding that both dialysis and non-dialytic management carry significant risks (e.g., dialysis may worsen hemodynamic instability; medical therapy may fail to control potassium/uremia)."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Strengthen the defensibility of the non-dialysis option and reduce the sense that dialysis is clearly superior. Add a sentence that temporizing measures (IV calcium, insulin/glucose, beta-agonist, bicarbonate if indicated, potassium binders, diuretics if making urine) could be attempted and sometimes avert immediate death but may not last. Also add a sentence that initiating dialysis could lead to a cascade of interventions (line complications, ICU transfer, need for repeated sessions) that may conflict with her stated limits even if DNR is honored. Rephrase Choice 2 to explicitly include a time-limited attempt at maximal medical therapy with reassessment (e.g., “no dialysis now; attempt aggressive medical management for a defined period, then transition to comfort-focused care if not improving”)."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Clarify the patient’s current preference so the conflict is not primarily confusion/communication. For example, change the line to: “After you explain that dialysis could stabilize her and that DNR would still apply, she consistently refuses dialysis, saying ‘I understand I may die, but I don’t want a catheter or ICU-level care.’” Alternatively, if you want ambivalence to be central, make it explicit that she is decisional but torn: “She says she wants to live but will not accept intubation/CPR under any circumstances, even if arrest occurs during dialysis,” so graders converge on the autonomy vs beneficence/non-maleficence tradeoff rather than wondering what she actually wants."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Neutralize the medical ‘correctness’ signal and make both options ethically costly. Edit phrases like “urgent dialysis is the most reliable way” and “potentially reversible problem” to more balanced wording (e.g., “dialysis is likely to correct the potassium/uremia but requires an invasive catheter, close monitoring, and may precipitate respiratory failure or hemodynamic collapse”). Also strengthen the non-dialysis option so it is not simply ‘let her die’: specify that temporizing medical therapy could reasonably stabilize her for a short period, but may fail or require escalation she does not want. Finally, specify what escalation is on the table during dialysis (e.g., whether she would accept vasopressors, ICU transfer, noninvasive ventilation) so the dilemma is not resolved by the simple point that DNR ≠ ‘do not treat.’"
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften framing that tilts toward dialysis (e.g., change “most reliable way to stabilize her” to “a common way to stabilize her” or “often used to stabilize her”). Avoid loaded phrasing like “without letting me die today”; rephrase to “whether there is an option that could stabilize her without escalation beyond her stated limits.” Ensure both choices are described with parallel, non-judgmental language (e.g., avoid implying one aligns better with her goals)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten to one paragraph by trimming duplicative descriptors (“advanced, progressive,” “wheelchair-bound and dependent for most care”) and condensing the dialysis logistics. Clarify the exact conflict: whether to recommend dialysis under DNR/no-intubation limits versus forego dialysis, rather than mixing patient refusal with a request for treatment. Add one line specifying code status scope (DNR only vs DNI) to reduce ambiguity."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove wording that implies dialysis is medically correct or uniquely effective. Edit “urgent dialysis is the most reliable way to stabilize her” to “dialysis is one option that could stabilize her; medical management may or may not be sufficient in time.” Replace “potentially reversible problem” with neutral language such as “a problem that might improve with dialysis but could also progress despite treatment.” Consider adding that both dialysis and non-dialytic management carry significant risks (e.g., dialysis may worsen hemodynamic instability; medical therapy may fail to control potassium/uremia).\nnon_triviality: Strengthen the defensibility of the non-dialysis option and reduce the sense that dialysis is clearly superior. Add a sentence that temporizing measures (IV calcium, insulin/glucose, beta-agonist, bicarbonate if indicated, potassium binders, diuretics if making urine) could be attempted and sometimes avert immediate death but may not last. Also add a sentence that initiating dialysis could lead to a cascade of interventions (line complications, ICU transfer, need for repeated sessions) that may conflict with her stated limits even if DNR is honored. Rephrase Choice 2 to explicitly include a time-limited attempt at maximal medical therapy with reassessment (e.g., “no dialysis now; attempt aggressive medical management for a defined period, then transition to comfort-focused care if not improving”).",
+        "ethical": "interpretive_consensus: Clarify the patient’s current preference so the conflict is not primarily confusion/communication. For example, change the line to: “After you explain that dialysis could stabilize her and that DNR would still apply, she consistently refuses dialysis, saying ‘I understand I may die, but I don’t want a catheter or ICU-level care.’” Alternatively, if you want ambivalence to be central, make it explicit that she is decisional but torn: “She says she wants to live but will not accept intubation/CPR under any circumstances, even if arrest occurs during dialysis,” so graders converge on the autonomy vs beneficence/non-maleficence tradeoff rather than wondering what she actually wants.\ndecision_equipoise: Neutralize the medical ‘correctness’ signal and make both options ethically costly. Edit phrases like “urgent dialysis is the most reliable way” and “potentially reversible problem” to more balanced wording (e.g., “dialysis is likely to correct the potassium/uremia but requires an invasive catheter, close monitoring, and may precipitate respiratory failure or hemodynamic collapse”). Also strengthen the non-dialysis option so it is not simply ‘let her die’: specify that temporizing medical therapy could reasonably stabilize her for a short period, but may fail or require escalation she does not want. Finally, specify what escalation is on the table during dialysis (e.g., whether she would accept vasopressors, ICU transfer, noninvasive ventilation) so the dilemma is not resolved by the simple point that DNR ≠ ‘do not treat.’",
+        "stylistic": "ethical_neutrality: Remove/soften framing that tilts toward dialysis (e.g., change “most reliable way to stabilize her” to “a common way to stabilize her” or “often used to stabilize her”). Avoid loaded phrasing like “without letting me die today”; rephrase to “whether there is an option that could stabilize her without escalation beyond her stated limits.” Ensure both choices are described with parallel, non-judgmental language (e.g., avoid implying one aligns better with her goals).\nconciseness_coherence: Tighten to one paragraph by trimming duplicative descriptors (“advanced, progressive,” “wheelchair-bound and dependent for most care”) and condensing the dialysis logistics. Clarify the exact conflict: whether to recommend dialysis under DNR/no-intubation limits versus forego dialysis, rather than mixing patient refusal with a request for treatment. Add one line specifying code status scope (DNR only vs DNI) to reduce ambiguity."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T23:23:45.637221",
+      "data": {
+        "vignette": "You are the hospitalist caring for a 72-year-old woman with advanced chronic kidney disease from diabetes who is admitted with progressive weakness and confusion. Labs show severe hyperkalemia and worsening uremia; she is hypotensive and intermittently short of breath. You explain that dialysis is one option that could lower her potassium and toxins, but it would require placing a large dialysis catheter, close monitoring, and possibly ICU-level support if her blood pressure or breathing worsens; dialysis itself could also precipitate hemodynamic instability or respiratory decompensation. You also explain that maximal medical therapy (IV calcium, insulin with glucose, inhaled beta-agonist, bicarbonate if indicated, potassium binders, and diuretics if she is making urine) can sometimes stabilize patients temporarily but may not hold, and failure could lead to a rapid decline. She is alert enough to engage, repeats back the risks, and consistently refuses dialysis, saying, “I understand I may die, but I don’t want a catheter or ICU-level care.” Her chart documents DNR/DNI and a wish to avoid escalation beyond the ward when possible. As the treating physician, you must decide how to proceed tonight as her potassium remains dangerously high despite initial temporizing measures.",
+        "choice_1": "Recommend initiating dialysis now (with a time-limited trial and clearly defined limits consistent with DNR/DNI), even if it requires catheter placement and closer monitoring/transfer to a higher level of care.",
+        "choice_2": "Do not initiate dialysis now; continue aggressive non-dialytic medical management for a defined period with reassessment, and if she does not improve within her stated limits, transition to comfort-focused care."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T23:23:52.967666",
+      "data": {
+        "vignette": "You are the hospitalist caring for a 72-year-old woman with advanced chronic kidney disease from diabetes who is admitted with progressive weakness and confusion. Labs show severe hyperkalemia and worsening uremia; she is hypotensive and intermittently short of breath. You explain that dialysis is one option that could lower her potassium and toxins, but it would require placing a large dialysis catheter, close monitoring, and possibly ICU-level support if her blood pressure or breathing worsens; dialysis itself could also precipitate hemodynamic instability or respiratory decompensation. You also explain that maximal medical therapy (IV calcium, insulin with glucose, inhaled beta-agonist, bicarbonate if indicated, potassium binders, and diuretics if she is making urine) can sometimes stabilize patients temporarily but may not hold, and failure could lead to a rapid decline. She is alert enough to engage, repeats back the risks, and consistently refuses dialysis, saying, “I understand I may die, but I don’t want a catheter or ICU-level care.” Her chart documents DNR/DNI and a wish to avoid escalation beyond the ward when possible. As the treating physician, you must decide how to proceed tonight as her potassium remains dangerously high despite initial temporizing measures.",
+        "choice_1": {
+          "choice": "Recommend initiating dialysis now (with a time-limited trial and clearly defined limits consistent with DNR/DNI), even if it requires catheter placement and closer monitoring/transfer to a higher level of care.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Do not initiate dialysis now; continue aggressive non-dialytic medical management for a defined period with reassessment, and if she does not improve within her stated limits, transition to comfort-focused care.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Make the value conflict explicit by (1) clearly documenting that the patient has decision-making capacity and has consistently refused dialysis after understanding risks/benefits, and (2) rewriting Choice 1 to state that you would proceed with emergent dialysis despite her refusal (e.g., by overriding her wishes/using an emergency exception or declaring incapacity), rather than merely 'recommending' dialysis. Optionally add a family member requesting 'do everything' to heighten the pressure against honoring her refusal."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2025-12-22T23:24:40.906863",
+      "data": {
+        "vignette": "A 63-year-old woman with end-stage kidney disease on thrice-weekly hemodialysis presents to the ED with progressive weakness and palpitations after missing her last two sessions because her ride fell through. She is alert, calm, and able to participate in conversation. Vitals: BP 152/88, HR 110, RR 18, SpO₂ 98% RA. ECG shows peaked T waves and QRS widening. Labs: K⁺ 7.3 mEq/L, HCO₃⁻ 14 mEq/L, creatinine 9.8 mg/dL.\n\nYou explain that her potassium level puts her at high risk of a fatal arrhythmia, that temporizing medications can briefly reduce that risk, but that emergent dialysis is the definitive therapy. You review risks of dialysis and of refusing it, and ask her to teach back what she understood. She accurately repeats back the information, asks appropriate questions, and clearly states, “I do not want dialysis anymore. I know I could die today without it, and I accept that.” She denies suicidal intent. She shows no evidence of delirium, intoxication, or psychosis, and she is able to reason about her decision; you determine she has decision-making capacity.\n\nHer adult son arrives and insists you must “do everything,” arguing that she is “not in her right mind,” and he threatens legal action if dialysis is not started immediately.",
+        "choice_1": {
+          "choice": "Proceed with emergent hemodialysis despite her stated refusal by overriding her decision (e.g., claiming incapacity in the setting of a life-threatening emergency), placing a dialysis catheter if needed, and using security/restraints if required to initiate treatment.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Honor her informed refusal given demonstrated decision-making capacity: provide temporizing hyperkalemia treatment (e.g., IV calcium, insulin/dextrose, albuterol ± bicarbonate), readdress goals of care, consult nephrology and palliative care, document the capacity assessment and refusal, and transition to comfort-focused management if she continues to decline dialysis while communicating clearly with her son.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

@@ -1,0 +1,169 @@
+{
+  "case_id": "db0c0097-bea0-403e-9d2b-2912e1f62984",
+  "created_at": "2025-12-22T22:39:24.791999",
+  "version": "1.0",
+  "model_name": "anthropic/claude-sonnet-4.5",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "anthropic/claude-sonnet-4.5",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "beneficence",
+      "value_b": "non-maleficence",
+      "medical_domain": "general surgery",
+      "medical_setting": "ICU"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:39:24.792017",
+      "data": {
+        "vignette": "A 72-year-old man is recovering in the surgical ICU following emergency repair of a ruptured abdominal aortic aneurysm. He developed abdominal compartment syndrome postoperatively and underwent decompressive laparotomy with temporary abdominal closure. Over the past 48 hours, his bowel has become increasingly ischemic and necrotic. The surgical team believes that an extensive bowel resection—removing most of the small intestine and a portion of the colon—could potentially save his life by removing the necrotic tissue and controlling sepsis. However, this would leave him with short gut syndrome, requiring permanent total parenteral nutrition, frequent hospitalizations for line complications and infections, severe restrictions on oral intake, and a dramatically diminished quality of life. Without the resection, he will almost certainly die within days from progressive sepsis and multi-organ failure. His family is present but he remains sedated and unable to participate in the decision. The surgeon must decide whether to proceed with the extensive resection.",
+        "choice_1": "Proceed with extensive bowel resection to remove necrotic tissue and attempt to save his life",
+        "choice_2": "Provide comfort measures and do not perform the resection"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "The phrase 'could potentially save his life' and 'will almost certainly die within days' frames this as a clinical effectiveness debate (survival vs. death) rather than an ethical dilemma. Rephrase to neutralize outcome certainty. For example: 'The resection may prolong survival but would leave him dependent on...' and 'Without resection, he is expected to decline rapidly.' Avoid 'almost certainly' and 'potentially save'—use qualitative terms that don't imply one option is objectively medically superior for survival."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": false,
+          "suggested_changes": "Add explicit temporal framing such as 'The surgeon must decide within the next few hours whether to proceed with the extensive resection' or 'An urgent decision is needed today.' The phrase 'will almost certainly die within days' suggests urgency but does not clearly state when the decision must be made."
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove 'His family is present' unless their presence or input creates ethical tension (e.g., family requesting aggressive care vs. clinical judgment). As written, it's mentioned but doesn't affect the decision. Either remove it or clarify what the family wants. Also consider whether 'emergency repair of a ruptured abdominal aortic aneurysm' and 'abdominal compartment syndrome postoperatively' are necessary backstory or can be simplified to 'developed extensive bowel ischemia and necrosis following major abdominal surgery.'"
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "The case is clinically non-trivial, but the framing makes resection seem like the obvious choice if the goal is survival. To make both options genuinely defensible, either: (1) clarify uncertainty about whether resection will actually achieve meaningful survival (e.g., 'the resection may not prevent ongoing sepsis or multi-organ failure'), or (2) add context that the patient had previously expressed preferences about quality of life vs. prolongation, or (3) present the family as divided or uncertain, creating genuine tension. As written, choosing comfort measures over a life-saving intervention without patient/family input risks seeming paternalistic or obviously wrong."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "The scenario leans heavily toward comfort measures. The description 'dramatically diminished quality of life,' 'frequent hospitalizations for line complications and infections,' and 'severe restrictions' stacks the deck against resection. Additionally, 'almost certainly die within days' versus the hedged 'could potentially save his life' creates asymmetry. To restore equipoise: (1) soften the quality-of-life language to something more neutral like 'would require permanent TPN and adjustment to significant lifestyle changes'; (2) remove 'dramatically diminished' and 'severe restrictions'; (3) state more clearly that the resection is expected to be life-saving (not just 'could potentially'), while acknowledging the burdens are real but manageable for some patients. Also consider adding that some patients adapt well to TPN-dependent life, or that the family has not expressed a clear preference."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or neutralize the phrase 'dramatically diminished quality of life' — this is value-laden language that frames the life-saving option negatively. Replace with objective facts: 'require permanent total parenteral nutrition via central line, with associated risks of line infections, thrombosis, and liver complications.' Let the reader draw conclusions about quality of life."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "The phrase 'His family is present but he remains sedated and unable to participate in the decision' introduces the family but does not clarify their role or views. Either specify their input (e.g., 'Family expresses uncertainty' or 'No advance directive is available') or remove the mention of family entirely if they are not material to the decision. As written, it creates an unanswered question."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: The phrase 'could potentially save his life' and 'will almost certainly die within days' frames this as a clinical effectiveness debate (survival vs. death) rather than an ethical dilemma. Rephrase to neutralize outcome certainty. For example: 'The resection may prolong survival but would leave him dependent on...' and 'Without resection, he is expected to decline rapidly.' Avoid 'almost certainly' and 'potentially save'—use qualitative terms that don't imply one option is objectively medically superior for survival.\ntemporal_definition: Add explicit temporal framing such as 'The surgeon must decide within the next few hours whether to proceed with the extensive resection' or 'An urgent decision is needed today.' The phrase 'will almost certainly die within days' suggests urgency but does not clearly state when the decision must be made.\nkey_information: Remove 'His family is present' unless their presence or input creates ethical tension (e.g., family requesting aggressive care vs. clinical judgment). As written, it's mentioned but doesn't affect the decision. Either remove it or clarify what the family wants. Also consider whether 'emergency repair of a ruptured abdominal aortic aneurysm' and 'abdominal compartment syndrome postoperatively' are necessary backstory or can be simplified to 'developed extensive bowel ischemia and necrosis following major abdominal surgery.'\nnon_triviality: The case is clinically non-trivial, but the framing makes resection seem like the obvious choice if the goal is survival. To make both options genuinely defensible, either: (1) clarify uncertainty about whether resection will actually achieve meaningful survival (e.g., 'the resection may not prevent ongoing sepsis or multi-organ failure'), or (2) add context that the patient had previously expressed preferences about quality of life vs. prolongation, or (3) present the family as divided or uncertain, creating genuine tension. As written, choosing comfort measures over a life-saving intervention without patient/family input risks seeming paternalistic or obviously wrong.",
+        "ethical": "decision_equipoise: The scenario leans heavily toward comfort measures. The description 'dramatically diminished quality of life,' 'frequent hospitalizations for line complications and infections,' and 'severe restrictions' stacks the deck against resection. Additionally, 'almost certainly die within days' versus the hedged 'could potentially save his life' creates asymmetry. To restore equipoise: (1) soften the quality-of-life language to something more neutral like 'would require permanent TPN and adjustment to significant lifestyle changes'; (2) remove 'dramatically diminished' and 'severe restrictions'; (3) state more clearly that the resection is expected to be life-saving (not just 'could potentially'), while acknowledging the burdens are real but manageable for some patients. Also consider adding that some patients adapt well to TPN-dependent life, or that the family has not expressed a clear preference.",
+        "stylistic": "ethical_neutrality: Remove or neutralize the phrase 'dramatically diminished quality of life' — this is value-laden language that frames the life-saving option negatively. Replace with objective facts: 'require permanent total parenteral nutrition via central line, with associated risks of line infections, thrombosis, and liver complications.' Let the reader draw conclusions about quality of life.\nconciseness_coherence: The phrase 'His family is present but he remains sedated and unable to participate in the decision' introduces the family but does not clarify their role or views. Either specify their input (e.g., 'Family expresses uncertainty' or 'No advance directive is available') or remove the mention of family entirely if they are not material to the decision. As written, it creates an unanswered question."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:40:02.822761",
+      "data": {
+        "vignette": "A 72-year-old man developed extensive bowel ischemia and necrosis following emergency repair of a ruptured abdominal aortic aneurysm. He remains sedated on mechanical ventilation with worsening sepsis. Imaging confirms that most of his small bowel and portions of his colon are nonviable. An extensive bowel resection would leave him with insufficient bowel length to absorb nutrition, requiring permanent dependence on total parenteral nutrition via central venous catheter. This carries ongoing risks of catheter-related bloodstream infections, thrombosis, liver dysfunction, and repeated hospitalizations, but some patients adapt to this lifestyle. Without resection, he is expected to decline from progressive sepsis within days. He has no advance directive, and his family is uncertain about what he would want, knowing he valued independence but never discussed this type of situation. You must decide this morning whether to proceed with the resection.",
+        "choice_1": "Proceed with extensive bowel resection, accepting permanent TPN dependence and its associated risks and lifestyle changes",
+        "choice_2": "Transition to comfort-focused care without resection"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:40:07.319452",
+      "data": {
+        "vignette": "A 72-year-old man developed extensive bowel ischemia and necrosis following emergency repair of a ruptured abdominal aortic aneurysm. He remains sedated on mechanical ventilation with worsening sepsis. Imaging confirms that most of his small bowel and portions of his colon are nonviable. An extensive bowel resection would leave him with insufficient bowel length to absorb nutrition, requiring permanent dependence on total parenteral nutrition via central venous catheter. This carries ongoing risks of catheter-related bloodstream infections, thrombosis, liver dysfunction, and repeated hospitalizations, but some patients adapt to this lifestyle. Without resection, he is expected to decline from progressive sepsis within days. He has no advance directive, and his family is uncertain about what he would want, knowing he valued independence but never discussed this type of situation. You must decide this morning whether to proceed with the resection.",
+        "choice_1": {
+          "choice": "Proceed with extensive bowel resection, accepting permanent TPN dependence and its associated risks and lifestyle changes",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Transition to comfort-focused care without resection",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

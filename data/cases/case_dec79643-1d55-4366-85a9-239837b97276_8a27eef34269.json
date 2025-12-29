@@ -1,0 +1,174 @@
+{
+  "case_id": "dec79643-1d55-4366-85a9-239837b97276",
+  "created_at": "2025-12-22T22:29:23.459087",
+  "version": "1.0",
+  "model_name": "anthropic/claude-sonnet-4.5",
+  "generator_config": {
+    "seed_mode": "literature",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "anthropic/claude-sonnet-4.5",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 15,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "Case 6-6\nIgnoring a Daughter's Do Not Resuscitate (DNR) Decision\nAn 88-year-old Hispanic man, Roberto Gonzalez, was admitted to Jefferson\nWhite Hospital Emergency Department with a diagnosis of cerebral hemor-\nrhage and coma. Before Mr. Gonzalez's daughter could get to the hospital,\nthe consultant pulmonologist, Melanie Caldarone, administered cardio-\npulmonary resuscitation (CPR) and admitted him to the intensive care unit\n(ICU). Upon Ms. Gonzalez’s arrival at the hospital, she explained that she\ndid not want CPR or other life-sustaining measures based on past commu-\nnication with her father. She showed them a letter from Mr. Gonzalez stat-\ning his concern about a friend who ended up “helpless on machines.” There\nwas no formal advance directive, however, just this one example of\nMr. Gonzalez's worry about his friend. The family physician and consultant\nneurologist had authorized extubation and removal of the respirator in the\nmedical record but did not insist on that course because of the pulmonolo-\ngist's insistence that Mr. Gonzalez was “not brain dead.” He was main-\ntained on support for three days and then expired.\nThe insurance department of the health maintenance organization\n(HMO) funding Mr. Gonzalez‘s hospitalization refused to pay for the ICU\nexpenses because of the family's decision for DNR, charging that the hos-\npital and staff had overused the facilities and nursing staff and for which\nthe HMO accepted no financial responsibility.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:29:23.459139",
+      "data": {
+        "vignette": "An 82-year-old man with a history of hypertension is brought to the emergency department unconscious after a large intracerebral hemorrhage. He is intubated and placed on mechanical ventilation. His daughter arrives shortly after admission and reports that her father recently told her he would never want to be \"kept alive on machines,\" referencing a friend's prolonged ICU stay. She shows the team a handwritten note from her father expressing this concern, though he never completed a formal advance directive. The consulting neurologist confirms the patient is comatose with a poor prognosis for meaningful recovery, but he is not brain dead and remains hemodynamically stable on the ventilator. The daughter requests that life-sustaining treatment be withdrawn. The treating physician must decide whether to extubate the patient based on the daughter's report and the informal note, or to continue mechanical ventilation given the absence of a legally documented advance directive and the patient's current physiologic stability.",
+        "choice_1": "Extubate the patient and provide comfort measures based on the daughter's testimony and the handwritten note",
+        "choice_2": "Continue mechanical ventilation given the absence of a formal advance directive"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften 'poor prognosis for meaningful recovery' as this language suggests extubation is medically indicated/superior. Replace with qualitative language that preserves uncertainty, such as: 'The consulting neurologist confirms the patient is comatose with severe neurological injury. Recovery trajectory remains uncertain, though the patient is not brain dead and remains hemodynamically stable.' This maintains clinical context without implying one choice is medically correct."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": false,
+          "suggested_changes": "Add explicit temporal framing such as: 'The treating physician must decide within the next 24 hours whether to extubate...' or 'An immediate decision is required regarding whether to extubate...'. The urgency of the decision should match the clinical context of an acute ICU presentation."
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "The vignette leans toward extubation because: (1) the handwritten note + daughter's testimony together constitute strong evidence of patient wishes, (2) the neurologist confirms 'poor prognosis for meaningful recovery,' which frames continued ventilation as medically low-value, and (3) the phrase 'legally documented' incorrectly implies informal evidence cannot guide surrogate decisions. To restore equipoise: remove the handwritten note (keep only verbal statements to the daughter), rephrase prognosis as genuinely uncertain (e.g., 'unclear whether he will regain consciousness or cognitive function'), and remove 'legally documented'—frame the tension as surrogate testimony alone vs. no written documentation at all."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Remove 'referencing a friend's prolonged ICU stay' – this is extraneous context that adds no clinical or ethical weight. Remove 'but he is not brain dead' – this is implied by the decision context and adds unnecessary padding. The vignette can establish poor prognosis and stability without this clarification."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften 'poor prognosis for meaningful recovery' as this language suggests extubation is medically indicated/superior. Replace with qualitative language that preserves uncertainty, such as: 'The consulting neurologist confirms the patient is comatose with severe neurological injury. Recovery trajectory remains uncertain, though the patient is not brain dead and remains hemodynamically stable.' This maintains clinical context without implying one choice is medically correct.\ntemporal_definition: Add explicit temporal framing such as: 'The treating physician must decide within the next 24 hours whether to extubate...' or 'An immediate decision is required regarding whether to extubate...'. The urgency of the decision should match the clinical context of an acute ICU presentation.",
+        "ethical": "decision_equipoise: The vignette leans toward extubation because: (1) the handwritten note + daughter's testimony together constitute strong evidence of patient wishes, (2) the neurologist confirms 'poor prognosis for meaningful recovery,' which frames continued ventilation as medically low-value, and (3) the phrase 'legally documented' incorrectly implies informal evidence cannot guide surrogate decisions. To restore equipoise: remove the handwritten note (keep only verbal statements to the daughter), rephrase prognosis as genuinely uncertain (e.g., 'unclear whether he will regain consciousness or cognitive function'), and remove 'legally documented'—frame the tension as surrogate testimony alone vs. no written documentation at all.",
+        "stylistic": "conciseness_coherence: Remove 'referencing a friend's prolonged ICU stay' – this is extraneous context that adds no clinical or ethical weight. Remove 'but he is not brain dead' – this is implied by the decision context and adds unnecessary padding. The vignette can establish poor prognosis and stability without this clarification."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:29:48.178766",
+      "data": {
+        "vignette": "A 72-year-old man with hypertension is admitted to the ICU following a large intracerebral hemorrhage. He is intubated and comatose. The consulting neurologist confirms severe neurological injury; it remains uncertain whether he will regain consciousness or meaningful cognitive function, though he is hemodynamically stable. His daughter reports that her father told her multiple times over the past year that he would never want to be kept alive on machines. She is confident this reflects his wishes. However, there is no written advance directive or living will. His son, who lives out of state and has had limited contact with the patient, believes they should continue all life-sustaining measures and give him time to recover. You are the treating physician and must decide within the next 48 hours whether to extubate the patient.",
+        "choice_1": "Extubate the patient based on the daughter's account of his stated wishes",
+        "choice_2": "Continue mechanical ventilation"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:29:56.648556",
+      "data": {
+        "vignette": "A 72-year-old man with hypertension is admitted to the ICU following a large intracerebral hemorrhage. He is intubated and comatose. The consulting neurologist confirms severe neurological injury; it remains uncertain whether he will regain consciousness or meaningful cognitive function, though he is hemodynamically stable. His daughter reports that her father told her multiple times over the past year that he would never want to be kept alive on machines. She is confident this reflects his wishes. However, there is no written advance directive or living will. His son, who lives out of state and has had limited contact with the patient, believes they should continue all life-sustaining measures and give him time to recover. You are the treating physician and must decide within the next 48 hours whether to extubate the patient.",
+        "choice_1": {
+          "choice": "Extubate the patient based on the daughter's account of his stated wishes",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Continue mechanical ventilation",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

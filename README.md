@@ -1,65 +1,50 @@
 # ValueBench
 
-Medical ethics case review system.
+A medical ethics case generation and evaluation system that creates, refines, and validates synthetic ethical dilemmas for training and benchmarking purposes.
+
+## Overview
+
+ValueBench is a modular system for:
+- **Generating** medical ethics cases with complex value conflicts
+- **Tagging** cases with ethical principle alignments (autonomy, beneficence, nonmaleficence, justice)
+- **Evaluating** case quality through human review
+- **Managing** the full lifecycle from draft to validated benchmark cases
+
+The system uses LLMs to generate realistic medical vignettes with two ethically challenging choices, then tags how each choice aligns with established bioethics principles.
 
 ## First-Time Setup
 
-### Option 1: Using uv (Recommended - Fastest)
+### Install uv
 
-This project uses [uv](https://github.com/astral-sh/uv) for package management. See [UV_README.md](UV_README.md) for detailed instructions.
+First, install `uv` - a fast Python package manager:
 
-**Quick start:**
 ```bash
-# Install uv (one-time setup)
 curl -LsSf https://astral.sh/uv/install.sh | sh
+```
 
-# Set up the project
+After installation, restart your terminal or run:
+
+```bash
+source $HOME/.local/bin/env
+```
+
+### Set Up the Project
+
+```bash
+# Navigate to the project
+cd /path/to/ValueBench
+
+# Fix the python version
+uv python pin 3.10
+
+# Install dependencies (creates virtual environment automatically)
 uv sync
 
-# Run the application
-uv run python app.py
-# OR
+# Test that everything works
 uv run python example_cli.py
 ```
 
-### Option 2: Using Conda (Traditional)
-
-Open your terminal and run these commands:
-
-```bash
-# Create a new conda environment named 'hvp'
-conda create -n hvp python=3.11 -y
-
-# Activate the environment
-conda activate hvp
-
-# Install required packages
-pip install -r requirements.txt
-```
-
-### Option 3: Using pip + venv
-
-```bash
-# Create virtual environment
-python -m venv .venv
-
-# Activate the environment
-source .venv/bin/activate  # On macOS/Linux
-.venv\Scripts\activate      # On Windows
-
-# Install required packages
-pip install -r requirements.txt
-```
-
-### Verify Installation
-
-```bash
-# Make sure you're in the ValueBench directory
-cd /path/to/ValueBench
-
-# Test that everything works
-python example_cli.py
-```
+That's it! No need to manually activate environments. `uv run` handles everything automatically.
 
 ## Reviewing Cases (For Evaluators)
 
@@ -69,16 +54,15 @@ python example_cli.py
 
 1. Open your terminal
 2. Navigate to the ValueBench folder
-3. Activate the environment and run the review tool:
+3. Run the review tool:
 
 ```bash
-conda activate hvp
-python example_cli.py
+uv run python example_cli.py
 ```
 
 ### How to Review
 
-1. **Enter your name** when prompted (use lowercase letters only, e.g., `john` or `sarah`)
+1. **Enter your name** when prompted (use lowercase letters only, e.g., `zak` or `becca`)
    - This creates your personal review session that saves your progress
 
 2. **Review each case:**
@@ -97,11 +81,16 @@ python example_cli.py
 
 4. **Make your decision:**
    - Type `a` and press Enter to **Approve** the case as-is
-   - Type `e` and press Enter to **Edit** the case before approving
    - Type `r` and press Enter to **Reject** the case (you'll be asked for a reason)
    - Type `q` and press Enter to **Quit** (your progress is automatically saved)
 
-5. **Your progress is saved automatically** in `data/evaluations/session_<yourname>.json`
+5. **Provide feedback** (for both approve/reject):
+   - Select problem categories if applicable: clinical, ethical, legal, stylistic, other
+   - Add detailed comments (required for rejections, optional for approvals)
+
+6. **Your progress is saved automatically** in:
+   - Session file: `data/evaluations/sessions/session_<yourname>.json`
+   - Individual case evaluations: `data/evaluations/case_evaluations/<yourname>/`
 
 ### Tips for Reviewers
 
@@ -109,6 +98,7 @@ python example_cli.py
 - The tool shows you how many cases you've reviewed and how many remain
 - Take breaks as needed - there's no rush
 - If a case seems unrealistic or poorly written, reject it and explain why
+- Only completed benchmark candidates (with value tags) are shown for review
 
 ### Submitting Your Reviews
 
@@ -133,10 +123,36 @@ git push
 
 **Note: This requires API keys and is not needed for case review.**
 
+### Basic Generation
+
 ```bash
-conda activate hvp
-python -m src.generator
+uv run python -m src.generator
 ```
 
-Edit `src/config/generator.yaml` to change generation settings.
+### Configuration
 
+Edit `src/config/generator.yaml` to customize:
+- Number of cases to generate
+- Which workflows to run (seed, refine, tag_values, etc.)
+- LLM models to use for each stage
+- Generation parameters
+
+### Generation Workflows
+
+Available workflows in `src/prompts/workflows/`:
+
+- **seed_synthetic** - Generate initial cases from scratch
+- **seed_literature** - Generate cases from research papers
+- **refine** - Improve case quality with expert feedback
+- **tag_values** - Assign ethical principle alignments
+- **rubric** - Evaluate case quality against rubric
+- **clarify_values** - Clarify ambiguous value conflicts
+- **improve_values** - Improve value representation
+
+### Prompt Components
+
+Reusable prompt components in `src/prompts/components/`:
+- Ethical framework definitions (autonomy, beneficence, etc.)
+- Output structure requirements
+- Hard constraints and quality checks
+- Case display templates

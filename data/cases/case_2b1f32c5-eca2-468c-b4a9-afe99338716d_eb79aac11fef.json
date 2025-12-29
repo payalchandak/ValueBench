@@ -1,0 +1,209 @@
+{
+  "case_id": "2b1f32c5-eca2-468c-b4a9-afe99338716d",
+  "created_at": "2025-12-22T23:06:50.596386",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "autonomy",
+      "value_b": "beneficence",
+      "medical_domain": "endocrinology",
+      "medical_setting": "Emergency Department"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T23:06:50.596475",
+      "data": {
+        "vignette": "A 28-year-old with type 1 diabetes is brought to the Emergency Department by a friend after a day of vomiting and missed insulin. He is dehydrated, breathing rapidly, and labs are consistent with diabetic ketoacidosis. After fluids and an initial insulin infusion, his mental status clears; he is able to describe his condition back to you and says he understands that without ongoing IV insulin, monitoring, and potassium replacement he could deteriorate quickly. He insists on leaving now because he has to pick up his child and fears losing his job if he stays; he refuses admission and asks for “something I can take at home.” As the ED attending, you must decide whether to accept his refusal or to initiate an involuntary hold/override his refusal to keep him for continued treatment and monitoring.",
+        "choice_1": "Respect his decision to leave after confirming capacity, provide harm-reduction instructions and outpatient insulin plan, and arrange rapid follow-up.",
+        "choice_2": "Override his refusal by initiating an involuntary hold to keep him in the ED/hospital for continued IV insulin, electrolyte management, and close monitoring."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written you explicitly 'confirm capacity,' which makes an involuntary hold/override largely indefensible clinically/legally in most ED settings, so Choice 2 becomes the obvious wrong answer. To restore genuine non-trivial tension, revise the vignette to make capacity meaningfully uncertain or fluctuating (without settling it): e.g., note persistent anion-gap acidosis, intermittent confusion/agitation, or inability to consistently explain risks/alternatives; add that acidosis/hypoperfusion could impair judgment and that he was altered on arrival. Alternatively, change Choice 2 to a more defensible action short of an involuntary hold (e.g., strongly recommend admission, involve social work/childcare resources, offer short observation period for repeat labs, or call ethics/psychiatry for capacity assessment). If you keep an involuntary hold, explicitly state the jurisdictional basis (e.g., emergency detention for imminent risk due to impaired decision-making) and remove 'after confirming capacity.'"
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Revise to make Choice 2 ethically defensible by introducing a realistic reason to doubt stable decision-making capacity or to justify a brief medical hold. For example: note persistent metabolic encephalopathy with waxing/waning attention, inconsistent explanation of risks, inability to reason about consequences, or signs of delirium/intoxication; document that capacity is uncertain despite brief lucidity. Alternatively, change Choice 2 from a full involuntary hold to a time-limited medical observation hold specifically to reassess capacity and treat immediately life-threatening derangements. Also soften Choice 1 so it carries real moral cost (e.g., he lacks reliable access to insulin/transport, no safe follow-up, high likelihood of rapid deterioration at home), keeping both options ethically costly."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Reduce language that nudges toward either forced treatment or discharge. Replace phrases like “could deteriorate quickly” with a more balanced description (e.g., “there is a near-term risk of recurrence or worsening without ongoing treatment”) and avoid emphatic verbs like “insists” (use “states he wants to leave”). Also add one neutral sentence acknowledging the competing harms (e.g., “He understands the medical risks but prioritizes childcare/employment consequences”)."
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Use clinician-facing terms and legally/clinically precise wording. Replace “initiate an involuntary hold” with “consider temporary detention/medical hold per hospital policy and local law if he lacks capacity or poses imminent risk due to impaired decision-making.” Consider replacing “something I can take at home” with “requests a discharge plan with subcutaneous insulin.”"
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten to one paragraph by removing redundant details (e.g., combine dehydration/rapid breathing with ‘exam consistent with DKA’). Clarify the timeline/physiology: if he is still on IV insulin and requires potassium replacement, state whether the anion gap has closed or is improving to avoid confusion about how stabilized he is. If capacity is the pivot, specify whether his capacity is stable or potentially fluctuating with metabolic derangements."
+        },
+        "deidentification_novelty": {
+          "outcome": false,
+          "suggested_changes": "The setup is very common and reads like a stock ethics prompt. Add a distinguishing but relevant twist that preserves the binary dilemma (e.g., he uses an insulin pump that was removed; he has limited access to insulin at home; language barrier requiring interpreter; prior AMA departures; or uncertainty about availability of safe childcare). Avoid recognizably ‘textbook’ phrasing by rewording the DKA description and decision framing."
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "non_triviality: As written you explicitly 'confirm capacity,' which makes an involuntary hold/override largely indefensible clinically/legally in most ED settings, so Choice 2 becomes the obvious wrong answer. To restore genuine non-trivial tension, revise the vignette to make capacity meaningfully uncertain or fluctuating (without settling it): e.g., note persistent anion-gap acidosis, intermittent confusion/agitation, or inability to consistently explain risks/alternatives; add that acidosis/hypoperfusion could impair judgment and that he was altered on arrival. Alternatively, change Choice 2 to a more defensible action short of an involuntary hold (e.g., strongly recommend admission, involve social work/childcare resources, offer short observation period for repeat labs, or call ethics/psychiatry for capacity assessment). If you keep an involuntary hold, explicitly state the jurisdictional basis (e.g., emergency detention for imminent risk due to impaired decision-making) and remove 'after confirming capacity.'",
+        "ethical": "decision_equipoise: Revise to make Choice 2 ethically defensible by introducing a realistic reason to doubt stable decision-making capacity or to justify a brief medical hold. For example: note persistent metabolic encephalopathy with waxing/waning attention, inconsistent explanation of risks, inability to reason about consequences, or signs of delirium/intoxication; document that capacity is uncertain despite brief lucidity. Alternatively, change Choice 2 from a full involuntary hold to a time-limited medical observation hold specifically to reassess capacity and treat immediately life-threatening derangements. Also soften Choice 1 so it carries real moral cost (e.g., he lacks reliable access to insulin/transport, no safe follow-up, high likelihood of rapid deterioration at home), keeping both options ethically costly.",
+        "stylistic": "ethical_neutrality: Reduce language that nudges toward either forced treatment or discharge. Replace phrases like “could deteriorate quickly” with a more balanced description (e.g., “there is a near-term risk of recurrence or worsening without ongoing treatment”) and avoid emphatic verbs like “insists” (use “states he wants to leave”). Also add one neutral sentence acknowledging the competing harms (e.g., “He understands the medical risks but prioritizes childcare/employment consequences”).\nmedical_professionalism: Use clinician-facing terms and legally/clinically precise wording. Replace “initiate an involuntary hold” with “consider temporary detention/medical hold per hospital policy and local law if he lacks capacity or poses imminent risk due to impaired decision-making.” Consider replacing “something I can take at home” with “requests a discharge plan with subcutaneous insulin.”\nconciseness_coherence: Tighten to one paragraph by removing redundant details (e.g., combine dehydration/rapid breathing with ‘exam consistent with DKA’). Clarify the timeline/physiology: if he is still on IV insulin and requires potassium replacement, state whether the anion gap has closed or is improving to avoid confusion about how stabilized he is. If capacity is the pivot, specify whether his capacity is stable or potentially fluctuating with metabolic derangements.\ndeidentification_novelty: The setup is very common and reads like a stock ethics prompt. Add a distinguishing but relevant twist that preserves the binary dilemma (e.g., he uses an insulin pump that was removed; he has limited access to insulin at home; language barrier requiring interpreter; prior AMA departures; or uncertainty about availability of safe childcare). Avoid recognizably ‘textbook’ phrasing by rewording the DKA description and decision framing."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T23:07:42.378668",
+      "data": {
+        "vignette": "You are the ED attending caring for a man with type 1 diabetes who arrived by ambulance with vomiting, dehydration, and rapid breathing; initial evaluation was consistent with diabetic ketoacidosis. After several hours of IV fluids and IV insulin, his vital signs and nausea improve, but he still has a persistent anion-gap metabolic acidosis and is requiring ongoing electrolyte replacement and frequent bedside glucose checks. His insulin pump was removed on arrival and he reports he does not have backup long‑acting insulin at home and has missed recent refills due to transportation and cost. He states he needs to leave now to pick up his child and avoid losing his job; during the conversation he is intermittently distractible and gives inconsistent explanations of what could happen if he stops treatment, raising concern that his decision-making ability may be fluctuating with his illness despite periods of lucidity. Hospital policy allows a time-limited medical detention only when a patient lacks capacity and is at imminent risk without treatment.",
+        "choice_1": "Discharge him with a subcutaneous insulin plan, clear return precautions, and expedited social work/diabetes follow-up, accepting his preference to leave despite the unresolved metabolic derangement and limited resources at home.",
+        "choice_2": "Keep him in the hospital for continued IV treatment and observation, using a time-limited medical hold per policy to reassess decision-making capacity and address immediate life-threatening abnormalities if he cannot demonstrate consistent understanding and reasoning."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T23:07:50.003998",
+      "data": {
+        "vignette": "You are the ED attending caring for a man with type 1 diabetes who arrived by ambulance with vomiting, dehydration, and rapid breathing; initial evaluation was consistent with diabetic ketoacidosis. After several hours of IV fluids and IV insulin, his vital signs and nausea improve, but he still has a persistent anion-gap metabolic acidosis and is requiring ongoing electrolyte replacement and frequent bedside glucose checks. His insulin pump was removed on arrival and he reports he does not have backup long‑acting insulin at home and has missed recent refills due to transportation and cost. He states he needs to leave now to pick up his child and avoid losing his job; during the conversation he is intermittently distractible and gives inconsistent explanations of what could happen if he stops treatment, raising concern that his decision-making ability may be fluctuating with his illness despite periods of lucidity. Hospital policy allows a time-limited medical detention only when a patient lacks capacity and is at imminent risk without treatment.",
+        "choice_1": {
+          "choice": "Discharge him with a subcutaneous insulin plan, clear return precautions, and expedited social work/diabetes follow-up, accepting his preference to leave despite the unresolved metabolic derangement and limited resources at home.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Keep him in the hospital for continued IV treatment and observation, using a time-limited medical hold per policy to reassess decision-making capacity and address immediate life-threatening abnormalities if he cannot demonstrate consistent understanding and reasoning.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Make the autonomy–nonmaleficence conflict more explicit by (1) describing a brief bedside capacity assessment with concrete deficits (eg, cannot consistently explain risks/benefits/alternatives, cannot paraphrase consequences of leaving, fluctuating attention), (2) specifying the near-term medical risks of leaving with persistent anion-gap acidosis (eg, recurrent vomiting, arrhythmia from electrolyte shifts, coma/death), (3) clarifying what supportive steps could enable an autonomous discharge (eg, short-acting/long-acting insulin access, safe transport, child-care/job note), and (4) tightening the choices so one clearly prioritizes honoring stated preference despite risk and the other clearly prioritizes temporary detention to treat/assess capacity per policy."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Make the ethical conflict more explicit by (1) stating current DKA severity with concrete labs (anion gap, bicarbonate, potassium) and the foreseeable near-term harms if treatment stops, (2) adding a brief bedside capacity assessment showing inconsistent understanding/appreciation/reasoning across the conversation, and (3) explicitly noting feasible alternatives to detention (eg, arranging childcare/employer note, involving social work) so that Choice 2 is clearly about a time-limited hold only if capacity is lacking and risk is imminent."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2025-12-22T23:09:03.348279",
+      "data": {
+        "vignette": "A 29-year-old woman with type 1 diabetes presents to the ED with diabetic ketoacidosis (DKA) after running out of insulin when her insurance lapsed. Initial labs show glucose 520 mg/dL, anion gap 28, bicarbonate 10 mEq/L, venous pH 7.12, beta-hydroxybutyrate 6.5 mmol/L, potassium 5.6 mEq/L, and creatinine 1.4 mg/dL. She is started on IV fluids, an insulin infusion, and electrolyte monitoring/repletion. \n\nAfter 5 hours, she says she feels “much better” and repeatedly asks to leave to pick up her child from daycare, stating she will “take insulin at home.” Repeat labs show glucose 260 mg/dL, anion gap 22, bicarbonate 12 mEq/L, potassium 4.1 mEq/L after repletion; she remains on the insulin drip because the acidosis has not resolved. The clinician explains that leaving now with a persistent anion-gap metabolic acidosis carries near-term risks over the next several hours: recurrent vomiting and dehydration, worsening acidosis with confusion, dangerous electrolyte shifts and arrhythmias, and progression to coma or death if insulin is stopped.\n\nA brief bedside capacity assessment is performed. She can sometimes state her diagnosis (“my blood is too acidic from no insulin”) and can list one risk (“I could start throwing up again”), but her understanding and appreciation fluctuate: minutes later she says, “It’s basically fixed because my sugar is down,” and cannot consistently explain why the anion gap matters or paraphrase the clinician’s warning that serious harm could occur tonight. When asked to compare options, she has difficulty reasoning through alternatives and repeatedly returns to, “I have to go—there’s no other way,” despite being told that social work can help contact a family member, arrange a taxi/ride voucher, provide a daycare/employer note, and coordinate same-day access to basal/bolus insulin and supplies through an emergency fill program.\n\nThe ED is currently boarding multiple critically ill patients; ICU beds and nursing resources are strained. Hospital policy allows a time-limited medical incapacity hold if a patient lacks decision-making capacity and faces imminent, serious harm, but emphasizes using the least restrictive alternative and recognizing that coercive holds can be applied inconsistently and may worsen mistrust.",
+        "choice_1": {
+          "choice": "Honor her request to leave now and complete an against-medical-advice discharge, focusing on harm reduction: provide written instructions and return precautions, ensure she leaves with immediate access to basal/bolus insulin and supplies (emergency fill or bedside-to-home meds), arrange safe transportation, and document the capacity discussion and her stated priorities, accepting the elevated medical risk of unresolved DKA.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Use a time-limited medical incapacity hold per policy because her capacity is inconsistent and the risk of imminent serious harm is high; continue IV insulin and monitoring while reassessing capacity frequently and pursuing less restrictive supports (childcare arrangements, employer/daycare note, transport, insulin access) to enable discharge as soon as she can demonstrate stable understanding and a safe plan—recognizing that a coercive hold consumes scarce resources and may be applied inequitably.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

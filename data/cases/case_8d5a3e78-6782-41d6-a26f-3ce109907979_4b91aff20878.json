@@ -1,0 +1,208 @@
+{
+  "case_id": "8d5a3e78-6782-41d6-a26f-3ce109907979",
+  "created_at": "2025-12-22T23:20:09.070751",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 5,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "Case 15-4\nPromoting Patients’ Rights by Denying Insurance Coverage\nAn 88-year-old man, Cletis Bumgartner, was admitted to the hospital in a\ncoma due to cerebral hemorrhage. Despite a portable DNAR (do-not-attempt-\nresuscitation) form signed by his daughter, who was his legally authorized\ndecision-maker, Mr. Bumgartner received cardiopulmonary resuscitation\nin the emergency room. He was then admitted to the intensive care unit. The\nprimary care physician and consultant neurologist authorized extubation\nand removal of the respirator but then declined to insist on this because\nDennis Havens, the consultant pulmonologist, insisted that Mr. Bumgartner\nwas not “brain dead.” Without any change in his condition, Mr. Bumgartner\ndied three days later.\nHorton Pickering was the case reviewer for the insurance company,\nwhich was part of an HMO system. He refused to pay the costs for the three\ndays of “extended care” because of the valid DNAR on the chart. Mr. Pickering\nclaimed that the patient should not have been admitted to intensive care\nand that overuse of facilities and services were not the responsibility of\nthe HMO.",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T23:20:09.070790",
+      "data": {
+        "vignette": "You are the ICU attending for an 88-year-old man brought in after a large brain hemorrhage. He is unresponsive, on a ventilator, and not expected to regain the ability to make decisions; he is not declared dead by neurologic criteria. His daughter is his legally authorized surrogate and presents a signed out-of-hospital form stating he did not want resuscitation or continued life support if he could not meaningfully recover. In the chart, however, there is an older clinic note describing him as “wanting everything done,” and the daughter says he sometimes spoke differently depending on who was present. The team is divided: some feel continuing ventilation risks prolonging suffering without benefit, while others worry that withdrawing now could end his life based on an uncertain interpretation of his wishes. You must decide what to recommend today.",
+        "choice_1": "Proceed with withdrawal of ventilatory support and focus on comfort measures, treating the daughter’s documentation and surrogate decision as sufficient to carry out the patient’s stated preference even though it may hasten death.",
+        "choice_2": "Continue life-sustaining ventilation for a time-limited period while seeking further clarification of the patient’s values (e.g., additional family input, prior records), accepting that this may prolong an unwanted dying process if the earlier refusal of life support was accurate."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften language that implies clinical futility/superiority (e.g., change “risks prolonging suffering without benefit” to “may prolong suffering and may not align with his goals,” and avoid “not expected” prognostic certainty by using “unlikely to regain decisional capacity or meaningful neurologic recovery in the near term”). Keep the hemorrhage/ventilation facts but avoid framing withdrawal as medically ‘correct’."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Clarify the specific document type and scope: is the out-of-hospital form a state POLST/MOLST, a DNR only, or an advance directive that addresses ventilation? State whether it is valid/signed by clinician and applicable to current setting. Specify current code status orders and whether there is any reversible cause or planned neurosurgical intervention. Remove potentially decorative/interpretive phrasing like “unwanted dying process” and keep to concrete stakes (continued ventilation, tracheostomy/feeding tube discussions likely, comfort-focused extubation)."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Make the documentation conflict more realistic and legally coherent: distinguish between a clinic note quote and an actual advance directive/POLST; specify whether the older note is the clinician’s summary rather than a signed directive. Add whether the daughter is the sole surrogate or if there are other legal decision-makers. Ensure the out-of-hospital form’s authority in the ICU is stated (e.g., recognized statewide)."
+        },
+        "non_triviality": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Revise to avoid making one option effectively mandated by standard practice (i.e., “honor the signed out-of-hospital form”). Make the directive’s applicability/validity genuinely uncertain so both choices are defensible. For example: (1) Specify the form is a DNR that does not clearly address ongoing ventilation/ICU care (or is partially completed/unclear about intubation), (2) note it is old, unsigned by clinician, or lacks required witnesses/was possibly superseded, and/or (3) add that another close surrogate (e.g., spouse/son) credibly reports the patient recently reiterated ‘full treatment’ after the form was completed. Then reframe Choice 1 as withdrawing based on the surrogate’s best-substituted judgment despite unresolved conflict, and Choice 2 as continuing temporarily because the directive may not apply to the current situation—not simply to ‘seek clarification,’ which can read like the obviously safer procedural default."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or neutralize value-laden phrasing that implicitly favors withdrawal. For example: change “prolonging suffering without benefit” to “prolonging invasive life-sustaining treatment with low likelihood of recovery to an interactive baseline,” and change “unwanted dying process” to “a course of continued life-sustaining treatment that may be inconsistent with his preferences.” Consider replacing “hasten death” with “may shorten survival” in both choices to avoid emotive framing."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften language that implies clinical futility/superiority (e.g., change “risks prolonging suffering without benefit” to “may prolong suffering and may not align with his goals,” and avoid “not expected” prognostic certainty by using “unlikely to regain decisional capacity or meaningful neurologic recovery in the near term”). Keep the hemorrhage/ventilation facts but avoid framing withdrawal as medically ‘correct’.\nkey_information: Clarify the specific document type and scope: is the out-of-hospital form a state POLST/MOLST, a DNR only, or an advance directive that addresses ventilation? State whether it is valid/signed by clinician and applicable to current setting. Specify current code status orders and whether there is any reversible cause or planned neurosurgical intervention. Remove potentially decorative/interpretive phrasing like “unwanted dying process” and keep to concrete stakes (continued ventilation, tracheostomy/feeding tube discussions likely, comfort-focused extubation).\nclinical_plausibility: Make the documentation conflict more realistic and legally coherent: distinguish between a clinic note quote and an actual advance directive/POLST; specify whether the older note is the clinician’s summary rather than a signed directive. Add whether the daughter is the sole surrogate or if there are other legal decision-makers. Ensure the out-of-hospital form’s authority in the ICU is stated (e.g., recognized statewide).",
+        "ethical": "decision_equipoise: Revise to avoid making one option effectively mandated by standard practice (i.e., “honor the signed out-of-hospital form”). Make the directive’s applicability/validity genuinely uncertain so both choices are defensible. For example: (1) Specify the form is a DNR that does not clearly address ongoing ventilation/ICU care (or is partially completed/unclear about intubation), (2) note it is old, unsigned by clinician, or lacks required witnesses/was possibly superseded, and/or (3) add that another close surrogate (e.g., spouse/son) credibly reports the patient recently reiterated ‘full treatment’ after the form was completed. Then reframe Choice 1 as withdrawing based on the surrogate’s best-substituted judgment despite unresolved conflict, and Choice 2 as continuing temporarily because the directive may not apply to the current situation—not simply to ‘seek clarification,’ which can read like the obviously safer procedural default.",
+        "stylistic": "ethical_neutrality: Remove or neutralize value-laden phrasing that implicitly favors withdrawal. For example: change “prolonging suffering without benefit” to “prolonging invasive life-sustaining treatment with low likelihood of recovery to an interactive baseline,” and change “unwanted dying process” to “a course of continued life-sustaining treatment that may be inconsistent with his preferences.” Consider replacing “hasten death” with “may shorten survival” in both choices to avoid emotive framing."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T23:20:52.111734",
+      "data": {
+        "vignette": "You are the ICU attending caring for a 72-year-old man who was found unresponsive and is now intubated after a large intracerebral hemorrhage. Neurosurgery has evaluated him and is not planning an operative intervention; any neurologic improvement, if it occurs, is unlikely in the near term and he is not expected to regain decision-making capacity soon. In his wallet, EMS found an out-of-hospital DNR form completed several years ago; it appears to be a state form but the section about intubation/ICU treatment is left blank and the clinician signature is missing. His daughter is the only available legally recognized surrogate and says he would not want prolonged ventilation or a tracheostomy/feeding tube. However, his primary care clinic note from last year (not a signed directive) documents that he told the clinician he wanted “everything done” after a friend’s stroke, and there is no newer formal document. The ventilator and vasopressors are keeping him stable, and the team must decide whether to continue life-sustaining treatment or transition to comfort-focused care.",
+        "choice_1": "Proceed with comfort-focused extubation now, relying on the daughter’s substituted judgment despite uncertainty about the older form’s scope and the conflicting clinic note.",
+        "choice_2": "Continue life-sustaining treatment for now (including likely tracheostomy/feeding-tube planning if he cannot be weaned), treating the documentation conflict as unresolved and not sufficient to justify withdrawal at this time."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T23:21:06.869307",
+      "data": {
+        "vignette": "You are the ICU attending caring for a 72-year-old man who was found unresponsive and is now intubated after a large intracerebral hemorrhage. Neurosurgery has evaluated him and is not planning an operative intervention; any neurologic improvement, if it occurs, is unlikely in the near term and he is not expected to regain decision-making capacity soon. In his wallet, EMS found an out-of-hospital DNR form completed several years ago; it appears to be a state form but the section about intubation/ICU treatment is left blank and the clinician signature is missing. His daughter is the only available legally recognized surrogate and says he would not want prolonged ventilation or a tracheostomy/feeding tube. However, his primary care clinic note from last year (not a signed directive) documents that he told the clinician he wanted “everything done” after a friend’s stroke, and there is no newer formal document. The ventilator and vasopressors are keeping him stable, and the team must decide whether to continue life-sustaining treatment or transition to comfort-focused care.",
+        "choice_1": {
+          "choice": "Proceed with comfort-focused extubation now, relying on the daughter’s substituted judgment despite uncertainty about the older form’s scope and the conflicting clinic note.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Continue life-sustaining treatment for now (including likely tracheostomy/feeding-tube planning if he cannot be weaned), treating the documentation conflict as unresolved and not sufficient to justify withdrawal at this time.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Make the value conflict more explicit by (1) specifying the key ethical value being tested (respect for the patient’s prior wishes/autonomy) and why the evidence is ambiguous, (2) briefly clarifying the context of the conflicting clinic note (e.g., discussed during a routine visit, not in a serious illness context), (3) stating whether the daughter had prior conversations with the patient about acceptable outcomes and whether other family are unavailable, and (4) making the downstream implications of each option explicit (comfort extubation leading to likely death soon vs ongoing ICU care with high likelihood of long-term dependence)."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Make the competing expressions of the patient’s preferences more explicit (e.g., quote what he said to the daughter vs what is documented in the clinic note), clarify the legal/clinical weight of the incomplete out-of-hospital DNR (e.g., not signed/possibly invalid and does not address intubation), and tighten the decision point so each option clearly prioritizes a different value (respecting surrogate-reported substituted judgment vs preserving life in the setting of unresolved/contradictory evidence by pursuing a time-limited trial while gathering more information)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Make the value conflict more explicit by: (1) clarifying that the incomplete out-of-hospital DNR may or may not apply to current intubation/ICU care under state law/policy; (2) specifying that the daughter is the legally authorized surrogate and is requesting withdrawal based on prior conversations; (3) emphasizing the conflicting prior statement (“everything done”) as recent and documented, creating uncertainty about true preferences; (4) adding that prognosis is poor but not immediately certain and that continued treatment would likely lead to tracheostomy/PEG, thereby sharpening autonomy vs beneficence/nonmaleficence; (5) adjusting choices to clearly hinge on honoring presumed preferences vs defaulting to continued treatment until preferences are clarified (e.g., time-limited trial/ethics consult)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2025-12-22T23:22:32.797360",
+      "data": {
+        "vignette": "A 78-year-old man with severe COPD (on home oxygen), ischemic cardiomyopathy (EF 25%), and CKD is brought to the ED with fever, hypotension, and hypercapnic respiratory failure from presumed pneumonia. EMS finds an out-of-hospital DNR form in his wallet, but the physician signature line is blank and the form does not address intubation or ICU-level care; under hospital policy/state rules, it may be invalid and cannot be relied on as a definitive directive.\n\nHe is emergently intubated. By ICU day 1 he remains ventilator-dependent on high settings and requires norepinephrine. The intensivist estimates a poor prognosis with a high likelihood of prolonged dependence if he survives (possible tracheostomy/PEG and long-term facility care), though there is still a nonzero chance of meaningful short-term recovery over the next several days.\n\nHis adult daughter arrives; she is the legally authorized surrogate and no other family can be reached. She describes multiple conversations over the past year in which he said, “If I’m on machines and can’t get back to living on my own, don’t keep me alive—let me go,” and that he specifically feared “ending up in a nursing home on a ventilator.” She requests a transition to comfort-focused care and palliative extubation, understanding this will likely lead to death within hours to a day.\n\nThe team also finds a primary-care clinic note from a routine visit 2 months ago (when he was stable and not discussing a serious-illness scenario) stating: “Goals of care: patient wants everything done.” There is no formal advance directive or POLST on file. The bedside team must decide whether to act now on the daughter’s substituted judgment despite contradictory documentation, or to continue life-sustaining treatment while urgently clarifying the patient’s preferences and the legal applicability of any DNR documentation.",
+        "choice_1": {
+          "choice": "Honor the daughter’s substituted judgment and proceed with comfort-focused care, including palliative extubation now, documenting the daughter’s account of the patient’s stated limits and her understanding that death is likely soon despite the contradictory clinic note and the incomplete/possibly non-applicable DNR form.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Continue full ICU support as a time-limited trial (e.g., 48–72 hours) while urgently clarifying preferences and documentation (ethics consult, contact the PCP about the context of the “everything done” note, search for any signed POLST/advance directive, review prior hospitalizations), explaining that the incomplete DNR may not be legally actionable and that due process is needed before withdrawing life support; reassess goals and the need for tracheostomy/PEG if he fails to improve.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

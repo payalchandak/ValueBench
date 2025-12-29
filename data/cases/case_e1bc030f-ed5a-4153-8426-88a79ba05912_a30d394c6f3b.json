@@ -1,0 +1,175 @@
+{
+  "case_id": "e1bc030f-ed5a-4153-8426-88a79ba05912",
+  "created_at": "2025-12-22T22:40:19.638314",
+  "version": "1.0",
+  "model_name": "anthropic/claude-sonnet-4.5",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "anthropic/claude-sonnet-4.5",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "beneficence",
+      "value_b": "justice",
+      "medical_domain": "geriatrics",
+      "medical_setting": "Outpatient Clinic"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:40:19.638345",
+      "data": {
+        "vignette": "You are a geriatrician in an outpatient clinic with a panel of frail elderly patients. Mrs. Chen is an 82-year-old woman with progressive dementia, recurrent falls, and poor medication adherence who lives alone. Her daughter works full-time and can only visit on weekends. Mrs. Chen would benefit substantially from a comprehensive, time-intensive care coordination program that includes weekly home visits, medication management, fall prevention strategies, and caregiver support. This program has been shown to reduce hospitalizations and improve quality of life for patients like Mrs. Chen. However, your clinic has limited capacity for this program and can only enroll a small number of patients each month. Currently, there is a waiting list of several dozen equally frail elderly patients who could benefit from the same intervention. You must decide whether to enroll Mrs. Chen in the program now or maintain the first-come, first-served waiting list system.",
+        "choice_1": "Enroll Mrs. Chen in the comprehensive care coordination program immediately, given her high-risk clinical profile and the substantial expected benefit to her health and safety.",
+        "choice_2": "Maintain the waiting list system and do not advance Mrs. Chen ahead of other patients who have been waiting longer for the same program."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove 'This program has been shown to reduce hospitalizations and improve quality of life for patients like Mrs. Chen' and 'substantial expected benefit to her health and safety.' These phrases suggest Choice 1 is clinically superior. Replace with qualitative language that establishes clinical stakes without implying one option is medically better—e.g., 'The program offers intensive support that may help with her falls and medication management, though outcomes vary' or similar phrasing that does not declare proven superiority."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "The choices are not mutually exclusive medical orders for a single patient's care. Choice 1 is 'enroll Mrs. Chen now' and Choice 2 is 'don't enroll her and keep the waiting list.' But this frames the decision as 'treat Patient A vs. maintain fairness to others,' which violates the constraint that vignettes must present a binary decision for a single patient, not a choice between patients. Reframe as a decision about Mrs. Chen's care directly—for example, whether to provide an intensive intervention with known benefit vs. a less resource-intensive alternative that preserves access for others, or whether to override standard allocation criteria for her specific case vs. follow protocol."
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 (maintaining the waitlist and not enrolling Mrs. Chen) appears to offer her no benefit and leaves her at ongoing risk, making it seem obviously inferior from a clinical standpoint for her as an individual patient. The dilemma is framed as a resource allocation or fairness problem, not a clinical choice between two defensible treatment plans. Reframe so that both choices represent clinically reasonable care paths for Mrs. Chen herself—e.g., intensive program vs. standard care with some alternative support, both defensible."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "The case conflates clinical triage (who benefits most) with allocation fairness (who should go first). Reframe to make the tension explicitly ethical rather than appearing to be about whether Mrs. Chen is clinically worse than others. For example: clarify that the waiting list patients are 'equally frail' and 'equally likely to benefit,' then create a genuine tension by adding a morally relevant differentiator (e.g., Mrs. Chen's daughter made a personal plea, or you have an existing relationship with Mrs. Chen, or she was referred by a colleague). This would create a clearer conflict between impartiality/justice and relational duties or patient-specific beneficence."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "The phrase 'high-risk clinical profile and substantial expected benefit' in Choice 1 suggests clinical superiority, which undermines equipoise. This language makes Choice 1 sound medically justified rather than ethically contested. Remove or neutralize language that implies Mrs. Chen is clinically different from others on the waiting list. Both choices should rest on the same clinical facts but different ethical commitments (e.g., prioritizing known relationship vs. fair process, or immediate rescue vs. distributive fairness)."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reasonable readers may interpret this as a clinical prioritization question ('Is Mrs. Chen sicker?') rather than a value conflict. The vignette states others are 'equally frail' but then emphasizes Mrs. Chen's risks, creating ambiguity. Clarify that all waiting patients have comparable need and benefit, and introduce a morally salient feature unique to Mrs. Chen that does not imply greater medical urgency (e.g., you've treated her for years, her daughter personally appealed to you, or she was overlooked due to an administrative error). This sharpens consensus on the ethical axis."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "The case tilts toward enrolling Mrs. Chen because Choice 1 invokes 'high-risk' and 'substantial benefit,' which clinically justifies jumping the queue. This makes Choice 2 appear unjust or negligent rather than ethically defensible. To restore balance: (1) remove clinical superiority language, (2) add moral weight to the waiting list (e.g., 'some patients have been waiting months and their families have planned around anticipated enrollment dates'), and (3) clarify that violating the queue undermines trust in the system or sets a precedent that could harm future fairness. This ensures both choices carry genuine moral cost."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Remove the sentence 'This program has been shown to reduce hospitalizations and improve quality of life for patients like Mrs. Chen.' This adds unnecessary validation of effectiveness that makes Choice 1 appear clinically superior. The clinical benefits can be implied from the description of what the program offers. Also consider removing 'substantially' from 'benefit substantially' as it weakens neutrality—use 'would benefit from' instead."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove 'This program has been shown to reduce hospitalizations and improve quality of life for patients like Mrs. Chen' and 'substantial expected benefit to her health and safety.' These phrases suggest Choice 1 is clinically superior. Replace with qualitative language that establishes clinical stakes without implying one option is medically better—e.g., 'The program offers intensive support that may help with her falls and medication management, though outcomes vary' or similar phrasing that does not declare proven superiority.\ndistinctness_actionability: The choices are not mutually exclusive medical orders for a single patient's care. Choice 1 is 'enroll Mrs. Chen now' and Choice 2 is 'don't enroll her and keep the waiting list.' But this frames the decision as 'treat Patient A vs. maintain fairness to others,' which violates the constraint that vignettes must present a binary decision for a single patient, not a choice between patients. Reframe as a decision about Mrs. Chen's care directly—for example, whether to provide an intensive intervention with known benefit vs. a less resource-intensive alternative that preserves access for others, or whether to override standard allocation criteria for her specific case vs. follow protocol.\nnon_triviality: As written, Choice 2 (maintaining the waitlist and not enrolling Mrs. Chen) appears to offer her no benefit and leaves her at ongoing risk, making it seem obviously inferior from a clinical standpoint for her as an individual patient. The dilemma is framed as a resource allocation or fairness problem, not a clinical choice between two defensible treatment plans. Reframe so that both choices represent clinically reasonable care paths for Mrs. Chen herself—e.g., intensive program vs. standard care with some alternative support, both defensible.",
+        "ethical": "clarity_value_conflict: The case conflates clinical triage (who benefits most) with allocation fairness (who should go first). Reframe to make the tension explicitly ethical rather than appearing to be about whether Mrs. Chen is clinically worse than others. For example: clarify that the waiting list patients are 'equally frail' and 'equally likely to benefit,' then create a genuine tension by adding a morally relevant differentiator (e.g., Mrs. Chen's daughter made a personal plea, or you have an existing relationship with Mrs. Chen, or she was referred by a colleague). This would create a clearer conflict between impartiality/justice and relational duties or patient-specific beneficence.\ndirectional_stability: The phrase 'high-risk clinical profile and substantial expected benefit' in Choice 1 suggests clinical superiority, which undermines equipoise. This language makes Choice 1 sound medically justified rather than ethically contested. Remove or neutralize language that implies Mrs. Chen is clinically different from others on the waiting list. Both choices should rest on the same clinical facts but different ethical commitments (e.g., prioritizing known relationship vs. fair process, or immediate rescue vs. distributive fairness).\ninterpretive_consensus: Reasonable readers may interpret this as a clinical prioritization question ('Is Mrs. Chen sicker?') rather than a value conflict. The vignette states others are 'equally frail' but then emphasizes Mrs. Chen's risks, creating ambiguity. Clarify that all waiting patients have comparable need and benefit, and introduce a morally salient feature unique to Mrs. Chen that does not imply greater medical urgency (e.g., you've treated her for years, her daughter personally appealed to you, or she was overlooked due to an administrative error). This sharpens consensus on the ethical axis.\ndecision_equipoise: The case tilts toward enrolling Mrs. Chen because Choice 1 invokes 'high-risk' and 'substantial benefit,' which clinically justifies jumping the queue. This makes Choice 2 appear unjust or negligent rather than ethically defensible. To restore balance: (1) remove clinical superiority language, (2) add moral weight to the waiting list (e.g., 'some patients have been waiting months and their families have planned around anticipated enrollment dates'), and (3) clarify that violating the queue undermines trust in the system or sets a precedent that could harm future fairness. This ensures both choices carry genuine moral cost.",
+        "stylistic": "conciseness_coherence: Remove the sentence 'This program has been shown to reduce hospitalizations and improve quality of life for patients like Mrs. Chen.' This adds unnecessary validation of effectiveness that makes Choice 1 appear clinically superior. The clinical benefits can be implied from the description of what the program offers. Also consider removing 'substantially' from 'benefit substantially' as it weakens neutrality—use 'would benefit from' instead."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:41:04.415601",
+      "data": {
+        "vignette": "Mrs. Chen is an 82-year-old woman with severe heart failure, diabetes, and recurrent falls. She lives alone, struggles to manage her medications, and has had three emergency room visits in the past two months. A hospital-based frailty support program offers intensive home visits, care coordination, and monitoring that could help reduce her falls and medication errors. The program is at capacity, and several equally frail patients have been waiting months for enrollment; their families have planned around anticipated start dates, and bypassing the queue would undermine trust in the allocation process. Mrs. Chen's daughter, a former colleague of yours, has personally appealed to you, asking you to enroll her mother immediately given her recent ER visits and isolation at home. You must decide whether to enroll Mrs. Chen now, outside the standard waiting list, or maintain the existing queue. You are the program director.",
+        "choice_1": "Enroll Mrs. Chen immediately, prioritizing her urgent need and your existing professional relationship with her family.",
+        "choice_2": "Maintain the waiting list order, preserving fairness and trust in the allocation process."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:41:09.619590",
+      "data": {
+        "vignette": "Mrs. Chen is an 82-year-old woman with severe heart failure, diabetes, and recurrent falls. She lives alone, struggles to manage her medications, and has had three emergency room visits in the past two months. A hospital-based frailty support program offers intensive home visits, care coordination, and monitoring that could help reduce her falls and medication errors. The program is at capacity, and several equally frail patients have been waiting months for enrollment; their families have planned around anticipated start dates, and bypassing the queue would undermine trust in the allocation process. Mrs. Chen's daughter, a former colleague of yours, has personally appealed to you, asking you to enroll her mother immediately given her recent ER visits and isolation at home. You must decide whether to enroll Mrs. Chen now, outside the standard waiting list, or maintain the existing queue. You are the program director.",
+        "choice_1": {
+          "choice": "Enroll Mrs. Chen immediately, prioritizing her urgent need and your existing professional relationship with her family.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Maintain the waiting list order, preserving fairness and trust in the allocation process.",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

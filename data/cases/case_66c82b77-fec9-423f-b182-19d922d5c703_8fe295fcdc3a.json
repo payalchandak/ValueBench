@@ -1,0 +1,209 @@
+{
+  "case_id": "66c82b77-fec9-423f-b182-19d922d5c703",
+  "created_at": "2025-12-22T22:49:57.401102",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "beneficence",
+      "value_b": "non-maleficence",
+      "medical_domain": "cardiology",
+      "medical_setting": "ICU"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:49:57.401115",
+      "data": {
+        "vignette": "A 55-year-old with no major prior illness is in the cardiac ICU after a large heart attack complicated by cardiogenic shock. Despite maximal medications and an intra-aortic balloon pump, he remains dependent on high-dose support and is intermittently awake but too confused and short of breath to participate reliably in complex decisions; no advance directive is available. The ICU and cardiology teams agree that placing veno-arterial ECMO could keep him alive long enough to potentially recover heart function or be evaluated for longer-term support, but it would require large cannulas, deep sedation, and carries a substantial chance of serious complications such as major bleeding, stroke, limb ischemia, and a prolonged ICU course with significant suffering if recovery does not occur. His spouse asks the team to “do everything,” while some clinicians worry the intervention may simply extend a difficult dying process. The attending intensivist must decide whether to escalate to ECMO now or to forgo ECMO and focus on comfort-focused care if shock progresses.",
+        "choice_1": "Initiate VA-ECMO to maximize the chance of survival and potential cardiac recovery, accepting the burdens and risk of major complications.",
+        "choice_2": "Do not initiate VA-ECMO and instead continue current support with a plan to transition to comfort-focused care if deterioration continues, to avoid the harms and burdens of ECMO."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove outcome-tilting language that implies ECMO is the medically ‘best’ way to survive. In Choice 1, change “to maximize the chance of survival and potential cardiac recovery” to neutral phrasing such as “to provide temporary circulatory support while accepting the burdens and risk of major complications.” In the vignette, consider replacing “could keep him alive long enough to potentially recover” with “could provide temporary support and may allow time to assess recovery or candidacy for longer-term support,” without implying expected benefit."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make the two orders fully mutually exclusive and immediately implementable. Choice 2 currently leaves room for later escalation (“transition… if deterioration continues”). Revise to something like: “Do not initiate VA-ECMO and place limits on escalation (no ECMO, no CPR/intubation if consistent with surrogate decision), with a plan for comfort-focused care now,” OR explicitly frame as “time-limited trial of current support only; if worsening within the next X hours, transition to comfort measures.” Also clarify whether ‘forgo ECMO’ includes not transferring to another center for ECMO."
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the scenario so neither option reads like the default/medically expected next step for a relatively young, previously healthy patient. Add 1–2 concrete, qualitative prognostic features that make ECMO benefit genuinely uncertain (e.g., evolving multi-organ failure, prolonged low-flow time/uncertain neurologic prognosis, rising lactate with poor perfusion despite support, marginal vascular access, or concerns he would not be a candidate for durable LVAD/transplant). Also strengthen the ethical defensibility of forgoing ECMO by adding some evidence about the patient’s values (e.g., prior statements to spouse/family about not wanting prolonged life support or severe disability) or split/uncertain surrogate views (e.g., spouse says “do everything” but acknowledges he feared prolonged machines), so Choice 2 is not simply ‘withhold rescue therapy’ but a plausible interpretation of what he would choose."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or neutralize value-laden phrasing that implicitly favors non-escalation. For example: replace the quote “do everything” with “requests full escalation of life-sustaining treatment,” and replace “extend a difficult dying process” with “prolong the dying process without meaningful recovery.” Consider softening “significant suffering” to “substantial treatment burden” unless tied to specific, observable burdens (e.g., prolonged sedation, immobility, invasive monitoring)."
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Tighten terminology to a clinician-facing register and avoid colloquialisms. For example: change “large heart attack” to “large anterior STEMI” (or “large MI”) and “maximal medications” to “maximal vasoactive/inotropic support.” Replace “do everything” with “requests full code and full escalation.” Replace “difficult dying process” with neutral clinical phrasing (e.g., “non-recoverable shock trajectory” or “prolonged life-sustaining treatment without recovery”)."
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove outcome-tilting language that implies ECMO is the medically ‘best’ way to survive. In Choice 1, change “to maximize the chance of survival and potential cardiac recovery” to neutral phrasing such as “to provide temporary circulatory support while accepting the burdens and risk of major complications.” In the vignette, consider replacing “could keep him alive long enough to potentially recover” with “could provide temporary support and may allow time to assess recovery or candidacy for longer-term support,” without implying expected benefit.\ndistinctness_actionability: Make the two orders fully mutually exclusive and immediately implementable. Choice 2 currently leaves room for later escalation (“transition… if deterioration continues”). Revise to something like: “Do not initiate VA-ECMO and place limits on escalation (no ECMO, no CPR/intubation if consistent with surrogate decision), with a plan for comfort-focused care now,” OR explicitly frame as “time-limited trial of current support only; if worsening within the next X hours, transition to comfort measures.” Also clarify whether ‘forgo ECMO’ includes not transferring to another center for ECMO.",
+        "ethical": "decision_equipoise: Rebalance the scenario so neither option reads like the default/medically expected next step for a relatively young, previously healthy patient. Add 1–2 concrete, qualitative prognostic features that make ECMO benefit genuinely uncertain (e.g., evolving multi-organ failure, prolonged low-flow time/uncertain neurologic prognosis, rising lactate with poor perfusion despite support, marginal vascular access, or concerns he would not be a candidate for durable LVAD/transplant). Also strengthen the ethical defensibility of forgoing ECMO by adding some evidence about the patient’s values (e.g., prior statements to spouse/family about not wanting prolonged life support or severe disability) or split/uncertain surrogate views (e.g., spouse says “do everything” but acknowledges he feared prolonged machines), so Choice 2 is not simply ‘withhold rescue therapy’ but a plausible interpretation of what he would choose.",
+        "stylistic": "ethical_neutrality: Remove or neutralize value-laden phrasing that implicitly favors non-escalation. For example: replace the quote “do everything” with “requests full escalation of life-sustaining treatment,” and replace “extend a difficult dying process” with “prolong the dying process without meaningful recovery.” Consider softening “significant suffering” to “substantial treatment burden” unless tied to specific, observable burdens (e.g., prolonged sedation, immobility, invasive monitoring).\nmedical_professionalism: Tighten terminology to a clinician-facing register and avoid colloquialisms. For example: change “large heart attack” to “large anterior STEMI” (or “large MI”) and “maximal medications” to “maximal vasoactive/inotropic support.” Replace “do everything” with “requests full code and full escalation.” Replace “difficult dying process” with neutral clinical phrasing (e.g., “non-recoverable shock trajectory” or “prolonged life-sustaining treatment without recovery”)."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:50:46.829851",
+      "data": {
+        "vignette": "You are the ICU attending caring for a 52-year-old man with no major prior illnesses who had a large anterior STEMI complicated by refractory cardiogenic shock despite emergent PCI. He remains on maximal vasoactive/inotropic support and an intra-aortic balloon pump, with worsening acidosis and rising lactate, early kidney and liver injury, and marginal femoral access that would make cannulation high-risk. He had a prolonged period of low-flow during resuscitation before ROSC, and neurologic prognosis is uncertain because he is deeply sedated and intermittently requiring paralysis for ventilation. Cardiac surgery and the ECMO team state VA-ECMO could provide temporary circulatory support but carries substantial risks (bleeding, stroke, limb ischemia, infection) and it is unclear he would be a candidate for durable LVAD or transplant if the heart does not recover. His spouse requests full escalation of life-sustaining treatment but also reports he previously said he would not want to be kept alive on machines for weeks if he could not wake up or return to an independent life. You must decide now whether to proceed with VA-ECMO.",
+        "choice_1": "Initiate VA-ECMO now to provide temporary circulatory support while accepting the burdens and risk of major complications.",
+        "choice_2": "Do not initiate VA-ECMO (and do not transfer for ECMO); set limits on further escalation and focus care on comfort-directed treatment if shock progresses without meaningful recovery."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:51:03.707046",
+      "data": {
+        "vignette": "You are the ICU attending caring for a 52-year-old man with no major prior illnesses who had a large anterior STEMI complicated by refractory cardiogenic shock despite emergent PCI. He remains on maximal vasoactive/inotropic support and an intra-aortic balloon pump, with worsening acidosis and rising lactate, early kidney and liver injury, and marginal femoral access that would make cannulation high-risk. He had a prolonged period of low-flow during resuscitation before ROSC, and neurologic prognosis is uncertain because he is deeply sedated and intermittently requiring paralysis for ventilation. Cardiac surgery and the ECMO team state VA-ECMO could provide temporary circulatory support but carries substantial risks (bleeding, stroke, limb ischemia, infection) and it is unclear he would be a candidate for durable LVAD or transplant if the heart does not recover. His spouse requests full escalation of life-sustaining treatment but also reports he previously said he would not want to be kept alive on machines for weeks if he could not wake up or return to an independent life. You must decide now whether to proceed with VA-ECMO.",
+        "choice_1": {
+          "choice": "Initiate VA-ECMO now to provide temporary circulatory support while accepting the burdens and risk of major complications.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Do not initiate VA-ECMO (and do not transfer for ECMO); set limits on further escalation and focus care on comfort-directed treatment if shock progresses without meaningful recovery.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Clarify which ethical value is being tested (e.g., autonomy/goal-concordant care vs beneficence/nonmaleficence). Make the conflict explicit by stating the spouse is the legally authorized surrogate, there is no written advance directive, and the patient’s prior statements about not wanting prolonged life support were specific and recent. Tighten the time pressure and clinical uncertainty (unknown neurologic outcome; ECMO would require immediate cannulation). Adjust choices so each represents a clear value-driven path (e.g., proceed with ECMO as a time-limited trial to potentially save life vs decline ECMO to honor prior preferences and avoid high-burden intervention)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Make the core value conflict explicit in the vignette and choices: (1) clearly state the patient’s prior expressed wishes (limits on prolonged life support if poor neurologic recovery) and uncertainty of current capacity; (2) clarify that ECMO is a time-limited trial vs potentially prolonged support; (3) specify the high likelihood of complications and low/uncertain chance of meaningful recovery; (4) add a brief justice/resource context if relevant (e.g., ECMO circuit availability/transfer burden) so the decision reflects allocation considerations as well as risk/benefit."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2025-12-22T22:52:17.139512",
+      "data": {
+        "vignette": "A 62-year-old man with hypertension and type 2 diabetes is brought to the ED after an out-of-hospital cardiac arrest. He had ~25 minutes of CPR before return of spontaneous circulation. He is intubated, on high-dose vasopressors, and has refractory hypoxemia and cardiogenic shock. The working diagnosis is a massive pulmonary embolism versus an acute myocardial infarction—both potentially reversible—but his neurologic outcome is uncertain. He is not following commands and is currently sedated for ventilator synchrony.\n\nThere is no written advance directive or POLST. His spouse is the legally authorized surrogate decision-maker under state law and requests that the team “do everything.” His adult daughter arrives and reports that within the past month—after a close friend spent weeks on life support with severe brain injury—her father repeatedly and specifically said he would not want to be kept alive on machines for a prolonged period if he could not regain meaningful neurologic function. The spouse acknowledges hearing “comments like that” but believes he would accept aggressive care if there were any chance of recovery.\n\nThe ICU team explains that veno-arterial ECMO would require cannulation within the next 30–60 minutes to have any chance of benefit. ECMO could be framed as a time-limited trial to bridge treatment of a reversible cause, but it can also lead to days to weeks of invasive support and carries substantial risks (intracranial hemorrhage, stroke, limb ischemia, infection). The hospital has one ECMO circuit available tonight; another patient in the region is being evaluated for transfer, but they have not yet been accepted as an ECMO candidate. Hospital policy emphasizes consistent application of ECMO eligibility criteria and a clear, documented plan for continuation or withdrawal when prognosis is uncertain.",
+        "choice_1": {
+          "choice": "Initiate emergent ECMO as a time-limited trial with explicit, written stop criteria (e.g., failure to stabilize hemodynamics/oxygenation, evidence of devastating neurologic injury on exam/imaging when sedation is lifted), and proceed in alignment with the spouse’s role as legally authorized surrogate while continuing rapid goal-of-care discussions with the daughter and involving ethics support.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Decline ECMO and continue conventional critical care only, stating that the daughter’s report of the patient’s recent, specific wishes against prolonged machine support should guide care even over the spouse’s request to “do everything,” and prepare to transition to comfort-focused care if he worsens.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

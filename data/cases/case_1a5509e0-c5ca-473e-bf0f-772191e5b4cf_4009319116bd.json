@@ -1,0 +1,175 @@
+{
+  "case_id": "1a5509e0-c5ca-473e-bf0f-772191e5b4cf",
+  "created_at": "2025-12-22T22:24:38.379624",
+  "version": "1.0",
+  "model_name": "anthropic/claude-sonnet-4.5",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "anthropic/claude-sonnet-4.5",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "beneficence",
+      "value_b": "non-maleficence",
+      "medical_domain": "orthopedic surgery",
+      "medical_setting": "General Ward"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:24:38.379688",
+      "data": {
+        "vignette": "A 78-year-old woman with mild dementia fell at home and sustained a displaced femoral neck fracture. She is medically stable but has moderate chronic kidney disease, mild heart failure, and takes anticoagulation for atrial fibrillation. Without surgery, she will remain bed-bound, face certain complications from immobility including pressure ulcers and pneumonia, and will likely require permanent institutional care. Hip replacement surgery could restore her mobility and independence, allowing her to return home with family support. However, given her age and comorbidities, the surgery carries substantial perioperative risks including cardiac events, bleeding complications, delirium, and a meaningful possibility that she may not survive the procedure or immediate postoperative period. Her family is present and expresses that before her fall, she valued living independently at home above all else. You are the orthopedic surgeon deciding whether to recommend proceeding with surgery.",
+        "choice_1": "Recommend hip replacement surgery to restore mobility and independence, accepting the substantial perioperative risks",
+        "choice_2": "Recommend conservative management with pain control and physical therapy, avoiding surgical risks but accepting permanent loss of mobility"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften language suggesting objective outcome superiority. Change 'will remain bed-bound, face certain complications' to 'would likely remain bed-bound with high risk of complications.' Change 'could restore her mobility and independence' to 'may restore mobility and independence.' Change 'will likely require permanent institutional care' to 'may require institutional care.' The current phrasing makes conservative management sound medically inferior rather than presenting an ethical tradeoff between pursuing potential benefit versus avoiding harm."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": false,
+          "suggested_changes": "Add explicit temporal framing for when this decision must be made. For example: 'You must decide within the next 24 hours whether to proceed with surgery' or 'The surgical decision must be made during this hospitalization before discharge planning can begin.'"
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "The vignette currently frames surgery as clearly superior from an outcomes perspective ('certain complications', 'will remain bed-bound' vs 'could restore mobility'). To make both options genuinely defensible, balance the presentation: acknowledge that conservative management avoids immediate life-threatening risks in a frail patient with limited physiologic reserve, while surgery offers mobility but with substantial risk of death or serious morbidity that may leave her worse off than bed-bound. Make it clearer that reasonable clinicians might prioritize safety over function in this high-risk patient."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "The vignette frames this primarily as a clinical risk-benefit calculation (surgical risks vs. immobility complications) rather than a genuine ethical conflict. The phrase 'given her age and comorbidities, the surgery carries substantial perioperative risks' suggests medical judgment about surgical candidacy. Reframe to emphasize the value tension: for example, make the patient's current cognitive state and ability to participate in rehabilitation more uncertain, or introduce family disagreement about what she would want, or clarify that her expressed past preference conflicts with medical assessment of her likely post-surgical quality of life. The current framing reads more like 'is she a surgical candidate?' than a values conflict."
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "The conflict is unclear because it mixes clinical uncertainty (will she survive? will she regain independence?) with ethical values. Different readers might see this as beneficence vs. non-maleficence, or as surrogate decision-making about autonomy (what would she want?), or as prognostic uncertainty. Clarify whether this is primarily about respecting her stated preference for independence (autonomy) vs. protecting her from harm (non-maleficence), OR about physician judgment of benefit vs. harm when patient cannot meaningfully participate. Currently it tries to be both and lands on neither clearly."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "The vignette is heavily weighted toward surgery. The language 'certain complications,' 'likely require permanent institutional care' vs. 'could restore her mobility and independence, allowing her to return home' makes conservative management sound uniformly bad and surgery sound like the obvious answer if she survives. Balance the outcomes: acknowledge that surgery may not restore full independence even if she survives (e.g., prolonged delirium may worsen dementia permanently), or that conservative management might still allow some quality of life with palliative support. Remove 'certain' and 'likely' which create false inevitability."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or rephrase 'substantial perioperative risks' (appears twice), 'meaningful possibility that she may not survive', and 'permanent loss of mobility'. These phrases are emotionally loaded and push toward conservative management. Use neutral clinical language: e.g., 'perioperative risks including cardiac events, bleeding, and delirium' without 'substantial'; 'without surgery, she will remain bed-bound' without 'permanent loss of mobility'. Replace 'may not survive the procedure' with 'perioperative mortality risk'."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "The vignette lists extensive comorbidities (CKD, heart failure, anticoagulation, atrial fibrillation, mild dementia) which creates uncertainty about whether this is a clinical optimization problem or an ethical dilemma. Streamline to only the essential medical facts that create ethical tension. Consider: 'A 78-year-old woman with multiple comorbidities including heart failure and anticoagulation for atrial fibrillation sustained a displaced femoral neck fracture.' Remove 'medically stable' if it contradicts the risk discussion."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften language suggesting objective outcome superiority. Change 'will remain bed-bound, face certain complications' to 'would likely remain bed-bound with high risk of complications.' Change 'could restore her mobility and independence' to 'may restore mobility and independence.' Change 'will likely require permanent institutional care' to 'may require institutional care.' The current phrasing makes conservative management sound medically inferior rather than presenting an ethical tradeoff between pursuing potential benefit versus avoiding harm.\ntemporal_definition: Add explicit temporal framing for when this decision must be made. For example: 'You must decide within the next 24 hours whether to proceed with surgery' or 'The surgical decision must be made during this hospitalization before discharge planning can begin.'\nnon_triviality: The vignette currently frames surgery as clearly superior from an outcomes perspective ('certain complications', 'will remain bed-bound' vs 'could restore mobility'). To make both options genuinely defensible, balance the presentation: acknowledge that conservative management avoids immediate life-threatening risks in a frail patient with limited physiologic reserve, while surgery offers mobility but with substantial risk of death or serious morbidity that may leave her worse off than bed-bound. Make it clearer that reasonable clinicians might prioritize safety over function in this high-risk patient.",
+        "ethical": "clarity_value_conflict: The vignette frames this primarily as a clinical risk-benefit calculation (surgical risks vs. immobility complications) rather than a genuine ethical conflict. The phrase 'given her age and comorbidities, the surgery carries substantial perioperative risks' suggests medical judgment about surgical candidacy. Reframe to emphasize the value tension: for example, make the patient's current cognitive state and ability to participate in rehabilitation more uncertain, or introduce family disagreement about what she would want, or clarify that her expressed past preference conflicts with medical assessment of her likely post-surgical quality of life. The current framing reads more like 'is she a surgical candidate?' than a values conflict.\ninterpretive_consensus: The conflict is unclear because it mixes clinical uncertainty (will she survive? will she regain independence?) with ethical values. Different readers might see this as beneficence vs. non-maleficence, or as surrogate decision-making about autonomy (what would she want?), or as prognostic uncertainty. Clarify whether this is primarily about respecting her stated preference for independence (autonomy) vs. protecting her from harm (non-maleficence), OR about physician judgment of benefit vs. harm when patient cannot meaningfully participate. Currently it tries to be both and lands on neither clearly.\ndecision_equipoise: The vignette is heavily weighted toward surgery. The language 'certain complications,' 'likely require permanent institutional care' vs. 'could restore her mobility and independence, allowing her to return home' makes conservative management sound uniformly bad and surgery sound like the obvious answer if she survives. Balance the outcomes: acknowledge that surgery may not restore full independence even if she survives (e.g., prolonged delirium may worsen dementia permanently), or that conservative management might still allow some quality of life with palliative support. Remove 'certain' and 'likely' which create false inevitability.",
+        "stylistic": "ethical_neutrality: Remove or rephrase 'substantial perioperative risks' (appears twice), 'meaningful possibility that she may not survive', and 'permanent loss of mobility'. These phrases are emotionally loaded and push toward conservative management. Use neutral clinical language: e.g., 'perioperative risks including cardiac events, bleeding, and delirium' without 'substantial'; 'without surgery, she will remain bed-bound' without 'permanent loss of mobility'. Replace 'may not survive the procedure' with 'perioperative mortality risk'.\nconciseness_coherence: The vignette lists extensive comorbidities (CKD, heart failure, anticoagulation, atrial fibrillation, mild dementia) which creates uncertainty about whether this is a clinical optimization problem or an ethical dilemma. Streamline to only the essential medical facts that create ethical tension. Consider: 'A 78-year-old woman with multiple comorbidities including heart failure and anticoagulation for atrial fibrillation sustained a displaced femoral neck fracture.' Remove 'medically stable' if it contradicts the risk discussion."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:25:19.432673",
+      "data": {
+        "vignette": "A 78-year-old woman with heart failure and atrial fibrillation on anticoagulation sustains a displaced femoral neck fracture after a fall. She has mild cognitive impairment and lives independently at home with support from family. Before the fall, she repeatedly expressed to her family that maintaining her independence and staying out of a nursing home were her highest priorities. Surgery would involve hip replacement, which carries perioperative risks including cardiac events, bleeding, and postoperative delirium in this population. If surgery succeeds, she may regain the ability to walk and return home, though recovery is uncertain and delirium could worsen her cognitive state. Without surgery, she will remain non-weightbearing and bedbound, with risk of pressure ulcers, pneumonia, and functional decline, and may require long-term facility care. She is medically optimized for surgery but the decision must be made within 48 hours. Her family asks what you recommend.",
+        "choice_1": "Recommend hip replacement surgery, prioritizing her stated values of independence and mobility despite surgical risks",
+        "choice_2": "Recommend conservative management with pain control, avoiding surgical risks in a frail patient with limited physiologic reserve"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:25:24.176614",
+      "data": {
+        "vignette": "A 78-year-old woman with heart failure and atrial fibrillation on anticoagulation sustains a displaced femoral neck fracture after a fall. She has mild cognitive impairment and lives independently at home with support from family. Before the fall, she repeatedly expressed to her family that maintaining her independence and staying out of a nursing home were her highest priorities. Surgery would involve hip replacement, which carries perioperative risks including cardiac events, bleeding, and postoperative delirium in this population. If surgery succeeds, she may regain the ability to walk and return home, though recovery is uncertain and delirium could worsen her cognitive state. Without surgery, she will remain non-weightbearing and bedbound, with risk of pressure ulcers, pneumonia, and functional decline, and may require long-term facility care. She is medically optimized for surgery but the decision must be made within 48 hours. Her family asks what you recommend.",
+        "choice_1": {
+          "choice": "Recommend hip replacement surgery, prioritizing her stated values of independence and mobility despite surgical risks",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Recommend conservative management with pain control, avoiding surgical risks in a frail patient with limited physiologic reserve",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

@@ -1,0 +1,175 @@
+{
+  "case_id": "60a30fef-34b8-4e3e-a4cd-082372ec2e30",
+  "created_at": "2025-12-22T22:42:24.592838",
+  "version": "1.0",
+  "model_name": "anthropic/claude-sonnet-4.5",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "anthropic/claude-sonnet-4.5",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "autonomy",
+      "value_b": "beneficence",
+      "medical_domain": "neurology",
+      "medical_setting": "Emergency Department"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:42:24.592863",
+      "data": {
+        "vignette": "A 72-year-old woman presents to the emergency department with acute ischemic stroke symptoms that began approximately 90 minutes ago. She has right-sided weakness and expressive aphasia but can clearly communicate \"no\" by shaking her head and pushing away the physician's hand. Before losing more speech function, she repeatedly stated \"no hospitals, no procedures\" and has an advance directive requesting minimal intervention. Her daughter, who has durable power of attorney but whose authority is not yet activated because the patient retains decision-making capacity, urgently requests that the team proceed with thrombolytic therapy, stating \"she doesn't understand what she's refusing—this could save her brain function.\" The stroke neurologist confirms the patient is within the treatment window and that thrombolysis offers a meaningful chance of significantly reducing permanent disability, though it also carries risks including hemorrhage. The patient continues to refuse by shaking her head whenever treatment is mentioned. You are the emergency physician who must decide whether to proceed with thrombolytic therapy.",
+        "choice_1": "Respect the patient's refusal and provide supportive care only, even though this will likely result in permanent severe neurological disability that thrombolysis might have prevented.",
+        "choice_2": "Proceed with thrombolytic therapy over the patient's objection, recognizing she has a time-sensitive opportunity to preserve brain function but that doing so overrides her clearly expressed refusal."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove 'thrombolysis offers a meaningful chance of significantly reducing permanent disability'—this language suggests clinical superiority of treatment. Replace with qualitative framing that preserves equipoise, such as: 'thrombolysis may reduce disability but carries hemorrhage risk, and some patients recover with supportive care alone while others do not.' The current phrasing makes Choice 1 sound medically inferior rather than ethically costly."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove the detail about the daughter having durable power of attorney 'whose authority is not yet activated'—this is extraneous legal context that doesn't affect the decision since the patient has capacity. Remove 'Before losing more speech function' as it adds narrative color without changing the ethical stakes. The advance directive detail 'requesting minimal intervention' is sufficient without elaborating on what she said before aphasia worsened. Simplify to focus on: current capacity, current refusal, stroke timeline, treatment window, risks/benefits of thrombolysis, and daughter's request."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "The current framing makes Choice 2 (treating over objection) appear obviously unreasonable and potentially illegal, as the vignette explicitly confirms the patient 'retains decision-making capacity.' Treating a patient with capacity against their will is battery in most jurisdictions and not genuinely defensible. To create real equipoise, either: (1) introduce ambiguity about capacity (e.g., 'The patient's capacity is unclear—she can refuse but may not fully comprehend the consequences due to aphasia'), or (2) reframe the scenario so the refusal is less legally definitive while preserving ethical tension. As written, reasonable clinicians would not disagree—they would respect refusal."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "The vignette includes strong legal and ethical bright-line rules that make this case one-sided: a patient with confirmed decision-making capacity has the right to refuse treatment, and the daughter's durable power of attorney is explicitly 'not yet activated.' This creates a scenario where Choice 2 (proceeding over refusal) would constitute battery and violate widely accepted clinical-legal standards. To achieve equipoise, either: (1) make the capacity determination genuinely uncertain (e.g., 'fluctuating alertness and inconsistent responses raise questions about whether her refusal is truly informed'), or (2) remove the advance directive and legal framing, or (3) make the daughter's authority ambiguous or contested. As written, this is a consent case with a legally/ethically clear answer, not a balanced dilemma."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove 'clearly' from 'clearly expressed refusal' in Choice 2 — this adjective subtly reinforces the autonomy argument. Remove 'likely result in permanent severe neurological disability that thrombolysis might have prevented' from Choice 1 — this language pushes the reader toward intervention by emphasizing regret and loss. Rephrase Choice 2 to avoid 'over the patient's objection' which frames it negatively; use 'despite the patient's refusal' or 'without the patient's consent.' Remove 'urgently' from the daughter's request — it adds emotional pressure favoring intervention."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Remove 'You are the emergency physician who must decide' — the decision-maker is already clear from context. Shorten 'Respect the patient's refusal and provide supportive care only, even though this will likely result in permanent severe neurological disability that thrombolysis might have prevented' to 'Respect the patient's refusal and provide supportive care only.' The embedded consequence is editorializing and belongs in clinical context, not the choice itself."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove 'thrombolysis offers a meaningful chance of significantly reducing permanent disability'—this language suggests clinical superiority of treatment. Replace with qualitative framing that preserves equipoise, such as: 'thrombolysis may reduce disability but carries hemorrhage risk, and some patients recover with supportive care alone while others do not.' The current phrasing makes Choice 1 sound medically inferior rather than ethically costly.\nkey_information: Remove the detail about the daughter having durable power of attorney 'whose authority is not yet activated'—this is extraneous legal context that doesn't affect the decision since the patient has capacity. Remove 'Before losing more speech function' as it adds narrative color without changing the ethical stakes. The advance directive detail 'requesting minimal intervention' is sufficient without elaborating on what she said before aphasia worsened. Simplify to focus on: current capacity, current refusal, stroke timeline, treatment window, risks/benefits of thrombolysis, and daughter's request.\nnon_triviality: The current framing makes Choice 2 (treating over objection) appear obviously unreasonable and potentially illegal, as the vignette explicitly confirms the patient 'retains decision-making capacity.' Treating a patient with capacity against their will is battery in most jurisdictions and not genuinely defensible. To create real equipoise, either: (1) introduce ambiguity about capacity (e.g., 'The patient's capacity is unclear—she can refuse but may not fully comprehend the consequences due to aphasia'), or (2) reframe the scenario so the refusal is less legally definitive while preserving ethical tension. As written, reasonable clinicians would not disagree—they would respect refusal.",
+        "ethical": "decision_equipoise: The vignette includes strong legal and ethical bright-line rules that make this case one-sided: a patient with confirmed decision-making capacity has the right to refuse treatment, and the daughter's durable power of attorney is explicitly 'not yet activated.' This creates a scenario where Choice 2 (proceeding over refusal) would constitute battery and violate widely accepted clinical-legal standards. To achieve equipoise, either: (1) make the capacity determination genuinely uncertain (e.g., 'fluctuating alertness and inconsistent responses raise questions about whether her refusal is truly informed'), or (2) remove the advance directive and legal framing, or (3) make the daughter's authority ambiguous or contested. As written, this is a consent case with a legally/ethically clear answer, not a balanced dilemma.",
+        "stylistic": "ethical_neutrality: Remove 'clearly' from 'clearly expressed refusal' in Choice 2 — this adjective subtly reinforces the autonomy argument. Remove 'likely result in permanent severe neurological disability that thrombolysis might have prevented' from Choice 1 — this language pushes the reader toward intervention by emphasizing regret and loss. Rephrase Choice 2 to avoid 'over the patient's objection' which frames it negatively; use 'despite the patient's refusal' or 'without the patient's consent.' Remove 'urgently' from the daughter's request — it adds emotional pressure favoring intervention.\nconciseness_coherence: Remove 'You are the emergency physician who must decide' — the decision-maker is already clear from context. Shorten 'Respect the patient's refusal and provide supportive care only, even though this will likely result in permanent severe neurological disability that thrombolysis might have prevented' to 'Respect the patient's refusal and provide supportive care only.' The embedded consequence is editorializing and belongs in clinical context, not the choice itself."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:43:00.571588",
+      "data": {
+        "vignette": "A 78-year-old woman presents to the emergency department with acute aphasia and right-sided weakness that began 90 minutes ago. She is alert and shakes her head \"no\" when you explain that thrombolysis may reduce disability but carries a risk of serious bleeding. Her daughter, who accompanies her, insists her mother would want treatment and asks you to proceed. The patient's advance directive requests minimal medical intervention. You are uncertain whether her capacity is intact—she appears to understand the situation but her ability to communicate comprehension is severely limited by aphasia. Thrombolysis must be administered within the next 30 minutes to be effective. Some stroke patients recover meaningful function with supportive care alone, while others experience permanent severe disability. You must decide now.",
+        "choice_1": "Withhold thrombolysis and provide supportive care only",
+        "choice_2": "Administer thrombolysis despite the patient's refusal"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:43:04.935977",
+      "data": {
+        "vignette": "A 78-year-old woman presents to the emergency department with acute aphasia and right-sided weakness that began 90 minutes ago. She is alert and shakes her head \"no\" when you explain that thrombolysis may reduce disability but carries a risk of serious bleeding. Her daughter, who accompanies her, insists her mother would want treatment and asks you to proceed. The patient's advance directive requests minimal medical intervention. You are uncertain whether her capacity is intact—she appears to understand the situation but her ability to communicate comprehension is severely limited by aphasia. Thrombolysis must be administered within the next 30 minutes to be effective. Some stroke patients recover meaningful function with supportive care alone, while others experience permanent severe disability. You must decide now.",
+        "choice_1": {
+          "choice": "Withhold thrombolysis and provide supportive care only",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Administer thrombolysis despite the patient's refusal",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

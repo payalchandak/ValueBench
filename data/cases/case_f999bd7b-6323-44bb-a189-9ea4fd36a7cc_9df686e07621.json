@@ -1,0 +1,175 @@
+{
+  "case_id": "f999bd7b-6323-44bb-a189-9ea4fd36a7cc",
+  "created_at": "2025-12-22T22:27:30.507476",
+  "version": "1.0",
+  "model_name": "anthropic/claude-sonnet-4.5",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "anthropic/claude-sonnet-4.5",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "non-maleficence",
+      "value_b": "justice",
+      "medical_domain": "pediatrics",
+      "medical_setting": "Outpatient Clinic"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:27:30.507495",
+      "data": {
+        "vignette": "A 7-year-old child with severe developmental delays and recurrent aspiration pneumonia is brought to your outpatient pediatrics clinic by her mother. The child has required three hospitalizations in the past year. A gastrostomy tube and ongoing intensive home nursing support would substantially reduce her risk of life-threatening aspiration events and improve her quality of life. However, your clinic operates within a publicly funded health system with a fixed annual budget for home nursing services. Approving this child for the intensive home nursing package she needs would consume resources equivalent to basic developmental support services for approximately fifteen other children with less acute but still significant needs on the waiting list. The clinic director has asked you, as the treating physician, whether to approve the intensive home nursing package for this patient or to provide her with standard follow-up care while preserving resources for the broader patient population.",
+        "choice_1": "Approve the intensive home nursing package to prevent life-threatening aspiration events for this child",
+        "choice_2": "Provide standard follow-up care and preserve resources for basic services to the larger group of children on the waiting list"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften 'would substantially reduce her risk' and 'improve her quality of life' as these frame the intensive package as objectively clinically superior. Replace with more neutral language such as: 'The team believes a gastrostomy tube and intensive home nursing could help manage her aspiration risk, though she would still require careful monitoring.' The clinical facts (recurrent aspiration, hospitalizations, G-tube option) should remain, but avoid language suggesting one option delivers clearly better medical outcomes."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": false,
+          "suggested_changes": "Add a clear temporal constraint. For example: 'The clinic's quarterly resource allocation meeting is in 48 hours, and you must make your recommendation by then' or 'The director needs your decision by the end of the week to finalize this month's allocations.'"
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "The vignette currently frames Choice 2 as providing only 'standard follow-up care' while the child faces 'life-threatening' events, making it appear obviously inferior and ethically indefensible. To make both options reasonable: (1) clarify what 'standard follow-up care' includes (e.g., basic nursing visits, feeding modifications, outpatient monitoring), (2) remove absolute language like 'life-threatening' or replace with 'serious but manageable risk', and (3) acknowledge that children can be cared for—albeit with higher burden on family—without the intensive package. Both options must feel like reasonable physicians could defend them."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "The vignette uses 'life-threatening aspiration events' and a 15:1 resource ratio, both of which are highly directional and would dominate any ethical framing. Small wording changes (e.g., replacing 'life-threatening' with 'serious' or changing the ratio) would drastically alter the perceived stakes. Remove numeric ratios and replace 'life-threatening' with qualitative language that preserves clinical seriousness without creating one-sided urgency (e.g., 'reduce recurrent aspiration and hospitalizations')."
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "The vignette is not balanced. Choice 1 offers 'life-threatening' prevention with 'improved quality of life,' while Choice 2 offers only 'standard follow-up care' with no articulated medical benefit to the index patient. The 15:1 quantitative ratio and the phrase 'life-threatening' create an unbalanced scenario that pressures toward one answer. Remove numerical comparisons (e.g., 'fifteen other children'). Reframe Choice 2 to include a genuine medical plan for the index patient that carries real ethical weight (e.g., less intensive but still meaningful support, or family-provided care training). Avoid 'life-threatening' language that makes Choice 2 appear medically negligent."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Remove the phrase 'substantially reduce her risk of life-threatening aspiration events and improve her quality of life' as it creates clinical superiority for Choice 1. Rephrase to: 'A gastrostomy tube and ongoing intensive home nursing support have been recommended to address recurrent aspiration risk.' Also remove 'life-threatening' from Choice 1 description - change to 'prevent recurrent aspiration events.' The vignette currently frames one option as medically superior (life-saving vs. status quo), which violates the constraint that clinical facts should establish context only, not resolve the dilemma."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften 'would substantially reduce her risk' and 'improve her quality of life' as these frame the intensive package as objectively clinically superior. Replace with more neutral language such as: 'The team believes a gastrostomy tube and intensive home nursing could help manage her aspiration risk, though she would still require careful monitoring.' The clinical facts (recurrent aspiration, hospitalizations, G-tube option) should remain, but avoid language suggesting one option delivers clearly better medical outcomes.\ntemporal_definition: Add a clear temporal constraint. For example: 'The clinic's quarterly resource allocation meeting is in 48 hours, and you must make your recommendation by then' or 'The director needs your decision by the end of the week to finalize this month's allocations.'\nnon_triviality: The vignette currently frames Choice 2 as providing only 'standard follow-up care' while the child faces 'life-threatening' events, making it appear obviously inferior and ethically indefensible. To make both options reasonable: (1) clarify what 'standard follow-up care' includes (e.g., basic nursing visits, feeding modifications, outpatient monitoring), (2) remove absolute language like 'life-threatening' or replace with 'serious but manageable risk', and (3) acknowledge that children can be cared for—albeit with higher burden on family—without the intensive package. Both options must feel like reasonable physicians could defend them.",
+        "ethical": "directional_stability: The vignette uses 'life-threatening aspiration events' and a 15:1 resource ratio, both of which are highly directional and would dominate any ethical framing. Small wording changes (e.g., replacing 'life-threatening' with 'serious' or changing the ratio) would drastically alter the perceived stakes. Remove numeric ratios and replace 'life-threatening' with qualitative language that preserves clinical seriousness without creating one-sided urgency (e.g., 'reduce recurrent aspiration and hospitalizations').\ndecision_equipoise: The vignette is not balanced. Choice 1 offers 'life-threatening' prevention with 'improved quality of life,' while Choice 2 offers only 'standard follow-up care' with no articulated medical benefit to the index patient. The 15:1 quantitative ratio and the phrase 'life-threatening' create an unbalanced scenario that pressures toward one answer. Remove numerical comparisons (e.g., 'fifteen other children'). Reframe Choice 2 to include a genuine medical plan for the index patient that carries real ethical weight (e.g., less intensive but still meaningful support, or family-provided care training). Avoid 'life-threatening' language that makes Choice 2 appear medically negligent.",
+        "stylistic": "conciseness_coherence: Remove the phrase 'substantially reduce her risk of life-threatening aspiration events and improve her quality of life' as it creates clinical superiority for Choice 1. Rephrase to: 'A gastrostomy tube and ongoing intensive home nursing support have been recommended to address recurrent aspiration risk.' Also remove 'life-threatening' from Choice 1 description - change to 'prevent recurrent aspiration events.' The vignette currently frames one option as medically superior (life-saving vs. status quo), which violates the constraint that clinical facts should establish context only, not resolve the dilemma."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:28:05.951219",
+      "data": {
+        "vignette": "A 4-year-old girl with severe cerebral palsy and intellectual disability has experienced multiple aspiration pneumonias over the past year, each requiring hospitalization. She currently receives oral feeding with modified consistencies and basic nursing follow-up. Her care team has proposed a gastrostomy tube with intensive home nursing support—including daily respiratory therapy, feeding management, and close monitoring—to reduce aspiration risk. Her family is willing to accept this plan. However, your clinic's director has asked you to consider resource allocation: intensive home nursing slots are scarce, and approving this package would mean deferring similar support for many other children with chronic conditions who are also at risk of recurrent hospitalizations. The director needs your recommendation by the end of the week. You must decide whether to allocate the intensive package to this patient or to reserve it for distribution among other children in the queue.",
+        "choice_1": "Approve the intensive home nursing package and gastrostomy tube for this patient to address her recurrent aspiration and hospitalizations",
+        "choice_2": "Recommend standard outpatient follow-up and family training, preserving intensive resources for distribution among other children in the queue"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:28:10.711227",
+      "data": {
+        "vignette": "A 4-year-old girl with severe cerebral palsy and intellectual disability has experienced multiple aspiration pneumonias over the past year, each requiring hospitalization. She currently receives oral feeding with modified consistencies and basic nursing follow-up. Her care team has proposed a gastrostomy tube with intensive home nursing support—including daily respiratory therapy, feeding management, and close monitoring—to reduce aspiration risk. Her family is willing to accept this plan. However, your clinic's director has asked you to consider resource allocation: intensive home nursing slots are scarce, and approving this package would mean deferring similar support for many other children with chronic conditions who are also at risk of recurrent hospitalizations. The director needs your recommendation by the end of the week. You must decide whether to allocate the intensive package to this patient or to reserve it for distribution among other children in the queue.",
+        "choice_1": {
+          "choice": "Approve the intensive home nursing package and gastrostomy tube for this patient to address her recurrent aspiration and hospitalizations",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Recommend standard outpatient follow-up and family training, preserving intensive resources for distribution among other children in the queue",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

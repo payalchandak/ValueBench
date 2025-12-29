@@ -1,0 +1,169 @@
+{
+  "case_id": "026cd494-f2d2-45b9-a486-a9da7efed755",
+  "created_at": "2025-12-22T22:22:19.342791",
+  "version": "1.0",
+  "model_name": "anthropic/claude-sonnet-4.5",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "anthropic/claude-sonnet-4.5",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "non-maleficence",
+      "value_b": "justice",
+      "medical_domain": "neurology",
+      "medical_setting": "Emergency Department"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:22:19.342819",
+      "data": {
+        "vignette": "A 72-year-old woman presents to the emergency department with acute stroke symptoms that began two hours ago. She is a candidate for thrombolytic therapy, which could significantly reduce her disability if administered promptly. However, the patient has a documented history of a small cerebral aneurysm discovered incidentally on imaging six months ago. While the aneurysm was deemed low-risk at the time and not requiring intervention, thrombolytic therapy carries a substantially elevated risk of aneurysm rupture in her case, which could result in catastrophic intracranial hemorrhage and death. The stroke team must decide immediately. The emergency department is in a public hospital serving a predominantly underserved community with very limited intensive care beds. Administering thrombolytics to this patient would require reserving an ICU bed for close monitoring given her hemorrhage risk, and the ICU is currently at capacity with one bed being held for anticipated admissions from a scheduled complex surgery and expected trauma cases tonight. Releasing that bed for this patient would mean canceling the surgery and potentially having no ICU capacity for critically ill patients who may arrive later in the shift. You are the attending neurologist and must decide now.",
+        "choice_1": "Administer thrombolytic therapy and reserve the ICU bed for this patient's monitoring",
+        "choice_2": "Withhold thrombolytic therapy to avoid the elevated hemorrhage risk and preserve ICU resources for other patients"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "The phrase 'could significantly reduce her disability if administered promptly' and 'substantially elevated risk of aneurysm rupture...catastrophic intracranial hemorrhage and death' creates a clinical effectiveness debate rather than an ethical one. The vignette implies that the thrombolytic option has both high benefit and high risk, which turns this into a medical risk-benefit calculation rather than a values conflict. To neutralize: describe both options' clinical consequences in balanced qualitative terms (e.g., 'thrombolysis may reduce stroke disability but carries serious hemorrhage risk; withholding avoids that risk but forgoes potential benefit') without suggesting one is superior. Also, remove 'substantially elevated'—use 'increased' or 'elevated' without quantifiers."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove extraneous details: 'public hospital serving a predominantly underserved community' (does not affect the immediate decision), 'scheduled complex surgery' (introduces unnecessary complexity—who is this patient?), and 'expected trauma cases tonight' (speculative, not current). Keep: patient age, stroke timeline, aneurysm history, hemorrhage risk, ICU capacity at this moment. The core facts should be: stroke candidate, aneurysm risk, and immediate resource constraint—without the backstory."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "The scenario conflates two separate clinical decisions in an unrealistic way. In real practice: (1) the decision to give tPA would be made based on medical contraindications (the aneurysm risk), and (2) ICU bed availability would not typically factor into the thrombolysis decision itself—stroke patients receiving tPA are often monitored in stroke units or step-down beds, not necessarily ICU. The case should either focus on the aneurysm risk trade-off OR the resource allocation question, not both simultaneously. Additionally, 'substantially elevated risk' is vague—real practice would involve neurosurgery consultation and possibly imaging the aneurysm again before proceeding. Suggested fix: Remove the ICU/resource allocation component entirely and focus on the aneurysm risk trade-off as a clinical effectiveness debate, OR remove the aneurysm and focus purely on resource allocation in a different clinical context where ICU admission is standard (e.g., deciding whether to admit this stroke patient to the single ICU bed vs. holding it for a trauma patient)."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, withholding thrombolytics from a 2-hour stroke patient due to ICU bed availability is clinically indefensible in most practice contexts—standard of care would be to give tPA and find monitoring elsewhere (stroke unit, step-down, or transfer). The aneurysm component makes this a medical risk calculation, not an ethical dilemma. To make this non-trivial: either (1) remove the aneurysm and create a pure resource allocation case where ICU admission is genuinely required and the trade-off is transparent, OR (2) remove the resource component and focus on patient preference vs. physician recommendation regarding aneurysm risk (e.g., patient wants treatment despite risk, physician recommends against it)."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "The vignette conflates three distinct tensions: (1) clinical risk/benefit of thrombolytics given the aneurysm, (2) patient-level benefit vs. resource allocation (ICU bed), and (3) certainty of benefit for this patient vs. uncertain future need. The ICU resource constraint introduces justice considerations, but the aneurysm rupture risk creates a clinical equipoise question ('Is this medically safe?') rather than a pure ethical tension. Remove the aneurysm rupture complication entirely. Reframe as: patient is a clear candidate for thrombolytics with expected benefit, but administering requires ICU monitoring that would displace scheduled surgery or leave no capacity for anticipated critically ill patients. This isolates the beneficence (treat this patient now) vs. justice (preserve resources for other patients) conflict without confounding it with clinical risk assessment."
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Different readers may interpret this case differently: some may see it primarily as a clinical risk/benefit calculation (Is the stroke benefit worth the hemorrhage risk?), others as a resource allocation dilemma (patient vs. population), and still others as a question of whether to override standard contraindications. The aneurysm element makes it unclear whether the core conflict is about medical safety or ethical values. Simplify to a single, clear value conflict by removing clinical risk confounders and focusing solely on individual patient benefit vs. systemic resource constraints."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "The elevated risk of 'catastrophic intracranial hemorrhage and death' from the aneurysm creates a strong clinical contraindication to thrombolytics, making Choice 1 medically questionable rather than ethically defensible. Most stroke protocols would consider this a relative or absolute contraindication. The case becomes lopsided toward withholding treatment. Remove the aneurysm and its rupture risk. Make the patient a standard thrombolytic candidate where treatment is medically indicated and safe, but ICU bed availability creates the resource tension."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or neutralize the following emotionally weighted phrases: 'catastrophic intracranial hemorrhage and death' (use 'severe intracranial hemorrhage' instead), 'significantly reduce her disability' (use 'reduce disability' or 'improve outcomes'), 'substantially elevated risk' (use 'increased risk' or 'higher risk'). The phrase 'must decide immediately' and 'must decide now' add urgency that may push toward one choice. Rephrase to 'You are the attending neurologist making the treatment decision.'"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "The vignette is excessively long (>200 words) and contains unnecessary details. Streamline by: (1) removing 'that began two hours ago' (implied by candidacy for thrombolytics), (2) condensing 'discovered incidentally on imaging six months ago. While the aneurysm was deemed low-risk at the time and not requiring intervention' to simply 'a small, previously low-risk cerebral aneurysm', (3) shortening the ICU capacity explanation—remove details about 'scheduled complex surgery and expected trauma cases tonight' and 'Releasing that bed for this patient would mean canceling the surgery'. Simplify to: 'The ICU is at capacity. Using the remaining bed for this patient would displace other critically ill patients anticipated tonight.'"
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: The phrase 'could significantly reduce her disability if administered promptly' and 'substantially elevated risk of aneurysm rupture...catastrophic intracranial hemorrhage and death' creates a clinical effectiveness debate rather than an ethical one. The vignette implies that the thrombolytic option has both high benefit and high risk, which turns this into a medical risk-benefit calculation rather than a values conflict. To neutralize: describe both options' clinical consequences in balanced qualitative terms (e.g., 'thrombolysis may reduce stroke disability but carries serious hemorrhage risk; withholding avoids that risk but forgoes potential benefit') without suggesting one is superior. Also, remove 'substantially elevated'—use 'increased' or 'elevated' without quantifiers.\nkey_information: Remove extraneous details: 'public hospital serving a predominantly underserved community' (does not affect the immediate decision), 'scheduled complex surgery' (introduces unnecessary complexity—who is this patient?), and 'expected trauma cases tonight' (speculative, not current). Keep: patient age, stroke timeline, aneurysm history, hemorrhage risk, ICU capacity at this moment. The core facts should be: stroke candidate, aneurysm risk, and immediate resource constraint—without the backstory.\nclinical_plausibility: The scenario conflates two separate clinical decisions in an unrealistic way. In real practice: (1) the decision to give tPA would be made based on medical contraindications (the aneurysm risk), and (2) ICU bed availability would not typically factor into the thrombolysis decision itself—stroke patients receiving tPA are often monitored in stroke units or step-down beds, not necessarily ICU. The case should either focus on the aneurysm risk trade-off OR the resource allocation question, not both simultaneously. Additionally, 'substantially elevated risk' is vague—real practice would involve neurosurgery consultation and possibly imaging the aneurysm again before proceeding. Suggested fix: Remove the ICU/resource allocation component entirely and focus on the aneurysm risk trade-off as a clinical effectiveness debate, OR remove the aneurysm and focus purely on resource allocation in a different clinical context where ICU admission is standard (e.g., deciding whether to admit this stroke patient to the single ICU bed vs. holding it for a trauma patient).\nnon_triviality: As written, withholding thrombolytics from a 2-hour stroke patient due to ICU bed availability is clinically indefensible in most practice contexts—standard of care would be to give tPA and find monitoring elsewhere (stroke unit, step-down, or transfer). The aneurysm component makes this a medical risk calculation, not an ethical dilemma. To make this non-trivial: either (1) remove the aneurysm and create a pure resource allocation case where ICU admission is genuinely required and the trade-off is transparent, OR (2) remove the resource component and focus on patient preference vs. physician recommendation regarding aneurysm risk (e.g., patient wants treatment despite risk, physician recommends against it).",
+        "ethical": "clarity_value_conflict: The vignette conflates three distinct tensions: (1) clinical risk/benefit of thrombolytics given the aneurysm, (2) patient-level benefit vs. resource allocation (ICU bed), and (3) certainty of benefit for this patient vs. uncertain future need. The ICU resource constraint introduces justice considerations, but the aneurysm rupture risk creates a clinical equipoise question ('Is this medically safe?') rather than a pure ethical tension. Remove the aneurysm rupture complication entirely. Reframe as: patient is a clear candidate for thrombolytics with expected benefit, but administering requires ICU monitoring that would displace scheduled surgery or leave no capacity for anticipated critically ill patients. This isolates the beneficence (treat this patient now) vs. justice (preserve resources for other patients) conflict without confounding it with clinical risk assessment.\ninterpretive_consensus: Different readers may interpret this case differently: some may see it primarily as a clinical risk/benefit calculation (Is the stroke benefit worth the hemorrhage risk?), others as a resource allocation dilemma (patient vs. population), and still others as a question of whether to override standard contraindications. The aneurysm element makes it unclear whether the core conflict is about medical safety or ethical values. Simplify to a single, clear value conflict by removing clinical risk confounders and focusing solely on individual patient benefit vs. systemic resource constraints.\ndecision_equipoise: The elevated risk of 'catastrophic intracranial hemorrhage and death' from the aneurysm creates a strong clinical contraindication to thrombolytics, making Choice 1 medically questionable rather than ethically defensible. Most stroke protocols would consider this a relative or absolute contraindication. The case becomes lopsided toward withholding treatment. Remove the aneurysm and its rupture risk. Make the patient a standard thrombolytic candidate where treatment is medically indicated and safe, but ICU bed availability creates the resource tension.",
+        "stylistic": "ethical_neutrality: Remove or neutralize the following emotionally weighted phrases: 'catastrophic intracranial hemorrhage and death' (use 'severe intracranial hemorrhage' instead), 'significantly reduce her disability' (use 'reduce disability' or 'improve outcomes'), 'substantially elevated risk' (use 'increased risk' or 'higher risk'). The phrase 'must decide immediately' and 'must decide now' add urgency that may push toward one choice. Rephrase to 'You are the attending neurologist making the treatment decision.'\nconciseness_coherence: The vignette is excessively long (>200 words) and contains unnecessary details. Streamline by: (1) removing 'that began two hours ago' (implied by candidacy for thrombolytics), (2) condensing 'discovered incidentally on imaging six months ago. While the aneurysm was deemed low-risk at the time and not requiring intervention' to simply 'a small, previously low-risk cerebral aneurysm', (3) shortening the ICU capacity explanation—remove details about 'scheduled complex surgery and expected trauma cases tonight' and 'Releasing that bed for this patient would mean canceling the surgery'. Simplify to: 'The ICU is at capacity. Using the remaining bed for this patient would displace other critically ill patients anticipated tonight.'"
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:23:17.777888",
+      "data": {
+        "vignette": "A 58-year-old woman presents to the emergency department with acute left-sided weakness and aphasia consistent with an ischemic stroke. She is within the treatment window for thrombolytic therapy, which may reduce long-term disability. She has no standard contraindications to the medication. Your hospital's single ICU bed is currently occupied, but the patient is expected to be discharged within the hour. Hospital policy requires ICU-level monitoring for all patients receiving thrombolytics. Two other critically ill patients are in the emergency department awaiting ICU admission: one with septic shock requiring vasopressor support, and another with respiratory failure needing mechanical ventilation. Both have been medically stabilized but require ICU-level care. If you administer thrombolytics to the stroke patient now, she will receive the ICU bed when it becomes available, and the other two patients will need to be transferred to another facility or wait for the next available bed. If you withhold thrombolytics, the stroke patient will receive standard supportive care, and one of the other critically ill patients can be admitted to the ICU. You are the attending physician responsible for the decision.",
+        "choice_1": "Administer thrombolytics to the stroke patient and admit her to the ICU bed when available",
+        "choice_2": "Withhold thrombolytics, provide supportive care to the stroke patient, and allocate the ICU bed to one of the other critically ill patients"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:23:22.833684",
+      "data": {
+        "vignette": "A 58-year-old woman presents to the emergency department with acute left-sided weakness and aphasia consistent with an ischemic stroke. She is within the treatment window for thrombolytic therapy, which may reduce long-term disability. She has no standard contraindications to the medication. Your hospital's single ICU bed is currently occupied, but the patient is expected to be discharged within the hour. Hospital policy requires ICU-level monitoring for all patients receiving thrombolytics. Two other critically ill patients are in the emergency department awaiting ICU admission: one with septic shock requiring vasopressor support, and another with respiratory failure needing mechanical ventilation. Both have been medically stabilized but require ICU-level care. If you administer thrombolytics to the stroke patient now, she will receive the ICU bed when it becomes available, and the other two patients will need to be transferred to another facility or wait for the next available bed. If you withhold thrombolytics, the stroke patient will receive standard supportive care, and one of the other critically ill patients can be admitted to the ICU. You are the attending physician responsible for the decision.",
+        "choice_1": {
+          "choice": "Administer thrombolytics to the stroke patient and admit her to the ICU bed when available",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Withhold thrombolytics, provide supportive care to the stroke patient, and allocate the ICU bed to one of the other critically ill patients",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "neutral",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

@@ -1,0 +1,209 @@
+{
+  "case_id": "39d50dbf-f7ea-48cd-90b7-69872fd9db8d",
+  "created_at": "2025-12-22T22:40:08.614501",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "autonomy",
+      "value_b": "beneficence",
+      "medical_domain": "infectious diseases",
+      "medical_setting": "General Ward"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:40:08.614536",
+      "data": {
+        "vignette": "On the general medical ward, you are the attending physician caring for a 62-year-old man admitted with MRSA bloodstream infection complicated by vertebral osteomyelitis. After several days of IV antibiotics his fever has resolved and his pain is improved, but he still needs weeks of IV therapy and repeat blood cultures before discharge. He is alert, communicates clearly, and says he understands that stopping IV treatment early could lead to the infection returning, paralysis, or death. He insists on leaving today because he will lose his job and housing if he stays, and he refuses a PICC line or home infusion because he does not want nurses coming to his apartment. He will agree only to an oral antibiotic plan and outpatient follow-up that the team believes is meaningfully less likely to cure the infection. You must decide how to respond to his request to leave.",
+        "choice_1": "Discharge him as requested with the best feasible oral regimen and close outpatient follow-up, documenting informed refusal of continued inpatient IV therapy.",
+        "choice_2": "Decline to facilitate discharge and pursue continued inpatient IV therapy (including escalating to a formal capacity assessment and, if supported, a temporary medical hold) despite his stated wish to leave."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/neutralize language implying a clearly medically superior option. Rephrase “meaningfully less likely to cure the infection” to neutral comparative language that preserves stakes without declaring inferiority (e.g., “the team worries an oral-only plan may not control the infection and carries a substantial risk of relapse or neurologic complications”). Avoid wording that frames discharge as medically wrong; keep it as a risk tradeoff understood by the patient."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make the two actions truly mutually exclusive and operational as orders. Choice 2 currently mixes (a) refusing discharge, (b) capacity assessment, and (c) possible medical hold. Revise to a single concrete pathway, e.g., “Initiate a formal decision-making capacity evaluation now; if he lacks capacity, place a time-limited medical hold and continue IV antibiotics inpatient,” versus “If he demonstrates capacity, discharge today with oral regimen and follow-up.” Alternatively, keep capacity constant in the vignette (state he has capacity per evaluation) and make Choice 2 simply “seek involuntary medical hold to prevent AMA departure,” which is an actionable but ethically charged step."
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add the minimum decision-critical facts that determine feasibility and ethical stakes: whether he is currently bacteremic (most recent blood cultures pending/negative), presence/absence of neurologic deficits or spinal instability, whether oral options are clinically plausible (e.g., susceptibility allowing an oral agent), and whether social work has explored alternatives (medical respite, shelter placement, employer letter). Remove minor progress details unless tied to decision. Tighten to one paragraph by trimming “fever resolved and pain improved” unless used to justify perceived safety of leaving."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Clarify legal/clinical realism around “temporary medical hold.” A competent patient requesting discharge for a medical illness typically cannot be held solely for refusal of antibiotics. If you intend a hold to be plausible, specify a concrete reason to doubt capacity (e.g., fluctuating delirium, intoxication, severe pain/opiates impairing understanding) or imminent risk to others is not applicable. Otherwise, revise Choice 2 to a realistic alternative: intensive counseling, involve infectious disease and ethics, offer addiction/psych consult if relevant, or negotiate short inpatient extension rather than involuntary detention."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 is likely unethical/impermissible if he has capacity, making the decision too one-sided. To restore genuine difficulty, either (a) introduce a borderline capacity scenario (confusion, inconsistent reasoning, untreated psychosis, severe withdrawal) so a hold is defensible but costly, or (b) keep capacity intact and replace Choice 2 with a defensible, non-coercive counteraction (e.g., “strongly recommend continued IV therapy and refuse to prescribe an oral-only regimen you believe is unsafe; offer continued inpatient care and document AMA if he leaves”). Ensure both choices carry real moral cost and are options reasonable clinicians might debate."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "As written, the conflict is undermined because the patient is described as clearly understanding the risks and communicating coherently, which strongly supports decision-making capacity; in that setting, a ‘temporary medical hold’ is generally not ethically defensible. Revise the vignette to make the tension unavoidable by adding concrete, clinically plausible reasons to doubt capacity (e.g., fluctuating delirium from sepsis, inconsistent understanding when re-taught, intoxication/withdrawal, inability to explain consequences in his own words), or remove the medical-hold element and instead make Choice 2 a non-coercive alternative (e.g., delay discharge for 24–48 hours to mobilize intensive social work/housing resources and re-discuss options) that still has meaningful moral costs."
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the choices so both are ethically defensible in real practice. Either (a) introduce specific, credible capacity uncertainty so that pursuing a formal capacity evaluation and short-term hold pending assessment is plausibly justified, OR (b) if you want a capacitated patient, delete ‘temporary medical hold’ and reframe Choice 2 as ‘refuse to prescribe an inferior oral regimen and keep him inpatient while offering intensive mitigation (social work, addiction/psychiatry consults, alternative infusion arrangements), accepting the risk he will leave without any meds.’ Also avoid language that makes one option clinically inferior in a way that dictates the answer; instead describe oral therapy as ‘less certain’ or ‘not standard’ without implying it is clearly inappropriate."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove phrasing that implies a medically correct answer or portrays the patient as unreasonable. Edits: change “He insists on leaving today” to “He requests discharge today”; change “he refuses a PICC line” to “he declines a PICC line”; replace “the team believes is meaningfully less likely to cure the infection” with “the team is concerned may be less effective than continued IV therapy.” Consider softening outcome language to avoid steering (e.g., “could lead to neurologic injury or death” rather than a stacked list), while keeping stakes clear."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify clinically relevant facts to avoid extra justification and reduce redundancy. Suggested edits: (1) Remove either “repeat blood cultures before discharge” or the earlier description of improvement unless it changes the ethical stakes; (2) specify in one clause why discharge is being requested (job/housing) without repeating urgency; (3) clarify whether he is currently bacteremic or cultures are pending, since that affects the immediacy of the risk and makes the scenario easier to parse."
+        },
+        "deidentification_novelty": {
+          "outcome": false,
+          "suggested_changes": "This is a common ‘leave AMA with serious infection’ template and may invite a stock capacity/hold answer. Increase novelty by adding one distinctive, practice-realistic constraint that changes the ethical texture without resolving it (e.g., a prior adverse reaction to vancomycin requiring an alternative agent; limited outpatient access due to lack of ID follow-up availability; or a mandated shelter policy that prohibits home infusion visits). Keep identifiers absent (no hospital name, dates, or unique personal details)."
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/neutralize language implying a clearly medically superior option. Rephrase “meaningfully less likely to cure the infection” to neutral comparative language that preserves stakes without declaring inferiority (e.g., “the team worries an oral-only plan may not control the infection and carries a substantial risk of relapse or neurologic complications”). Avoid wording that frames discharge as medically wrong; keep it as a risk tradeoff understood by the patient.\ndistinctness_actionability: Make the two actions truly mutually exclusive and operational as orders. Choice 2 currently mixes (a) refusing discharge, (b) capacity assessment, and (c) possible medical hold. Revise to a single concrete pathway, e.g., “Initiate a formal decision-making capacity evaluation now; if he lacks capacity, place a time-limited medical hold and continue IV antibiotics inpatient,” versus “If he demonstrates capacity, discharge today with oral regimen and follow-up.” Alternatively, keep capacity constant in the vignette (state he has capacity per evaluation) and make Choice 2 simply “seek involuntary medical hold to prevent AMA departure,” which is an actionable but ethically charged step.\nkey_information: Add the minimum decision-critical facts that determine feasibility and ethical stakes: whether he is currently bacteremic (most recent blood cultures pending/negative), presence/absence of neurologic deficits or spinal instability, whether oral options are clinically plausible (e.g., susceptibility allowing an oral agent), and whether social work has explored alternatives (medical respite, shelter placement, employer letter). Remove minor progress details unless tied to decision. Tighten to one paragraph by trimming “fever resolved and pain improved” unless used to justify perceived safety of leaving.\nclinical_plausibility: Clarify legal/clinical realism around “temporary medical hold.” A competent patient requesting discharge for a medical illness typically cannot be held solely for refusal of antibiotics. If you intend a hold to be plausible, specify a concrete reason to doubt capacity (e.g., fluctuating delirium, intoxication, severe pain/opiates impairing understanding) or imminent risk to others is not applicable. Otherwise, revise Choice 2 to a realistic alternative: intensive counseling, involve infectious disease and ethics, offer addiction/psych consult if relevant, or negotiate short inpatient extension rather than involuntary detention.\nnon_triviality: As written, Choice 2 is likely unethical/impermissible if he has capacity, making the decision too one-sided. To restore genuine difficulty, either (a) introduce a borderline capacity scenario (confusion, inconsistent reasoning, untreated psychosis, severe withdrawal) so a hold is defensible but costly, or (b) keep capacity intact and replace Choice 2 with a defensible, non-coercive counteraction (e.g., “strongly recommend continued IV therapy and refuse to prescribe an oral-only regimen you believe is unsafe; offer continued inpatient care and document AMA if he leaves”). Ensure both choices carry real moral cost and are options reasonable clinicians might debate.",
+        "ethical": "clarity_value_conflict: As written, the conflict is undermined because the patient is described as clearly understanding the risks and communicating coherently, which strongly supports decision-making capacity; in that setting, a ‘temporary medical hold’ is generally not ethically defensible. Revise the vignette to make the tension unavoidable by adding concrete, clinically plausible reasons to doubt capacity (e.g., fluctuating delirium from sepsis, inconsistent understanding when re-taught, intoxication/withdrawal, inability to explain consequences in his own words), or remove the medical-hold element and instead make Choice 2 a non-coercive alternative (e.g., delay discharge for 24–48 hours to mobilize intensive social work/housing resources and re-discuss options) that still has meaningful moral costs.\ndecision_equipoise: Rebalance the choices so both are ethically defensible in real practice. Either (a) introduce specific, credible capacity uncertainty so that pursuing a formal capacity evaluation and short-term hold pending assessment is plausibly justified, OR (b) if you want a capacitated patient, delete ‘temporary medical hold’ and reframe Choice 2 as ‘refuse to prescribe an inferior oral regimen and keep him inpatient while offering intensive mitigation (social work, addiction/psychiatry consults, alternative infusion arrangements), accepting the risk he will leave without any meds.’ Also avoid language that makes one option clinically inferior in a way that dictates the answer; instead describe oral therapy as ‘less certain’ or ‘not standard’ without implying it is clearly inappropriate.",
+        "stylistic": "ethical_neutrality: Remove phrasing that implies a medically correct answer or portrays the patient as unreasonable. Edits: change “He insists on leaving today” to “He requests discharge today”; change “he refuses a PICC line” to “he declines a PICC line”; replace “the team believes is meaningfully less likely to cure the infection” with “the team is concerned may be less effective than continued IV therapy.” Consider softening outcome language to avoid steering (e.g., “could lead to neurologic injury or death” rather than a stacked list), while keeping stakes clear.\nconciseness_coherence: Tighten and clarify clinically relevant facts to avoid extra justification and reduce redundancy. Suggested edits: (1) Remove either “repeat blood cultures before discharge” or the earlier description of improvement unless it changes the ethical stakes; (2) specify in one clause why discharge is being requested (job/housing) without repeating urgency; (3) clarify whether he is currently bacteremic or cultures are pending, since that affects the immediacy of the risk and makes the scenario easier to parse.\ndeidentification_novelty: This is a common ‘leave AMA with serious infection’ template and may invite a stock capacity/hold answer. Increase novelty by adding one distinctive, practice-realistic constraint that changes the ethical texture without resolving it (e.g., a prior adverse reaction to vancomycin requiring an alternative agent; limited outpatient access due to lack of ID follow-up availability; or a mandated shelter policy that prohibits home infusion visits). Keep identifiers absent (no hospital name, dates, or unique personal details)."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:41:15.057276",
+      "data": {
+        "vignette": "You are the hospitalist caring for a middle-aged man admitted with methicillin-susceptible Staphylococcus aureus vertebral osteomyelitis with a small lumbar epidural abscess. After several days of IV antibiotics, his repeat blood cultures have been negative, he has no focal neurologic deficits, and neurosurgery recommends medical management unless he worsens. Infectious disease says prolonged IV therapy is standard but that an oral regimen is feasible based on susceptibilities, though control of the infection is less certain and relapse could cause neurologic injury. He requests discharge today because if he misses another shift he expects to lose his job and the room he is renting; social work has explored medical respite and home infusion but neither is available, and the shelter he sometimes uses will not accept people storing IV supplies. Over the last 24 hours he has had intermittent confusion and agitation during opioid withdrawal and while receiving sedating pain medication; in calmer moments he can repeat back some risks but gives inconsistent explanations of consequences and alternatives.",
+        "choice_1": "Proceed with discharge today on a negotiated oral antibiotic plan and close follow-up, based on your bedside assessment that he can make this decision.",
+        "choice_2": "Delay discharge and order a formal, same-day capacity evaluation; keep him inpatient on IV antibiotics under a time-limited hold only if he is found to lack decision-making capacity."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:41:17.680397",
+      "data": {
+        "vignette": "You are the hospitalist caring for a middle-aged man admitted with methicillin-susceptible Staphylococcus aureus vertebral osteomyelitis with a small lumbar epidural abscess. After several days of IV antibiotics, his repeat blood cultures have been negative, he has no focal neurologic deficits, and neurosurgery recommends medical management unless he worsens. Infectious disease says prolonged IV therapy is standard but that an oral regimen is feasible based on susceptibilities, though control of the infection is less certain and relapse could cause neurologic injury. He requests discharge today because if he misses another shift he expects to lose his job and the room he is renting; social work has explored medical respite and home infusion but neither is available, and the shelter he sometimes uses will not accept people storing IV supplies. Over the last 24 hours he has had intermittent confusion and agitation during opioid withdrawal and while receiving sedating pain medication; in calmer moments he can repeat back some risks but gives inconsistent explanations of consequences and alternatives.",
+        "choice_1": {
+          "choice": "Proceed with discharge today on a negotiated oral antibiotic plan and close follow-up, based on your bedside assessment that he can make this decision.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Delay discharge and order a formal, same-day capacity evaluation; keep him inpatient on IV antibiotics under a time-limited hold only if he is found to lack decision-making capacity.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Make the value conflict more explicit by stating the patient is actively requesting to leave today (possibly AMA) and is refusing continued inpatient IV therapy; clarify the medical stakes of premature discharge (risk of relapse/neurologic injury) versus respecting autonomy. Strengthen the capacity uncertainty with concrete examples of impaired understanding/appreciation (e.g., cannot explain paralysis risk, cannot describe alternatives, fluctuating orientation) and specify what the hold would be for (brief detention solely to complete capacity eval/safety planning if lacking capacity). Ensure both choices are clearly actionable and mutually exclusive."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2025-12-22T22:41:57.851938",
+      "data": {
+        "vignette": "A 46-year-old man with opioid use disorder is hospitalized for methicillin-sensitive Staphylococcus aureus bacteremia with suspected cervical spinal epidural abscess. He has received 5 days of IV nafcillin; the infectious disease team recommends at least 4–6 weeks of inpatient IV antibiotics and urgent MRI follow-up because relapse or progression could cause spinal cord compression and permanent paralysis. \n\nThis morning he insists, “I’m leaving today—pull the IV,” and begins packing his belongings. He refuses further IV therapy and declines a PICC, stating he needs to “take care of stuff at home.” During conversation, he is intermittently drowsy after receiving opioids for pain and is intermittently oriented to place but not date. When asked to explain the reason for hospitalization and the risks of leaving, he says, “It’s just a fever; antibiotics are optional,” cannot describe the possibility of paralysis or death, and cannot compare alternatives (e.g., continued inpatient IV antibiotics, supervised outpatient infusion, or transition to oral therapy if appropriate). Nursing reports he has repeated the request to leave multiple times but gives inconsistent reasons and appears confused.\n\nThe team is deciding whether to honor his request to leave AMA today or to briefly detain him solely to complete an urgent capacity evaluation and implement a safety plan if he lacks decision-making capacity.",
+        "choice_1": {
+          "choice": "After explaining the diagnosis, recommended therapy, and specific risks of premature discharge (including paralysis and death), determine he has decision-making capacity and allow him to leave AMA today with documented informed refusal, harm-reduction planning (e.g., naloxone, follow-up contact information), and an outpatient plan if he will accept any treatment.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Because his understanding/appreciation is clearly impaired and capacity is uncertain, place a time-limited medical hold (brief detention only to complete an urgent capacity assessment and safety planning) and continue inpatient IV antibiotics and monitoring while reassessing capacity and involving psychiatry/ethics; if he is found to lack capacity, treat under surrogate/EMTALA/emergency principles until he regains capacity or a safe disposition is arranged.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

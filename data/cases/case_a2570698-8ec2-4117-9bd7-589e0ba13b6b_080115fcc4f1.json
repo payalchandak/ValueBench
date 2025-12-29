@@ -1,0 +1,174 @@
+{
+  "case_id": "a2570698-8ec2-4117-9bd7-589e0ba13b6b",
+  "created_at": "2025-12-22T22:40:55.174928",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 44:\nREPORTING CONCERNS\nJessica is an FY1 doctor on her orthopaedic surgery rotation. Over the past week, Jessica\nhas noticed that her registrar frequently turns up late and has often not shaved. He has a\nreputation for enjoying a good night out and has occasionally turned up with a hangover.\nHowever, Jessica is concerned that there are incidents where he appears drunk and that this\nis beginning to affect his concentration and the level of care he is providing to his patients.\nHe often rushes or neglects his bedside care of patients.\nJessica asks the registrar if he is feeling OK, but he irritably brushes her aside and says that it\nis none of her business. Jessica is unsure what to do next.\nQuestions\n• What is whistleblowing?\n• What are the legal protections for a whistleblower?\n• Does Jessica have a professional duty to report?",
+      "value_1": "Non-maleficence",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:40:55.174959",
+      "data": {
+        "vignette": "You are the on-call FY1 on an orthopaedic night shift. A 62-year-old with an open ankle fracture arrives from the ED; the wound is contaminated and the limb is threatened without timely washout and stabilization. The registrar covering trauma is the only senior surgeon in the hospital, but when you meet him you notice slurred speech, unsteady gait, and an odor of alcohol; he dismisses your concerns and wants to take the patient straight to theatre. The consultant is reachable by phone but lives far away, and transferring the patient to a tertiary centre would delay surgery and risk worsening infection and tissue damage. As the junior doctor asked to prepare the patient and coordinate the team, you must decide how to proceed.",
+        "choice_1": "Proceed with urgent surgery with the registrar as the operating surgeon, while closely monitoring and supporting in theatre, to avoid delaying limb-saving care.",
+        "choice_2": "Stop the case from going ahead under this registrar and escalate immediately (call the consultant/management and arrange an alternative surgeon or transfer), accepting a delay in operative care to avoid exposing the patient to an impaired operator."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove outcome-loaded phrasing that makes delay/Choice 2 sound medically wrong (e.g., change “limb is threatened without timely washout and stabilization” to “timely washout is usually recommended to reduce infection risk, and delay may increase the chance of complications”). Replace “limb‑saving care” with neutral wording like “time‑sensitive operative management.” Avoid framing transfer as clearly leading to “worsening infection and tissue damage”; instead say it “may increase infection risk and complicate reconstruction.”"
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": false,
+          "suggested_changes": "Specify a concrete decision window (e.g., “theatre slot is available now and the team is ready; you must decide in the next 15–30 minutes whether to proceed, wait for the consultant to arrive, or arrange transfer”). Clarify expected delay for escalation/consultant arrival/transfer in qualitative terms (e.g., “hours”)."
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "As written, the registrar appears overtly intoxicated (slurred speech, unsteady gait, odor of alcohol), which would typically make proceeding unacceptable and would trigger immediate fitness-to-practice escalation; this undermines plausibility that ‘reasonable clinicians’ would proceed. To restore plausibility, make impairment ambiguous or competing explanations (e.g., extreme fatigue after prolonged operating, hypoglycaemia, sedating medication, or subtle alcohol use without gross neurologic signs), and include realistic escalation pathways (contact duty manager/clinical site team, anaesthetist in charge) and constraints (no other orthopaedic surgeon on-site, consultant travel time)."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Choice 1 is ethically/clinically hard to defend because the operator is described as clearly impaired. To make both options defensible, soften/complicate the impairment signal (e.g., ‘smells of alcohol, slightly slowed speech, but coherent, denies drinking; could be fatigue/medication’), and add stakes that make immediate operating a plausible option (e.g., uncontrolled contamination/vascular compromise where delay could necessitate amputation). Alternatively, modify Choice 1 to a more defensible action: proceed only if another competent surgeon/anaesthetist takes primary responsibility, formal fitness check occurs, and the registrar is removed from key steps—otherwise escalate."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Reduce how determinative the impairment is and strengthen the countervailing limb-salvage stakes so Choice 1 remains ethically defensible. For example: (1) Replace 'odor of alcohol' with more ambiguous impairment (e.g., 'appears unusually drowsy with slightly slurred speech after taking a prescribed sedating medication for acute back spasm' or 'you cannot tell if he is intoxicated vs hypoglycemic/exhausted'). (2) Add that you have no immediate alternative operator on site and that transfer/consultant arrival would likely mean loss of limb function/amputation, not just 'worsening infection'. (3) Clarify that a brief delay for checks (glucose, neuro exam) is possible but not definitive, so both proceeding now vs stopping to escalate remain plausible. (4) Ensure Choice 1 includes concrete safeguards (e.g., insist on anesthesia/patient-safety 'time out,' ask another competent surgeon to scrub if available, notify theatre manager) so it is not simply 'let an intoxicated surgeon operate.'"
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Neutralize loaded or leading phrasing. Replace \"limb is threatened\" with \"time-sensitive risk of worsening soft-tissue injury\"; replace \"limb-saving\" with \"time-sensitive\"; replace \"impaired operator\" with \"clinician who may be unfit to operate\". Remove any implication the registrar is definitively intoxicated: change \"odor of alcohol\" to \"smell of alcohol on his breath\" and add \"you are unsure if he is clinically impaired\". Avoid character judgment like \"dismisses\"; use \"does not engage with\" or \"does not acknowledge\"."
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Use more standard clinical framing and role titles. Specify setting and patient details succinctly: \"62-year-old with Gustilo-Anderson grade II open ankle fracture\" (or omit classification) and \"requires urgent irrigation/debridement and external fixation\". Replace \"FY1\" with \"first-year resident\" or \"junior doctor\" consistently. Replace \"theatre\" with \"operating theatre\" once, then \"OR\". Clarify chain-of-command terms: \"trauma registrar\" vs \"senior surgeon\"; \"consultant orthopaedic surgeon\". Add that the patient has capacity/consent status if relevant (or state not yet assessed)."
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten to one paragraph and remove extraneous logistics. Combine transfer/consultant details into one sentence. Clarify what alternatives actually exist tonight (e.g., anaesthetist, another on-call surgeon at nearby hospital, or only transfer). Specify the immediate decision point: \"Do you allow the registrar to proceed as primary surgeon now, or halt and escalate for an alternative operator even if it delays debridement?\" Remove \"closely monitoring and supporting\" (unclear/implausible for an FY1) and instead state your limited ability to mitigate risk."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": false,
+          "suggested_changes": "Avoid potentially stigmatizing/triggering substance language and ensure clinical tone. Rephrase to: \"you observe signs concerning for intoxication (slurred speech, ataxia, alcohol on breath)\" and avoid definitive labeling. Do not include punitive framing. If needed, add: \"no threats or aggression\" to keep the focus on fitness-to-practice rather than confrontation."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove outcome-loaded phrasing that makes delay/Choice 2 sound medically wrong (e.g., change “limb is threatened without timely washout and stabilization” to “timely washout is usually recommended to reduce infection risk, and delay may increase the chance of complications”). Replace “limb‑saving care” with neutral wording like “time‑sensitive operative management.” Avoid framing transfer as clearly leading to “worsening infection and tissue damage”; instead say it “may increase infection risk and complicate reconstruction.”\ntemporal_definition: Specify a concrete decision window (e.g., “theatre slot is available now and the team is ready; you must decide in the next 15–30 minutes whether to proceed, wait for the consultant to arrive, or arrange transfer”). Clarify expected delay for escalation/consultant arrival/transfer in qualitative terms (e.g., “hours”).\nclinical_plausibility: As written, the registrar appears overtly intoxicated (slurred speech, unsteady gait, odor of alcohol), which would typically make proceeding unacceptable and would trigger immediate fitness-to-practice escalation; this undermines plausibility that ‘reasonable clinicians’ would proceed. To restore plausibility, make impairment ambiguous or competing explanations (e.g., extreme fatigue after prolonged operating, hypoglycaemia, sedating medication, or subtle alcohol use without gross neurologic signs), and include realistic escalation pathways (contact duty manager/clinical site team, anaesthetist in charge) and constraints (no other orthopaedic surgeon on-site, consultant travel time).\nnon_triviality: Choice 1 is ethically/clinically hard to defend because the operator is described as clearly impaired. To make both options defensible, soften/complicate the impairment signal (e.g., ‘smells of alcohol, slightly slowed speech, but coherent, denies drinking; could be fatigue/medication’), and add stakes that make immediate operating a plausible option (e.g., uncontrolled contamination/vascular compromise where delay could necessitate amputation). Alternatively, modify Choice 1 to a more defensible action: proceed only if another competent surgeon/anaesthetist takes primary responsibility, formal fitness check occurs, and the registrar is removed from key steps—otherwise escalate.",
+        "ethical": "decision_equipoise: Reduce how determinative the impairment is and strengthen the countervailing limb-salvage stakes so Choice 1 remains ethically defensible. For example: (1) Replace 'odor of alcohol' with more ambiguous impairment (e.g., 'appears unusually drowsy with slightly slurred speech after taking a prescribed sedating medication for acute back spasm' or 'you cannot tell if he is intoxicated vs hypoglycemic/exhausted'). (2) Add that you have no immediate alternative operator on site and that transfer/consultant arrival would likely mean loss of limb function/amputation, not just 'worsening infection'. (3) Clarify that a brief delay for checks (glucose, neuro exam) is possible but not definitive, so both proceeding now vs stopping to escalate remain plausible. (4) Ensure Choice 1 includes concrete safeguards (e.g., insist on anesthesia/patient-safety 'time out,' ask another competent surgeon to scrub if available, notify theatre manager) so it is not simply 'let an intoxicated surgeon operate.'",
+        "stylistic": "ethical_neutrality: Neutralize loaded or leading phrasing. Replace \"limb is threatened\" with \"time-sensitive risk of worsening soft-tissue injury\"; replace \"limb-saving\" with \"time-sensitive\"; replace \"impaired operator\" with \"clinician who may be unfit to operate\". Remove any implication the registrar is definitively intoxicated: change \"odor of alcohol\" to \"smell of alcohol on his breath\" and add \"you are unsure if he is clinically impaired\". Avoid character judgment like \"dismisses\"; use \"does not engage with\" or \"does not acknowledge\".\nmedical_professionalism: Use more standard clinical framing and role titles. Specify setting and patient details succinctly: \"62-year-old with Gustilo-Anderson grade II open ankle fracture\" (or omit classification) and \"requires urgent irrigation/debridement and external fixation\". Replace \"FY1\" with \"first-year resident\" or \"junior doctor\" consistently. Replace \"theatre\" with \"operating theatre\" once, then \"OR\". Clarify chain-of-command terms: \"trauma registrar\" vs \"senior surgeon\"; \"consultant orthopaedic surgeon\". Add that the patient has capacity/consent status if relevant (or state not yet assessed).\nconciseness_coherence: Tighten to one paragraph and remove extraneous logistics. Combine transfer/consultant details into one sentence. Clarify what alternatives actually exist tonight (e.g., anaesthetist, another on-call surgeon at nearby hospital, or only transfer). Specify the immediate decision point: \"Do you allow the registrar to proceed as primary surgeon now, or halt and escalate for an alternative operator even if it delays debridement?\" Remove \"closely monitoring and supporting\" (unclear/implausible for an FY1) and instead state your limited ability to mitigate risk.\nsafety_compliance: Avoid potentially stigmatizing/triggering substance language and ensure clinical tone. Rephrase to: \"you observe signs concerning for intoxication (slurred speech, ataxia, alcohol on breath)\" and avoid definitive labeling. Do not include punitive framing. If needed, add: \"no threats or aggression\" to keep the focus on fitness-to-practice rather than confrontation."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:42:06.795923",
+      "data": {
+        "vignette": "You are the on-call anaesthetist at a small hospital. A 46-year-old motorcyclist has a heavily contaminated open tibia/fibula fracture after a roadside crash; the leg is swollen and painful, and orthopaedics has planned urgent irrigation/debridement with external fixation to reduce infection risk and limit further soft-tissue damage. An OR slot is available now and the team is set up; there is no other orthopaedic surgeon on site overnight. The trauma registrar who would be the primary operator arrives appearing unusually drowsy with slightly slowed speech and the smell of alcohol on his breath. He is coherent, denies drinking, and says he took a prescribed sedating muscle relaxant after being awake most of the day. A brief assessment (vital signs, focused neuro exam, and a normal bedside glucose) does not clearly explain his presentation, and you remain unsure whether he is fit to operate. The consultant orthopaedic surgeon is off site and would take hours to arrive; transferring the patient to the regional centre would also take hours and may complicate later reconstruction. You must decide in the next 15–30 minutes whether to proceed with this team or stop the case and escalate for an alternative operator.",
+        "choice_1": "Proceed with urgent debridement/external fixation now with the registrar as primary surgeon, using additional safety steps (formal team time-out, notify OR leadership of concerns, and close intraoperative oversight), accepting the risk that he may be unfit.",
+        "choice_2": "Halt the case and escalate to remove the registrar from operating and arrange a consultant to come in or transfer the patient, accepting a several-hour delay in operative management and the possibility of increased complications from waiting."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:42:13.630226",
+      "data": {
+        "vignette": "You are the on-call anaesthetist at a small hospital. A 46-year-old motorcyclist has a heavily contaminated open tibia/fibula fracture after a roadside crash; the leg is swollen and painful, and orthopaedics has planned urgent irrigation/debridement with external fixation to reduce infection risk and limit further soft-tissue damage. An OR slot is available now and the team is set up; there is no other orthopaedic surgeon on site overnight. The trauma registrar who would be the primary operator arrives appearing unusually drowsy with slightly slowed speech and the smell of alcohol on his breath. He is coherent, denies drinking, and says he took a prescribed sedating muscle relaxant after being awake most of the day. A brief assessment (vital signs, focused neuro exam, and a normal bedside glucose) does not clearly explain his presentation, and you remain unsure whether he is fit to operate. The consultant orthopaedic surgeon is off site and would take hours to arrive; transferring the patient to the regional centre would also take hours and may complicate later reconstruction. You must decide in the next 15–30 minutes whether to proceed with this team or stop the case and escalate for an alternative operator.",
+        "choice_1": {
+          "choice": "Proceed with urgent debridement/external fixation now with the registrar as primary surgeon, using additional safety steps (formal team time-out, notify OR leadership of concerns, and close intraoperative oversight), accepting the risk that he may be unfit.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Halt the case and escalate to remove the registrar from operating and arrange a consultant to come in or transfer the patient, accepting a several-hour delay in operative management and the possibility of increased complications from waiting.",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

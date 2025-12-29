@@ -1,0 +1,169 @@
+{
+  "case_id": "9a3d7279-288c-4370-ae11-09ea02e94678",
+  "created_at": "2025-12-22T22:25:40.453510",
+  "version": "1.0",
+  "model_name": "anthropic/claude-sonnet-4.5",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "anthropic/claude-sonnet-4.5",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "non-maleficence",
+      "value_b": "justice",
+      "medical_domain": "pulmonology",
+      "medical_setting": "Emergency Department"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:25:40.453571",
+      "data": {
+        "vignette": "A 68-year-old man with severe COPD presents to the emergency department with acute respiratory distress. He requires high-flow oxygen and is borderline for intubation. The patient has experienced multiple prior exacerbations requiring ICU admission, and his baseline functional status has progressively declined. He lives alone and struggles with medication adherence. The ED is experiencing a surge, with a multi-casualty motor vehicle collision overwhelming capacity. The ICU has one remaining bed. The attending physician knows that this patient, if admitted, will likely require prolonged ICU support with uncertain benefit given his declining trajectory, and that admitting him now will mean the next critically ill patient—potentially a trauma victim with better recovery prospects—will need to be diverted to a hospital 45 minutes away, delaying definitive care. The attending must decide whether to admit this patient to the remaining ICU bed or to arrange transfer to another facility to preserve local ICU capacity for incoming critical patients.",
+        "choice_1": "Admit the patient to the remaining ICU bed and provide full intensive respiratory support",
+        "choice_2": "Arrange transfer to another facility to preserve the ICU bed for potentially incoming critical patients"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "REMOVE 'potentially a trauma victim with better recovery prospects'—this explicitly frames the alternative patient as having objectively superior medical outcomes, turning this into a clinical effectiveness comparison rather than an ethical dilemma. REMOVE 'likely require prolonged ICU support with uncertain benefit'—this language suggests the current patient's treatment is medically futile or inferior. Instead, neutralize to something like 'will require significant ICU resources' without qualifying the benefit. The phrase 'delaying definitive care' also implies clinical harm to the diverted patient. Rephrase to focus on the justice/resource allocation tension without suggesting one choice is medically superior."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "REMOVE 'He lives alone and struggles with medication adherence'—this is background detail that does not affect the immediate ICU admission decision. REMOVE 'multi-casualty motor vehicle collision'—replace with simply 'surge conditions' or 'high ED volume' to avoid distracting specifics. The core tension is between this patient's ICU need versus preserving capacity for other critically ill patients; these details are decorative."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "The vignette currently suggests the COPD patient has poor prognosis ('declining trajectory', 'uncertain benefit') while the alternative patient has 'better recovery prospects'. This makes transferring the COPD patient appear clinically and ethically superior, undermining the genuine difficulty. Rebalance by either: (1) removing comparative outcome language entirely, or (2) making the COPD patient's condition more acutely salvageable so that admitting him is also a reasonable choice that promotes beneficence, not just autonomy or first-come-first-served fairness."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "This vignette violates hard constraint #1: it forces the physician to choose between **this patient** versus **a hypothetical future patient** (the trauma victim). The instructions explicitly forbid 'Patient A vs Patient B' scenarios. Reframe as a binary decision about **this patient only**—for example, the physician must decide between two treatment pathways for the COPD patient that create tension between beneficence (aggressive ICU care) and non-maleficence (avoiding futile, burdensome intervention), or between autonomy (unknown patient wishes) and clinical judgment about appropriateness of ICU-level care."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "The phrase 'uncertain benefit given his declining trajectory' and 'better recovery prospects' for the hypothetical trauma patient frame one option as medically and ethically inferior. Small rewording (e.g., emphasizing the patient's prior ICU survivals, or his expressed preferences) could flip the ethical reading. Remove prognostic comparison language and focus on intrinsic features of **this patient's situation** that create the dilemma."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "The conflict is presented as Justice (resource allocation for future patients) vs. Beneficence (care for current patient), but the framing conflates ethical principles with utilitarian triage scoring, making interpretation unstable. Different readers may see this as a triage protocol question, a futility debate, or a capacity management issue. Clarify by removing the hypothetical trauma victims and focusing on a values conflict inherent to **this patient's care options**."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "The case is structurally imbalanced because it creates a utilitarian calculus (one elderly COPD patient with 'uncertain benefit' vs. trauma victims with 'better recovery prospects'), not a genuine ethical equipoise. The language 'uncertain benefit,' 'declining trajectory,' and 'better recovery prospects' tilts heavily toward transfer. Remove comparative language about other patients entirely. If reframed as a single-patient dilemma, ensure both choices carry comparable moral weight."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or neutralize the phrase 'with uncertain benefit given his declining trajectory' — this characterizes the medical utility of Choice 1 as questionable, subtly biasing against admission. Replace with objective facts only, e.g., 'has required prolonged ICU stays in the past.' Also replace 'potentially a trauma victim with better recovery prospects' with neutral phrasing such as 'a trauma victim' or 'another critically ill patient.' The word 'better' implies comparative medical worth and pushes toward Choice 2."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "The phrase 'He lives alone and struggles with medication adherence' adds social context but does not clearly connect to the binary decision at hand (admit vs. transfer). If this detail is meant to influence prognosis or stakes, clarify its relevance. Otherwise, remove it as unnecessary padding. The vignette is otherwise coherent but slightly verbose."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: REMOVE 'potentially a trauma victim with better recovery prospects'—this explicitly frames the alternative patient as having objectively superior medical outcomes, turning this into a clinical effectiveness comparison rather than an ethical dilemma. REMOVE 'likely require prolonged ICU support with uncertain benefit'—this language suggests the current patient's treatment is medically futile or inferior. Instead, neutralize to something like 'will require significant ICU resources' without qualifying the benefit. The phrase 'delaying definitive care' also implies clinical harm to the diverted patient. Rephrase to focus on the justice/resource allocation tension without suggesting one choice is medically superior.\nkey_information: REMOVE 'He lives alone and struggles with medication adherence'—this is background detail that does not affect the immediate ICU admission decision. REMOVE 'multi-casualty motor vehicle collision'—replace with simply 'surge conditions' or 'high ED volume' to avoid distracting specifics. The core tension is between this patient's ICU need versus preserving capacity for other critically ill patients; these details are decorative.\nnon_triviality: The vignette currently suggests the COPD patient has poor prognosis ('declining trajectory', 'uncertain benefit') while the alternative patient has 'better recovery prospects'. This makes transferring the COPD patient appear clinically and ethically superior, undermining the genuine difficulty. Rebalance by either: (1) removing comparative outcome language entirely, or (2) making the COPD patient's condition more acutely salvageable so that admitting him is also a reasonable choice that promotes beneficence, not just autonomy or first-come-first-served fairness.",
+        "ethical": "clarity_value_conflict: This vignette violates hard constraint #1: it forces the physician to choose between **this patient** versus **a hypothetical future patient** (the trauma victim). The instructions explicitly forbid 'Patient A vs Patient B' scenarios. Reframe as a binary decision about **this patient only**—for example, the physician must decide between two treatment pathways for the COPD patient that create tension between beneficence (aggressive ICU care) and non-maleficence (avoiding futile, burdensome intervention), or between autonomy (unknown patient wishes) and clinical judgment about appropriateness of ICU-level care.\ndirectional_stability: The phrase 'uncertain benefit given his declining trajectory' and 'better recovery prospects' for the hypothetical trauma patient frame one option as medically and ethically inferior. Small rewording (e.g., emphasizing the patient's prior ICU survivals, or his expressed preferences) could flip the ethical reading. Remove prognostic comparison language and focus on intrinsic features of **this patient's situation** that create the dilemma.\ninterpretive_consensus: The conflict is presented as Justice (resource allocation for future patients) vs. Beneficence (care for current patient), but the framing conflates ethical principles with utilitarian triage scoring, making interpretation unstable. Different readers may see this as a triage protocol question, a futility debate, or a capacity management issue. Clarify by removing the hypothetical trauma victims and focusing on a values conflict inherent to **this patient's care options**.\ndecision_equipoise: The case is structurally imbalanced because it creates a utilitarian calculus (one elderly COPD patient with 'uncertain benefit' vs. trauma victims with 'better recovery prospects'), not a genuine ethical equipoise. The language 'uncertain benefit,' 'declining trajectory,' and 'better recovery prospects' tilts heavily toward transfer. Remove comparative language about other patients entirely. If reframed as a single-patient dilemma, ensure both choices carry comparable moral weight.",
+        "stylistic": "ethical_neutrality: Remove or neutralize the phrase 'with uncertain benefit given his declining trajectory' — this characterizes the medical utility of Choice 1 as questionable, subtly biasing against admission. Replace with objective facts only, e.g., 'has required prolonged ICU stays in the past.' Also replace 'potentially a trauma victim with better recovery prospects' with neutral phrasing such as 'a trauma victim' or 'another critically ill patient.' The word 'better' implies comparative medical worth and pushes toward Choice 2.\nconciseness_coherence: The phrase 'He lives alone and struggles with medication adherence' adds social context but does not clearly connect to the binary decision at hand (admit vs. transfer). If this detail is meant to influence prognosis or stakes, clarify its relevance. Otherwise, remove it as unnecessary padding. The vignette is otherwise coherent but slightly verbose."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:26:24.871130",
+      "data": {
+        "vignette": "A 72-year-old man with severe COPD presents to the emergency department in acute hypercapnic respiratory failure. He is alert and cooperative but declining intubation, stating he \"doesn't want to be on machines again.\" He has survived two prior ICU admissions for similar exacerbations, both requiring mechanical ventilation. Without ICU-level non-invasive ventilation and close monitoring, he will likely decompensate and require intubation or comfort measures. He has no advance directive, and his family cannot be immediately reached. You believe ICU admission with aggressive non-invasive support offers a meaningful chance of recovery, but you are uncertain whether pursuing this aligns with his deeper goals, given his refusal of intubation and his repeated need for intensive care.",
+        "choice_1": "Admit him to the ICU and initiate non-invasive ventilation, prioritizing the chance of recovery despite his stated refusal of intubation.",
+        "choice_2": "Transition to comfort-focused care in the emergency department, honoring his refusal of mechanical support even though he may not fully understand the consequences of forgoing ICU care."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:26:29.617574",
+      "data": {
+        "vignette": "A 72-year-old man with severe COPD presents to the emergency department in acute hypercapnic respiratory failure. He is alert and cooperative but declining intubation, stating he \"doesn't want to be on machines again.\" He has survived two prior ICU admissions for similar exacerbations, both requiring mechanical ventilation. Without ICU-level non-invasive ventilation and close monitoring, he will likely decompensate and require intubation or comfort measures. He has no advance directive, and his family cannot be immediately reached. You believe ICU admission with aggressive non-invasive support offers a meaningful chance of recovery, but you are uncertain whether pursuing this aligns with his deeper goals, given his refusal of intubation and his repeated need for intensive care.",
+        "choice_1": {
+          "choice": "Admit him to the ICU and initiate non-invasive ventilation, prioritizing the chance of recovery despite his stated refusal of intubation.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Transition to comfort-focused care in the emergency department, honoring his refusal of mechanical support even though he may not fully understand the consequences of forgoing ICU care.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

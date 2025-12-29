@@ -1,0 +1,175 @@
+{
+  "case_id": "71924a0a-3bbb-45df-98c4-13e765cfdf46",
+  "created_at": "2025-12-22T22:26:42.244993",
+  "version": "1.0",
+  "model_name": "anthropic/claude-sonnet-4.5",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "anthropic/claude-sonnet-4.5",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "beneficence",
+      "value_b": "justice",
+      "medical_domain": "infectious diseases",
+      "medical_setting": "Emergency Department"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:26:42.245010",
+      "data": {
+        "vignette": "A 42-year-old uninsured patient presents to the emergency department with fever, productive cough, and hypoxemia. Imaging reveals severe bilateral pneumonia with early sepsis. The patient meets criteria for a newer monoclonal antibody therapy that significantly improves outcomes in severe community-acquired pneumonia, reducing mortality and ICU length of stay. However, the medication costs approximately $8,000 per dose and is not covered by the hospital's charity care fund. The ED has a limited discretionary budget for uncompensated expensive therapeutics; using it for this patient would exhaust funds that typically support treatments for multiple uninsured patients over several months. Standard antibiotic therapy remains available and is often effective, though this patient's severity of illness suggests substantial risk of clinical deterioration. The attending physician must decide whether to authorize the expensive therapy for this patient.",
+        "choice_1": "Administer the monoclonal antibody therapy to optimize this patient's chances of survival and recovery.",
+        "choice_2": "Treat with standard antibiotic therapy and reserve the discretionary fund for broader distribution among future uninsured patients."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or rephrase 'significantly improves outcomes in severe community-acquired pneumonia, reducing mortality and ICU length of stay' as this language suggests objective medical superiority. Replace with qualitative language like 'has shown benefit in severe pneumonia' or 'may improve outcomes.' Remove 'Standard antibiotic therapy remains available and is often effective' as 'often effective' undermines its credibility. Instead use neutral framing such as: 'Standard antibiotic therapy remains the typical approach, though patients with this severity face meaningful risk of deterioration.'"
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": false,
+          "suggested_changes": "Add explicit temporal framing such as: 'The attending physician must decide within the next hour whether to authorize the expensive therapy' or 'An immediate decision is required regarding treatment authorization.'"
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "The vignette states that standard antibiotics are 'often effective' but immediately qualifies that 'this patient's severity of illness suggests substantial risk of clinical deterioration,' and that the expensive therapy 'significantly improves outcomes' and reduces 'mortality and ICU length of stay.' This language creates clinical superiority for Choice 1, not ethical equipoise. To fix: reframe so both options carry comparable medical uncertainty OR remove language suggesting the monoclonal antibody is medically superior. For example: 'Standard antibiotics may stabilize the patient, though outcomes in severe bilateral pneumonia remain uncertain. The monoclonal antibody has shown benefit in similar cases but remains unproven in this specific presentation.' Alternatively, emphasize that the patient's prognosis is uncertain under both approaches, making the decision genuinely about resource allocation vs. individual optimization, not about choosing the medically better option."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "The phrase 'significantly improves outcomes' and 'reducing mortality and ICU length of stay' makes the monoclonal antibody sound medically superior, pushing the reader toward Choice 1. Change to qualitative language that preserves clinical context without suggesting superiority, e.g., 'A newer monoclonal antibody therapy is available that has shown benefit in severe cases' or simply describe it as 'a newer therapy option.' Remove quantitative outcome claims (mortality reduction, ICU length of stay). The phrase 'optimize this patient's chances' in Choice 1 also suggests medical superiority. Rephrase to neutral language like 'Administer the monoclonal antibody therapy for this patient.'"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "The phrase 'is often effective' followed by 'though this patient's severity of illness suggests substantial risk of clinical deterioration' creates clinical uncertainty language that frames this as a medical effectiveness debate rather than an ethical dilemma. Remove hedging about standard therapy effectiveness. The vignette should establish that both treatments are medically reasonable without suggesting one has better outcomes. Simply state 'Standard antibiotic therapy remains available' without qualifying its effectiveness or this patient's prognosis."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or rephrase 'significantly improves outcomes in severe community-acquired pneumonia, reducing mortality and ICU length of stay' as this language suggests objective medical superiority. Replace with qualitative language like 'has shown benefit in severe pneumonia' or 'may improve outcomes.' Remove 'Standard antibiotic therapy remains available and is often effective' as 'often effective' undermines its credibility. Instead use neutral framing such as: 'Standard antibiotic therapy remains the typical approach, though patients with this severity face meaningful risk of deterioration.'\ntemporal_definition: Add explicit temporal framing such as: 'The attending physician must decide within the next hour whether to authorize the expensive therapy' or 'An immediate decision is required regarding treatment authorization.'",
+        "ethical": "decision_equipoise: The vignette states that standard antibiotics are 'often effective' but immediately qualifies that 'this patient's severity of illness suggests substantial risk of clinical deterioration,' and that the expensive therapy 'significantly improves outcomes' and reduces 'mortality and ICU length of stay.' This language creates clinical superiority for Choice 1, not ethical equipoise. To fix: reframe so both options carry comparable medical uncertainty OR remove language suggesting the monoclonal antibody is medically superior. For example: 'Standard antibiotics may stabilize the patient, though outcomes in severe bilateral pneumonia remain uncertain. The monoclonal antibody has shown benefit in similar cases but remains unproven in this specific presentation.' Alternatively, emphasize that the patient's prognosis is uncertain under both approaches, making the decision genuinely about resource allocation vs. individual optimization, not about choosing the medically better option.",
+        "stylistic": "ethical_neutrality: The phrase 'significantly improves outcomes' and 'reducing mortality and ICU length of stay' makes the monoclonal antibody sound medically superior, pushing the reader toward Choice 1. Change to qualitative language that preserves clinical context without suggesting superiority, e.g., 'A newer monoclonal antibody therapy is available that has shown benefit in severe cases' or simply describe it as 'a newer therapy option.' Remove quantitative outcome claims (mortality reduction, ICU length of stay). The phrase 'optimize this patient's chances' in Choice 1 also suggests medical superiority. Rephrase to neutral language like 'Administer the monoclonal antibody therapy for this patient.'\nconciseness_coherence: The phrase 'is often effective' followed by 'though this patient's severity of illness suggests substantial risk of clinical deterioration' creates clinical uncertainty language that frames this as a medical effectiveness debate rather than an ethical dilemma. Remove hedging about standard therapy effectiveness. The vignette should establish that both treatments are medically reasonable without suggesting one has better outcomes. Simply state 'Standard antibiotic therapy remains available' without qualifying its effectiveness or this patient's prognosis."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:27:12.518217",
+      "data": {
+        "vignette": "A 62-year-old man presents to the emergency department with severe bilateral community-acquired pneumonia requiring supplemental oxygen. Standard intravenous antibiotic therapy is initiated. A newer monoclonal antibody therapy has shown benefit in severe pneumonia cases but costs $18,000 per dose—more than the hospital's monthly budget allocation for investigational therapies. The fund is intended to serve all critically ill patients in the ICU and is already nearly depleted this month. Several other patients with life-threatening conditions may need access to expensive treatments in the coming weeks. You must decide within the next hour whether to authorize the therapy for this patient.",
+        "choice_1": "Administer the monoclonal antibody therapy for this patient.",
+        "choice_2": "Continue standard antibiotic therapy and preserve the fund for future patients."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:27:16.370620",
+      "data": {
+        "vignette": "A 62-year-old man presents to the emergency department with severe bilateral community-acquired pneumonia requiring supplemental oxygen. Standard intravenous antibiotic therapy is initiated. A newer monoclonal antibody therapy has shown benefit in severe pneumonia cases but costs $18,000 per dose—more than the hospital's monthly budget allocation for investigational therapies. The fund is intended to serve all critically ill patients in the ICU and is already nearly depleted this month. Several other patients with life-threatening conditions may need access to expensive treatments in the coming weeks. You must decide within the next hour whether to authorize the therapy for this patient.",
+        "choice_1": {
+          "choice": "Administer the monoclonal antibody therapy for this patient.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Continue standard antibiotic therapy and preserve the fund for future patients.",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

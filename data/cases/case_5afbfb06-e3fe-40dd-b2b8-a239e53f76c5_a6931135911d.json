@@ -1,0 +1,202 @@
+{
+  "case_id": "5afbfb06-e3fe-40dd-b2b8-a239e53f76c5",
+  "created_at": "2025-12-22T22:20:36.157415",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "5. You are discussing the care of an elderly woman with her family.\nAlthough she is awake and alert, the patient is very' ill and physically\nfragile. You are awaiting the results of a biopsy for what will likely be\ncancer, which has already metastasized throughout the body. The\nfamily asks that you inform them first about the results of the biopsy.\nThey are very loving and caring and are constantly surrounding the\npatient. They do not want to depress the patient further, and because\nthere will be no hope for a cure they see no reason to ruin her\nremaining life with this information.\nWhat should you tell them?\na. You will honor their wishes.\nb. You agree with their wishes and you ask them to give you the necessary written\nrequest.\nc. You ask them to involve the ethics committee for the hospital.\nd. You tell them that you are obligated to inform the patient of all the findings.\ne. Explain to them that that decision can only be made by the health-care proxy.",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:20:36.157443",
+      "data": {
+        "vignette": "You are the attending physician for an 82-year-old woman hospitalized with profound weight loss and painful bone lesions. She is awake, oriented, and able to hold a clear conversation, but extremely frail and easily exhausted. A biopsy was done because imaging strongly suggests widely spread cancer, and the pathology report is expected today. Her adult children, who are at the bedside constantly, ask you to tell them the results first and not to tell their mother if the news confirms advanced cancer, saying she is “hanging on” emotionally and that learning there is no curative treatment will crush her and worsen her remaining time. Your patient has not previously discussed how much detail she wants, but she has asked you more than once, “Have you found out what this is yet?” As the treating physician, you must decide how to proceed when the results return.",
+        "choice_1": "When the biopsy result is available, speak directly with the patient and share the diagnosis and what it means in a straightforward but supportive way, even if the family objects.",
+        "choice_2": "Agree to delay telling the patient the full results for now and first meet with the family to plan how (and whether) to disclose, focusing on preserving her emotional stability and avoiding immediate distress."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften outcome-resolving language that makes the diagnosis/prognosis feel predetermined. For example, change “imaging strongly suggests widely spread cancer” to “imaging raises serious concern for metastatic cancer” and change “learning there is no curative treatment will crush her” to “learning the illness may not be curable could be devastating.” Avoid implying that incurability is already certain before pathology returns."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Tighten to only clinically/ethically necessary facts and add one missing key fact. (1) Add whether the patient has decision-making capacity confirmed/documented and whether any surrogate/DPOA exists. (2) Remove or condense non-essential descriptors like “constantly” at bedside and “hanging on emotionally,” unless directly tied to a specific request (e.g., request for nondisclosure). (3) Clarify what ‘results’ include (diagnosis only vs prognosis and treatment options) to make the disclosure decision concrete."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 reads like open-ended collusion to withhold a serious diagnosis from a capable patient, which is typically not defensible and makes the dilemma too one-sided. Revise Choice 2 into a time-limited, clinically common alternative that still carries ethical cost, e.g.: “First meet briefly with the family and then ask the patient how much information she wants and whether she prefers family present, with the option to defer detailed prognosis/treatment discussion until a scheduled family meeting later the same day.” This makes both options plausible and ethically contestable (immediate full disclosure vs structured, patient-preference–guided staged disclosure)."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance so neither option is the near-obvious professional default. Currently, a capacitated patient repeatedly asking for results makes nondisclosure look clearly wrong. To restore equipoise, add a concrete, serious countervailing concern that makes a short delay plausibly defensible (e.g., the patient has previously had severe panic reactions to medical news, is at risk of acute decompensation when distressed, or has said she sometimes prefers her children to receive upsetting information first). Alternatively, rewrite Choice 2 to include an explicit, time-limited plan to first assess the patient’s preferences about receiving results (e.g., ask her whether she wants full details now vs having her children present/receive information first), rather than agreeing to withhold ‘whether’ to disclose."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove emotionally loaded quoted language and framing that presumes harm. For example, change family statement from “hanging on” and “will crush her” to a neutral description (e.g., “they worry disclosure will increase distress and worsen sleep/appetite”). Replace “imaging strongly suggests widely spread cancer” with “imaging is concerning for metastatic malignancy” to avoid leading tone."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the decision point and timeline. Combine redundant descriptors (e.g., keep either “extremely frail” or “easily exhausted,” not both). Specify what ‘delay’ means (hours vs days) and what information would be withheld (diagnosis vs prognosis vs treatment intent) to avoid ambiguity. Remove nonessential details like “at the bedside constantly” unless it affects the decision."
+        },
+        "deidentification_novelty": {
+          "outcome": false,
+          "suggested_changes": "Add a novel, case-specific element that changes the ethical texture without resolving it (e.g., patient previously stated she wants ‘only the big picture,’ or she has a documented advance directive naming one child as surrogate, or she is hearing-impaired and relies on family for communication, or there is a cultural/language mismatch requiring an interpreter). Avoid a ‘classic’ family non-disclosure request by making the context distinctive while staying de-identified."
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften outcome-resolving language that makes the diagnosis/prognosis feel predetermined. For example, change “imaging strongly suggests widely spread cancer” to “imaging raises serious concern for metastatic cancer” and change “learning there is no curative treatment will crush her” to “learning the illness may not be curable could be devastating.” Avoid implying that incurability is already certain before pathology returns.\nkey_information: Tighten to only clinically/ethically necessary facts and add one missing key fact. (1) Add whether the patient has decision-making capacity confirmed/documented and whether any surrogate/DPOA exists. (2) Remove or condense non-essential descriptors like “constantly” at bedside and “hanging on emotionally,” unless directly tied to a specific request (e.g., request for nondisclosure). (3) Clarify what ‘results’ include (diagnosis only vs prognosis and treatment options) to make the disclosure decision concrete.\nnon_triviality: As written, Choice 2 reads like open-ended collusion to withhold a serious diagnosis from a capable patient, which is typically not defensible and makes the dilemma too one-sided. Revise Choice 2 into a time-limited, clinically common alternative that still carries ethical cost, e.g.: “First meet briefly with the family and then ask the patient how much information she wants and whether she prefers family present, with the option to defer detailed prognosis/treatment discussion until a scheduled family meeting later the same day.” This makes both options plausible and ethically contestable (immediate full disclosure vs structured, patient-preference–guided staged disclosure).",
+        "ethical": "decision_equipoise: Rebalance so neither option is the near-obvious professional default. Currently, a capacitated patient repeatedly asking for results makes nondisclosure look clearly wrong. To restore equipoise, add a concrete, serious countervailing concern that makes a short delay plausibly defensible (e.g., the patient has previously had severe panic reactions to medical news, is at risk of acute decompensation when distressed, or has said she sometimes prefers her children to receive upsetting information first). Alternatively, rewrite Choice 2 to include an explicit, time-limited plan to first assess the patient’s preferences about receiving results (e.g., ask her whether she wants full details now vs having her children present/receive information first), rather than agreeing to withhold ‘whether’ to disclose.",
+        "stylistic": "ethical_neutrality: Remove emotionally loaded quoted language and framing that presumes harm. For example, change family statement from “hanging on” and “will crush her” to a neutral description (e.g., “they worry disclosure will increase distress and worsen sleep/appetite”). Replace “imaging strongly suggests widely spread cancer” with “imaging is concerning for metastatic malignancy” to avoid leading tone.\nconciseness_coherence: Tighten and clarify the decision point and timeline. Combine redundant descriptors (e.g., keep either “extremely frail” or “easily exhausted,” not both). Specify what ‘delay’ means (hours vs days) and what information would be withheld (diagnosis vs prognosis vs treatment intent) to avoid ambiguity. Remove nonessential details like “at the bedside constantly” unless it affects the decision.\ndeidentification_novelty: Add a novel, case-specific element that changes the ethical texture without resolving it (e.g., patient previously stated she wants ‘only the big picture,’ or she has a documented advance directive naming one child as surrogate, or she is hearing-impaired and relies on family for communication, or there is a cultural/language mismatch requiring an interpreter). Avoid a ‘classic’ family non-disclosure request by making the context distinctive while staying de-identified."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:21:37.265149",
+      "data": {
+        "vignette": "You are the attending hospitalist for a 68-year-old woman admitted for worsening shortness of breath from a COPD exacerbation. A CT scan done for persistent symptoms shows a right lung mass and multiple liver lesions; a biopsy was performed, and the preliminary pathology report is consistent with malignancy, with final typing and staging studies still pending. She is alert, not delirious, and her decision-making capacity has been documented; her advance directive names her adult daughter as durable power of attorney only if she loses capacity. The patient has moderate hearing loss and usually asks her daughter to help her follow complex conversations, but she can communicate with an amplifier and a professional interpreter. This morning she asks you directly, “Do you have the biopsy results—what did you find?” Before you enter, her daughter asks you not to discuss the results until the daughter arrives later today, saying her mother has had severe panic reactions to upsetting medical news in the past and is still physically fragile from the exacerbation. The preliminary report and imaging raise serious concern for advanced cancer, but the exact diagnosis and treatment intent are not yet confirmed.",
+        "choice_1": "Tell the patient now what is known so far, including that the biopsy and imaging are concerning for cancer that may be advanced, and outline the next steps, offering to include her daughter afterward if the patient wants.",
+        "choice_2": "Delay a detailed discussion for a few hours: first speak briefly with the daughter, then ask the patient how much information she wants and whether she prefers to wait for her daughter to be present; if she agrees, provide only a brief update now and schedule a same-day meeting with interpreter to review the full preliminary findings and plans."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:21:49.352347",
+      "data": {
+        "vignette": "You are the attending hospitalist for a 68-year-old woman admitted for worsening shortness of breath from a COPD exacerbation. A CT scan done for persistent symptoms shows a right lung mass and multiple liver lesions; a biopsy was performed, and the preliminary pathology report is consistent with malignancy, with final typing and staging studies still pending. She is alert, not delirious, and her decision-making capacity has been documented; her advance directive names her adult daughter as durable power of attorney only if she loses capacity. The patient has moderate hearing loss and usually asks her daughter to help her follow complex conversations, but she can communicate with an amplifier and a professional interpreter. This morning she asks you directly, “Do you have the biopsy results—what did you find?” Before you enter, her daughter asks you not to discuss the results until the daughter arrives later today, saying her mother has had severe panic reactions to upsetting medical news in the past and is still physically fragile from the exacerbation. The preliminary report and imaging raise serious concern for advanced cancer, but the exact diagnosis and treatment intent are not yet confirmed.",
+        "choice_1": {
+          "choice": "Tell the patient now what is known so far, including that the biopsy and imaging are concerning for cancer that may be advanced, and outline the next steps, offering to include her daughter afterward if the patient wants.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Delay a detailed discussion for a few hours: first speak briefly with the daughter, then ask the patient how much information she wants and whether she prefers to wait for her daughter to be present; if she agrees, provide only a brief update now and schedule a same-day meeting with interpreter to review the full preliminary findings and plans.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Make the autonomy conflict more explicit by having the patient clearly request results now and by revising Choice 2 so the clinician first asks the patient whether she wants her daughter present before speaking with the daughter. Clarify that the patient has capacity and the daughter is not the surrogate unless capacity is lost. Emphasize that information is preliminary and that disclosure can be paced, with supports (amplifier/interpreter, anxiety management) offered."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Make the ethical conflict more explicit by (1) stating the patient has repeatedly expressed a preference to receive results directly and promptly when she is capable, (2) clarifying that the daughter has no decision-making authority while the patient has capacity, and (3) sharpening the contrast between options: Choice 1 discloses clinically meaningful preliminary results now with supports; Choice 2 withholds substantive results until the daughter arrives even though the patient is asking, framing the delay as preventing panic/physiologic decompensation."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2025-12-22T22:23:00.222716",
+      "data": {
+        "vignette": "Ms. L is a 68-year-old woman with severe COPD on home oxygen who is hospitalized for worsening dyspnea and unintentional weight loss. She has significant hearing loss and communicates best with a pocket amplifier and by having key points written down. She is calm, alert, oriented, and demonstrates decision-making capacity; the team documents that she understands and can reason about medical information.\n\nDuring multiple conversations earlier this week, Ms. L clearly stated: “If there’s serious news, tell me directly and promptly while I’m able. Don’t go through my family first.”\n\nA CT scan performed this morning shows a large right upper-lobe lung mass with mediastinal lymphadenopathy and multiple liver lesions—findings highly suspicious for metastatic lung cancer. The radiology read is preliminary, and tissue diagnosis is still pending.\n\nMs. L’s daughter calls the unit and says, “Do not tell my mother anything until I get there. She’ll panic and stop breathing. Tell me first and I’ll decide what she can handle.” The daughter is not Ms. L’s designated health care proxy, and there is no indication that Ms. L has lost capacity.\n\nShortly afterward, Ms. L tells her clinician, “I know the scan is back. Please tell me what you found—now. I want the results directly. And please don’t talk to my daughter about my results unless you ask me first.”",
+        "choice_1": {
+          "choice": "Explain that the CT interpretation is preliminary and that further testing (including biopsy) is needed, then disclose the key concerning findings to Ms. L now (lung mass with likely spread). Use the hearing amplifier, a quiet setting, and paced disclosure by asking how much detail she wants at this moment and whether she wants to pause. Offer immediate supports (bronchodilators, noninvasive ventilation standby, and medication for acute anxiety) but proceed even though the news could exacerbate dyspnea or panic. Ask Ms. L whether she wants her daughter present or informed, and only involve the daughter if Ms. L agrees.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "To avoid triggering panic and possible respiratory decompensation, tell Ms. L only that the team is “still reviewing the scan” and withhold substantive results until her daughter arrives. Call the daughter back first to share the preliminary findings and plan how to present them, without first asking Ms. L whether she wants her daughter involved or whether she consents to sharing her results.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

@@ -1,0 +1,203 @@
+{
+  "case_id": "eb19bbb6-629d-453e-8b7c-3e318d0da5b6",
+  "created_at": "2025-12-22T23:11:15.496413",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "beneficence",
+      "value_b": "non-maleficence",
+      "medical_domain": "orthopedic surgery",
+      "medical_setting": "General Ward"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T23:11:15.496457",
+      "data": {
+        "vignette": "On the orthopedic surgery general ward, a 72-year-old patient is recovering from a hip fracture repair. They are alert and participating in therapy but have severe postoperative pain despite scheduled non-opioid medications. The patient asks for stronger pain control so they can tolerate physical therapy and start walking, and the team worries that inadequate pain relief will delay mobilization and increase the risk of complications from being bedbound. However, the patient has a history of opioid-related respiratory depression after a prior surgery and has mild sleep apnea; overnight nursing has already noticed periods of shallow breathing and marked drowsiness with small doses of rescue opioids. The attending surgeon and ward team must decide how aggressively to treat pain today to enable rehabilitation versus how much to limit opioids to avoid potentially serious medication-related harm.",
+        "choice_1": "Escalate to stronger opioid-based analgesia (with close monitoring) to prioritize comfort and participation in mobilization and therapy.",
+        "choice_2": "Keep opioid use minimal and rely on non-opioid measures and slower rehabilitation to reduce the risk of sedation and respiratory complications."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Reframe to avoid the vignette clinically “proving” escalation is unsafe. Dial back the determinative safety signals (e.g., change “marked drowsiness with small doses of rescue opioids” to “some drowsiness after rescue opioids, raising concern for recurrence of prior respiratory depression”). Avoid implying the team already has evidence of opioid-induced hypoventilation (replace “periods of shallow breathing” with “intermittent snoring/apneic pauses consistent with known sleep apnea”). Add a sentence that uncontrolled pain is also causing physiologic stress and functional decline so neither path is medically dominant."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make each option a concrete, mutually exclusive order set. For example:\n- Choice 1: “Start IV/PO opioid regimen (e.g., PCA or scheduled short-acting opioid) with continuous pulse oximetry/capnography, naloxone PRN, and respiratory therapy evaluation.”\n- Choice 2: “Avoid systemic opioids; use scheduled acetaminophen/NSAID (if not contraindicated), regional block/catheter consult, ice/positioning, and accept delayed PT goals.”\nAvoid vague terms like “stronger” and “minimal” without specifying what is actually ordered/withheld."
+        },
+        "temporal_definition": {
+          "outcome": false,
+          "suggested_changes": "Specify the decision point and urgency: e.g., “The decision must be made this morning before the first PT session” or “within the next few hours to determine whether the patient can safely participate in mobilization today.”"
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Increase the defensibility of both options. Currently, observed sedation/shallow breathing after small opioid doses makes escalation look clearly wrong. Either (a) soften those findings as above, or (b) add mitigating safety measures that make escalation plausible (continuous capnography, higher-acuity bed/step-down, anesthesia pain service involvement, consider regional anesthesia), and add a downside to opioid avoidance that is more than “slower rehab” (e.g., inability to participate in PT, worsening delirium from uncontrolled pain, higher thromboembolic/pulmonary complication risk). Ensure the vignette does not read like a straightforward contraindication to opioids."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Reframe so the central tension is not a routine analgesia risk–benefit calculation. Add an ethically distinct constraint such as: (a) the patient refuses continuous pulse-ox/capnography or a higher-acuity monitored bed but still requests opioid escalation (respecting the patient’s decision-making vs preventing foreseeable harm), or (b) opioid escalation requires transferring the patient to the only available step-down bed, displacing another patient who also needs monitoring (individual benefit vs fair use of scarce resources). Make the binary decision explicitly about honoring the request/allocating the resource vs declining/withholding despite suffering and delayed rehab."
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Reduce the sense that Choice 2 is the medically obvious answer given prior opioid-related respiratory depression and current marked drowsiness. Either (1) make both options comparably defensible by adding that non-opioid/regional options have already been exhausted and pain is preventing any mobilization, while opioid escalation could be made reasonably safe with a monitored setting; or (2) introduce a serious countervailing cost to the ‘safer’ option (e.g., prolonged immobility threatens loss of independence/discharge home, high delirium risk from uncontrolled pain, or the patient faces transfer to a nursing facility if rehab is delayed). Avoid language like 'potentially serious harm' on only one side; give parallel, weighty harms on both sides."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove subtly value-laden framing and intensity words. For example, change “how aggressively to treat pain today” to “whether to increase opioid analgesia today.” Rephrase “slower rehabilitation” to a neutral description like “accept more limited participation in therapy today.” Avoid implying one option is the priority by changing Choice 1 from “to prioritize comfort and participation” to “to improve pain control and facilitate therapy.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten to one paragraph by removing redundant statements about consequences of bedrest and therapy goals. Combine the respiratory-risk details into one clause (e.g., “prior opioid-induced hypoventilation; observed somnolence and hypoventilation after rescue doses overnight”). Avoid repeating the decision frame in both vignette and choices."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Reframe to avoid the vignette clinically “proving” escalation is unsafe. Dial back the determinative safety signals (e.g., change “marked drowsiness with small doses of rescue opioids” to “some drowsiness after rescue opioids, raising concern for recurrence of prior respiratory depression”). Avoid implying the team already has evidence of opioid-induced hypoventilation (replace “periods of shallow breathing” with “intermittent snoring/apneic pauses consistent with known sleep apnea”). Add a sentence that uncontrolled pain is also causing physiologic stress and functional decline so neither path is medically dominant.\ndistinctness_actionability: Make each option a concrete, mutually exclusive order set. For example:\n- Choice 1: “Start IV/PO opioid regimen (e.g., PCA or scheduled short-acting opioid) with continuous pulse oximetry/capnography, naloxone PRN, and respiratory therapy evaluation.”\n- Choice 2: “Avoid systemic opioids; use scheduled acetaminophen/NSAID (if not contraindicated), regional block/catheter consult, ice/positioning, and accept delayed PT goals.”\nAvoid vague terms like “stronger” and “minimal” without specifying what is actually ordered/withheld.\ntemporal_definition: Specify the decision point and urgency: e.g., “The decision must be made this morning before the first PT session” or “within the next few hours to determine whether the patient can safely participate in mobilization today.”\nnon_triviality: Increase the defensibility of both options. Currently, observed sedation/shallow breathing after small opioid doses makes escalation look clearly wrong. Either (a) soften those findings as above, or (b) add mitigating safety measures that make escalation plausible (continuous capnography, higher-acuity bed/step-down, anesthesia pain service involvement, consider regional anesthesia), and add a downside to opioid avoidance that is more than “slower rehab” (e.g., inability to participate in PT, worsening delirium from uncontrolled pain, higher thromboembolic/pulmonary complication risk). Ensure the vignette does not read like a straightforward contraindication to opioids.",
+        "ethical": "clarity_value_conflict: Reframe so the central tension is not a routine analgesia risk–benefit calculation. Add an ethically distinct constraint such as: (a) the patient refuses continuous pulse-ox/capnography or a higher-acuity monitored bed but still requests opioid escalation (respecting the patient’s decision-making vs preventing foreseeable harm), or (b) opioid escalation requires transferring the patient to the only available step-down bed, displacing another patient who also needs monitoring (individual benefit vs fair use of scarce resources). Make the binary decision explicitly about honoring the request/allocating the resource vs declining/withholding despite suffering and delayed rehab.\ndecision_equipoise: Reduce the sense that Choice 2 is the medically obvious answer given prior opioid-related respiratory depression and current marked drowsiness. Either (1) make both options comparably defensible by adding that non-opioid/regional options have already been exhausted and pain is preventing any mobilization, while opioid escalation could be made reasonably safe with a monitored setting; or (2) introduce a serious countervailing cost to the ‘safer’ option (e.g., prolonged immobility threatens loss of independence/discharge home, high delirium risk from uncontrolled pain, or the patient faces transfer to a nursing facility if rehab is delayed). Avoid language like 'potentially serious harm' on only one side; give parallel, weighty harms on both sides.",
+        "stylistic": "ethical_neutrality: Remove subtly value-laden framing and intensity words. For example, change “how aggressively to treat pain today” to “whether to increase opioid analgesia today.” Rephrase “slower rehabilitation” to a neutral description like “accept more limited participation in therapy today.” Avoid implying one option is the priority by changing Choice 1 from “to prioritize comfort and participation” to “to improve pain control and facilitate therapy.”\nconciseness_coherence: Tighten to one paragraph by removing redundant statements about consequences of bedrest and therapy goals. Combine the respiratory-risk details into one clause (e.g., “prior opioid-induced hypoventilation; observed somnolence and hypoventilation after rescue doses overnight”). Avoid repeating the decision frame in both vignette and choices."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T23:12:18.125341",
+      "data": {
+        "vignette": "You are the hospitalist caring for a 72-year-old man on postoperative day 1 after hip fracture fixation. He has known obstructive sleep apnea (does not use CPAP) and had an episode of opioid-related hypoventilation during a prior hospitalization. Overnight he received a few small rescue doses of oral opioid for severe pain; he became somewhat drowsy and staff noted intermittent loud snoring with brief apneic pauses, raising concern about recurrence of prior problems, though he was arousable and did not require naloxone. This morning he reports pain that prevents any turning or sitting, and he is now declining physical therapy; the nursing team notes rising agitation and worsening functional status, and you are concerned that uncontrolled pain and immobility could contribute to physiologic stress and postoperative complications. Scheduled acetaminophen and nonpharmacologic measures have been started, and NSAIDs are avoided due to chronic kidney disease; the anesthesia pain service offers either escalation of systemic opioids with continuous respiratory monitoring in a step-down bed or a slower pathway while arranging a regional technique. The patient has decision-making capacity and demands stronger opioids immediately but refuses transfer to a monitored bed or continuous pulse oximetry/capnography because he finds monitoring intolerable and wants to stay on the regular ward. The decision must be made within the next few hours before today’s first mobilization attempt.",
+        "choice_1": "Increase systemic opioid analgesia today (e.g., start a PCA or scheduled short-acting opioid with PRN rescue) on the current ward despite the patient’s refusal of continuous respiratory monitoring, using standard intermittent vital-sign checks and naloxone PRN.",
+        "choice_2": "Do not escalate systemic opioids unless the patient accepts continuous respiratory monitoring/step-down transfer; continue non-opioid measures (scheduled acetaminophen, ice/positioning), request urgent regional anesthesia evaluation, and accept limited participation in therapy today."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T23:12:26.812021",
+      "data": {
+        "vignette": "You are the hospitalist caring for a 72-year-old man on postoperative day 1 after hip fracture fixation. He has known obstructive sleep apnea (does not use CPAP) and had an episode of opioid-related hypoventilation during a prior hospitalization. Overnight he received a few small rescue doses of oral opioid for severe pain; he became somewhat drowsy and staff noted intermittent loud snoring with brief apneic pauses, raising concern about recurrence of prior problems, though he was arousable and did not require naloxone. This morning he reports pain that prevents any turning or sitting, and he is now declining physical therapy; the nursing team notes rising agitation and worsening functional status, and you are concerned that uncontrolled pain and immobility could contribute to physiologic stress and postoperative complications. Scheduled acetaminophen and nonpharmacologic measures have been started, and NSAIDs are avoided due to chronic kidney disease; the anesthesia pain service offers either escalation of systemic opioids with continuous respiratory monitoring in a step-down bed or a slower pathway while arranging a regional technique. The patient has decision-making capacity and demands stronger opioids immediately but refuses transfer to a monitored bed or continuous pulse oximetry/capnography because he finds monitoring intolerable and wants to stay on the regular ward. The decision must be made within the next few hours before today’s first mobilization attempt.",
+        "choice_1": {
+          "choice": "Increase systemic opioid analgesia today (e.g., start a PCA or scheduled short-acting opioid with PRN rescue) on the current ward despite the patient’s refusal of continuous respiratory monitoring, using standard intermittent vital-sign checks and naloxone PRN.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Do not escalate systemic opioids unless the patient accepts continuous respiratory monitoring/step-down transfer; continue non-opioid measures (scheduled acetaminophen, ice/positioning), request urgent regional anesthesia evaluation, and accept limited participation in therapy today.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Make the value conflict explicit by documenting that the patient has been counseled on specific risks (recurrent opioid-induced respiratory depression, need for naloxone/intubation/death), alternatives (regional block, non-opioid adjuncts), and that his refusal of continuous monitoring/step-down is an informed refusal. Clarify the clinician's duty to prevent foreseeable harm versus honoring the patient's autonomous request, and tighten the time-sensitive decision point."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2025-12-22T23:13:02.152240",
+      "data": {
+        "vignette": "A 46-year-old man with severe obstructive sleep apnea (does not use CPAP), obesity (BMI 38), and prior episodes of opioid-induced respiratory depression (including a naloxone reversal during a hospitalization 8 months ago) is postoperative day 0 after open ventral hernia repair. In the PACU he reports 9/10 pain and requests a high-dose IV hydromorphone PCA, stating, “That’s the only thing that works.” The anesthesiologist and surgeon counsel him in detail about specific risks in his case—recurrent opioid-induced respiratory depression, need for urgent naloxone or intubation, anoxic brain injury, and death—and review safer alternatives, including a transversus abdominis plane (TAP) block, scheduled acetaminophen/NSAID (if no contraindication), gabapentin, low-dose ketamine, and a lower-dose opioid regimen. They recommend continuous pulse oximetry/capnography and admission to a step-down unit overnight if he receives PCA opioids. The patient demonstrates understanding by repeating back the risks and alternatives but refuses step-down placement and continuous monitoring, saying he wants to go to a standard surgical floor because “I don’t want to be watched all night,” and insists on the high-dose PCA.\n\nThe team must make an immediate decision before leaving the PACU about whether to order the requested opioid regimen without enhanced monitoring or to require monitoring/step-down (or modify analgesia) to prevent foreseeable harm.",
+        "choice_1": {
+          "choice": "Honor the patient’s request: order the high-dose IV hydromorphone PCA and transfer him to a standard surgical floor without continuous respiratory monitoring, documenting his informed refusal of step-down care and monitoring.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Decline to prescribe high-dose PCA opioids without appropriate safeguards: require step-down admission with continuous respiratory monitoring if PCA is used and implement a multimodal, opioid-sparing pain plan (e.g., TAP block and non-opioid adjuncts), offering a lower-dose opioid option with monitoring; if the patient continues to refuse monitoring, use the safest feasible analgesic regimen and escalate to anesthesia/pain service and ethics consultation.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

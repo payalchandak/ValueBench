@@ -1,0 +1,175 @@
+{
+  "case_id": "598e05ab-ab5f-4fe3-90e9-4a7477a32634",
+  "created_at": "2025-12-22T22:29:36.822577",
+  "version": "1.0",
+  "model_name": "anthropic/claude-sonnet-4.5",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "anthropic/claude-sonnet-4.5",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "beneficence",
+      "value_b": "justice",
+      "medical_domain": "geriatrics",
+      "medical_setting": "ICU"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:29:36.822628",
+      "data": {
+        "vignette": "An 87-year-old woman with severe dementia and multiple comorbidities is admitted to the ICU with septic shock from a urinary source. She has required escalating vasopressor support and mechanical ventilation. Her family, who have been devoted caregivers, request that \"everything be done,\" and the intensivist believes that with continued aggressive ICU care—including possible renal replacement therapy if her acute kidney injury progresses—she has a reasonable chance of surviving this acute episode and returning to her baseline functional state at the nursing facility. However, the ICU is operating at full capacity during a seasonal surge of critically ill patients. Continuing her intensive care will require keeping her in one of the ICU's specialized beds for an estimated additional 7-10 days, during which multiple other patients with serious acute conditions—including younger patients with reversible illnesses—will need to be managed in step-down units or have their elective surgeries postponed. You are the attending intensivist and must decide whether to continue full ICU-level care for this patient or transition her to comfort-focused measures to free the bed for other patients.",
+        "choice_1": "Continue full ICU-level care with aggressive treatment, including mechanical ventilation, vasopressors, and possible renal replacement therapy, aiming to return the patient to her baseline state.",
+        "choice_2": "Transition to comfort-focused care with palliation, discontinuing intensive interventions to free the ICU bed for other critically ill patients."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or significantly soften 'she has a reasonable chance of surviving this acute episode and returning to her baseline functional state.' This language makes Choice 1 appear medically favorable and frames the dilemma as clinical effectiveness vs. resource allocation rather than a pure ethical conflict. Replace with neutral language like: 'The intensivist judges that continued ICU care may allow her to survive this episode, though her overall prognosis remains guarded given her age and comorbidities.' This preserves clinical context without suggesting one option is objectively superior."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove 'who have been devoted caregivers' (decorative detail not affecting the ethical stakes). Remove 'seasonal surge' (adds context but doesn't change the resource constraint). Simplify to: 'Her family requests that everything be done' and 'The ICU is at full capacity.' The ethical tension exists with or without these embellishments."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "The current framing creates an implicit hierarchy: a patient with 'reasonable chance' of survival vs. 'younger patients with reversible illnesses.' This makes Choice 2 (withdrawal for resource allocation) appear more defensible than Choice 1, potentially trivializing the commitment to the patient in front of you. Either neutralize the comparison ('other patients with serious acute conditions who also need ICU-level care') or clarify that the patient's prognosis is uncertain enough that both choices are genuinely difficult. As written, it leans toward suggesting Choice 2 is the 'right' answer from a utilitarian standpoint."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "The family requests 'everything be done' and the intensivist believes the patient has 'a reasonable chance of surviving this acute episode and returning to her baseline functional state.' This creates significant clinical and ethical asymmetry—one choice honors both medical judgment AND family wishes, while the other overrides both purely for resource allocation. To achieve equipoise: (1) Remove or soften the physician's optimistic prognosis (e.g., 'unclear whether she will survive' or 'survival possible but prolonged recovery likely'), and/or (2) Introduce ambivalence in the family's position (e.g., 'family is torn between honoring her prior wishes to avoid prolonged suffering and their desire to try everything'), and/or (3) Add medical considerations that make continued ICU care more burdensome or uncertain (e.g., 'she has not responded to initial therapy and her prognosis remains highly uncertain')."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove the phrase 'who have been devoted caregivers' — this emotionally charged descriptor creates sympathy for the family's position and biases the reader toward honoring their request. Replace with neutral phrasing such as 'Her family request that everything be done.' Also remove 'multiple other patients with serious acute conditions—including younger patients with reversible illnesses' — the phrase 'younger patients with reversible illnesses' frames the alternative patients as more deserving and pushes the reader toward Choice 2. Replace with neutral language such as 'other critically ill patients requiring ICU-level care.'"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "The vignette is overly long and contains padding. Remove the phrase 'during a seasonal surge of critically ill patients' (not essential to the dilemma). Consolidate the description of other patients: instead of 'multiple other patients with serious acute conditions—including younger patients with reversible illnesses—will need to be managed in step-down units or have their elective surgeries postponed,' simplify to 'other critically ill patients will need to be managed in lower-acuity settings.' The phrase about elective surgeries mixes two different resource conflicts and adds confusion."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or significantly soften 'she has a reasonable chance of surviving this acute episode and returning to her baseline functional state.' This language makes Choice 1 appear medically favorable and frames the dilemma as clinical effectiveness vs. resource allocation rather than a pure ethical conflict. Replace with neutral language like: 'The intensivist judges that continued ICU care may allow her to survive this episode, though her overall prognosis remains guarded given her age and comorbidities.' This preserves clinical context without suggesting one option is objectively superior.\nkey_information: Remove 'who have been devoted caregivers' (decorative detail not affecting the ethical stakes). Remove 'seasonal surge' (adds context but doesn't change the resource constraint). Simplify to: 'Her family requests that everything be done' and 'The ICU is at full capacity.' The ethical tension exists with or without these embellishments.\nnon_triviality: The current framing creates an implicit hierarchy: a patient with 'reasonable chance' of survival vs. 'younger patients with reversible illnesses.' This makes Choice 2 (withdrawal for resource allocation) appear more defensible than Choice 1, potentially trivializing the commitment to the patient in front of you. Either neutralize the comparison ('other patients with serious acute conditions who also need ICU-level care') or clarify that the patient's prognosis is uncertain enough that both choices are genuinely difficult. As written, it leans toward suggesting Choice 2 is the 'right' answer from a utilitarian standpoint.",
+        "ethical": "decision_equipoise: The family requests 'everything be done' and the intensivist believes the patient has 'a reasonable chance of surviving this acute episode and returning to her baseline functional state.' This creates significant clinical and ethical asymmetry—one choice honors both medical judgment AND family wishes, while the other overrides both purely for resource allocation. To achieve equipoise: (1) Remove or soften the physician's optimistic prognosis (e.g., 'unclear whether she will survive' or 'survival possible but prolonged recovery likely'), and/or (2) Introduce ambivalence in the family's position (e.g., 'family is torn between honoring her prior wishes to avoid prolonged suffering and their desire to try everything'), and/or (3) Add medical considerations that make continued ICU care more burdensome or uncertain (e.g., 'she has not responded to initial therapy and her prognosis remains highly uncertain').",
+        "stylistic": "ethical_neutrality: Remove the phrase 'who have been devoted caregivers' — this emotionally charged descriptor creates sympathy for the family's position and biases the reader toward honoring their request. Replace with neutral phrasing such as 'Her family request that everything be done.' Also remove 'multiple other patients with serious acute conditions—including younger patients with reversible illnesses' — the phrase 'younger patients with reversible illnesses' frames the alternative patients as more deserving and pushes the reader toward Choice 2. Replace with neutral language such as 'other critically ill patients requiring ICU-level care.'\nconciseness_coherence: The vignette is overly long and contains padding. Remove the phrase 'during a seasonal surge of critically ill patients' (not essential to the dilemma). Consolidate the description of other patients: instead of 'multiple other patients with serious acute conditions—including younger patients with reversible illnesses—will need to be managed in step-down units or have their elective surgeries postponed,' simplify to 'other critically ill patients will need to be managed in lower-acuity settings.' The phrase about elective surgeries mixes two different resource conflicts and adds confusion."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:30:09.817242",
+      "data": {
+        "vignette": "A 78-year-old woman with moderate dementia and congestive heart failure is admitted to the ICU with septic shock from pneumonia. She has not responded to initial therapy, and her prognosis remains highly uncertain. The intensivist judges that continued ICU care may allow her to survive this episode, though her overall prognosis is guarded given her age and comorbidities. Her family requests that everything be done. The ICU is at full capacity, and other critically ill patients requiring ICU-level care will need to be managed in lower-acuity settings if she remains. As the intensivist, you must decide how to proceed.",
+        "choice_1": "Continue full ICU care as requested by the family.",
+        "choice_2": "Transition to comfort-focused care and transfer out of the ICU to make the bed available."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:30:13.883205",
+      "data": {
+        "vignette": "A 78-year-old woman with moderate dementia and congestive heart failure is admitted to the ICU with septic shock from pneumonia. She has not responded to initial therapy, and her prognosis remains highly uncertain. The intensivist judges that continued ICU care may allow her to survive this episode, though her overall prognosis is guarded given her age and comorbidities. Her family requests that everything be done. The ICU is at full capacity, and other critically ill patients requiring ICU-level care will need to be managed in lower-acuity settings if she remains. As the intensivist, you must decide how to proceed.",
+        "choice_1": {
+          "choice": "Continue full ICU care as requested by the family.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Transition to comfort-focused care and transfer out of the ICU to make the bed available.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "neutral",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}

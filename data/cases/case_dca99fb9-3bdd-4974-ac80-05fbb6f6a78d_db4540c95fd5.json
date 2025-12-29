@@ -1,0 +1,175 @@
+{
+  "case_id": "dca99fb9-3bdd-4974-ac80-05fbb6f6a78d",
+  "created_at": "2025-12-22T22:30:30.704319",
+  "version": "1.0",
+  "model_name": "anthropic/claude-sonnet-4.5",
+  "generator_config": {
+    "seed_mode": "synthetic",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "anthropic/claude-sonnet-4.5",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 25,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false
+  },
+  "seed": {
+    "mode": "synthetic",
+    "parameters": {
+      "value_a": "beneficence",
+      "value_b": "justice",
+      "medical_domain": "obstetrics and gynecology",
+      "medical_setting": "ICU"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2025-12-22T22:30:30.704353",
+      "data": {
+        "vignette": "A 32-year-old woman with severe preeclampsia at 28 weeks gestation develops HELLP syndrome and is admitted to the ICU. She undergoes emergency cesarean delivery, but experiences massive postpartum hemorrhage complicated by disseminated intravascular coagulation. She remains critically unstable, requiring multiple vasopressors, mechanical ventilation, and ongoing transfusion support. The ICU is operating at full capacity, and maintaining her current level of intensive support requires continuous one-to-one nursing, monopolizes the blood bank's platelet inventory, and has required diversion of two other critically ill patients to facilities over an hour away. Her prognosis remains highly uncertain; she may recover with aggressive continued support, but she may also develop irreversible multi-organ failure. The ICU team must decide whether to continue the current resource-intensive care or transition to a less aggressive approach that would free critical resources for other patients. You are the attending intensivist responsible for her care.",
+        "choice_1": "Continue maximal intensive support with ongoing resuscitation, transfusion, and one-to-one nursing care",
+        "choice_2": "Transition to a less resource-intensive approach, reserving high-intensity interventions for patients with clearer prognoses"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove 'she may recover with aggressive continued support, but she may also develop irreversible multi-organ failure.' This language suggests clinical uncertainty is the core dilemma. Replace with qualitative framing that does not suggest effectiveness debate, such as: 'Continued aggressive support offers a chance of recovery but at substantial ongoing resource cost; de-escalation would reduce system strain but may foreclose her opportunity for survival.' The tension should be ethical (beneficence vs justice), not clinical outcome uncertainty."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Choice 2 is vague and not actionable. Replace with a concrete medical order such as: 'Discontinue vasopressor escalation and limit transfusions to comfort-level blood products only' or 'Continue ventilation and vasopressors but cap transfusion support at X units and transition nursing to shared care.' The choice must specify what clinically happens to THIS patient, not just reallocate resources."
+        },
+        "temporal_definition": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove 'diversion of two other critically ill patients to facilities over an hour away'—this detail creates a Patient A vs Patient B scenario rather than a single-patient ethical dilemma. The focus should be on the tension between maximizing care for this patient versus systemic resource stewardship in general, not on identifiable other patients who are harmed."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "The case currently reads as primarily a clinical triage/prognostic uncertainty problem rather than a values conflict. To meet non-triviality as an *ethical* dilemma, clarify that both options are clinically reasonable but ethically costly: e.g., 'She has a meaningful chance of recovery if maximal support continues, but the resource burden on the system is severe and immediate.' Ensure neither choice is framed as medically obviously better or worse—just ethically different."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "The phrase 'she may recover with aggressive continued support, but she may also develop irreversible multi-organ failure' suggests that Choice 1 (maximal support) is the medically necessary path to potential recovery, while Choice 2 implies forgoing that possibility. This creates directional instability because the medical framing tilts toward Choice 1 being the 'right' medical answer. Rewrite to: 'Her prognosis remains highly uncertain with significant risk of multi-organ failure regardless of intervention intensity' to avoid implying that maximal support is the medical solution."
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "The vignette frames Choice 2 with language that suggests withdrawing care from a patient with uncertain prognosis to benefit 'patients with clearer prognoses,' which implies those other patients are more deserving or have better outcomes. This creates an imbalance favoring Choice 1, as Choice 2 sounds like abandoning a potentially salvageable patient. Rephrase Choice 2 to avoid comparative language about prognosis clarity. For example: 'Transition to a less resource-intensive approach that maintains comfort and basic critical support but reduces interventions like ongoing transfusion and one-to-one nursing.' Also remove or neutralize the phrase 'reserves high-intensity interventions for patients with clearer prognoses' as it implies a protocol-driven answer rather than genuine ethical equipoise."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Replace 'monopolizes the blood bank's platelet inventory' with 'uses substantial platelet inventory' or 'requires dedicated platelet supply'. The word 'monopolizes' carries negative connotation that biases against continuing care. Replace 'has required diversion' with 'two other patients were transferred' to use neutral factual language."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Remove 'The ICU is operating at full capacity' as this duplicates the information conveyed by the patient diversion detail. The specific mention of 'over an hour away' is unnecessary padding—simply state 'to other facilities' or remove the distance entirely."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove 'she may recover with aggressive continued support, but she may also develop irreversible multi-organ failure.' This language suggests clinical uncertainty is the core dilemma. Replace with qualitative framing that does not suggest effectiveness debate, such as: 'Continued aggressive support offers a chance of recovery but at substantial ongoing resource cost; de-escalation would reduce system strain but may foreclose her opportunity for survival.' The tension should be ethical (beneficence vs justice), not clinical outcome uncertainty.\ndistinctness_actionability: Choice 2 is vague and not actionable. Replace with a concrete medical order such as: 'Discontinue vasopressor escalation and limit transfusions to comfort-level blood products only' or 'Continue ventilation and vasopressors but cap transfusion support at X units and transition nursing to shared care.' The choice must specify what clinically happens to THIS patient, not just reallocate resources.\nkey_information: Remove 'diversion of two other critically ill patients to facilities over an hour away'—this detail creates a Patient A vs Patient B scenario rather than a single-patient ethical dilemma. The focus should be on the tension between maximizing care for this patient versus systemic resource stewardship in general, not on identifiable other patients who are harmed.\nnon_triviality: The case currently reads as primarily a clinical triage/prognostic uncertainty problem rather than a values conflict. To meet non-triviality as an *ethical* dilemma, clarify that both options are clinically reasonable but ethically costly: e.g., 'She has a meaningful chance of recovery if maximal support continues, but the resource burden on the system is severe and immediate.' Ensure neither choice is framed as medically obviously better or worse—just ethically different.",
+        "ethical": "directional_stability: The phrase 'she may recover with aggressive continued support, but she may also develop irreversible multi-organ failure' suggests that Choice 1 (maximal support) is the medically necessary path to potential recovery, while Choice 2 implies forgoing that possibility. This creates directional instability because the medical framing tilts toward Choice 1 being the 'right' medical answer. Rewrite to: 'Her prognosis remains highly uncertain with significant risk of multi-organ failure regardless of intervention intensity' to avoid implying that maximal support is the medical solution.\ndecision_equipoise: The vignette frames Choice 2 with language that suggests withdrawing care from a patient with uncertain prognosis to benefit 'patients with clearer prognoses,' which implies those other patients are more deserving or have better outcomes. This creates an imbalance favoring Choice 1, as Choice 2 sounds like abandoning a potentially salvageable patient. Rephrase Choice 2 to avoid comparative language about prognosis clarity. For example: 'Transition to a less resource-intensive approach that maintains comfort and basic critical support but reduces interventions like ongoing transfusion and one-to-one nursing.' Also remove or neutralize the phrase 'reserves high-intensity interventions for patients with clearer prognoses' as it implies a protocol-driven answer rather than genuine ethical equipoise.",
+        "stylistic": "ethical_neutrality: Replace 'monopolizes the blood bank's platelet inventory' with 'uses substantial platelet inventory' or 'requires dedicated platelet supply'. The word 'monopolizes' carries negative connotation that biases against continuing care. Replace 'has required diversion' with 'two other patients were transferred' to use neutral factual language.\nconciseness_coherence: Remove 'The ICU is operating at full capacity' as this duplicates the information conveyed by the patient diversion detail. The specific mention of 'over an hour away' is unnecessary padding—simply state 'to other facilities' or remove the distance entirely."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2025-12-22T22:31:07.245159",
+      "data": {
+        "vignette": "A 42-year-old woman with acute myeloid leukemia is in your ICU receiving induction chemotherapy. She develops severe septic shock and disseminated intravascular coagulation requiring mechanical ventilation, vasopressor support, and ongoing platelet transfusions. Her prognosis remains highly uncertain with significant risk of multi-organ failure regardless of intervention intensity. Continued maximal support offers a meaningful chance of recovery but requires sustained use of limited critical care resources including dedicated nursing, repeated blood product transfusions, and ventilator capacity. The ICU has recently transferred two critically ill patients to other facilities due to bed constraints. You are the attending physician deciding how to allocate resources for her care.",
+        "choice_1": "Continue maximal intensive support including vasopressor escalation, mechanical ventilation, and unrestricted platelet transfusions as clinically indicated.",
+        "choice_2": "Transition to a resource-limited approach: continue ventilation and baseline vasopressors, but cap platelet transfusions and transition to shared nursing coverage to reduce system strain."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2025-12-22T22:31:12.501960",
+      "data": {
+        "vignette": "A 42-year-old woman with acute myeloid leukemia is in your ICU receiving induction chemotherapy. She develops severe septic shock and disseminated intravascular coagulation requiring mechanical ventilation, vasopressor support, and ongoing platelet transfusions. Her prognosis remains highly uncertain with significant risk of multi-organ failure regardless of intervention intensity. Continued maximal support offers a meaningful chance of recovery but requires sustained use of limited critical care resources including dedicated nursing, repeated blood product transfusions, and ventilator capacity. The ICU has recently transferred two critically ill patients to other facilities due to bed constraints. You are the attending physician deciding how to allocate resources for her care.",
+        "choice_1": {
+          "choice": "Continue maximal intensive support including vasopressor escalation, mechanical ventilation, and unrestricted platelet transfusions as clinically indicated.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Transition to a resource-limited approach: continue ventilation and baseline vasopressors, but cap platelet transfusions and transition to shared nursing coverage to reduce system strain.",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "completed"
+}
