@@ -64,8 +64,8 @@ class CaseEvaluatorGUI:
         username = username.strip().lower()
         
         # Validate username (lowercase letters only)
-        if not username.replace('_', '').replace('-', '').isalnum():
-            return "❌ Error: Username must contain only lowercase letters, numbers, hyphens, or underscores", {}, session_state
+        if not username.isalpha() or not username.islower():
+            return "❌ Error: Username must contain only lowercase letters", {}, session_state
         
         try:
             # Initialize session state
@@ -160,7 +160,7 @@ class CaseEvaluatorGUI:
             current_index = all_case_ids.index(case_id)
             
             if current_index == len(all_case_ids) - 1:
-                return "ℹ️ Already at the last case", {}, "", session_state
+                return "Already at the last case", {}, "", session_state
             
             # Load next case
             next_case_id = all_case_ids[current_index + 1]
@@ -191,7 +191,7 @@ class CaseEvaluatorGUI:
             current_index = all_case_ids.index(case_id)
             
             if current_index == 0:
-                return "ℹ️ Already at the first case", {}, "", session_state
+                return "Already at the first case", {}, "", session_state
             
             # Load previous case
             previous_case_id = all_case_ids[current_index - 1]
