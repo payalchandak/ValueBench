@@ -111,7 +111,8 @@ class CaseEvaluatorGUI:
             reviewed_count = len(benchmark_cases) - len(unreviewed_ids)
             
             # Get case status tag
-            evaluation = self.store.get_evaluation(case_id, self.loader)
+            # evaluator defaults to current session's username; don't pass CaseLoader here
+            evaluation = self.store.get_evaluation(case_id)
             if evaluation:
                 if evaluation.decision == "approve":
                     status_tag = "✅ Accepted"
@@ -228,8 +229,11 @@ class CaseEvaluatorGUI:
                 case_id=case_id,
                 decision="approve",
                 case_loader=self.loader,
-                updated_case=edited_case,
-                notes="Manually edited vignette" if edited_case else None
+                comments=(
+                    "Manually edited vignette"
+                    if edited_case
+                    else None
+                ),
             )
             
             # Load next case
@@ -253,8 +257,7 @@ class CaseEvaluatorGUI:
                 case_id=case_id,
                 decision="reject",
                 case_loader=self.loader,
-                updated_case=None,
-                notes=rejection_notes.strip() if rejection_notes else None
+                comments=rejection_notes.strip() if rejection_notes else None,
             )
             
             # Load next case

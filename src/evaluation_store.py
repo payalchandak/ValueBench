@@ -389,7 +389,9 @@ class EvaluationStore:
                 "total_reviewed": 0,
                 "approved": 0,
                 "rejected": 0,
+                # Back-compat: older UIs called this "with_edits"
                 "with_feedback": 0,
+                "with_edits": 0,
                 "problem_axes_summary": {}
             }
         
@@ -421,7 +423,9 @@ class EvaluationStore:
             "total_reviewed": len(self.current_session.reviewed_case_ids),
             "approved": approved,
             "rejected": rejected,
+            # Back-compat: older UIs called this "with_edits"
             "with_feedback": with_feedback,
+            "with_edits": with_feedback,
             "problem_axes_summary": problem_axes_count
         }
     
