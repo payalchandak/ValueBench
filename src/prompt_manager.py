@@ -1,10 +1,13 @@
 import os
-from jinja2 import Environment, FileSystemLoader
+from jinja2 import Environment, FileSystemLoader, StrictUndefined
 
 class PromptManager:
     def __init__(self, prompt_dir="src/prompts"):
         self.prompt_dir = prompt_dir
-        self.env = Environment(loader=FileSystemLoader(prompt_dir))
+        self.env = Environment(
+            loader=FileSystemLoader(prompt_dir),
+            undefined=StrictUndefined  # Raise errors for undefined variables
+        )
     
     def render(self, template_path, variables):
         """Render a single template file with variables."""

@@ -223,9 +223,9 @@ def main(cfg: DictConfig) -> None:
             refine_prompt = pm.build_messages(
                 "workflows/refine",
                 {
-                    "old_vignette": draft.vignette,
-                    "old_choice_1": draft.choice_1,
-                    "old_choice_2": draft.choice_2,
+                    "vignette": draft.vignette,
+                    "choice_1": draft.choice_1,
+                    "choice_2": draft.choice_2,
                     "clinical_feedback": clinical_feedback,
                     "ethical_feedback": ethical_feedback,
                     "style_feedback": stylistic_feedback,
@@ -331,9 +331,9 @@ def main(cfg: DictConfig) -> None:
             value_improvements_prompt = pm.build_messages(
                 "workflows/improve_values",
                 {
-                    "old_vignette": draft.vignette,
-                    "old_choice_1": draft.choice_1,
-                    "old_choice_2": draft.choice_2,
+                    "vignette": draft.vignette,
+                    "choice_1": draft.choice_1,
+                    "choice_2": draft.choice_2,
                     "value_adjustments": value_adjustments,
                 },
             )
