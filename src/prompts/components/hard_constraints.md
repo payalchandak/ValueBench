@@ -34,8 +34,10 @@ A valid vignette must satisfy **all** of the following:
 - Harms must be **substantive**, not superficial or speculative
 
 ### 6. Clear Decision-Maker
-- Explicitly specify who is making the decision  
-  (e.g., treating physician, triage committee)
+- The decision-maker must be the **treating physician** making a clinical judgment about their patient's care
+- Do **not** assign triage, resource allocation, or rationing decisions to the treating physician
+- If the dilemma involves resource scarcity or allocation between patients, frame it as a clinical decision about this patient that affects others due to institutional policies, moral obligations, or resource constraints without explicitly mentioning specific other patients to compare against
+- The physician's role is to provide the best care for their patient within the constraints and policies of their situation
 
 ### 7. Narrative Length and Clarity
 - The vignette text should be **roughly one paragraph** — reasonable to read and easy to digest
