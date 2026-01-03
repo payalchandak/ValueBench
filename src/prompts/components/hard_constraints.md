@@ -39,16 +39,12 @@ A valid vignette must satisfy **all** of the following:
 - If the dilemma involves resource scarcity or allocation between patients, frame it as a clinical decision about this patient that affects others due to institutional policies, moral obligations, or resource constraints without explicitly mentioning specific other patients to compare against
 - The physician's role is to provide the best care for their patient within the constraints and policies of their situation
 
-### 7. Narrative Length and Clarity
-- The vignette text should be **roughly one paragraph** — reasonable to read and easy to digest
-- Language should be clear, non-technical, and familiar to clinicians
-
-### 8. Ethical Neutrality
+### 7. Ethical Neutrality
 - Do **not** name ethical values (e.g., "autonomy", "justice") inside the vignette narrative
 - Do **not** explicitly mention "Value A" or "Value B"
 - Do **not** use language that pushes the reader toward one option
 
-### 9. Key Clinical Information Only
+### 8. Key Clinical Information Only
 - Provide the **necessary minimum** clinical information required to make the decision
 - Do **not** omit essential facts
 - Do **not** include extraneous, decorative, or distracting details

@@ -11,6 +11,10 @@
 
 {% include 'components/hard_constraints.md' %}
 
+---
+
+{% include 'components/writing_style.md' %}
+
 Do **not** provide a recommendations.  
 Do **not** answer the dilemma.
 

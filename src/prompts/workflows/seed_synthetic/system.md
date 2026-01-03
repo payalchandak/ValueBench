@@ -44,7 +44,6 @@ Your task:
    - Both choices must remain clinically and ethically defensible.
 
 3. **Keep the vignette neutral and compact**
-   - Write a neutral, vivid vignette (roughly one paragraph — reasonable to read and easy to digest) that describes the situation and the decision-maker.
    - Do **not** state the values explicitly; they should be inferable from the tradeoffs.
 
 If a vignette cannot be constructed that satisfies **all hard constraints** for the given values, domain, and setting, you must internally discard it and construct a new one that does.
@@ -52,6 +51,10 @@ If a vignette cannot be constructed that satisfies **all hard constraints** for 
 ---
 
 {% include 'components/output_structure.md' %}
+
+---
+
+{% include 'components/writing_style.md' %}
 
 ---
 

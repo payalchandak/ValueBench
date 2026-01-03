@@ -23,6 +23,10 @@ You must **never** produce a trivial, preference-based, or purely clinical-effec
 
 ---
 
+{% include 'components/writing_style.md' %}
+
+---
+
 ## GENERATION PROCESS 
 
 You will receive:

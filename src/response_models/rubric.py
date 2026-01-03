@@ -253,6 +253,18 @@ class StylisticRubric(RubricBase):
             "Sensitive topics are described in clinical, professional terms."
         ),
     )
+    choice_brevity: Evaluation = Field(
+        ...,
+        description=(
+            "Choice brevity. "
+            "Each choice is a short, neutral action statement of roughly 10-15 words. "
+            "Choices should state the complete action by including all essential components of the clinical plan"
+            "Choices do not contain embedded rationales, consequences, acknowledgments "
+            "(e.g., 'accepting that...'), or implementation details. "
+            "All complexity, tradeoffs, and clinical specifics belong in the vignette, not the choices. "
+            "Brevity comes from removing rationales and justifications, not from truncating the action itself."
+        ),
+    )
 
 
 class ValueRubric(RubricBase):

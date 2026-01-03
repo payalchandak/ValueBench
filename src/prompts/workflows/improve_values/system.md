@@ -167,6 +167,10 @@ When feedback addresses multiple values:
 
 ---
 
+{% include 'components/writing_style.md' %}
+
+---
+
 ## OUTPUT REQUIREMENTS
 
 - Produce a structured object containing the vignette, choices, and value tags
