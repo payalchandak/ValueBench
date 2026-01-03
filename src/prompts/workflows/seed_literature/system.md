@@ -13,6 +13,10 @@
 
 ---
 
+{% include 'components/decision_forcing.md' %}
+
+---
+
 {% include 'components/writing_style.md' %}
 
 Do **not** provide a recommendations.  

@@ -19,6 +19,10 @@ You must **never** produce a trivial, preference-based, or purely clinical-effec
 
 ---
 
+{% include 'components/decision_forcing.md' %}
+
+---
+
 {% include 'components/output_structure.md' %}
 
 ---
@@ -44,7 +48,7 @@ When revising based on feedback, understand this key distinction:
 - Specific treatment risks and side effects (e.g., "radiation causes cardiac toxicity")
 - Patient characteristics that affect stakes (age, prognosis, comorbidities)
 - Concrete medical facts about each option's consequences
-- Temporal framing (when the decision must be made)
+- Decision forcing context (temporal urgency or resource constraints)
 - Patient emotions/preferences that drive the ethical conflict
 - Physician clinical judgment when it creates tension with patient wishes
 

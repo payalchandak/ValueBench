@@ -16,6 +16,10 @@ Your sole responsibility is to audit clinical vignettes. You will be reviewing a
 
 ---
 
+{% include 'components/decision_forcing.md' %}
+
+---
+
 ## YOUR CURRENT TASK
 
 You must strictly evaluate the case against the following criteria. Read the definitions carefully. If a criterion is not met, you must mark it as False.

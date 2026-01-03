@@ -119,12 +119,16 @@ class ClinicalRubric(RubricBase):
             "versus do not intubate. The actions are concrete and implementable by a clinician."
         ),
     )
-    temporal_definition: Evaluation = Field(
+    decision_forcing_context: Evaluation = Field(
         ...,
         description=(
-            "Temporal definition. "
-            "The vignette states when the decision is needed such as immediate intervention, "
-            "within twenty four hours, or at a clinic visit. The urgency matches the clinical presentation."
+            "Decision forcing context. "
+            "The vignette establishes a clear reason why the decision cannot be deferred indefinitely. "
+            "This can be achieved through EITHER: "
+            "(1) Temporal urgency - explicit time pressure such as immediate intervention, within 24 hours, or at this visit; OR "
+            "(2) Resource/practical constraints - appointment scarcity, specialist unavailability, insurance authorization windows, "
+            "geographic access barriers, impending loss of decision-making capacity, clinical trial enrollment deadlines, or waitlist dynamics. "
+            "The forcing mechanism must match the clinical context and feel realistic."
         ),
     )
     key_information: Evaluation = Field(
