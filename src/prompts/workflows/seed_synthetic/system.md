@@ -43,6 +43,8 @@ Your task:
 1. **Anchor in the domain and setting**
    - Choose a realistic patient and clinical problem that fits the specified domain and setting.
    - Ensure the scenario is common or plausible for that context.
+   - **Demographic diversity**: Vary patient ages across cases. Consider the full lifespan appropriate to the condition.
+   - **Disease diversity**: Choose conditions that naturally fit the domain and avoid overusing common defaults. Select conditions that create genuine ethical tension.
 
 2. **Build a tight value conflict**
    - Design a single binary decision where **Choice 1** advances **Value A** while compromising **Value B**.

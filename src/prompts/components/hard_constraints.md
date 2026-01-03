@@ -49,4 +49,8 @@ A valid vignette must satisfy **all** of the following:
 - Do **not** omit essential facts
 - Do **not** include extraneous, decorative, or distracting details
 
+### 9. Demographic and Clinical Preservation
+- **Age**: Do NOT change the patient's age unless medically necessary to make the case clinically coherent (e.g., a pediatric condition requires a pediatric patient)
+- **Primary Diagnosis**: Do NOT change the patient's underlying disease or primary diagnosis. You may add complications, comorbidities, or clinical details, but the root cause must remain consistent with the seed case
+- **Justification**: If age or primary diagnosis must change for clinical coherence, the change should be minimal and clearly motivated by medical necessity
 

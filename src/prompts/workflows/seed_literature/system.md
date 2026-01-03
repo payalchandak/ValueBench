@@ -63,13 +63,17 @@ When a raw case is provided:
 - Do **not** import the source author’s moral framing or implied “correct” answer
 - The final vignette must remain **ethically neutral**
 
-### 5. Fidelity Without Literalism
+### 5. Fidelity to Source Case
 - Preserve the **essence** of the dilemma (domain, decision type, moral stakes)
-- You are encouraged to change:
-  - patient demographics,
-  - timelines,
-  - institutional details,
-  - contextual framing  
+- **PRESERVE** from the source case:
+  - Patient age (unless medically necessary to change)
+  - Primary diagnosis / underlying disease
+  - Core clinical situation
+- You SHOULD change:
+  - Institutional details and setting
+  - Contextual framing and timeline
+  - Names and identifying details (remove and anonymize)
+  - Add clinically appropriate complications or comorbidities
 while maintaining realism and generalizability
 
 If a raw case cannot be transformed to satisfy **all hard constraints**, generate a new case from the same clinical speciality or take very very loose inspiration from the case.
