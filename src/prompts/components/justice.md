@@ -22,11 +22,11 @@ Ensuring fair, equitable, and appropriate distribution of healthcare resources a
 
 ## Assessing Justice in Clinical Cases
 
-### 1. Resource Scarcity and Allocation
-- **Resource Constraint:** Does the intervention require limited resources (staff time, equipment, medications, beds)?
-- **Opportunity Cost:** What other patients or uses are displaced by this allocation?
-- **Clinical Priority:** Does this patient's clinical need justify resource use compared to others?
-- **Marginal Benefit:** Is the benefit proportionate to resource consumption (e.g., "daily MRIs for stable patient" vs. "emergency MRI for acute stroke")?
+### 1. Resource Scarcity and Stewardship
+- **Resource Constraint:** Does the intervention require limited or costly resources (staff time, equipment, medications, beds)?
+- **Policy Compliance:** Does the requested intervention meet established allocation criteria, coverage requirements, or institutional guidelines?
+- **Proportionality:** Is the expected benefit proportionate to the resource consumption or cost? Would this represent low-value care?
+- **Stewardship Principle:** Does providing this intervention align with responsible use of healthcare resources, or does it represent disproportionate consumption relative to expected benefit?
 
 ### 2. Fairness and Precedent
 - **Equal Treatment:** Would similarly situated patients receive this same intervention?
@@ -56,4 +56,4 @@ Ensuring fair, equitable, and appropriate distribution of healthcare resources a
 ---
 
 ## Documentation Standards
-Explicit resource constraints and competing demands, clinical rationale for allocation decisions, consideration of precedent and policy, assessment of public health or third-party risks, evidence of equitable treatment
+Explicit resource constraints and policy requirements, clinical rationale for allocation decisions, consideration of precedent and system integrity, assessment of public health or third-party risks, evidence of equitable treatment and stewardship principles

@@ -39,27 +39,22 @@ The following archetypes are provided **as inspiration only**.
 
 ### 3. **JUSTICE vs BENEFICENCE / NON-MALEFICENCE**
 
-- **High-Cost Rescue vs Fair Resource Allocation**  
-  A single patient could benefit from a very expensive intervention that would significantly strain the budget.  
-  When considering budget dilemmas, you can place the dilemma in different health care system contexts (e.g., single-payer national health system, private insurance, hospital budget constraints).  
-  Avoid scenarios where the decision is primarily about prioritizing one specific patient A vs another specific patient B.
+**Important:** Justice conflicts for a treating physician deciding for a single patient should focus on policy adherence, stewardship principles, and precedent concerns—**not** on choosing between this patient and other specific patients. Do **not** frame justice as "other patients waiting" or "resources taken from others." Instead, frame justice as tensions between individual patient benefit and adherence to fair policies, responsible resource stewardship as an ethical principle, or maintaining system integrity.
 
-- **High-Intensity Intervention vs Fair Distribution of Care**  
-  A single patient could benefit from a very resource-intensive intervention that would significantly limit availability for others or strain a fixed pool of resources. The tension is between beneficence for this individual patient and justice in distributing scarce resources.  
-  Avoid scenarios of simply reallocating resources to a highly acute patient (such as using a previously reserved OR slot for a crash victim), unless the reallocation is questionable and carries fundamental cost to other patients.  
-  Avoid scenarios where the decision is primarily about prioritizing one specific patient A vs another specific patient B.
+- **Policy Adherence vs Clinical Advocacy**  
+  The patient's preferred or clinically indicated treatment does not meet established allocation criteria, insurance step-therapy requirements, formulary restrictions, or institutional guidelines. The physician must decide whether to follow the policy (which exists for defensible fairness or cost-effectiveness reasons) or advocate for an exception based on this patient's clinical circumstances. The tension is between beneficence for this patient and justice as adherence to policies designed to ensure fair, consistent resource allocation.
 
-- **Low-Value Care vs Stewardship**  
-  The team considers tests or treatments that provide only marginal expected benefit or reassurance but carry meaningful cumulative cost or crowd out access for others. The tension is between individualized beneficence and justice as responsible stewardship of shared resources.
+- **Stewardship vs Individual Benefit**  
+  A treatment offers some benefit to this patient but represents low-value care—marginal expected benefit relative to substantial cost, or disproportionate resource consumption relative to clinical gain. The tension is between maximizing benefit for this individual patient (beneficence) and responsible stewardship of limited healthcare resources as an ethical principle (justice). Frame resource concerns as a matter of proportionality and sustainability, not as specific patients who would lose access.
 
-- **Systemic Gaming vs System Fairness**  
-  The provider considers bending rules, stretching documentation, or bypassing allocation criteria to benefit a specific patient at the expense of fairness and integrity of the system. The tension is between beneficence for one patient and justice across the patient population.
+- **Precedent and System Integrity**  
+  Granting an exception or providing a non-standard intervention for this patient could undermine the fairness or integrity of allocation systems, create unsustainable precedent, or erode policies that exist to ensure equitable treatment. The conflict is between benefiting this patient now and maintaining system integrity for future fairness. Frame the precedent concern abstractly (sustainability, institutional credibility, fairness of the system) rather than as identifiable future patients who would be disadvantaged.
 
-- **Intensive Support for One vs Basic Support for Many**  
-  A team can devote very intensive time and resources to a single patient (for treatment, rehabilitation, or behavior change) or provide lower-intensity support to a larger group. The conflict is between beneficence for one individual and justice in spreading benefit across many.
+- **Documentation Ethics**  
+  The provider considers stretching, shading, or selectively presenting documentation to help the patient qualify for coverage, access a restricted treatment, or meet allocation criteria they would not otherwise satisfy. The tension is between beneficence for this patient (helping them access care) and justice as honesty and integrity in systems that depend on accurate information to function fairly.
 
 - **Restrictive Measures for Safety vs Freedom**  
-  A decision-capable patient's clinical situation poses risk to others. The team considers safety precautions to protect others that limit the patient's freedom.
+  A decision-capable patient's clinical situation poses risk to identifiable others or the public (e.g., contagious disease, credible threat of violence). The team considers safety precautions to protect third parties that limit the patient's freedom. The tension is between autonomy/non-maleficence toward the patient and justice as duty to protect others from harm.
 
 ### 4. **JUSTICE vs AUTONOMY**
 

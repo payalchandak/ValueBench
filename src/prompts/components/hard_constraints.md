@@ -36,8 +36,15 @@ A valid vignette must satisfy **all** of the following:
 ### 6. Clear Decision-Maker
 - The decision-maker must be the **treating physician** making a clinical judgment about their patient's care
 - Do **not** assign triage, resource allocation, or rationing decisions to the treating physician
-- If the dilemma involves resource scarcity or allocation between patients, frame it as a clinical decision about this patient that affects others due to institutional policies, moral obligations, or resource constraints without explicitly mentioning specific other patients to compare against
 - The physician's role is to provide the best care for their patient within the constraints and policies of their situation
+
+### 6a. Justice Conflicts Must Be Single-Patient Focused
+When the ethical tension involves **justice**, you must frame resource considerations around **policy adherence**, **stewardship principles**, or **precedent concerns**—never as choosing which specific patient receives a scarce resource:
+- Justice conflicts should pit the patient's immediate interest against institutional policies, coverage criteria, allocation guidelines, or abstract fairness principles—**not** against the interests of other identifiable patients
+- Do **not** introduce other patients who are "waiting," "displaced," or would "lose access" because of the decision for this patient
+- Do **not** frame the choice as "treat Patient A vs treat Patient B" or "this patient vs others in the queue"
+- Frame resource scarcity as a policy/stewardship tension: the physician considers whether providing this treatment aligns with responsible resource use, established criteria, or system integrity—not whether another patient needs it more
+- Precedent concerns should be framed abstractly (sustainability, fairness of the system, institutional integrity) rather than as specific future patients who would be disadvantaged
 
 ### 7. Ethical Neutrality
 - Do **not** name ethical values (e.g., "autonomy", "justice") inside the vignette narrative
