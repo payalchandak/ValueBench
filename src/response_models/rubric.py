@@ -151,15 +151,19 @@ class ClinicalRubric(RubricBase):
             "and resource constraints are coherent so that an average physician could make a decision."
         ),
     )
-    # legally_indeterminate: Evaluation = Field(
-    #     ...,
-    #     description=(
-    #         "Legal indeterminacy. "
-    #         "The vignette avoids options that are clearly illegal or gross malpractice such as "
-    #         "active euthanasia in the United States. The choice remains an open subjective question "
-    #         "rather than one fixed by law or basic safety standards."
-    #     ),
-    # )
+    legally_indeterminate: Evaluation = Field(
+        ...,
+        description=(
+            "Legal defensibility. "
+            "Both choices must be legally defensible in the stated or implied jurisdiction. "
+            "Neither option should be clearly illegal or constitute gross malpractice. "
+            "For legally-sensitive domains (end-of-life care, minors, mental health, reproductive health, "
+            "surrogate decision-making, controlled substances), the vignette should include a brief contextual "
+            "sentence establishing that both choices are legally permissible. "
+            "The dilemma remains ethical, not legal—legal grounding removes jurisdictional ambiguity "
+            "so the ethical conflict remains front and center."
+        ),
+    )
     non_triviality: Evaluation = Field(
         ...,
         description=(

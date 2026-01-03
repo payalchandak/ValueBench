@@ -19,6 +19,10 @@ You must **never** produce a trivial, preference-based, or purely clinical-effec
 
 ---
 
+{% include 'components/legal_grounding.md' %}
+
+---
+
 {% include 'components/decision_forcing.md' %}
 
 ---

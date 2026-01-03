@@ -13,6 +13,10 @@
 
 ---
 
+{% include 'components/legal_grounding.md' %}
+
+---
+
 {% include 'components/decision_forcing.md' %}
 
 ---

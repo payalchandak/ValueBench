@@ -17,6 +17,10 @@ Exactly **two** of these values (Value A and Value B) must be in genuine tension
 
 ---
 
+{% include 'components/legal_grounding.md' %}
+
+---
+
 {% include 'components/decision_forcing.md' %}
 
 ---
