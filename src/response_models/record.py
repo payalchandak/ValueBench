@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict, field_serializer
 from datetime import datetime
 from typing import List, Dict, Any, Optional, Union
 import uuid
@@ -158,7 +158,8 @@ class CaseRecord(BaseModel):
                 })
         return evaluations
 
-    class Config:
-        json_encoders = {
-            datetime: lambda v: v.isoformat(),
-        }
+    model_config = ConfigDict(ser_json_timedelta="iso8601")
+    
+    @field_serializer("created_at")
+    def serialize_datetime(self, v: datetime) -> str:
+        return v.isoformat()

@@ -4,7 +4,7 @@ Human Evaluation Models
 Pydantic models for human evaluation sessions and case evaluations.
 """
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from typing import Optional, Set
 
 from src.response_models.case import BenchmarkCandidate
@@ -32,9 +32,10 @@ class UserSession(BaseModel):
     last_updated: str
     reviewed_case_ids: Set[str] = set()  # Just track IDs, not full data
     
-    class Config:
+    model_config = ConfigDict(
         # Allow set type in JSON schema
-        json_schema_extra = {
+        json_schema_extra={
             "reviewed_case_ids": {"type": "array", "items": {"type": "string"}}
         }
+    )
 
