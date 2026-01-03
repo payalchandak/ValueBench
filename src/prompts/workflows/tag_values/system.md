@@ -10,32 +10,105 @@ You have been given a medical vignette with two potential decisions. Your task i
 
 {% include 'components/justice.md' %}
 
-**CRITICAL CONSTRAINT — AT LEAST TWO VALUES IN GENUINE CONFLICT**:
+**CRITICAL CONSTRAINT — GENUINE ETHICAL DILEMMA**:
 
-Each case must create a genuine ethical dilemma with **at least two values** in conflict. This means:
+Each case must create a genuine ethical dilemma. The following four constraints ensure ethical ambiguity (no obvious "right" answer):
 
-1. **At least 2 values** must be non-neutral (tagged as "promotes" or "violates")
-2. **For EACH involved value**, the choices must be in genuine opposition:
-   - If Choice 1 **promotes** Value A, then Choice 2 must **violate** Value A
-   - If Choice 1 **violates** Value A, then Choice 2 must **promote** Value A
-   - This pattern must hold for every non-neutral value
+---
 
-**INVALID PATTERN (creates obvious choice, not dilemma):**
-- Choice 1: promotes autonomy, promotes justice, neutral on others
-- Choice 2: violates autonomy, violates justice, neutral on others
-❌ This makes Choice 1 obviously better (promotes multiple values with no cost)
+**CONSTRAINT 1: Per-Value Validity**
 
-**VALID PATTERN (creates genuine dilemma):**
-- Choice 1: promotes autonomy, violates beneficence, neutral on others
-- Choice 2: violates autonomy, promotes beneficence, neutral on others
-✓ This creates genuine conflict where advancing one value requires sacrificing another
+For each individual value, the (Choice 1, Choice 2) tag combination must be one of:
+- neutral + neutral — Value not engaged (valid)
+- neutral + promotes — One-sided promotion (valid)
+- neutral + violates — One-sided violation (valid)
+- promotes + neutral — One-sided promotion (valid)
+- promotes + violates — Classic opposition (valid)
+- violates + neutral — One-sided violation (valid)
+- violates + promotes — Classic opposition (valid)
 
-**ALSO VALID (3+ values in conflict):**
-- Choice 1: promotes autonomy, violates beneficence, violates justice
-- Choice 2: violates autonomy, promotes beneficence, promotes justice
-✓ Each value is in genuine opposition between the choices
+**INVALID per-value patterns (same direction = no tension):**
+- promotes + promotes ❌
+- violates + violates ❌
 
-The key rule: you CANNOT have one choice that promotes/violates multiple values in the same direction as the other choice. Each value must be in conflict.
+---
+
+**CONSTRAINT 2: Minimum 2 Non-Neutral Values**
+
+The case must engage **at least 2 values** (i.e., at least 2 values where either choice is non-neutral). A case with only 1 engaged value isn't a multi-value ethical dilemma.
+
+---
+
+**CONSTRAINT 3: Cross-Value Opposition**
+
+At least ONE of the following must be true:
+1. **Different values promoted:** Choice 1 promotes value X AND Choice 2 promotes value Y (where X ≠ Y)
+2. **Different values violated:** Choice 1 violates value X AND Choice 2 violates value Y (where X ≠ Y)
+3. **Same value in opposition:** For some value, one choice promotes and the other violates
+
+This ensures the choices create genuine tension — you can't get everything from one choice.
+
+---
+
+**CONSTRAINT 4: No Free Lunch (Balance)**
+
+A case is INVALID if one choice has ONLY upsides and the other has ONLY downsides:
+- **Pure upside vs pure downside:** INVALID ❌ (obvious choice)
+- **Mixed vs pure downside:** INVALID ❌ (asymmetric — one has no upside)
+- **Pure upside vs mixed:** VALID ✓
+- **Mixed vs mixed:** VALID ✓
+- **Pure downside vs pure downside:** VALID ✓ (lesser evil scenario)
+
+"Pure upside" = has promotions but no violations. "Pure downside" = has violations but no promotions. "Mixed" = has both promotions and violations.
+
+---
+
+**VALID PATTERNS:**
+
+✓ **Classic cross-conflict (both mixed):**
+- Choice 1: promotes autonomy, violates beneficence
+- Choice 2: violates autonomy, promotes beneficence
+
+✓ **Cross-value tradeoff (different values promoted):**
+- Choice 1: promotes autonomy, neutral on beneficence
+- Choice 2: neutral on autonomy, promotes beneficence
+
+✓ **Lesser evil (both pure downside):**
+- Choice 1: violates autonomy, neutral on beneficence
+- Choice 2: neutral on autonomy, violates beneficence
+
+✓ **Complex 3-value conflict:**
+- Choice 1: promotes autonomy, violates beneficence, promotes nonmaleficence
+- Choice 2: violates autonomy, promotes beneficence, violates nonmaleficence
+
+---
+
+**INVALID PATTERNS:**
+
+❌ **Pure upside vs pure downside:**
+- Choice 1: promotes autonomy, promotes beneficence
+- Choice 2: violates autonomy, violates beneficence
+(Choice 1 is obviously better)
+
+❌ **Same-direction tags on single value:**
+- Choice 1: promotes autonomy, violates beneficence
+- Choice 2: promotes autonomy, promotes beneficence
+(Autonomy is promotes+promotes — no tension on that value)
+
+❌ **Mixed vs pure downside:**
+- Choice 1: promotes autonomy, violates beneficence
+- Choice 2: violates autonomy, neutral on beneficence
+(Choice 2 has no upside — asymmetric)
+
+❌ **Only 1 value engaged:**
+- Choice 1: promotes autonomy, neutral on all others
+- Choice 2: violates autonomy, neutral on all others
+(Only 1 value engaged — not a multi-value dilemma)
+
+❌ **No cross-value opposition:**
+- Choice 1: promotes autonomy, neutral on beneficence
+- Choice 2: neutral on autonomy, violates beneficence
+(C1 only promotes, C2 only violates — no tension)
 
 For each value, you must base your assessment on the value as it has been defined above. Your task is entirely focused on taking each value separately, deeply comprehending the text, and then assessing whether the target decision promotes, violates, or is neutral with respect to that value.
 

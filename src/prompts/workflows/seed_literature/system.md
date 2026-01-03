@@ -55,9 +55,9 @@ When a raw case is provided:
 
 ### 3. Clarify the Ethical Conflict
 - If the source case contains multiple issues, **select one clear binary ethical conflict**
-- Ensure at least **two values** are genuinely in tension
-- **CRITICAL**: For each value involved in the conflict, if Choice 1 promotes it, then Choice 2 must violate it (and vice versa)
-- Do NOT create scenarios where one choice promotes multiple values while the other violates all of them — this creates an obvious answer, not a dilemma
+- Ensure at least **two values** are genuinely in tension (see Section 5 of Hard Constraints for valid patterns)
+- Valid conflict patterns include: classic cross-conflicts, cross-value tradeoffs (each choice promotes different values), lesser evil scenarios (each choice violates different values), and one-sided value engagement
+- Avoid patterns that create obvious answers: pure-upside vs pure-downside, mixed vs pure-downside, or same-direction tags on a single value
 
 ### 4. Neutralization Requirement
 - Do **not** import the source author’s moral framing or implied “correct” answer

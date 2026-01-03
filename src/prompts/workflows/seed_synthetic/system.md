@@ -47,10 +47,9 @@ Your task:
    - **Disease diversity**: Choose conditions that naturally fit the domain and avoid overusing common defaults. Select conditions that create genuine ethical tension.
 
 2. **Build a tight value conflict**
-   - Design a single binary decision where **Choice 1** advances **Value A** while compromising **Value B**.
-   - Design **Choice 2** to advance **Value B** while compromising **Value A**.
-   - **CRITICAL**: Do NOT create scenarios where one choice promotes multiple values while the other violates all of them — this creates an obvious answer, not a dilemma.
-   - Each value involved must be in genuine opposition: if Choice 1 promotes it, Choice 2 must violate it (and vice versa).
+   - Design a single binary decision that creates genuine ethical tension between the two target values.
+   - Valid patterns include: classic cross-conflicts (Choice 1 promotes A/violates B, Choice 2 the reverse), cross-value tradeoffs (each promotes different values), or one-sided engagement where only one choice affects a value.
+   - **CRITICAL**: Avoid patterns that create obvious answers—no pure-upside vs pure-downside, no mixed vs pure-downside, no same-direction tags on a single value (see Section 5 of Hard Constraints).
    - Both choices must remain clinically and ethically defensible.
 
 3. **Keep the vignette neutral and compact**

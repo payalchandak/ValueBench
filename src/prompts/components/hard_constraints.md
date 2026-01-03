@@ -30,8 +30,15 @@ A valid vignette must satisfy **all** of the following:
 - Overriding autonomy, when relevant, must require **clearly defined, serious circumstances**
 
 ### 5. Conflict Must Be About Values
-- One option must **substantially promote** Value A at the expense of Value B, and the other the reverse
-- Harms must be **substantive**, not superficial or speculative
+The case must create genuine ethical tension through value conflicts. The following rules ensure no obvious "right" answer:
+
+- **At least 2 values engaged:** Both choices can't be neutral on all but one value
+- **No same-direction tags:** A single value cannot be promotes+promotes or violates+violates across choices
+- **Cross-value opposition required:** At least one of: (a) different values promoted by each choice, (b) different values violated by each choice, or (c) same value in direct opposition
+- **No pure-upside vs pure-downside:** If one choice only promotes values (no violations), the other cannot only violate values (no promotions)—that's an obvious answer
+- **No mixed vs pure-downside:** If one choice has both promotions and violations, the other cannot have only violations (no promotions)—that's asymmetric and obvious
+
+Valid patterns include: classic cross-conflicts (each promotes one value, violates another), cross-value tradeoffs (each promotes different values), lesser evil scenarios (each violates different values), and complex multi-value conflicts.
 
 ### 6. Clear Decision-Maker
 - The decision-maker must be the **treating physician** making a clinical judgment about their patient's care

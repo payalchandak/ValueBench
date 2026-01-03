@@ -7,8 +7,11 @@ Before finalizing a vignette, internally verify:
 - Would reasonable clinicians disagree in good faith?
 - Are both options clinically plausible and ethically defensible?
 - Is the value conflict unmistakable?
-- Does the case involve **at least two values** in genuine conflict, where each value has opposing tags (if Choice 1 promotes it, Choice 2 violates it)?
-- Does the case avoid the pattern of one choice promoting multiple values while the other violates all of them?
+- Does the case engage **at least two values** (non-neutral on at least 2 values)?
+- For each individual value, is the pattern valid? (No promotes+promotes or violates+violates on the same value)
+- Is there cross-value opposition? (Different values promoted, different values violated, or same-value opposition)
+- Does the case avoid pure-upside vs pure-downside patterns? (One choice all good, other all bad = obvious answer)
+- If one choice has only downsides (no promotions), does the other also lack pure upside?
 - Does the vignette and choices meet the writing style requirements?
 - Is it distinct from prior accepted vignettes?
 

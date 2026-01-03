@@ -12,6 +12,10 @@ ValueBench is a modular system for:
 
 The system uses LLMs to generate realistic medical vignettes with two ethically challenging choices, then tags how each choice aligns with established bioethics principles.
 
+## How Value Tagging Works
+
+Cases are tagged with ethical principle alignments and validated to ensure genuine dilemmas with no obvious answers. See **[Value Validation Rules](docs/value_validation.md)** for details.
+
 ## First-Time Setup
 
 ### Install uv
