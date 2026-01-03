@@ -6,7 +6,7 @@ import hashlib
 import json as json_module
 
 from src.response_models.case import BenchmarkCandidate, DraftCase
-from src.response_models.rubric import ClinicalRubric, EthicalRubric, StylisticRubric, ValueRubric
+from src.response_models.rubric import ClinicalRubric, EthicalRubric, EquipoiseRubric, StylisticRubric, ValueRubric
 from src.response_models.status import GenerationStatus
 
 class IterationRecord(BaseModel):
@@ -22,6 +22,7 @@ class IterationRecord(BaseModel):
     clinical_evaluation: Optional[ClinicalRubric] = None
     ethical_evaluation: Optional[EthicalRubric] = None
     stylistic_evaluation: Optional[StylisticRubric] = None
+    equipoise_evaluation: Optional[EquipoiseRubric] = None
     
     # Value validations (Maps value name to its validation rubric)
     value_validations: Dict[str, ValueRubric] = {}

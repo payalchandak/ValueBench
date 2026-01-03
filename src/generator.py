@@ -26,6 +26,7 @@ from src.response_models.feasibility import FeasibilityDecision
 from src.response_models.rubric import (
     ClinicalRubric,
     EthicalRubric,
+    EquipoiseRubric,
     StylisticRubric,
     ValueRubric,
 )
@@ -209,15 +210,27 @@ def main(cfg: DictConfig) -> None:
             if cfg.verbose:
                 pretty_print_audit(stylistic_rubric, "Stylistic")
 
+            equipoise_rubric, equipoise_feedback = evaluate_rubric(
+                llm,
+                pm,
+                EquipoiseRubric,
+                "Decision Science Expert specializing in medical decision-making under uncertainty",
+                draft
+            )
+            if cfg.verbose:
+                pretty_print_audit(equipoise_rubric, "Equipoise")
+
             # Update the latest record entry with evaluations and feedback for refinement
             latest_record = case_record.refinement_history[-1]
             latest_record.clinical_evaluation = clinical_rubric
             latest_record.ethical_evaluation = ethical_rubric
             latest_record.stylistic_evaluation = stylistic_rubric
+            latest_record.equipoise_evaluation = equipoise_rubric
             latest_record.feedback = {
                 "clinical": clinical_feedback,
                 "ethical": ethical_feedback,
-                "stylistic": stylistic_feedback
+                "stylistic": stylistic_feedback,
+                "equipoise": equipoise_feedback
             }
 
             refine_prompt = pm.build_messages(
@@ -229,6 +242,7 @@ def main(cfg: DictConfig) -> None:
                     "clinical_feedback": clinical_feedback,
                     "ethical_feedback": ethical_feedback,
                     "style_feedback": stylistic_feedback,
+                    "equipoise_feedback": equipoise_feedback,
                 },
             )
             refined = llm.structured_completion(

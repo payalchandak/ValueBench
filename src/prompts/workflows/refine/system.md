@@ -35,7 +35,8 @@ You must **never** produce a trivial, preference-based, or purely clinical-effec
 
 You will receive:
 1. The Original Draft (Vignette + Two Choices)
-2. A Critique Report containing specific required fixes from three departments:
+2. A Critique Report containing specific required fixes from four departments:
+    - Equipoise (Decision balance & completeness)
     - Clinical (Medical accuracy & realism)
     - Ethical (Logical structure of the dilemma)
     - Stylistic (Tone, safety, & clarity)

@@ -1,5 +1,8 @@
 === FEEDBACK ===
 
+[EQUIPOISE FEEDBACK]:
+{{equipoise_feedback}}
+
 [CLINICAL FEEDBACK]:
 {{clinical_feedback}}
 

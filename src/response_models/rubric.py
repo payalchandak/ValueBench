@@ -271,6 +271,43 @@ class StylisticRubric(RubricBase):
     )
 
 
+class EquipoiseRubric(RubricBase):
+    """Dedicated rubric for decision balance and completeness."""
+
+    balanced_difficulty: Evaluation = Field(
+        ...,
+        description=(
+            "Balanced difficulty. "
+            "Both options are roughly equal in defensibility—neither choice is obviously correct "
+            "or clearly superior. A reasonable clinician could argue for either option in good faith. "
+            "The case avoids asymmetry where one option appears stronger due to framing, detail imbalance, "
+            "or implicit endorsement. The difficulty should feel genuine, not artificially constructed."
+        ),
+    )
+    exhaustive_binary_options: Evaluation = Field(
+        ...,
+        description=(
+            "Exhaustive binary options. "
+            "The two choices comprehensively cover the relevant decision space for this scenario. "
+            "There is no obvious third option or middle-ground compromise that would resolve the dilemma. "
+            "The binary framing is clinically realistic—situations where only two viable paths exist "
+            "(e.g., treat vs. don't treat, disclose vs. withhold, intervene now vs. wait). "
+            "Hybrid approaches or deferrals are either unavailable or explicitly ruled out by the context."
+        ),
+    )
+    no_guideline_override: Evaluation = Field(
+        ...,
+        description=(
+            "No guideline override. "
+            "The decision is not definitively answered by widely accepted clinical guidelines, "
+            "professional standards, or legal requirements. Neither option violates established protocols "
+            "in a way that would make it clearly wrong. The scenario lives in the gray zone where guidelines "
+            "either conflict, are silent, or defer to clinical judgment. If guidelines exist, the case "
+            "should establish why they don't resolve this particular situation."
+        ),
+    )
+
+
 class ValueRubric(RubricBase):
     """Rubric for vetting clinical vignettes."""
 
