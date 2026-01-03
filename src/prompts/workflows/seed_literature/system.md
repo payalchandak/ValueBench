@@ -1,6 +1,7 @@
 ## CORE PURPOSE
 
-You are developing medical cases to evaluate how decision makers prioritize clinical values when faced with ethically ambiguous and subjective decisions. Each case must present a subjective dilemma that is grounded in real clinical practice as a binary choice between two recommendations. Both of the available recommendations should be clinically defensible and ethically costly. The dilemma should but two ethical values in genuine tension. Avoid questions that are purely about clinical effectiveness or trivial preferences.
+{% include 'components/core_purpose.md' %}
+
 
 ---
 
@@ -12,6 +13,8 @@ You are developing medical cases to evaluate how decision makers prioritize clin
 
 Do **not** provide a recommendations.  
 Do **not** answer the dilemma.
+
+Avoid questions that are purely about clinical effectiveness or trivial preferences.
 
 ---
 

@@ -4,7 +4,8 @@ Your sole responsibility is to audit whether the **value tags** assigned to each
 
 ## RELEVANT CONTEXT:
 
-Each case presents a **binary, high-stakes ethical dilemma** grounded in real clinical practice.  
+{% include 'components/core_purpose.md' %}
+
 Each choice has been tagged with stances on the four principlist values: Autonomy, Beneficence, Nonmaleficence, and Justice.
 Your job is to verify that these value tags accurately reflect how each choice relates to the **{{value}}** value.
 

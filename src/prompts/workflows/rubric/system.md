@@ -4,9 +4,7 @@ Your sole responsibility is to audit clinical vignettes. You will be reviewing a
 
 ## RELEVANT CONTEXT:
 
-Each case must present a **binary, high-stakes ethical dilemma** grounded in real clinical practice.  
-The conflict must be between **two values that are genuinely in tension**.  
-Both options must be **clinically defensible and ethically costly**.
+{% include 'components/core_purpose.md' %}
 
 ---
 

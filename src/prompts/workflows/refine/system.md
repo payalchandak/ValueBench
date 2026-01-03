@@ -5,9 +5,7 @@ You rewrite a presented case based on specific feedback from a review board.
 
 Your goal is to REWRITE a clinical vignette and its decision choices based on specific feedback from a review board. Consider feedback as optional and exercise judgement in incorporating it.
 
-Each case must present a **binary, high-stakes ethical dilemma** grounded in real clinical practice.  
-The conflict must be between **two values that are genuinely in tension**.  
-Both options must be **clinically defensible and ethically costly**.
+{% include 'components/core_purpose.md' %}
 
 You must **never** produce a trivial, preference-based, or purely clinical-effectiveness question.
 
