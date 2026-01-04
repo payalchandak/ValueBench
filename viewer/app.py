@@ -12,7 +12,7 @@ from typing import Dict, List, Optional
 import re
 import requests
 from dotenv import load_dotenv
-from src.embeddings import CommentEmbeddingStore, CaseEmbeddingStore
+from src.embeddings import CaseEmbeddingStore
 import numpy as np
 
 # Load environment variables
@@ -24,7 +24,6 @@ PROJECT_ROOT = Path(__file__).parent.parent
 app = Flask(__name__, template_folder="templates")
 
 # Initialize embedding stores
-embedding_store = CommentEmbeddingStore()
 case_embedding_store = CaseEmbeddingStore()
 
 # Paths (relative to project root)
