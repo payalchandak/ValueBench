@@ -4,7 +4,6 @@ Import finalized cases from Google Sheets back to local JSON files.
 This script imports cases that have been reviewed and potentially edited in Google Sheets.
 It captures and stores reviewer feedback within the case's refinement history, including:
 - R1 and R2 reviewer names and decisions
-- Whether R2 edited the case
 - Reviewer comments
 
 The reviewer feedback is stored in the 'human_evaluation' field of the new refinement
@@ -179,13 +178,7 @@ def parse_sheet_row(row: list, headers: list, row_number: int) -> ValidationResu
     r1_decision = row_dict.get('R1 Decision?', '').strip()
     r2_name = row_dict.get('R2', '').strip()
     r2_decision = row_dict.get('R2 Decision?', '').strip()
-    did_r2_edit = row_dict.get('Did R2 Edit?', '').strip().lower()
     reviewer_comments = row_dict.get('Reviewer Comments', '').strip()
-    
-    # Check if R2 edited the case
-    did_r2_edit_bool = did_r2_edit in ['true', 'yes', 'checked', '✓', '1']
-    if did_r2_edit_bool:
-        warnings.append("R2 edited this case - manual review recommended")
     
     # Extract vignette and choices
     vignette = row_dict.get('Vignette', '').strip()
@@ -271,7 +264,6 @@ def parse_sheet_row(row: list, headers: list, row_number: int) -> ValidationResu
             'r1_decision': r1_decision,
             'r2_reviewer': r2_name,
             'r2_decision': r2_decision,
-            'r2_edited': did_r2_edit_bool,
             'comments': reviewer_comments
         }
         
@@ -590,7 +582,6 @@ def update_case_json(
             - r1_decision: R1's decision
             - r2_reviewer: R2 name
             - r2_decision: R2's decision
-            - r2_edited: Whether R2 edited the case
             - comments: Reviewer comments
         cases_dir: Path to the cases directory
         
@@ -637,7 +628,6 @@ def update_case_json(
     # Build human_evaluation structure with reviewer feedback
     human_evaluation = {
         'source': 'google_sheets',
-        'edited': reviewer_feedback.get('r2_edited', False),
         'import_timestamp': datetime.now().isoformat()
     }
     
@@ -653,8 +643,7 @@ def update_case_json(
     if reviewer_feedback.get('r2_reviewer'):
         reviewers['r2'] = {
             'name': reviewer_feedback['r2_reviewer'],
-            'decision': reviewer_feedback.get('r2_decision', ''),
-            'edited': reviewer_feedback.get('r2_edited', False)
+            'decision': reviewer_feedback.get('r2_decision', '')
         }
     
     if reviewers:
@@ -782,8 +771,6 @@ def import_cases(
                     r2_str = f"R2: {reviewer_feedback['r2_reviewer']}"
                     if reviewer_feedback.get('r2_decision'):
                         r2_str += f" ({reviewer_feedback['r2_decision']})"
-                    if reviewer_feedback.get('r2_edited'):
-                        r2_str += " [edited]"
                     feedback_parts.append(r2_str)
                 
                 feedback_summary = ", ".join(feedback_parts) if feedback_parts else "No reviewer info"

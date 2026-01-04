@@ -136,14 +136,13 @@ def extract_case_row(case_data: dict, config: dict) -> Optional[list]:
     c2_nonmaleficence = choice_2.get("nonmaleficence", "neutral") if isinstance(choice_2, dict) else "neutral"
     c2_justice = choice_2.get("justice", "neutral") if isinstance(choice_2, dict) else "neutral"
     
-    # Build row in column order: case_id, R1, R1 Decision?, R2, R2 Decision?, Did R2 edit?, vignette, choice_1, c1_values..., choice_2, c2_values..., reviewer comments
+    # Build row in column order: case_id, R1, R1 Decision?, R2, R2 Decision?, vignette, choice_1, c1_values..., choice_2, c2_values..., reviewer comments
     row = [
         case_id,
         "",  # R1 - to be filled in manually
         "",  # R1 Decision? - text field
         "",  # R2 - to be filled in manually
         "",  # R2 Decision? - text field
-        "",  # Did R2 edit? - checkbox
         vignette,
         c1_text,
         c1_autonomy,
@@ -169,7 +168,6 @@ def get_header_row() -> list:
         "R1 Decision?",
         "R2",
         "R2 Decision?",
-        "Did R2 Edit?",
         "Vignette",
         "Choice 1",
         "Autonomy C1",
@@ -515,30 +513,6 @@ def export_cases(
         # Write all data at once (using correct argument order for newer gspread)
         worksheet.update(values=all_data, range_name="A1", value_input_option="RAW")
         
-        # Add checkbox validation for edit column only
-        # R1 Decision and R2 Decision will be text fields for approve/reject/maybe
-        print("  Adding checkbox to 'Did R2 Edit?' column...")
-        
-        # Did R2 edit? (column F, index 5) - checkbox only
-        checkbox_request = {
-            "setDataValidation": {
-                "range": {
-                    "sheetId": sheet_id,
-                    "startRowIndex": 1,  # Skip header
-                    "endRowIndex": len(all_data),
-                    "startColumnIndex": 5,  # Column F
-                    "endColumnIndex": 6
-                },
-                "rule": {
-                    "condition": {
-                        "type": "BOOLEAN"
-                    },
-                    "showCustomUi": True,
-                    "strict": True
-                }
-            }
-        }
-        
         # Set case_id column (column A, index 0) to clip text
         print("  Setting case_id column to clip text...")
         clip_text_request = {
@@ -559,7 +533,7 @@ def export_cases(
             }
         }
         
-        all_requests = [checkbox_request, clip_text_request]
+        all_requests = [clip_text_request]
         spreadsheet.batch_update({"requests": all_requests})
     
     # Done!
