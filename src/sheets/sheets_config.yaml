@@ -1,0 +1,62 @@
+# Google Sheets Integration Configuration
+# See setup instructions in this file for initial configuration
+
+# Path to Google Cloud service account credentials JSON file
+# Download this from Google Cloud Console after creating a service account
+# IMPORTANT: Add this file to .gitignore to avoid committing credentials
+credentials_path: credentials/service_account.json
+
+# Google Spreadsheet ID
+# Find this in the spreadsheet URL: https://docs.google.com/spreadsheets/d/{SPREADSHEET_ID}/edit
+# Leave empty until you create the spreadsheet and share it with the service account
+spreadsheet_id: "1xXGS87rG4Q3_4xsbQ4DdGHnXZZobXgH-8BXMM96uysk"
+
+# Sheet name within the spreadsheet
+sheet_name: "Cases"
+
+# Column mappings
+columns:
+  case_id: A
+  R1: B
+  r1_decision: C
+  R2: D
+  r2_decision: E
+  did_r2_edit: F
+  vignette: G
+  choice_1: H
+  c1_autonomy: I
+  c1_beneficence: J
+  c1_nonmaleficence: K
+  c1_justice: L
+  choice_2: M
+  c2_autonomy: N
+  c2_beneficence: O
+  c2_nonmaleficence: P
+  c2_justice: Q
+  reviewer_comments: R
+
+# Valid values for dropdowns
+value_options:
+  - promotes
+  - violates
+  - neutral
+
+status_options:
+  - draft
+  - review
+  - finalized
+
+# Export settings
+export:
+  # Include header row
+  include_header: true
+  # Date format for last_edited column
+  date_format: "%Y-%m-%d"
+
+# Import settings
+import:
+  # Only import rows with this status
+  import_status: "finalized"
+  # Mark imported rows with this status after import
+  post_import_status: "imported"
+
