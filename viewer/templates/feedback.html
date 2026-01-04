@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback Analysis - ValueBench</title>
+    <title>Reviewer Feedback - ValueBench</title>
     <style>
         * {
             margin: 0;
@@ -43,9 +43,36 @@
         }
         
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
         }
         
         .filters {
@@ -56,7 +83,6 @@
             margin-bottom: 2rem;
         }
         
-        .filters input,
         .filters select {
             padding: 0.5rem;
             border: 1px solid #ddd;
@@ -64,487 +90,6 @@
             font-size: 1rem;
             margin-right: 1rem;
             margin-bottom: 0.5rem;
-        }
-        
-        .filters input {
-            width: 300px;
-        }
-        
-        .semantic-search-container {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-bottom: 1rem;
-        }
-        
-        #search-semantic {
-            flex: 1;
-            min-width: 300px;
-            max-width: 600px;
-            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
-            border: 2px solid #667eea;
-            font-weight: 500;
-        }
-        
-        #search-btn {
-            padding: 0.5rem 1.5rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.2s;
-        }
-        
-        #search-btn:hover {
-            opacity: 0.9;
-            transform: translateY(-1px);
-        }
-        
-        #search-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-        
-        #clear-search-btn {
-            padding: 0.5rem 1rem;
-            background: #f5f5f5;
-            color: #333;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        
-        #clear-search-btn:hover {
-            background: #e0e0e0;
-        }
-        
-        #search-loading {
-            margin-top: 0.5rem;
-            color: #667eea;
-            font-weight: 500;
-        }
-        
-        #search-info {
-            margin-top: 0.5rem;
-            padding: 0.5rem;
-            background: #e3f2fd;
-            border-radius: 4px;
-            font-size: 0.9rem;
-        }
-        
-        .clustering-controls {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-        }
-        
-        .clustering-controls h3 {
-            margin-bottom: 1rem;
-            color: #667eea;
-            font-size: 1.2rem;
-        }
-        
-        .control-group {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .control-group label {
-            font-weight: 600;
-            min-width: 150px;
-        }
-        
-        .control-group input[type="range"] {
-            flex: 1;
-            max-width: 300px;
-        }
-        
-        .control-group select {
-            padding: 0.5rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 0.75rem 2rem;
-            border-radius: 6px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-        }
-        
-        .btn-primary:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-        
-        .btn-secondary {
-            background: white;
-            color: #667eea;
-            border: 2px solid #667eea;
-            padding: 0.75rem 2rem;
-            border-radius: 6px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            margin-left: 1rem;
-        }
-        
-        .btn-secondary:hover {
-            background: #667eea;
-            color: white;
-        }
-        
-        .status-message {
-            margin-top: 1rem;
-            padding: 0.75rem;
-            border-radius: 4px;
-            display: none;
-        }
-        
-        .status-message.loading {
-            display: block;
-            background: #e3f2fd;
-            color: #1976d2;
-            border-left: 4px solid #1976d2;
-        }
-        
-        .status-message.success {
-            display: block;
-            background: #e8f5e9;
-            color: #2e7d32;
-            border-left: 4px solid #4caf50;
-        }
-        
-        .status-message.error {
-            display: block;
-            background: #ffebee;
-            color: #c62828;
-            border-left: 4px solid #f44336;
-        }
-        
-        .view-toggle {
-            margin-bottom: 1rem;
-            display: flex;
-            gap: 0.5rem;
-        }
-        
-        #cluster-view {
-            display: none;
-        }
-        
-        .cluster-summary {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-        }
-        
-        .cluster-summary h3 {
-            margin-bottom: 1rem;
-            color: #667eea;
-        }
-        
-        .quality-metrics {
-            display: flex;
-            gap: 2rem;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid #eee;
-        }
-        
-        .quality-metric {
-            display: flex;
-            flex-direction: column;
-            gap: 0.3rem;
-        }
-        
-        .quality-metric-label {
-            font-size: 0.85rem;
-            color: #666;
-            font-weight: 600;
-        }
-        
-        .quality-metric-value {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        
-        .quality-metric-description {
-            font-size: 0.8rem;
-            color: #888;
-        }
-        
-        .quality-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            padding: 0.3rem 0.8rem;
-            border-radius: 12px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-        
-        .quality-badge.excellent {
-            background: #e8f5e9;
-            color: #2e7d32;
-        }
-        
-        .quality-badge.good {
-            background: #e3f2fd;
-            color: #1565c0;
-        }
-        
-        .quality-badge.fair {
-            background: #fff3e0;
-            color: #ef6c00;
-        }
-        
-        .quality-badge.poor {
-            background: #ffebee;
-            color: #c62828;
-        }
-        
-        .silhouette-bar {
-            width: 200px;
-            height: 8px;
-            background: #eee;
-            border-radius: 4px;
-            overflow: hidden;
-            margin-top: 0.3rem;
-        }
-        
-        .silhouette-bar-fill {
-            height: 100%;
-            border-radius: 4px;
-            transition: width 0.5s ease;
-        }
-        
-        .clusters-container {
-            display: grid;
-            gap: 1.5rem;
-        }
-        
-        .cluster-card {
-            background: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            border-left: 6px solid #667eea;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        
-        .cluster-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-        }
-        
-        .cluster-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #f0f0f0;
-        }
-        
-        .cluster-title {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .cluster-id-badge {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-        
-        .cluster-size-badge {
-            background: #e3f2fd;
-            color: #1976d2;
-            padding: 0.4rem 0.8rem;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-        
-        .theme-description {
-            background: #f8f9fa;
-            padding: 1rem;
-            border-radius: 6px;
-            margin-bottom: 1rem;
-            color: #555;
-            line-height: 1.7;
-            font-style: italic;
-        }
-        
-        .problem-axes-section {
-            margin-bottom: 1rem;
-        }
-        
-        .problem-axes-section h4 {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-        
-        .axes-bar-chart {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-        
-        .axis-bar {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .axis-bar-label {
-            min-width: 150px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #555;
-        }
-        
-        .axis-bar-fill {
-            height: 24px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            padding-right: 0.5rem;
-            color: white;
-            font-size: 0.85rem;
-            font-weight: 600;
-            min-width: 30px;
-        }
-        
-        .sample-comments-section {
-            margin-top: 1rem;
-        }
-        
-        .sample-comments-section h4 {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 0.75rem;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-        
-        .sample-comment {
-            background: #fafafa;
-            border-left: 3px solid #667eea;
-            padding: 0.75rem;
-            margin-bottom: 0.5rem;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            color: #555;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-decoration: none;
-            display: block;
-        }
-        
-        .sample-comment:hover {
-            background: #f0f0f0;
-            border-left-color: #764ba2;
-            transform: translateX(4px);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        
-        .sample-comment-meta {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 0.4rem;
-            font-size: 0.8rem;
-            align-items: center;
-        }
-        
-        .sample-comment-case-id {
-            color: #999;
-            font-size: 0.75rem;
-            margin-left: auto;
-        }
-        
-        .sample-comment:hover .sample-comment-case-id {
-            color: #667eea;
-        }
-        
-        .sample-comment-evaluator {
-            background: #667eea;
-            color: white;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-weight: 600;
-        }
-        
-        .sample-comment-decision {
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-weight: 600;
-        }
-        
-        .sample-comment-decision.approve {
-            background: #c8e6c9;
-            color: #2e7d32;
-        }
-        
-        .sample-comment-decision.reject {
-            background: #ffcdd2;
-            color: #c62828;
-        }
-        
-        .sample-comment-text {
-            font-style: italic;
-            color: inherit;
-        }
-        
-        .sample-comment::after {
-            content: "→";
-            position: absolute;
-            right: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #667eea;
-            font-size: 1.2rem;
-            opacity: 0;
-            transition: opacity 0.2s, transform 0.2s;
-        }
-        
-        .sample-comment {
-            position: relative;
-        }
-        
-        .sample-comment:hover::after {
-            opacity: 1;
-            transform: translateY(-50%) translateX(4px);
         }
         
         .comments-grid {
@@ -558,7 +103,6 @@
             padding: 1.5rem;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             border-left: 4px solid #667eea;
-            cursor: default;
         }
         
         .comment-card.approve {
@@ -569,7 +113,7 @@
             border-left-color: #f44336;
         }
         
-        .comment-card.skip {
+        .comment-card.skip, .comment-card.unknown {
             border-left-color: #ff9800;
         }
         
@@ -629,25 +173,9 @@
             color: #c62828;
         }
         
-        .decision-tag.skip {
+        .decision-tag.skip, .decision-tag.unknown {
             background: #fff9c4;
             color: #f57f17;
-        }
-        
-        .axes-tags {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 0.75rem;
-        }
-        
-        .axis-tag {
-            padding: 0.25rem 0.75rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 12px;
-            font-size: 0.85rem;
-            font-weight: 600;
         }
         
         .comment-text {
@@ -657,6 +185,12 @@
             margin-top: 0.75rem;
         }
         
+        .comment-meta {
+            margin-top: 0.75rem;
+            font-size: 0.85rem;
+            color: #888;
+        }
+        
         .no-results {
             text-align: center;
             padding: 3rem;
@@ -664,621 +198,100 @@
             background: white;
             border-radius: 8px;
         }
-        
-        /* Similar Comments Feature Styles */
-        .find-similar-btn {
-            background: #f5f5f5;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            padding: 0.5rem 0.75rem;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            min-width: 44px;
-            min-height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .find-similar-btn:hover:not(:disabled) {
-            background: #667eea;
-            border-color: #667eea;
-            transform: translateY(-1px);
-            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
-        }
-        
-        .find-similar-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-        
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            animation: fadeIn 0.2s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .modal-content {
-            background: white;
-            border-radius: 12px;
-            max-width: 900px;
-            width: 90%;
-            max-height: 85vh;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            animation: slideUp 0.3s ease;
-        }
-        
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .modal-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid #e0e0e0;
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-        }
-        
-        .modal-header h3 {
-            margin: 0 0 0.25rem 0;
-            color: #667eea;
-            font-size: 1.5rem;
-        }
-        
-        .modal-subtitle {
-            color: #666;
-            font-size: 0.9rem;
-            margin: 0;
-        }
-        
-        .modal-close {
-            background: none;
-            border: none;
-            font-size: 2rem;
-            color: #999;
-            cursor: pointer;
-            padding: 0;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: all 0.2s;
-        }
-        
-        .modal-close:hover {
-            background: #f5f5f5;
-            color: #333;
-        }
-        
-        .modal-body {
-            padding: 1.5rem;
-            overflow-y: auto;
-            flex: 1;
-        }
-        
-        .modal-footer {
-            padding: 1rem 1.5rem;
-            border-top: 1px solid #e0e0e0;
-            background: #f9f9f9;
-            text-align: center;
-            color: #666;
-        }
-        
-        .similar-comment-card {
-            background: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 1.25rem;
-            margin-bottom: 1rem;
-            transition: all 0.2s;
-        }
-        
-        .similar-comment-card:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transform: translateY(-2px);
-        }
-        
-        .similar-comment-card.relevance-high {
-            border-left: 4px solid #4caf50;
-        }
-        
-        .similar-comment-card.relevance-good {
-            border-left: 4px solid #2196f3;
-        }
-        
-        .similar-comment-card.relevance-moderate {
-            border-left: 4px solid #ff9800;
-        }
-        
-        .similarity-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.75rem;
-            gap: 1rem;
-        }
-        
-        .similarity-score-container {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-        
-        .similarity-bar-bg {
-            flex: 1;
-            height: 8px;
-            background: #e0e0e0;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        
-        .similarity-bar-fill {
-            height: 100%;
-            border-radius: 4px;
-            transition: width 0.5s ease;
-        }
-        
-        .similarity-pct {
-            font-weight: 600;
-            color: #555;
-            font-size: 0.9rem;
-            white-space: nowrap;
-        }
-        
-        .relevance-badge {
-            padding: 0.35rem 0.75rem;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 0.8rem;
-            white-space: nowrap;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .similar-comment-card .comment-meta {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-bottom: 0.75rem;
-        }
-        
-        .similar-comment-card .evaluator-badge {
-            padding: 0.25rem 0.75rem;
-            background: #667eea;
-            color: white;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 0.85rem;
-        }
-        
-        .similar-comment-card .decision-tag {
-            padding: 0.25rem 0.75rem;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-        }
-        
-        .similar-comment-card .decision-tag.approve {
-            background: #c8e6c9;
-            color: #2e7d32;
-        }
-        
-        .similar-comment-card .decision-tag.reject {
-            background: #ffcdd2;
-            color: #c62828;
-        }
-        
-        .similar-comment-card .decision-tag.skip {
-            background: #fff9c4;
-            color: #f57f17;
-        }
-        
-        .case-link {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.85rem;
-        }
-        
-        .case-link:hover {
-            text-decoration: underline;
-        }
-        
-        .similar-comment-card .axes-tags {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 0.75rem;
-        }
-        
-        .similar-comment-card .axis-tag {
-            padding: 0.25rem 0.75rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-        
-        .similar-comment-card .comment-text {
-            color: #555;
-            font-style: italic;
-            line-height: 1.6;
-            padding: 0.75rem;
-            background: #fafafa;
-            border-radius: 4px;
-        }
-        
-        .no-similar-results {
-            text-align: center;
-            padding: 3rem;
-            color: #666;
-        }
-        
-        @media (max-width: 768px) {
-            .modal-content {
-                width: 95%;
-                max-height: 95vh;
-                border-radius: 8px;
-            }
-            
-            .modal-header {
-                padding: 1rem;
-            }
-            
-            .modal-body {
-                padding: 1rem;
-            }
-            
-            .similarity-header {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            
-            .relevance-badge {
-                text-align: center;
-            }
-        }
     </style>
 </head>
 <body>
     <div class="header">
         <a href="/" class="back-link">← Back to Cases</a>
-        <h1>Evaluator Comments ({{ stats.total_comments }})</h1>
-        <p>All comments across all cases</p>
+        <h1>Reviewer Feedback ({{ stats.total_comments }})</h1>
+        <p>All reviewer comments imported from Google Sheets</p>
     </div>
     
     <div class="container">
-        <div class="clustering-controls">
-            <h3>🔬 Theme Clustering</h3>
-            <div class="control-group">
-                <label for="cluster-count">Number of Clusters:</label>
-                <input type="range" id="cluster-count" min="3" max="10" value="5">
-                <span id="cluster-count-value">5</span>
+        <!-- Statistics Summary -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value">{{ stats.total_comments }}</div>
+                <div class="stat-label">Total Comments</div>
             </div>
-            
-            <div class="control-group">
-                <label for="cluster-method">Clustering Method:</label>
-                <select id="cluster-method">
-                    <option value="kmeans">K-Means</option>
-                    <option value="hierarchical">Hierarchical</option>
-                </select>
+            {% for decision, count in stats.by_decision.items() %}
+            <div class="stat-card">
+                <div class="stat-value" style="color: {% if decision == 'approve' %}#4caf50{% elif decision == 'reject' %}#f44336{% else %}#ff9800{% endif %}">{{ count }}</div>
+                <div class="stat-label">{{ decision|title }}</div>
             </div>
-            
-            <div class="control-group">
-                <button id="run-clustering" class="btn-primary">Generate Clusters</button>
-                <button id="back-to-list" class="btn-secondary" style="display: none;">Back to List View</button>
-            </div>
-            
-            <div id="clustering-status" class="status-message"></div>
+            {% endfor %}
         </div>
         
-        <div id="cluster-view">
-            <div class="cluster-summary" id="cluster-summary"></div>
-            <div class="clusters-container" id="clusters-container"></div>
-        </div>
-        
+        <!-- Filters -->
         <div class="filters">
-                <!-- Semantic Search Box -->
-                <div class="semantic-search-container">
-                    <input type="text" 
-                           id="search-semantic" 
-                           placeholder="🔍 Semantic search: Try 'informed consent concerns' or 'time pressure decisions'...">
-                    <button id="search-btn">Search</button>
-                    <button id="clear-search-btn" style="display: none;">Clear</button>
-                </div>
-                
-                <!-- Loading indicator -->
-                <div id="search-loading" style="display: none;">
-                    <span>🔄 Searching by meaning...</span>
-                </div>
-                
-                <!-- Search info -->
-                <div id="search-info" style="display: none;"></div>
-                
-                <!-- Original filters -->
-                <div style="margin-top: 1rem;">
-                    <select id="evaluator-filter">
-                        <option value="">All Evaluators</option>
-                        {% for evaluator in stats.by_evaluator.keys() %}
-                        <option value="{{ evaluator }}">{{ evaluator }}</option>
-                        {% endfor %}
-                    </select>
-                    <select id="decision-filter">
-                        <option value="">All Decisions</option>
-                        <option value="approve">Approved</option>
-                        <option value="reject">Rejected</option>
-                        <option value="skip">Skipped</option>
-                    </select>
-                    <select id="axes-filter">
-                        <option value="">All Problem Axes</option>
-                        {% for axis in stats.by_axes.keys() %}
-                        <option value="{{ axis }}">{{ axis|title }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-            </div>
-            
-            <div class="comments-grid" id="comments-grid">
-                {% for comment in comments %}
-                <div class="comment-card {{ comment.decision }}"
-                     data-case-id="{{ comment.case_id }}"
-                     data-evaluator="{{ comment.evaluator }}"
-                     data-decision="{{ comment.decision }}"
-                     data-axes="{{ comment.problem_axes|join(',') }}">
-                    <div class="comment-header">
-                        <div>
-                            {% if comment.problem_axes %}
-                            <div class="axes-tags">
-                                {% for axis in comment.problem_axes %}
-                                <span class="axis-tag">{{ axis }}</span>
-                                {% endfor %}
-                            </div>
-                            {% endif %}
-                        </div>
-                        <div style="display: flex; gap: 0.5rem; align-items: center;">
-                            <a class="open-case-link"
-                               href="/case/{{ comment.case_id }}"
-                               title="Open this case">
-                                Open case →
-                            </a>
-                            <button class="find-similar-btn" 
-                                    data-case-id="{{ comment.case_id }}" 
-                                    data-evaluator="{{ comment.evaluator }}"
-                                    title="Find similar comments">
-                                🔍
-                            </button>
-                            <span class="evaluator-badge">{{ comment.evaluator }}</span>
-                        </div>
-                    </div>
-                    
-                    <div class="comment-text">
-                        "{{ comment.comment }}"
-                    </div>
-                </div>
+            <select id="evaluator-filter">
+                <option value="">All Reviewers</option>
+                {% for evaluator in stats.by_evaluator.keys() %}
+                <option value="{{ evaluator }}">{{ evaluator }}</option>
                 {% endfor %}
+            </select>
+            <select id="decision-filter">
+                <option value="">All Decisions</option>
+                <option value="approve">Approved</option>
+                <option value="reject">Rejected</option>
+                <option value="skip">Skipped</option>
+            </select>
+            <select id="seed-mode-filter">
+                <option value="">All Seed Modes</option>
+                {% for mode in stats.by_seed_mode.keys() %}
+                <option value="{{ mode }}">{{ mode }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <!-- Comments List -->
+        <div class="comments-grid" id="comments-grid">
+            {% for comment in comments %}
+            <div class="comment-card {{ comment.decision }}"
+                 data-case-id="{{ comment.case_id }}"
+                 data-evaluator="{{ comment.evaluator }}"
+                 data-decision="{{ comment.decision }}"
+                 data-seed-mode="{{ comment.seed_mode }}">
+                <div class="comment-header">
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <span class="evaluator-badge">{{ comment.evaluator }}</span>
+                        <span class="decision-tag {{ comment.decision }}">{{ comment.decision }}</span>
+                    </div>
+                    <a class="open-case-link"
+                       href="/case/{{ comment.case_id }}"
+                       title="Open this case">
+                        Open case →
+                    </a>
+                </div>
+                
+                <div class="comment-text">
+                    "{{ comment.comment }}"
+                </div>
+                
+                <div class="comment-meta">
+                    🏷️ {{ comment.value_pair }} | {{ comment.seed_mode }}
+                </div>
             </div>
-            
-            <div class="no-results" id="no-results-human" style="display: none;">
-                <p>No comments match your filters</p>
-            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="no-results" id="no-results" style="display: none;">
+            <p>No comments match your filters</p>
         </div>
     </div>
     
     <script>
-        // State management
-        let currentSearchMode = 'all'; // 'all' or 'semantic'
-        let semanticResults = [];
-        
-        // Elements
-        const searchSemantic = document.getElementById('search-semantic');
-        const searchBtn = document.getElementById('search-btn');
-        const clearSearchBtn = document.getElementById('clear-search-btn');
-        const searchLoading = document.getElementById('search-loading');
-        const searchInfo = document.getElementById('search-info');
+        // Filter functionality
         const evaluatorFilter = document.getElementById('evaluator-filter');
         const decisionFilter = document.getElementById('decision-filter');
-        const axesFilter = document.getElementById('axes-filter');
+        const seedModeFilter = document.getElementById('seed-mode-filter');
         const commentsGrid = document.getElementById('comments-grid');
-        const noResultsHuman = document.getElementById('no-results-human');
+        const noResults = document.getElementById('no-results');
         
-        // Original comments (store for resetting)
-        const originalComments = Array.from(commentsGrid.querySelectorAll('.comment-card'));
-        
-        // Perform semantic search
-        async function performSemanticSearch() {
-            const query = searchSemantic.value.trim();
-            
-            if (!query) {
-                clearSemanticSearch();
-                return;
-            }
-            
-            // Show loading
-            searchLoading.style.display = 'block';
-            searchInfo.style.display = 'none';
-            searchBtn.disabled = true;
-            clearSearchBtn.style.display = 'none';
-            
-            try {
-                const response = await fetch('/api/search_semantic', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        query: query,
-                        top_k: 50
-                    })
-                });
-                
-                if (!response.ok) {
-                    throw new Error('Search failed');
-                }
-                
-                const data = await response.json();
-                semanticResults = data.results;
-                
-                // Update UI
-                displaySemanticResults();
-                
-                // Show search info
-                searchInfo.innerHTML = `
-                    Found ${escapeHtml(data.count)} semantically similar comments for "<strong>${escapeHtml(data.query)}</strong>"
-                    <span style="color: #666; margin-left: 1rem;">Showing results sorted by semantic similarity</span>
-                `;
-                searchInfo.style.display = 'block';
-                clearSearchBtn.style.display = 'inline-block';
-                
-                currentSearchMode = 'semantic';
-                
-            } catch (error) {
-                console.error('Search error:', error);
-                searchInfo.innerHTML = '⚠️ Search failed. Please try again.';
-                searchInfo.style.display = 'block';
-                searchInfo.style.background = '#ffebee';
-            } finally {
-                searchLoading.style.display = 'none';
-                searchBtn.disabled = false;
-            }
-        }
-        
-        // Display semantic search results
-        function displaySemanticResults() {
-            // Clear current grid
-            commentsGrid.innerHTML = '';
-            
-            if (semanticResults.length === 0) {
-                commentsGrid.style.display = 'none';
-                noResultsHuman.style.display = 'block';
-                return;
-            }
-            
-            // Apply current filters to semantic results
+        function filterComments() {
             const selectedEvaluator = evaluatorFilter.value;
             const selectedDecision = decisionFilter.value;
-            const selectedAxis = axesFilter.value;
-            
-            let visibleCount = 0;
-            
-            semanticResults.forEach(result => {
-                // Check filters
-                const matchesEvaluator = !selectedEvaluator || result.evaluator === selectedEvaluator;
-                const matchesDecision = !selectedDecision || result.decision === selectedDecision;
-                const matchesAxis = !selectedAxis || (result.problem_axes && result.problem_axes.includes(selectedAxis));
-                
-                if (!matchesEvaluator || !matchesDecision || !matchesAxis) {
-                    return;
-                }
-                
-                visibleCount++;
-                
-                // Create comment card
-                const card = document.createElement('div');
-                card.className = `comment-card ${result.decision}`;
-                card.dataset.caseId = result.case_id;
-                card.dataset.evaluator = result.evaluator;
-                card.dataset.decision = result.decision;
-                card.dataset.axes = (result.problem_axes || []).join(',');
-                
-                // Add similarity badge
-                const similarityPercent = (result.similarity * 100).toFixed(1);
-                const similarityColor = result.similarity > 0.8 ? '#4caf50' : result.similarity > 0.6 ? '#ff9800' : '#9e9e9e';
-                
-                card.innerHTML = `
-                    <div class="comment-header">
-                        <div>
-                            ${result.problem_axes && result.problem_axes.length > 0 ? `
-                                <div class="axes-tags">
-                                    ${result.problem_axes.map(axis => `<span class="axis-tag">${escapeHtml(axis)}</span>`).join('')}
-                                </div>
-                            ` : ''}
-                        </div>
-                        <div style="display: flex; gap: 0.5rem; align-items: center;">
-                            <span style="padding: 0.25rem 0.75rem; background: ${similarityColor}; color: white; border-radius: 12px; font-weight: 600; font-size: 0.85rem;">
-                                ${escapeHtml(similarityPercent)}% match
-                            </span>
-                            <span class="evaluator-badge">${escapeHtml(result.evaluator)}</span>
-                        </div>
-                    </div>
-                    <div class="comment-text">
-                        "${escapeHtml(result.comment)}"
-                    </div>
-                    <div style="margin-top: 0.75rem; font-size: 0.85rem; color: #888;">
-                        <a href="/case/${encodeURIComponent(result.case_id)}" style="color: #667eea; text-decoration: none;">View case</a>
-                        <span style="margin-left: 1rem;">🏷️ ${escapeHtml(result.value_pair)}</span>
-                    </div>
-                `;
-                
-                commentsGrid.appendChild(card);
-            });
-            
-            if (visibleCount === 0) {
-                commentsGrid.style.display = 'none';
-                noResultsHuman.style.display = 'block';
-            } else {
-                commentsGrid.style.display = 'grid';
-                noResultsHuman.style.display = 'none';
-            }
-        }
-        
-        // Clear semantic search and restore all comments
-        function clearSemanticSearch() {
-            searchSemantic.value = '';
-            semanticResults = [];
-            currentSearchMode = 'all';
-            clearSearchBtn.style.display = 'none';
-            searchInfo.style.display = 'none';
-            
-            // Restore original comments
-            commentsGrid.innerHTML = '';
-            originalComments.forEach(card => {
-                commentsGrid.appendChild(card.cloneNode(true));
-            });
-            
-            // Apply filters to restored comments
-            filterAllComments();
-        }
-        
-        // Filter function that works with both modes
-        function filterAllComments() {
-            if (currentSearchMode === 'semantic') {
-                displaySemanticResults();
-                return;
-            }
-            
-            const selectedEvaluator = evaluatorFilter.value;
-            const selectedDecision = decisionFilter.value;
-            const selectedAxis = axesFilter.value;
+            const selectedSeedMode = seedModeFilter.value;
             
             const cards = commentsGrid.querySelectorAll('.comment-card');
             let visibleCount = 0;
@@ -1286,13 +299,13 @@
             cards.forEach(card => {
                 const evaluator = card.dataset.evaluator;
                 const decision = card.dataset.decision;
-                const axes = card.dataset.axes.split(',');
+                const seedMode = card.dataset.seedMode;
                 
                 const matchesEvaluator = !selectedEvaluator || evaluator === selectedEvaluator;
                 const matchesDecision = !selectedDecision || decision === selectedDecision;
-                const matchesAxis = !selectedAxis || axes.includes(selectedAxis);
+                const matchesSeedMode = !selectedSeedMode || seedMode === selectedSeedMode;
                 
-                if (matchesEvaluator && matchesDecision && matchesAxis) {
+                if (matchesEvaluator && matchesDecision && matchesSeedMode) {
                     card.style.display = 'block';
                     visibleCount++;
                 } else {
@@ -1302,492 +315,17 @@
             
             if (visibleCount === 0) {
                 commentsGrid.style.display = 'none';
-                noResultsHuman.style.display = 'block';
+                noResults.style.display = 'block';
             } else {
                 commentsGrid.style.display = 'grid';
-                noResultsHuman.style.display = 'none';
+                noResults.style.display = 'none';
             }
         }
-        
-        // Event listeners for semantic search
-        searchBtn.addEventListener('click', performSemanticSearch);
-        searchSemantic.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                performSemanticSearch();
-            }
-        });
-        clearSearchBtn.addEventListener('click', clearSemanticSearch);
         
         // Event listeners for filters
-        evaluatorFilter.addEventListener('change', filterAllComments);
-        decisionFilter.addEventListener('change', filterAllComments);
-        axesFilter.addEventListener('change', filterAllComments);
-        
-        // Clustering functionality
-        const clusterCountSlider = document.getElementById('cluster-count');
-        const clusterCountValue = document.getElementById('cluster-count-value');
-        const clusterMethod = document.getElementById('cluster-method');
-        const runClusteringBtn = document.getElementById('run-clustering');
-        const backToListBtn = document.getElementById('back-to-list');
-        const clusteringStatus = document.getElementById('clustering-status');
-        const clusterView = document.getElementById('cluster-view');
-        const clusterSummary = document.getElementById('cluster-summary');
-        const clustersContainer = document.getElementById('clusters-container');
-        const filtersSection = document.querySelector('.filters');
-        
-        let currentClusters = null;
-        
-        // HTML escaping function to prevent XSS attacks
-        function escapeHtml(unsafe) {
-            if (unsafe === null || unsafe === undefined) return '';
-            return String(unsafe)
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#039;");
-        }
-        
-        // Cluster color palette
-        const clusterColors = [
-            '#667eea', // Purple
-            '#4caf50', // Green
-            '#f44336', // Red
-            '#ff9800', // Orange
-            '#2196f3', // Blue
-            '#e91e63', // Pink
-            '#00bcd4', // Cyan
-            '#9c27b0', // Deep Purple
-            '#795548', // Brown
-            '#607d8b'  // Blue Grey
-        ];
-        
-        // Update slider value display
-        clusterCountSlider.addEventListener('input', function() {
-            clusterCountValue.textContent = this.value;
-        });
-        
-        // Show status message
-        function showStatus(message, type) {
-            clusteringStatus.textContent = message;
-            clusteringStatus.className = 'status-message ' + type;
-        }
-        
-        // Hide status message
-        function hideStatus() {
-            clusteringStatus.className = 'status-message';
-        }
-        
-        // Run clustering
-        runClusteringBtn.addEventListener('click', async function() {
-            const nClusters = clusterCountSlider.value;
-            const method = clusterMethod.value;
-            
-            showStatus('🔄 Generating clusters... This may take a moment.', 'loading');
-            runClusteringBtn.disabled = true;
-            
-            try {
-                const response = await fetch(
-                    `/api/cluster-comments?n_clusters=${nClusters}&method=${method}&generate_descriptions=true`
-                );
-                
-                if (!response.ok) {
-                    const error = await response.json();
-                    throw new Error(error.message || 'Clustering failed');
-                }
-                
-                const data = await response.json();
-                currentClusters = data;
-                
-                renderClusters(data);
-                switchToClusterView();
-                
-                showStatus(`✅ Successfully generated ${nClusters} clusters!`, 'success');
-                setTimeout(hideStatus, 3000);
-            } catch (error) {
-                showStatus(`❌ Error: ${error.message}`, 'error');
-            } finally {
-                runClusteringBtn.disabled = false;
-            }
-        });
-        
-        // Switch to cluster view
-        function switchToClusterView() {
-            commentsGrid.style.display = 'none';
-            filtersSection.style.display = 'none';
-            noResultsHuman.style.display = 'none';
-            clusterView.style.display = 'block';
-            backToListBtn.style.display = 'inline-block';
-        }
-        
-        // Switch back to list view
-        backToListBtn.addEventListener('click', function() {
-            clusterView.style.display = 'none';
-            backToListBtn.style.display = 'none';
-            filtersSection.style.display = 'block';
-            commentsGrid.style.display = 'grid';
-        });
-        
-        // Render clusters
-        function renderClusters(data) {
-            const { clusters, metadata } = data;
-            
-            // Build quality metrics HTML
-            let qualityHTML = '';
-            if (metadata.silhouette_score !== null && metadata.silhouette_score !== undefined) {
-                const score = metadata.silhouette_score;
-                const scorePercent = ((score + 1) / 2 * 100).toFixed(0); // Convert -1 to 1 range to 0-100%
-                
-                // Determine quality class
-                let qualityClass = 'poor';
-                let qualityIcon = '⚠️';
-                if (score > 0.7) {
-                    qualityClass = 'excellent';
-                    qualityIcon = '✨';
-                } else if (score > 0.5) {
-                    qualityClass = 'good';
-                    qualityIcon = '✓';
-                } else if (score > 0.25) {
-                    qualityClass = 'fair';
-                    qualityIcon = '→';
-                }
-                
-                qualityHTML = `
-                    <div class="quality-metrics">
-                        <div class="quality-metric">
-                            <span class="quality-metric-label">Clustering Quality</span>
-                            <div class="quality-metric-value" style="color: ${
-                                score > 0.7 ? '#2e7d32' : score > 0.5 ? '#1565c0' : score > 0.25 ? '#ef6c00' : '#c62828'
-                            }">${score.toFixed(3)}</div>
-                            <div class="silhouette-bar">
-                                <div class="silhouette-bar-fill" style="width: ${scorePercent}%; background: ${
-                                    score > 0.7 ? '#4caf50' : score > 0.5 ? '#2196f3' : score > 0.25 ? '#ff9800' : '#f44336'
-                                }"></div>
-                            </div>
-                            <span class="quality-metric-description">Silhouette Score: -1 (poor) to 1 (excellent)</span>
-                        </div>
-                        <div class="quality-metric">
-                            <span class="quality-metric-label">Assessment</span>
-                            <div class="quality-badge ${qualityClass}">
-                                <span>${qualityIcon}</span>
-                                <span>${escapeHtml(metadata.quality_assessment || 'Unknown')}</span>
-                            </div>
-                            <span class="quality-metric-description">
-                                ${score > 0.5 ? 'Clusters are well-defined' : score > 0.25 ? 'Consider adjusting cluster count' : 'Try different parameters'}
-                            </span>
-                        </div>
-                    </div>
-                `;
-            }
-            
-            // Render summary
-            clusterSummary.innerHTML = `
-                <h3>📊 Cluster Analysis Summary</h3>
-                <p><strong>Total Comments:</strong> ${escapeHtml(metadata.total_comments)} | 
-                   <strong>Number of Clusters:</strong> ${escapeHtml(metadata.n_clusters)} | 
-                   <strong>Method:</strong> ${escapeHtml(metadata.method.toUpperCase())}</p>
-                ${qualityHTML}
-            `;
-            
-            // Render clusters
-            clustersContainer.innerHTML = '';
-            
-            clusters.forEach((cluster, index) => {
-                const color = clusterColors[index % clusterColors.length];
-                const clusterCard = document.createElement('div');
-                clusterCard.className = 'cluster-card';
-                clusterCard.style.borderLeftColor = color;
-                
-                // Build problem axes bar chart
-                let axesChartHTML = '';
-                if (cluster.problem_axes && cluster.problem_axes.length > 0) {
-                    const maxCount = cluster.problem_axes[0][1];
-                    const topAxes = cluster.problem_axes.slice(0, 5);
-                    
-                    axesChartHTML = `
-                        <div class="problem-axes-section">
-                            <h4>Common Problem Axes</h4>
-                            <div class="axes-bar-chart">
-                                ${topAxes.map(([axis, count]) => {
-                                    const width = (count / maxCount) * 100;
-                                    return `
-                                        <div class="axis-bar">
-                                            <div class="axis-bar-label">${escapeHtml(axis)}</div>
-                                            <div class="axis-bar-fill" style="width: ${Math.max(width, 15)}%;">
-                                                ${escapeHtml(count)}
-                                            </div>
-                                        </div>
-                                    `;
-                                }).join('')}
-                            </div>
-                        </div>
-                    `;
-                }
-                
-                // Build sample comments
-                let samplesHTML = '';
-                if (cluster.sample_comments && cluster.sample_comments.length > 0) {
-                    samplesHTML = `
-                        <div class="sample-comments-section">
-                            <h4>Sample Comments (${cluster.sample_comments.length} of ${cluster.size})</h4>
-                            ${cluster.sample_comments.map(comment => `
-                                <a href="/case/${escapeHtml(comment.case_id)}" class="sample-comment" target="_blank" rel="noopener noreferrer">
-                                    <div class="sample-comment-meta">
-                                        <span class="sample-comment-evaluator">${escapeHtml(comment.evaluator)}</span>
-                                        <span class="sample-comment-decision ${escapeHtml(comment.decision)}">${escapeHtml(comment.decision.toUpperCase())}</span>
-                                        <span class="sample-comment-case-id" style="color: #999; font-size: 0.75rem; margin-left: auto;">Case: ${escapeHtml(comment.case_id.substring(0, 8))}... ↗</span>
-                                    </div>
-                                    <div class="sample-comment-text">"${escapeHtml(comment.comments)}"</div>
-                                </a>
-                            `).join('')}
-                        </div>
-                    `;
-                }
-                
-                clusterCard.innerHTML = `
-                    <div class="cluster-header">
-                        <div class="cluster-title">
-                            <span class="cluster-id-badge">Cluster ${cluster.id + 1}</span>
-                            <span class="cluster-size-badge">${cluster.size} comment${cluster.size !== 1 ? 's' : ''}</span>
-                        </div>
-                    </div>
-                    
-                    <div class="theme-description">
-                        ${escapeHtml(cluster.theme_description)}
-                    </div>
-                    
-                    ${axesChartHTML}
-                    ${samplesHTML}
-                `;
-                
-                clustersContainer.appendChild(clusterCard);
-            });
-        }
-    </script>
-    
-    <script>
-        // Similar Comments Feature
-        const similarCommentsCache = new Map();
-        
-        // HTML escape function to prevent XSS
-        function escapeHtml(unsafe) {
-            if (unsafe === null || unsafe === undefined) return '';
-            return String(unsafe)
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#039;");
-        }
-        
-        // Fetch and display similar comments
-        async function fetchSimilarComments(caseId, evaluator, button) {
-            const cacheKey = `${caseId}_${evaluator}`;
-            
-            // Check cache first
-            if (similarCommentsCache.has(cacheKey)) {
-                showSimilarCommentsModal(similarCommentsCache.get(cacheKey), caseId, evaluator);
-                return;
-            }
-            
-            // Show loading state
-            const originalHTML = button.innerHTML;
-            button.disabled = true;
-            button.innerHTML = '⏳';
-            
-            try {
-                const response = await fetch(`/api/similar_comments/${caseId}/${evaluator}?top_k=8`);
-                const data = await response.json();
-                
-                if (data.success) {
-                    // Cache the results
-                    similarCommentsCache.set(cacheKey, data);
-                    showSimilarCommentsModal(data, caseId, evaluator);
-                } else {
-                    showErrorMessage(data.error);
-                }
-            } catch (error) {
-                console.error('Error fetching similar comments:', error);
-                showErrorMessage('Failed to load similar comments. Please try again.');
-            } finally {
-                button.disabled = false;
-                button.innerHTML = originalHTML;
-            }
-        }
-        
-        // Render the modal with results
-        function showSimilarCommentsModal(data, queryCaseId, queryEvaluator) {
-            const { results, query, metadata } = data;
-            
-            // Close and clean up existing modal if any (fixes event listener leak)
-            closeSimilarModal();
-            
-            // Build results HTML
-            let resultsHTML = '';
-            
-            if (results.length === 0) {
-                resultsHTML = `
-                    <div class="no-similar-results">
-                        <p>No similar comments found (minimum 30% similarity required)</p>
-                    </div>
-                `;
-            } else {
-                resultsHTML = results.map((comment, index) => 
-                    renderSimilarComment(comment, index)
-                ).join('');
-            }
-            
-            // Create modal
-            const modalHTML = `
-                <div id="similar-modal" class="modal-overlay">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <div>
-                                <h3>🔍 Similar Comments</h3>
-                                <p class="modal-subtitle">
-                                    Showing ${results.length} similar comment${results.length !== 1 ? 's' : ''} to 
-                                    <strong>${escapeHtml(queryEvaluator)}</strong>'s evaluation of case 
-                                    <strong>${escapeHtml(query.case_id_short)}...</strong>
-                                </p>
-                            </div>
-                            <button class="modal-close" onclick="closeSimilarModal()">×</button>
-                        </div>
-                        
-                        <div class="modal-body">
-                            ${resultsHTML}
-                        </div>
-                        
-                        ${results.length > 0 ? `
-                            <div class="modal-footer">
-                                <small>
-                                    Average similarity: ${Math.round(metadata.avg_similarity * 100)}% 
-                                    • Showing ${metadata.shown} of ${metadata.total_found} matches
-                                </small>
-                            </div>
-                        ` : ''}
-                    </div>
-                </div>
-            `;
-            
-            document.body.insertAdjacentHTML('beforeend', modalHTML);
-            
-            // Add event listeners
-            setupModalEventListeners();
-        }
-        
-        // Render individual similar comment with threshold-based badges
-        function renderSimilarComment(comment, index) {
-            const similarityPct = comment.similarity_pct;
-            
-            // Get relevance styling based on thresholds
-            const relevanceConfig = {
-                'high': {
-                    class: 'relevance-high',
-                    color: '#4caf50',
-                    bgColor: '#e8f5e9'
-                },
-                'good': {
-                    class: 'relevance-good',
-                    color: '#2196f3',
-                    bgColor: '#e3f2fd'
-                },
-                'moderate': {
-                    class: 'relevance-moderate',
-                    color: '#ff9800',
-                    bgColor: '#fff3e0'
-                }
-            };
-            
-            const config = relevanceConfig[comment.relevance];
-            
-            return `
-                <div class="similar-comment-card ${config.class}" data-similarity="${escapeHtml(comment.similarity)}">
-                    <div class="similarity-header">
-                        <div class="similarity-score-container">
-                            <div class="similarity-bar-bg">
-                                <div class="similarity-bar-fill" 
-                                     style="width: ${similarityPct}%; background: ${config.color};">
-                                </div>
-                            </div>
-                            <span class="similarity-pct">${similarityPct}% similar</span>
-                        </div>
-                        <span class="relevance-badge" style="background: ${config.bgColor}; color: ${config.color};">
-                            ${escapeHtml(comment.relevance_icon)} ${escapeHtml(comment.relevance_label)}
-                        </span>
-                    </div>
-                    
-                    <div class="comment-meta">
-                        <span class="evaluator-badge">${escapeHtml(comment.evaluator)}</span>
-                        <span class="decision-tag ${escapeHtml(comment.decision)}">${escapeHtml(comment.decision.toUpperCase())}</span>
-                        <a href="${escapeHtml(comment.case_link)}" class="case-link" title="View case ${escapeHtml(comment.case_id)}">
-                            Case ${escapeHtml(comment.case_id_short)}...
-                        </a>
-                    </div>
-                    
-                    ${comment.problem_axes && comment.problem_axes.length > 0 ? `
-                        <div class="axes-tags">
-                            ${comment.problem_axes.map(axis => 
-                                `<span class="axis-tag">${escapeHtml(axis)}</span>`
-                            ).join('')}
-                        </div>
-                    ` : ''}
-                    
-                    <div class="comment-text">"${escapeHtml(comment.comments)}"</div>
-                </div>
-            `;
-        }
-        
-        // Setup modal event listeners
-        function setupModalEventListeners() {
-            const modal = document.getElementById('similar-modal');
-            const closeBtn = modal.querySelector('.modal-close');
-            
-            // Close on button click
-            closeBtn.addEventListener('click', closeSimilarModal);
-            
-            // Close on overlay click
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    closeSimilarModal();
-                }
-            });
-            
-            // Defensive cleanup: Remove any existing keydown listener before adding new one
-            // This prevents accumulation if modal is opened multiple times rapidly
-            document.removeEventListener('keydown', handleModalEscape);
-            // Close on ESC key
-            document.addEventListener('keydown', handleModalEscape);
-        }
-        
-        function handleModalEscape(e) {
-            if (e.key === 'Escape') {
-                closeSimilarModal();
-            }
-        }
-        
-        function closeSimilarModal() {
-            const modal = document.getElementById('similar-modal');
-            if (modal) {
-                modal.remove();
-            }
-            document.removeEventListener('keydown', handleModalEscape);
-        }
-        
-        function showErrorMessage(message) {
-            alert(message);
-        }
-        
-        // Initialize - attach click handlers to all "find similar" buttons
-        document.addEventListener('DOMContentLoaded', () => {
-            document.addEventListener('click', (e) => {
-                if (e.target.classList.contains('find-similar-btn')) {
-                    const caseId = e.target.dataset.caseId;
-                    const evaluator = e.target.dataset.evaluator;
-                    fetchSimilarComments(caseId, evaluator, e.target);
-                }
-            });
-        });
+        evaluatorFilter.addEventListener('change', filterComments);
+        decisionFilter.addEventListener('change', filterComments);
+        seedModeFilter.addEventListener('change', filterComments);
     </script>
 </body>
 </html>
-

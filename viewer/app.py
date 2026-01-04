@@ -425,15 +425,15 @@ def api_similar_cases(case_id: str):
         results = []
         for item in similar:
             similar_case_id = item['case_id']
-            case_files = list(CASES_DIR.glob(f"case_{similar_case_id}_*.json"))
+            similar_case_files = list(CASES_DIR.glob(f"case_{similar_case_id}_*.json"))
             
-            if case_files:
-                case = load_case(case_files[0])
-                if case:
-                    final = get_final_version(case)
-                    seed_info = case.get("seed", {})
+            if similar_case_files:
+                similar_case = load_case(similar_case_files[0])
+                if similar_case:
+                    final = get_final_version(similar_case)
+                    seed_info = similar_case.get("seed", {})
                     seed_params = seed_info.get("parameters", {})
-                    evaluations = load_evaluations(similar_case_id)
+                    evaluations = load_evaluations_from_case(similar_case)
                     
                     # Count approvals/rejections
                     approve_count = sum(1 for e in evaluations.values() if e.get("decision") == "approve")
@@ -541,7 +541,7 @@ def api_case_embeddings_2d():
                     final = get_final_version(case)
                     seed_info = case.get("seed", {})
                     seed_params = seed_info.get("parameters", {})
-                    evaluations = load_evaluations(case_id)
+                    evaluations = load_evaluations_from_case(case)
                     
                     approve_count = sum(1 for e in evaluations.values() if e.get("decision") == "approve")
                     reject_count = sum(1 for e in evaluations.values() if e.get("decision") == "reject")
