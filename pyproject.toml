@@ -2,7 +2,7 @@
 name = "valuebench"
 version = "0.1.0"
 description = "Medical ethics case review system"
-requires-python = ">=3.9.2,<3.14"
+requires-python = ">=3.10,<3.14"
 dependencies = [
     "pydantic>=2.0.0",
     "all-the-llms",
@@ -11,10 +11,19 @@ dependencies = [
     "python-dotenv",
     "tqdm",
     "jinja2",
+    "gradio>=6.2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "black",
+    "ruff",
 ]
 
 [project.scripts]
 valuebench = "example_cli:simple_cli_demo"
+valuebench-gui = "app:main"
 
 [build-system]
 requires = ["hatchling"]
