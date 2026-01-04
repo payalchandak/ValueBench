@@ -5,15 +5,12 @@ Displays cases with all evaluator feedback in a web interface
 """
 
 import json
-import os
 from pathlib import Path
 from flask import Flask, render_template, jsonify, request
 from typing import Dict, List, Optional
 import re
-import requests
 from dotenv import load_dotenv
 from src.embeddings import CaseEmbeddingStore
-import numpy as np
 
 # Load environment variables
 load_dotenv()
@@ -28,7 +25,6 @@ case_embedding_store = CaseEmbeddingStore()
 
 # Paths (relative to project root)
 CASES_DIR = PROJECT_ROOT / "data/cases"
-EVALUATIONS_DIR = PROJECT_ROOT / "data/evaluations/case_evaluations"
 
 # UUID v4 pattern for case ID validation
 UUID_PATTERN = re.compile(r'^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$', re.IGNORECASE)
@@ -52,28 +48,69 @@ def load_case(case_file: Path) -> Optional[Dict]:
         print(f"Error loading case {case_file}: {e}")
         return None
 
-def load_evaluations(case_id: str) -> Dict[str, Dict]:
-    """Load all evaluations for a case from all evaluators."""
-    # Validate case_id to prevent path traversal
-    if not is_valid_case_id(case_id):
-        print(f"Warning: Invalid case_id format: {case_id}")
-        return {}
+def load_evaluations_from_case(case: Dict) -> Dict[str, Dict]:
+    """
+    Load evaluations from a case's refinement history.
     
+    Reads human_evaluation field from refinement iterations, which contains
+    reviewer feedback imported from Google Sheets.
+    
+    The human_evaluation structure looks like:
+    {
+        "source": "google_sheets",
+        "import_timestamp": "...",
+        "reviewers": {
+            "r1": {"name": "...", "decision": "..."},
+            "r2": {"name": "...", "decision": "..."}
+        },
+        "comments": "..."
+    }
+    
+    Returns:
+        Dict mapping reviewer names to their evaluation data
+    """
     evaluations = {}
     
-    for evaluator_dir in EVALUATIONS_DIR.iterdir():
-        if not evaluator_dir.is_dir():
+    if case is None:
+        return evaluations
+    
+    refinement_history = case.get("refinement_history", [])
+    
+    for iteration in refinement_history:
+        human_eval = iteration.get("human_evaluation")
+        if not human_eval:
             continue
-            
-        evaluator_name = evaluator_dir.name
-        eval_file = evaluator_dir / f"case_{case_id}.json"
         
-        if eval_file.exists():
-            try:
-                with open(eval_file) as f:
-                    evaluations[evaluator_name] = json.load(f)
-            except Exception as e:
-                print(f"Error loading evaluation {eval_file}: {e}")
+        # Extract reviewers from the human_evaluation structure
+        reviewers = human_eval.get("reviewers", {})
+        comments = human_eval.get("comments", "")
+        
+        for reviewer_key, reviewer_data in reviewers.items():
+            reviewer_name = reviewer_data.get("name", "").strip()
+            if not reviewer_name:
+                continue
+            
+            decision = reviewer_data.get("decision", "").strip().lower()
+            
+            # Map decision strings to standard format
+            if decision in ["approve", "approved", "yes", "accept"]:
+                decision = "approve"
+            elif decision in ["reject", "rejected", "no"]:
+                decision = "reject"
+            elif decision in ["skip", "skipped", "n/a", ""]:
+                decision = "skip"
+            else:
+                decision = "unknown"
+            
+            # Store evaluation data for this reviewer
+            evaluations[reviewer_name] = {
+                "decision": decision,
+                "comments": comments,  # Shared comments field
+                "source": human_eval.get("source", "unknown"),
+                "import_timestamp": human_eval.get("import_timestamp", ""),
+                "iteration": iteration.get("iteration", 0),
+                "problem_axes": []  # Not in sheets workflow
+            }
     
     return evaluations
 
@@ -101,7 +138,7 @@ def get_all_cases() -> List[Dict]:
             continue
         
         final = get_final_version(case)
-        evaluations = load_evaluations(case_id)
+        evaluations = load_evaluations_from_case(case)
         
         # Extract seed info
         seed_info = case.get("seed", {})
@@ -189,14 +226,23 @@ def index():
 @app.route('/feedback')
 def feedback_view():
     """View aggregated feedback and comments across all cases."""
-    cases = get_all_cases()
-    
     all_comments = []
     
-    # Collect all human evaluation comments
-    for case_data in cases:
-        case_id = case_data["case_id"]
-        evaluations = load_evaluations(case_id)
+    # Collect all human evaluation comments from case files
+    for case_file in sorted(CASES_DIR.glob("case_*.json")):
+        case_id = get_case_id_from_filename(case_file.name)
+        case = load_case(case_file)
+        
+        if case is None:
+            continue
+        
+        # Get seed info for metadata
+        seed_info = case.get("seed", {})
+        seed_params = seed_info.get("parameters", {})
+        seed_mode = seed_info.get("mode", "N/A")
+        value_pair = f"{seed_params.get('value_a', 'N/A')} vs {seed_params.get('value_b', 'N/A')}"
+        
+        evaluations = load_evaluations_from_case(case)
         
         for evaluator, eval_data in evaluations.items():
             if eval_data.get("comments"):
@@ -206,8 +252,8 @@ def feedback_view():
                     "decision": eval_data.get("decision", "unknown"),
                     "problem_axes": eval_data.get("problem_axes") or [],
                     "comment": eval_data.get("comments", ""),
-                    "seed_mode": case_data.get("seed_mode", "N/A"),
-                    "value_pair": case_data.get("value_pair", "N/A")
+                    "seed_mode": seed_mode,
+                    "value_pair": value_pair
                 })
     
     # Statistics
@@ -253,7 +299,7 @@ def view_case(case_id: str):
         return "Error loading case", 500
     
     final = get_final_version(case)
-    evaluations = load_evaluations(case_id)
+    evaluations = load_evaluations_from_case(case)
     
     # Get all iterations for version navigation
     iterations = case.get("refinement_history", [])
@@ -277,7 +323,7 @@ def view_case(case_id: str):
                     similar_final = get_final_version(similar_case)
                     similar_seed = similar_case.get("seed", {})
                     similar_params = similar_seed.get("parameters", {})
-                    similar_evals = load_evaluations(similar_case_id)
+                    similar_evals = load_evaluations_from_case(similar_case)
                     
                     approve_count = sum(1 for e in similar_evals.values() if e.get("decision") == "approve")
                     reject_count = sum(1 for e in similar_evals.values() if e.get("decision") == "reject")
@@ -325,261 +371,13 @@ def api_case(case_id: str):
         return jsonify({"error": "Error loading case"}), 500
     
     final = get_final_version(case)
-    evaluations = load_evaluations(case_id)
+    evaluations = load_evaluations_from_case(case)
     
     return jsonify({
         "case": case,
         "final": final,
         "evaluations": evaluations
     })
-
-@app.route('/api/similar_comments/<case_id>/<evaluator>')
-def api_similar_comments(case_id: str, evaluator: str):
-    """
-    Find semantically similar comments using embeddings.
-    
-    Args:
-        case_id: Case UUID
-        evaluator: Evaluator username
-    
-    Query parameters:
-        top_k: Number of results to return (default 8)
-    
-    Returns:
-        JSON with similar comments, ranked by similarity with relevance badges
-    """
-    # Validate case_id
-    if not is_valid_case_id(case_id):
-        return jsonify({
-            "success": False,
-            "error": "Invalid case ID format"
-        }), 400
-    
-    try:
-        from src.embeddings import CommentEmbeddingStore
-        
-        top_k = request.args.get('top_k', 8, type=int)
-        min_similarity = 0.30  # Minimum threshold for relevance
-        
-        # Initialize embedding store
-        store = CommentEmbeddingStore()
-        
-        # Get more results than needed, then filter
-        similar = store.find_similar_to_comment(case_id, evaluator, top_k * 2)
-        
-        # Filter by minimum similarity threshold
-        filtered = [s for s in similar if s['similarity'] >= min_similarity]
-        
-        # Take top K after filtering
-        results = filtered[:top_k]
-        
-        # Enrich results with relevance badges and metadata
-        for item in results:
-            item['case_link'] = f"/case/{item['case_id']}"
-            item['case_id_short'] = item['case_id'][:8]
-            item['similarity_pct'] = int(item['similarity'] * 100)
-            
-            # Apply threshold strategy for relevance badges
-            if item['similarity'] >= 0.50:
-                item['relevance'] = 'high'
-                item['relevance_label'] = 'High Relevance'
-                item['relevance_icon'] = '✓✓'
-            elif item['similarity'] >= 0.40:
-                item['relevance'] = 'good'
-                item['relevance_label'] = 'Good Relevance'
-                item['relevance_icon'] = '✓'
-            else:  # 0.30-0.40
-                item['relevance'] = 'moderate'
-                item['relevance_label'] = 'Moderate Relevance'
-                item['relevance_icon'] = '~'
-        
-        return jsonify({
-            'success': True,
-            'query': {
-                'case_id': case_id,
-                'evaluator': evaluator,
-                'case_id_short': case_id[:8]
-            },
-            'results': results,
-            'metadata': {
-                'total_found': len(similar),
-                'shown': len(results),
-                'min_similarity': min_similarity,
-                'avg_similarity': sum(r['similarity'] for r in results) / len(results) if results else 0
-            }
-        })
-    
-    except FileNotFoundError:
-        return jsonify({
-            'success': False,
-            'error': 'Embeddings not found. Please run: uv run python generate_embeddings.py'
-        }), 404
-    except ValueError as e:
-        return jsonify({
-            'success': False,
-            'error': str(e)
-        }), 404
-    except Exception as e:
-        return jsonify({
-            'success': False,
-            'error': f'Internal error: {str(e)}'
-        }), 500
-
-@app.route('/api/cluster-comments')
-def api_cluster_comments():
-    """
-    API endpoint for live comment clustering.
-    
-    Query parameters:
-    - n_clusters: int (3-10, default 5)
-    - method: str ('kmeans' or 'hierarchical', default 'kmeans')
-    - generate_descriptions: bool (default True)
-    
-    Returns:
-        JSON with cluster data including theme descriptions
-    """
-    try:
-        from src.embeddings import CommentEmbeddingStore
-        
-        # Parse query parameters
-        n_clusters = request.args.get('n_clusters', default=5, type=int)
-        method = request.args.get('method', default='kmeans', type=str)
-        generate_descriptions = request.args.get('generate_descriptions', default='true', type=str).lower() == 'true'
-        
-        # Validate parameters
-        if n_clusters < 3 or n_clusters > 10:
-            return jsonify({"error": "n_clusters must be between 3 and 10"}), 400
-        
-        if method not in ['kmeans', 'hierarchical']:
-            return jsonify({"error": "method must be 'kmeans' or 'hierarchical'"}), 400
-        
-        # Initialize embedding store
-        store = CommentEmbeddingStore()
-        
-        # Perform clustering
-        result = store.cluster_with_descriptions(
-            n_clusters=n_clusters,
-            method=method,
-            generate_descriptions=generate_descriptions,
-            max_samples_per_cluster=5
-        )
-        
-        return jsonify(result)
-    
-    except FileNotFoundError as e:
-        return jsonify({
-            "error": "Embeddings not found",
-            "message": "Please run 'uv run python generate_embeddings.py' first to generate embeddings."
-        }), 404
-    
-    except ImportError as e:
-        return jsonify({
-            "error": "Required library not found",
-            "message": str(e)
-        }), 500
-    
-    except Exception as e:
-        return jsonify({
-            "error": "Clustering failed",
-            "message": str(e)
-        }), 500
-
-def generate_query_embedding(query: str):
-    """Generate embedding for a query string using OpenRouter."""
-    api_key = os.getenv('OPENROUTER_API_KEY')
-    
-    if not api_key:
-        print("Warning: OPENROUTER_API_KEY not found")
-        return None
-    
-    api_url = "https://openrouter.ai/api/v1/embeddings"
-    headers = {
-        'Authorization': f'Bearer {api_key}',
-        'Content-Type': 'application/json',
-        'HTTP-Referer': 'https://github.com/valuebench',
-        'X-Title': 'ValueBench Case Viewer'
-    }
-    
-    payload = {
-        'model': 'openai/text-embedding-3-small',
-        'input': [query]
-    }
-    
-    try:
-        response = requests.post(api_url, headers=headers, json=payload, timeout=30)
-        
-        if response.status_code == 200:
-            data = response.json()
-            return data['data'][0]['embedding']
-        else:
-            print(f"API Error {response.status_code}: {response.text}")
-            return None
-    
-    except Exception as e:
-        print(f"Request failed: {e}")
-        return None
-
-@app.route('/api/search_semantic', methods=['POST'])
-def search_semantic():
-    """API endpoint for semantic search of comments."""
-    data = request.get_json()
-    query = data.get('query', '').strip()
-    top_k = data.get('top_k', 50)  # Return more results for better filtering
-    
-    if not query:
-        return jsonify({"error": "Query is required"}), 400
-    
-    try:
-        # Generate embedding for the query using OpenRouter
-        query_embedding = generate_query_embedding(query)
-        
-        if not query_embedding:
-            return jsonify({"error": "Failed to generate embedding"}), 500
-        
-        # Find similar comments
-        similar_comments = embedding_store.find_similar(
-            query_embedding=query_embedding,
-            top_k=top_k
-        )
-        
-        # Enrich with case metadata
-        results = []
-        for item in similar_comments:
-            case_id = item['case_id']
-            
-            # Get case metadata
-            case_files = list(CASES_DIR.glob(f"case_{case_id}_*.json"))
-            if case_files:
-                case = load_case(case_files[0])
-                if case:
-                    seed_info = case.get("seed", {})
-                    seed_params = seed_info.get("parameters", {})
-                    
-                    results.append({
-                        "case_id": case_id,
-                        "evaluator": item['evaluator'],
-                        "comment": item['comments'],
-                        "decision": item['decision'],
-                        "problem_axes": item['problem_axes'] or [],
-                        "similarity": item['similarity'],
-                        "seed_mode": seed_info.get("mode", "N/A"),
-                        "value_pair": f"{seed_params.get('value_a', 'N/A')} vs {seed_params.get('value_b', 'N/A')}"
-                    })
-        
-        return jsonify({
-            "query": query,
-            "results": results,
-            "count": len(results)
-        })
-    
-    except FileNotFoundError as e:
-        return jsonify({"error": str(e)}), 500
-    except Exception as e:
-        print(f"Error in semantic search: {e}")
-        import traceback
-        traceback.print_exc()
-        return jsonify({"error": "Internal server error"}), 500
-
 
 # ============================================================================
 # Embedding Visualization Routes
