@@ -10,6 +10,12 @@ It captures and stores reviewer feedback within the case's refinement history, i
 The reviewer feedback is stored in the 'human_evaluation' field of the new refinement
 iteration, maintaining a complete history of reviews alongside the case content.
 
+**Duplicate Detection:**
+The script checks if the latest version in the local JSON matches what's being imported
+from the sheet. If the vignette and choices (including value tags) are identical, the
+import is skipped to avoid creating duplicate refinement iterations. Only cases with
+actual changes will create new refinement iterations.
+
 Run with: uv run python -m src.sheets.import_from_sheets
 
 Options:
@@ -54,6 +60,7 @@ class ImportReport:
     error_cases: int
     imported_cases: int
     skipped_cases: int
+    unchanged_cases: int  # New field for cases with no changes
     validation_results: list[ValidationResult]
     
     def print_summary(self):
@@ -92,6 +99,9 @@ class ImportReport:
             print("\n" + "=" * 70)
             print(f"✅ Successfully imported {self.imported_cases} cases")
             print("=" * 70)
+        
+        if self.unchanged_cases > 0:
+            print(f"\n⏭️  Skipped {self.unchanged_cases} cases (no changes detected)")
         
         if self.skipped_cases > 0:
             print(f"\n⏭️  Skipped {self.skipped_cases} cases due to errors")
@@ -389,6 +399,7 @@ def validate_cases(rows: list[list], headers: list[str]) -> ImportReport:
         error_cases=error_count,
         imported_cases=0,
         skipped_cases=0,
+        unchanged_cases=0,
         validation_results=validation_results
     )
     
@@ -510,12 +521,64 @@ def write_validation_to_sheet(
         print("  Applied color coding to validation status column")
 
 
+def _data_matches(data1: dict, data2: dict) -> bool:
+    """
+    Compare two case data dictionaries to check if they represent the same content.
+    
+    Args:
+        data1: First data dictionary (from existing refinement)
+        data2: Second data dictionary (from sheet import)
+        
+    Returns:
+        True if the data is identical, False otherwise
+    """
+    # Extract the case content fields to compare
+    def extract_case_content(data):
+        """Extract comparable content from data dictionary."""
+        vignette = data.get('vignette', '').strip()
+        
+        # Handle choice_1 - could be dict or string
+        choice_1_data = data.get('choice_1', {})
+        if isinstance(choice_1_data, dict):
+            choice_1_text = choice_1_data.get('choice', '').strip()
+            c1_autonomy = choice_1_data.get('autonomy', '').strip()
+            c1_beneficence = choice_1_data.get('beneficence', '').strip()
+            c1_nonmaleficence = choice_1_data.get('nonmaleficence', '').strip()
+            c1_justice = choice_1_data.get('justice', '').strip()
+        else:
+            choice_1_text = str(choice_1_data).strip()
+            c1_autonomy = c1_beneficence = c1_nonmaleficence = c1_justice = ''
+        
+        # Handle choice_2 - could be dict or string
+        choice_2_data = data.get('choice_2', {})
+        if isinstance(choice_2_data, dict):
+            choice_2_text = choice_2_data.get('choice', '').strip()
+            c2_autonomy = choice_2_data.get('autonomy', '').strip()
+            c2_beneficence = choice_2_data.get('beneficence', '').strip()
+            c2_nonmaleficence = choice_2_data.get('nonmaleficence', '').strip()
+            c2_justice = choice_2_data.get('justice', '').strip()
+        else:
+            choice_2_text = str(choice_2_data).strip()
+            c2_autonomy = c2_beneficence = c2_nonmaleficence = c2_justice = ''
+        
+        return (
+            vignette,
+            choice_1_text,
+            c1_autonomy, c1_beneficence, c1_nonmaleficence, c1_justice,
+            choice_2_text,
+            c2_autonomy, c2_beneficence, c2_nonmaleficence, c2_justice
+        )
+    
+    # Compare the extracted content
+    return extract_case_content(data1) == extract_case_content(data2)
+
+
 def update_case_json(
     case_id: str, 
     new_data: dict, 
     reviewer_feedback: dict,
     cases_dir: str = "data/cases"
-) -> bool:
+) -> tuple[bool, bool]:
     """
     Update a case JSON file with new refinement iteration including reviewer feedback.
     
@@ -532,7 +595,9 @@ def update_case_json(
         cases_dir: Path to the cases directory
         
     Returns:
-        True if successful, False if case file not found
+        Tuple of (success: bool, unchanged: bool)
+        - success: True if operation completed (file found), False otherwise
+        - unchanged: True if data matched and no update was needed, False if updated
     """
     cases_path = Path(cases_dir)
     
@@ -541,7 +606,7 @@ def update_case_json(
     
     if not matching_files:
         print(f"  ⚠️  Case file not found for {case_id}")
-        return False
+        return False, False
     
     if len(matching_files) > 1:
         print(f"  ⚠️  Multiple files found for {case_id}, using most recent")
@@ -553,8 +618,19 @@ def update_case_json(
     with open(case_file, 'r', encoding='utf-8') as f:
         case_data = json.load(f)
     
-    # Get the last iteration number
+    # Get the last iteration number and refinement history
     refinement_history = case_data.get('refinement_history', [])
+    
+    # Check if the latest version matches what we're trying to import
+    if refinement_history:
+        latest_refinement = refinement_history[-1]
+        latest_data = latest_refinement.get('data', {})
+        
+        # Compare the case data (vignette and choices) to see if there are actual changes
+        if _data_matches(latest_data, new_data):
+            print(f"  ⏭️  {case_id} - No changes detected, skipping duplicate import")
+            return True, True  # Success=True, Unchanged=True
+    
     last_iteration = max([h.get('iteration', -1) for h in refinement_history], default=-1)
     new_iteration = last_iteration + 1
     
@@ -610,7 +686,7 @@ def update_case_json(
     with open(case_file, 'w', encoding='utf-8') as f:
         json.dump(case_data, f, indent=2, ensure_ascii=False)
     
-    return True
+    return True, False  # Success=True, Unchanged=False
 
 
 def import_cases(
@@ -653,6 +729,7 @@ def import_cases(
             error_cases=0,
             imported_cases=0,
             skipped_cases=0,
+            unchanged_cases=0,
             validation_results=[]
         )
     
@@ -726,20 +803,24 @@ def import_cases(
     print(f"\nImporting {report.valid_cases + report.warning_cases} cases...")
     imported = 0
     skipped = 0
+    unchanged = 0
     
     for result in report.validation_results:
         if result.status in ['valid', 'warning'] and result.data:
             case_data = result.data.get('case_data', {})
             reviewer_feedback = result.data.get('reviewer_feedback', {})
-            success = update_case_json(
+            success, is_unchanged = update_case_json(
                 result.case_id, 
                 case_data, 
                 reviewer_feedback,
                 cases_dir
             )
             if success:
-                imported += 1
-                print(f"  ✅ {result.case_id}")
+                if is_unchanged:
+                    unchanged += 1
+                else:
+                    imported += 1
+                    print(f"  ✅ {result.case_id}")
             else:
                 skipped += 1
         else:
@@ -747,11 +828,14 @@ def import_cases(
     
     report.imported_cases = imported
     report.skipped_cases = skipped
+    report.unchanged_cases = unchanged
     
     print("\n" + "=" * 70)
     print(f"✅ Import complete: {imported} cases updated")
+    if unchanged > 0:
+        print(f"⏭️  Skipped: {unchanged} cases (no changes)")
     if skipped > 0:
-        print(f"⏭️  Skipped: {skipped} cases")
+        print(f"⏭️  Skipped: {skipped} cases (errors)")
     print("=" * 70)
     
     return report
