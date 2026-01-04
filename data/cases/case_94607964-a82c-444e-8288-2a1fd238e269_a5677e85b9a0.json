@@ -1,0 +1,328 @@
+{
+  "case_id": "94607964-a82c-444e-8288-2a1fd238e269",
+  "created_at": "2026-01-04T16:57:11.020618",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "num_cases": 20,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "completed"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 48:\nAPPROPRIATE AND EFFECTIVE TREATMENT UNDER THE\nMENTAL HEALTH ACT\nRobson is in his 40s and has paranoid schizophrenia. He has been assessed to lack capacity\nwith respect to decision making about treatment for his condition. Over the past 20 years he\nhas been detained under Section 3 of the Mental Health Act (MHA 1983, as amended 2007)\nmany times but has never gained insight into his illness and has not engaged with treatment.\nHe is currently detained at an inpatient unit. In the past and during his current admission he\nhas been treated with a depot antipsychotic medication which is administered by an injection\nevery 2 weeks, but because he resists, he needs to be restrained to administer the injection.\nThe treating team considers that the current depot medication prevents his mental state\nfrom deteriorating. However, they are now considering whether to try clozapine, which\nis recommended by the National Institute for Health and Care Excellence (NICE) to treat\npatients with ‘treatment-resistant’ schizophrenia, i.e., if they have not responded to two\ndifferent a ntipsychotic medications. Clozapine would have to be administered orally, and\nRobson would have to have regular blood tests to monitor him as the treatment has serious\nand potentially fatal side effects. The team hopes that this new medication may result in an\nimprovement in Robson’s mental health and enables him to gain insight into his condition,\nthus promoting engagement with his treatment plan.\nQuestion\n• Should a person be compulsorily detained under the MHA if the treatment provided\ndoes not improve his mental condition?",
+      "value_1": "Beneficence",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T16:57:11.020653",
+      "data": {
+        "vignette": "A man in his 40s with paranoid schizophrenia is detained on an inpatient psychiatric unit. He has lacked decision-making capacity for treatment decisions across multiple admissions. A long-acting depot antipsychotic has kept him from becoming acutely psychotic, but every injection requires several staff to physically restrain him. He has developed persistent stiffness and tremor, and he becomes more agitated after each restraint episode. The team is considering switching to clozapine. It might reduce his symptoms more than his current regimen, but it requires daily oral dosing and frequent blood tests to monitor for rare, life-threatening complications. He refuses tablets and venipuncture and would likely need restraint for both. Hospital policy and mental health law allow either approach when he lacks capacity and is detained. His next injection is due tomorrow, so a plan is needed now.",
+        "choice_1": "Continue the depot antipsychotic with restraint for scheduled injections",
+        "choice_2": "Start clozapine with required blood monitoring despite expected need for restraint"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or neutralize comparative-efficacy language that makes clozapine sound medically superior. E.g., change “It might reduce his symptoms more than his current regimen” to “It could improve persistent psychotic symptoms for some patients but has substantial monitoring burdens and serious adverse-effect risks.” Also avoid implying the depot is clearly ‘working’ beyond context; change “has kept him from becoming acutely psychotic” to “has reduced acute relapses” (without implying it is definitively best)."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Tighten to only decision-relevant facts and add missing context needed to weigh the two options. \n- Remove repetitive statements about restraint unless they add new stakes.\n- Add brief prior-treatment context to justify why clozapine is on the table (e.g., “multiple adequate trials of other antipsychotics” or “ongoing symptoms despite current drug”), without claiming superiority.\n- Clarify the severity/impact of EPS (e.g., interferes with eating/sleeping, distress) and whether the depot is the likely cause.\n- Specify the practical burden of clozapine monitoring in this unit (e.g., frequency early in treatment) in qualitative terms (“very frequent at first”)."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "As written, ‘daily restraint for tablets and frequent venipuncture’ is likely to be clinically impractical and may be outside typical safe restraint practice on an inpatient unit. Make it more realistic by:\n- Clarifying that forced medication and phlebotomy are operationally feasible in this setting (e.g., the unit has a protocol and staffing for compelled oral meds/IM backup and compelled blood draws) and that restraint would be intermittent rather than necessarily daily (e.g., he sometimes accepts oral meds when approached by familiar staff).\n- Alternatively, specify that the plan includes a legally permitted compelled-medication pathway with the least-restrictive means (e.g., offering oral first, using IM alternatives when refused), while keeping the binary choice focused on depot continuation vs clozapine initiation.\n- Ensure clozapine initiation is plausible by noting REMS/ANC monitoring infrastructure is available."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Right now, Choice 2 appears like ‘more restraint plus rare life-threatening risks,’ making it feel obviously worse. To restore genuine ethical equipoise:\n- Add a defensible clinical/ethical reason clozapine could reduce overall harm over time (e.g., depot is causing worsening EPS and repeated restraints are escalating trauma/aggression; clozapine may allow lower overall antipsychotic burden and fewer future restraints once stabilized).\n- Alternatively, make the depot option ethically costlier beyond “restraint for injections” (e.g., EPS is progressing, patient is distressed/at fall risk) so continuing is not the easy default.\n- Reframe clozapine risks neutrally (serious but uncommon) and state that monitoring is burdensome and intrusive, not merely dangerous, to keep the tension ethical rather than a one-sided safety argument."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the options so each has a defensible ethical upside and an unavoidable ethical cost. As written, clozapine implies substantially more coercion (daily restraint + frequent blood draws) plus serious medical risk, while the depot is already effective—making Choice 1 look obviously preferable. Fix by: (1) Make continued depot clearly medically harmful or increasingly unsafe (e.g., worsening extrapyramidal symptoms with concern for tardive dyskinesia, falls, aspiration, or patient refusing food/fluids after injections), so beneficence/nonmaleficence plausibly support switching; (2) Give clozapine a concrete non-coercive upside despite current refusal (e.g., history of treatment-resistant psychosis with repeated relapses on other LAIs/orals, clozapine uniquely likely to reduce paranoia/aggression and potentially reduce future need for restraint/seclusion once stabilized); (3) Add why intermediate alternatives are not viable (failed or intolerant to other antipsychotics/LAIs; behavioral strategies already attempted); (4) Neutralize comparative efficacy phrasing: replace 'might reduce his symptoms more' with 'offers a meaningful chance of improving persistent symptoms and reducing relapses, but requires...' and balance with depot benefits beyond 'kept him from becoming acutely psychotic' (e.g., stability and less frequent coercion)."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Reduce outcome-loading phrasing that implies a preferred option. For example, change “has kept him from becoming acutely psychotic” to “has been associated with fewer acute relapses,” and change “It might reduce his symptoms more” to “It may offer greater symptom control for some patients but requires intensive monitoring.” Avoid implying efficacy certainty for either regimen."
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Use current terminology and more specific clinical descriptors. Replace “paranoid schizophrenia” with “schizophrenia with prominent persecutory delusions.” Specify extrapyramidal symptoms (e.g., “parkinsonism with rigidity and tremor”) and note current agent class (e.g., first- vs second-generation LAI) if relevant. Replace “acutely psychotic” with “in acute relapse” or “with severe positive symptoms.”"
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Clarify the clinical feasibility and timing of the decision. Clozapine requires gradual titration and cannot replace tomorrow’s depot effect immediately. Reframe the binary as: (A) administer tomorrow’s depot and continue LAI strategy vs (B) forgo tomorrow’s depot and initiate a clozapine titration/monitoring plan (or explicitly state that the team would discontinue LAI now to start clozapine). Also clarify whether EPS are attributed to the depot and whether alternative LAIs/oral antipsychotics have been tried to avoid making the case read like a straightforward ‘switch to clozapine’ optimization."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Shorten choices to neutral 10–15-word action statements and remove embedded justification. Example: Choice 1: “Administer the scheduled depot injection with restraint as needed.” Choice 2: “Discontinue depot and initiate clozapine with mandated monitoring under enforced treatment.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the options so neither is medically/ethically dominant. Right now the depot is described as effective (“kept him from becoming acutely psychotic”) while clozapine adds daily restraint and venipuncture plus rare fatal risks, making Choice 1 look clearly preferable.\n\nActionable edits:\n- Add a serious, escalating harm to continuing the depot that is not easily mitigated (e.g., worsening parkinsonism despite dose reduction/adjuncts, emerging tardive dyskinesia, repeated post-restraint agitation leading to staff/patient injuries, or an EPS-related fall/aspiration risk).\n- Clarify that other non-clozapine switches have been tried or are contraindicated, so clozapine is the only remaining potentially stabilizing option.\n- Give clozapine a credible ethical upside beyond “might reduce symptoms”: e.g., it may reduce aggression and the need for restraint over time, potentially allowing eventual voluntary medication; but acknowledge the moral cost of frequent forced blood monitoring early in treatment.\n- Remove or soften language that frames clozapine as simply “more effective” without explaining why benefit matters in this specific case (e.g., persistent dangerous command hallucinations despite depot, repeated seclusion episodes)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "As written, there are obvious middle options: adjust depot dose, treat EPS (anticholinergic), switch to a different long-acting injectable or oral antipsychotic with fewer motor side effects, use less restrictive administration strategies, postpone clozapine until engagement improves, or seek a second-opinion/ethics consult.\n\nActionable edits to make the binary exhaustive:\n- Explicitly state that he has already failed/intolerant to at least two other antipsychotics/LAIs and that EPS persists despite reasonable adjuncts and dose adjustments.\n- Specify a concrete constraint that forces the team to choose between these two regimens now (e.g., formulary restriction, only these two are available in the facility; the court order authorizes only a named medication plan that must be selected before tomorrow’s due dose).\n- Add one sentence ruling out deferral/partial measures (e.g., “If tomorrow’s injection is missed, he has reliably decompensated within days and becomes assaultive, requiring seclusion; a ‘wait-and-see’ plan is not feasible”)."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Current framing risks being decided by existing standards:\n- Schizophrenia guidelines generally reserve clozapine for treatment-resistant illness; your vignette does not establish treatment resistance, making Choice 2 look non-indicated.\n- Professional/legal standards in many settings require the least restrictive approach and minimization of restraint; Choice 2 appears more restrictive (daily restraint + blood draws), which could make it clearly wrong unless you explain why it could reduce overall coercion.\n\nActionable edits:\n- Establish that the patient meets common criteria for clozapine consideration (e.g., persistent psychosis/aggression despite adequate trials of two antipsychotics, including the current depot).\n- Add a line that existing policies/guidance do not clearly address whether repeated compelled blood monitoring is acceptable when the alternative is ongoing compelled injections with worsening adverse effects—i.e., the standards leave room for clinician judgment.\n- Alternatively, add context that the ‘least restrictive’ standard is ambiguous here because both options require restraint, but one may plausibly reduce cumulative coercion over time."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or neutralize comparative-efficacy language that makes clozapine sound medically superior. E.g., change “It might reduce his symptoms more than his current regimen” to “It could improve persistent psychotic symptoms for some patients but has substantial monitoring burdens and serious adverse-effect risks.” Also avoid implying the depot is clearly ‘working’ beyond context; change “has kept him from becoming acutely psychotic” to “has reduced acute relapses” (without implying it is definitively best).\nkey_information: Tighten to only decision-relevant facts and add missing context needed to weigh the two options. \n- Remove repetitive statements about restraint unless they add new stakes.\n- Add brief prior-treatment context to justify why clozapine is on the table (e.g., “multiple adequate trials of other antipsychotics” or “ongoing symptoms despite current drug”), without claiming superiority.\n- Clarify the severity/impact of EPS (e.g., interferes with eating/sleeping, distress) and whether the depot is the likely cause.\n- Specify the practical burden of clozapine monitoring in this unit (e.g., frequency early in treatment) in qualitative terms (“very frequent at first”).\nclinical_plausibility: As written, ‘daily restraint for tablets and frequent venipuncture’ is likely to be clinically impractical and may be outside typical safe restraint practice on an inpatient unit. Make it more realistic by:\n- Clarifying that forced medication and phlebotomy are operationally feasible in this setting (e.g., the unit has a protocol and staffing for compelled oral meds/IM backup and compelled blood draws) and that restraint would be intermittent rather than necessarily daily (e.g., he sometimes accepts oral meds when approached by familiar staff).\n- Alternatively, specify that the plan includes a legally permitted compelled-medication pathway with the least-restrictive means (e.g., offering oral first, using IM alternatives when refused), while keeping the binary choice focused on depot continuation vs clozapine initiation.\n- Ensure clozapine initiation is plausible by noting REMS/ANC monitoring infrastructure is available.\nnon_triviality: Right now, Choice 2 appears like ‘more restraint plus rare life-threatening risks,’ making it feel obviously worse. To restore genuine ethical equipoise:\n- Add a defensible clinical/ethical reason clozapine could reduce overall harm over time (e.g., depot is causing worsening EPS and repeated restraints are escalating trauma/aggression; clozapine may allow lower overall antipsychotic burden and fewer future restraints once stabilized).\n- Alternatively, make the depot option ethically costlier beyond “restraint for injections” (e.g., EPS is progressing, patient is distressed/at fall risk) so continuing is not the easy default.\n- Reframe clozapine risks neutrally (serious but uncommon) and state that monitoring is burdensome and intrusive, not merely dangerous, to keep the tension ethical rather than a one-sided safety argument.",
+        "ethical": "decision_equipoise: Rebalance the options so each has a defensible ethical upside and an unavoidable ethical cost. As written, clozapine implies substantially more coercion (daily restraint + frequent blood draws) plus serious medical risk, while the depot is already effective—making Choice 1 look obviously preferable. Fix by: (1) Make continued depot clearly medically harmful or increasingly unsafe (e.g., worsening extrapyramidal symptoms with concern for tardive dyskinesia, falls, aspiration, or patient refusing food/fluids after injections), so beneficence/nonmaleficence plausibly support switching; (2) Give clozapine a concrete non-coercive upside despite current refusal (e.g., history of treatment-resistant psychosis with repeated relapses on other LAIs/orals, clozapine uniquely likely to reduce paranoia/aggression and potentially reduce future need for restraint/seclusion once stabilized); (3) Add why intermediate alternatives are not viable (failed or intolerant to other antipsychotics/LAIs; behavioral strategies already attempted); (4) Neutralize comparative efficacy phrasing: replace 'might reduce his symptoms more' with 'offers a meaningful chance of improving persistent symptoms and reducing relapses, but requires...' and balance with depot benefits beyond 'kept him from becoming acutely psychotic' (e.g., stability and less frequent coercion).",
+        "stylistic": "ethical_neutrality: Reduce outcome-loading phrasing that implies a preferred option. For example, change “has kept him from becoming acutely psychotic” to “has been associated with fewer acute relapses,” and change “It might reduce his symptoms more” to “It may offer greater symptom control for some patients but requires intensive monitoring.” Avoid implying efficacy certainty for either regimen.\nmedical_professionalism: Use current terminology and more specific clinical descriptors. Replace “paranoid schizophrenia” with “schizophrenia with prominent persecutory delusions.” Specify extrapyramidal symptoms (e.g., “parkinsonism with rigidity and tremor”) and note current agent class (e.g., first- vs second-generation LAI) if relevant. Replace “acutely psychotic” with “in acute relapse” or “with severe positive symptoms.”\nconciseness_coherence: Clarify the clinical feasibility and timing of the decision. Clozapine requires gradual titration and cannot replace tomorrow’s depot effect immediately. Reframe the binary as: (A) administer tomorrow’s depot and continue LAI strategy vs (B) forgo tomorrow’s depot and initiate a clozapine titration/monitoring plan (or explicitly state that the team would discontinue LAI now to start clozapine). Also clarify whether EPS are attributed to the depot and whether alternative LAIs/oral antipsychotics have been tried to avoid making the case read like a straightforward ‘switch to clozapine’ optimization.\nchoice_brevity: Shorten choices to neutral 10–15-word action statements and remove embedded justification. Example: Choice 1: “Administer the scheduled depot injection with restraint as needed.” Choice 2: “Discontinue depot and initiate clozapine with mandated monitoring under enforced treatment.”",
+        "equipoise": "balanced_difficulty: Rebalance the options so neither is medically/ethically dominant. Right now the depot is described as effective (“kept him from becoming acutely psychotic”) while clozapine adds daily restraint and venipuncture plus rare fatal risks, making Choice 1 look clearly preferable.\n\nActionable edits:\n- Add a serious, escalating harm to continuing the depot that is not easily mitigated (e.g., worsening parkinsonism despite dose reduction/adjuncts, emerging tardive dyskinesia, repeated post-restraint agitation leading to staff/patient injuries, or an EPS-related fall/aspiration risk).\n- Clarify that other non-clozapine switches have been tried or are contraindicated, so clozapine is the only remaining potentially stabilizing option.\n- Give clozapine a credible ethical upside beyond “might reduce symptoms”: e.g., it may reduce aggression and the need for restraint over time, potentially allowing eventual voluntary medication; but acknowledge the moral cost of frequent forced blood monitoring early in treatment.\n- Remove or soften language that frames clozapine as simply “more effective” without explaining why benefit matters in this specific case (e.g., persistent dangerous command hallucinations despite depot, repeated seclusion episodes).\nexhaustive_binary_options: As written, there are obvious middle options: adjust depot dose, treat EPS (anticholinergic), switch to a different long-acting injectable or oral antipsychotic with fewer motor side effects, use less restrictive administration strategies, postpone clozapine until engagement improves, or seek a second-opinion/ethics consult.\n\nActionable edits to make the binary exhaustive:\n- Explicitly state that he has already failed/intolerant to at least two other antipsychotics/LAIs and that EPS persists despite reasonable adjuncts and dose adjustments.\n- Specify a concrete constraint that forces the team to choose between these two regimens now (e.g., formulary restriction, only these two are available in the facility; the court order authorizes only a named medication plan that must be selected before tomorrow’s due dose).\n- Add one sentence ruling out deferral/partial measures (e.g., “If tomorrow’s injection is missed, he has reliably decompensated within days and becomes assaultive, requiring seclusion; a ‘wait-and-see’ plan is not feasible”).\nno_guideline_override: Current framing risks being decided by existing standards:\n- Schizophrenia guidelines generally reserve clozapine for treatment-resistant illness; your vignette does not establish treatment resistance, making Choice 2 look non-indicated.\n- Professional/legal standards in many settings require the least restrictive approach and minimization of restraint; Choice 2 appears more restrictive (daily restraint + blood draws), which could make it clearly wrong unless you explain why it could reduce overall coercion.\n\nActionable edits:\n- Establish that the patient meets common criteria for clozapine consideration (e.g., persistent psychosis/aggression despite adequate trials of two antipsychotics, including the current depot).\n- Add a line that existing policies/guidance do not clearly address whether repeated compelled blood monitoring is acceptable when the alternative is ongoing compelled injections with worsening adverse effects—i.e., the standards leave room for clinician judgment.\n- Alternatively, add context that the ‘least restrictive’ standard is ambiguous here because both options require restraint, but one may plausibly reduce cumulative coercion over time."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T16:59:03.794838",
+      "data": {
+        "vignette": "A man in his 40s with schizophrenia with prominent persecutory delusions is detained on an inpatient psychiatric unit. Across several admissions he has not demonstrated capacity for medication decisions. A long-acting injectable antipsychotic has been associated with fewer acute relapses, but each injection requires a restraint team. Despite dose reductions and adjuncts for extrapyramidal symptoms, he has progressive rigidity and tremor and has begun having involuntary facial movements. After recent restraint episodes he has become more agitated and has had a fall. He continues to report threatening voices and has required seclusion during this admission. He has had adequate trials of two other antipsychotics, including another LAI, without sustained control or with intolerable adverse effects. The unit can initiate clozapine and perform required early monitoring, but he refuses tablets and venipuncture and may need intermittent restraint for both, and clozapine titration may allow short-term worsening. Hospital policy and mental health law permit either medication plan. His next depot injection is due tomorrow, so you must decide now.",
+        "choice_1": "Administer tomorrow’s depot injection and continue long-acting treatment under restraint if needed",
+        "choice_2": "Do not give the depot; start clozapine with enforced labs and dosing"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T16:59:19.764777",
+      "data": {
+        "vignette": "A man in his 40s with schizophrenia with prominent persecutory delusions is detained on an inpatient psychiatric unit. Across several admissions he has not demonstrated capacity for medication decisions. A long-acting injectable antipsychotic has been associated with fewer acute relapses, but each injection requires a restraint team. Despite dose reductions and adjuncts for extrapyramidal symptoms, he has progressive rigidity and tremor and has begun having involuntary facial movements. After recent restraint episodes he has become more agitated and has had a fall. He continues to report threatening voices and has required seclusion during this admission. He has had adequate trials of two other antipsychotics, including another LAI, without sustained control or with intolerable adverse effects. The unit can initiate clozapine and perform required early monitoring, but he refuses tablets and venipuncture and may need intermittent restraint for both, and clozapine titration may allow short-term worsening. Hospital policy and mental health law permit either medication plan. His next depot injection is due tomorrow, so you must decide now.",
+        "choice_1": {
+          "choice": "Administer tomorrow’s depot injection and continue long-acting treatment under restraint if needed",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Do not give the depot; start clozapine with enforced labs and dosing",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating the patient previously made a clear, capacitated preference (e.g., psychiatric advance directive) to continue the depot and to refuse clozapine/venipuncture, so one option better aligns with his expressed wishes."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating the current depot has provided little symptom control despite adherence (ongoing severe hallucinations/seclusion), and a clause that the emerging movement disorder is likely tardive and progressive if the depot continues, while clozapine is the only remaining option with a substantially higher chance of improving psychosis and reducing future restraint/seclusion."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a brief clause naming clozapine’s major potential harms (e.g., agranulocytosis/myocarditis/seizure risk) so its nonmaleficence tradeoff vs. ongoing EPS/restraint-related injury from the depot is explicit."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause making the system-level tradeoff explicit (e.g., \"restraint team staffing is limited and each restraint pulls staff from other patients\" and/or \"clozapine initiation requires scarce monitoring slots/1:1 nursing that would displace other patients' care\")."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T17:00:52.831356",
+      "data": {
+        "vignette": "A man in his 40s with schizophrenia with prominent persecutory delusions is detained on an inpatient psychiatric unit. Across several admissions he has not demonstrated capacity for medication decisions. When previously stable and assessed as capacitated, he completed a psychiatric advance directive stating he would accept the current long-acting depot injection and would refuse clozapine, tablets, and venipuncture. Despite full adherence to the depot, he continues to report threatening voices and has required seclusion. Each injection requires a restraint team. Despite dose reductions and adjuncts for extrapyramidal symptoms, he has progressive rigidity and tremor and new involuntary facial movements concerning for tardive dyskinesia, which may worsen if the depot continues. After recent restraint episodes he had a fall. He has had adequate trials of two other antipsychotics, including another LAI, without sustained control or with intolerable adverse effects. The unit can initiate clozapine and perform required early blood monitoring. It may require enforced dosing and labs and carries risks such as agranulocytosis, myocarditis, and seizures. Restraint staffing and clozapine monitoring resources are limited. His next depot injection is due tomorrow, so you must decide now.",
+        "choice_1": {
+          "choice": "Administer tomorrow’s depot injection and continue long-acting treatment under restraint if needed",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Do not give the depot; start clozapine with enforced labs and dosing",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 4,
+      "step_description": "sheets_edit",
+      "timestamp": "2026-01-04T17:13:49.371684",
+      "data": {
+        "vignette": "A man in his 40s with schizophrenia with prominent persecutory delusions is detained on an inpatient psychiatric unit. Across several admissions he has not demonstrated capacity for medication decisions. When previously stable and assessed as capacitated, he completed a psychiatric advance directive stating he would accept the current long-acting depot injection and would refuse clozapine, tablets, and venipuncture. Despite full adherence to the depot, he continues to report threatening voices and has required seclusion. Each injection requires a restraint team. Despite dose reductions and adjuncts for extrapyramidal symptoms, he has progressive rigidity and tremor and new involuntary facial movements concerning for tardive dyskinesia, which may worsen if the depot continues. After recent restraint episodes he had a fall. He has had adequate trials of two other antipsychotics, including another LAI, without sustained control or with intolerable adverse effects. The unit can initiate clozapine and perform required early blood monitoring. It may require enforced dosing and labs and carries risks such as agranulocytosis, myocarditis, and seizures. Restraint staffing and clozapine monitoring resources are limited. His next depot injection is due tomorrow, so you must decide now.",
+        "choice_1": {
+          "choice": "Administer tomorrow’s depot injection and continue long-acting treatment under restraint if needed",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Do not give the depot; start clozapine with enforced labs and dosing",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": {
+        "source": "google_sheets",
+        "edited": false,
+        "import_timestamp": "2026-01-04T17:13:49.371672",
+        "reviewers": {
+          "r1": {
+            "name": "David",
+            "decision": "Approve"
+          },
+          "r2": {
+            "name": "Payal",
+            "decision": "Approve",
+            "edited": false
+          }
+        }
+      }
+    },
+    {
+      "iteration": 5,
+      "step_description": "sheets_edit",
+      "timestamp": "2026-01-04T17:14:06.575197",
+      "data": {
+        "vignette": "A man in his 40s with schizophrenia with prominent persecutory delusions is detained on an inpatient psychiatric unit. Across several admissions he has not demonstrated capacity for medication decisions. When previously stable and assessed as capacitated, he completed a psychiatric advance directive stating he would accept the current long-acting depot injection and would refuse clozapine, tablets, and venipuncture. Despite full adherence to the depot, he continues to report threatening voices and has required seclusion. Each injection requires a restraint team. Despite dose reductions and adjuncts for extrapyramidal symptoms, he has progressive rigidity and tremor and new involuntary facial movements concerning for tardive dyskinesia, which may worsen if the depot continues. After recent restraint episodes he had a fall. He has had adequate trials of two other antipsychotics, including another LAI, without sustained control or with intolerable adverse effects. The unit can initiate clozapine and perform required early blood monitoring. It may require enforced dosing and labs and carries risks such as agranulocytosis, myocarditis, and seizures. Restraint staffing and clozapine monitoring resources are limited. His next depot injection is due tomorrow, so you must decide now.",
+        "choice_1": {
+          "choice": "Administer tomorrow’s depot injection and continue long-acting treatment under restraint if needed",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Do not give the depot; start clozapine with enforced labs and dosing",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": {
+        "source": "google_sheets",
+        "edited": false,
+        "import_timestamp": "2026-01-04T17:14:06.575184",
+        "reviewers": {
+          "r1": {
+            "name": "David",
+            "decision": "Approve"
+          },
+          "r2": {
+            "name": "Payal",
+            "decision": "Approve",
+            "edited": false
+          }
+        }
+      }
+    }
+  ],
+  "status": "completed"
+}
