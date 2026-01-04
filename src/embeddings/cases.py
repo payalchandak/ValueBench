@@ -63,7 +63,7 @@ class CaseEmbeddingStore(BaseEmbeddingStore):
             model_size: 'small' or 'large' for embedding model
             api_key: OpenRouter API key (defaults to OPENROUTER_API_KEY env var)
             include_statuses: List of status values to include in diversity checks
-                            (e.g., ["completed"]). Defaults to ["completed"].
+                            (e.g., ["needs_review"]). Defaults to ["needs_review"].
         """
         super().__init__(
             embeddings_dir=embeddings_dir,
@@ -72,7 +72,7 @@ class CaseEmbeddingStore(BaseEmbeddingStore):
             api_key=api_key
         )
         self.cases_dir = Path(cases_dir)
-        self.include_statuses = include_statuses if include_statuses is not None else ["completed"]
+        self.include_statuses = include_statuses if include_statuses is not None else ["needs_review"]
     
     # -------------------------------------------------------------------------
     # Static utility methods
@@ -365,11 +365,11 @@ class CaseEmbeddingStore(BaseEmbeddingStore):
         
         Parses case JSON files and extracts the final refinement data
         with vignette and choices. Handles both string and dict formats
-        for choice_1/choice_2. By default, only loads active cases (completed status)
+        for choice_1/choice_2. By default, only loads active cases (needs_review status)
         to ensure the diversity gate protects final benchmark quality.
         
         Args:
-            include_statuses: List of status values to include (e.g., ["completed", "draft"]).
+            include_statuses: List of status values to include (e.g., ["needs_review", "draft"]).
                             Defaults to the instance's include_statuses setting.
                             Pass an empty list to load all cases regardless of status.
         
@@ -447,11 +447,11 @@ class CaseEmbeddingStore(BaseEmbeddingStore):
         
         This is used to bootstrap the embedding store from existing cases.
         By default, skips cases that already have embeddings unless force=True.
-        Only generates embeddings for active cases (completed status) by default.
+        Only generates embeddings for active cases (needs_review status) by default.
         
         Args:
             force: If True, regenerate embeddings even for cases that already exist
-            include_statuses: List of status values to include (e.g., ["completed"]).
+            include_statuses: List of status values to include (e.g., ["needs_review"]).
                             Defaults to the instance's include_statuses setting.
             
         Returns:
@@ -529,7 +529,7 @@ class CaseEmbeddingStore(BaseEmbeddingStore):
         
         Args:
             include_statuses: List of status values considered "active".
-                            Defaults to ["completed"] to match load_all_cases() behavior.
+                            Defaults to ["needs_review"] to match load_all_cases() behavior.
         
         Returns:
             Dictionary with pruning statistics:
@@ -539,7 +539,7 @@ class CaseEmbeddingStore(BaseEmbeddingStore):
             - remaining_count: Number of embeddings still in store
         """
         if include_statuses is None:
-            include_statuses = ["completed"]
+            include_statuses = ["needs_review"]
         
         # Load existing embeddings
         data = self.load_embeddings()

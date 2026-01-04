@@ -37,6 +37,7 @@ from pydantic import ValidationError
 
 # Import validation models
 from src.response_models.case import BenchmarkCandidate, ChoiceWithValues, ValueAlignmentStatus
+from src.response_models.status import CaseStatus
 
 
 @dataclass
@@ -178,7 +179,10 @@ def parse_sheet_row(row: list, headers: list, row_number: int) -> ValidationResu
     r1_decision = row_dict.get('R1 Decision?', '').strip()
     r2_name = row_dict.get('R2', '').strip()
     r2_decision = row_dict.get('R2 Decision?', '').strip()
+    r3_name = row_dict.get('R3', '').strip()
+    r3_decision = row_dict.get('R3 Decision?', '').strip()
     reviewer_comments = row_dict.get('Reviewer Comments', '').strip()
+    sheet_status = row_dict.get('Status', '').strip().lower()
     
     # Extract vignette and choices
     vignette = row_dict.get('Vignette', '').strip()
@@ -264,7 +268,10 @@ def parse_sheet_row(row: list, headers: list, row_number: int) -> ValidationResu
             'r1_decision': r1_decision,
             'r2_reviewer': r2_name,
             'r2_decision': r2_decision,
-            'comments': reviewer_comments
+            'r3_reviewer': r3_name,
+            'r3_decision': r3_decision,
+            'comments': reviewer_comments,
+            'sheet_status': sheet_status
         }
         
         # Validate using BenchmarkCandidate model
@@ -351,12 +358,20 @@ def fetch_finalized_cases(config: dict) -> tuple[list[list], list[str], gspread.
     
     print(f"  Found {len(data_rows)} total rows")
     
-    # Note: The current sheet structure doesn't have a status column
-    # We'll import all non-empty rows
     # Filter out completely empty rows
     finalized_rows = [row for row in data_rows if any(cell.strip() for cell in row)]
     
-    print(f"  {len(finalized_rows)} rows ready for validation")
+    # Get the import_status from config to optionally filter by status
+    import_status = config.get("import", {}).get("import_status")
+    if import_status and 'Status' in headers:
+        status_idx = headers.index('Status')
+        finalized_rows = [
+            row for row in finalized_rows 
+            if len(row) > status_idx and row[status_idx].strip().lower() == import_status.lower()
+        ]
+        print(f"  {len(finalized_rows)} rows with status '{import_status}' ready for validation")
+    else:
+        print(f"  {len(finalized_rows)} rows ready for validation")
     
     return finalized_rows, headers, worksheet
 
@@ -513,6 +528,83 @@ def write_validation_to_sheet(
         print("  Applied color coding to validation status column")
 
 
+def _determine_case_status(reviewer_feedback: dict) -> CaseStatus:
+    """
+    Determine the case status based on reviewer decisions.
+    
+    Decision logic:
+    - IF any reviewer (R1, R2, R3) has decision = "Reject": status = DEPRECATED
+    - ELSE IF R2 decision = "Approve" OR R3 decision = "Approve": status = APPROVED
+    - ELSE: status = NEEDS_REVIEW (still in revision cycle)
+    
+    Args:
+        reviewer_feedback: Dictionary containing reviewer decisions:
+            - r1_decision: R1's decision
+            - r2_decision: R2's decision
+            - r3_decision: R3's decision
+            
+    Returns:
+        CaseStatus enum value
+    """
+    r1_decision = reviewer_feedback.get('r1_decision', '').strip().lower()
+    r2_decision = reviewer_feedback.get('r2_decision', '').strip().lower()
+    r3_decision = reviewer_feedback.get('r3_decision', '').strip().lower()
+    
+    # Check if any reviewer rejected
+    if r1_decision == 'reject' or r2_decision == 'reject' or r3_decision == 'reject':
+        return CaseStatus.DEPRECATED
+    
+    # Check if R2 or R3 approved
+    if r2_decision == 'approve' or r3_decision == 'approve':
+        return CaseStatus.APPROVED
+    
+    # Default: still in revision cycle
+    return CaseStatus.NEEDS_REVIEW
+
+
+def _reviewer_feedback_changed(existing_human_eval: dict, new_feedback: dict) -> bool:
+    """
+    Check if reviewer feedback has changed.
+    
+    Compares reviewer names, decisions, and comments between existing
+    human_evaluation and new feedback from sheet.
+    
+    Args:
+        existing_human_eval: The human_evaluation dict from the latest refinement
+        new_feedback: The reviewer_feedback dict from the sheet import
+        
+    Returns:
+        True if reviewer info has changed, False otherwise
+    """
+    existing_reviewers = existing_human_eval.get('reviewers', {})
+    existing_comments = existing_human_eval.get('comments', '').strip()
+    
+    # Build comparable tuples for each reviewer
+    def get_reviewer_tuple(reviewers: dict, prefix: str) -> tuple:
+        r = reviewers.get(prefix, {})
+        return (
+            r.get('name', '').strip().lower(),
+            r.get('decision', '').strip().lower()
+        )
+    
+    # Compare R1, R2, R3
+    for prefix in ['r1', 'r2', 'r3']:
+        existing_tuple = get_reviewer_tuple(existing_reviewers, prefix)
+        new_tuple = (
+            new_feedback.get(f'{prefix}_reviewer', '').strip().lower(),
+            new_feedback.get(f'{prefix}_decision', '').strip().lower()
+        )
+        if existing_tuple != new_tuple:
+            return True
+    
+    # Compare comments
+    new_comments = new_feedback.get('comments', '').strip()
+    if existing_comments != new_comments:
+        return True
+    
+    return False
+
+
 def _data_matches(data1: dict, data2: dict) -> bool:
     """
     Compare two case data dictionaries to check if they represent the same content.
@@ -582,6 +674,8 @@ def update_case_json(
             - r1_decision: R1's decision
             - r2_reviewer: R2 name
             - r2_decision: R2's decision
+            - r3_reviewer: R3 name (if needed)
+            - r3_decision: R3's decision (Approve/Reject)
             - comments: Reviewer comments
         cases_dir: Path to the cases directory
         
@@ -613,12 +707,28 @@ def update_case_json(
     refinement_history = case_data.get('refinement_history', [])
     
     # Check if the latest version matches what we're trying to import
+    # We should update if any of these changed:
+    # 1. The case content (vignette/choices)
+    # 2. The status (based on reviewer decisions)
+    # 3. The reviewer information (names, decisions, comments)
     if refinement_history:
         latest_refinement = refinement_history[-1]
         latest_data = latest_refinement.get('data', {})
+        latest_human_eval = latest_refinement.get('human_evaluation', {})
         
-        # Compare the case data (vignette and choices) to see if there are actual changes
-        if _data_matches(latest_data, new_data):
+        # Check if content changed
+        content_changed = not _data_matches(latest_data, new_data)
+        
+        # Check if status would change
+        current_status = case_data.get('status', '')
+        new_status = _determine_case_status(reviewer_feedback)
+        status_changed = current_status != new_status.value
+        
+        # Check if reviewer info changed
+        reviewer_changed = _reviewer_feedback_changed(latest_human_eval, reviewer_feedback)
+        
+        # Skip only if nothing changed
+        if not content_changed and not status_changed and not reviewer_changed:
             print(f"  ⏭️  {case_id} - No changes detected, skipping duplicate import")
             return True, True  # Success=True, Unchanged=True
     
@@ -646,6 +756,12 @@ def update_case_json(
             'decision': reviewer_feedback.get('r2_decision', '')
         }
     
+    if reviewer_feedback.get('r3_reviewer'):
+        reviewers['r3'] = {
+            'name': reviewer_feedback['r3_reviewer'],
+            'decision': reviewer_feedback.get('r3_decision', '')
+        }
+    
     if reviewers:
         human_evaluation['reviewers'] = reviewers
     
@@ -670,6 +786,15 @@ def update_case_json(
     # Append to refinement history
     refinement_history.append(new_refinement)
     case_data['refinement_history'] = refinement_history
+    
+    # Determine and update case status based on reviewer decisions
+    new_status = _determine_case_status(reviewer_feedback)
+    old_status = case_data.get('status', '')
+    case_data['status'] = new_status.value
+    
+    # Log status change if it changed
+    if old_status != new_status.value:
+        print(f"    Status: {old_status or 'none'} → {new_status.value}")
     
     # Write back to file
     with open(case_file, 'w', encoding='utf-8') as f:
@@ -772,6 +897,12 @@ def import_cases(
                     if reviewer_feedback.get('r2_decision'):
                         r2_str += f" ({reviewer_feedback['r2_decision']})"
                     feedback_parts.append(r2_str)
+                
+                if reviewer_feedback.get('r3_reviewer'):
+                    r3_str = f"R3: {reviewer_feedback['r3_reviewer']}"
+                    if reviewer_feedback.get('r3_decision'):
+                        r3_str += f" ({reviewer_feedback['r3_decision']})"
+                    feedback_parts.append(r3_str)
                 
                 feedback_summary = ", ".join(feedback_parts) if feedback_parts else "No reviewer info"
                 

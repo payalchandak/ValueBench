@@ -31,7 +31,7 @@ from src.response_models.rubric import (
     ValueRubric,
 )
 from src.response_models.record import IterationRecord, SeedContext, CaseRecord
-from src.response_models.status import GenerationStatus
+from src.response_models.status import CaseStatus
 from src.embeddings import CaseEmbeddingStore
 from src.prompts.components.synthetic_components import (
     DEFAULT_MEDICAL_SETTINGS_AND_DOMAINS,
@@ -161,7 +161,7 @@ def main(cfg: DictConfig) -> None:
     # Initialize diversity gate
     case_embedding_store = None
     if cfg.diversity_gate.enabled:
-        include_statuses = list(cfg.diversity_gate.get('include_statuses', ['completed']))
+        include_statuses = list(cfg.diversity_gate.get('include_statuses', ['needs_review']))
         case_embedding_store = CaseEmbeddingStore(include_statuses=include_statuses)
 
     for case_num in tqdm(range(cfg.num_cases), desc="Generating cases"):
@@ -210,7 +210,7 @@ def main(cfg: DictConfig) -> None:
             model_name=cfg.model_name,
             generator_config=OmegaConf.to_container(cfg, resolve=True),
             seed=seed_context,
-            status=GenerationStatus.DRAFT
+            status=CaseStatus.DRAFT
         )
 
         # Log the initial seed draft
@@ -332,7 +332,7 @@ def main(cfg: DictConfig) -> None:
                     # Last attempt failed - log and skip this case
                     if cfg.verbose:
                         print(f"All {cfg.max_tagging_attempts} tagging attempts failed. Skipping case.")
-                    case_record.status = GenerationStatus.FAILED
+                    case_record.status = CaseStatus.FAILED
                     save_case_record(case_record)
                     continue
 
@@ -413,7 +413,7 @@ def main(cfg: DictConfig) -> None:
                     print("Keeping original tagged version.")
                 # Note: case_with_values still contains the successfully tagged version from earlier
 
-        case_record.status = GenerationStatus.COMPLETED
+        case_record.status = CaseStatus.NEEDS_REVIEW
         
         if cfg.verbose:
             pretty_print_case(case_with_values, "FINAL CASE")

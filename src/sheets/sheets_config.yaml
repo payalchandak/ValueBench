@@ -21,18 +21,21 @@ columns:
   r1_decision: C
   R2: D
   r2_decision: E
-  vignette: F
-  choice_1: G
-  c1_autonomy: H
-  c1_beneficence: I
-  c1_nonmaleficence: J
-  c1_justice: K
-  choice_2: L
-  c2_autonomy: M
-  c2_beneficence: N
-  c2_nonmaleficence: O
-  c2_justice: P
-  reviewer_comments: Q
+  R3: F
+  r3_decision: G
+  status: H
+  vignette: I
+  choice_1: J
+  c1_autonomy: K
+  c1_beneficence: L
+  c1_nonmaleficence: M
+  c1_justice: N
+  choice_2: O
+  c2_autonomy: P
+  c2_beneficence: Q
+  c2_nonmaleficence: R
+  c2_justice: S
+  reviewer_comments: T
 
 # Valid values for dropdowns
 value_options:
@@ -42,8 +45,10 @@ value_options:
 
 status_options:
   - draft
-  - review
-  - finalized
+  - needs_review
+  - approved
+  - failed
+  - deprecated
 
 # Export settings
 export:
@@ -54,8 +59,12 @@ export:
 
 # Import settings
 import:
-  # Only import rows with this status
-  import_status: "finalized"
+  # Only import rows with this status (leave empty to import all rows)
+  # Status is determined by reviewer decisions during import:
+  #   - Any Reject → deprecated
+  #   - R2/R3 Approve → approved  
+  #   - Otherwise → needs_review
+  import_status: ""
   # Mark imported rows with this status after import
   post_import_status: "imported"
 

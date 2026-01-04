@@ -105,6 +105,7 @@ def extract_case_row(case_data: dict, config: dict) -> Optional[list]:
     # Find the last iteration with value-tagged choices
     # Look for iterations where choice_1/choice_2 are objects with value tags
     final_data = None
+    final_human_evaluation = None
     for iteration in reversed(refinement_history):
         data = iteration.get("data", {})
         choice_1 = data.get("choice_1")
@@ -113,7 +114,16 @@ def extract_case_row(case_data: dict, config: dict) -> Optional[list]:
         # Check if this has value tags (BenchmarkCandidate format)
         if isinstance(choice_1, dict) and "autonomy" in choice_1:
             final_data = data
+            # Get the human_evaluation from this or the most recent iteration that has it
+            final_human_evaluation = iteration.get("human_evaluation")
             break
+    
+    # If no human_evaluation found in the final data iteration, look for the most recent one
+    if not final_human_evaluation:
+        for iteration in reversed(refinement_history):
+            if iteration.get("human_evaluation"):
+                final_human_evaluation = iteration.get("human_evaluation")
+                break
     
     if not final_data:
         return None
@@ -136,13 +146,45 @@ def extract_case_row(case_data: dict, config: dict) -> Optional[list]:
     c2_nonmaleficence = choice_2.get("nonmaleficence", "neutral") if isinstance(choice_2, dict) else "neutral"
     c2_justice = choice_2.get("justice", "neutral") if isinstance(choice_2, dict) else "neutral"
     
-    # Build row in column order: case_id, R1, R1 Decision?, R2, R2 Decision?, vignette, choice_1, c1_values..., choice_2, c2_values..., reviewer comments
+    # Extract reviewer feedback from human_evaluation if present
+    r1_name = ""
+    r1_decision = ""
+    r2_name = ""
+    r2_decision = ""
+    r3_name = ""
+    r3_decision = ""
+    reviewer_comments = ""
+    
+    if final_human_evaluation:
+        reviewers = final_human_evaluation.get("reviewers", {})
+        
+        r1_info = reviewers.get("r1", {})
+        r1_name = r1_info.get("name", "") if isinstance(r1_info, dict) else ""
+        r1_decision = r1_info.get("decision", "") if isinstance(r1_info, dict) else ""
+        
+        r2_info = reviewers.get("r2", {})
+        r2_name = r2_info.get("name", "") if isinstance(r2_info, dict) else ""
+        r2_decision = r2_info.get("decision", "") if isinstance(r2_info, dict) else ""
+        
+        r3_info = reviewers.get("r3", {})
+        r3_name = r3_info.get("name", "") if isinstance(r3_info, dict) else ""
+        r3_decision = r3_info.get("decision", "") if isinstance(r3_info, dict) else ""
+        
+        reviewer_comments = final_human_evaluation.get("comments", "")
+    
+    # Get case status from the case data
+    case_status = case_data.get("status", "draft")
+    
+    # Build row in column order: case_id, R1, R1 Decision?, R2, R2 Decision?, R3, R3 Decision?, Status, vignette, choice_1, c1_values..., choice_2, c2_values..., reviewer comments
     row = [
         case_id,
-        "",  # R1 - to be filled in manually
-        "",  # R1 Decision? - text field
-        "",  # R2 - to be filled in manually
-        "",  # R2 Decision? - text field
+        r1_name,
+        r1_decision,
+        r2_name,
+        r2_decision,
+        r3_name,
+        r3_decision,
+        case_status,
         vignette,
         c1_text,
         c1_autonomy,
@@ -154,7 +196,7 @@ def extract_case_row(case_data: dict, config: dict) -> Optional[list]:
         c2_beneficence,
         c2_nonmaleficence,
         c2_justice,
-        "",  # Reviewer Comments - to be filled in manually
+        reviewer_comments,
     ]
     
     return row
@@ -168,6 +210,9 @@ def get_header_row() -> list:
         "R1 Decision?",
         "R2",
         "R2 Decision?",
+        "R3",
+        "R3 Decision?",
+        "Status",
         "Vignette",
         "Choice 1",
         "Autonomy C1",
@@ -198,12 +243,14 @@ def setup_data_validation(spreadsheet: gspread.Spreadsheet, worksheet: gspread.W
     value_options = config.get("value_options", ["promotes", "violates", "neutral"])
     status_options = config.get("status_options", ["draft", "review", "finalized"])
     
-    # Value tag columns (D, E, F, G for choice_1 and I, J, K, L for choice_2)
-    # Using 0-based column indices: D=3, E=4, F=5, G=6, I=8, J=9, K=10, L=11
-    value_columns = [3, 4, 5, 6, 8, 9, 10, 11]  # 0-indexed
+    # Column layout (0-indexed):
+    # 0=Case ID, 1=R1, 2=R1 Decision?, 3=R2, 4=R2 Decision?, 5=R3, 6=R3 Decision?, 
+    # 7=Status, 8=Vignette, 9=Choice 1, 10-13=C1 values, 14=Choice 2, 15-18=C2 values, 19=Comments
+    # Value tag columns: K, L, M, N for choice_1 (indices 10-13) and P, Q, R, S for choice_2 (indices 15-18)
+    value_columns = [10, 11, 12, 13, 15, 16, 17, 18]  # 0-indexed
     
-    # Status column (M = index 12)
-    status_column = 12  # 0-indexed
+    # Status column (H = index 7)
+    status_column = 7  # 0-indexed
     
     if num_rows == 0:
         return
@@ -270,8 +317,8 @@ def setup_data_validation(spreadsheet: gspread.Spreadsheet, worksheet: gspread.W
 
 def format_header(worksheet: gspread.Worksheet):
     """Apply formatting to the header row."""
-    # Bold the header row and freeze it
-    worksheet.format("A1:N1", {
+    # Bold the header row and freeze it (20 columns: A through T)
+    worksheet.format("A1:T1", {
         "textFormat": {"bold": True},
         "backgroundColor": {"red": 0.9, "green": 0.9, "blue": 0.9}
     })
@@ -291,25 +338,31 @@ def format_columns(spreadsheet: gspread.Spreadsheet, worksheet: gspread.Workshee
     """
     sheet_id = worksheet.id
     
-    # Column widths (in pixels):
-    # A (case_id): 120, B (vignette): 500, C (choice_1): 300, 
-    # D-G (c1 values): 100 each, H (choice_2): 300,
-    # I-L (c2 values): 100 each, M (status): 80, N (last_edited): 100
+    # Column layout (0-indexed):
+    # A(0)=Case ID, B(1)=R1, C(2)=R1 Decision?, D(3)=R2, E(4)=R2 Decision?, 
+    # F(5)=R3, G(6)=R3 Decision?, H(7)=Status, I(8)=Vignette, J(9)=Choice 1,
+    # K-N(10-13)=C1 values, O(14)=Choice 2, P-S(15-18)=C2 values, T(19)=Comments
     column_widths = [
         (0, 150),   # A: case_id
-        (1, 500),   # B: vignette
-        (2, 300),   # C: choice_1
-        (3, 100),   # D: c1_autonomy
-        (4, 100),   # E: c1_beneficence
-        (5, 120),   # F: c1_nonmaleficence
-        (6, 100),   # G: c1_justice
-        (7, 300),   # H: choice_2
-        (8, 100),   # I: c2_autonomy
-        (9, 100),   # J: c2_beneficence
-        (10, 120),  # K: c2_nonmaleficence
-        (11, 100),  # L: c2_justice
-        (12, 80),   # M: status
-        (13, 100),  # N: last_edited
+        (1, 80),    # B: R1
+        (2, 100),   # C: R1 Decision?
+        (3, 80),    # D: R2
+        (4, 100),   # E: R2 Decision?
+        (5, 80),    # F: R3
+        (6, 100),   # G: R3 Decision?
+        (7, 90),    # H: Status
+        (8, 500),   # I: Vignette
+        (9, 300),   # J: Choice 1
+        (10, 100),  # K: c1_autonomy
+        (11, 100),  # L: c1_beneficence
+        (12, 120),  # M: c1_nonmaleficence
+        (13, 100),  # N: c1_justice
+        (14, 300),  # O: Choice 2
+        (15, 100),  # P: c2_autonomy
+        (16, 100),  # Q: c2_beneficence
+        (17, 120),  # R: c2_nonmaleficence
+        (18, 100),  # S: c2_justice
+        (19, 200),  # T: Reviewer Comments
     ]
     
     requests = []
@@ -331,10 +384,9 @@ def format_columns(spreadsheet: gspread.Spreadsheet, worksheet: gspread.Workshee
             }
         })
     
-    # Enable text wrapping for vignette (B), choice_1 (C), choice_2 (H)
-    text_wrap_columns = [1, 2, 7]  # B, C, H (0-indexed)
+    # Enable text wrapping for vignette (I=8), choice_1 (J=9), choice_2 (O=14), comments (T=19)
+    text_wrap_columns = [8, 9, 14, 19]  # 0-indexed
     for col_idx in text_wrap_columns:
-        col_letter = chr(ord('A') + col_idx)
         requests.append({
             "repeatCell": {
                 "range": {

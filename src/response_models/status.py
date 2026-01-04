@@ -3,21 +3,23 @@
 from enum import Enum
 
 
-class GenerationStatus(str, Enum):
+class CaseStatus(str, Enum):
     """
     Generation lifecycle status for benchmark cases.
     
-    Tracks the state of case generation from initial draft through completion.
+    Tracks the state of case generation from initial draft through review and approval.
     
     Attributes:
         DRAFT: Case is currently being generated (in progress)
-        COMPLETED: Case generation finished successfully, ready for evaluation
+        NEEDS_REVIEW: Case generation finished successfully, awaiting human review
+        APPROVED: Case has been approved by a reviewer (R2 or R3)
         FAILED: Case generation failed (e.g., value tagging unsuccessful)
-        DEPRECATED: Case has been superseded or should be hidden from active use
+        DEPRECATED: Case has been rejected by a reviewer or superseded
     """
     
     DRAFT = "draft"
-    COMPLETED = "completed"
+    NEEDS_REVIEW = "needs_review"
+    APPROVED = "approved"
     FAILED = "failed"
     DEPRECATED = "deprecated"
     
