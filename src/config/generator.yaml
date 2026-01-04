@@ -17,7 +17,7 @@ max_synthetic_feasibility_attempts: 5
 refinement_iterations: 1
 
 # Number of cases to generate
-num_cases: 5
+num_cases: 20
 
 # Minimum number of values that must be involved in each case
 min_values_involved: 2
@@ -27,4 +27,17 @@ max_tagging_attempts: 2
 
 # Whether to print detailed logs and cases to console
 verbose: false
+
+# Diversity gate configuration
+# Prevents generating cases too similar to existing ones
+diversity_gate:
+  enabled: true
+  # Similarity threshold (0-1). Cases with similarity >= threshold are rejected
+  similarity_threshold: 0.80
+  # Maximum retry attempts for literature mode (synthetic mode discards immediately)
+  max_diversity_retries: 3
+  # Status values to include in diversity checks (only active cases by default)
+  # Options: completed, draft, failed, deprecated
+  include_statuses:
+    - completed
 

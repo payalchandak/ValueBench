@@ -32,6 +32,7 @@ from src.response_models.rubric import (
 )
 from src.response_models.record import IterationRecord, SeedContext, CaseRecord
 from src.response_models.status import GenerationStatus
+from src.embeddings import CaseEmbeddingStore
 from src.prompts.components.synthetic_components import (
     DEFAULT_MEDICAL_SETTINGS_AND_DOMAINS,
     VALUES_WITHIN_PAIRS,
@@ -157,10 +158,52 @@ def main(cfg: DictConfig) -> None:
     llm = LLM(cfg.model_name)
     pm = PromptManager()
 
+    # Initialize diversity gate
+    case_embedding_store = None
+    if cfg.diversity_gate.enabled:
+        include_statuses = list(cfg.diversity_gate.get('include_statuses', ['completed']))
+        case_embedding_store = CaseEmbeddingStore(include_statuses=include_statuses)
+
     for case_num in tqdm(range(cfg.num_cases), desc="Generating cases"):
-        draft, seed_context = get_seeded_draft(
-            llm, pm, cfg.seed_mode, cfg.max_synthetic_feasibility_attempts, cfg.verbose
-        )
+        # Retry loop for diversity (literature mode gets retries, synthetic mode discards immediately)
+        max_diversity_retries = cfg.diversity_gate.max_diversity_retries if cfg.seed_mode == "literature" else 1
+        is_diverse = False
+        draft = None
+        seed_context = None
+
+        for diversity_attempt in range(max_diversity_retries):
+            draft, seed_context = get_seeded_draft(
+                llm, pm, cfg.seed_mode, cfg.max_synthetic_feasibility_attempts, cfg.verbose
+            )
+
+            # Diversity gate check
+            if case_embedding_store and cfg.diversity_gate.enabled:
+                is_diverse, similar_id, similarity = case_embedding_store.check_diversity(
+                    draft,
+                    threshold=cfg.diversity_gate.similarity_threshold
+                )
+
+                if not is_diverse:
+                    if cfg.verbose:
+                        print(f"[DIVERSITY] Too similar to {similar_id} ({similarity:.3f})")
+
+                    if cfg.seed_mode == "synthetic":
+                        # Synthetic: discard immediately, no retry
+                        break
+                    # Literature: retry with new seed
+                    continue
+            else:
+                # Diversity gate disabled, proceed
+                is_diverse = True
+
+            if is_diverse:
+                break
+
+        # Skip this case if diversity check failed
+        if not is_diverse:
+            if cfg.verbose:
+                print(f"[DIVERSITY] Skipping case (max retries reached or synthetic duplicate)")
+            continue
 
         # Initialize the CaseRecord for record keeping
         case_record = CaseRecord(
@@ -176,8 +219,6 @@ def main(cfg: DictConfig) -> None:
             step_description="initial_draft",
             data=draft
         ))
-
-        # todo: embedding based diversity gate
 
         for i in range(cfg.refinement_iterations):
             clinical_rubric, clinical_feedback = evaluate_rubric(
@@ -379,6 +420,14 @@ def main(cfg: DictConfig) -> None:
         
         # Save the complete case record
         save_case_record(case_record)
+
+        # Add to embedding store for future diversity checks
+        if case_embedding_store:
+            try:
+                case_embedding_store.add_case(case_record.case_id, case_with_values)
+            except Exception as e:
+                if cfg.verbose:
+                    print(f"[DIVERSITY] Failed to add case to embedding store: {e}")
 
 
 if __name__ == "__main__":
