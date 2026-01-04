@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ValueBench Case Viewer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .stat-card h3 {
+            color: #666;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-card .number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .filters {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .filters input,
+        .filters select {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            margin-right: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .filters input {
+            width: 300px;
+        }
+        
+        .case-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .case-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        
+        .case-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .case-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+        
+        .case-id {
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: #666;
+            background: #f5f5f5;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+        
+        .case-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .tag {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .tag.values {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+        
+        .tag.seed-mode {
+            background: #fff3e0;
+            color: #e65100;
+            font-weight: 600;
+        }
+        
+        .tag.seed-mode.literature {
+            background: #e8eaf6;
+            color: #3f51b5;
+        }
+        
+        .tag.seed-mode.synthetic {
+            background: #fce4ec;
+            color: #c2185b;
+        }
+        
+        .tag.domain {
+            background: #f3e5f5;
+            color: #7b1fa2;
+        }
+        
+        .tag.setting {
+            background: #e8f5e9;
+            color: #388e3c;
+        }
+        
+        .vignette-preview {
+            color: #555;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .evaluations {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+        
+        .eval-counts {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .count-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .count-item.approve {
+            color: #2e7d32;
+        }
+        
+        .count-item.reject {
+            color: #c62828;
+        }
+        
+        .count-item.skip {
+            color: #f57f17;
+        }
+        
+        .count-item.controversy {
+            color: #d32f2f;
+        }
+        
+        .eval-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .eval-badge.approve {
+            background: #c8e6c9;
+            color: #2e7d32;
+        }
+        
+        .eval-badge.reject {
+            background: #ffcdd2;
+            color: #c62828;
+        }
+        
+        .eval-badge.skip {
+            background: #fff9c4;
+            color: #f57f17;
+        }
+        
+        .eval-badge.unknown {
+            background: #e0e0e0;
+            color: #616161;
+        }
+        
+        .eval-label {
+            color: #666;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏥 ValueBench Case Viewer</h1>
+        <p>Browse ethical cases and evaluator feedback</p>
+        <div style="margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <a href="/feedback" style="color: white; text-decoration: none; padding: 0.5rem 1rem; background: rgba(255,255,255,0.2); border-radius: 6px; display: inline-block; font-weight: 500;">
+                📊 View Feedback Analysis
+            </a>
+            <a href="/embeddings" style="color: white; text-decoration: none; padding: 0.5rem 1rem; background: rgba(255,255,255,0.2); border-radius: 6px; display: inline-block; font-weight: 500;">
+                🔮 Embedding Explorer
+            </a>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="stats">
+            <div class="stat-card">
+                <h3>Total Cases</h3>
+                <div class="number" id="total-cases">{{ cases|length }}</div>
+            </div>
+            <div class="stat-card">
+                <h3>Literature Cases</h3>
+                <div class="number" style="color: #3f51b5;">
+                    {{ cases|selectattr('seed_mode', 'equalto', 'literature')|list|length }}
+                </div>
+            </div>
+            <div class="stat-card">
+                <h3>Synthetic Cases</h3>
+                <div class="number" style="color: #c2185b;">
+                    {{ cases|selectattr('seed_mode', 'equalto', 'synthetic')|list|length }}
+                </div>
+            </div>
+            <div class="stat-card">
+                <h3>Evaluators</h3>
+                <div class="number">{{ evaluators|length }}</div>
+            </div>
+            <div class="stat-card">
+                <h3>Avg Evaluations/Case</h3>
+                <div class="number" id="avg-evals">
+                    {% set total_evals = cases|sum(attribute='num_evaluations') %}
+                    {{ "%.1f"|format(total_evals / cases|length) if cases else "0" }}
+                </div>
+            </div>
+        </div>
+        
+        <div class="filters">
+            <input type="text" id="search" placeholder="Search cases...">
+            <select id="seed-mode-filter">
+                <option value="">All Seed Modes</option>
+                <option value="literature">Literature</option>
+                <option value="synthetic">Synthetic</option>
+            </select>
+            <select id="evaluator-filter">
+                <option value="">All Evaluators</option>
+                {% for evaluator in evaluators %}
+                <option value="{{ evaluator }}">{{ evaluator }}</option>
+                {% endfor %}
+            </select>
+            <select id="decision-filter">
+                <option value="">All Decisions</option>
+                <option value="approve">Approved</option>
+                <option value="reject">Rejected</option>
+                <option value="skip">Skipped</option>
+            </select>
+            <select id="sort-by" onchange="window.location.href='/?sort=' + this.value">
+                <option value="newest" {% if current_sort == 'newest' %}selected{% endif %}>Sort: Newest First</option>
+                <option value="oldest" {% if current_sort == 'oldest' %}selected{% endif %}>Sort: Oldest First</option>
+                <option value="most_reviewed" {% if current_sort == 'most_reviewed' %}selected{% endif %}>Sort: Most Reviewed</option>
+                <option value="most_approved" {% if current_sort == 'most_approved' %}selected{% endif %}>Sort: Most Approved</option>
+                <option value="most_rejected" {% if current_sort == 'most_rejected' %}selected{% endif %}>Sort: Most Rejected</option>
+                <option value="most_controversial" {% if current_sort == 'most_controversial' %}selected{% endif %}>Sort: Most Controversial</option>
+            </select>
+        </div>
+        
+        <div class="case-grid" id="case-grid">
+            {% for case in cases %}
+            <div class="case-card" 
+                 data-case-id="{{ case.case_id }}"
+                 data-seed-mode="{{ case.seed_mode }}"
+                 data-evaluators="{{ case.evaluations.keys()|join(',') }}"
+                 data-decisions="{{ case.evaluations.values()|join(',') }}"
+                 data-approve-count="{{ case.approve_count }}"
+                 data-reject-count="{{ case.reject_count }}"
+                 data-controversy="{{ case.controversy }}"
+                 onclick="window.location.href='/case/{{ case.case_id }}'">
+                <div class="case-header">
+                    <div class="case-id">{{ case.case_id[:8] }}...</div>
+                    <div class="case-tags">
+                        <span class="tag seed-mode {{ case.seed_mode }}">{{ case.seed_mode }}</span>
+                    </div>
+                </div>
+                
+                <div class="vignette-preview">
+                    {{ case.vignette }}
+                </div>
+                
+                <div class="eval-counts">
+                    {% if case.approve_count > 0 %}
+                    <span class="count-item approve">✓ {{ case.approve_count }} approved</span>
+                    {% endif %}
+                    {% if case.reject_count > 0 %}
+                    <span class="count-item reject">✗ {{ case.reject_count }} rejected</span>
+                    {% endif %}
+                    {% if case.skip_count > 0 %}
+                    <span class="count-item skip">⊘ {{ case.skip_count }} skipped</span>
+                    {% endif %}
+                    {% if case.controversy > 0.3 %}
+                    <span class="count-item controversy">⚠ Controversial</span>
+                    {% endif %}
+                </div>
+                
+                <div class="evaluations">
+                    {% if case.evaluations %}
+                        {% for evaluator, decision in case.evaluations.items() %}
+                        <span class="eval-badge {{ decision }}">
+                            {{ evaluator }}
+                        </span>
+                        {% endfor %}
+                    {% else %}
+                        <span class="eval-badge unknown">No evaluations yet</span>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="no-results" id="no-results" style="display: none;">
+            <p>No cases match your filters</p>
+        </div>
+    </div>
+    
+    <script>
+        // Filter functionality
+        const searchInput = document.getElementById('search');
+        const seedModeFilter = document.getElementById('seed-mode-filter');
+        const evaluatorFilter = document.getElementById('evaluator-filter');
+        const decisionFilter = document.getElementById('decision-filter');
+        const caseGrid = document.getElementById('case-grid');
+        const noResults = document.getElementById('no-results');
+        
+        function filterCases() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const selectedSeedMode = seedModeFilter.value;
+            const selectedEvaluator = evaluatorFilter.value;
+            const selectedDecision = decisionFilter.value;
+            
+            const cases = document.querySelectorAll('.case-card');
+            let visibleCount = 0;
+            
+            cases.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                const seedMode = card.dataset.seedMode;
+                const evaluators = card.dataset.evaluators.split(',');
+                const decisions = card.dataset.decisions.split(',');
+                
+                const matchesSearch = text.includes(searchTerm);
+                const matchesSeedMode = !selectedSeedMode || seedMode === selectedSeedMode;
+                const matchesEvaluator = !selectedEvaluator || evaluators.includes(selectedEvaluator);
+                const matchesDecision = !selectedDecision || decisions.includes(selectedDecision);
+                
+                if (matchesSearch && matchesSeedMode && matchesEvaluator && matchesDecision) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            if (visibleCount === 0) {
+                caseGrid.style.display = 'none';
+                noResults.style.display = 'block';
+            } else {
+                caseGrid.style.display = 'grid';
+                noResults.style.display = 'none';
+            }
+        }
+        
+        searchInput.addEventListener('input', filterCases);
+        seedModeFilter.addEventListener('change', filterCases);
+        evaluatorFilter.addEventListener('change', filterCases);
+        decisionFilter.addEventListener('change', filterCases);
+    </script>
+</body>
+</html>
+

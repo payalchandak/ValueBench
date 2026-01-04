@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embedding Explorer - ValueBench</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #2a2a4e;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header h1 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .header h1 span {
+            background: linear-gradient(135deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .nav-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+        
+        .main-container {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            height: calc(100vh - 70px);
+        }
+        
+        @media (max-width: 1100px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                grid-template-rows: 60vh 1fr;
+            }
+        }
+        
+        .visualization-container {
+            position: relative;
+            background: #0d0d14;
+            overflow: hidden;
+        }
+        
+        #embedding-canvas {
+            width: 100%;
+            height: 100%;
+            cursor: crosshair;
+        }
+        
+        .controls {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            z-index: 100;
+        }
+        
+        .control-group {
+            background: rgba(26, 26, 46, 0.95);
+            border: 1px solid #2a2a4e;
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .control-group label {
+            font-size: 0.75rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .control-group select,
+        .control-group input[type="range"] {
+            background: #12121a;
+            border: 1px solid #3a3a5e;
+            color: #e0e0e0;
+            padding: 0.4rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+        
+        .control-group select:focus {
+            outline: none;
+            border-color: #7c3aed;
+        }
+        
+        .legend {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            background: rgba(26, 26, 46, 0.95);
+            border: 1px solid #2a2a4e;
+            border-radius: 8px;
+            padding: 1rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .legend-title {
+            font-size: 0.75rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.75rem;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.4rem;
+            font-size: 0.85rem;
+        }
+        
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .legend-dot.literature {
+            background: #00d4ff;
+            box-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+        }
+        
+        .legend-dot.synthetic {
+            background: #ff6b9d;
+            box-shadow: 0 0 8px rgba(255, 107, 157, 0.5);
+        }
+        
+        .legend-dot.unknown {
+            background: #888;
+        }
+        
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 10, 15, 0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid #2a2a4e;
+            border-top-color: #7c3aed;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            margin-top: 1rem;
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        .sidebar {
+            background: #12121a;
+            border-left: 1px solid #2a2a4e;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .sidebar-header {
+            padding: 1.25rem;
+            border-bottom: 1px solid #2a2a4e;
+        }
+        
+        .sidebar-header h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #e0e0e0;
+        }
+        
+        .sidebar-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+        
+        .selected-case {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.15) 0%, rgba(0, 212, 255, 0.1) 100%);
+            border: 1px solid #3a3a5e;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .selected-case-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+        
+        .case-id-badge {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: #00d4ff;
+            background: rgba(0, 212, 255, 0.1);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+        
+        .seed-badge {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .seed-badge.literature {
+            background: rgba(0, 212, 255, 0.2);
+            color: #00d4ff;
+        }
+        
+        .seed-badge.synthetic {
+            background: rgba(255, 107, 157, 0.2);
+            color: #ff6b9d;
+        }
+        
+        .case-preview {
+            font-size: 0.85rem;
+            color: #aaa;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        
+        .case-meta {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        
+        .meta-tag {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 4px;
+            color: #888;
+        }
+        
+        .view-case-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+        
+        .view-case-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+        }
+        
+        .similar-cases-section h3 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+        
+        .similar-case-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid #2a2a4e;
+            border-radius: 6px;
+            padding: 0.875rem;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .similar-case-card:hover {
+            background: rgba(255,255,255,0.06);
+            border-color: #3a3a5e;
+        }
+        
+        .similar-case-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .similarity-score {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .similarity-score.high {
+            color: #10b981;
+        }
+        
+        .similarity-score.medium {
+            color: #f59e0b;
+        }
+        
+        .similarity-score.low {
+            color: #6b7280;
+        }
+        
+        .similarity-bar {
+            height: 4px;
+            background: #2a2a4e;
+            border-radius: 2px;
+            margin-bottom: 0.5rem;
+            overflow: hidden;
+        }
+        
+        .similarity-bar-fill {
+            height: 100%;
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+        
+        .similarity-bar-fill.high {
+            background: linear-gradient(90deg, #10b981, #34d399);
+        }
+        
+        .similarity-bar-fill.medium {
+            background: linear-gradient(90deg, #f59e0b, #fbbf24);
+        }
+        
+        .similarity-bar-fill.low {
+            background: #6b7280;
+        }
+        
+        .similar-case-preview {
+            font-size: 0.8rem;
+            color: #888;
+            line-height: 1.4;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: #666;
+        }
+        
+        .empty-state-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+        
+        .stats-bar {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(26, 26, 46, 0.95);
+            border: 1px solid #2a2a4e;
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            backdrop-filter: blur(10px);
+            font-size: 0.85rem;
+            color: #888;
+        }
+        
+        .stats-bar strong {
+            color: #e0e0e0;
+        }
+        
+        .tooltip {
+            position: absolute;
+            background: rgba(26, 26, 46, 0.98);
+            border: 1px solid #3a3a5e;
+            border-radius: 8px;
+            padding: 1rem;
+            max-width: 300px;
+            pointer-events: none;
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.15s;
+        }
+        
+        .tooltip.visible {
+            opacity: 1;
+        }
+        
+        .tooltip-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tooltip-preview {
+            font-size: 0.8rem;
+            color: #aaa;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔮 <span>Embedding Explorer</span></h1>
+        <div class="nav-links">
+            <a href="/">← All Cases</a>
+            <a href="/feedback">📊 Feedback</a>
+        </div>
+    </div>
+    
+    <div class="main-container">
+        <div class="visualization-container">
+            <canvas id="embedding-canvas"></canvas>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label>Projection Method</label>
+                    <select id="method-select">
+                        <option value="tsne" selected>t-SNE</option>
+                        <option value="pca">PCA</option>
+                    </select>
+                </div>
+                <div class="control-group" id="perplexity-group">
+                    <label>Perplexity: <span id="perplexity-value">30</span></label>
+                    <input type="range" id="perplexity-slider" min="5" max="50" value="30">
+                </div>
+            </div>
+            
+            <div class="legend">
+                <div class="legend-title">Seed Mode</div>
+                <div class="legend-item">
+                    <div class="legend-dot literature"></div>
+                    <span>Literature</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot synthetic"></div>
+                    <span>Synthetic</span>
+                </div>
+            </div>
+            
+            <div class="stats-bar" id="stats-bar">
+                Loading...
+            </div>
+            
+            <div class="loading-overlay" id="loading">
+                <div class="spinner"></div>
+                <div class="loading-text">Computing embeddings projection...</div>
+            </div>
+            
+            <div class="tooltip" id="tooltip"></div>
+        </div>
+        
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Case Details</h2>
+            </div>
+            <div class="sidebar-content" id="sidebar-content">
+                <div class="empty-state">
+                    <div class="empty-state-icon">🎯</div>
+                    <p>Click on a point to see case details and find similar cases</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // State
+        let points = [];
+        let selectedPoint = null;
+        let hoveredPoint = null;
+        let similarCases = [];
+        
+        // Canvas setup
+        const canvas = document.getElementById('embedding-canvas');
+        const ctx = canvas.getContext('2d');
+        const tooltip = document.getElementById('tooltip');
+        
+        // Configuration
+        const POINT_RADIUS = 6;
+        const SELECTED_RADIUS = 10;
+        const COLORS = {
+            literature: '#00d4ff',
+            synthetic: '#ff6b9d',
+            unknown: '#888888'
+        };
+        
+        // Resize canvas to fill container
+        function resizeCanvas() {
+            const rect = canvas.parentElement.getBoundingClientRect();
+            canvas.width = rect.width * window.devicePixelRatio;
+            canvas.height = rect.height * window.devicePixelRatio;
+            canvas.style.width = rect.width + 'px';
+            canvas.style.height = rect.height + 'px';
+            ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+            render();
+        }
+        
+        window.addEventListener('resize', resizeCanvas);
+        
+        // Load embeddings data
+        async function loadEmbeddings() {
+            const method = document.getElementById('method-select').value;
+            const perplexity = document.getElementById('perplexity-slider').value;
+            
+            document.getElementById('loading').style.display = 'flex';
+            
+            try {
+                const url = `/api/case_embeddings_2d?method=${method}&perplexity=${perplexity}`;
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                if (data.success) {
+                    points = data.points;
+                    normalizeCoordinates();
+                    document.getElementById('stats-bar').innerHTML = 
+                        `<strong>${data.total_cases}</strong> cases • ${data.method.toUpperCase()}`;
+                    render();
+                } else {
+                    console.error('Failed to load embeddings:', data.error);
+                    document.getElementById('stats-bar').innerHTML = 
+                        `Error: ${data.error}`;
+                }
+            } catch (error) {
+                console.error('Error loading embeddings:', error);
+                document.getElementById('stats-bar').innerHTML = 'Error loading data';
+            } finally {
+                document.getElementById('loading').style.display = 'none';
+            }
+        }
+        
+        // Normalize coordinates to fit canvas with padding
+        function normalizeCoordinates() {
+            if (points.length === 0) return;
+            
+            const padding = 60;
+            const canvasWidth = canvas.width / window.devicePixelRatio - padding * 2;
+            const canvasHeight = canvas.height / window.devicePixelRatio - padding * 2;
+            
+            let minX = Infinity, maxX = -Infinity;
+            let minY = Infinity, maxY = -Infinity;
+            
+            points.forEach(p => {
+                minX = Math.min(minX, p.x);
+                maxX = Math.max(maxX, p.x);
+                minY = Math.min(minY, p.y);
+                maxY = Math.max(maxY, p.y);
+            });
+            
+            const rangeX = maxX - minX || 1;
+            const rangeY = maxY - minY || 1;
+            
+            points.forEach(p => {
+                p.canvasX = padding + ((p.x - minX) / rangeX) * canvasWidth;
+                p.canvasY = padding + ((p.y - minY) / rangeY) * canvasHeight;
+            });
+        }
+        
+        // Render the visualization
+        function render() {
+            const width = canvas.width / window.devicePixelRatio;
+            const height = canvas.height / window.devicePixelRatio;
+            
+            // Clear canvas
+            ctx.fillStyle = '#0d0d14';
+            ctx.fillRect(0, 0, width, height);
+            
+            // Draw grid
+            ctx.strokeStyle = '#1a1a2e';
+            ctx.lineWidth = 1;
+            const gridSize = 50;
+            for (let x = 0; x < width; x += gridSize) {
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, height);
+                ctx.stroke();
+            }
+            for (let y = 0; y < height; y += gridSize) {
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(width, y);
+                ctx.stroke();
+            }
+            
+            // Draw points
+            points.forEach(p => {
+                const isSelected = selectedPoint && p.case_id === selectedPoint.case_id;
+                const isHovered = hoveredPoint && p.case_id === hoveredPoint.case_id;
+                const isSimilar = similarCases.some(s => s.case_id === p.case_id);
+                
+                const color = COLORS[p.seed_mode] || COLORS.unknown;
+                const radius = isSelected ? SELECTED_RADIUS : (isHovered || isSimilar ? POINT_RADIUS + 2 : POINT_RADIUS);
+                
+                // Glow effect for selected/hovered
+                if (isSelected || isHovered || isSimilar) {
+                    ctx.beginPath();
+                    ctx.arc(p.canvasX, p.canvasY, radius + 8, 0, Math.PI * 2);
+                    const gradient = ctx.createRadialGradient(
+                        p.canvasX, p.canvasY, radius,
+                        p.canvasX, p.canvasY, radius + 8
+                    );
+                    gradient.addColorStop(0, color + '40');
+                    gradient.addColorStop(1, 'transparent');
+                    ctx.fillStyle = gradient;
+                    ctx.fill();
+                }
+                
+                // Draw point
+                ctx.beginPath();
+                ctx.arc(p.canvasX, p.canvasY, radius, 0, Math.PI * 2);
+                ctx.fillStyle = color;
+                ctx.fill();
+                
+                // Border for selected
+                if (isSelected) {
+                    ctx.strokeStyle = '#ffffff';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                }
+            });
+            
+            // Draw connections to similar cases
+            if (selectedPoint && similarCases.length > 0) {
+                similarCases.forEach(similar => {
+                    const targetPoint = points.find(p => p.case_id === similar.case_id);
+                    if (targetPoint) {
+                        ctx.beginPath();
+                        ctx.moveTo(selectedPoint.canvasX, selectedPoint.canvasY);
+                        ctx.lineTo(targetPoint.canvasX, targetPoint.canvasY);
+                        ctx.strokeStyle = `rgba(124, 58, 237, ${similar.similarity * 0.5})`;
+                        ctx.lineWidth = 1 + similar.similarity * 2;
+                        ctx.stroke();
+                    }
+                });
+            }
+        }
+        
+        // Find point at position
+        function findPointAt(x, y) {
+            for (let i = points.length - 1; i >= 0; i--) {
+                const p = points[i];
+                const dx = x - p.canvasX;
+                const dy = y - p.canvasY;
+                if (dx * dx + dy * dy <= (POINT_RADIUS + 4) * (POINT_RADIUS + 4)) {
+                    return p;
+                }
+            }
+            return null;
+        }
+        
+        // Mouse events
+        canvas.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const point = findPointAt(x, y);
+            
+            if (point !== hoveredPoint) {
+                hoveredPoint = point;
+                render();
+                
+                if (point) {
+                    showTooltip(point, e.clientX, e.clientY);
+                    canvas.style.cursor = 'pointer';
+                } else {
+                    hideTooltip();
+                    canvas.style.cursor = 'crosshair';
+                }
+            }
+        });
+        
+        canvas.addEventListener('click', async (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const point = findPointAt(x, y);
+            
+            if (point) {
+                selectedPoint = point;
+                await loadSimilarCases(point.case_id);
+                updateSidebar(point);
+                render();
+            }
+        });
+        
+        canvas.addEventListener('mouseleave', () => {
+            hoveredPoint = null;
+            hideTooltip();
+            render();
+        });
+        
+        // Tooltip
+        function showTooltip(point, mouseX, mouseY) {
+            const evalInfo = point.num_evaluations > 0 
+                ? `${point.approve_count}✓ ${point.reject_count}✗` 
+                : 'No evaluations';
+            
+            tooltip.innerHTML = `
+                <div class="tooltip-header">
+                    <span class="case-id-badge">${point.case_id_short}...</span>
+                    <span class="seed-badge ${point.seed_mode}">${point.seed_mode}</span>
+                </div>
+                <div class="tooltip-preview">${point.vignette_preview}</div>
+                <div style="font-size: 0.75rem; color: #666; margin-top: 0.5rem;">
+                    ${point.value_a} vs ${point.value_b} • ${evalInfo}
+                </div>
+            `;
+            
+            // Position tooltip
+            const padding = 15;
+            let left = mouseX + padding;
+            let top = mouseY + padding;
+            
+            // Keep tooltip in viewport
+            const tooltipRect = tooltip.getBoundingClientRect();
+            if (left + 300 > window.innerWidth) {
+                left = mouseX - 300 - padding;
+            }
+            if (top + 150 > window.innerHeight) {
+                top = mouseY - 150 - padding;
+            }
+            
+            tooltip.style.left = left + 'px';
+            tooltip.style.top = top + 'px';
+            tooltip.classList.add('visible');
+        }
+        
+        function hideTooltip() {
+            tooltip.classList.remove('visible');
+        }
+        
+        // Load similar cases
+        async function loadSimilarCases(caseId) {
+            try {
+                const response = await fetch(`/api/similar_cases/${caseId}?top_k=8`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    similarCases = data.results;
+                } else {
+                    similarCases = [];
+                }
+            } catch (error) {
+                console.error('Error loading similar cases:', error);
+                similarCases = [];
+            }
+        }
+        
+        // Update sidebar
+        function updateSidebar(point) {
+            const evalInfo = point.num_evaluations > 0 
+                ? `<span class="meta-tag">${point.approve_count} approved</span>
+                   <span class="meta-tag">${point.reject_count} rejected</span>`
+                : '<span class="meta-tag">No evaluations</span>';
+            
+            let html = `
+                <div class="selected-case">
+                    <div class="selected-case-header">
+                        <span class="case-id-badge">${point.case_id_short}...</span>
+                        <span class="seed-badge ${point.seed_mode}">${point.seed_mode}</span>
+                    </div>
+                    <div class="case-preview">${point.vignette_preview}</div>
+                    <div class="case-meta">
+                        <span class="meta-tag">${point.value_a} vs ${point.value_b}</span>
+                        ${evalInfo}
+                    </div>
+                    <a href="/case/${point.case_id}" class="view-case-btn">View Full Case →</a>
+                </div>
+                
+                <div class="similar-cases-section">
+                    <h3>🔗 Similar Cases (Cosine Similarity)</h3>
+            `;
+            
+            if (similarCases.length > 0) {
+                similarCases.forEach(similar => {
+                    const simClass = similar.similarity >= 0.7 ? 'high' : 
+                                    (similar.similarity >= 0.5 ? 'medium' : 'low');
+                    
+                    html += `
+                        <div class="similar-case-card" onclick="navigateToCase('${similar.case_id}')">
+                            <div class="similar-case-header">
+                                <span class="case-id-badge">${similar.case_id_short}...</span>
+                                <span class="similarity-score ${simClass}">${similar.similarity_pct}%</span>
+                            </div>
+                            <div class="similarity-bar">
+                                <div class="similarity-bar-fill ${simClass}" style="width: ${similar.similarity_pct}%"></div>
+                            </div>
+                            <div class="similar-case-preview">${similar.vignette_preview}</div>
+                        </div>
+                    `;
+                });
+            } else {
+                html += '<div class="empty-state"><p>No similar cases found</p></div>';
+            }
+            
+            html += '</div>';
+            
+            document.getElementById('sidebar-content').innerHTML = html;
+        }
+        
+        function navigateToCase(caseId) {
+            window.location.href = `/case/${caseId}`;
+        }
+        
+        // Highlight similar case on canvas
+        function highlightSimilarCase(caseId) {
+            const point = points.find(p => p.case_id === caseId);
+            if (point) {
+                hoveredPoint = point;
+                render();
+            }
+        }
+        
+        // Control event listeners
+        document.getElementById('method-select').addEventListener('change', (e) => {
+            const perplexityGroup = document.getElementById('perplexity-group');
+            perplexityGroup.style.display = e.target.value === 'tsne' ? 'block' : 'none';
+            loadEmbeddings();
+        });
+        
+        document.getElementById('perplexity-slider').addEventListener('input', (e) => {
+            document.getElementById('perplexity-value').textContent = e.target.value;
+        });
+        
+        document.getElementById('perplexity-slider').addEventListener('change', () => {
+            loadEmbeddings();
+        });
+        
+        // Initialize
+        resizeCanvas();
+        loadEmbeddings();
+    </script>
+</body>
+</html>
+
