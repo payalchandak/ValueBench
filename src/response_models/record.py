@@ -106,35 +106,6 @@ class CaseRecord(BaseModel):
         hash_obj = hashlib.sha256(content_str.encode('utf-8'))
         return hash_obj.hexdigest()[:12]
     
-    def add_human_evaluation(
-        self,
-        decision: str,
-        evaluator: str
-    ) -> None:
-        """
-        [DEPRECATED] Add a human evaluation iteration to the case record.
-        
-        This method is deprecated. Use EvaluationStore.record_evaluation() instead,
-        which stores evaluations separately to avoid merge conflicts.
-        
-        Args:
-            decision: "approve" or "reject"
-            evaluator: Username of the evaluator
-            
-        Raises:
-            NotImplementedError: Always raised - use EvaluationStore instead
-        """
-        import warnings
-        warnings.warn(
-            "CaseRecord.add_human_evaluation() is deprecated. "
-            "Use EvaluationStore.record_evaluation() to avoid merge conflicts.",
-            DeprecationWarning,
-            stacklevel=2
-        )
-        raise NotImplementedError(
-            "Use EvaluationStore.record_evaluation() instead to store evaluations separately."
-        )
-    
     def get_latest_evaluation(self) -> Optional[Dict[str, Any]]:
         """Get the most recent human evaluation, if any."""
         for iteration in reversed(self.refinement_history):

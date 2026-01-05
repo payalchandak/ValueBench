@@ -7,23 +7,12 @@ Run with: uv run python -m src.sheets.verify_setup
 import sys
 from pathlib import Path
 
-import yaml
+from src.sheets.utils import load_config, get_credentials_path, get_gspread_client, SCOPES
 
 
-def load_config() -> dict:
-    """Load sheets configuration."""
-    config_path = Path(__file__).parent / "sheets_config.yaml"
-    if not config_path.exists():
-        print("❌ sheets_config.yaml not found")
-        sys.exit(1)
-    
-    with open(config_path) as f:
-        return yaml.safe_load(f)
-
-
-def verify_credentials(credentials_path: str) -> bool:
+def verify_credentials(config: dict) -> bool:
     """Verify that credentials file exists and is valid."""
-    creds_path = Path(__file__).parent.parent.parent / credentials_path
+    creds_path = get_credentials_path(config)
     
     if not creds_path.exists():
         print(f"❌ Credentials file not found at: {creds_path}")
@@ -62,25 +51,10 @@ def verify_credentials(credentials_path: str) -> bool:
         return False
 
 
-def verify_gspread_auth(credentials_path: str) -> bool:
+def verify_gspread_auth(config: dict) -> bool:
     """Test authentication with Google Sheets API."""
-    creds_path = Path(__file__).parent.parent.parent / credentials_path
-    
     try:
-        import gspread
-        from google.oauth2.service_account import Credentials
-        
-        scopes = [
-            "https://www.googleapis.com/auth/spreadsheets",
-            "https://www.googleapis.com/auth/drive"
-        ]
-        
-        credentials = Credentials.from_service_account_file(
-            str(creds_path),
-            scopes=scopes
-        )
-        
-        gc = gspread.authorize(credentials)
+        gc = get_gspread_client(config)
         print("✅ Successfully authenticated with Google Sheets API")
         return True
         
@@ -89,30 +63,18 @@ def verify_gspread_auth(credentials_path: str) -> bool:
         return False
 
 
-def verify_spreadsheet_access(credentials_path: str, spreadsheet_id: str) -> bool:
+def verify_spreadsheet_access(config: dict) -> bool:
     """Test access to the configured spreadsheet."""
+    import gspread
+    
+    spreadsheet_id = config.get("spreadsheet_id")
     if not spreadsheet_id:
         print("⚠️  No spreadsheet_id configured in sheets_config.yaml")
         print("   Once you create/share a spreadsheet, add its ID to the config")
         return True  # Not a failure, just not configured yet
     
-    creds_path = Path(__file__).parent.parent.parent / credentials_path
-    
     try:
-        import gspread
-        from google.oauth2.service_account import Credentials
-        
-        scopes = [
-            "https://www.googleapis.com/auth/spreadsheets",
-            "https://www.googleapis.com/auth/drive"
-        ]
-        
-        credentials = Credentials.from_service_account_file(
-            str(creds_path),
-            scopes=scopes
-        )
-        
-        gc = gspread.authorize(credentials)
+        gc = get_gspread_client(config)
         spreadsheet = gc.open_by_key(spreadsheet_id)
         
         print(f"✅ Successfully accessed spreadsheet: {spreadsheet.title}")
@@ -136,26 +98,28 @@ def main():
     print()
     
     # Load config
-    config = load_config()
-    credentials_path = config.get("credentials_path", "credentials/service_account.json")
-    spreadsheet_id = config.get("spreadsheet_id", "")
+    try:
+        config = load_config()
+    except FileNotFoundError:
+        print("❌ sheets_config.yaml not found")
+        return 1
     
     # Run checks
     checks_passed = 0
     total_checks = 3
     
     print("1. Checking credentials file...")
-    if verify_credentials(credentials_path):
+    if verify_credentials(config):
         checks_passed += 1
     print()
     
     print("2. Testing Google Sheets API authentication...")
-    if verify_gspread_auth(credentials_path):
+    if verify_gspread_auth(config):
         checks_passed += 1
     print()
     
     print("3. Testing spreadsheet access...")
-    if verify_spreadsheet_access(credentials_path, spreadsheet_id):
+    if verify_spreadsheet_access(config):
         checks_passed += 1
     print()
     

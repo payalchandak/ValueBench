@@ -58,12 +58,16 @@ export:
   date_format: "%Y-%m-%d"
 
 # Import settings
+# NOTE: These settings ONLY affect the standalone `import_from_sheets` command.
+# The `sync` command always processes all cases bidirectionally, regardless of
+# these filters.
 import:
   # Only import rows with this status (leave empty to import all rows)
   # Status is determined by reviewer decisions during import:
   #   - Any Reject → deprecated
   #   - R2/R3 Approve → approved  
   #   - Otherwise → needs_review
+  # NOTE: This filter is ignored by `sync` - it only applies to `import_from_sheets`.
   import_status: ""
   # Mark imported rows with this status after import
   post_import_status: "imported"

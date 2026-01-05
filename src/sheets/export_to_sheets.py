@@ -6,6 +6,13 @@ Run with: uv run python -m src.sheets.export_to_sheets
 Options:
     --append     Add only new cases (default: replace all)
     --dry-run    Show what would be exported without writing to Sheets
+
+This module also exposes reusable functions for the sync module:
+    - load_cases_raw(): Load all case JSON files from a directory
+    - extract_case_row(): Convert a case dict to a spreadsheet row
+    - get_header_row(): Get the standard header row
+    - get_sheet_case_ids(): Fetch all case IDs currently in the sheet
+    - push_rows_to_sheet(): Append rows to the sheet
 """
 
 import json
@@ -14,42 +21,9 @@ from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
-import yaml
 import gspread
-from google.oauth2.service_account import Credentials
 
-
-def load_config() -> dict:
-    """Load sheets configuration."""
-    config_path = Path(__file__).parent / "sheets_config.yaml"
-    if not config_path.exists():
-        raise FileNotFoundError(f"Config file not found: {config_path}")
-    
-    with open(config_path) as f:
-        return yaml.safe_load(f)
-
-
-def get_gspread_client(credentials_path: str) -> gspread.Client:
-    """Create an authenticated gspread client."""
-    creds_path = Path(__file__).parent.parent.parent / credentials_path
-    
-    if not creds_path.exists():
-        raise FileNotFoundError(
-            f"Credentials file not found: {creds_path}\n"
-            "Run 'uv run python -m src.sheets.verify_setup' for setup instructions."
-        )
-    
-    scopes = [
-        "https://www.googleapis.com/auth/spreadsheets",
-        "https://www.googleapis.com/auth/drive"
-    ]
-    
-    credentials = Credentials.from_service_account_file(
-        str(creds_path),
-        scopes=scopes
-    )
-    
-    return gspread.authorize(credentials)
+from src.sheets.utils import load_config, get_gspread_client, open_spreadsheet, get_worksheet
 
 
 def load_cases_raw(cases_dir: str) -> list[dict]:
@@ -230,27 +204,27 @@ def get_header_row() -> list:
 
 def setup_data_validation(spreadsheet: gspread.Spreadsheet, worksheet: gspread.Worksheet, num_rows: int, config: dict):
     """
-    Set up dropdown validation for value tag columns and status column.
+    Set up dropdown validation for value tag columns.
     
     Uses the Google Sheets API batch update for data validation rules.
+    
+    Note: Status column does NOT get a dropdown because it's computed from reviewer
+    decisions during import/sync, not user-editable.
     
     Args:
         spreadsheet: The gspread Spreadsheet object
         worksheet: The gspread Worksheet object
         num_rows: Total number of data rows (excluding header)
-        config: Configuration dictionary with value_options and status_options
+        config: Configuration dictionary with value_options
     """
     value_options = config.get("value_options", ["promotes", "violates", "neutral"])
-    status_options = config.get("status_options", ["draft", "review", "finalized"])
     
     # Column layout (0-indexed):
     # 0=Case ID, 1=R1, 2=R1 Decision?, 3=R2, 4=R2 Decision?, 5=R3, 6=R3 Decision?, 
     # 7=Status, 8=Vignette, 9=Choice 1, 10-13=C1 values, 14=Choice 2, 15-18=C2 values, 19=Comments
     # Value tag columns: K, L, M, N for choice_1 (indices 10-13) and P, Q, R, S for choice_2 (indices 15-18)
+    # Note: These indices must match the header order from get_header_row()
     value_columns = [10, 11, 12, 13, 15, 16, 17, 18]  # 0-indexed
-    
-    # Status column (H = index 7)
-    status_column = 7  # 0-indexed
     
     if num_rows == 0:
         return
@@ -286,29 +260,6 @@ def setup_data_validation(spreadsheet: gspread.Spreadsheet, worksheet: gspread.W
             }
         }
         requests.append(rule)
-    
-    # Create data validation rule for status column
-    print("  Setting up status dropdown...")
-    status_rule = {
-        "setDataValidation": {
-            "range": {
-                "sheetId": sheet_id,
-                "startRowIndex": start_row_idx,
-                "endRowIndex": end_row_idx,
-                "startColumnIndex": status_column,
-                "endColumnIndex": status_column + 1
-            },
-            "rule": {
-                "condition": {
-                    "type": "ONE_OF_LIST",
-                    "values": [{"userEnteredValue": opt} for opt in status_options]
-                },
-                "showCustomUi": True,
-                "strict": True
-            }
-        }
-    }
-    requests.append(status_rule)
     
     # Execute batch update
     if requests:
@@ -410,6 +361,141 @@ def format_columns(spreadsheet: gspread.Spreadsheet, worksheet: gspread.Workshee
         spreadsheet.batch_update({"requests": requests})
 
 
+# =============================================================================
+# Reusable functions for sync module
+# =============================================================================
+
+def get_sheet_case_ids(
+    config: Optional[dict] = None,
+    spreadsheet: Optional[gspread.Spreadsheet] = None,
+    worksheet: Optional[gspread.Worksheet] = None
+) -> set[str]:
+    """
+    Fetch all case IDs currently in the Google Sheet.
+    
+    This function is used by the sync module to determine which cases
+    already exist in the sheet vs which are local-only.
+    
+    Args:
+        config: Optional config dict. If not provided, loads from file.
+        spreadsheet: Optional spreadsheet object. If not provided, opens from config.
+        worksheet: Optional worksheet object. If not provided, gets from spreadsheet.
+        
+    Returns:
+        Set of case IDs (strings) found in the sheet.
+    """
+    if config is None:
+        config = load_config()
+    
+    if spreadsheet is None:
+        spreadsheet = open_spreadsheet(config)
+    
+    if worksheet is None:
+        try:
+            worksheet = get_worksheet(spreadsheet, config=config)
+        except gspread.exceptions.WorksheetNotFound:
+            # Sheet doesn't exist yet, no cases
+            return set()
+    
+    # Get all values from the sheet
+    all_values = worksheet.get_all_values()
+    
+    if len(all_values) < 2:
+        # Only header or empty
+        return set()
+    
+    # Case ID is in the first column (index 0)
+    # Skip header row (index 0)
+    case_ids = {row[0].strip() for row in all_values[1:] if row and row[0].strip()}
+    
+    return case_ids
+
+
+def push_rows_to_sheet(
+    rows: list[list],
+    config: Optional[dict] = None,
+    spreadsheet: Optional[gspread.Spreadsheet] = None,
+    worksheet: Optional[gspread.Worksheet] = None,
+    include_header: bool = False
+) -> int:
+    """
+    Append rows to the Google Sheet.
+    
+    This function is used by the sync module to push new local cases to the sheet.
+    It appends rows to the existing data rather than replacing.
+    
+    Args:
+        rows: List of row data to append (each row is a list of cell values).
+        config: Optional config dict. If not provided, loads from file.
+        spreadsheet: Optional spreadsheet object. If not provided, opens from config.
+        worksheet: Optional worksheet object. If not provided, gets from spreadsheet.
+        include_header: If True and worksheet is empty, prepend header row.
+        
+    Returns:
+        Number of rows successfully appended.
+    """
+    if not rows:
+        return 0
+    
+    if config is None:
+        config = load_config()
+    
+    if spreadsheet is None:
+        spreadsheet = open_spreadsheet(config)
+    
+    if worksheet is None:
+        worksheet = get_worksheet(spreadsheet, config=config, create_if_missing=True)
+    
+    # Check if worksheet is empty (needs header)
+    existing_data = worksheet.get_all_values()
+    
+    if include_header and len(existing_data) == 0:
+        # Worksheet is empty, add header first
+        all_data = [get_header_row()] + rows
+        worksheet.update(values=all_data, range_name="A1", value_input_option="RAW")
+    else:
+        # Append to existing data
+        worksheet.append_rows(rows, value_input_option="RAW")
+    
+    return len(rows)
+
+
+def prepare_cases_for_export(
+    cases_dir: str = "data/cases",
+    config: Optional[dict] = None
+) -> tuple[list[list], list[str]]:
+    """
+    Load local cases and prepare them as rows for export.
+    
+    This function is used by both the export command and the sync module.
+    
+    Args:
+        cases_dir: Path to the cases directory.
+        config: Optional config dict for extraction settings.
+        
+    Returns:
+        Tuple of (rows, skipped_case_ids):
+        - rows: List of exportable rows (each row is a list of cell values)
+        - skipped_case_ids: List of case IDs that were skipped (no finalized data)
+    """
+    if config is None:
+        config = load_config()
+    
+    all_cases = load_cases_raw(cases_dir)
+    
+    rows = []
+    skipped = []
+    
+    for case_data in all_cases:
+        row = extract_case_row(case_data, config)
+        if row:
+            rows.append(row)
+        else:
+            skipped.append(case_data.get("case_id", "unknown"))
+    
+    return rows, skipped
+
+
 def export_cases(
     append: bool = False,
     dry_run: bool = False,
@@ -480,8 +566,7 @@ def export_cases(
     
     # Connect to Google Sheets
     print("\nConnecting to Google Sheets...")
-    credentials_path = config.get("credentials_path", "credentials/service_account.json")
-    gc = get_gspread_client(credentials_path)
+    gc = get_gspread_client(config)
     
     try:
         spreadsheet = gc.open_by_key(spreadsheet_id)

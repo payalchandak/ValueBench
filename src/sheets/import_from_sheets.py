@@ -21,6 +21,14 @@ Options:
     --dry-run           Show what would be imported without writing to files
     --validate-only     Run validation and show report without importing
     --force             Import cases even if validation warnings exist (errors still block)
+
+This module also exposes reusable functions for the sync module:
+    - fetch_all_sheet_rows(): Fetch all rows from the sheet (unfiltered)
+    - fetch_sheet_rows_by_ids(): Fetch specific rows by case ID
+    - parse_sheet_row(): Parse and validate a single row
+    - validate_cases(): Validate a list of rows
+    - update_case_json(): Update a local JSON file with sheet data
+    - pull_sheet_changes(): Pull changes for specific case IDs
 """
 
 import json
@@ -30,12 +38,10 @@ from pathlib import Path
 from typing import Optional, Literal
 from dataclasses import dataclass
 
-import yaml
 import gspread
-from google.oauth2.service_account import Credentials
 from pydantic import ValidationError
 
-# Import validation models
+from src.sheets.utils import load_config, get_gspread_client, open_spreadsheet, get_worksheet
 from src.response_models.case import BenchmarkCandidate, ChoiceWithValues, ValueAlignmentStatus
 from src.response_models.status import CaseStatus
 
@@ -105,39 +111,6 @@ class ImportReport:
         
         if self.skipped_cases > 0:
             print(f"\n⏭️  Skipped {self.skipped_cases} cases due to errors")
-
-
-def load_config() -> dict:
-    """Load sheets configuration."""
-    config_path = Path(__file__).parent / "sheets_config.yaml"
-    if not config_path.exists():
-        raise FileNotFoundError(f"Config file not found: {config_path}")
-    
-    with open(config_path) as f:
-        return yaml.safe_load(f)
-
-
-def get_gspread_client(credentials_path: str) -> gspread.Client:
-    """Create an authenticated gspread client."""
-    creds_path = Path(__file__).parent.parent.parent / credentials_path
-    
-    if not creds_path.exists():
-        raise FileNotFoundError(
-            f"Credentials file not found: {creds_path}\n"
-            "Run 'uv run python -m src.sheets.verify_setup' for setup instructions."
-        )
-    
-    scopes = [
-        "https://www.googleapis.com/auth/spreadsheets",
-        "https://www.googleapis.com/auth/drive"
-    ]
-    
-    credentials = Credentials.from_service_account_file(
-        str(creds_path),
-        scopes=scopes
-    )
-    
-    return gspread.authorize(credentials)
 
 
 def parse_sheet_row(row: list, headers: list, row_number: int) -> ValidationResult:
@@ -328,9 +301,8 @@ def fetch_finalized_cases(config: dict) -> tuple[list[list], list[str], gspread.
     print("Connecting to Google Sheets...")
     spreadsheet_id = config.get("spreadsheet_id")
     sheet_name = config.get("sheet_name", "Cases")
-    credentials_path = config.get("credentials_path", "credentials/service_account.json")
     
-    gc = get_gspread_client(credentials_path)
+    gc = get_gspread_client(config)
     
     try:
         spreadsheet = gc.open_by_key(spreadsheet_id)
@@ -374,6 +346,260 @@ def fetch_finalized_cases(config: dict) -> tuple[list[list], list[str], gspread.
         print(f"  {len(finalized_rows)} rows ready for validation")
     
     return finalized_rows, headers, worksheet
+
+
+# =============================================================================
+# Reusable functions for sync module
+# =============================================================================
+
+def fetch_all_sheet_rows(
+    config: Optional[dict] = None,
+    spreadsheet: Optional[gspread.Spreadsheet] = None,
+    worksheet: Optional[gspread.Worksheet] = None
+) -> tuple[list[list], list[str], Optional[gspread.Worksheet]]:
+    """
+    Fetch ALL rows from the Google Sheet (unfiltered).
+    
+    Unlike fetch_finalized_cases which filters by status, this returns
+    all non-empty rows. Used by the sync module to get complete sheet state.
+    
+    Args:
+        config: Optional config dict. If not provided, loads from file.
+        spreadsheet: Optional spreadsheet object. If not provided, opens from config.
+        worksheet: Optional worksheet object. If not provided, gets from spreadsheet.
+        
+    Returns:
+        Tuple of (data_rows, headers, worksheet):
+        - data_rows: All non-empty data rows (excluding header)
+        - headers: Column headers
+        - worksheet: The worksheet object (or None if not found)
+    """
+    if config is None:
+        config = load_config()
+    
+    if spreadsheet is None:
+        spreadsheet = open_spreadsheet(config)
+    
+    if worksheet is None:
+        try:
+            worksheet = get_worksheet(spreadsheet, config=config)
+        except gspread.exceptions.WorksheetNotFound:
+            return [], [], None
+    
+    # Get all rows
+    all_rows = worksheet.get_all_values()
+    
+    if len(all_rows) < 1:
+        return [], [], worksheet
+    
+    headers = all_rows[0]
+    
+    if len(all_rows) < 2:
+        return [], headers, worksheet
+    
+    # Filter out completely empty rows
+    data_rows = [row for row in all_rows[1:] if any(cell.strip() for cell in row)]
+    
+    return data_rows, headers, worksheet
+
+
+def fetch_sheet_rows_by_ids(
+    case_ids: set[str],
+    config: Optional[dict] = None,
+    spreadsheet: Optional[gspread.Spreadsheet] = None,
+    worksheet: Optional[gspread.Worksheet] = None
+) -> tuple[list[list], list[str], dict[str, int]]:
+    """
+    Fetch specific rows from the sheet by case ID.
+    
+    Used by the sync module to pull changes only for cases that
+    exist both locally and in the sheet.
+    
+    Args:
+        case_ids: Set of case IDs to fetch.
+        config: Optional config dict.
+        spreadsheet: Optional spreadsheet object.
+        worksheet: Optional worksheet object.
+        
+    Returns:
+        Tuple of (matching_rows, headers, row_numbers):
+        - matching_rows: Rows for the requested case IDs
+        - headers: Column headers
+        - row_numbers: Dict mapping case_id -> row number in sheet (1-indexed, 1 is header)
+    """
+    data_rows, headers, worksheet = fetch_all_sheet_rows(config, spreadsheet, worksheet)
+    
+    if not data_rows or not headers:
+        return [], headers, {}
+    
+    # Find the Case ID column index
+    try:
+        case_id_idx = headers.index('Case ID')
+    except ValueError:
+        # Fallback to first column
+        case_id_idx = 0
+    
+    # Filter rows by case_id and track row numbers
+    matching_rows = []
+    row_numbers = {}
+    
+    for i, row in enumerate(data_rows, start=2):  # Start at 2 (row 1 is header)
+        if len(row) > case_id_idx:
+            row_case_id = row[case_id_idx].strip()
+            if row_case_id in case_ids:
+                matching_rows.append(row)
+                row_numbers[row_case_id] = i
+    
+    return matching_rows, headers, row_numbers
+
+
+def pull_sheet_changes(
+    case_ids: Optional[set[str]] = None,
+    config: Optional[dict] = None,
+    spreadsheet: Optional[gspread.Spreadsheet] = None,
+    worksheet: Optional[gspread.Worksheet] = None,
+    cases_dir: str = "data/cases",
+    dry_run: bool = False,
+    force: bool = False,
+    verbose: bool = False
+) -> tuple[int, int, int, list[ValidationResult]]:
+    """
+    Pull changes from the sheet for specified case IDs (or all if None).
+    
+    This is a higher-level function used by the sync module to pull
+    sheet edits back to local JSON files.
+    
+    Args:
+        case_ids: Set of case IDs to pull. If None, pulls all rows.
+        config: Optional config dict.
+        spreadsheet: Optional spreadsheet object.
+        worksheet: Optional worksheet object.
+        cases_dir: Path to cases directory.
+        dry_run: If True, don't actually write files.
+        force: If True, pull even if validation warnings exist.
+        verbose: If True, print per-case progress during pull.
+        
+    Returns:
+        Tuple of (updated_count, unchanged_count, skipped_count, validation_results):
+        - updated_count: Number of cases successfully updated
+        - unchanged_count: Number of cases with no changes
+        - skipped_count: Number of cases skipped due to errors
+        - validation_results: List of ValidationResult objects
+    """
+    if config is None:
+        config = load_config()
+    
+    # Fetch rows
+    if case_ids is not None:
+        rows, headers, row_numbers = fetch_sheet_rows_by_ids(
+            case_ids, config, spreadsheet, worksheet
+        )
+    else:
+        rows, headers, worksheet = fetch_all_sheet_rows(config, spreadsheet, worksheet)
+        # Build row_numbers for all rows
+        row_numbers = {}
+        if headers:
+            try:
+                case_id_idx = headers.index('Case ID')
+            except ValueError:
+                case_id_idx = 0
+            for i, row in enumerate(rows, start=2):
+                if len(row) > case_id_idx:
+                    row_numbers[row[case_id_idx].strip()] = i
+    
+    if not rows:
+        return 0, 0, 0, []
+    
+    # Validate the rows
+    validation_results = []
+    for i, row in enumerate(rows):
+        # Get the actual row number from the sheet
+        if headers:
+            try:
+                case_id_idx = headers.index('Case ID')
+            except ValueError:
+                case_id_idx = 0
+            case_id = row[case_id_idx].strip() if len(row) > case_id_idx else ""
+            row_num = row_numbers.get(case_id, i + 2)
+        else:
+            row_num = i + 2
+        
+        result = parse_sheet_row(row, headers, row_num)
+        validation_results.append(result)
+    
+    # Count errors/warnings
+    error_count = sum(1 for r in validation_results if r.status == 'error')
+    warning_count = sum(1 for r in validation_results if r.status == 'warning')
+    
+    # Check if we can proceed
+    if error_count > 0:
+        return 0, 0, error_count, validation_results
+    
+    if warning_count > 0 and not force:
+        return 0, 0, warning_count, validation_results
+    
+    if dry_run:
+        # Return counts as if we would have updated everything valid
+        valid_count = sum(1 for r in validation_results if r.status in ['valid', 'warning'])
+        return valid_count, 0, 0, validation_results
+    
+    # Apply changes
+    updated = 0
+    unchanged = 0
+    skipped = 0
+    
+    for result in validation_results:
+        if result.status in ['valid', 'warning'] and result.data:
+            case_data = result.data.get('case_data', {})
+            reviewer_feedback = result.data.get('reviewer_feedback', {})
+            
+            success, is_unchanged = update_case_json(
+                result.case_id,
+                case_data,
+                reviewer_feedback,
+                cases_dir,
+                verbose=verbose
+            )
+            
+            if success:
+                if is_unchanged:
+                    unchanged += 1
+                    if verbose:
+                        print(f"    ⏭️  {result.case_id}: unchanged")
+                else:
+                    updated += 1
+                    if verbose:
+                        # Show what reviewers said if available
+                        reviewers_info = []
+                        if reviewer_feedback.get('r1_reviewer'):
+                            r1_str = reviewer_feedback['r1_reviewer']
+                            if reviewer_feedback.get('r1_decision'):
+                                r1_str += f" ({reviewer_feedback['r1_decision']})"
+                            reviewers_info.append(f"R1: {r1_str}")
+                        if reviewer_feedback.get('r2_reviewer'):
+                            r2_str = reviewer_feedback['r2_reviewer']
+                            if reviewer_feedback.get('r2_decision'):
+                                r2_str += f" ({reviewer_feedback['r2_decision']})"
+                            reviewers_info.append(f"R2: {r2_str}")
+                        if reviewer_feedback.get('r3_reviewer'):
+                            r3_str = reviewer_feedback['r3_reviewer']
+                            if reviewer_feedback.get('r3_decision'):
+                                r3_str += f" ({reviewer_feedback['r3_decision']})"
+                            reviewers_info.append(f"R3: {r3_str}")
+                        
+                        reviewer_str = ", ".join(reviewers_info) if reviewers_info else "no reviewers"
+                        print(f"    ✅ {result.case_id}: updated ({reviewer_str})")
+            else:
+                skipped += 1
+                if verbose:
+                    print(f"    ❌ {result.case_id}: file not found")
+        else:
+            skipped += 1
+            if verbose:
+                error_msg = ", ".join(result.errors) if result.errors else "validation error"
+                print(f"    ❌ {result.case_id}: {error_msg}")
+    
+    return updated, unchanged, skipped, validation_results
 
 
 def validate_cases(rows: list[list], headers: list[str]) -> ImportReport:
@@ -661,7 +887,8 @@ def update_case_json(
     case_id: str, 
     new_data: dict, 
     reviewer_feedback: dict,
-    cases_dir: str = "data/cases"
+    cases_dir: str = "data/cases",
+    verbose: bool = False
 ) -> tuple[bool, bool]:
     """
     Update a case JSON file with new refinement iteration including reviewer feedback.
@@ -678,6 +905,7 @@ def update_case_json(
             - r3_decision: R3's decision (Approve/Reject)
             - comments: Reviewer comments
         cases_dir: Path to the cases directory
+        verbose: If True, print status messages (default False to avoid duplicate output)
         
     Returns:
         Tuple of (success: bool, unchanged: bool)
@@ -690,10 +918,11 @@ def update_case_json(
     matching_files = list(cases_path.glob(f"case_{case_id}_*.json"))
     
     if not matching_files:
-        print(f"  ⚠️  Case file not found for {case_id}")
+        if verbose:
+            print(f"  ⚠️  Case file not found for {case_id}")
         return False, False
     
-    if len(matching_files) > 1:
+    if len(matching_files) > 1 and verbose:
         print(f"  ⚠️  Multiple files found for {case_id}, using most recent")
     
     # Use the most recently modified file
@@ -714,7 +943,7 @@ def update_case_json(
     if refinement_history:
         latest_refinement = refinement_history[-1]
         latest_data = latest_refinement.get('data', {})
-        latest_human_eval = latest_refinement.get('human_evaluation', {})
+        latest_human_eval = latest_refinement.get('human_evaluation') or {}
         
         # Check if content changed
         content_changed = not _data_matches(latest_data, new_data)
@@ -729,7 +958,7 @@ def update_case_json(
         
         # Skip only if nothing changed
         if not content_changed and not status_changed and not reviewer_changed:
-            print(f"  ⏭️  {case_id} - No changes detected, skipping duplicate import")
+            # Note: verbose output handled by caller in pull_sheet_changes()
             return True, True  # Success=True, Unchanged=True
     
     last_iteration = max([h.get('iteration', -1) for h in refinement_history], default=-1)
@@ -793,8 +1022,8 @@ def update_case_json(
     case_data['status'] = new_status.value
     
     # Log status change if it changed
-    if old_status != new_status.value:
-        print(f"    Status: {old_status or 'none'} → {new_status.value}")
+    if old_status != new_status.value and verbose:
+        print(f"      Status: {old_status or 'none'} → {new_status.value}")
     
     # Write back to file
     with open(case_file, 'w', encoding='utf-8') as f:
