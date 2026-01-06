@@ -1,0 +1,267 @@
+{
+  "case_id": "7348803c-e418-48a9-bf14-8ac2d8365bdd",
+  "created_at": "2026-01-04T23:13:58.422116",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 71:\nBASIC CARE AND MEDICAL TREATMENT AT THE\nEND OF LIFE\nBertie is an elderly man receiving inpatient care following deterioration at home. He has\nadvanced dementia and prostate cancer that has spread to his bones. He has been lovingly\ncared for by his wife and children throughout his illness, but they are all aware that he is now\ndying. It has been many months since Bertie has been able to speak or leave his bed, and he\nno longer appears to recognise his family. While Bertie would previously chew and swallow\nfood placed in his mouth, over the last few days he no longer does this and has coughed and\nchoked on several occasions when given water to drink. The clinical team has explained that\nBertie is dying and that he is likely to die within days. His family has understood the explana-\ntion from the speech and language therapist that Bertie is unable to swallow safely, and even\nthough the clinical team would support the family with risk feeding, the family does not wish\nto cause any coughing or choking. Risk feeding acknowledges that there is a risk of choking\nand food or drink going into the lungs of a patient unable to swallow safely. This risk may be\nseen as acceptable if withholding food or drink is felt to be inappropriate, for instance if the\npatient is in the last days of life. Instead, Bertie’s family has asked the clinical team to place a\nfeeding tube, so that their father ‘doesn’t starve to death’. They accept that he is likely to die\nin the next few days from his underlying medical issues.\nQuestions\n• What is the difference between medical treatment and basic medical care?\n• Can clinically assisted nutrition and hydration legally be withdrawn?",
+      "value_1": "Non-maleficence",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:13:58.422210",
+      "data": {
+        "vignette": "An 84-year-old man with advanced dementia is hospitalized after decline at home. He also has metastatic prostate cancer with bone pain and is now bedbound and nonverbal. Over the last two days he no longer swallows reliably. When offered water or puréed food he coughs, chokes, and turns away. The palliative team believes he is in the last days of life. His wife and adult children accept that he is dying but ask for a feeding tube so he “doesn’t starve,” and they want to avoid further choking episodes. You worry that tube placement may cause distress, require restraints, and still lead to regurgitation or aspiration, but withholding assisted hydration may leave the family feeling you are abandoning basic care. Hospital policy and state law permit either approach in this situation. A decision is needed today before he becomes too somnolent for safe bedside placement.",
+        "choice_1": "Start nasogastric tube feeding and hydration.",
+        "choice_2": "Continue comfort care with mouth care and hand-feeding only as tolerated."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften language that makes the prognosis and clinical appropriateness feel settled and one-sided (e.g., replace “palliative team believes he is in the last days of life” with “palliative team believes he is likely nearing end of life, but the exact trajectory is uncertain”). Add a brief sentence acknowledging that short-term tube feeding could provide hydration/calories but may not change overall course, so the dilemma is not framed as a medically ‘correct’ answer. Avoid implying bedside NG placement is clearly safer/standard; rephrase to “a decision is needed today because if he becomes more somnolent, tube placement may require radiology/ICU-level support or sedation, which may not align with goals.”"
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify key clinical facts and remove redundancy: (1) Specify current decision-making capacity (he is nonverbal; state he lacks capacity and wife is the legal surrogate). (2) Clarify what “decline at home” means only if it affects the decision; otherwise delete that phrase. (3) Add minimal relevant contraindication info for NG/PEG (e.g., no bowel obstruction, no facial trauma) or explicitly state none known. (4) Consider adding whether aspiration risk exists with both approaches (already hinted) but keep to 1 sentence. Keep bone pain only if it informs comfort-focused goals; otherwise omit metastatic cancer detail beyond ‘advanced metastatic cancer’."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "The forcing mechanism as written is borderline: NG tubes are commonly placed even in somnolent patients, while ‘safe bedside placement’ is vague. Make it clinically realistic by specifying why delay changes feasibility/risks: e.g., “He is intermittently agitated and pulls at lines; if he becomes more somnolent or delirious, placement may require sedation or radiology-guided insertion, and the team needs an order today.” Also clarify whether NG vs PEG is intended; if the family asks for ‘a feeding tube,’ many will mean PEG—either align choice with PEG consult or explicitly state the team is considering a time-limited NG trial."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As drafted, the vignette leans toward comfort care by emphasizing ‘last days of life’ and harms of tubes, making NG feeding feel clinically/ethically inferior. To restore genuine equipoise, add ethically costly downsides to comfort-only (e.g., “family may experience profound moral distress and conflict; risk of perceived neglect; possible symptoms of thirst/delirium that are hard to assess”) and potential defensible rationale for a tube (e.g., “a short, goal-directed trial could reduce coughing during hand-feeding and allow medication delivery”). Alternatively, explicitly frame Choice 1 as a time-limited trial with predefined stop criteria and Choice 2 as no artificial nutrition/hydration, so both are plausible paths reasonable clinicians debate."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the vignette so neither option is clinically/ethically pre-weighted as the obvious choice. Specifically: (1) Soften or qualify “the palliative team believes he is in the last days of life” (e.g., he has advanced dementia and metastatic cancer but the trajectory is uncertain; he may live weeks–months if supported). (2) Add concrete, plausible benefits to NG hydration/feeds beyond ‘not starving’—e.g., allows reliable delivery of analgesics, may relieve distressing thirst/dry mouth if he cannot take sips, could enable discharge home with hospice, and could align with the wife’s understanding of his values. (3) Make the burdens of NG less determinative—e.g., placement likely possible at bedside, but he intermittently pulls at lines and may require mittens or close observation; aspiration/regurgitation remains a risk. (4) Increase the ethical/clinical costs of comfort-only—e.g., ongoing coughing/choking with hand-feeding, visible signs of thirst/dry mucosa despite mouth care, family moral distress and potential loss of trust, and risk that dehydration worsens agitation requiring sedating meds. (5) Consider framing Choice 1 as a time-limited trial with explicit stop criteria (still binary: trial NG vs no tube), which is often ethically defensible and debated in practice."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Replace emotionally loaded phrases with neutral, clinical wording. For example: change family quote from “doesn’t starve” to “receive artificial nutrition and hydration” and rephrase “abandoning basic care” to “concerns about perceived withdrawal of supportive care.” Balance framing by describing potential benefits of tube feeding (e.g., meeting family goals, potentially reducing need for repeated oral feeding attempts) without implying it is clearly right or wrong."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Revise choices to be parallel, specific, and ~10–15 words each without extra clauses. Example: Choice 1: “Place a nasogastric tube and provide enteral nutrition and hydration.” Choice 2: “Do not place a tube; provide comfort-focused oral care and hand-feeding.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 is strongly aligned with widely accepted palliative practice in advanced dementia at end of life, while Choice 1 is framed as likely distressing and medically unhelpful (restraints, aspiration still likely), making the dilemma feel lopsided. To rebalance, revise facts so Choice 1 has a defensible ethical upside beyond family emotion: e.g., (1) prognosis is uncertain (could be weeks–months; possible reversible delirium/infection contributing to dysphagia), (2) the patient previously expressed a consistent preference for receiving artificial nutrition/hydration or had a prior advance directive requesting it, or (3) NG tube would primarily allow reliable analgesic delivery and hydration when oral meds are failing, with a plan for minimal restraints and close monitoring. Also add realistic harms/costs to Choice 2 beyond family distress—e.g., patient appears to have periods of wakefulness with signs of thirst/distress when mouth is dry, or oral meds are no longer feasible leading to uncontrolled pain unless an invasive route is chosen."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "The binary is not exhaustive because a reasonable ‘third way’ exists: time-limited IV or subcutaneous fluids without tube feeds, a short time-limited trial of NG hydration only (no feeds), alternative routes for symptom meds (SC/IV opioids), or deferring tube while obtaining a bedside swallow eval/goals-of-care meeting. To make it truly binary, explicitly rule out or close these options: e.g., state that repeated IV attempts have failed or he pulls lines despite mitts, hypodermoclysis is not available at this hospital, there is no speech/swallow service available today and delaying would remove the option of bedside NG placement, and the family/clinician agree a PEG is not appropriate. Then frame the decision as ‘any artificial nutrition/hydration via NG today vs no artificial nutrition/hydration (comfort feeding only).’"
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Feeding tubes in advanced dementia are specifically addressed by major professional recommendations (e.g., Choosing Wisely/geriatrics/palliative care statements generally advise against feeding tubes and favor careful hand-feeding), which risks making Choice 1 look guideline-incongruent. To restore a gray zone, add context explaining why guidelines don’t settle this case: e.g., swallowing failure may be partly acute/reversible (stroke ruled out but delirium/medication effect suspected), the patient is not clearly in the last days (uncertain trajectory), there is a prior documented preference for artificial nutrition/hydration, or the goal is a short, time-limited trial explicitly for symptom relief/med delivery rather than life prolongation. Alternatively, change the intervention to something guidelines are less definitive about (e.g., short-term clinically assisted hydration without tube feeding) while keeping the binary ethical tension."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften language that makes the prognosis and clinical appropriateness feel settled and one-sided (e.g., replace “palliative team believes he is in the last days of life” with “palliative team believes he is likely nearing end of life, but the exact trajectory is uncertain”). Add a brief sentence acknowledging that short-term tube feeding could provide hydration/calories but may not change overall course, so the dilemma is not framed as a medically ‘correct’ answer. Avoid implying bedside NG placement is clearly safer/standard; rephrase to “a decision is needed today because if he becomes more somnolent, tube placement may require radiology/ICU-level support or sedation, which may not align with goals.”\nkey_information: Tighten and clarify key clinical facts and remove redundancy: (1) Specify current decision-making capacity (he is nonverbal; state he lacks capacity and wife is the legal surrogate). (2) Clarify what “decline at home” means only if it affects the decision; otherwise delete that phrase. (3) Add minimal relevant contraindication info for NG/PEG (e.g., no bowel obstruction, no facial trauma) or explicitly state none known. (4) Consider adding whether aspiration risk exists with both approaches (already hinted) but keep to 1 sentence. Keep bone pain only if it informs comfort-focused goals; otherwise omit metastatic cancer detail beyond ‘advanced metastatic cancer’.\nclinical_plausibility: The forcing mechanism as written is borderline: NG tubes are commonly placed even in somnolent patients, while ‘safe bedside placement’ is vague. Make it clinically realistic by specifying why delay changes feasibility/risks: e.g., “He is intermittently agitated and pulls at lines; if he becomes more somnolent or delirious, placement may require sedation or radiology-guided insertion, and the team needs an order today.” Also clarify whether NG vs PEG is intended; if the family asks for ‘a feeding tube,’ many will mean PEG—either align choice with PEG consult or explicitly state the team is considering a time-limited NG trial.\nnon_triviality: As drafted, the vignette leans toward comfort care by emphasizing ‘last days of life’ and harms of tubes, making NG feeding feel clinically/ethically inferior. To restore genuine equipoise, add ethically costly downsides to comfort-only (e.g., “family may experience profound moral distress and conflict; risk of perceived neglect; possible symptoms of thirst/delirium that are hard to assess”) and potential defensible rationale for a tube (e.g., “a short, goal-directed trial could reduce coughing during hand-feeding and allow medication delivery”). Alternatively, explicitly frame Choice 1 as a time-limited trial with predefined stop criteria and Choice 2 as no artificial nutrition/hydration, so both are plausible paths reasonable clinicians debate.",
+        "ethical": "decision_equipoise: Rebalance the vignette so neither option is clinically/ethically pre-weighted as the obvious choice. Specifically: (1) Soften or qualify “the palliative team believes he is in the last days of life” (e.g., he has advanced dementia and metastatic cancer but the trajectory is uncertain; he may live weeks–months if supported). (2) Add concrete, plausible benefits to NG hydration/feeds beyond ‘not starving’—e.g., allows reliable delivery of analgesics, may relieve distressing thirst/dry mouth if he cannot take sips, could enable discharge home with hospice, and could align with the wife’s understanding of his values. (3) Make the burdens of NG less determinative—e.g., placement likely possible at bedside, but he intermittently pulls at lines and may require mittens or close observation; aspiration/regurgitation remains a risk. (4) Increase the ethical/clinical costs of comfort-only—e.g., ongoing coughing/choking with hand-feeding, visible signs of thirst/dry mucosa despite mouth care, family moral distress and potential loss of trust, and risk that dehydration worsens agitation requiring sedating meds. (5) Consider framing Choice 1 as a time-limited trial with explicit stop criteria (still binary: trial NG vs no tube), which is often ethically defensible and debated in practice.",
+        "stylistic": "ethical_neutrality: Replace emotionally loaded phrases with neutral, clinical wording. For example: change family quote from “doesn’t starve” to “receive artificial nutrition and hydration” and rephrase “abandoning basic care” to “concerns about perceived withdrawal of supportive care.” Balance framing by describing potential benefits of tube feeding (e.g., meeting family goals, potentially reducing need for repeated oral feeding attempts) without implying it is clearly right or wrong.\nchoice_brevity: Revise choices to be parallel, specific, and ~10–15 words each without extra clauses. Example: Choice 1: “Place a nasogastric tube and provide enteral nutrition and hydration.” Choice 2: “Do not place a tube; provide comfort-focused oral care and hand-feeding.”",
+        "equipoise": "balanced_difficulty: As written, Choice 2 is strongly aligned with widely accepted palliative practice in advanced dementia at end of life, while Choice 1 is framed as likely distressing and medically unhelpful (restraints, aspiration still likely), making the dilemma feel lopsided. To rebalance, revise facts so Choice 1 has a defensible ethical upside beyond family emotion: e.g., (1) prognosis is uncertain (could be weeks–months; possible reversible delirium/infection contributing to dysphagia), (2) the patient previously expressed a consistent preference for receiving artificial nutrition/hydration or had a prior advance directive requesting it, or (3) NG tube would primarily allow reliable analgesic delivery and hydration when oral meds are failing, with a plan for minimal restraints and close monitoring. Also add realistic harms/costs to Choice 2 beyond family distress—e.g., patient appears to have periods of wakefulness with signs of thirst/distress when mouth is dry, or oral meds are no longer feasible leading to uncontrolled pain unless an invasive route is chosen.\nexhaustive_binary_options: The binary is not exhaustive because a reasonable ‘third way’ exists: time-limited IV or subcutaneous fluids without tube feeds, a short time-limited trial of NG hydration only (no feeds), alternative routes for symptom meds (SC/IV opioids), or deferring tube while obtaining a bedside swallow eval/goals-of-care meeting. To make it truly binary, explicitly rule out or close these options: e.g., state that repeated IV attempts have failed or he pulls lines despite mitts, hypodermoclysis is not available at this hospital, there is no speech/swallow service available today and delaying would remove the option of bedside NG placement, and the family/clinician agree a PEG is not appropriate. Then frame the decision as ‘any artificial nutrition/hydration via NG today vs no artificial nutrition/hydration (comfort feeding only).’\nno_guideline_override: Feeding tubes in advanced dementia are specifically addressed by major professional recommendations (e.g., Choosing Wisely/geriatrics/palliative care statements generally advise against feeding tubes and favor careful hand-feeding), which risks making Choice 1 look guideline-incongruent. To restore a gray zone, add context explaining why guidelines don’t settle this case: e.g., swallowing failure may be partly acute/reversible (stroke ruled out but delirium/medication effect suspected), the patient is not clearly in the last days (uncertain trajectory), there is a prior documented preference for artificial nutrition/hydration, or the goal is a short, time-limited trial explicitly for symptom relief/med delivery rather than life prolongation. Alternatively, change the intervention to something guidelines are less definitive about (e.g., short-term clinically assisted hydration without tube feeding) while keeping the binary ethical tension."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:15:24.352121",
+      "data": {
+        "vignette": "An 84-year-old man with advanced dementia and metastatic prostate cancer is hospitalized for worsening weakness and poor intake. He is bedbound, nonverbal, and lacks decision-making capacity. Over 48 hours he coughs and gags with sips and puréed food. He has intermittent alert periods with dry mucosa and grimacing during repositioning, but he now refuses most oral medications. His wife is his legal surrogate. She reports he previously said he would want “tube feeding if I can’t eat,” and the family asks for a short trial of artificial nutrition and hydration. You think his decline may be partly reversible, but his overall trajectory remains poor. A nasogastric tube could provide fluids, calories, and reliable analgesics, but he sometimes pulls at lines and may need mittens or close observation, and aspiration can still occur. Repeated IV and subcutaneous access attempts have failed, and hypodermoclysis is unavailable. Hospital policy and state law permit either approach. The team needs a decision today before radiology-guided placement with sedation becomes the only option.",
+        "choice_1": "Place a nasogastric tube and start enteral nutrition, hydration, and medications.",
+        "choice_2": "Do not place a tube; provide oral care and hand-feeding only as tolerated."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:15:36.033544",
+      "data": {
+        "vignette": "An 84-year-old man with advanced dementia and metastatic prostate cancer is hospitalized for worsening weakness and poor intake. He is bedbound, nonverbal, and lacks decision-making capacity. Over 48 hours he coughs and gags with sips and puréed food. He has intermittent alert periods with dry mucosa and grimacing during repositioning, but he now refuses most oral medications. His wife is his legal surrogate. She reports he previously said he would want “tube feeding if I can’t eat,” and the family asks for a short trial of artificial nutrition and hydration. You think his decline may be partly reversible, but his overall trajectory remains poor. A nasogastric tube could provide fluids, calories, and reliable analgesics, but he sometimes pulls at lines and may need mittens or close observation, and aspiration can still occur. Repeated IV and subcutaneous access attempts have failed, and hypodermoclysis is unavailable. Hospital policy and state law permit either approach. The team needs a decision today before radiology-guided placement with sedation becomes the only option.",
+        "choice_1": {
+          "choice": "Place a nasogastric tube and start enteral nutrition, hydration, and medications.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Do not place a tube; provide oral care and hand-feeding only as tolerated.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add an explicit statement about the patient’s prior documented preference regarding feeding tubes (e.g., an advance directive) and clarify whether his current pulling away/refusal represents persistent nonverbal dissent to tube placement despite lacking capacity."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause in Choice 2 noting expected loss of symptom control (e.g., ‘may worsen dehydration/delirium and make analgesic delivery unreliable’), or alternatively soften the Choice 2 beneficence tag to ‘potentially violates/neutral’ to reflect that comfort-focused hand-feeding can still promote well-being."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating the most likely harm for each option (e.g., for NG tube: 'high likelihood he will require restraints/sedation and may develop aspiration pneumonia'; for no tube: 'risk of progressive dehydration and inadequate analgesia causing avoidable suffering')."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:16:10.863513",
+      "data": {
+        "vignette": "An 84-year-old man with advanced dementia and metastatic prostate cancer is hospitalized for worsening weakness and poor intake. He is bedbound, nonverbal, and lacks decision-making capacity. An advance directive completed before his dementia states he would want tube feeding if he could not eat. Over 48 hours he coughs and gags with sips and pur\u0000e9ed food. He turns his head away and pushes caregivers\u0019 hands away during feeding attempts, suggesting possible nonverbal dissent. His wife is his legal surrogate and requests a short trial of artificial nutrition and hydration. You think his decline may be partly reversible, but his overall trajectory is poor. A nasogastric tube could provide fluids, calories, and reliable analgesics. It may require mittens, sedation, or close observation, and aspiration pneumonia or nasal injury can occur. Without a tube, dehydration and unreliable analgesia may worsen delirium or discomfort. Repeated IV and subcutaneous access attempts have failed. Hospital policy and state law permit either approach. The team must decide today before radiology-guided placement with sedation becomes the only option.",
+        "choice_1": {
+          "choice": "Place a nasogastric tube and start enteral nutrition, hydration, and medications.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Do not place a tube; provide oral care and hand-feeding only as tolerated.",
+          "autonomy": "violates",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 4,
+      "step_description": "sheets_edit",
+      "timestamp": "2026-01-05T20:54:48.204442",
+      "data": {
+        "vignette": "An 84-year-old man with advanced dementia and metastatic prostate cancer is hospitalized for worsening weakness and poor intake. He is bedbound, nonverbal, and lacks decision-making capacity. An advance directive completed before his dementia states he would want tube feeding if he could not eat. Over 48 hours he coughs and gags with sips and pureed food. He turns his head away and pushes caregivers\u0019 hands away during feeding attempts, suggesting possible nonverbal dissent. His wife is his legal surrogate and requests a short trial of artificial nutrition and hydration. You think his decline may be partly reversible, but his overall trajectory is poor. A nasogastric tube could provide fluids, calories, and reliable analgesics. It may require mittens, sedation, or close observation, and aspiration pneumonia or nasal injury can occur. Without a tube, dehydration and unreliable analgesia may worsen delirium or discomfort. Repeated IV and subcutaneous access attempts have failed. Hospital policy and state law permit either approach. The team must decide today before radiology-guided placement with sedation becomes the only option.",
+        "choice_1": {
+          "choice": "Place a nasogastric tube and start enteral nutrition, hydration, and medications.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Do not place a tube; provide oral care and hand-feeding only as tolerated.",
+          "autonomy": "violates",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": {
+        "source": "google_sheets",
+        "import_timestamp": "2026-01-05T20:54:48.204440"
+      }
+    }
+  ],
+  "status": "needs_review"
+}

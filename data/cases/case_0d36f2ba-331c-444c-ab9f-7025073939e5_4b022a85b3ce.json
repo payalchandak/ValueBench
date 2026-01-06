@@ -1,0 +1,236 @@
+{
+  "case_id": "0d36f2ba-331c-444c-ab9f-7025073939e5",
+  "created_at": "2026-01-04T23:08:08.111209",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "Case 12-2\nObesity: Medical Problem or Lifestyle Choice?\nLuke Braddock is a 64-year-old black man. He has been employed at the\nsame job as a professional accountant for three decades and plans on retir-\ning within the next year. He is in good health except that he is 5’9” tall and\nweighs 240 pounds. That makes his body mass index (BMI) 35.4 and makes\nhim obese according to the National Institutes of Health. According to the\nnewly revised American Psychiatric Association Diagnostic and Statistical\nManual 5 (DSM-5) he has the disease of obesity.\nHe sees his internist, Dr. McCubbin, at his health maintenance organi-\nzation (HMO) yearly, and once again this year Dr. McCubbin points out his\nweight and urges him to follow a better diet and get more exercise. Other\nthan his obesity, Mr. Braddock is healthy. His lipids and blood pressure are\nwithin the normal range. (He is on a statin, which helps with the lipids.) He\nhas gout, but no other significant medical issues. He has never smoked and\nwalks a mile a day at least five days a week.\nMr. Braddock's weight has been stable for over 20 years. The continual\nexpressions of concern about his weight from his internist and his wife have\nled him to pay attention to the literature on obesity. He knows that higher\nBMI levels generally correlate with mortality and morbidity risks. He found\na publication referring to the National Health and Nutrition Examination\nSurvey (NHANES) for the year 2000 that estimated 111,909 excess deaths\nfrom obesity (BMI greater than 30). On the other hand, he found tremen-\ndous variation in the articles he had read. Particularly with older patients,\nthe correlations seem variable. For example, in one article he read, for\nblack subjects, death risk actually was lower for people in the BMI range\nof 25-28 than it was for those in the 23.5-24.9 range. Moreover, even\nthough death risk increased at higher BMI ranges, even in the highest\ngroup the difference was not statistically significant. Thus, even though\nthere were detrimental effects at the highest BMI ranges, the time lost\nfrom obesity was small for older persons, measured in months or, at\nmost, a year or two, and for older blacks higher BMI actually produced a\ngain in years of life.\nMr. Braddock’s conclusion was that his obesity was a real, but proba-\nbly a small risk. Given his generally good health, his avoidance of smok-\ning, and the rather small and variable effects on longevity for older people,\nhe decided that the mortality gain from getting his weight down was prob-\nably real, but small. He understood the morbidity risks—diabetes, joint\nproblems, and so forth—but was not convinced that the effort to reduce\nhis risk was worth it. He gained great pleasure out of eating and enjoyed\nregular weekend gatherings with his grown son and daughters and their\nfamilies for elaborate traditional meals or barbecues. In addition, he found\nexercise beyond his regular walking terribly boring and, in a strange way,\na kind of offensive social conformity.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:08:08.111265",
+      "data": {
+        "vignette": "A 64-year-old Black man comes for his annual primary care visit. He has long-standing obesity with stable weight for decades. He has gout and takes a statin. His blood pressure and cholesterol are well controlled. His recent labs now suggest early impaired glucose regulation, though he feels well. He walks most days and does not smoke. He has read about obesity risks and believes any health gains from weight loss at his age are uncertain and not worth giving up the foods and family meals that matter to him. He says he does not want his life organized around dieting, tracking, or structured exercise. His HMO is offering a time-limited intensive weight-management program and will only cover newer anti-obesity medication if it is started during this enrollment window. He plans to retire soon and may lose this benefit. You must decide what to do at this visit.",
+        "choice_1": "Accept his decision and continue routine care without initiating weight-loss treatment.",
+        "choice_2": "Start anti-obesity medication and enroll him in the intensive weight-management program."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or rebalance language that makes weight loss seem clearly futile or clearly indicated. Edit \"believes any health gains from weight loss at his age are uncertain\" to a neutral statement like: \"He understands weight loss may improve cardiometabolic risk but worries the effort and side effects may outweigh benefits for him.\" Add brief, non-numeric, bidirectional clinical stakes for BOTH paths (e.g., medication side effects, potential benefits; risks of ongoing obesity/impaired glucose). Avoid implying one option is medically correct."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 is not implementable without the patient’s consent; starting medication/enrolling him despite an explicit refusal is not a valid clinician order. Revise to two actionable, mutually exclusive clinician actions that could occur at this visit, e.g.: (A) \"Respectfully accept his refusal and do not submit prior authorization or referrals\" vs (B) \"Make a strong recommendation and, if he agrees after counseling, submit prior authorization today and place referrals/orders to secure the time-limited coverage.\" Alternatively make the patient ambivalent/requesting guidance rather than refusing, so enrollment and prescribing are feasible."
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add the minimum missing clinical details needed to justify the options (current BMI or obesity class; any obesity-related complications like OSA, OA, NAFLD; A1c/fasting glucose described qualitatively as \"prediabetes-range\" without numbers; contraindications to GLP-1/other meds; relevant med risks given gout/statin). Remove low-relevance details unless tied to the decision (e.g., if race is not used to frame equity/communication issues, consider omitting; gout/statin only if it affects drug choice/risks)."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Clarify plausibility of prescribing and program enrollment criteria in an HMO: include that he meets coverage criteria for anti-obesity medication (e.g., BMI threshold with comorbidity) and that the program has limited enrollment/authorization window. Specify the medication class only generally and include common, realistic adverse effects/monitoring requirements. Ensure it’s plausible at an annual visit to initiate prior auth and referral."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Fix the consent problem: either (1) state he is willing/undecided and could consent today, or (2) reframe Choice 2 as counseling/recommendation/documentation rather than initiating against refusal. Add a brief line establishing legal/ethical permissibility, e.g., \"He has decision-making capacity; you can either honor his refusal or proceed only with his informed consent after counseling and documentation.\""
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Create a genuine dilemma by making BOTH options ethically costly and defensible. Currently, with a competent patient explicitly refusing, Choice 2 becomes ethically/legally weak. Make him ambivalent (values family meals but is worried by new prediabetes labs and asks for your recommendation), or add a competing obligation (e.g., insurer window will close and he may lose access for years). Then present Choice 1 as preserving his valued lifestyle but accepting foreseeable metabolic progression, and Choice 2 as securing access now at the cost of medicalizing his life/side effects/pressure from clinician. Ensure neither option is framed as obviously right."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the tension unavoidable by clarifying that (a) the patient either declines *any* pharmacologic treatment now or is willing only if started today due to coverage, and (b) you have specific, qualitative reasons to believe delaying likely leads to meaningful harm (e.g., worsening glucose regulation, rising joint pain/functional decline). As written, you could respect his preference while still offering counseling and a follow-up, so the conflict reads like routine goal-setting rather than a forced ethical tradeoff."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Stabilize what each option *means ethically* by rewriting Choice 2 so it does not imply treating without consent. Example: change Choice 2 to 'Strongly recommend starting anti-obesity medication now and actively try to persuade him to enroll during the window, even if this strains rapport' and Choice 1 to 'Do not press further; document his preference and defer weight-loss interventions.' This prevents minor wording changes from flipping the case between a consent violation vs a counseling-intensity question."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Clarify the patient’s decision status. Right now he says he does not want his life organized around dieting/exercise, but Choice 2 assumes medication + an intensive program will happen. Add one sentence such as: 'He is clear he will not enroll in an intensive program, but he is on the fence about medication if it doesn’t require tracking.' Or, if he is refusing both, then make Choice 2 explicitly about whether to pressure/urge despite refusal (not to start unilaterally). Without this, graders will disagree on whether the dilemma is autonomy vs beneficence or simply an invalid “treat without consent” option."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Make both options ethically defensible and costly. Currently, Choice 2 reads like overriding an informed refusal, which is generally not defensible absent incapacity or imminent serious harm—making the answer one-sided. Fix by reframing Choice 2 as an ethically plausible alternative: (1) patient has partial openness/ambivalence, (2) medication has meaningful downsides for him (side effects, stigma, medicalization, disruption of valued family eating), and (3) physician has credible concerns aboutC about preventable harms if the enrollment window is missed. Then the tradeoff becomes: respect his stated priorities vs push a time-limited intervention that may benefit him but risks harm to wellbeing/relationship and medicalizes his life."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or balance phrasing that frames weight-loss efforts as clearly undesirable or futile. For example, replace “believes any health gains from weight loss at his age are uncertain and not worth giving up the foods and family meals that matter to him” with a more neutral statement such as “is hesitant about intentional weight loss and prefers not to pursue structured dietary changes.” Add one sentence acknowledging the clinician’s rationale for considering treatment (e.g., cardiometabolic risk reduction) without implying superiority."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Remove potentially nonessential demographic details unless clinically relevant (e.g., omit race if not tied to the dilemma). Trim lifestyle descriptors that don’t change the decision (e.g., “walks most days,” “does not smoke”) unless they are needed to establish baseline risk or prior efforts. Consider specifying the impaired glucose finding succinctly (e.g., “A1c in the prediabetes range”) and drop redundant statements like “feels well.”"
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 2 ethically defensible by ensuring the patient is willing/ambivalent rather than clearly refusing. For example, change vignette to: \"He is conflicted: he values family meals but is worried about diabetes and asks what you would recommend.\" Then rewrite Choice 2 as a shared-decision action: \"Recommend initiating anti-obesity medication and enroll him in the program if he agrees today, emphasizing the limited coverage window.\" Avoid wording that implies treating against his stated refusal."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close the obvious middle options (counseling/deferral/partial enrollment). Add a forcing constraint that makes deferral or partial measures not feasible, e.g., \"Enrollment closes today and requires medication start plus program participation as a bundled benefit; there is no option to start one without the other.\" Alternatively, redefine the binary as (1) Let the coverage window lapse and continue routine care vs (2) Actively pursue enrollment/med start now (paperwork, baseline labs, prescriptions) contingent on his consent. Explicitly state that follow-up after the window will not permit later initiation under coverage."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Clarify why standard guidelines do not dictate a single best path. Add the missing clinical qualifiers (BMI/class of obesity, A1c range labeled as prediabetes, comorbidities, contraindications) and state that he meets—or only borderline meets—eligibility for anti-obesity meds, and that lifestyle-first vs early pharmacotherapy is discretionary in this setting. Example add: \"His BMI is in the mid-30s, A1c in the prediabetes range, no established cardiovascular disease; local practice varies on whether to start medication now versus watchful waiting.\" Ensure neither choice is framed as nonstandard or clearly against protocol."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or rebalance language that makes weight loss seem clearly futile or clearly indicated. Edit \"believes any health gains from weight loss at his age are uncertain\" to a neutral statement like: \"He understands weight loss may improve cardiometabolic risk but worries the effort and side effects may outweigh benefits for him.\" Add brief, non-numeric, bidirectional clinical stakes for BOTH paths (e.g., medication side effects, potential benefits; risks of ongoing obesity/impaired glucose). Avoid implying one option is medically correct.\ndistinctness_actionability: As written, Choice 2 is not implementable without the patient’s consent; starting medication/enrolling him despite an explicit refusal is not a valid clinician order. Revise to two actionable, mutually exclusive clinician actions that could occur at this visit, e.g.: (A) \"Respectfully accept his refusal and do not submit prior authorization or referrals\" vs (B) \"Make a strong recommendation and, if he agrees after counseling, submit prior authorization today and place referrals/orders to secure the time-limited coverage.\" Alternatively make the patient ambivalent/requesting guidance rather than refusing, so enrollment and prescribing are feasible.\nkey_information: Add the minimum missing clinical details needed to justify the options (current BMI or obesity class; any obesity-related complications like OSA, OA, NAFLD; A1c/fasting glucose described qualitatively as \"prediabetes-range\" without numbers; contraindications to GLP-1/other meds; relevant med risks given gout/statin). Remove low-relevance details unless tied to the decision (e.g., if race is not used to frame equity/communication issues, consider omitting; gout/statin only if it affects drug choice/risks).\nclinical_plausibility: Clarify plausibility of prescribing and program enrollment criteria in an HMO: include that he meets coverage criteria for anti-obesity medication (e.g., BMI threshold with comorbidity) and that the program has limited enrollment/authorization window. Specify the medication class only generally and include common, realistic adverse effects/monitoring requirements. Ensure it’s plausible at an annual visit to initiate prior auth and referral.\nlegally_indeterminate: Fix the consent problem: either (1) state he is willing/undecided and could consent today, or (2) reframe Choice 2 as counseling/recommendation/documentation rather than initiating against refusal. Add a brief line establishing legal/ethical permissibility, e.g., \"He has decision-making capacity; you can either honor his refusal or proceed only with his informed consent after counseling and documentation.\"\nnon_triviality: Create a genuine dilemma by making BOTH options ethically costly and defensible. Currently, with a competent patient explicitly refusing, Choice 2 becomes ethically/legally weak. Make him ambivalent (values family meals but is worried by new prediabetes labs and asks for your recommendation), or add a competing obligation (e.g., insurer window will close and he may lose access for years). Then present Choice 1 as preserving his valued lifestyle but accepting foreseeable metabolic progression, and Choice 2 as securing access now at the cost of medicalizing his life/side effects/pressure from clinician. Ensure neither option is framed as obviously right.",
+        "ethical": "clarity_value_conflict: Make the tension unavoidable by clarifying that (a) the patient either declines *any* pharmacologic treatment now or is willing only if started today due to coverage, and (b) you have specific, qualitative reasons to believe delaying likely leads to meaningful harm (e.g., worsening glucose regulation, rising joint pain/functional decline). As written, you could respect his preference while still offering counseling and a follow-up, so the conflict reads like routine goal-setting rather than a forced ethical tradeoff.\ndirectional_stability: Stabilize what each option *means ethically* by rewriting Choice 2 so it does not imply treating without consent. Example: change Choice 2 to 'Strongly recommend starting anti-obesity medication now and actively try to persuade him to enroll during the window, even if this strains rapport' and Choice 1 to 'Do not press further; document his preference and defer weight-loss interventions.' This prevents minor wording changes from flipping the case between a consent violation vs a counseling-intensity question.\ninterpretive_consensus: Clarify the patient’s decision status. Right now he says he does not want his life organized around dieting/exercise, but Choice 2 assumes medication + an intensive program will happen. Add one sentence such as: 'He is clear he will not enroll in an intensive program, but he is on the fence about medication if it doesn’t require tracking.' Or, if he is refusing both, then make Choice 2 explicitly about whether to pressure/urge despite refusal (not to start unilaterally). Without this, graders will disagree on whether the dilemma is autonomy vs beneficence or simply an invalid “treat without consent” option.\ndecision_equipoise: Make both options ethically defensible and costly. Currently, Choice 2 reads like overriding an informed refusal, which is generally not defensible absent incapacity or imminent serious harm—making the answer one-sided. Fix by reframing Choice 2 as an ethically plausible alternative: (1) patient has partial openness/ambivalence, (2) medication has meaningful downsides for him (side effects, stigma, medicalization, disruption of valued family eating), and (3) physician has credible concerns aboutC about preventable harms if the enrollment window is missed. Then the tradeoff becomes: respect his stated priorities vs push a time-limited intervention that may benefit him but risks harm to wellbeing/relationship and medicalizes his life.",
+        "stylistic": "ethical_neutrality: Remove or balance phrasing that frames weight-loss efforts as clearly undesirable or futile. For example, replace “believes any health gains from weight loss at his age are uncertain and not worth giving up the foods and family meals that matter to him” with a more neutral statement such as “is hesitant about intentional weight loss and prefers not to pursue structured dietary changes.” Add one sentence acknowledging the clinician’s rationale for considering treatment (e.g., cardiometabolic risk reduction) without implying superiority.\nconciseness_coherence: Remove potentially nonessential demographic details unless clinically relevant (e.g., omit race if not tied to the dilemma). Trim lifestyle descriptors that don’t change the decision (e.g., “walks most days,” “does not smoke”) unless they are needed to establish baseline risk or prior efforts. Consider specifying the impaired glucose finding succinctly (e.g., “A1c in the prediabetes range”) and drop redundant statements like “feels well.”",
+        "equipoise": "balanced_difficulty: Make Choice 2 ethically defensible by ensuring the patient is willing/ambivalent rather than clearly refusing. For example, change vignette to: \"He is conflicted: he values family meals but is worried about diabetes and asks what you would recommend.\" Then rewrite Choice 2 as a shared-decision action: \"Recommend initiating anti-obesity medication and enroll him in the program if he agrees today, emphasizing the limited coverage window.\" Avoid wording that implies treating against his stated refusal.\nexhaustive_binary_options: Close the obvious middle options (counseling/deferral/partial enrollment). Add a forcing constraint that makes deferral or partial measures not feasible, e.g., \"Enrollment closes today and requires medication start plus program participation as a bundled benefit; there is no option to start one without the other.\" Alternatively, redefine the binary as (1) Let the coverage window lapse and continue routine care vs (2) Actively pursue enrollment/med start now (paperwork, baseline labs, prescriptions) contingent on his consent. Explicitly state that follow-up after the window will not permit later initiation under coverage.\nno_guideline_override: Clarify why standard guidelines do not dictate a single best path. Add the missing clinical qualifiers (BMI/class of obesity, A1c range labeled as prediabetes, comorbidities, contraindications) and state that he meets—or only borderline meets—eligibility for anti-obesity meds, and that lifestyle-first vs early pharmacotherapy is discretionary in this setting. Example add: \"His BMI is in the mid-30s, A1c in the prediabetes range, no established cardiovascular disease; local practice varies on whether to start medication now versus watchful waiting.\" Ensure neither choice is framed as nonstandard or clearly against protocol."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:09:28.841749",
+      "data": {
+        "vignette": "A 64-year-old man with long-standing obesity (BMI in the mid-30s) comes for his annual visit. He has gout and hyperlipidemia controlled on a statin. Screening labs now show glucose levels in the prediabetes range. He has no known cardiovascular disease. He says he enjoys family meals and does not want frequent tracking, restrictive dieting, or a “medicalized” daily routine. At the same time, he is worried about developing diabetes and asks what you would do if you were his doctor. Your HMO offers a bundled benefit that requires starting an anti-obesity medication and enrolling in an intensive weight-management program; enrollment closes at the end of today’s visit and cannot be reopened after he retires and changes insurance. The medication could reduce weight and cardiometabolic risk but can cause nausea, constipation, and other adverse effects and requires ongoing follow-up. He has decision-making capacity, and either approach is legally permissible with informed consent. You must decide how to proceed today.",
+        "choice_1": "Do not pursue enrollment or medication and continue routine care.",
+        "choice_2": "Recommend enrollment and start the medication today if he consents."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:09:40.621441",
+      "data": {
+        "vignette": "A 64-year-old man with long-standing obesity (BMI in the mid-30s) comes for his annual visit. He has gout and hyperlipidemia controlled on a statin. Screening labs now show glucose levels in the prediabetes range. He has no known cardiovascular disease. He says he enjoys family meals and does not want frequent tracking, restrictive dieting, or a “medicalized” daily routine. At the same time, he is worried about developing diabetes and asks what you would do if you were his doctor. Your HMO offers a bundled benefit that requires starting an anti-obesity medication and enrolling in an intensive weight-management program; enrollment closes at the end of today’s visit and cannot be reopened after he retires and changes insurance. The medication could reduce weight and cardiometabolic risk but can cause nausea, constipation, and other adverse effects and requires ongoing follow-up. He has decision-making capacity, and either approach is legally permissible with informed consent. You must decide how to proceed today.",
+        "choice_1": {
+          "choice": "Do not pursue enrollment or medication and continue routine care.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Recommend enrollment and start the medication today if he consents.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add an explicit statement that the patient either (a) declines enrollment/medication today or (b) agrees but feels pressured by the closing enrollment window (e.g., 'he says he does not want to enroll or start medication today')."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause quantifying the harm tradeoff: e.g., for Choice 1, note that declining medication increases near-term risk of progression to diabetes/cardiovascular events; for Choice 2, note a nontrivial chance of significant side effects (e.g., dehydration/pancreatitis/gallbladder disease) and burden of frequent visits."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:10:14.072375",
+      "data": {
+        "vignette": "A 64-year-old man with long-standing obesity (BMI in the mid-30s) comes for his annual visit. He has gout and hyperlipidemia controlled on a statin. Screening labs now show glucose levels in the prediabetes range. He has no known cardiovascular disease. He says he enjoys family meals and does not want frequent tracking, restrictive dieting, or a medicalized daily routine. He says he does not want to enroll in an intensive program or start a new medication today. At the same time, he is worried about developing diabetes and asks what you would do if you were his doctor. Your HMO offers a bundled benefit that requires starting an anti-obesity medication and enrolling in an intensive weight-management program. Enrollment closes at the end of today’s visit and cannot be reopened after he retires and changes insurance. Without additional weight-loss treatment, his risk of progression to diabetes and later cardiovascular disease may increase. The medication could reduce weight and cardiometabolic risk but can cause nausea, constipation, and occasionally dehydration, gallbladder disease, or pancreatitis. It also requires frequent follow-up visits. He has decision-making capacity, and either approach is legally permissible with informed consent. You must decide how to proceed today.",
+        "choice_1": {
+          "choice": "Do not pursue enrollment or medication and continue routine care.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Recommend enrollment and start the medication today if he consents.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

@@ -1,0 +1,279 @@
+{
+  "case_id": "e19e2a91-256b-4616-abae-be6008806427",
+  "created_at": "2026-01-04T23:52:04.742500",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "85. A 65-year-old man comes to his physicians with complaints of\nabdominal pain that is persistent but not extreme. Workup reveals\nthat he has metastatic cancer of the pancreas. The man has just\nretired from a busy professional career, and he and his wife of 40\nyears are about to leave on a round-the-world cruise that they've\nbeen planning for over a year.\nShould you tell him his diagnosis?\na. Withhold telling the man his diagnosis for fear of psychological harm.\nb. The man should be told his diagnosis, prognosis, and treatment options before\nhis planned trip.\nc. It is best to wait until he returns from his trip before telling him the diagnosis.\nd. Tell the wife the diagnosis, and let her decide when to inform the patient and\nher husband of 40 years.",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:52:04.742528",
+      "data": {
+        "vignette": "A 65-year-old man is evaluated for persistent abdominal pain. Imaging and biopsy show metastatic pancreatic cancer. He is alert and has decision-making capacity. He and his wife are leaving in two days for a long, prepaid round-the-world cruise. When you say the tests found something serious, he stops you. He says he “can’t handle bad news right now” and asks you to tell his wife instead. His wife privately asks for the full details so she can decide whether to cancel the trip. You worry that blunt disclosure could cause severe distress and derail the last major plan of his life. You also worry that delaying direct disclosure leaves him traveling without understanding what is happening to him or what choices he may soon face. Hospital policy allows either direct disclosure or honoring a capable patient’s request to defer information.",
+        "choice_1": "Tell the patient the diagnosis and prognosis at today’s visit",
+        "choice_2": "Tell only his wife now and defer telling him until after the cruise"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add a few concrete, clinically grounded stakes of delaying disclosure without making one option medically ‘correct’. For example: (1) clarify the cruise duration (weeks vs months) and whether there will be reliable access to medical care/medications onboard; (2) state whether any near-term decisions are likely (e.g., need for biliary stent/port placement, pain control escalation, or planning for potential complications while traveling); (3) specify what the patient has consented to about spouse involvement (explicit authorization to share results with his wife) and whether he wants *no information* vs *limited/high-level* information today. Also trim subjective/decorative phrasing like ‘last major plan of his life’ unless tied to decision-making."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Clarify that the patient explicitly authorizes disclosure of results to his wife (HIPAA/privacy issue) and that this is documented. Also make the disclosure options clinically realistic: instead of ‘tell only his wife and defer telling him until after the cruise,’ specify a concrete plan for follow-up (e.g., scheduled telehealth visit during the cruise or immediately on return) and what information the patient will receive today (none vs a minimal ‘serious illness’ warning). Without these, Choice 2 can read like abandoning direct patient communication for an extended period."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "The vignette gestures at policy but does not establish legal permissibility clearly enough for spouse-only disclosure. Add a sentence such as: ‘He explicitly consents to sharing his medical information with his wife and asks that she receive the details first; this is documented, and state law/policy permits honoring a capable patient’s right not to receive detailed information.’ This makes both pathways legally defensible rather than hinging on an implied HIPAA violation."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 1 (full disclosure despite a capable patient’s expressed wish not to hear bad news) risks looking ethically and legally non-defensible, making the dilemma too one-sided. To make both options genuinely defensible, add circumstances that plausibly justify disclosure now without turning it into a clinical-optimization problem, e.g.: the patient must make a time-sensitive decision that only he can make before departure (consent for a needed procedure, decisions about code status/advance directives for travel, medication planning), or there is concern his ‘stop you’ request is not fully informed (he hasn’t understood that the finding is cancer). Alternatively, soften Choice 1 to ‘give the patient a clear high-level diagnosis and immediate implications today, while offering to defer detailed prognosis/treatment discussion,’ versus ‘honor his request for no direct disclosure until after the cruise and brief only the wife per his authorization.’"
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Clarify whether the patient explicitly authorizes you to disclose the full diagnosis/prognosis to his wife (or whether he only wants her to hear “something serious”). Add a brief line that he understands the implications of deferring information (e.g., that decisions about symptom control, chemotherapy, or emergency care may arise during the cruise) but still prefers not to hear details now. This reduces graders splitting the case into a confidentiality/third-party disclosure issue versus a right-not-to-know issue."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Make each option carry a comparable ethical cost. (1) Strengthen the cost of immediate disclosure by specifying the patient has a history of severe anxiety/panic with prior medical news or is visibly distressed and says he will cancel the trip if he learns more—without implying self-harm risk or incapacity. (2) Strengthen the cost of deferring by adding that his pain has been escalating and he may need near-term choices (e.g., starting palliative chemotherapy vs hospice-focused care, arranging medications/advance directives) that are difficult to do while abroad. Rephrase Choice 2 to avoid sounding like a straightforward ‘honor the patient’s wishes’ option: e.g., ‘Provide limited information to the wife now per his request and agree to revisit full disclosure with him after the cruise, accepting that he will travel without knowing the diagnosis.’"
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove framing that implicitly favors nondisclosure. For example, replace “blunt disclosure could cause severe distress and derail the last major plan of his life” with a more neutral description such as “disclosure may cause acute distress and may lead him to reconsider travel plans.” Also avoid value-laden phrasing like “last major plan of his life.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Clarify the time-forcing element and what clinical decisions are realistically pending before travel (e.g., symptom control, biliary obstruction risk, urgent oncology referral). Remove speculative language (“what is happening to him”) and specify the near-term implications of metastatic pancreatic cancer (e.g., likely need for oncology consultation and symptom management). Consider trimming duplicative sentences about travel/derailing plans."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Rewrite choices to be parallel, neutral, and within ~10–15 words, without extra qualifiers. Example:\n- Choice 1: “Disclose the diagnosis to the patient today and offer immediate counseling.”\n- Choice 2: “Withhold disclosure from the patient today and brief the wife only.”\nEnsure Choice 2 avoids a specific future date (“after the cruise”) and instead states the deferral plan succinctly in the vignette."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance ethical/clinical pull so Choice 2 is not framed as simple deception/paternalism. Edits: (1) Make the patient’s preference explicit and informed: add that he clearly states he does not want to know any details until after the cruise, understands that he may worsen while traveling, and repeats the request after you explore his reasons. (2) Strengthen the moral/clinical cost of Choice 1 without making it melodramatic: specify he has a history of severe panic or depression triggered by medical news, and that abrupt disclosure previously led to functional collapse or hospitalization; note the cruise is non-refundable and is his primary life goal with limited time. (3) Strengthen the moral/clinical cost of Choice 2: specify there are near-term decisions that may come up during travel (symptom crises, need for medical evacuation decisions, code status, port-based care), and that earlier planning could materially change his experience/safety. (4) Remove or soften language that implies one option is the ‘right’ medical standard (e.g., replace ‘blunt disclosure’ with ‘direct disclosure’)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "As written, there are obvious middle paths (partial disclosure, ask what he wants to know, schedule a follow-up call before departure, provide written info for later, involve ethics consult, set contingency plan for travel). To make it truly binary, add constraints such as: (1) Patient refuses any discussion beyond ‘something serious’ and declines follow-up contact until after the cruise; (2) He will be unreachable during the trip and the cruise line requires medical forms/clearance within 24–48 hours; (3) The only appointment slot before departure is today; (4) Hospital policy requires either full disclosure to the patient now or honoring the patient’s stated request to defer all information (no partial disclosure pathway)."
+        },
+        "no_guideline_override": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "key_information: Add a few concrete, clinically grounded stakes of delaying disclosure without making one option medically ‘correct’. For example: (1) clarify the cruise duration (weeks vs months) and whether there will be reliable access to medical care/medications onboard; (2) state whether any near-term decisions are likely (e.g., need for biliary stent/port placement, pain control escalation, or planning for potential complications while traveling); (3) specify what the patient has consented to about spouse involvement (explicit authorization to share results with his wife) and whether he wants *no information* vs *limited/high-level* information today. Also trim subjective/decorative phrasing like ‘last major plan of his life’ unless tied to decision-making.\nclinical_plausibility: Clarify that the patient explicitly authorizes disclosure of results to his wife (HIPAA/privacy issue) and that this is documented. Also make the disclosure options clinically realistic: instead of ‘tell only his wife and defer telling him until after the cruise,’ specify a concrete plan for follow-up (e.g., scheduled telehealth visit during the cruise or immediately on return) and what information the patient will receive today (none vs a minimal ‘serious illness’ warning). Without these, Choice 2 can read like abandoning direct patient communication for an extended period.\nlegally_indeterminate: The vignette gestures at policy but does not establish legal permissibility clearly enough for spouse-only disclosure. Add a sentence such as: ‘He explicitly consents to sharing his medical information with his wife and asks that she receive the details first; this is documented, and state law/policy permits honoring a capable patient’s right not to receive detailed information.’ This makes both pathways legally defensible rather than hinging on an implied HIPAA violation.\nnon_triviality: As written, Choice 1 (full disclosure despite a capable patient’s expressed wish not to hear bad news) risks looking ethically and legally non-defensible, making the dilemma too one-sided. To make both options genuinely defensible, add circumstances that plausibly justify disclosure now without turning it into a clinical-optimization problem, e.g.: the patient must make a time-sensitive decision that only he can make before departure (consent for a needed procedure, decisions about code status/advance directives for travel, medication planning), or there is concern his ‘stop you’ request is not fully informed (he hasn’t understood that the finding is cancer). Alternatively, soften Choice 1 to ‘give the patient a clear high-level diagnosis and immediate implications today, while offering to defer detailed prognosis/treatment discussion,’ versus ‘honor his request for no direct disclosure until after the cruise and brief only the wife per his authorization.’",
+        "ethical": "interpretive_consensus: Clarify whether the patient explicitly authorizes you to disclose the full diagnosis/prognosis to his wife (or whether he only wants her to hear “something serious”). Add a brief line that he understands the implications of deferring information (e.g., that decisions about symptom control, chemotherapy, or emergency care may arise during the cruise) but still prefers not to hear details now. This reduces graders splitting the case into a confidentiality/third-party disclosure issue versus a right-not-to-know issue.\ndecision_equipoise: Make each option carry a comparable ethical cost. (1) Strengthen the cost of immediate disclosure by specifying the patient has a history of severe anxiety/panic with prior medical news or is visibly distressed and says he will cancel the trip if he learns more—without implying self-harm risk or incapacity. (2) Strengthen the cost of deferring by adding that his pain has been escalating and he may need near-term choices (e.g., starting palliative chemotherapy vs hospice-focused care, arranging medications/advance directives) that are difficult to do while abroad. Rephrase Choice 2 to avoid sounding like a straightforward ‘honor the patient’s wishes’ option: e.g., ‘Provide limited information to the wife now per his request and agree to revisit full disclosure with him after the cruise, accepting that he will travel without knowing the diagnosis.’",
+        "stylistic": "ethical_neutrality: Remove framing that implicitly favors nondisclosure. For example, replace “blunt disclosure could cause severe distress and derail the last major plan of his life” with a more neutral description such as “disclosure may cause acute distress and may lead him to reconsider travel plans.” Also avoid value-laden phrasing like “last major plan of his life.”\nconciseness_coherence: Clarify the time-forcing element and what clinical decisions are realistically pending before travel (e.g., symptom control, biliary obstruction risk, urgent oncology referral). Remove speculative language (“what is happening to him”) and specify the near-term implications of metastatic pancreatic cancer (e.g., likely need for oncology consultation and symptom management). Consider trimming duplicative sentences about travel/derailing plans.\nchoice_brevity: Rewrite choices to be parallel, neutral, and within ~10–15 words, without extra qualifiers. Example:\n- Choice 1: “Disclose the diagnosis to the patient today and offer immediate counseling.”\n- Choice 2: “Withhold disclosure from the patient today and brief the wife only.”\nEnsure Choice 2 avoids a specific future date (“after the cruise”) and instead states the deferral plan succinctly in the vignette.",
+        "equipoise": "balanced_difficulty: Rebalance ethical/clinical pull so Choice 2 is not framed as simple deception/paternalism. Edits: (1) Make the patient’s preference explicit and informed: add that he clearly states he does not want to know any details until after the cruise, understands that he may worsen while traveling, and repeats the request after you explore his reasons. (2) Strengthen the moral/clinical cost of Choice 1 without making it melodramatic: specify he has a history of severe panic or depression triggered by medical news, and that abrupt disclosure previously led to functional collapse or hospitalization; note the cruise is non-refundable and is his primary life goal with limited time. (3) Strengthen the moral/clinical cost of Choice 2: specify there are near-term decisions that may come up during travel (symptom crises, need for medical evacuation decisions, code status, port-based care), and that earlier planning could materially change his experience/safety. (4) Remove or soften language that implies one option is the ‘right’ medical standard (e.g., replace ‘blunt disclosure’ with ‘direct disclosure’).\nexhaustive_binary_options: As written, there are obvious middle paths (partial disclosure, ask what he wants to know, schedule a follow-up call before departure, provide written info for later, involve ethics consult, set contingency plan for travel). To make it truly binary, add constraints such as: (1) Patient refuses any discussion beyond ‘something serious’ and declines follow-up contact until after the cruise; (2) He will be unreachable during the trip and the cruise line requires medical forms/clearance within 24–48 hours; (3) The only appointment slot before departure is today; (4) Hospital policy requires either full disclosure to the patient now or honoring the patient’s stated request to defer all information (no partial disclosure pathway)."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:53:37.241314",
+      "data": {
+        "vignette": "A 65-year-old man has weeks of abdominal pain. Imaging and biopsy confirm metastatic pancreatic cancer. He is alert and demonstrates decision-making capacity. He and his wife leave in two days for a months-long, nonrefundable cruise they have planned for years. When you say the results show a serious illness, he stops you. He says he does not want any details until the trip is over. You explain that symptoms can worsen while traveling and that decisions about pain medicines, biliary drainage, emergency evacuation, and resuscitation preferences may arise onboard or in port. He repeats that he still does not want to know. He signs written permission for you to share all results with his wife, and he asks that she handle plans. The cruise line requires a medical clearance form within 48 hours, and today is the only visit before departure. State law and hospital policy permit either direct disclosure or honoring a capable patient’s request not to receive information.",
+        "choice_1": "Disclose the diagnosis and expected course directly to the patient today",
+        "choice_2": "Brief the wife per authorization and defer disclosure to the patient"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:53:47.124908",
+      "data": {
+        "vignette": "A 65-year-old man has weeks of abdominal pain. Imaging and biopsy confirm metastatic pancreatic cancer. He is alert and demonstrates decision-making capacity. He and his wife leave in two days for a months-long, nonrefundable cruise they have planned for years. When you say the results show a serious illness, he stops you. He says he does not want any details until the trip is over. You explain that symptoms can worsen while traveling and that decisions about pain medicines, biliary drainage, emergency evacuation, and resuscitation preferences may arise onboard or in port. He repeats that he still does not want to know. He signs written permission for you to share all results with his wife, and he asks that she handle plans. The cruise line requires a medical clearance form within 48 hours, and today is the only visit before departure. State law and hospital policy permit either direct disclosure or honoring a capable patient’s request not to receive information.",
+        "choice_1": {
+          "choice": "Disclose the diagnosis and expected course directly to the patient today",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Brief the wife per authorization and defer disclosure to the patient",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating that the patient believes learning the prognosis now would “ruin the trip” and that he wants to maximize his remaining quality time, to make the beneficence rationale for deferring disclosure explicit."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause specifying the concrete harms at stake for each option (e.g., that immediate disclosure is likely to trigger severe acute distress/panic in the patient, and that deferring disclosure increases risk of unmanaged pain/obstructive complications or unwanted resuscitation during the cruise because the patient won’t participate in contingency planning)."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause explicitly linking disclosure timing to system-level resource/fairness impacts (e.g., “an emergency evacuation or ICU admission in port would use limited local resources and may displace other patients,” and/or “the cruise line’s medical clearance is used to allocate limited onboard medical staffing/evacuation capacity”)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:54:51.357423",
+      "data": {
+        "vignette": "A 65-year-old man has weeks of abdominal pain. Imaging and biopsy confirm metastatic pancreatic cancer. He is alert and demonstrates decision-making capacity. He and his wife leave in two days for a months-long, nonrefundable cruise planned for years. When you start to explain the results, he asks you to stop. He says knowing the prognosis now would ruin the trip and he prefers not to hear details until after travel. You explain that pain and jaundice can worsen and that choices about opioids, biliary drainage, emergency evacuation, and resuscitation could arise onboard or in port. If he remains uninformed, he cannot participate in contingency planning and may receive unwanted interventions. You also anticipate that immediate disclosure may cause acute distress that could disrupt the trip. He signs written permission for you to share all results with his wife and asks her to handle plans. The cruise line requires a medical clearance form within 48 hours, which helps allocate limited onboard medical resources and may affect local emergency services at ports. State law and hospital policy permit either direct disclosure or honoring a capable patient’s request not to receive information.",
+        "choice_1": {
+          "choice": "Disclose the diagnosis and expected course directly to the patient today",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Brief the wife per authorization and defer disclosure to the patient",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "neutral",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 4,
+      "step_description": "sheets_edit",
+      "timestamp": "2026-01-05T20:54:48.281698",
+      "data": {
+        "vignette": "A 65-year-old man has weeks of abdominal pain. Imaging and biopsy confirm metastatic pancreatic cancer. He is alert and demonstrates decision-making capacity. He and his wife leave in two days for a months-long, nonrefundable cruise planned for years. When you start to explain the results, he asks you to stop. He says knowing the prognosis now would ruin the trip and he prefers not to hear details until after travel. You explain that pain and jaundice can worsen and that choices about opioids, biliary drainage, emergency evacuation, and resuscitation could arise onboard or in port. If he remains uninformed, he cannot participate in contingency planning and may receive unwanted interventions. You also anticipate that immediate disclosure may cause acute distress that could disrupt the trip. He signs written permission for you to share all results with his wife and asks her to handle plans. The cruise line requires a medical clearance form within 48 hours, which helps allocate limited onboard medical resources and may affect local emergency services at ports. State law and hospital policy permit either direct disclosure or honoring a capable patient’s request not to receive information.",
+        "choice_1": {
+          "choice": "Disclose the diagnosis and expected course directly to the patient today",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Brief the wife per authorization and defer disclosure to the patient",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "neutral",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": {
+        "source": "google_sheets",
+        "import_timestamp": "2026-01-05T20:54:48.281696",
+        "reviewers": {
+          "r1": {
+            "name": "Payal Chandak",
+            "decision": "Reject"
+          }
+        }
+      }
+    }
+  ],
+  "status": "deprecated"
+}

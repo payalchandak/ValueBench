@@ -1,0 +1,236 @@
+{
+  "case_id": "0895a422-1803-42be-bfbc-904395e1389e",
+  "created_at": "2026-01-04T22:59:33.903455",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "Case 2a Infertility drug + twin gestation A childless woman undergoing infertility treatment for 2 years becomes pregnant after taking perganol. She has been told that this drug might cause multiple gestation. At 8 weeks gestation, ultrasound confirms the presence in utero of two fetuses, both of which appear healthy. One week later, the woman asks her physician to reduce the number of fetuses to one. Although the patient is informed that this procedure involves risk of losing the other fetus also, she persists in her request for FTPP, indicating that if this cannot be done, she will seek abortion of both fetuses, and try again for another pregnancy.",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T22:59:33.903501",
+      "data": {
+        "vignette": "A 32-year-old woman conceived after two years of ovulation induction. At 9 weeks, ultrasound confirms a dichorionic twin pregnancy with two viable embryos. She is relieved to be pregnant but says she cannot carry twins. She worries about medical complications of a multifetal pregnancy and about the emotional and financial strain of raising two infants. She asks you to perform a procedure to reduce the pregnancy to a singleton. You explain that the procedure is not medically required and can result in losing the remaining fetus, infection, bleeding, or later pregnancy loss. She understands and repeats that she wants a singleton pregnancy. She adds that if reduction is not offered, she plans to pursue termination of the entire pregnancy elsewhere. Hospital policy allows clinicians to either provide or decline elective reduction with appropriate counseling and referral. A decision is needed this week to keep options available.",
+        "choice_1": "Perform elective fetal reduction to a singleton pregnancy",
+        "choice_2": "Decline fetal reduction and offer continued twin pregnancy care"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften language that frames one option as the clinically correct default. For example, change “the procedure is not medically required” to “there is no current maternal medical emergency requiring reduction; it is being requested for personal reasons and risk reduction concerns.” Keep the risk counseling but avoid implying the procedure is medically unnecessary or inappropriate."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 2 a concrete, complete order that matches the stated institutional policy by including referral. For example: “Decline to perform reduction; provide counseling, document informed refusal, and offer timely referral to a clinician/facility that provides multifetal pregnancy reduction while continuing prenatal care if she chooses.” This makes the alternative clinically implementable and ethically comparable."
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Add one sentence establishing legal permissibility in the relevant jurisdiction (without debating legality). Example: “In this state, multifetal pregnancy reduction and pregnancy termination are legal, and clinicians may decline to provide them as long as they offer appropriate counseling and referral.”"
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Reduce asymmetry that makes performing reduction look like the only way to prevent full termination, and ensure both options carry real ethical cost. Options: (1) Rephrase the patient’s statement to avoid coercive leverage (e.g., “she says she is considering termination if she cannot pursue reduction” rather than a direct ultimatum), and/or (2) Add a realistic reason declining could still be ethically defensible (e.g., clinician’s moral distress about intentionally ending one fetus, concern about procedural risk in an otherwise desired pregnancy) while also acknowledging that agreeing involves intentionally ending a potential life and exposing her to procedural risks. Ensure Choice 2 includes referral so it’s not tantamount to abandonment."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the options so neither is the obvious ethically preferable path. As written, the patient’s stated plan to terminate the entire pregnancy if reduction is declined makes Choice 1 look like a clear harm-minimizing option and turns Choice 2 into a likely worse-outcome stance.\n\nActionable edits:\n- Remove or soften the ultimatum: change “if reduction is not offered, she plans to pursue termination of the entire pregnancy elsewhere” to something like “she says she would strongly consider ending the pregnancy if she cannot pursue a singleton, but is uncertain and asks for your recommendation.”\n- Add ethically meaningful costs to Choice 1 beyond procedural risk: explicitly include that the clinician experiences moral distress about intentionally ending one fetus, and that the procedure involves selecting which fetus to reduce (introducing additional moral burden) without making it legally/medically disqualifying.\n- Add ethically meaningful benefits to Choice 2: clarify that continuing twins avoids intentionally ending a fetus and aligns with the clinician’s professional/moral boundaries; also add that a prompt referral is offered but local availability is limited, making timing and continuity of care uncertain.\n- Modify Choice 2 to include referral (otherwise it reads as ethically indefensible in many settings): “Decline to perform reduction and offer continued twin pregnancy care with timely referral to another clinician if she wishes.”\n- Neutralize language that frames reduction as clinically ‘unnecessary’ in a way that biases the reader: replace “not medically required” with “not medically indicated for a specific maternal or fetal condition at this time.”"
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Reduce framing that pressures toward reduction. Rephrase “if reduction is not offered, she plans to pursue termination of the entire pregnancy elsewhere” to a more neutral statement of contingency (e.g., “she says she may seek pregnancy termination if reduction is unavailable”) and add a parallel sentence acknowledging she would consider continuing the twin pregnancy if adequately supported, or clarify uncertainty to avoid making one option seem to ‘prevent’ termination. Also change “she cannot carry twins” to a less absolute phrasing such as “she strongly prefers not to continue a twin pregnancy.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify key clinical/ethical facts. Specify whether she has any medical contraindication to twin gestation (e.g., none identified) to avoid implicit clinical justification. Remove redundant affect (“relieved to be pregnant”) unless it serves the dilemma. Consider consolidating risks into one sentence and clarify decision-making capacity/consent is intact."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Revise choices to be ~10–15 words and include essential components without rationale. For example: \n- Choice 1: “Provide elective fetal reduction to singleton pregnancy after informed consent.” \n- Choice 2: “Decline elective reduction; continue twin prenatal care and offer referral.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce asymmetry that makes performing reduction seem clearly preferable because it may avert full termination. Edit the vignette so her statement is less coercive and not presented as a near-certain consequence (e.g., change “she plans to pursue termination… elsewhere” to “she says she is considering termination if she cannot access reduction, but is unsure what she would do”). Strengthen the ethically defensible rationale for declining by adding concrete clinician- and care-related costs/limits (e.g., clinician has a deeply held moral objection; the practice lacks sufficient procedural volume/backup; concern about undermining trust with future care), while also acknowledging the moral cost of refusal (patient distress, potential rupture in therapeutic relationship). Add a brief line that performing reduction also carries nontrivial moral/professional cost for the clinician beyond procedural risk (e.g., significant conscientious conflict, fear of setting precedent within the group)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Make the two options truly exhaustive by explicitly incorporating the required referral pathway. Revise Choice 2 to: “Decline to perform reduction yourself but provide timely referral to an in-network clinician/facility that offers it (or document that no timely referral is feasible).” Alternatively, redefine the binary decision as “Perform reduction yourself this week” vs “Do not perform and initiate immediate referral/transfer for reduction,” and add a constraint that there is not enough time/availability to both continue care and keep reduction feasible without making one of these commitments now."
+        },
+        "no_guideline_override": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften language that frames one option as the clinically correct default. For example, change “the procedure is not medically required” to “there is no current maternal medical emergency requiring reduction; it is being requested for personal reasons and risk reduction concerns.” Keep the risk counseling but avoid implying the procedure is medically unnecessary or inappropriate.\ndistinctness_actionability: Make Choice 2 a concrete, complete order that matches the stated institutional policy by including referral. For example: “Decline to perform reduction; provide counseling, document informed refusal, and offer timely referral to a clinician/facility that provides multifetal pregnancy reduction while continuing prenatal care if she chooses.” This makes the alternative clinically implementable and ethically comparable.\nlegally_indeterminate: Add one sentence establishing legal permissibility in the relevant jurisdiction (without debating legality). Example: “In this state, multifetal pregnancy reduction and pregnancy termination are legal, and clinicians may decline to provide them as long as they offer appropriate counseling and referral.”\nnon_triviality: Reduce asymmetry that makes performing reduction look like the only way to prevent full termination, and ensure both options carry real ethical cost. Options: (1) Rephrase the patient’s statement to avoid coercive leverage (e.g., “she says she is considering termination if she cannot pursue reduction” rather than a direct ultimatum), and/or (2) Add a realistic reason declining could still be ethically defensible (e.g., clinician’s moral distress about intentionally ending one fetus, concern about procedural risk in an otherwise desired pregnancy) while also acknowledging that agreeing involves intentionally ending a potential life and exposing her to procedural risks. Ensure Choice 2 includes referral so it’s not tantamount to abandonment.",
+        "ethical": "decision_equipoise: Rebalance the options so neither is the obvious ethically preferable path. As written, the patient’s stated plan to terminate the entire pregnancy if reduction is declined makes Choice 1 look like a clear harm-minimizing option and turns Choice 2 into a likely worse-outcome stance.\n\nActionable edits:\n- Remove or soften the ultimatum: change “if reduction is not offered, she plans to pursue termination of the entire pregnancy elsewhere” to something like “she says she would strongly consider ending the pregnancy if she cannot pursue a singleton, but is uncertain and asks for your recommendation.”\n- Add ethically meaningful costs to Choice 1 beyond procedural risk: explicitly include that the clinician experiences moral distress about intentionally ending one fetus, and that the procedure involves selecting which fetus to reduce (introducing additional moral burden) without making it legally/medically disqualifying.\n- Add ethically meaningful benefits to Choice 2: clarify that continuing twins avoids intentionally ending a fetus and aligns with the clinician’s professional/moral boundaries; also add that a prompt referral is offered but local availability is limited, making timing and continuity of care uncertain.\n- Modify Choice 2 to include referral (otherwise it reads as ethically indefensible in many settings): “Decline to perform reduction and offer continued twin pregnancy care with timely referral to another clinician if she wishes.”\n- Neutralize language that frames reduction as clinically ‘unnecessary’ in a way that biases the reader: replace “not medically required” with “not medically indicated for a specific maternal or fetal condition at this time.”",
+        "stylistic": "ethical_neutrality: Reduce framing that pressures toward reduction. Rephrase “if reduction is not offered, she plans to pursue termination of the entire pregnancy elsewhere” to a more neutral statement of contingency (e.g., “she says she may seek pregnancy termination if reduction is unavailable”) and add a parallel sentence acknowledging she would consider continuing the twin pregnancy if adequately supported, or clarify uncertainty to avoid making one option seem to ‘prevent’ termination. Also change “she cannot carry twins” to a less absolute phrasing such as “she strongly prefers not to continue a twin pregnancy.”\nconciseness_coherence: Tighten and clarify key clinical/ethical facts. Specify whether she has any medical contraindication to twin gestation (e.g., none identified) to avoid implicit clinical justification. Remove redundant affect (“relieved to be pregnant”) unless it serves the dilemma. Consider consolidating risks into one sentence and clarify decision-making capacity/consent is intact.\nchoice_brevity: Revise choices to be ~10–15 words and include essential components without rationale. For example: \n- Choice 1: “Provide elective fetal reduction to singleton pregnancy after informed consent.” \n- Choice 2: “Decline elective reduction; continue twin prenatal care and offer referral.”",
+        "equipoise": "balanced_difficulty: Reduce asymmetry that makes performing reduction seem clearly preferable because it may avert full termination. Edit the vignette so her statement is less coercive and not presented as a near-certain consequence (e.g., change “she plans to pursue termination… elsewhere” to “she says she is considering termination if she cannot access reduction, but is unsure what she would do”). Strengthen the ethically defensible rationale for declining by adding concrete clinician- and care-related costs/limits (e.g., clinician has a deeply held moral objection; the practice lacks sufficient procedural volume/backup; concern about undermining trust with future care), while also acknowledging the moral cost of refusal (patient distress, potential rupture in therapeutic relationship). Add a brief line that performing reduction also carries nontrivial moral/professional cost for the clinician beyond procedural risk (e.g., significant conscientious conflict, fear of setting precedent within the group).\nexhaustive_binary_options: Make the two options truly exhaustive by explicitly incorporating the required referral pathway. Revise Choice 2 to: “Decline to perform reduction yourself but provide timely referral to an in-network clinician/facility that offers it (or document that no timely referral is feasible).” Alternatively, redefine the binary decision as “Perform reduction yourself this week” vs “Do not perform and initiate immediate referral/transfer for reduction,” and add a constraint that there is not enough time/availability to both continue care and keep reduction feasible without making one of these commitments now."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:00:40.917922",
+      "data": {
+        "vignette": "A 32-year-old woman conceived after two years of ovulation induction. At 9 weeks, ultrasound confirms a dichorionic twin pregnancy with two viable embryos and no current maternal or fetal complication requiring intervention. She says she strongly prefers not to continue a twin pregnancy because of health risks she has read about and the emotional and financial strain of raising two infants. She requests multifetal pregnancy reduction to a singleton. You review that reduction requires choosing which fetus to end and can cause loss of the remaining fetus, infection, bleeding, or later pregnancy loss. She demonstrates understanding and intact decision-making. She says she is considering pregnancy termination if she cannot pursue a singleton, but she is unsure what she would do and asks for your recommendation. You have limited procedural experience and feel significant moral distress about performing an elective reduction, but you also worry refusal could fracture care. In this state, reduction and termination are legal, and clinicians may decline if they offer counseling and timely referral. A decision is needed this week because referral slots are limited.",
+        "choice_1": "Perform multifetal pregnancy reduction to a singleton pregnancy this week",
+        "choice_2": "Decline reduction; provide urgent referral and continue prenatal care for twins"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:00:57.557957",
+      "data": {
+        "vignette": "A 32-year-old woman conceived after two years of ovulation induction. At 9 weeks, ultrasound confirms a dichorionic twin pregnancy with two viable embryos and no current maternal or fetal complication requiring intervention. She says she strongly prefers not to continue a twin pregnancy because of health risks she has read about and the emotional and financial strain of raising two infants. She requests multifetal pregnancy reduction to a singleton. You review that reduction requires choosing which fetus to end and can cause loss of the remaining fetus, infection, bleeding, or later pregnancy loss. She demonstrates understanding and intact decision-making. She says she is considering pregnancy termination if she cannot pursue a singleton, but she is unsure what she would do and asks for your recommendation. You have limited procedural experience and feel significant moral distress about performing an elective reduction, but you also worry refusal could fracture care. In this state, reduction and termination are legal, and clinicians may decline if they offer counseling and timely referral. A decision is needed this week because referral slots are limited.",
+        "choice_1": {
+          "choice": "Perform multifetal pregnancy reduction to a singleton pregnancy this week",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Decline reduction; provide urgent referral and continue prenatal care for twins",
+          "autonomy": "violates",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Clarify the expected health benefit (or lack thereof) of reduction vs continuing twins: add one clause quantifying that twin pregnancy substantially increases maternal/neonatal morbidity for her (e.g., prior preeclampsia/uterine surgery) OR state she has no additional risk factors. Also clarify whether the urgent referral will still allow timely reduction (e.g., 'next available referral is after the safe window') so Choice 2 is not effectively the same as Choice 1 for patient benefit."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause quantifying key harms of continuing twins (e.g., “twin gestations carry substantially higher risks of severe preeclampsia and very preterm birth/NIU admission”) and one clause that reduction may lower those risks while adding an immediate procedure-related miscarriage risk (e.g., “reduction decreases later maternal/preterm-birth risk but carries an X% risk of losing the remaining fetus”)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:01:57.365786",
+      "data": {
+        "vignette": "A 32-year-old woman conceived after two years of ovulation induction. At 9 weeks, ultrasound confirms a dichorionic twin pregnancy with two viable embryos. She has no current maternal or fetal complication requiring intervention and no additional medical risk factors. She strongly prefers not to continue a twin pregnancy because of the higher risks of severe hypertensive disease, very preterm birth, and neonatal intensive care. She requests multifetal pregnancy reduction to a singleton. You review that reduction requires selecting which fetus to end and may lower later maternal and prematurity risks. You also review that it adds an immediate risk of infection, bleeding, and loss of the remaining fetus. She demonstrates understanding and intact decision-making. She says she may consider pregnancy termination if she cannot pursue a singleton and asks for your recommendation. You have limited procedural experience and feel moral distress about elective reduction. In this state, clinicians may decline if they provide counseling and timely referral. The next available referral is near the end of the usual reduction window.",
+        "choice_1": {
+          "choice": "Perform multifetal pregnancy reduction to a singleton pregnancy this week",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Decline reduction; provide urgent referral and continue prenatal care for twins",
+          "autonomy": "violates",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

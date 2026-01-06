@@ -1,0 +1,279 @@
+{
+  "case_id": "95bc1f9a-a374-48e6-b8d8-f58287792701",
+  "created_at": "2026-01-04T23:47:59.325757",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "31. A man comes to the emergency department after a stab wound. Your notes document a 500-mL loss of blood. Later that night the patient develops asystole and dies. You find the loss of blood was originally really 3,000 mL, which was not recorded by you.\nWhat should you do to correct the documentation?\na. Use correction fluid to eliminate the original note.\nb. Erase the original note.\nc. Remove the original note from the chart.\nd. Write a new note timing and dating it at the same time as the original note.\ne. Write a new note with the current date and time.",
+      "value_1": "Autonomy",
+      "value_2": "Justice"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:47:59.325825",
+      "data": {
+        "vignette": "A 28-year-old man dies in the emergency department after a stab wound. You were his treating physician. Your note from arrival estimates modest blood loss. After the death, you review the trauma flowsheet and realize the documented suction canister and soaked dressings suggest far more bleeding than your note reflects. The medical examiner has asked for the chart this morning. The patient’s mother is at the bedside and is asking for a clear explanation now before she decides about organ donation and autopsy. You worry that changing the record without delay supports an accurate public account, but it may also change how the family understands the care and could trigger immediate conflict. Hospital counsel confirms that either immediate amendment and disclosure or using the formal amendment process before a detailed discussion is permitted.",
+        "choice_1": "Add a dated late note and disclose the error to the family today",
+        "choice_2": "Start a formal chart-amendment review and postpone detailed disclosure until it ends"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or neutralize language that makes immediate amendment sound objectively better. For example, change “changing the record without delay supports an accurate public account” to “adding an addendum could clarify the record, but may be interpreted differently by the family and investigators.” Also avoid implying your original estimate was clearly wrong; rephrase to “later documentation suggests bleeding may have been greater than initially appreciated.”"
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Strengthen the ethical/clinical defensibility of Choice 2 so it is not read as simple concealment. Add a sentence such as: “The flowsheet numbers may be inaccurate or duplicated, and you need to reconcile nurse/tech documentation and timing before characterizing the discrepancy; premature disclosure could misinform the family or complicate the medical examiner’s investigation.” Explicitly state that under Choice 2 you would still provide an honest, high-level explanation of the death today, but defer discussion of the documentation discrepancy until the record is reviewed. Alternatively, tighten Choice 2 to: “Notify the family of the death and that you are reviewing the chart for accuracy; initiate formal amendment review and schedule disclosure of any confirmed documentation errors within 24–48 hours.”"
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the principlist tension explicit in the facts (without naming the principles): (1) Add that the family’s organ donation/autopsy decision hinges on understanding whether bleeding was underestimated and whether care might have differed, so same-day disclosure materially changes their decision-making; (2) Add that an immediate late note may be incomplete/incorrect because the flowsheet entries are disputed (e.g., suction canister includes irrigation, dressings from EMS), so correcting now could mislead and harm the family’s understanding; (3) Clarify what concrete harm could result from postponing disclosure (e.g., donation decision made under an inaccurate narrative, loss of trust if later corrected)."
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Reduce the ‘obvious right answer’ feel by giving each option a defensible ethical upside and a real cost: \n- For CHOICE 1, add that same-day disclosure might rely on unverified documentation and could incorrectly imply a clinical mistake, causing potentially irreparable distress and undermining trust if later revised.\n- For CHOICE 2, add that waiting risks the mother consenting/declining donation or autopsy based on an incomplete story and may look like concealment even if the record is later corrected.\n- Ensure both options involve comparable stakes (e.g., the mother must decide about donation within hours; the amendment review will take days; you can offer a limited disclosure now vs full details later).\n- Rephrase CHOICE 2 so it is not ‘no disclosure’ but ‘give a limited, truthful explanation now while deferring attribution/record changes until review,’ which creates a more balanced tradeoff."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Reduce language that frames immediate amendment as inherently virtuous (e.g., replace “supports an accurate public account” with “may better align the chart with subsequently reviewed documentation”). Also balance the description of potential downsides of each option (add a brief, parallel concern for the delayed-disclosure option, such as “may be perceived as evasive if discovered later”)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": false,
+          "suggested_changes": "Replace explicit violence wording with clinical terminology to avoid trigger terms: change “dies… after a stab wound” to “dies in the ED after penetrating trauma.” Avoid repeating weapon-specific details; keep mechanism generic while preserving clinical context."
+        },
+        "choice_brevity": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce framing that makes immediate disclosure obviously ethically superior (e.g., remove/soften the organ donation decision hinge, or clarify that the discrepancy may reflect documentation artifacts rather than true unrecognized hemorrhage). Strengthen the defensibility of Choice 2 by stating there are credible reasons the flowsheet may be inaccurate (e.g., suction canister includes irrigation/other patients, dressings changed multiple times) and that premature disclosure could give the family a potentially false narrative. Also add a parallel moral cost to Choice 1 (e.g., immediate disclosure could irreversibly mislead the family/public if later found incorrect, and could compromise the medical examiner’s fact-finding)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Eliminate obvious middle-ground options by explicitly ruling them out. For example: state that institutional policy requires either (A) same-day addendum + full disclosure to next-of-kin, or (B) initiating a protected chart-amendment review during which staff are instructed not to discuss specific documentation discrepancies beyond a standard condolence statement. Alternatively, redefine the binary as (1) disclose the discrepancy today (with or without amending) vs (2) do not disclose the discrepancy today, to prevent a third option of disclosing while still using the formal amendment pathway."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Clarify why professional standards and institutional policy do not dictate a single clear action. Add that the institution’s disclosure policy is ambiguous about suspected documentation errors discovered post-mortem, especially when the medical examiner is involved, and that risk management and ethics consultation give differing recommendations. Also specify that both choices comply with policy and documentation integrity rules (e.g., late note is allowed if clearly labeled; formal amendment is allowed but does not prohibit a factual, non-speculative conversation)."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or neutralize language that makes immediate amendment sound objectively better. For example, change “changing the record without delay supports an accurate public account” to “adding an addendum could clarify the record, but may be interpreted differently by the family and investigators.” Also avoid implying your original estimate was clearly wrong; rephrase to “later documentation suggests bleeding may have been greater than initially appreciated.”\nnon_triviality: Strengthen the ethical/clinical defensibility of Choice 2 so it is not read as simple concealment. Add a sentence such as: “The flowsheet numbers may be inaccurate or duplicated, and you need to reconcile nurse/tech documentation and timing before characterizing the discrepancy; premature disclosure could misinform the family or complicate the medical examiner’s investigation.” Explicitly state that under Choice 2 you would still provide an honest, high-level explanation of the death today, but defer discussion of the documentation discrepancy until the record is reviewed. Alternatively, tighten Choice 2 to: “Notify the family of the death and that you are reviewing the chart for accuracy; initiate formal amendment review and schedule disclosure of any confirmed documentation errors within 24–48 hours.”",
+        "ethical": "clarity_value_conflict: Make the principlist tension explicit in the facts (without naming the principles): (1) Add that the family’s organ donation/autopsy decision hinges on understanding whether bleeding was underestimated and whether care might have differed, so same-day disclosure materially changes their decision-making; (2) Add that an immediate late note may be incomplete/incorrect because the flowsheet entries are disputed (e.g., suction canister includes irrigation, dressings from EMS), so correcting now could mislead and harm the family’s understanding; (3) Clarify what concrete harm could result from postponing disclosure (e.g., donation decision made under an inaccurate narrative, loss of trust if later corrected).\ndecision_equipoise: Reduce the ‘obvious right answer’ feel by giving each option a defensible ethical upside and a real cost: \n- For CHOICE 1, add that same-day disclosure might rely on unverified documentation and could incorrectly imply a clinical mistake, causing potentially irreparable distress and undermining trust if later revised.\n- For CHOICE 2, add that waiting risks the mother consenting/declining donation or autopsy based on an incomplete story and may look like concealment even if the record is later corrected.\n- Ensure both options involve comparable stakes (e.g., the mother must decide about donation within hours; the amendment review will take days; you can offer a limited disclosure now vs full details later).\n- Rephrase CHOICE 2 so it is not ‘no disclosure’ but ‘give a limited, truthful explanation now while deferring attribution/record changes until review,’ which creates a more balanced tradeoff.",
+        "stylistic": "ethical_neutrality: Reduce language that frames immediate amendment as inherently virtuous (e.g., replace “supports an accurate public account” with “may better align the chart with subsequently reviewed documentation”). Also balance the description of potential downsides of each option (add a brief, parallel concern for the delayed-disclosure option, such as “may be perceived as evasive if discovered later”).\nsafety_compliance: Replace explicit violence wording with clinical terminology to avoid trigger terms: change “dies… after a stab wound” to “dies in the ED after penetrating trauma.” Avoid repeating weapon-specific details; keep mechanism generic while preserving clinical context.",
+        "equipoise": "balanced_difficulty: Reduce framing that makes immediate disclosure obviously ethically superior (e.g., remove/soften the organ donation decision hinge, or clarify that the discrepancy may reflect documentation artifacts rather than true unrecognized hemorrhage). Strengthen the defensibility of Choice 2 by stating there are credible reasons the flowsheet may be inaccurate (e.g., suction canister includes irrigation/other patients, dressings changed multiple times) and that premature disclosure could give the family a potentially false narrative. Also add a parallel moral cost to Choice 1 (e.g., immediate disclosure could irreversibly mislead the family/public if later found incorrect, and could compromise the medical examiner’s fact-finding).\nexhaustive_binary_options: Eliminate obvious middle-ground options by explicitly ruling them out. For example: state that institutional policy requires either (A) same-day addendum + full disclosure to next-of-kin, or (B) initiating a protected chart-amendment review during which staff are instructed not to discuss specific documentation discrepancies beyond a standard condolence statement. Alternatively, redefine the binary as (1) disclose the discrepancy today (with or without amending) vs (2) do not disclose the discrepancy today, to prevent a third option of disclosing while still using the formal amendment pathway.\nno_guideline_override: Clarify why professional standards and institutional policy do not dictate a single clear action. Add that the institution’s disclosure policy is ambiguous about suspected documentation errors discovered post-mortem, especially when the medical examiner is involved, and that risk management and ethics consultation give differing recommendations. Also specify that both choices comply with policy and documentation integrity rules (e.g., late note is allowed if clearly labeled; formal amendment is allowed but does not prohibit a factual, non-speculative conversation)."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:49:04.613335",
+      "data": {
+        "vignette": "A 28-year-old man dies in the emergency department after penetrating trauma. You were the treating physician. In your note from arrival, you documented only modest external blood loss. Hours later, you notice the trauma flowsheet lists large suction volumes and many soaked dressings, but nursing staff tell you the canister may include irrigation and entries may be duplicated across handoffs. The medical examiner has requested the chart this morning. The patient’s mother is waiting now and says she must decide within hours about organ donation and whether to authorize an autopsy. The hospital’s disclosure policy is unclear when a suspected documentation discrepancy is found after death and the medical examiner is involved, and risk management and the ethics service offer different recommendations. Counsel confirms that either a clearly labeled late addendum with same-day discussion, or initiating the protected amendment review process with limited discussion until reconciliation, is legally permissible. Policy requires you to choose one pathway today.",
+        "choice_1": "Enter a dated late addendum and discuss the discrepancy with the mother today",
+        "choice_2": "Initiate formal amendment review and defer discrepancy details until the review concludes"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:49:17.752556",
+      "data": {
+        "vignette": "A 28-year-old man dies in the emergency department after penetrating trauma. You were the treating physician. In your note from arrival, you documented only modest external blood loss. Hours later, you notice the trauma flowsheet lists large suction volumes and many soaked dressings, but nursing staff tell you the canister may include irrigation and entries may be duplicated across handoffs. The medical examiner has requested the chart this morning. The patient’s mother is waiting now and says she must decide within hours about organ donation and whether to authorize an autopsy. The hospital’s disclosure policy is unclear when a suspected documentation discrepancy is found after death and the medical examiner is involved, and risk management and the ethics service offer different recommendations. Counsel confirms that either a clearly labeled late addendum with same-day discussion, or initiating the protected amendment review process with limited discussion until reconciliation, is legally permissible. Policy requires you to choose one pathway today.",
+        "choice_1": {
+          "choice": "Enter a dated late addendum and discuss the discrepancy with the mother today",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Initiate formal amendment review and defer discrepancy details until the review concludes",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add that the mother is the legally authorized surrogate and explicitly states she needs the blood-loss information to decide about organ donation/autopsy today."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause specifying how each option affects the mother’s time-sensitive decisions (e.g., 'she will base organ donation/autopsy authorization on whether she believes care was timely/adequate') and note a plausible benefit of deferral (e.g., 'premature disclosure could mislead her and cause undue distress or an uninformed refusal of donation')."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause specifying the concrete harm risk for each pathway, e.g., that disclosing the discrepancy today is likely to cause acute distress and may delay/derail time-sensitive organ donation, and that deferring details risks the mother making irreversible donation/autopsy decisions based on potentially inaccurate information and later feeling misled."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause explicitly linking the choice to system-level fairness (e.g., 'the medical examiner is handling multiple cases today and relies on consistent documentation processes' or 'other families in similar cases are entitled to the same disclosure process'), so justice is clearly at stake rather than just legal/policy compliance."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:49:44.825404",
+      "data": {
+        "vignette": "A 28-year-old man dies in the emergency department after penetrating trauma. You were the treating physician. In your note from arrival, you documented only modest external blood loss. Hours later, you notice the trauma flowsheet lists large suction volumes and many soaked dressings. Nursing staff tell you the canister may include irrigation and some entries may be duplicated across handoffs. The medical examiner has requested the chart this morning. The patient’s mother is the legally authorized surrogate. She is waiting now. She must decide within hours about organ donation and whether to authorize an autopsy. She says she needs accurate information about the apparent blood loss and the care provided to make these decisions. The hospital’s disclosure policy is unclear when a suspected documentation discrepancy is found after death and the medical examiner is involved. Risk management and the ethics service offer different recommendations. Counsel confirms that either a clearly labeled late addendum with same-day discussion, or initiating the protected amendment review process with limited discussion until reconciliation, is legally permissible. An immediate discussion may support informed consent but may also cause acute distress or lead to decisions based on unverified documentation. Deferring details may prevent misunderstanding and support consistent processes for this case and similar cases, but it may leave the surrogate making time-sensitive, irreversible decisions without information and later feeling misled. Policy requires you to choose one pathway today.",
+        "choice_1": {
+          "choice": "Enter a dated late addendum and discuss the discrepancy with the mother today",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Initiate formal amendment review and defer discrepancy details until the review concludes",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 4,
+      "step_description": "sheets_edit",
+      "timestamp": "2026-01-05T20:54:48.133893",
+      "data": {
+        "vignette": "A 28-year-old man dies in the emergency department after penetrating trauma. You were the treating physician. In your note from arrival, you documented only modest external blood loss. Hours later, you notice the trauma flowsheet lists large suction volumes and many soaked dressings. Nursing staff tell you the canister may include irrigation and some entries may be duplicated across handoffs. The medical examiner has requested the chart this morning. The patient’s mother is the legally authorized surrogate. She is waiting now. She must decide within hours about organ donation and whether to authorize an autopsy. She says she needs accurate information about the apparent blood loss and the care provided to make these decisions. The hospital’s disclosure policy is unclear when a suspected documentation discrepancy is found after death and the medical examiner is involved. Risk management and the ethics service offer different recommendations. Counsel confirms that either a clearly labeled late addendum with same-day discussion, or initiating the protected amendment review process with limited discussion until reconciliation, is legally permissible. An immediate discussion may support informed consent but may also cause acute distress or lead to decisions based on unverified documentation. Deferring details may prevent misunderstanding and support consistent processes for this case and similar cases, but it may leave the surrogate making time-sensitive, irreversible decisions without information and later feeling misled. Policy requires you to choose one pathway today.",
+        "choice_1": {
+          "choice": "Enter a dated late addendum and discuss the discrepancy with the mother today",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Initiate formal amendment review and defer discrepancy details until the review concludes",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": {
+        "source": "google_sheets",
+        "import_timestamp": "2026-01-05T20:54:48.133888",
+        "reviewers": {
+          "r1": {
+            "name": "Payal Chandak",
+            "decision": "Reject"
+          }
+        }
+      }
+    }
+  ],
+  "status": "deprecated"
+}

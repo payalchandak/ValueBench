@@ -1,0 +1,279 @@
+{
+  "case_id": "6544c01a-b937-425b-8a17-5c5bedca5992",
+  "created_at": "2026-01-04T23:53:10.293923",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 27:\nCONSENT AND HIV\nScenario 1\nA newly qualified nurse is cannulating a very intoxicated patient in the Accident and\nEmergency department (A&E). She misses the vein on the first attempt and whilst trying\nagain the patient moves his arm away and she stabs the end of the cannula in her finger. The\nnurse washes her wound out for 10 minutes under running water and then goes to speak to\nthe sister in charge about the needlestick injury policy.\n\nScenario 2\nA homosexual man presents to his GP over a period of months with multiple different infec-\ntions. The first few occasions he is treated with antibiotics or antifungals. On his fourth\nappointment he expresses concern that he keeps getting ill and has lost a bit of weight. He\nwould like to know whether there is anything else causing these infections other than being\nbusy and having a stressful job with a poor work–life balance. The GP agrees to do some\nblood tests but does not elaborate on what she is testing for.\n\nScenario 3\nA 24-year-old male has attended his local A&E department following a minor injury on a\nnight out. He thinks he may have broken his ankle and is requesting an X-ray. The triage\nnurse also mentions that they are doing routine HIV screening for every A&E attendee and\nwould like to know whether he would like a test.\n\nQuestions\n• What should be done in the above scenarios?\n• Should specific consent be needed for HIV testing?",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:53:10.293971",
+      "data": {
+        "vignette": "A 32-year-old man sees his GP for the fourth time in six months with oral thrush, shingles, and persistent fatigue. He has lost weight and says he is worried “something is wrong,” but he asks for “basic blood tests” and does not mention sexual history. The GP’s differential includes HIV, and early diagnosis would change treatment and counseling. The patient seems anxious and has previously avoided discussions he felt were “judgmental.” He has just started a job that will send him out of town for months, and today is the last visit before he leaves. The clinic’s consent form covers routine lab testing, and clinic policy allows clinicians either to include HIV in a broader infectious workup under general consent or to obtain specific consent after discussion; both approaches are legally permissible. The GP must decide how to proceed with testing today.",
+        "choice_1": "Order an HIV test within the blood panel without explicitly naming it.",
+        "choice_2": "Explain HIV testing and obtain specific consent before ordering any HIV test."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Strengthen clinical and ethical defensibility of BOTH options so neither seems like an obvious wrong answer. Specifically: (1) Add a sentence that HIV testing is a standard-of-care part of the infectious workup for recurrent thrush/shingles/weight loss, and that the clinic’s general consent explicitly lists HIV as potentially included in ‘infectious disease screening’ (or that patients are given an opt-out mechanism), to make Choice 1 plausibly within accepted practice. (2) Add concrete potential harms of Choice 1 beyond ‘deception’—e.g., if positive, receiving an unexpected result could cause acute distress, loss of trust, or avoidance of care; if negative, he may later feel violated on learning it was done. (3) Add concrete potential harms of Choice 2—e.g., prior experiences with stigma make him likely to refuse or disengage if HIV is raised; leaving town means delayed diagnosis and missed opportunity to start treatment and reduce transmission risk. (4) Consider tightening Choice 2 wording to ‘Discuss HIV testing today and, if he declines, proceed with other labs and document refusal,’ to keep it a realistic, defensible clinician action."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Strengthen the ethical defensibility of Choice 1 and the ethical costs of Choice 2 so neither reads as the obvious ‘right’ answer.\n\nConcrete edits:\n- Reframe Choice 1 to reduce the appearance of deception: change to “Include HIV as part of the clinic’s standard infectious workup under general consent today, and plan a nonjudgmental discussion of why it was included when results return (with clear follow-up arranged).”\n- Add a forcing mechanism that makes Choice 2 ethically costly: explicitly state that prior attempts at sensitive-history discussions led him to shut down/decline testing, and that if HIV is raised today he is likely to refuse all labs and leave, with no reliable follow-up while traveling.\n- Add a near-term clinical consequence of delayed diagnosis that is not purely probabilistic (e.g., he is about to start a short course of systemic steroids for severe shingles/another condition, or is being considered for a medication where untreated HIV materially changes safety/monitoring), making same-day knowledge genuinely important.\n- Add a parallel moral cost to Choice 1: specify that the patient has previously expressed strong preferences about what tests he wants (e.g., ‘no STI testing without telling me’) or has trauma around stigmatizing care, so undisclosed testing risks serious loss of trust and could deter future care even if clinically beneficial.\nThese changes create a balanced tradeoff: Choice 1 better preserves access to timely diagnosis/care at the cost of transparency/trust; Choice 2 better preserves informed choice and relational trust at the cost of potentially losing the patient to follow-up and missing a time-sensitive clinical opportunity."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or neutralize language that frames the patient as difficult or the clinician as biased. For example, change “previously avoided discussions he felt were ‘judgmental’” to “has previously declined detailed sexual history discussions.” Replace “seems anxious” with a neutral observation such as “appears worried about his symptoms.” Avoid implying one approach is preferable by rephrasing “early diagnosis would change treatment and counseling” to “a diagnosis would change near-term management and counseling options.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": false,
+          "suggested_changes": "Increase novelty beyond a common ‘HIV test without explicit consent’ template by adding a specific, realistic institutional context and slightly different clinical trigger while preserving the core diagnosis suspicion. For example: specify the setting (e.g., community sexual health–adjacent GP clinic vs rural practice), clarify prior workup already done (CBC/CMP/TSH normal), and adjust the presentation details to be less canonical (e.g., recurrent oral candidiasis plus unexplained lymphadenopathy rather than thrush + shingles). Avoid phrasing that mirrors standard ethics teaching cases; rewrite sentences in a more clinical-handover style."
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Tighten choices to 10–15 neutral words without extra qualifiers. For example:\n- Choice 1: “Order HIV testing as part of today’s infectious workup under general consent.”\n- Choice 2: “Discuss HIV testing explicitly and obtain specific consent before ordering it.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 1 more ethically/clinically defensible so it isn’t an obvious autonomy violation. For example: (1) State this health system uses opt‑out infectious disease screening where HIV is routinely included unless the patient declines; (2) Have the patient explicitly request “any tests you think are needed” while also stating he does not want to discuss sexual history today and becomes distressed when HIV is named; (3) Add a realistic harm from naming HIV today (e.g., he is likely to refuse all testing and leave, and he will be unreachable for months), so beneficence/non‑maleficence plausibly compete with informed consent."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close off obvious middle options. Clarify that: (1) the lab draw must be ordered today or he will not have access to testing while traveling; (2) he will have limited/unsafe communication access so you cannot do pretest counseling or obtain consent later by phone/telehealth; (3) referral, self-testing, or deferred testing are not feasible before departure. Then explicitly state the GP must either include HIV under general consent today without naming it vs. name it and risk losing consent/testing today."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, professional norms typically favor informing patients when ordering HIV testing; this risks a guideline/professional-standard override. Add context that makes guidance genuinely ambiguous in this jurisdiction/clinic: e.g., local regulations and major professional bodies endorse opt‑out HIV screening under general consent in primary care, while other institutional ethics guidance encourages explicit discussion for stigmatized tests; or note conflicting institutional policies (patient-experience policy vs. public-health screening protocol). Explicitly state why existing standards don’t resolve whether explicit naming is required in this specific situation."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "non_triviality: Strengthen clinical and ethical defensibility of BOTH options so neither seems like an obvious wrong answer. Specifically: (1) Add a sentence that HIV testing is a standard-of-care part of the infectious workup for recurrent thrush/shingles/weight loss, and that the clinic’s general consent explicitly lists HIV as potentially included in ‘infectious disease screening’ (or that patients are given an opt-out mechanism), to make Choice 1 plausibly within accepted practice. (2) Add concrete potential harms of Choice 1 beyond ‘deception’—e.g., if positive, receiving an unexpected result could cause acute distress, loss of trust, or avoidance of care; if negative, he may later feel violated on learning it was done. (3) Add concrete potential harms of Choice 2—e.g., prior experiences with stigma make him likely to refuse or disengage if HIV is raised; leaving town means delayed diagnosis and missed opportunity to start treatment and reduce transmission risk. (4) Consider tightening Choice 2 wording to ‘Discuss HIV testing today and, if he declines, proceed with other labs and document refusal,’ to keep it a realistic, defensible clinician action.",
+        "ethical": "decision_equipoise: Strengthen the ethical defensibility of Choice 1 and the ethical costs of Choice 2 so neither reads as the obvious ‘right’ answer.\n\nConcrete edits:\n- Reframe Choice 1 to reduce the appearance of deception: change to “Include HIV as part of the clinic’s standard infectious workup under general consent today, and plan a nonjudgmental discussion of why it was included when results return (with clear follow-up arranged).”\n- Add a forcing mechanism that makes Choice 2 ethically costly: explicitly state that prior attempts at sensitive-history discussions led him to shut down/decline testing, and that if HIV is raised today he is likely to refuse all labs and leave, with no reliable follow-up while traveling.\n- Add a near-term clinical consequence of delayed diagnosis that is not purely probabilistic (e.g., he is about to start a short course of systemic steroids for severe shingles/another condition, or is being considered for a medication where untreated HIV materially changes safety/monitoring), making same-day knowledge genuinely important.\n- Add a parallel moral cost to Choice 1: specify that the patient has previously expressed strong preferences about what tests he wants (e.g., ‘no STI testing without telling me’) or has trauma around stigmatizing care, so undisclosed testing risks serious loss of trust and could deter future care even if clinically beneficial.\nThese changes create a balanced tradeoff: Choice 1 better preserves access to timely diagnosis/care at the cost of transparency/trust; Choice 2 better preserves informed choice and relational trust at the cost of potentially losing the patient to follow-up and missing a time-sensitive clinical opportunity.",
+        "stylistic": "ethical_neutrality: Remove or neutralize language that frames the patient as difficult or the clinician as biased. For example, change “previously avoided discussions he felt were ‘judgmental’” to “has previously declined detailed sexual history discussions.” Replace “seems anxious” with a neutral observation such as “appears worried about his symptoms.” Avoid implying one approach is preferable by rephrasing “early diagnosis would change treatment and counseling” to “a diagnosis would change near-term management and counseling options.”\ndeidentification_novelty: Increase novelty beyond a common ‘HIV test without explicit consent’ template by adding a specific, realistic institutional context and slightly different clinical trigger while preserving the core diagnosis suspicion. For example: specify the setting (e.g., community sexual health–adjacent GP clinic vs rural practice), clarify prior workup already done (CBC/CMP/TSH normal), and adjust the presentation details to be less canonical (e.g., recurrent oral candidiasis plus unexplained lymphadenopathy rather than thrush + shingles). Avoid phrasing that mirrors standard ethics teaching cases; rewrite sentences in a more clinical-handover style.\nchoice_brevity: Tighten choices to 10–15 neutral words without extra qualifiers. For example:\n- Choice 1: “Order HIV testing as part of today’s infectious workup under general consent.”\n- Choice 2: “Discuss HIV testing explicitly and obtain specific consent before ordering it.”",
+        "equipoise": "balanced_difficulty: Make Choice 1 more ethically/clinically defensible so it isn’t an obvious autonomy violation. For example: (1) State this health system uses opt‑out infectious disease screening where HIV is routinely included unless the patient declines; (2) Have the patient explicitly request “any tests you think are needed” while also stating he does not want to discuss sexual history today and becomes distressed when HIV is named; (3) Add a realistic harm from naming HIV today (e.g., he is likely to refuse all testing and leave, and he will be unreachable for months), so beneficence/non‑maleficence plausibly compete with informed consent.\nexhaustive_binary_options: Close off obvious middle options. Clarify that: (1) the lab draw must be ordered today or he will not have access to testing while traveling; (2) he will have limited/unsafe communication access so you cannot do pretest counseling or obtain consent later by phone/telehealth; (3) referral, self-testing, or deferred testing are not feasible before departure. Then explicitly state the GP must either include HIV under general consent today without naming it vs. name it and risk losing consent/testing today.\nno_guideline_override: As written, professional norms typically favor informing patients when ordering HIV testing; this risks a guideline/professional-standard override. Add context that makes guidance genuinely ambiguous in this jurisdiction/clinic: e.g., local regulations and major professional bodies endorse opt‑out HIV screening under general consent in primary care, while other institutional ethics guidance encourages explicit discussion for stigmatized tests; or note conflicting institutional policies (patient-experience policy vs. public-health screening protocol). Explicitly state why existing standards don’t resolve whether explicit naming is required in this specific situation."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:54:27.935446",
+      "data": {
+        "vignette": "A 32-year-old man presents to a community GP clinic with a third episode of oral candidiasis, new tender cervical nodes, and fatigue with unintentional weight loss. Prior basic labs (CBC, CMP, TSH) were normal. He asks for “whatever blood tests you think are needed,” but says he does not want to discuss sexual history or “STI topics” today. At a prior visit he stated he did not want any STI testing “unless you tell me first.” The clinician is considering prescribing a short course of oral steroids for severe zoster-related pain before the patient leaves for months of remote work with unreliable phone access. In this health system, recurrent-infection panels routinely include HIV as opt‑out testing, and the general consent form lists HIV under infectious disease screening. Patient-experience guidance encourages explicit discussion for stigmatized tests, but public-health protocols support opt‑out screening; both approaches are legally permissible. The blood draw must be ordered today, and follow-up counseling cannot be done before departure.",
+        "choice_1": "Order HIV testing today under opt-out general consent as part of the workup.",
+        "choice_2": "Discuss HIV testing explicitly; order it only if he gives specific consent."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:54:46.397081",
+      "data": {
+        "vignette": "A 32-year-old man presents to a community GP clinic with a third episode of oral candidiasis, new tender cervical nodes, and fatigue with unintentional weight loss. Prior basic labs (CBC, CMP, TSH) were normal. He asks for “whatever blood tests you think are needed,” but says he does not want to discuss sexual history or “STI topics” today. At a prior visit he stated he did not want any STI testing “unless you tell me first.” The clinician is considering prescribing a short course of oral steroids for severe zoster-related pain before the patient leaves for months of remote work with unreliable phone access. In this health system, recurrent-infection panels routinely include HIV as opt‑out testing, and the general consent form lists HIV under infectious disease screening. Patient-experience guidance encourages explicit discussion for stigmatized tests, but public-health protocols support opt‑out screening; both approaches are legally permissible. The blood draw must be ordered today, and follow-up counseling cannot be done before departure.",
+        "choice_1": {
+          "choice": "Order HIV testing today under opt-out general consent as part of the workup.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Discuss HIV testing explicitly; order it only if he gives specific consent.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that the clinician does not tell him HIV is included in the panel (so he has no real opportunity to opt out before the blood draw), despite his prior request to be told first."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that an HIV result today would directly change near-term care (e.g., avoid/modify steroids and arrange urgent linkage/ART before he leaves), and that delaying/omitting testing until after departure is likely to miss diagnosis and worsen prognosis."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a brief clause specifying concrete harms on each side (e.g., that a positive HIV result will auto-release to the patient portal with no pre/post-test counseling while he is remote, and that giving steroids without knowing HIV status could materially increase risk of disseminated infection/serious adverse outcomes)."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause clarifying that the system’s opt‑out HIV testing policy is specifically intended to ensure equitable, standardized screening (so exempting him would create inconsistent access/public‑health gaps), or note that missing the test today could delay reportable-disease interventions (partner notification/PrEP linkage) with population-level consequences."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:55:54.568639",
+      "data": {
+        "vignette": "A 32-year-old man presents to a community GP clinic with a third episode of oral candidiasis, new tender cervical nodes, and fatigue with unintentional weight loss. Prior basic labs (CBC, CMP, TSH) were normal. He asks for whatever blood tests are needed, but says he does not want to discuss sexual history or STI topics today. At a prior visit, he stated he did not want any STI testing unless he was told first. The clinician is considering prescribing a short course of oral steroids for severe zoster-related pain before the patient leaves for months of remote work with unreliable phone access. In this health system, recurrent-infection panels routinely include HIV as opt-out testing, and the general consent form lists HIV under infectious disease screening. The clinician could order the panel today without telling him HIV is included, leaving him no practical opportunity to opt out before the blood draw. A positive result today would change near-term care by avoiding or modifying steroids and arranging urgent linkage and antiretroviral therapy before departure. Results auto-release to the patient portal, and follow-up counseling cannot occur before he leaves. The opt-out policy is intended to standardize access to screening and trigger timely public-health partner services.",
+        "choice_1": {
+          "choice": "Order HIV testing today under opt-out general consent as part of the workup.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Discuss HIV testing explicitly; order it only if he gives specific consent.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "neutral",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 4,
+      "step_description": "sheets_edit",
+      "timestamp": "2026-01-05T20:54:48.235941",
+      "data": {
+        "vignette": "A 32-year-old man presents to a community GP clinic with a third episode of oral candidiasis, new tender cervical nodes, and fatigue with unintentional weight loss. Prior basic labs (CBC, CMP, TSH) were normal. He asks for whatever blood tests are needed, but says he does not want to discuss sexual history or STI topics today. At a prior visit, he stated he did not want any STI testing unless he was told first. The clinician is considering prescribing a short course of oral steroids for severe zoster-related pain before the patient leaves for months of remote work with unreliable phone access. In this health system, recurrent-infection panels routinely include HIV as opt-out testing, and the general consent form lists HIV under infectious disease screening. The clinician could order the panel today without telling him HIV is included, leaving him no practical opportunity to opt out before the blood draw. A positive result today would change near-term care by avoiding or modifying steroids and arranging urgent linkage and antiretroviral therapy before departure. Results auto-release to the patient portal, and follow-up counseling cannot occur before he leaves. The opt-out policy is intended to standardize access to screening and trigger timely public-health partner services.",
+        "choice_1": {
+          "choice": "Order HIV testing today under opt-out general consent as part of the workup.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Discuss HIV testing explicitly; order it only if he gives specific consent.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "neutral",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": {
+        "source": "google_sheets",
+        "import_timestamp": "2026-01-05T20:54:48.235938",
+        "reviewers": {
+          "r1": {
+            "name": "Payal Chandak",
+            "decision": "Reject"
+          }
+        }
+      }
+    }
+  ],
+  "status": "deprecated"
+}

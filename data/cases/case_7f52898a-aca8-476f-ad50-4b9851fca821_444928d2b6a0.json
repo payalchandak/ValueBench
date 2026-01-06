@@ -1,0 +1,242 @@
+{
+  "case_id": "7f52898a-aca8-476f-ad50-4b9851fca821",
+  "created_at": "2026-01-04T23:02:55.164930",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 7:\nRIGHTS AND DUTIES\nXavier is a 72-year-old man who is admitted to the intensive care unit where you are an FY1. He was clearing out a gutter when he fell off the ladder and hit his head on the pavement. Passers-by immediately called an ambulance, and he was taken straight to theatre, where a large subdural haematoma was drained. Subsequent tests indicate that he fell from his ladder because he suffered a massive myocardial infarction. He has yet to recover consciousness, and it is thought that he has had irreparable brain damage due to anoxia. He is married and has three sons. His eldest son works as a radiographer in the hospital. His second son is an evangelist with the Pentecostal church, is married and has three young children. His youngest son is travelling around Australia. The intensive care unit has a family room, which has been taken over by Xavier’s family. It is also constantly filled with well-wishers from the church who hold prayer and song meetings around the clock. Relatives of other patients are complaining about the lack of access to the family room and the noise levels. However, when the senior staff nurse asks them to keep the noise down, Xavier’s son threatens the hospital with legal action for religious discrimination. He also says that the hospital is impeding the chances of his father’s recovery because if they cannot hold a prayer meeting, the hospital is preventing the possibility of a miracle from God. Despite full active medical treatment and round-the-clock prayers, Xavier makes no improvement over the next 6 weeks. The medical team decides to discuss the possibility of allowing him to die in peace by withdrawing supportive medical intervention. He has multi-organ failure and has not regained consciousness. Xavier’s wife and one son refuse point blank to allow this to happen and insist that everything be done for him, including resuscitation. The staff on the unit are becoming upset that Xavier is not being allowed to die with peace and dignity. \nXavier’s eldest son supports the advice of the medical team and attempts to discuss it with his brother and mother. However, they threaten him with becoming a family outcast and divine retribution. They also continue to threaten the hospital with lawsuits as they do not believe that Xavier is being cared for properly. No joint decision is ever made, and after 11 weeks Xavier has a cardiac arrest and dies following a 60-minute cycle of resuscitation.\nQuestions\n• What are ‘rights’ and ‘duties’?\n• What is the difference between positive and negative rights?\n• Who has ‘rights’ in the above scenario?",
+      "value_1": "Non-maleficence",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:02:55.164977",
+      "data": {
+        "vignette": "A 72-year-old man is in the ICU after a fall caused by a large heart attack. A subdural hematoma was evacuated emergently. He has remained unconscious since surgery. Imaging and exam suggest severe anoxic brain injury, and he now has worsening kidney failure and shock requiring escalating organ support. The team is being asked today to proceed with a tracheostomy and feeding tube and to clarify whether he should receive CPR if he arrests. His wife and one son insist that all life-sustaining treatment continue, including resuscitation, and they believe recovery is still possible. Another son on staff agrees with the clinicians that further invasive treatment may only prolong dying. Hospital policy and state law permit either continuing life support or withdrawing it after an interdisciplinary review in this situation. You are the attending responsible for the plan.",
+        "choice_1": "Continue full life-sustaining treatment, including tracheostomy and CPR if needed",
+        "choice_2": "Transition to comfort-focused care and place a do-not-resuscitate order"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften language that implies medical futility/inevitability and makes one option clinically ‘correct.’ For example: change “severe anoxic brain injury” + “may only prolong dying” to more neutral, uncertainty-preserving phrasing such as “diffuse anoxic brain injury with a poor neurologic prognosis; meaningful recovery is considered unlikely, but prognosis is not certain.” Avoid framing comfort care as the medically appropriate endpoint. Keep risks/downsides of both pathways (e.g., burdens/complications of trach/PEG vs risk of potentially shortening life by withdrawal)."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make the orders concrete and mutually exclusive. Specify whether the decision includes (a) perform tracheostomy now vs forgo tracheostomy and continue current endotracheal ventilation for a defined trial, OR (b) trach/PEG vs extubation/withdrawal of pressors. Also, “transition to comfort-focused care and place a DNR” conflates two separable orders—either explicitly bundle them as a single plan (DNR + no trach/PEG + withdrawal of organ support) or keep the binary decision to one domain (code status OR long-term life support)."
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove extraneous/biased details and add missing decision-relevant specifics. Cut “another son on staff” unless his role affects decision-making authority; instead clarify who is the legal surrogate/health care proxy and whether there is an advance directive or prior expressed wishes about prolonged life support. Add timing/constraint that forces trach/PEG decision (e.g., “ENT can do trach tomorrow; prolonged translaryngeal intubation is becoming unsafe” or “the ICU requires a decision before day X”). Clarify current supports (ventilator, vasopressors, dialysis/CRRT) and whether withdrawal would include stopping these. Clarify patient’s baseline function/values only if known and relevant."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Improve medical coherence: a fall ‘caused by a large heart attack’ is unclear—rephrase to “collapsed from an acute myocardial infarction, sustained head trauma in the fall.” If he is in shock with escalating organ support and worsening renal failure, specify whether he is on mechanical ventilation already (likely) and what ‘organ support’ entails. If neurologic prognosis is based on imaging/exam, briefly name plausible findings (e.g., diffuse cerebral edema, absent brainstem reflexes/somatosensory evoked potentials) without over-claiming certainty. Ensure trach/PEG timing fits ICU course (typically considered after days of intubation)."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "The sentence helps but is still vague. Add a brief, realistic legal/process safeguard: e.g., “State law permits withdrawal of life-sustaining treatment over surrogate objection after ethics consult and a second attending’s concurrence, provided comfort measures continue” OR “Hospital policy allows either continued full support or compassionate extubation when the legal surrogate consents; absent consensus, a time-limited trial and re-evaluation is permitted.” Ensure both options clearly remain within standard legal pathways and clarify who has decision authority."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 is strongly supported by the narrative (‘only prolong dying’), making the case feel like a futility scenario with an obvious answer. To restore genuine ethical difficulty, add credible reasons to continue (e.g., uncertain neurologic prognosis early after arrest/sedation, patient previously expressed desire to ‘fight’ for time, potential for dialysis/vasopressors to stabilize enough for prognostic clarity) AND credible harms of continuing (e.g., high burden, complications of trach/PEG, prolonged dependence, suffering). Alternatively, make it a time-limited trial vs transition now (both defensible) rather than full support indefinitely vs comfort care now."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the case so continuing treatment is not obviously medically/ethically inferior. Edits: (1) Soften the prognosis language: replace “severe anoxic brain injury” and “may only prolong dying” with “findings concerning for significant anoxic injury; prognosis for regaining independent function is poor but not certain, and meaningful recovery is still possible though likely with major disability.” (2) Add a concrete reason tracheostomy/PEG is being proposed as a potentially beneficial bridge (e.g., he is stable enough to survive the procedures and could survive weeks to months if supported). (3) Remove or neutralize the clinician-leaning family member: delete “another son on staff agrees with the clinicians…” or clarify he is not involved in care and his view is based on prior conversations rather than clinician alignment. (4) Add patient-values ambiguity that cuts both ways (no advance directive; prior statements include both ‘never live on machines’ and ‘do everything if there’s a chance’), making either course defensible. (5) Clarify the ethical crux about authority: specify wife is the legal surrogate and insists on full code, while the team believes CPR would be medically non-beneficial; the binary choice becomes whether to honor surrogate request for full code vs institute a DNR/comfort-focused plan over objection after ethics/interdisciplinary review."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove value-laden/leading phrasing that nudges toward withdrawal. Replace “large heart attack” with “acute myocardial infarction.” Replace “further invasive treatment may only prolong dying” with a neutral description such as “clinicians are concerned further invasive procedures are unlikely to restore consciousness and would prolong dependence on life support.” Replace “insist” with “request” or “prefer.” Avoid “recovery is still possible” unless framed as family’s understanding; e.g., “family believes meaningful recovery remains possible despite clinicians’ assessment.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Clarify timeline and mechanism: a fall is unlikely to be ‘caused by a large heart attack’ without explanation. Revise to either (a) “He collapsed from an acute myocardial infarction, sustained head trauma, and required emergent evacuation…” or (b) separate the events. Specify current supports briefly (e.g., ‘vasopressors, mechanical ventilation, renal replacement therapy being considered’) without ‘escalating organ support’ vagueness. Remove potentially distracting detail that ‘another son is on staff’ unless it materially changes decision-making; if kept, clarify his role and conflict-of-interest handling."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Tighten each option to ~10–15 words and keep parallel structure. Example:\n- Choice 1: “Proceed with tracheostomy and feeding tube; maintain full code status.”\n- Choice 2: “Do not place tracheostomy/feeding tube; transition to comfort care and DNR.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance clinical framing so neither option looks medically/ethically dominant. Currently the vignette strongly signals futility (\"severe anoxic brain injury,\" worsening shock, escalating organ support) and uses value-laden wording (\"only prolong dying\"), making comfort care/DNR seem clearly preferable. Edits: (1) Replace prognosis language with uncertainty: e.g., \"neurologic exam is limited by sedation; imaging is concerning but not definitive; earliest reliable prognostication is in 48–72 hours\" and \"organ failure may be reversible.\" (2) Add a concrete, ethically weighty cost to withdrawing today (e.g., family reports the patient previously expressed a strong desire for maximal life-prolonging treatment or has deeply held religious objections; or withdrawal would occur before the standard prognostic window). (3) Add a concrete cost to continuing (e.g., trach/PEG likely commits him to long-term institutional care with profound disability; burdensome interventions; moral distress/staff concerns), but avoid implying it is clearly pointless."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "The binary is not exhaustive because several realistic intermediate paths exist (time-limited trial, proceed with trach/PEG but make CPR DNR, defer trach/PEG while continuing current support pending prognostication/ethics review). Fix by explicitly ruling out or collapsing these alternatives: (1) State that he must be taken to the OR today for tracheostomy/PEG or the window closes (e.g., airway instability/ET tube complications, OR slot constraints), and that delaying 48–72 hours is not feasible. (2) Clarify that hospital policy requires code status to match the overall goal of care in this unit for this situation (i.e., you cannot order DNR while also pursuing trach/PEG), or explicitly state the family insists on both trach/PEG and full code with no compromise acceptable. (3) Specify that an interdisciplinary review has already occurred and produced no consensus, so the decision cannot be deferred to ethics/committee."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, the case risks being resolved by standard surrogate-decision and CPR-futility norms unless you explain why they do not settle it. Add: (1) The patient has no advance directive/POLST and prior wishes are ambiguous or conflicting, so substituted judgment cannot be clearly applied. (2) Clarify that local law/policy does not permit unilateral DNR based on perceived futility and that either course (continue or withdraw) is permissible after review, which has already been completed; include a sentence that clinicians disagree about whether prognosis meets any institutional threshold for nonbeneficial CPR. (3) Avoid introducing facts that would trigger mandatory pathways (e.g., brain death, clear criteria for withdrawal); explicitly state he is not brain-dead and does not meet any automatic policy trigger."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften language that implies medical futility/inevitability and makes one option clinically ‘correct.’ For example: change “severe anoxic brain injury” + “may only prolong dying” to more neutral, uncertainty-preserving phrasing such as “diffuse anoxic brain injury with a poor neurologic prognosis; meaningful recovery is considered unlikely, but prognosis is not certain.” Avoid framing comfort care as the medically appropriate endpoint. Keep risks/downsides of both pathways (e.g., burdens/complications of trach/PEG vs risk of potentially shortening life by withdrawal).\ndistinctness_actionability: Make the orders concrete and mutually exclusive. Specify whether the decision includes (a) perform tracheostomy now vs forgo tracheostomy and continue current endotracheal ventilation for a defined trial, OR (b) trach/PEG vs extubation/withdrawal of pressors. Also, “transition to comfort-focused care and place a DNR” conflates two separable orders—either explicitly bundle them as a single plan (DNR + no trach/PEG + withdrawal of organ support) or keep the binary decision to one domain (code status OR long-term life support).\nkey_information: Remove extraneous/biased details and add missing decision-relevant specifics. Cut “another son on staff” unless his role affects decision-making authority; instead clarify who is the legal surrogate/health care proxy and whether there is an advance directive or prior expressed wishes about prolonged life support. Add timing/constraint that forces trach/PEG decision (e.g., “ENT can do trach tomorrow; prolonged translaryngeal intubation is becoming unsafe” or “the ICU requires a decision before day X”). Clarify current supports (ventilator, vasopressors, dialysis/CRRT) and whether withdrawal would include stopping these. Clarify patient’s baseline function/values only if known and relevant.\nclinical_plausibility: Improve medical coherence: a fall ‘caused by a large heart attack’ is unclear—rephrase to “collapsed from an acute myocardial infarction, sustained head trauma in the fall.” If he is in shock with escalating organ support and worsening renal failure, specify whether he is on mechanical ventilation already (likely) and what ‘organ support’ entails. If neurologic prognosis is based on imaging/exam, briefly name plausible findings (e.g., diffuse cerebral edema, absent brainstem reflexes/somatosensory evoked potentials) without over-claiming certainty. Ensure trach/PEG timing fits ICU course (typically considered after days of intubation).\nlegally_indeterminate: The sentence helps but is still vague. Add a brief, realistic legal/process safeguard: e.g., “State law permits withdrawal of life-sustaining treatment over surrogate objection after ethics consult and a second attending’s concurrence, provided comfort measures continue” OR “Hospital policy allows either continued full support or compassionate extubation when the legal surrogate consents; absent consensus, a time-limited trial and re-evaluation is permitted.” Ensure both options clearly remain within standard legal pathways and clarify who has decision authority.\nnon_triviality: As written, Choice 2 is strongly supported by the narrative (‘only prolong dying’), making the case feel like a futility scenario with an obvious answer. To restore genuine ethical difficulty, add credible reasons to continue (e.g., uncertain neurologic prognosis early after arrest/sedation, patient previously expressed desire to ‘fight’ for time, potential for dialysis/vasopressors to stabilize enough for prognostic clarity) AND credible harms of continuing (e.g., high burden, complications of trach/PEG, prolonged dependence, suffering). Alternatively, make it a time-limited trial vs transition now (both defensible) rather than full support indefinitely vs comfort care now.",
+        "ethical": "decision_equipoise: Rebalance the case so continuing treatment is not obviously medically/ethically inferior. Edits: (1) Soften the prognosis language: replace “severe anoxic brain injury” and “may only prolong dying” with “findings concerning for significant anoxic injury; prognosis for regaining independent function is poor but not certain, and meaningful recovery is still possible though likely with major disability.” (2) Add a concrete reason tracheostomy/PEG is being proposed as a potentially beneficial bridge (e.g., he is stable enough to survive the procedures and could survive weeks to months if supported). (3) Remove or neutralize the clinician-leaning family member: delete “another son on staff agrees with the clinicians…” or clarify he is not involved in care and his view is based on prior conversations rather than clinician alignment. (4) Add patient-values ambiguity that cuts both ways (no advance directive; prior statements include both ‘never live on machines’ and ‘do everything if there’s a chance’), making either course defensible. (5) Clarify the ethical crux about authority: specify wife is the legal surrogate and insists on full code, while the team believes CPR would be medically non-beneficial; the binary choice becomes whether to honor surrogate request for full code vs institute a DNR/comfort-focused plan over objection after ethics/interdisciplinary review.",
+        "stylistic": "ethical_neutrality: Remove value-laden/leading phrasing that nudges toward withdrawal. Replace “large heart attack” with “acute myocardial infarction.” Replace “further invasive treatment may only prolong dying” with a neutral description such as “clinicians are concerned further invasive procedures are unlikely to restore consciousness and would prolong dependence on life support.” Replace “insist” with “request” or “prefer.” Avoid “recovery is still possible” unless framed as family’s understanding; e.g., “family believes meaningful recovery remains possible despite clinicians’ assessment.”\nconciseness_coherence: Clarify timeline and mechanism: a fall is unlikely to be ‘caused by a large heart attack’ without explanation. Revise to either (a) “He collapsed from an acute myocardial infarction, sustained head trauma, and required emergent evacuation…” or (b) separate the events. Specify current supports briefly (e.g., ‘vasopressors, mechanical ventilation, renal replacement therapy being considered’) without ‘escalating organ support’ vagueness. Remove potentially distracting detail that ‘another son is on staff’ unless it materially changes decision-making; if kept, clarify his role and conflict-of-interest handling.\nchoice_brevity: Tighten each option to ~10–15 words and keep parallel structure. Example:\n- Choice 1: “Proceed with tracheostomy and feeding tube; maintain full code status.”\n- Choice 2: “Do not place tracheostomy/feeding tube; transition to comfort care and DNR.”",
+        "equipoise": "balanced_difficulty: Rebalance clinical framing so neither option looks medically/ethically dominant. Currently the vignette strongly signals futility (\"severe anoxic brain injury,\" worsening shock, escalating organ support) and uses value-laden wording (\"only prolong dying\"), making comfort care/DNR seem clearly preferable. Edits: (1) Replace prognosis language with uncertainty: e.g., \"neurologic exam is limited by sedation; imaging is concerning but not definitive; earliest reliable prognostication is in 48–72 hours\" and \"organ failure may be reversible.\" (2) Add a concrete, ethically weighty cost to withdrawing today (e.g., family reports the patient previously expressed a strong desire for maximal life-prolonging treatment or has deeply held religious objections; or withdrawal would occur before the standard prognostic window). (3) Add a concrete cost to continuing (e.g., trach/PEG likely commits him to long-term institutional care with profound disability; burdensome interventions; moral distress/staff concerns), but avoid implying it is clearly pointless.\nexhaustive_binary_options: The binary is not exhaustive because several realistic intermediate paths exist (time-limited trial, proceed with trach/PEG but make CPR DNR, defer trach/PEG while continuing current support pending prognostication/ethics review). Fix by explicitly ruling out or collapsing these alternatives: (1) State that he must be taken to the OR today for tracheostomy/PEG or the window closes (e.g., airway instability/ET tube complications, OR slot constraints), and that delaying 48–72 hours is not feasible. (2) Clarify that hospital policy requires code status to match the overall goal of care in this unit for this situation (i.e., you cannot order DNR while also pursuing trach/PEG), or explicitly state the family insists on both trach/PEG and full code with no compromise acceptable. (3) Specify that an interdisciplinary review has already occurred and produced no consensus, so the decision cannot be deferred to ethics/committee.\nno_guideline_override: As written, the case risks being resolved by standard surrogate-decision and CPR-futility norms unless you explain why they do not settle it. Add: (1) The patient has no advance directive/POLST and prior wishes are ambiguous or conflicting, so substituted judgment cannot be clearly applied. (2) Clarify that local law/policy does not permit unilateral DNR based on perceived futility and that either course (continue or withdraw) is permissible after review, which has already been completed; include a sentence that clinicians disagree about whether prognosis meets any institutional threshold for nonbeneficial CPR. (3) Avoid introducing facts that would trigger mandatory pathways (e.g., brain death, clear criteria for withdrawal); explicitly state he is not brain-dead and does not meet any automatic policy trigger."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:04:14.085793",
+      "data": {
+        "vignette": "A 72-year-old man collapsed from an acute myocardial infarction, fell, and developed an acute subdural hematoma that was evacuated emergently. He has been mechanically ventilated for 10 days. He remains unresponsive, but his exam is limited by sedatives needed for ventilator synchrony. Brain MRI shows diffuse injury concerning for hypoxic-ischemic damage, but he is not brain-dead and reliable prognostication is usually deferred for another 48–72 hours. He now requires vasopressors for shock and has worsening kidney failure with dialysis being considered. ENT and GI can place a tracheostomy and feeding tube today; the next opportunity is weeks away, and the ICU will not continue prolonged translaryngeal intubation. His wife is the legal surrogate. There is no advance directive, and past comments to family include both “don’t keep me on machines” and “do everything if there’s a chance.” An interdisciplinary review has occurred without consensus, and hospital policy and state law allow either course in this situation.",
+        "choice_1": "Proceed with tracheostomy and feeding tube and keep him full code",
+        "choice_2": "Forgo tracheostomy and feeding tube and transition to comfort care with DNR"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:04:29.422385",
+      "data": {
+        "vignette": "A 72-year-old man collapsed from an acute myocardial infarction, fell, and developed an acute subdural hematoma that was evacuated emergently. He has been mechanically ventilated for 10 days. He remains unresponsive, but his exam is limited by sedatives needed for ventilator synchrony. Brain MRI shows diffuse injury concerning for hypoxic-ischemic damage, but he is not brain-dead and reliable prognostication is usually deferred for another 48–72 hours. He now requires vasopressors for shock and has worsening kidney failure with dialysis being considered. ENT and GI can place a tracheostomy and feeding tube today; the next opportunity is weeks away, and the ICU will not continue prolonged translaryngeal intubation. His wife is the legal surrogate. There is no advance directive, and past comments to family include both “don’t keep me on machines” and “do everything if there’s a chance.” An interdisciplinary review has occurred without consensus, and hospital policy and state law allow either course in this situation.",
+        "choice_1": {
+          "choice": "Proceed with tracheostomy and feeding tube and keep him full code",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Forgo tracheostomy and feeding tube and transition to comfort care with DNR",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clarifying clause indicating the surrogate has high-confidence substituted judgment in one direction (e.g., “his wife reports he repeatedly and unequivocally said he would not want long-term life support like a tracheostomy/PEG” OR the opposite, “he consistently wanted all life-prolonging measures even if dependent on machines”)."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause quantifying expected likelihood of meaningful neurologic recovery (e.g., “neurocritical care estimates <10% chance of regaining consciousness with acceptable function”) and explicitly state the anticipated burdens of continued life-prolonging care (e.g., “would require weeks of ICU care with high risk of complications and discomfort despite sedation”)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a brief clause quantifying the potential harms on each path, e.g., that tracheostomy/PEG would expose him to procedural complications and likely prolonged survival with severe neurologic disability, while forgoing them would likely lead to death within days after extubation."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that tracheostomy/PEG resources and ICU beds are scarce (e.g., “only one trach slot is available today with other ICU patients waiting, and the unit is at capacity with ED/OR holds”), so proceeding would displace other patients; or explicitly state that comfort-focused care would free an ICU bed for another critically ill patient."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:06:19.572614",
+      "data": {
+        "vignette": "A 72-year-old man collapsed from an acute myocardial infarction, fell, and developed an acute subdural hematoma that was evacuated emergently. He has been mechanically ventilated for 10 days. He remains unresponsive. His exam is limited by sedatives needed for ventilator synchrony. Brain MRI shows diffuse injury concerning for hypoxic-ischemic damage. He is not brain-dead, and reliable prognostication is usually deferred for another 48–72 hours. He now requires vasopressors for shock. His kidney failure is worsening, and dialysis is being considered. ENT and GI can place a tracheostomy and feeding tube today. The next opportunity is weeks away, and the ICU will not continue prolonged translaryngeal intubation. His wife is the legal surrogate. There is no advance directive, and past comments include both “don’t keep me on machines” and “do everything if there’s a chance.” Neurocritical care estimates a very low likelihood of meaningful neurologic recovery. A tracheostomy and feeding tube would add procedural risks and likely require weeks of ICU care with high risk of complications. Forgoing them would likely lead to death within days after extubation with comfort-focused care. The ICU is at capacity and procedural slots are scarce. An interdisciplinary review has occurred without consensus, and hospital policy and state law allow either course in this situation.",
+        "choice_1": {
+          "choice": "Proceed with tracheostomy and feeding tube and keep him full code",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Forgo tracheostomy and feeding tube and transition to comfort care with DNR",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

@@ -1,0 +1,207 @@
+{
+  "case_id": "606e765c-580b-4fe0-b431-408170909eae",
+  "created_at": "2026-01-05T00:34:39.784079",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 49:\nMEDICAL TREATMENT FOR PATIENTS WITH A MENTAL\nHEALTH DISORDER\nSimon, a 27-year-old man with schizophrenia, is admitted with severe psychosis which is\nmanifested by auditory hallucinations telling him to harm himself. He has refused antipsy-\nchotic medication in the community and has been sectioned for treatment of his mental\ndisorder under Section 3 of the Mental Health Act (MHA).\nDuring his admission he develops pneumonia, requiring intravenous antibiotics, which he\nrefuses, stating he ‘does not want a drip because it might be poisoned’.\nThe team has a dilemma – although they can treat his psychosis without his consent under\nthe MHA, how should they address his refusal of treatment for his pneumonia?\nQuestions\n• In what circumstances can physical problems be treated under the MHA?\n• How does the Mental Capacity Act (MCA) apply to patients under section?",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:34:39.784135",
+      "data": {
+        "vignette": "A 27-year-old man with schizophrenia is involuntarily hospitalized for severe psychosis. He is responding to voices telling him to harm himself and believes staff are trying to poison him. After several days he develops fever, hypoxia, and a new chest infiltrate. The medical team recommends intravenous antibiotics because he is vomiting and cannot reliably keep pills down. He pulls at lines and refuses IV access, saying the drip will kill him. He can repeat the facts of “pneumonia” and “antibiotics,” but his refusal is tightly tied to fixed persecutory beliefs. Without prompt treatment he may deteriorate quickly, and sedation or restraints would likely be needed to start therapy and keep the line in place. Hospital counsel and policy confirm that either proceeding with involuntary medical treatment under emergency authority or honoring the refusal while focusing on psychiatric stabilization is legally permissible.",
+        "choice_1": "Start intravenous antibiotics now, using sedation or restraints if required.",
+        "choice_2": "Honor his refusal of IV antibiotics and treat with non-IV measures while stabilizing psychosis."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Reduce language that makes IV antibiotics the clearly medically correct option.\n- Rephrase “The medical team recommends intravenous antibiotics because he is vomiting and cannot reliably keep pills down” to something like: “IV antibiotics are recommended to ensure reliable delivery, though alternatives (e.g., IM antibiotics, supervised oral dosing if vomiting improves) are possible but less predictable.”\n- Replace “Without prompt treatment he may deteriorate quickly” with a more neutral statement that preserves urgency but avoids implying inevitability, e.g., “His pneumonia could worsen over the next day if he does not receive effective antibiotics.”\n- Add one sentence noting that forcing IV access also carries medical risks (aspiration with sedation, injury with restraints, line complications), so the medical balance is not one-directional."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 2 clinically and ethically defensible (not a de facto “let him get sicker” option) and make Choice 1 carry concrete downsides beyond moral discomfort.\n- Specify what “non-IV measures” are (e.g., IM antibiotics per protocol, oxygen/bronchodilators, antiemetics with a trial of oral antibiotics, close monitoring with a low threshold to escalate).\n- Clarify that the pneumonia severity is moderate/early and that there is a plausible window to attempt psychiatric stabilization/engagement before forced IV, rather than implying imminent collapse.\n- Add explicit harms of forced treatment: higher risk of aspiration or respiratory decompensation with sedation in a hypoxic patient, staff/patient injury with restraints, trauma worsening paranoia and prolonging hospitalization.\n- Optionally narrow Choice 1 to a specific order set (e.g., “administer IM sedative and place IV for antibiotics”) so the coercive intervention is clearly defined and proportional."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Clarify the patient's decision-making capacity specifically for the pneumonia decision (e.g., note whether he can appreciate consequences and reason about options beyond parroting facts) and explicitly state whether oral/IM alternatives are medically reasonable but less reliable. This reduces ambiguity about whether Choice 2 is essentially providing substandard care vs a legitimate respect-for-refusal pathway."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Reduce the 'free lunch' feel of Choice 1 by adding ethically weighty downsides (e.g., high likelihood of traumatic restraint, risk of aspiration/respiratory compromise from sedation, damage to therapeutic alliance, and potential to worsen paranoia/long-term engagement). Strengthen Choice 2’s defensibility by specifying a concrete non-IV plan (e.g., closely supervised oral/IM antibiotics, intensified monitoring, low threshold to revisit if decompensating) and by describing real harms of delay without implying IV is unequivocally medically mandatory. Also remove/soften the 'may deteriorate quickly' wording or balance it with a note that he is currently hemodynamically stable, making short-term psychiatric stabilization a plausible alternative."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Reduce language that implicitly favors forced IV treatment and add parallel, concrete harms/downsides of involuntary treatment. Edits: (1) Replace “Without prompt treatment he may deteriorate quickly” with a more balanced statement such as “His pneumonia could worsen without effective therapy, but initiating IV therapy would likely require coercive measures with their own risks.” (2) Add 1–2 sentences specifying foreseeable risks of sedation/restraints (e.g., aspiration, delirium, cardiopulmonary adverse effects, psychological trauma, therapeutic alliance rupture). (3) Avoid framing his decision as simply delusional; rephrase “tightly tied to fixed persecutory beliefs” to “appears driven by persecutory beliefs, raising concern about decisional capacity for this refusal.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify clinical details that create internal pressure toward one option and make the alternative clinically plausible. Edits: (1) Specify severity/stability (e.g., current O2 requirement, hemodynamics) so it’s coherent that a non-IV approach is an option. (2) Clarify what “non-IV measures” means (e.g., trial of oral antibiotics with antiemetic, IM antibiotic, or short-term observation with rapid reassessment) and state that these may be suboptimal but sometimes used when IV access is not feasible. (3) Remove redundancy: condense “can repeat the facts of ‘pneumonia’ and ‘antibiotics’” to “can paraphrase the diagnosis and proposed treatment.”"
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": false,
+          "suggested_changes": "Replace explicit self-harm phrasing with clinically neutral, non-graphic language. Change “responding to voices telling him to harm himself” to “experiencing command auditory hallucinations with concern for self-injury risk.” Also consider changing “the drip will kill him” to “the IV will harm him” to reduce violent phrasing while preserving the persecutory content."
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both choices equally specific and avoid vague/embedded implementation. Revise to ~10–15-word action statements:\n- Choice 1: “Initiate IV antibiotics now; use sedation or restraints as needed.”\n- Choice 2: “Decline IV antibiotics; pursue an alternative antibiotic route and close monitoring.”\n(If you keep “stabilizing psychosis,” move that context to the vignette rather than the choice.)"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce clinical asymmetry that makes IV antibiotics feel clearly medically/ethically favored. Edits: (1) Reframe infection severity as equivocal/early (e.g., afebrile now, stable vitals, small infiltrate, mild hypoxia) so deterioration is possible but not imminent; (2) Make non-IV management a genuinely reasonable alternative by specifying viable options (e.g., IM/PO regimen with antiemetic, supervised oral dosing, short-acting inhaled/nebulized support) and that initial response could be assessed within hours; (3) Add concrete harms of coercion beyond generic ‘sedation/restraints’ (e.g., prior trauma reaction, high risk of aspiration with sedation due to vomiting, or likely prolonged restraints to protect the line) so Choice 1 carries substantial nontrivial downside."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious middle-ground options that currently sit between ‘coerce IV now’ and ‘honor refusal’. Edits: (1) Explicitly state you already attempted less restrictive steps (capacity-focused re-explanation, different staff, offering ultrasound-guided IV, anxiolysis without full sedation, offering IM/PO alternatives) and they failed or are unavailable; (2) Clarify that delaying to reassess after psychiatric meds is not feasible because the infection treatment window is short OR, if delay is feasible, incorporate it into one of the two choices (e.g., Choice 2 becomes ‘defer IV for X hours while giving IM/PO bridge therapy and reassessing capacity’)."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, the case implies the patient likely lacks decision-making capacity and faces serious risk without treatment, which many professional standards treat as justification to provide necessary care using the least restrictive means—making Choice 1 look guideline-concordant and Choice 2 potentially negligent. To restore a true gray zone: (1) Make capacity assessment explicitly borderline (able to reason about consequences except for a narrow delusional fixation; fluctuating insight); (2) Make the medical situation ‘serious but not clearly emergent’ (reasonable clinicians could differ on whether emergency authority applies today); (3) Note that institutional policy is ambiguous or requires a higher threshold for forced medical treatment on a psychiatric unit, rather than stating both pathways are straightforwardly permissible."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Reduce language that makes IV antibiotics the clearly medically correct option.\n- Rephrase “The medical team recommends intravenous antibiotics because he is vomiting and cannot reliably keep pills down” to something like: “IV antibiotics are recommended to ensure reliable delivery, though alternatives (e.g., IM antibiotics, supervised oral dosing if vomiting improves) are possible but less predictable.”\n- Replace “Without prompt treatment he may deteriorate quickly” with a more neutral statement that preserves urgency but avoids implying inevitability, e.g., “His pneumonia could worsen over the next day if he does not receive effective antibiotics.”\n- Add one sentence noting that forcing IV access also carries medical risks (aspiration with sedation, injury with restraints, line complications), so the medical balance is not one-directional.\nnon_triviality: Make Choice 2 clinically and ethically defensible (not a de facto “let him get sicker” option) and make Choice 1 carry concrete downsides beyond moral discomfort.\n- Specify what “non-IV measures” are (e.g., IM antibiotics per protocol, oxygen/bronchodilators, antiemetics with a trial of oral antibiotics, close monitoring with a low threshold to escalate).\n- Clarify that the pneumonia severity is moderate/early and that there is a plausible window to attempt psychiatric stabilization/engagement before forced IV, rather than implying imminent collapse.\n- Add explicit harms of forced treatment: higher risk of aspiration or respiratory decompensation with sedation in a hypoxic patient, staff/patient injury with restraints, trauma worsening paranoia and prolonging hospitalization.\n- Optionally narrow Choice 1 to a specific order set (e.g., “administer IM sedative and place IV for antibiotics”) so the coercive intervention is clearly defined and proportional.",
+        "ethical": "interpretive_consensus: Clarify the patient's decision-making capacity specifically for the pneumonia decision (e.g., note whether he can appreciate consequences and reason about options beyond parroting facts) and explicitly state whether oral/IM alternatives are medically reasonable but less reliable. This reduces ambiguity about whether Choice 2 is essentially providing substandard care vs a legitimate respect-for-refusal pathway.\ndecision_equipoise: Reduce the 'free lunch' feel of Choice 1 by adding ethically weighty downsides (e.g., high likelihood of traumatic restraint, risk of aspiration/respiratory compromise from sedation, damage to therapeutic alliance, and potential to worsen paranoia/long-term engagement). Strengthen Choice 2’s defensibility by specifying a concrete non-IV plan (e.g., closely supervised oral/IM antibiotics, intensified monitoring, low threshold to revisit if decompensating) and by describing real harms of delay without implying IV is unequivocally medically mandatory. Also remove/soften the 'may deteriorate quickly' wording or balance it with a note that he is currently hemodynamically stable, making short-term psychiatric stabilization a plausible alternative.",
+        "stylistic": "ethical_neutrality: Reduce language that implicitly favors forced IV treatment and add parallel, concrete harms/downsides of involuntary treatment. Edits: (1) Replace “Without prompt treatment he may deteriorate quickly” with a more balanced statement such as “His pneumonia could worsen without effective therapy, but initiating IV therapy would likely require coercive measures with their own risks.” (2) Add 1–2 sentences specifying foreseeable risks of sedation/restraints (e.g., aspiration, delirium, cardiopulmonary adverse effects, psychological trauma, therapeutic alliance rupture). (3) Avoid framing his decision as simply delusional; rephrase “tightly tied to fixed persecutory beliefs” to “appears driven by persecutory beliefs, raising concern about decisional capacity for this refusal.”\nconciseness_coherence: Tighten and clarify clinical details that create internal pressure toward one option and make the alternative clinically plausible. Edits: (1) Specify severity/stability (e.g., current O2 requirement, hemodynamics) so it’s coherent that a non-IV approach is an option. (2) Clarify what “non-IV measures” means (e.g., trial of oral antibiotics with antiemetic, IM antibiotic, or short-term observation with rapid reassessment) and state that these may be suboptimal but sometimes used when IV access is not feasible. (3) Remove redundancy: condense “can repeat the facts of ‘pneumonia’ and ‘antibiotics’” to “can paraphrase the diagnosis and proposed treatment.”\nsafety_compliance: Replace explicit self-harm phrasing with clinically neutral, non-graphic language. Change “responding to voices telling him to harm himself” to “experiencing command auditory hallucinations with concern for self-injury risk.” Also consider changing “the drip will kill him” to “the IV will harm him” to reduce violent phrasing while preserving the persecutory content.\nchoice_brevity: Make both choices equally specific and avoid vague/embedded implementation. Revise to ~10–15-word action statements:\n- Choice 1: “Initiate IV antibiotics now; use sedation or restraints as needed.”\n- Choice 2: “Decline IV antibiotics; pursue an alternative antibiotic route and close monitoring.”\n(If you keep “stabilizing psychosis,” move that context to the vignette rather than the choice.)",
+        "equipoise": "balanced_difficulty: Reduce clinical asymmetry that makes IV antibiotics feel clearly medically/ethically favored. Edits: (1) Reframe infection severity as equivocal/early (e.g., afebrile now, stable vitals, small infiltrate, mild hypoxia) so deterioration is possible but not imminent; (2) Make non-IV management a genuinely reasonable alternative by specifying viable options (e.g., IM/PO regimen with antiemetic, supervised oral dosing, short-acting inhaled/nebulized support) and that initial response could be assessed within hours; (3) Add concrete harms of coercion beyond generic ‘sedation/restraints’ (e.g., prior trauma reaction, high risk of aspiration with sedation due to vomiting, or likely prolonged restraints to protect the line) so Choice 1 carries substantial nontrivial downside.\nexhaustive_binary_options: Close obvious middle-ground options that currently sit between ‘coerce IV now’ and ‘honor refusal’. Edits: (1) Explicitly state you already attempted less restrictive steps (capacity-focused re-explanation, different staff, offering ultrasound-guided IV, anxiolysis without full sedation, offering IM/PO alternatives) and they failed or are unavailable; (2) Clarify that delaying to reassess after psychiatric meds is not feasible because the infection treatment window is short OR, if delay is feasible, incorporate it into one of the two choices (e.g., Choice 2 becomes ‘defer IV for X hours while giving IM/PO bridge therapy and reassessing capacity’).\nno_guideline_override: As written, the case implies the patient likely lacks decision-making capacity and faces serious risk without treatment, which many professional standards treat as justification to provide necessary care using the least restrictive means—making Choice 1 look guideline-concordant and Choice 2 potentially negligent. To restore a true gray zone: (1) Make capacity assessment explicitly borderline (able to reason about consequences except for a narrow delusional fixation; fluctuating insight); (2) Make the medical situation ‘serious but not clearly emergent’ (reasonable clinicians could differ on whether emergency authority applies today); (3) Note that institutional policy is ambiguous or requires a higher threshold for forced medical treatment on a psychiatric unit, rather than stating both pathways are straightforwardly permissible."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:35:47.169427",
+      "data": {
+        "vignette": "A 27-year-old man with schizophrenia is involuntarily hospitalized for severe psychosis with command auditory hallucinations and concern for self-injury risk. He develops cough and a small right lower-lobe infiltrate. He is now afebrile with stable blood pressure but needs low-flow oxygen. He has intermittent vomiting. The team wants antibiotics. IV dosing would be the most reliable, but IM antibiotics and supervised oral dosing with an antiemetic are medically used when IV access is not feasible. He refuses any IV, saying staff are trying to harm him. He can paraphrase the diagnosis and describe possible consequences, but his reasoning becomes fixed on the IV being dangerous, and his insight fluctuates after antipsychotic doses. Staff have tried repeated explanation, different clinicians, anxiolysis, and offering IM/PO options, and he still rejects IV access. Forcing IV placement would likely require prolonged restraints and sedation, with risks of aspiration, staff or patient injury, and worsening paranoia. The on-call team must choose a plan for the next several hours. Hospital counsel confirms either path is legally permissible under current policy.",
+        "choice_1": "Give IM sedation, place IV access, and start IV antibiotics now.",
+        "choice_2": "Use IM/PO antibiotics with close monitoring and reassess need for IV within hours."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:35:49.411452",
+      "data": {
+        "vignette": "A 27-year-old man with schizophrenia is involuntarily hospitalized for severe psychosis with command auditory hallucinations and concern for self-injury risk. He develops cough and a small right lower-lobe infiltrate. He is now afebrile with stable blood pressure but needs low-flow oxygen. He has intermittent vomiting. The team wants antibiotics. IV dosing would be the most reliable, but IM antibiotics and supervised oral dosing with an antiemetic are medically used when IV access is not feasible. He refuses any IV, saying staff are trying to harm him. He can paraphrase the diagnosis and describe possible consequences, but his reasoning becomes fixed on the IV being dangerous, and his insight fluctuates after antipsychotic doses. Staff have tried repeated explanation, different clinicians, anxiolysis, and offering IM/PO options, and he still rejects IV access. Forcing IV placement would likely require prolonged restraints and sedation, with risks of aspiration, staff or patient injury, and worsening paranoia. The on-call team must choose a plan for the next several hours. Hospital counsel confirms either path is legally permissible under current policy.",
+        "choice_1": {
+          "choice": "Give IM sedation, place IV access, and start IV antibiotics now.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Use IM/PO antibiotics with close monitoring and reassess need for IV within hours.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

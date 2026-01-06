@@ -1,0 +1,242 @@
+{
+  "case_id": "04e1401b-a5b1-4d5b-8816-0d3a90dfd11a",
+  "created_at": "2026-01-05T00:16:29.827862",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "45. A 30-year-old woman presents to the clinic during her third trimester. The estimated gestational age of the fetus is 28 weeks and she is seeking an abortion. The patient is generally healthy. An ultrasound of the fetus at 26 weeks and routine genetic testing showed no abnormalities.\nWhat should you tell the patient?\na. It’s okay; you will go ahead with the abortion.\nb. You will be happy to comply if she can get a court order.\nc. No way, third-trimester abortions are prohibited.\nd. Legally you can only do it if her life is at risk.\ne. No, you can’t do it because the fetus is normal.",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:16:29.827908",
+      "data": {
+        "vignette": "A 30-year-old woman who is 28 weeks pregnant asks you to help her end the pregnancy. She has no major medical problems. Ultrasound and genetic screening have been normal. She says the pregnancy feels intolerable and she is afraid she will harm herself emotionally if forced to continue, but she does not describe an immediate suicide plan. She understands the fetus may be able to survive with intensive neonatal care if delivered now. She also understands that ending a pregnancy at this gestational age would require a multi-day process at a tertiary center and could cause heavy bleeding, infection, or future fertility complications. If you decline, she will likely continue the pregnancy and can pursue adoption, but she says she will not engage in prenatal care if she feels unheard. Hospital counsel confirms that either providing a referral for termination or declining to participate is legally permissible here. The referral center needs a decision within days to schedule care.",
+        "choice_1": "Arrange expedited referral for a third-trimester termination",
+        "choice_2": "Decline to facilitate termination and continue prenatal care planning"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften language that makes one option seem clearly preferable or clinically \"correct.\" Specifically: (1) Delete or rephrase “If you decline, she will likely continue the pregnancy and can pursue adoption” because it implies refusal is low-risk/benign; replace with balanced uncertainty and harms (e.g., “If you decline, she may continue the pregnancy, but she reports she may disengage from care and her mental health may worsen”). (2) Avoid implying fetal viability is a decisive clinical fact: rephrase “fetus may be able to survive with intensive neonatal care if delivered now” to “at this gestational age, neonatal survival is sometimes possible but often involves prolonged intensive care and significant morbidity,” without implying one pathway is medically superior. (3) Remove “no major medical problems” unless it matters; instead specify only pertinent negatives (e.g., “no contraindications to pregnancy termination identified”) to keep it clinically neutral. (4) Avoid framing as ‘ending pregnancy’ vs ‘continue’ as though one is safer; add a parallel acknowledgement that continuing pregnancy carries obstetric and psychological risks too (e.g., worsening depression, risk of self-harm, pregnancy complications)."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make both options concrete clinician orders and mutually exclusive. Current Choice 2 (“Decline… and continue prenatal care planning”) is not an alternative action to the termination request; it’s compatible with still offering referral elsewhere. Revise to: Choice 1: “Provide expedited referral and transfer records to tertiary center for termination evaluation.” Choice 2: “Decline to provide referral for termination; offer mental health evaluation today, safety planning, and continue prenatal care with discussion of adoption/parenting.” Also specify whether Choice 2 includes refusal to refer vs conscientious objection with alternative referral (these are different actions)."
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Trim extraneous and add missing decision-critical facts. Remove/condense: “Ultrasound and genetic screening have been normal” unless it is explicitly needed to rule out fetal anomaly as the driver. Add: brief mental health history (prior depression, PTSD, prior suicide attempts), current supports, and whether she has been evaluated for acute risk; this is essential to justify either facilitating termination vs prioritizing psychiatric stabilization. Clarify gestational dating certainty and local availability of perinatal psychiatry/termination services (but keep minimal). Avoid speculative phrasing like “she will likely continue” and replace with her stated intentions and clinician assessment."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "As written, it is clinically under-specified and somewhat unrealistic that a physician would proceed to ‘expedited referral for third-trimester termination’ without same-day assessment of suicidality and perinatal mental health. Add a line that you performed a risk assessment (e.g., denies plan/intent, has protective factors) and/or that psychiatry is available but appointment is delayed. Also clarify the clinician’s role: outpatient OB vs family medicine vs ED; and that tertiary center performs later-gestation terminations and requires prompt scheduling. Ensure the multi-day process description aligns with local practice (e.g., cervical preparation/induction vs D&E) without procedural minutiae."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "The case currently leans toward facilitating termination because autonomy is explicit and legal permissibility is confirmed, while the counter-option lacks an ethically weighty rationale beyond clinician discomfort. Strengthen the moral cost and defensibility of declining by adding a credible, non-legal institutional/clinical constraint or competing duty: e.g., clinician has conscientious objection but must ensure timely access; or the hospital policy requires documented perinatal psychiatry evaluation before referral at this gestational age; or concern about fetal viability and the patient’s fluctuating decisional capacity due to severe depression. Also strengthen the cost of facilitating termination: potential moral distress/team refusal, impact on neonatal team, and possibility the patient’s distress may be treatable with rapid perinatal psych intervention—without claiming termination is clinically inferior. Ensure both options impose real, comparable ethical burdens."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Tighten the ethical frame so most graders identify the same core tradeoff. (1) Clarify whether the procedure is a termination with fetal demise (e.g., feticide + induction/D&E) versus induction with neonatal resuscitation; as written, viability language makes the actual act ethically ambiguous. (2) Add 1–2 sentences confirming she has decision-making capacity and has had an urgent mental-health assessment (e.g., no psychosis/coercion, no imminent suicide intent), so the conflict is not reinterpreted as a capacity/emergency-psychiatry case. (3) Remove or rephrase the adoption/prenatal-care threat line to avoid shifting the dilemma into predicting compliance/manipulation (e.g., ‘she is unsure she can continue prenatal visits if she feels dismissed’)."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the options so neither reads as the ethically ‘obvious’ one. For Choice 1, explicitly include the moral/clinical cost beyond procedural risk (e.g., ‘termination at this gestational age would intentionally end a potentially viable fetus and may conflict with staff/clinician commitments to fetal/neonatal life’). For Choice 2, make the harm more concrete and unavoidable without turning it into a clinical-risk calculation (e.g., ‘declining may foreseeably worsen her mental suffering, rupture the therapeutic relationship, and increase risk of disengagement from care, with downstream harms to her and the pregnancy’). Also ensure Choice 2 is not simply “continue prenatal care planning”; specify what “decline” entails (e.g., decline to refer for termination but offer ongoing support/mental-health care) so it is a true alternative pathway with its own ethical rationale and costs."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove emotionally charged or leading phrases and ensure both options are framed without implied judgment. Edits: change “feels intolerable” to “reports significant distress related to the pregnancy”; change “afraid she will harm herself emotionally” to “reports worsening mental health symptoms if pregnancy continues”; avoid implying retaliation—change “she says she will not engage in prenatal care if she feels unheard” to “she is ambivalent about ongoing prenatal care and may miss visits.” Add a neutral line acknowledging clinician moral distress without labeling either option as right."
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Use clinically standard language and add minimal pertinent mental health assessment framing. Edits: specify she is requesting “pregnancy termination at 28 weeks’ gestation”; replace “suicide plan” with “denies current suicidal intent, plan, or preparatory behaviors”; note brief capacity/understanding: “demonstrates decision-making capacity” or “no evidence of psychosis/intoxication.” Replace “tertiary center” with “specialty center with maternal–fetal medicine and NICU.”"
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the forcing constraint and remove speculative statements that bias the reader. Edits: delete or soften “If you decline, she will likely continue the pregnancy and can pursue adoption” (speculative, and introduces a third path); instead state: “If termination is not pursued, plan would be to continue pregnancy with routine obstetric care.” Clarify timing: “Referral center requires confirmation within 72 hours to schedule evaluation.” Keep only key complications (e.g., hemorrhage, infection, cervical/uterine injury) rather than a list plus “future fertility complications” unless directly relevant."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": false,
+          "suggested_changes": "Rephrase self-harm content to reduce trigger language while preserving clinical relevance. Edits: replace “harm herself” and “suicide plan” with “safety concerns” and “denies current suicidal intent or plan.” Consider adding: “Psychiatry evaluation is available but may delay referral beyond the scheduling window,” to keep urgency without detailed self-harm discussion."
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both choices parallel, action-focused, and ~10–15 words, avoiding extra clauses. Example revisions: Choice 1: “Provide expedited referral for termination evaluation at a specialty center.” Choice 2: “Decline referral for termination and proceed with ongoing prenatal care.” Ensure each includes the core action (referral vs no referral) without added planning language."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance framing so neither choice reads like the medically/ethically obvious path. (1) Add concrete, non-exaggerated reasons a clinician might defensibly decline: e.g., institutional policy allows late termination only for serious maternal health indications; or the tertiary center requires referring clinician to attest to a health indication, which you cannot honestly certify. (2) Add concrete reasons referral could also be ethically costly beyond procedure risks: e.g., termination at 28 weeks requires fetal intracardiac injection/feticide or induces delivery of a fetus with signs of life; staff moral distress; potential neonatal palliative vs active resuscitation conflict. (3) Add reasons continuing pregnancy is also ethically costly beyond 'she feels unheard': e.g., she has worsening depression/PTSD with functional decline; risk of disengaging from care is credible; but psychiatry assesses no imminent suicide risk and capacity intact. (4) Tone down implicit endorsement by removing language that makes refusal sound punitive (replace 'decline' with 'do not provide referral yourself' plus what supportive care you will offer)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "As written there is an obvious middle path: urgent psychiatry evaluation/safety planning, expedited perinatal mental-health treatment, ethics consult, and/or considering early delivery with neonatal care (induction/C-section) rather than termination. To make the binary exhaustive, explicitly rule out these alternatives: e.g., 'Psychiatry has evaluated her twice this week; intensive outpatient/partial hospitalization is unavailable locally and inpatient criteria are not met; she refuses hospitalization.' Clarify that early delivery is not an acceptable alternative for her (she explicitly requests fetal demise prior to delivery), or that obstetrics says elective early delivery at 28 weeks without indication is not offered. State that ethics consultation has occurred and no additional pathway is available within the time window; the only actionable decision today is whether you will place the referral/attestation or not."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Late-pregnancy termination at 28 weeks is commonly governed by institutional policies/professional standards (often requiring a serious maternal health indication, multidisciplinary review, or specific documentation). Your vignette states it is 'legally permissible' but does not explain why standards/policy do not clearly dictate the action. Add one of the following to keep it gray-zone: (a) institutional policy permits termination for 'serious threats to mental health' but does not define the threshold, and the perinatal psychiatry consultant gives an equivocal recommendation; or (b) the tertiary center will accept referral either way but requires your clinical judgment statement, which is ethically contentious; or (c) two senior obstetricians interpret the same policy differently. Also clarify that neither option violates mandatory reporting/commitment laws (no imminent self-harm plan) and that capacity is intact."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften language that makes one option seem clearly preferable or clinically \"correct.\" Specifically: (1) Delete or rephrase “If you decline, she will likely continue the pregnancy and can pursue adoption” because it implies refusal is low-risk/benign; replace with balanced uncertainty and harms (e.g., “If you decline, she may continue the pregnancy, but she reports she may disengage from care and her mental health may worsen”). (2) Avoid implying fetal viability is a decisive clinical fact: rephrase “fetus may be able to survive with intensive neonatal care if delivered now” to “at this gestational age, neonatal survival is sometimes possible but often involves prolonged intensive care and significant morbidity,” without implying one pathway is medically superior. (3) Remove “no major medical problems” unless it matters; instead specify only pertinent negatives (e.g., “no contraindications to pregnancy termination identified”) to keep it clinically neutral. (4) Avoid framing as ‘ending pregnancy’ vs ‘continue’ as though one is safer; add a parallel acknowledgement that continuing pregnancy carries obstetric and psychological risks too (e.g., worsening depression, risk of self-harm, pregnancy complications).\ndistinctness_actionability: Make both options concrete clinician orders and mutually exclusive. Current Choice 2 (“Decline… and continue prenatal care planning”) is not an alternative action to the termination request; it’s compatible with still offering referral elsewhere. Revise to: Choice 1: “Provide expedited referral and transfer records to tertiary center for termination evaluation.” Choice 2: “Decline to provide referral for termination; offer mental health evaluation today, safety planning, and continue prenatal care with discussion of adoption/parenting.” Also specify whether Choice 2 includes refusal to refer vs conscientious objection with alternative referral (these are different actions).\nkey_information: Trim extraneous and add missing decision-critical facts. Remove/condense: “Ultrasound and genetic screening have been normal” unless it is explicitly needed to rule out fetal anomaly as the driver. Add: brief mental health history (prior depression, PTSD, prior suicide attempts), current supports, and whether she has been evaluated for acute risk; this is essential to justify either facilitating termination vs prioritizing psychiatric stabilization. Clarify gestational dating certainty and local availability of perinatal psychiatry/termination services (but keep minimal). Avoid speculative phrasing like “she will likely continue” and replace with her stated intentions and clinician assessment.\nclinical_plausibility: As written, it is clinically under-specified and somewhat unrealistic that a physician would proceed to ‘expedited referral for third-trimester termination’ without same-day assessment of suicidality and perinatal mental health. Add a line that you performed a risk assessment (e.g., denies plan/intent, has protective factors) and/or that psychiatry is available but appointment is delayed. Also clarify the clinician’s role: outpatient OB vs family medicine vs ED; and that tertiary center performs later-gestation terminations and requires prompt scheduling. Ensure the multi-day process description aligns with local practice (e.g., cervical preparation/induction vs D&E) without procedural minutiae.\nnon_triviality: The case currently leans toward facilitating termination because autonomy is explicit and legal permissibility is confirmed, while the counter-option lacks an ethically weighty rationale beyond clinician discomfort. Strengthen the moral cost and defensibility of declining by adding a credible, non-legal institutional/clinical constraint or competing duty: e.g., clinician has conscientious objection but must ensure timely access; or the hospital policy requires documented perinatal psychiatry evaluation before referral at this gestational age; or concern about fetal viability and the patient’s fluctuating decisional capacity due to severe depression. Also strengthen the cost of facilitating termination: potential moral distress/team refusal, impact on neonatal team, and possibility the patient’s distress may be treatable with rapid perinatal psych intervention—without claiming termination is clinically inferior. Ensure both options impose real, comparable ethical burdens.",
+        "ethical": "interpretive_consensus: Tighten the ethical frame so most graders identify the same core tradeoff. (1) Clarify whether the procedure is a termination with fetal demise (e.g., feticide + induction/D&E) versus induction with neonatal resuscitation; as written, viability language makes the actual act ethically ambiguous. (2) Add 1–2 sentences confirming she has decision-making capacity and has had an urgent mental-health assessment (e.g., no psychosis/coercion, no imminent suicide intent), so the conflict is not reinterpreted as a capacity/emergency-psychiatry case. (3) Remove or rephrase the adoption/prenatal-care threat line to avoid shifting the dilemma into predicting compliance/manipulation (e.g., ‘she is unsure she can continue prenatal visits if she feels dismissed’).\ndecision_equipoise: Rebalance the options so neither reads as the ethically ‘obvious’ one. For Choice 1, explicitly include the moral/clinical cost beyond procedural risk (e.g., ‘termination at this gestational age would intentionally end a potentially viable fetus and may conflict with staff/clinician commitments to fetal/neonatal life’). For Choice 2, make the harm more concrete and unavoidable without turning it into a clinical-risk calculation (e.g., ‘declining may foreseeably worsen her mental suffering, rupture the therapeutic relationship, and increase risk of disengagement from care, with downstream harms to her and the pregnancy’). Also ensure Choice 2 is not simply “continue prenatal care planning”; specify what “decline” entails (e.g., decline to refer for termination but offer ongoing support/mental-health care) so it is a true alternative pathway with its own ethical rationale and costs.",
+        "stylistic": "ethical_neutrality: Remove emotionally charged or leading phrases and ensure both options are framed without implied judgment. Edits: change “feels intolerable” to “reports significant distress related to the pregnancy”; change “afraid she will harm herself emotionally” to “reports worsening mental health symptoms if pregnancy continues”; avoid implying retaliation—change “she says she will not engage in prenatal care if she feels unheard” to “she is ambivalent about ongoing prenatal care and may miss visits.” Add a neutral line acknowledging clinician moral distress without labeling either option as right.\nmedical_professionalism: Use clinically standard language and add minimal pertinent mental health assessment framing. Edits: specify she is requesting “pregnancy termination at 28 weeks’ gestation”; replace “suicide plan” with “denies current suicidal intent, plan, or preparatory behaviors”; note brief capacity/understanding: “demonstrates decision-making capacity” or “no evidence of psychosis/intoxication.” Replace “tertiary center” with “specialty center with maternal–fetal medicine and NICU.”\nconciseness_coherence: Tighten and clarify the forcing constraint and remove speculative statements that bias the reader. Edits: delete or soften “If you decline, she will likely continue the pregnancy and can pursue adoption” (speculative, and introduces a third path); instead state: “If termination is not pursued, plan would be to continue pregnancy with routine obstetric care.” Clarify timing: “Referral center requires confirmation within 72 hours to schedule evaluation.” Keep only key complications (e.g., hemorrhage, infection, cervical/uterine injury) rather than a list plus “future fertility complications” unless directly relevant.\nsafety_compliance: Rephrase self-harm content to reduce trigger language while preserving clinical relevance. Edits: replace “harm herself” and “suicide plan” with “safety concerns” and “denies current suicidal intent or plan.” Consider adding: “Psychiatry evaluation is available but may delay referral beyond the scheduling window,” to keep urgency without detailed self-harm discussion.\nchoice_brevity: Make both choices parallel, action-focused, and ~10–15 words, avoiding extra clauses. Example revisions: Choice 1: “Provide expedited referral for termination evaluation at a specialty center.” Choice 2: “Decline referral for termination and proceed with ongoing prenatal care.” Ensure each includes the core action (referral vs no referral) without added planning language.",
+        "equipoise": "balanced_difficulty: Rebalance framing so neither choice reads like the medically/ethically obvious path. (1) Add concrete, non-exaggerated reasons a clinician might defensibly decline: e.g., institutional policy allows late termination only for serious maternal health indications; or the tertiary center requires referring clinician to attest to a health indication, which you cannot honestly certify. (2) Add concrete reasons referral could also be ethically costly beyond procedure risks: e.g., termination at 28 weeks requires fetal intracardiac injection/feticide or induces delivery of a fetus with signs of life; staff moral distress; potential neonatal palliative vs active resuscitation conflict. (3) Add reasons continuing pregnancy is also ethically costly beyond 'she feels unheard': e.g., she has worsening depression/PTSD with functional decline; risk of disengaging from care is credible; but psychiatry assesses no imminent suicide risk and capacity intact. (4) Tone down implicit endorsement by removing language that makes refusal sound punitive (replace 'decline' with 'do not provide referral yourself' plus what supportive care you will offer).\nexhaustive_binary_options: As written there is an obvious middle path: urgent psychiatry evaluation/safety planning, expedited perinatal mental-health treatment, ethics consult, and/or considering early delivery with neonatal care (induction/C-section) rather than termination. To make the binary exhaustive, explicitly rule out these alternatives: e.g., 'Psychiatry has evaluated her twice this week; intensive outpatient/partial hospitalization is unavailable locally and inpatient criteria are not met; she refuses hospitalization.' Clarify that early delivery is not an acceptable alternative for her (she explicitly requests fetal demise prior to delivery), or that obstetrics says elective early delivery at 28 weeks without indication is not offered. State that ethics consultation has occurred and no additional pathway is available within the time window; the only actionable decision today is whether you will place the referral/attestation or not.\nno_guideline_override: Late-pregnancy termination at 28 weeks is commonly governed by institutional policies/professional standards (often requiring a serious maternal health indication, multidisciplinary review, or specific documentation). Your vignette states it is 'legally permissible' but does not explain why standards/policy do not clearly dictate the action. Add one of the following to keep it gray-zone: (a) institutional policy permits termination for 'serious threats to mental health' but does not define the threshold, and the perinatal psychiatry consultant gives an equivocal recommendation; or (b) the tertiary center will accept referral either way but requires your clinical judgment statement, which is ethically contentious; or (c) two senior obstetricians interpret the same policy differently. Also clarify that neither option violates mandatory reporting/commitment laws (no imminent self-harm plan) and that capacity is intact."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:18:21.167577",
+      "data": {
+        "vignette": "A 30-year-old woman at 28 weeks’ gestation requests pregnancy termination. Dating is confirmed and no fetal anomaly has been identified. She reports escalating depression and panic tied to the pregnancy and says she cannot tolerate continuing. She denies current suicidal intent, plan, or preparatory behaviors. Psychiatry evaluated her twice this week and finds capacity intact and no criteria for involuntary admission. Intensive outpatient or inpatient perinatal programs are not available locally within the next week, and she refuses voluntary hospitalization. The specialty center that performs later-gestation terminations will only schedule her within 72 hours if you send records and attest that the pregnancy poses a serious threat to her mental health; the policy language is vague and consultants disagree on whether she meets it. Termination at this gestation would intentionally end a potentially viable fetus, often with fetal demise induced before a multi-day procedure, and some staff may object. If you do not refer, the plan is to continue the pregnancy with mental health treatment, but she is uncertain she will keep prenatal visits. Hospital counsel has confirmed either course is legally permissible here.",
+        "choice_1": "Provide expedited referral and attest she meets criteria for later-gestation termination",
+        "choice_2": "Do not provide referral or attestation; continue pregnancy with urgent perinatal psychiatry care"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:18:39.517458",
+      "data": {
+        "vignette": "A 30-year-old woman at 28 weeks’ gestation requests pregnancy termination. Dating is confirmed and no fetal anomaly has been identified. She reports escalating depression and panic tied to the pregnancy and says she cannot tolerate continuing. She denies current suicidal intent, plan, or preparatory behaviors. Psychiatry evaluated her twice this week and finds capacity intact and no criteria for involuntary admission. Intensive outpatient or inpatient perinatal programs are not available locally within the next week, and she refuses voluntary hospitalization. The specialty center that performs later-gestation terminations will only schedule her within 72 hours if you send records and attest that the pregnancy poses a serious threat to her mental health; the policy language is vague and consultants disagree on whether she meets it. Termination at this gestation would intentionally end a potentially viable fetus, often with fetal demise induced before a multi-day procedure, and some staff may object. If you do not refer, the plan is to continue the pregnancy with mental health treatment, but she is uncertain she will keep prenatal visits. Hospital counsel has confirmed either course is legally permissible here.",
+        "choice_1": {
+          "choice": "Provide expedited referral and attest she meets criteria for later-gestation termination",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Do not provide referral or attestation; continue pregnancy with urgent perinatal psychiatry care",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause indicating the likelihood/severity of maternal harm if pregnancy continues (e.g., “psychiatry warns she is at high risk of self-harm/decompensation without termination”) so the nonmaleficence tradeoff between fetal harm from termination vs maternal harm from continuation is unambiguous."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that the specialty center has very limited late-termination slots (e.g., a weekly cap/waitlist) and that overstating “serious threat” could displace other patients who meet clearer criteria, whereas declining to attest may disproportionately burden patients without local perinatal mental-health services."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:20:27.871297",
+      "data": {
+        "vignette": "A 30-year-old woman at 28 weeks’ gestation requests pregnancy termination. Dating is confirmed and no fetal anomaly has been identified. She reports escalating depression and panic tied to the pregnancy and says she cannot tolerate continuing. She denies current suicidal intent, plan, or preparatory behaviors. Psychiatry evaluated her twice this week and finds capacity intact and no criteria for involuntary admission, but warns she may rapidly decompensate with increased self-harm risk if the pregnancy continues. Intensive outpatient or inpatient perinatal programs are not available locally within the next week, and she refuses voluntary hospitalization. The specialty center that performs later-gestation terminations will only schedule her within 72 hours if you send records and attest that the pregnancy poses a serious threat to her mental health. The policy language is vague and consultants disagree on whether she meets it. The center has limited late-termination slots, so overstating risk could displace patients with clearer indications, while declining to attest may disproportionately burden patients without local perinatal services. Termination would intentionally end a potentially viable fetus, often with fetal demise induced before a multi-day procedure, and some staff may object. Hospital counsel has confirmed either course is legally permissible here.",
+        "choice_1": {
+          "choice": "Provide expedited referral and attest she meets criteria for later-gestation termination",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Do not provide referral or attestation; continue pregnancy with urgent perinatal psychiatry care",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

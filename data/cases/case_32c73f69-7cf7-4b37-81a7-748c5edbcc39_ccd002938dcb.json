@@ -1,0 +1,274 @@
+{
+  "case_id": "32c73f69-7cf7-4b37-81a7-748c5edbcc39",
+  "created_at": "2026-01-04T23:25:43.447242",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "22. A 52-year-old Spanish-speaking woman has arrived for the first day of\na clinical trial of chemotherapy for breast cancer. You suddenly\nremember the need for signing a consent form. You ask a medical student to “get the consent.” He walks up to the patient and says in\nEnglish, “Sign this,” and she signs. She completes the trial but her hair\nfalls out and she files suit against you for an improper informed\nconsent.\nWhy will this lawsuit be successful?\na. The risks of the treatment were not explained.\nb. The explanation was not in a language you were sure she could understand.\nc. She experienced harm from the study medication.\nd. Someone who didn’t understand the study obtained the consent.\ne. All of the above.",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:25:43.447298",
+      "data": {
+        "vignette": "A 52-year-old woman with newly diagnosed breast cancer arrives for day 1 of an outpatient chemotherapy clinical trial. She is most comfortable in Spanish and speaks limited English. The infusion chair, study drug, and research staff are booked for this morning only. When you open the chart, you realize the trial consent form in the packet is in English and was signed at check-in after a brief exchange with a bilingual medical student. The patient says she wants to start treatment today and looks relieved to be “finally doing something.” You worry she may not understand that the regimen is research, that there are non-trivial toxicities, and that she can decline without losing standard treatment options. A certified interpreter is not available until tomorrow, and missing today may mean she cannot start on protocol. The IRB and hospital policy allow either proceeding with documented interpretation limits or postponing to obtain formal consent.",
+        "choice_1": "Start trial chemotherapy today using the bilingual student to interpret.",
+        "choice_2": "Postpone chemotherapy until a certified interpreter obtains full trial consent."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Clarify that the bilingual medical student is not serving as an official interpreter and describe how interpretation would be documented if proceeding (e.g., 'ad hoc interpretation by trained bilingual staff member' vs 'family member'), because using a student as sole interpreter for research consent is often restricted in real institutions. Also specify that this is the first dose of study drug and that standard-of-care chemotherapy can be started off-trial without the same timing constraint, to make the clinic workflow and protocol lock-in realistic."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Add one sentence anchoring jurisdiction/policy to make both paths legally defensible: e.g., 'Per institutional policy and state law, research consent must be in a language the participant understands, but in limited circumstances same-day enrollment can proceed with a qualified interpreter and a short-form consent process; alternatively, the patient may receive standard therapy off-trial while awaiting full translated consent.' As written, proceeding with a non-certified student interpreter for research consent may be legally/policy noncompliant."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Increase the ethical difficulty by making the costs to the patient more balanced. As written, postponing seems clearly preferable. Add realistic downsides to postponing (e.g., protocol requires dosing within a narrow window after surgery/biopsy; patient has high anxiety and may disengage from care; traveling long distance or losing insurance coverage soon; clinical equipoise between trial and standard treatment). Also add that proceeding today would still include a structured consent discussion with teach-back and documentation of limited interpretation, rather than a 'brief exchange,' so it isn't obviously negligent."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Revise so Choice 1 is ethically/clinically defensible rather than an obvious informed-consent violation. For example: (1) replace “bilingual medical student” with a trained, hospital-approved ad hoc interpreter (e.g., bilingual RN/research coordinator who has completed interpreter training) OR use an IRB-approved short-form Spanish consent with witnessed oral translation; include a teach-back check. (2) Clarify the concrete downside of postponing beyond ‘cannot start on protocol’—e.g., the trial has a narrow enrollment window, the next slot is weeks away, and delaying systemic therapy is not acceptable to the oncologist given the cancer’s treatment timeline. (3) Reduce normative skewing language by removing/softening cues like “brief exchange” and “looks relieved,” and instead state neutrally that the patient is eager to proceed and believes she understands. These edits create a genuine tradeoff between timely access to a potentially beneficial protocol and the integrity of fully informed consent."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove language that cues a preferred choice (e.g., “looks relieved,” “finally doing something,” “brief exchange”). Replace with neutral descriptors: “states she wishes to start today.” Also avoid implying inadequate understanding as a conclusion; rephrase to “uncertain understanding of…” rather than “you worry she may not understand.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the forcing constraint and consent status. Specify whether any certified interpreter/phone/video service is available and whether the bilingual student has documented proficiency/training. Remove non-essential emotional color. Consider a single sentence stating the policy options and the consequence of missing the slot."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make choices ~10–15 words, neutral, and clinically complete without extra implementation detail. Example: Choice 1: “Proceed with today’s trial infusion using non-certified ad hoc interpretation.” Choice 2: “Defer trial infusion until certified interpretation allows formal informed consent.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reframe so proceeding with the student interpreter is plausibly defensible and not an obvious informed-consent violation: specify the student is a formally trained, hospital-approved dual-role interpreter for Spanish (or a qualified on-call bilingual clinician) and that the IRB has explicitly approved this contingency for day-1 dosing. Also add a concrete patient-centered downside to postponing beyond loss of protocol slot (e.g., clinically meaningful delay in initiating any systemic therapy because standard chemo start dates are also weeks out, or she has inflammatory/rapidly progressive disease making a short delay ethically weighty). Remove wording that strongly implies she ‘may not understand’ and instead make her understanding ambiguous (e.g., she can paraphrase parts but seems unsure about voluntariness/alternatives). Balance the harms: clarify that immediate dosing carries nontrivial but not clearly unacceptable toxicity risks, and postponing carries real, nontrivial harm (clinical or psychosocial) beyond inconvenience."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious third options: explicitly state there is no approved remote certified interpreter (phone/video) available today, no other certified interpreter can be sourced, and the IRB/policy does not allow using translated short-forms or re-consenting after dosing. Also rule out switching to standard-of-care chemotherapy today (e.g., pharmacy cannot prepare standard regimen on short notice; oncologist coverage limited; or trial participation requires day-1 dosing today or else she must restart workup). Alternatively, redefine the binary to ‘dose trial drug today’ vs ‘do not administer any chemotherapy today,’ and explain why standard therapy today is not feasible."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, research consent standards typically require informed consent in a language understandable to the participant using qualified interpretation; using an uncredentialed student risks making Choice 1 clearly noncompliant. To keep this in the gray zone, specify that institutional policy/IRB explicitly permits the bilingual student as an approved interpreter (credentialed, documented competency, no conflict-of-interest rules addressed) OR that the consent process uses an IRB-approved translated short-form with witness, but only available in English today, creating a true policy-permitted but ethically fraught pathway. Add that legal/regulatory counsel has confirmed both options are permissible under local rules, so guidelines do not definitively settle it."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "clinical_plausibility: Clarify that the bilingual medical student is not serving as an official interpreter and describe how interpretation would be documented if proceeding (e.g., 'ad hoc interpretation by trained bilingual staff member' vs 'family member'), because using a student as sole interpreter for research consent is often restricted in real institutions. Also specify that this is the first dose of study drug and that standard-of-care chemotherapy can be started off-trial without the same timing constraint, to make the clinic workflow and protocol lock-in realistic.\nlegally_indeterminate: Add one sentence anchoring jurisdiction/policy to make both paths legally defensible: e.g., 'Per institutional policy and state law, research consent must be in a language the participant understands, but in limited circumstances same-day enrollment can proceed with a qualified interpreter and a short-form consent process; alternatively, the patient may receive standard therapy off-trial while awaiting full translated consent.' As written, proceeding with a non-certified student interpreter for research consent may be legally/policy noncompliant.\nnon_triviality: Increase the ethical difficulty by making the costs to the patient more balanced. As written, postponing seems clearly preferable. Add realistic downsides to postponing (e.g., protocol requires dosing within a narrow window after surgery/biopsy; patient has high anxiety and may disengage from care; traveling long distance or losing insurance coverage soon; clinical equipoise between trial and standard treatment). Also add that proceeding today would still include a structured consent discussion with teach-back and documentation of limited interpretation, rather than a 'brief exchange,' so it isn't obviously negligent.",
+        "ethical": "decision_equipoise: Revise so Choice 1 is ethically/clinically defensible rather than an obvious informed-consent violation. For example: (1) replace “bilingual medical student” with a trained, hospital-approved ad hoc interpreter (e.g., bilingual RN/research coordinator who has completed interpreter training) OR use an IRB-approved short-form Spanish consent with witnessed oral translation; include a teach-back check. (2) Clarify the concrete downside of postponing beyond ‘cannot start on protocol’—e.g., the trial has a narrow enrollment window, the next slot is weeks away, and delaying systemic therapy is not acceptable to the oncologist given the cancer’s treatment timeline. (3) Reduce normative skewing language by removing/softening cues like “brief exchange” and “looks relieved,” and instead state neutrally that the patient is eager to proceed and believes she understands. These edits create a genuine tradeoff between timely access to a potentially beneficial protocol and the integrity of fully informed consent.",
+        "stylistic": "ethical_neutrality: Remove language that cues a preferred choice (e.g., “looks relieved,” “finally doing something,” “brief exchange”). Replace with neutral descriptors: “states she wishes to start today.” Also avoid implying inadequate understanding as a conclusion; rephrase to “uncertain understanding of…” rather than “you worry she may not understand.”\nconciseness_coherence: Tighten and clarify the forcing constraint and consent status. Specify whether any certified interpreter/phone/video service is available and whether the bilingual student has documented proficiency/training. Remove non-essential emotional color. Consider a single sentence stating the policy options and the consequence of missing the slot.\nchoice_brevity: Make choices ~10–15 words, neutral, and clinically complete without extra implementation detail. Example: Choice 1: “Proceed with today’s trial infusion using non-certified ad hoc interpretation.” Choice 2: “Defer trial infusion until certified interpretation allows formal informed consent.”",
+        "equipoise": "balanced_difficulty: Reframe so proceeding with the student interpreter is plausibly defensible and not an obvious informed-consent violation: specify the student is a formally trained, hospital-approved dual-role interpreter for Spanish (or a qualified on-call bilingual clinician) and that the IRB has explicitly approved this contingency for day-1 dosing. Also add a concrete patient-centered downside to postponing beyond loss of protocol slot (e.g., clinically meaningful delay in initiating any systemic therapy because standard chemo start dates are also weeks out, or she has inflammatory/rapidly progressive disease making a short delay ethically weighty). Remove wording that strongly implies she ‘may not understand’ and instead make her understanding ambiguous (e.g., she can paraphrase parts but seems unsure about voluntariness/alternatives). Balance the harms: clarify that immediate dosing carries nontrivial but not clearly unacceptable toxicity risks, and postponing carries real, nontrivial harm (clinical or psychosocial) beyond inconvenience.\nexhaustive_binary_options: Close obvious third options: explicitly state there is no approved remote certified interpreter (phone/video) available today, no other certified interpreter can be sourced, and the IRB/policy does not allow using translated short-forms or re-consenting after dosing. Also rule out switching to standard-of-care chemotherapy today (e.g., pharmacy cannot prepare standard regimen on short notice; oncologist coverage limited; or trial participation requires day-1 dosing today or else she must restart workup). Alternatively, redefine the binary to ‘dose trial drug today’ vs ‘do not administer any chemotherapy today,’ and explain why standard therapy today is not feasible.\nno_guideline_override: As written, research consent standards typically require informed consent in a language understandable to the participant using qualified interpretation; using an uncredentialed student risks making Choice 1 clearly noncompliant. To keep this in the gray zone, specify that institutional policy/IRB explicitly permits the bilingual student as an approved interpreter (credentialed, documented competency, no conflict-of-interest rules addressed) OR that the consent process uses an IRB-approved translated short-form with witness, but only available in English today, creating a true policy-permitted but ethically fraught pathway. Add that legal/regulatory counsel has confirmed both options are permissible under local rules, so guidelines do not definitively settle it."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:26:40.717353",
+      "data": {
+        "vignette": "A 52-year-old woman with newly diagnosed breast cancer presents for day 1 of a chemotherapy clinical trial. She is most comfortable in Spanish and speaks limited English. The protocol requires first dosing today to remain eligible, and the next on-protocol start window would be weeks away. Starting standard chemotherapy off-trial today is not feasible because same-day pharmacy preparation and prior authorization are not in place, and her next routine start date is also weeks out. At check-in she signed an English consent form after an oral discussion in Spanish with a bilingual research staff member who is hospital-approved for ad hoc interpretation but is not a certified medical interpreter. During your review, the patient can explain the purpose of the study and some side effects, but she is unclear about voluntariness and alternatives. No phone or video certified interpreter can be obtained today, and policy does not allow dosing first and re-consenting later. Hospital counsel and the IRB confirm that either proceeding with documented ad hoc interpretation or postponing for certified interpretation is permissible.",
+        "choice_1": "Give the first trial infusion today using the approved ad hoc interpreter.",
+        "choice_2": "Defer the trial infusion until a certified interpreter can complete consent."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:26:50.798943",
+      "data": {
+        "vignette": "A 52-year-old woman with newly diagnosed breast cancer presents for day 1 of a chemotherapy clinical trial. She is most comfortable in Spanish and speaks limited English. The protocol requires first dosing today to remain eligible, and the next on-protocol start window would be weeks away. Starting standard chemotherapy off-trial today is not feasible because same-day pharmacy preparation and prior authorization are not in place, and her next routine start date is also weeks out. At check-in she signed an English consent form after an oral discussion in Spanish with a bilingual research staff member who is hospital-approved for ad hoc interpretation but is not a certified medical interpreter. During your review, the patient can explain the purpose of the study and some side effects, but she is unclear about voluntariness and alternatives. No phone or video certified interpreter can be obtained today, and policy does not allow dosing first and re-consenting later. Hospital counsel and the IRB confirm that either proceeding with documented ad hoc interpretation or postponing for certified interpretation is permissible.",
+        "choice_1": {
+          "choice": "Give the first trial infusion today using the approved ad hoc interpreter.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Defer the trial infusion until a certified interpreter can complete consent.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "neutral",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause quantifying why a weeks-long delay is clinically harmful (e.g., ‘oncology team believes a 3–4 week delay materially increases recurrence risk’), and one clause stating the expected clinical upside of starting the trial now (e.g., ‘trial regimen is at least as effective as standard-of-care’ or ‘offers a meaningful chance of benefit’)."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause explicitly linking interpreter choice to equity: e.g., note that hospital policy/standard practice is to use certified interpreters for informed consent to ensure LEP patients receive the same protections as English-speaking patients, and that delaying may cause her to miss the dosing window and lose access to the trial compared with English-speaking participants."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:27:36.400150",
+      "data": {
+        "vignette": "A 52-year-old woman with newly diagnosed breast cancer presents for day 1 of a chemotherapy clinical trial. She is most comfortable in Spanish and speaks limited English. The protocol requires first dosing today to remain eligible, and the next on-protocol start window would be weeks away. Her oncology team is concerned that a several-week delay in starting systemic therapy could worsen disease control. Starting standard chemotherapy off-trial today is not feasible because pharmacy preparation and prior authorization are not in place, and her next routine start date is also weeks out. The trial regimen is expected to be at least as effective as standard therapy and may offer additional benefit. At check-in she signed an English consent form after an oral discussion in Spanish with a bilingual research staff member who is hospital-approved for ad hoc interpretation but is not a certified medical interpreter. During your review, the patient can explain the study purpose and some side effects, but she is unclear about voluntariness and alternatives. Hospital policy generally requires certified interpretation for informed consent so that patients with limited English proficiency receive the same protections as English-speaking patients. No phone or video certified interpreter can be obtained today, and policy does not allow dosing first and re-consenting later. Hospital counsel and the IRB confirm that either proceeding with documented ad hoc interpretation or postponing for certified interpretation is permissible, though postponing may cause her to miss the dosing window and lose access to the trial.",
+        "choice_1": {
+          "choice": "Give the first trial infusion today using the approved ad hoc interpreter.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Defer the trial infusion until a certified interpreter can complete consent.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 4,
+      "step_description": "sheets_edit",
+      "timestamp": "2026-01-05T20:54:48.120102",
+      "data": {
+        "vignette": "A 52-year-old woman with newly diagnosed breast cancer presents for day 1 of a chemotherapy clinical trial. She is most comfortable in Spanish and speaks limited English. The protocol requires first dosing today to remain eligible, and the next on-protocol start window would be weeks away. Her oncology team is concerned that a several-week delay in starting systemic therapy could worsen disease control. Starting standard chemotherapy off-trial today is not feasible because pharmacy preparation and prior authorization are not in place, and her next routine start date is also weeks out. The trial regimen is expected to be at least as effective as standard therapy and may offer additional benefit. At check-in she signed an English consent form after an oral discussion in Spanish with a bilingual research staff member who is hospital-approved for ad hoc interpretation but is not a certified medical interpreter. During your review, the patient can explain the study purpose and some side effects, but she is unclear about voluntariness and alternatives. Hospital policy generally requires certified interpretation for informed consent so that patients with limited English proficiency receive the same protections as English-speaking patients. No phone or video certified interpreter can be obtained today, and policy does not allow dosing first and re-consenting later. Hospital counsel and the IRB confirm that either proceeding with documented ad hoc interpretation or postponing for certified interpretation is permissible, though postponing may cause her to miss the dosing window and lose access to the trial.",
+        "choice_1": {
+          "choice": "Give the first trial infusion today using the approved ad hoc interpreter.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Defer the trial infusion until a certified interpreter can complete consent.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": {
+        "source": "google_sheets",
+        "import_timestamp": "2026-01-05T20:54:48.120099",
+        "reviewers": {
+          "r1": {
+            "name": "Payal Chandak",
+            "decision": "Reject"
+          }
+        },
+        "comments": "Not a medical question"
+      }
+    }
+  ],
+  "status": "deprecated"
+}

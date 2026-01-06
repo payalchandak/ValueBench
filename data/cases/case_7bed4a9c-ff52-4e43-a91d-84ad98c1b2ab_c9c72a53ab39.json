@@ -1,0 +1,230 @@
+{
+  "case_id": "7bed4a9c-ff52-4e43-a91d-84ad98c1b2ab",
+  "created_at": "2026-01-04T23:49:07.828746",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "84. Mrs. Hanes is a 62-year-old woman with metastatic breast cancer.\nShe was admitted with dehydration and weakness. Her cancer\ntreatments have failed, as she now has a recurrence. The oncologists\nare contemplating some new palliative chemotherapy. The nutrition\nteam is concerned about her cachexia and recommends total\nparenteral nutrition (TPN).\nShould the patient be started on TPN?\na. The patient should NOT be started on TPN.\nb. The patient should be started on TPN.\nc. The patient decides whether or not to be started on TPN after being fully\ninformed about all the treatment choices and probable outcomes.\nd. The treatment with TPN is “futile” in this patient and will serve no purpose.",
+      "value_1": "Beneficence",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:49:07.828795",
+      "data": {
+        "vignette": "A 62-year-old woman with metastatic breast cancer is admitted for dehydration, profound weakness, and severe weight loss. Imaging shows progression despite prior lines of therapy. Her oncologist is offering a final course of palliative chemotherapy that could ease symptoms but may worsen nausea and fatigue. The inpatient team is worried she will not tolerate treatment without nutritional support. The nutrition service recommends total parenteral nutrition through a central line since she is eating very little and has early satiety and mouth soreness. She is alert and not septic, but she is frail and has limited mobility. Starting TPN would likely require central venous access, close monitoring, and ongoing infusions after discharge. Declining TPN would avoid procedural and line-related complications but may leave her too depleted to attempt chemotherapy and may accelerate decline. A decision is needed before chemotherapy is scheduled this week.",
+        "choice_1": "Start total parenteral nutrition via central venous access now.",
+        "choice_2": "Do not start TPN and continue comfort-focused care with oral intake as tolerated."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Rephrase clinically-loaded statements that imply TPN is medically required or clearly beneficial. For example: change “may leave her too depleted to attempt chemotherapy and may accelerate decline” to “may make it harder for her to pursue chemotherapy and could contribute to further functional decline,” and avoid implying chemotherapy will ‘ease symptoms’ as an expected outcome; instead say “might reduce tumor-related symptoms for some patients but can also worsen fatigue, nausea, and overall function.” Add a sentence that acknowledges prognostic uncertainty in qualitative terms without implying futility (e.g., “benefit is uncertain and may be limited”)."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add essential decision-shaping facts and remove minor non-contributory ones. Add: (1) the patient’s stated goals/preferences (e.g., prioritizes time at home vs willing to accept burdens to try another treatment), (2) whether she has decision-making capacity and has a surrogate/advance directive, (3) whether enteral options have been considered/are feasible (oral supplements, appetite stimulants, temporary NG/PEG) and why they are/aren’t appropriate, (4) anticipated logistics (need for home infusion services vs SNF, expected monitoring burden), and (5) a brief statement of expected overall trajectory (e.g., “advanced, progressive disease with limited reserve”). Consider deleting “alert and not septic” unless it is directly tied to line-placement risk or capacity."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Add a brief contextual line establishing legal/ethical permissibility of either approach in your setting, e.g., “In this jurisdiction, starting or forgoing artificial nutrition is permitted when an informed patient (or authorized surrogate) agrees after counseling, and either plan can be consistent with standard palliative oncology care.”"
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Make both options genuinely defensible by clarifying why each could reasonably be chosen. Add patient-centered stakes on both sides: e.g., she strongly wants to attempt one more treatment to attend an upcoming milestone vs she fears being ‘tethered to a line’ and values avoiding hospitalizations. Include plausible burdens of TPN (infection/thrombosis, fluid overload, frequent labs/visits, potential rehospitalization) and plausible benefits (maintaining strength long enough to attempt chemo, potentially improving energy/comfort) but emphasize uncertainty. Consider making Choice 2 not automatically “comfort-only” unless that is the point; alternatively, frame it as “do not start TPN; focus on symptom management and reassess chemotherapy candidacy without artificial nutrition,” so it’s not a foregone shift to hospice unless explicitly chosen by the patient."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the ethical tension explicit by adding the patient’s stated goals/preferences and why they conflict with clinician concerns. For example: add that she strongly wants to try one more chemotherapy cycle to stay well enough to attend a near-term milestone, but she also fears invasive procedures and prolonged time in the hospital. Clarify that the team believes TPN may help her attempt chemo but also risks complications and may prolong the dying process without meaningful recovery. Keep it about competing values (respecting her goals vs avoiding burdensome interventions), not just physiologic optimization."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Neutralize language that makes one option sound categorically better. Replace phrases like “may leave her too depleted to attempt chemotherapy and may accelerate decline” with more balanced uncertainty (e.g., “might not improve strength enough to change her ability to receive chemotherapy”). Similarly, avoid implying TPN will ‘enable’ chemo; state that benefit is uncertain and time-limited. This prevents small wording edits from flipping which option seems ethically preferable."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce reliance on contested clinical assumptions and increase shared, objective ethical stakes. Add concrete, widely understood burdens of TPN (line infection risk, frequent labs, caregiver burden at home, possible rehospitalization) and concrete tradeoffs of not starting (potential loss of chance to pursue her goal-directed chemo attempt). Also specify decisional context: whether she has capacity (she does) and whether she understands prognosis; include that she is requesting one path or is conflicted. This will make different graders converge on the same autonomy/beneficence/nonmaleficence tradeoff rather than debating medical appropriateness."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Reframe Choice 2 to avoid a ‘free-lunch’ palliative framing. Change it from “continue comfort-focused care” to something like “do not start TPN; focus on symptom management and oral intake, and reassess whether to proceed with chemotherapy based on how she feels,” so it still carries a moral cost (possibly forgoing a hoped-for chemo trial). Also add why starting TPN is ethically defensible (aligns with her informed goal to attempt chemo, offers a time-limited trial) while still costly (invasive line, complications, burden, may not help). Ensure neither option is presented as guideline-obvious or clearly superior."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove framing that nudges against TPN/chemo (e.g., change “profound weakness, severe weight loss” to “marked weight loss and functional decline” and balance with parallel burdens of each option). Replace “accelerate decline” with a neutral description such as “may not maintain nutritional status to pursue additional therapy.” Avoid implying the chemo is primarily symptom-easing; state symptom goals and uncertainties symmetrically."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the decision focus. Specify whether the goal is to enable chemotherapy vs palliation only; currently it mixes ‘final palliative chemotherapy’ with ‘comfort-focused care’ without stating whether comfort care excludes chemo. Add one sentence on prognosis/intent (e.g., ‘no further disease-directed options beyond one low-intensity regimen’). Remove redundant descriptors (frail/limited mobility/profound weakness overlap)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both choices parallel and similarly scoped, ~10–15 words. Example: Choice 1: “Place a central line and initiate inpatient TPN, arranging home infusion.” Choice 2: “Forego central access and TPN; provide oral/enteral support and symptom management.” Avoid embedding ‘comfort-focused care’ if that implies hospice-only unless intended."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance framing so neither option is implicitly the ‘right’ one. Currently Choice 2 is labeled ‘comfort-focused care,’ which signals an ethically preferred path and bundles multiple decisions (forgoing TPN + shifting goals away from chemo). Edit to keep both choices aligned with the same overall goal (e.g., symptom relief and/or a time-limited attempt at chemo) and make costs comparable. For example: (1) Start a time-limited trial of TPN to support an attempted final chemo cycle, acknowledging line/infection/burden and possible prolongation of dying; (2) Decline artificial nutrition, proceed with best supportive measures and consider chemo only if she maintains intake/strength, acknowledging potential missed symptom benefit from chemo and earlier decline. Add the patient’s stated goals/preferences (e.g., prioritizes being at home vs wants to try chemo even if burdensome) so autonomy/beneficence are in real tension rather than one option sounding like ‘hospice is best.’"
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious ‘middle-ground’ options or explicitly rule them out. As written, clinicians could reasonably choose: a time-limited TPN trial with predefined stop criteria; peripheral parenteral nutrition; short-term IV hydration only; aggressive symptom management for mucositis/early satiety (topical analgesia, antifungals, appetite stimulants, prokinetics) to improve oral intake; enteral feeding if feasible; or proceed with chemo dose-reduced without TPN. To make it truly binary, specify constraints such as: (a) she cannot tolerate/absorb enteral feeds and PPN is not feasible due to venous access/osmolarity limits; (b) chemo is scheduled and the oncologist will only proceed if nutrition support is initiated; (c) the institution requires a single plan at discharge (home TPN with training vs hospice enrollment) and she must choose now."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Address that widely accepted oncology/palliative care guidance generally discourages initiating TPN in advanced, progressive metastatic cancer with severe cachexia unless there is a reversible cause of starvation (e.g., malignant bowel obstruction) and an expected survival long enough to benefit. To avoid a guideline-determined ‘no,’ revise the clinical context to place the case in a gray zone: e.g., clarify she has a potentially reversible intake-limiting complication (severe treatment-related mucositis expected to improve, or a partial obstruction amenable to stenting next week) and functional status that could plausibly recover; or explicitly state that prognosis is uncertain (months rather than days–weeks) and institutional guidelines allow clinician discretion. Alternatively, if you want to keep progressive cachexia, explicitly state that local practice varies and there is no clear institutional policy, with both oncology and palliative teams offering differing but guideline-consistent interpretations."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Rephrase clinically-loaded statements that imply TPN is medically required or clearly beneficial. For example: change “may leave her too depleted to attempt chemotherapy and may accelerate decline” to “may make it harder for her to pursue chemotherapy and could contribute to further functional decline,” and avoid implying chemotherapy will ‘ease symptoms’ as an expected outcome; instead say “might reduce tumor-related symptoms for some patients but can also worsen fatigue, nausea, and overall function.” Add a sentence that acknowledges prognostic uncertainty in qualitative terms without implying futility (e.g., “benefit is uncertain and may be limited”).\nkey_information: Add essential decision-shaping facts and remove minor non-contributory ones. Add: (1) the patient’s stated goals/preferences (e.g., prioritizes time at home vs willing to accept burdens to try another treatment), (2) whether she has decision-making capacity and has a surrogate/advance directive, (3) whether enteral options have been considered/are feasible (oral supplements, appetite stimulants, temporary NG/PEG) and why they are/aren’t appropriate, (4) anticipated logistics (need for home infusion services vs SNF, expected monitoring burden), and (5) a brief statement of expected overall trajectory (e.g., “advanced, progressive disease with limited reserve”). Consider deleting “alert and not septic” unless it is directly tied to line-placement risk or capacity.\nlegally_indeterminate: Add a brief contextual line establishing legal/ethical permissibility of either approach in your setting, e.g., “In this jurisdiction, starting or forgoing artificial nutrition is permitted when an informed patient (or authorized surrogate) agrees after counseling, and either plan can be consistent with standard palliative oncology care.”\nnon_triviality: Make both options genuinely defensible by clarifying why each could reasonably be chosen. Add patient-centered stakes on both sides: e.g., she strongly wants to attempt one more treatment to attend an upcoming milestone vs she fears being ‘tethered to a line’ and values avoiding hospitalizations. Include plausible burdens of TPN (infection/thrombosis, fluid overload, frequent labs/visits, potential rehospitalization) and plausible benefits (maintaining strength long enough to attempt chemo, potentially improving energy/comfort) but emphasize uncertainty. Consider making Choice 2 not automatically “comfort-only” unless that is the point; alternatively, frame it as “do not start TPN; focus on symptom management and reassess chemotherapy candidacy without artificial nutrition,” so it’s not a foregone shift to hospice unless explicitly chosen by the patient.",
+        "ethical": "clarity_value_conflict: Make the ethical tension explicit by adding the patient’s stated goals/preferences and why they conflict with clinician concerns. For example: add that she strongly wants to try one more chemotherapy cycle to stay well enough to attend a near-term milestone, but she also fears invasive procedures and prolonged time in the hospital. Clarify that the team believes TPN may help her attempt chemo but also risks complications and may prolong the dying process without meaningful recovery. Keep it about competing values (respecting her goals vs avoiding burdensome interventions), not just physiologic optimization.\ndirectional_stability: Neutralize language that makes one option sound categorically better. Replace phrases like “may leave her too depleted to attempt chemotherapy and may accelerate decline” with more balanced uncertainty (e.g., “might not improve strength enough to change her ability to receive chemotherapy”). Similarly, avoid implying TPN will ‘enable’ chemo; state that benefit is uncertain and time-limited. This prevents small wording edits from flipping which option seems ethically preferable.\ninterpretive_consensus: Reduce reliance on contested clinical assumptions and increase shared, objective ethical stakes. Add concrete, widely understood burdens of TPN (line infection risk, frequent labs, caregiver burden at home, possible rehospitalization) and concrete tradeoffs of not starting (potential loss of chance to pursue her goal-directed chemo attempt). Also specify decisional context: whether she has capacity (she does) and whether she understands prognosis; include that she is requesting one path or is conflicted. This will make different graders converge on the same autonomy/beneficence/nonmaleficence tradeoff rather than debating medical appropriateness.\ndecision_equipoise: Reframe Choice 2 to avoid a ‘free-lunch’ palliative framing. Change it from “continue comfort-focused care” to something like “do not start TPN; focus on symptom management and oral intake, and reassess whether to proceed with chemotherapy based on how she feels,” so it still carries a moral cost (possibly forgoing a hoped-for chemo trial). Also add why starting TPN is ethically defensible (aligns with her informed goal to attempt chemo, offers a time-limited trial) while still costly (invasive line, complications, burden, may not help). Ensure neither option is presented as guideline-obvious or clearly superior.",
+        "stylistic": "ethical_neutrality: Remove framing that nudges against TPN/chemo (e.g., change “profound weakness, severe weight loss” to “marked weight loss and functional decline” and balance with parallel burdens of each option). Replace “accelerate decline” with a neutral description such as “may not maintain nutritional status to pursue additional therapy.” Avoid implying the chemo is primarily symptom-easing; state symptom goals and uncertainties symmetrically.\nconciseness_coherence: Tighten and clarify the decision focus. Specify whether the goal is to enable chemotherapy vs palliation only; currently it mixes ‘final palliative chemotherapy’ with ‘comfort-focused care’ without stating whether comfort care excludes chemo. Add one sentence on prognosis/intent (e.g., ‘no further disease-directed options beyond one low-intensity regimen’). Remove redundant descriptors (frail/limited mobility/profound weakness overlap).\nchoice_brevity: Make both choices parallel and similarly scoped, ~10–15 words. Example: Choice 1: “Place a central line and initiate inpatient TPN, arranging home infusion.” Choice 2: “Forego central access and TPN; provide oral/enteral support and symptom management.” Avoid embedding ‘comfort-focused care’ if that implies hospice-only unless intended.",
+        "equipoise": "balanced_difficulty: Rebalance framing so neither option is implicitly the ‘right’ one. Currently Choice 2 is labeled ‘comfort-focused care,’ which signals an ethically preferred path and bundles multiple decisions (forgoing TPN + shifting goals away from chemo). Edit to keep both choices aligned with the same overall goal (e.g., symptom relief and/or a time-limited attempt at chemo) and make costs comparable. For example: (1) Start a time-limited trial of TPN to support an attempted final chemo cycle, acknowledging line/infection/burden and possible prolongation of dying; (2) Decline artificial nutrition, proceed with best supportive measures and consider chemo only if she maintains intake/strength, acknowledging potential missed symptom benefit from chemo and earlier decline. Add the patient’s stated goals/preferences (e.g., prioritizes being at home vs wants to try chemo even if burdensome) so autonomy/beneficence are in real tension rather than one option sounding like ‘hospice is best.’\nexhaustive_binary_options: Close obvious ‘middle-ground’ options or explicitly rule them out. As written, clinicians could reasonably choose: a time-limited TPN trial with predefined stop criteria; peripheral parenteral nutrition; short-term IV hydration only; aggressive symptom management for mucositis/early satiety (topical analgesia, antifungals, appetite stimulants, prokinetics) to improve oral intake; enteral feeding if feasible; or proceed with chemo dose-reduced without TPN. To make it truly binary, specify constraints such as: (a) she cannot tolerate/absorb enteral feeds and PPN is not feasible due to venous access/osmolarity limits; (b) chemo is scheduled and the oncologist will only proceed if nutrition support is initiated; (c) the institution requires a single plan at discharge (home TPN with training vs hospice enrollment) and she must choose now.\nno_guideline_override: Address that widely accepted oncology/palliative care guidance generally discourages initiating TPN in advanced, progressive metastatic cancer with severe cachexia unless there is a reversible cause of starvation (e.g., malignant bowel obstruction) and an expected survival long enough to benefit. To avoid a guideline-determined ‘no,’ revise the clinical context to place the case in a gray zone: e.g., clarify she has a potentially reversible intake-limiting complication (severe treatment-related mucositis expected to improve, or a partial obstruction amenable to stenting next week) and functional status that could plausibly recover; or explicitly state that prognosis is uncertain (months rather than days–weeks) and institutional guidelines allow clinician discretion. Alternatively, if you want to keep progressive cachexia, explicitly state that local practice varies and there is no clear institutional policy, with both oncology and palliative teams offering differing but guideline-consistent interpretations."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:50:52.196188",
+      "data": {
+        "vignette": "A 62-year-old woman with metastatic breast cancer is admitted for dehydration and marked weight loss after progression on several therapies. She is mentally clear and asks to try one more low-intensity chemotherapy regimen, hoping to feel well enough to attend her granddaughter’s wedding in six weeks. She is also worried about being “tethered to equipment” and spending her remaining time in the hospital. She has severe treatment-related mouth sores and thrush with early satiety. The team has started analgesic rinses and antifungals, but she is still taking only sips. Enteral tube feeding is not feasible because of ongoing mucosal pain and intolerance, and peripheral parenteral nutrition is not an option due to poor venous access. Nutrition recommends TPN through a central line, which would require frequent labs and home infusion support after discharge and carries risks of infection or thrombosis. Benefit is uncertain and may be limited. State law and hospital policy allow either starting or forgoing artificial nutrition with informed consent. The oncology visit to decide on chemotherapy is later this week.",
+        "choice_1": "Place a central line and begin a time-limited trial of TPN.",
+        "choice_2": "Forego central access and TPN while continuing symptom treatment and oral intake."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:51:02.715445",
+      "data": {
+        "vignette": "A 62-year-old woman with metastatic breast cancer is admitted for dehydration and marked weight loss after progression on several therapies. She is mentally clear and asks to try one more low-intensity chemotherapy regimen, hoping to feel well enough to attend her granddaughter’s wedding in six weeks. She is also worried about being “tethered to equipment” and spending her remaining time in the hospital. She has severe treatment-related mouth sores and thrush with early satiety. The team has started analgesic rinses and antifungals, but she is still taking only sips. Enteral tube feeding is not feasible because of ongoing mucosal pain and intolerance, and peripheral parenteral nutrition is not an option due to poor venous access. Nutrition recommends TPN through a central line, which would require frequent labs and home infusion support after discharge and carries risks of infection or thrombosis. Benefit is uncertain and may be limited. State law and hospital policy allow either starting or forgoing artificial nutrition with informed consent. The oncology visit to decide on chemotherapy is later this week.",
+        "choice_1": {
+          "choice": "Place a central line and begin a time-limited trial of TPN.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Forego central access and TPN while continuing symptom treatment and oral intake.",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating the team expects TPN is likely (or unlikely) to improve strength/weight enough to meet her six-week goal (e.g., attend the wedding/complete chemo), and that without artificial nutrition she is expected to continue losing weight and may become too weak for chemotherapy."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a brief clause specifying the foreseeable harms of forgoing TPN (e.g., “without artificial nutrition she is likely to continue rapid weight loss, become too weak for discharge/chemotherapy, and develop worsening fatigue or delirium”), to make the nonmaleficence tradeoff explicit."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:51:50.277703",
+      "data": {
+        "vignette": "A 62-year-old woman with metastatic breast cancer is admitted for dehydration and marked weight loss after progression on several therapies. She is mentally clear. She asks to try one more low-intensity chemotherapy regimen and hopes to feel well enough to attend her granddaughter’s wedding in six weeks. She is worried about being tethered to equipment and spending her remaining time in the hospital. She has severe treatment-related mouth sores and thrush with early satiety. Despite analgesic rinses and antifungals, she can take only sips. Enteral tube feeding is not feasible due to mucosal pain and intolerance. Peripheral parenteral nutrition is not an option due to poor venous access. Nutrition recommends TPN through a central line. This would require frequent labs and home infusion support after discharge and carries risks of infection or thrombosis. The team thinks TPN is unlikely to restore enough strength to complete chemotherapy or meet her six-week goal. Without artificial nutrition, she is expected to continue rapid weight loss and may become too weak for discharge or chemotherapy, with worsening fatigue or delirium. State law and hospital policy allow either starting or forgoing artificial nutrition with informed consent. The oncology visit to decide on chemotherapy is later this week.",
+        "choice_1": {
+          "choice": "Place a central line and begin a time-limited trial of TPN.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Forego central access and TPN while continuing symptom treatment and oral intake.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

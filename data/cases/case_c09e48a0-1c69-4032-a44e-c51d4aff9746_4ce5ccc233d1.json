@@ -1,0 +1,236 @@
+{
+  "case_id": "c09e48a0-1c69-4032-a44e-c51d4aff9746",
+  "created_at": "2026-01-04T22:52:38.717626",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "59. A 47-year-old man with end-stage renal failure has asked you to stop his dialysis. The patient fully understands that he will die if he stops dialysis for more than a few days or weeks. He is not depressed and not encephalopathic.\nWhat should you tell him?\na. “I need a court order first.”\nb. “I am sorry; I don’t feel comfortable doing that.”\nc. “I can’t do that. Physician-assisted suicide is not ethical.”\nd. “I will stop when we get you a kidney transplant.”\ne. “Although I disagree with your decision, I will stop the dialysis.”",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T22:52:38.717672",
+      "data": {
+        "vignette": "A 47-year-old man with end-stage kidney disease has been on in-center hemodialysis for years. Over the past month he has had worsening fatigue, pruritus, and nausea despite medication adjustments. He says dialysis now feels like “being kept alive for the next session,” and he asks you to stop treatments. He clearly explains that missing dialysis will lead to death within days to weeks. He is calm, consistent, and demonstrates intact decision-making capacity. Screening and history do not suggest depression, delirium, or coercion. His partner pleads with you to keep dialyzing him because a transplant evaluation is in progress and could still become an option. The next dialysis session is scheduled this afternoon, and the unit needs an order now. Hospital policy and state law allow either honoring a capable refusal or continuing while further review occurs.",
+        "choice_1": "Stop dialysis and initiate comfort-focused care",
+        "choice_2": "Continue dialysis and defer stopping while readdressing goals and supports"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "As written, CHOICE 2 implies continuing in-center hemodialysis despite a capable, informed refusal. In practice, dialysis generally requires the patient’s cooperation; providing it over objection would require restraint/sedation and is rarely feasible or ethically/clinically standard. Edit CHOICE 2 (and the vignette) to make continued dialysis clinically realistic—for example: (a) patient is intermittently refusing but agrees to attend today’s session while goals-of-care are reassessed; or (b) patient requests a time-limited trial/one final session to allow family meeting/ethics consult; or (c) patient accepts dialysis but refuses escalation (DNR/DNI) and wants a set stop date."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "In most jurisdictions, forcing dialysis on an adult with intact decision-making capacity who clearly refuses could constitute battery and would not be legally defensible absent a specific statutory mechanism. The sentence 'policy and state law allow either honoring a capable refusal or continuing while further review occurs' is too vague to ground legality. Revise to make both options clearly lawful, e.g.: 'State law and hospital policy allow a capable patient to refuse dialysis; they also allow a short, consensual time-limited continuation while an ethics consult and palliative care evaluation occur if the patient agrees.' If you intend non-consensual continuation, you must specify a legally recognized basis (e.g., temporary lack of capacity/uncertainty, emergency exception), but that would require changing the capacity facts accordingly."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Because the vignette establishes stable, intact capacity, consistent refusal, no depression/delirium/coercion, and understanding of consequences, CHOICE 1 becomes clearly favored and CHOICE 2 becomes ethically/clinically difficult to justify. To restore genuine equipoise, add a credible ethically relevant uncertainty that makes brief continuation defensible (without turning it into a clinical optimization problem), such as: (1) fluctuating capacity due to uremia/medication with borderline cognition; (2) new, potentially reversible trigger for suffering (untreated pain, severe pruritus, poorly controlled nausea) with palliative measures not yet tried and patient is open to a short trial; (3) evidence of acute psychosocial crisis or caregiver pressure that raises concern about voluntariness; or (4) patient requests a defined time-limited trial to reach a personal milestone/transplant evaluation appointment, with an explicit stop date."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 2 ethically defensible by adding a serious, specific reason the clinician could justify brief continuation despite the refusal. For example: (a) introduce a credible concern that decision-making capacity is impaired or fluctuating due to uremic encephalopathy or acute metabolic derangements, with inconsistent reasoning across the interview; OR (b) specify the patient is ambivalent and requests a short, time-limited continuation to complete transplant evaluation or symptom palliation before a planned reassessment, so continuation is still aligned with his expressed goals. Remove/limit the line suggesting the conflict is primarily about what policy/law permits; instead ground the dilemma in bedside ethics (how to balance an expressed wish to stop with concern about potentially reversible suffering or compromised decisional capacity)."
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce ambiguity created by the ‘policy/state law allow either’ sentence and clarify the ethically relevant facts driving disagreement. Add explicit clinical-ethical rationale for why reasonable clinicians might disagree (e.g., borderline capacity from uremia; concern his symptoms are inadequately treated and he has not experienced optimized dialysis/palliative support; patient expresses enduring values conflict—doesn’t want to burden partner vs still wants a shot at transplant). As written, most reviewers will converge that honoring a capable refusal is required, so they won’t see a genuine dilemma."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the choices so neither looks like the obvious ‘correct’ one. Currently Choice 2 reads as overriding a capacitated refusal, which is typically ethically impermissible. To create equipoise, revise Choice 2 to: ‘Offer a clearly defined, time-limited continuation of dialysis (e.g., 1–2 sessions) explicitly framed as a bridge to optimize symptom control and reassess capacity/voluntariness, while preparing for withdrawal if he still refuses.’ Alternatively, explicitly make capacity uncertain (not intact) or add an acute reversible driver (e.g., severe pruritus/nausea from inadequate dialysis access issue) so continuing could prevent imminent, avoidable harm. Ensure Choice 1 also has an ethical cost (e.g., high likelihood of regret if symptoms are reversible, or loss of a meaningful goal like attending a family milestone) and Choice 2 has an ethical cost (e.g., moral distress/violation of expressed wishes, added suffering/burden), stated neutrally."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Replace emotionally charged wording: change “His partner pleads with you to keep dialyzing him” to “His partner urges/request that you continue dialysis” and avoid framing dialysis as ‘keeping him alive’ outside the patient’s direct quote. Consider changing “death within days to weeks” to “death in the near term” to reduce persuasive concreteness."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the forcing context without extra policy/legal commentary: replace “Hospital policy and state law allow either honoring a capable refusal or continuing while further review occurs” with one sentence specifying the immediate operational constraint (e.g., “The dialysis unit requires an order within the hour.”) and, if needed, a brief note that either approach is institutionally permissible. Remove minor redundancy (e.g., ‘for years’)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both options similarly structured, 10–15 words, and avoid embedded process language. Revise Choice 2 to a single action statement such as: “Continue dialysis for now and schedule urgent reassessment of goals of care.” Revise Choice 1 similarly: “Discontinue dialysis today and transition to symptom-directed palliative management.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "As written, the patient has clearly intact decision-making capacity and explicitly understands that stopping dialysis will be fatal; in most clinical/ethical frameworks, continuing dialysis over a capable refusal is hard to defend and will read as coercive/battery, making Choice 1 the obvious answer. To rebalance: (1) introduce a credible, nontrivial reason to doubt capacity *right now* (e.g., intermittent uremic encephalopathy with fluctuating attention, recent sedating meds, inconsistent reasoning across interviews) or a plausible, time-sensitive reversible driver of his request (e.g., uncontrolled symptoms due to access infection/uremia that may improve with urgent intervention). (2) Alternatively, make the refusal narrower/ambivalent (e.g., he wants to skip today’s session unless symptoms can be better controlled; he is unsure about long-term stopping) so that continuing briefly is not clearly overriding a settled refusal. (3) Clarify what ‘further review’ entails and why it is ethically meaningful (ethics consult, palliative care, symptom optimization) rather than simply continuing against his wishes."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "There is an obvious middle-ground that resolves much of the dilemma: a time-limited, explicitly consented ‘one more session’ (or shortened/modified session) while urgently addressing symptoms and arranging palliative/ethics consultation, or a negotiated stop date after family meeting. To make the binary exhaustive, explicitly rule out compromise options (e.g., patient refuses *any* further dialysis including a single/shortened session; unit cannot safely offer modified dialysis; no rapid consults available before today’s scheduled run). Alternatively, reframe the choices as two truly exhaustive paths: (A) honor refusal and discontinue now, or (B) enact an emergency hold protocol to continue dialysis *despite* refusal pending a same-day capacity/ethics determination (and state that partial/modified dialysis is not feasible)."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "A capable, informed refusal of life-sustaining treatment is generally a strong legal/ethical standard; ‘continue dialysis despite a capable refusal’ is typically not supported by professional guidance, so guidelines effectively override the dilemma. To fix: (1) add a realistic policy/legal constraint that creates genuine ambiguity (e.g., state law requires a documented second capacity assessment or waiting period for withdrawal of dialysis initiated in a licensed facility; an institutional policy mandates short-term continuation when there is a documented concern for transient cognitive impairment). (2) Or make capacity genuinely contested (not ‘clearly intact’): e.g., team disagreement about uremic delirium, recent suicidal ideation, or inconsistent understanding—so guidelines defer to clinical judgment on capacity rather than dictating immediate honoring of refusal. (3) If keeping intact capacity, then Choice 2 must be reframed as ‘pause/withhold dialysis today while arranging immediate supports’ rather than treating over refusal."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "clinical_plausibility: As written, CHOICE 2 implies continuing in-center hemodialysis despite a capable, informed refusal. In practice, dialysis generally requires the patient’s cooperation; providing it over objection would require restraint/sedation and is rarely feasible or ethically/clinically standard. Edit CHOICE 2 (and the vignette) to make continued dialysis clinically realistic—for example: (a) patient is intermittently refusing but agrees to attend today’s session while goals-of-care are reassessed; or (b) patient requests a time-limited trial/one final session to allow family meeting/ethics consult; or (c) patient accepts dialysis but refuses escalation (DNR/DNI) and wants a set stop date.\nlegally_indeterminate: In most jurisdictions, forcing dialysis on an adult with intact decision-making capacity who clearly refuses could constitute battery and would not be legally defensible absent a specific statutory mechanism. The sentence 'policy and state law allow either honoring a capable refusal or continuing while further review occurs' is too vague to ground legality. Revise to make both options clearly lawful, e.g.: 'State law and hospital policy allow a capable patient to refuse dialysis; they also allow a short, consensual time-limited continuation while an ethics consult and palliative care evaluation occur if the patient agrees.' If you intend non-consensual continuation, you must specify a legally recognized basis (e.g., temporary lack of capacity/uncertainty, emergency exception), but that would require changing the capacity facts accordingly.\nnon_triviality: Because the vignette establishes stable, intact capacity, consistent refusal, no depression/delirium/coercion, and understanding of consequences, CHOICE 1 becomes clearly favored and CHOICE 2 becomes ethically/clinically difficult to justify. To restore genuine equipoise, add a credible ethically relevant uncertainty that makes brief continuation defensible (without turning it into a clinical optimization problem), such as: (1) fluctuating capacity due to uremia/medication with borderline cognition; (2) new, potentially reversible trigger for suffering (untreated pain, severe pruritus, poorly controlled nausea) with palliative measures not yet tried and patient is open to a short trial; (3) evidence of acute psychosocial crisis or caregiver pressure that raises concern about voluntariness; or (4) patient requests a defined time-limited trial to reach a personal milestone/transplant evaluation appointment, with an explicit stop date.",
+        "ethical": "clarity_value_conflict: Make Choice 2 ethically defensible by adding a serious, specific reason the clinician could justify brief continuation despite the refusal. For example: (a) introduce a credible concern that decision-making capacity is impaired or fluctuating due to uremic encephalopathy or acute metabolic derangements, with inconsistent reasoning across the interview; OR (b) specify the patient is ambivalent and requests a short, time-limited continuation to complete transplant evaluation or symptom palliation before a planned reassessment, so continuation is still aligned with his expressed goals. Remove/limit the line suggesting the conflict is primarily about what policy/law permits; instead ground the dilemma in bedside ethics (how to balance an expressed wish to stop with concern about potentially reversible suffering or compromised decisional capacity).\ninterpretive_consensus: Reduce ambiguity created by the ‘policy/state law allow either’ sentence and clarify the ethically relevant facts driving disagreement. Add explicit clinical-ethical rationale for why reasonable clinicians might disagree (e.g., borderline capacity from uremia; concern his symptoms are inadequately treated and he has not experienced optimized dialysis/palliative support; patient expresses enduring values conflict—doesn’t want to burden partner vs still wants a shot at transplant). As written, most reviewers will converge that honoring a capable refusal is required, so they won’t see a genuine dilemma.\ndecision_equipoise: Rebalance the choices so neither looks like the obvious ‘correct’ one. Currently Choice 2 reads as overriding a capacitated refusal, which is typically ethically impermissible. To create equipoise, revise Choice 2 to: ‘Offer a clearly defined, time-limited continuation of dialysis (e.g., 1–2 sessions) explicitly framed as a bridge to optimize symptom control and reassess capacity/voluntariness, while preparing for withdrawal if he still refuses.’ Alternatively, explicitly make capacity uncertain (not intact) or add an acute reversible driver (e.g., severe pruritus/nausea from inadequate dialysis access issue) so continuing could prevent imminent, avoidable harm. Ensure Choice 1 also has an ethical cost (e.g., high likelihood of regret if symptoms are reversible, or loss of a meaningful goal like attending a family milestone) and Choice 2 has an ethical cost (e.g., moral distress/violation of expressed wishes, added suffering/burden), stated neutrally.",
+        "stylistic": "ethical_neutrality: Replace emotionally charged wording: change “His partner pleads with you to keep dialyzing him” to “His partner urges/request that you continue dialysis” and avoid framing dialysis as ‘keeping him alive’ outside the patient’s direct quote. Consider changing “death within days to weeks” to “death in the near term” to reduce persuasive concreteness.\nconciseness_coherence: Tighten and clarify the forcing context without extra policy/legal commentary: replace “Hospital policy and state law allow either honoring a capable refusal or continuing while further review occurs” with one sentence specifying the immediate operational constraint (e.g., “The dialysis unit requires an order within the hour.”) and, if needed, a brief note that either approach is institutionally permissible. Remove minor redundancy (e.g., ‘for years’).\nchoice_brevity: Make both options similarly structured, 10–15 words, and avoid embedded process language. Revise Choice 2 to a single action statement such as: “Continue dialysis for now and schedule urgent reassessment of goals of care.” Revise Choice 1 similarly: “Discontinue dialysis today and transition to symptom-directed palliative management.”",
+        "equipoise": "balanced_difficulty: As written, the patient has clearly intact decision-making capacity and explicitly understands that stopping dialysis will be fatal; in most clinical/ethical frameworks, continuing dialysis over a capable refusal is hard to defend and will read as coercive/battery, making Choice 1 the obvious answer. To rebalance: (1) introduce a credible, nontrivial reason to doubt capacity *right now* (e.g., intermittent uremic encephalopathy with fluctuating attention, recent sedating meds, inconsistent reasoning across interviews) or a plausible, time-sensitive reversible driver of his request (e.g., uncontrolled symptoms due to access infection/uremia that may improve with urgent intervention). (2) Alternatively, make the refusal narrower/ambivalent (e.g., he wants to skip today’s session unless symptoms can be better controlled; he is unsure about long-term stopping) so that continuing briefly is not clearly overriding a settled refusal. (3) Clarify what ‘further review’ entails and why it is ethically meaningful (ethics consult, palliative care, symptom optimization) rather than simply continuing against his wishes.\nexhaustive_binary_options: There is an obvious middle-ground that resolves much of the dilemma: a time-limited, explicitly consented ‘one more session’ (or shortened/modified session) while urgently addressing symptoms and arranging palliative/ethics consultation, or a negotiated stop date after family meeting. To make the binary exhaustive, explicitly rule out compromise options (e.g., patient refuses *any* further dialysis including a single/shortened session; unit cannot safely offer modified dialysis; no rapid consults available before today’s scheduled run). Alternatively, reframe the choices as two truly exhaustive paths: (A) honor refusal and discontinue now, or (B) enact an emergency hold protocol to continue dialysis *despite* refusal pending a same-day capacity/ethics determination (and state that partial/modified dialysis is not feasible).\nno_guideline_override: A capable, informed refusal of life-sustaining treatment is generally a strong legal/ethical standard; ‘continue dialysis despite a capable refusal’ is typically not supported by professional guidance, so guidelines effectively override the dilemma. To fix: (1) add a realistic policy/legal constraint that creates genuine ambiguity (e.g., state law requires a documented second capacity assessment or waiting period for withdrawal of dialysis initiated in a licensed facility; an institutional policy mandates short-term continuation when there is a documented concern for transient cognitive impairment). (2) Or make capacity genuinely contested (not ‘clearly intact’): e.g., team disagreement about uremic delirium, recent suicidal ideation, or inconsistent understanding—so guidelines defer to clinical judgment on capacity rather than dictating immediate honoring of refusal. (3) If keeping intact capacity, then Choice 2 must be reframed as ‘pause/withhold dialysis today while arranging immediate supports’ rather than treating over refusal."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T22:54:04.630269",
+      "data": {
+        "vignette": "A 47-year-old man with end-stage kidney disease receives in-center hemodialysis three times weekly. Over the past month he has worsening pruritus, nausea, and fatigue. Today he tells you he wants to stop dialysis. He says he is “done,” but he also asks if anything could make him feel well enough to reconsider. Staff report he was intermittently confused this morning after taking a new sedating medication, though he is now calm and answers questions appropriately. He can describe that stopping dialysis would likely shorten his life in the near term, but his explanations drift and he has difficulty sustaining attention. His partner requests that you continue dialysis because a transplant evaluation visit is scheduled next week. The next dialysis run starts this afternoon, and the unit needs an order within the hour. Hospital policy and state law support either stopping now or a short, time-limited continuation while capacity and symptoms are urgently reassessed.",
+        "choice_1": "Stop dialysis today and transition to comfort-focused palliative care",
+        "choice_2": "Proceed with today’s dialysis as a time-limited trial with urgent reassessment"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T22:54:31.153083",
+      "data": {
+        "vignette": "A 47-year-old man with end-stage kidney disease receives in-center hemodialysis three times weekly. Over the past month he has worsening pruritus, nausea, and fatigue. Today he tells you he wants to stop dialysis. He says he is “done,” but he also asks if anything could make him feel well enough to reconsider. Staff report he was intermittently confused this morning after taking a new sedating medication, though he is now calm and answers questions appropriately. He can describe that stopping dialysis would likely shorten his life in the near term, but his explanations drift and he has difficulty sustaining attention. His partner requests that you continue dialysis because a transplant evaluation visit is scheduled next week. The next dialysis run starts this afternoon, and the unit needs an order within the hour. Hospital policy and state law support either stopping now or a short, time-limited continuation while capacity and symptoms are urgently reassessed.",
+        "choice_1": {
+          "choice": "Stop dialysis today and transition to comfort-focused palliative care",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Proceed with today’s dialysis as a time-limited trial with urgent reassessment",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that his current symptoms are likely to improve rapidly with dialysis/medication adjustment and that stopping now would likely lead to death before the scheduled transplant evaluation (forgoing a realistic chance of meaningful recovery/longer survival)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause specifying a concrete near-term harm of stopping dialysis now (e.g., \"would likely die within days with worsening dyspnea/uremic delirium before hospice can be arranged\") and one clause specifying a concrete harm/risk of proceeding with dialysis today (e.g., \"has had recent intradialytic hypotension/arrhythmia and finds sessions extremely painful/distressing\")."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T22:55:22.802421",
+      "data": {
+        "vignette": "A 47-year-old man with end-stage kidney disease receives in-center hemodialysis three times weekly. Over the past month he has worsening pruritus, nausea, and fatigue that could improve with adequate dialysis and medication adjustment. Today he tells you he wants to stop dialysis. He says he is done, but he also asks if anything could make him feel well enough to reconsider. Staff report he was intermittently confused this morning after taking a new sedating medication, though he is now calm and answers questions appropriately. He can describe that stopping dialysis would likely shorten his life and he could die within days with worsening dyspnea and uremic delirium, possibly before hospice can be arranged and before a transplant evaluation scheduled next week. His explanations drift and he has difficulty sustaining attention. His partner requests that you continue dialysis. The next run starts this afternoon, and the unit needs an order within the hour. He has had recent intradialytic hypotension and finds sessions very distressing. Hospital policy and state law support either stopping now or a short, time-limited continuation while capacity and symptoms are urgently reassessed.",
+        "choice_1": {
+          "choice": "Stop dialysis today and transition to comfort-focused palliative care",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Proceed with today’s dialysis as a time-limited trial with urgent reassessment",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

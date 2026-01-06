@@ -1,0 +1,230 @@
+{
+  "case_id": "bbd0156a-e118-4639-827d-224c30459b4a",
+  "created_at": "2026-01-04T23:23:50.135665",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "73. One of your clinic patients is a 35-year-old man with AIDS on Medicare who is an active intravenous drug user. He uses heroin and cocaine, but he never shares needles and is reliably present at all his clinic visits. He admits that he is often unable to take his medicines regularly when he is using drugs. He is asking about antiretroviral therapy with protease inhibitors. You have just read that HIV viral resistance to protease inhibitors occurs rapidly when patients are unable to take their medicines reliably.\nShould you prescribe protease inhibitors to this patient?\na. No, because the problem of resistance is a real concern in a patient who cannot take his medicines reliably.\nb. No, because the patient is continuing to use heroin and cocaine.\nc. Yes because the patient wants the protease inhibitors.\nd. Yes, because the doctor is under a duty not to abandon the patient and to continue an ongoing therapeutic relationship and encourage him with information and guidance about his HIV disease and issues of addiction.",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:23:50.135702",
+      "data": {
+        "vignette": "A 35-year-old man with advanced HIV infection follows with you in clinic. He injects heroin and cocaine. He says he never shares needles. He keeps every appointment and understands his diagnosis. He admits that during binges he misses doses for days. His labs show worsening immune suppression and he has had recent thrush. He asks to start a protease-inhibitor–based regimen today and says he will “try harder” with pills. You worry that starting a regimen he cannot take consistently could select for resistant virus and limit future options. You also worry that delaying effective treatment could allow further decline and signal that you are withholding care because of his drug use. Hospital policy and state regulations allow either starting or deferring antiretroviral therapy in this setting. You need to decide at this visit.",
+        "choice_1": "Start a protease-inhibitor–based antiretroviral regimen now",
+        "choice_2": "Defer protease inhibitors and focus on adherence and addiction treatment first"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove wording that implies one option is medically superior (e.g., change “delaying effective treatment” to “delaying antiretroviral therapy” and avoid implying it is unequivocally the correct/most effective step). Balance the clinical framing by noting that both immediate start and brief deferral carry clinically meaningful risks (e.g., immediate start risks poor adherence/resistance/toxicity and undermining trust if the patient feels judged; deferral risks progression/opportunistic infection)."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 2 a concrete, implementable medical order and clarify whether ART is deferred entirely or only a PI regimen is deferred. For example: “Defer ART initiation for 2–4 weeks; schedule weekly adherence counseling; start buprenorphine today; arrange close follow-up; plan to start a specified ART regimen at the next visit if adherence plan is in place.” Alternatively, if you mean ‘start non-PI ART now’ vs ‘start PI-based now,’ rewrite the choices to reflect that binary."
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove or tighten details that don’t change the decision (e.g., “He says he never shares needles”). Add only the minimum missing facts needed to weigh the options: current CD4 range described qualitatively (e.g., “very low”), current viral load described qualitatively (e.g., “high”), current ART history/resistance history (ART-naïve vs prior failures), any key drug–drug interaction issues, and a brief description of the specific adherence barrier (e.g., unstable housing, inability to store meds, frequent intoxication) and available supports (case management, rapid-start program)."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Update regimen framing to current practice and make the clinical reasoning coherent: either (a) specify this is an ART-naïve patient being considered for a high–genetic barrier regimen (e.g., boosted darunavir-based) because of anticipated nonadherence, or (b) if concerned about resistance selection, explain why a PI regimen in this context is being considered despite that concern. Also make deferral clinically plausible by specifying it would be brief with intensive follow-up/support and that the patient is clinically stable enough for short deferral (no acute OI requiring immediate ART start that day)."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, advanced HIV with opportunistic infection signs makes deferring ART feel clearly inferior. To make both options ethically and clinically defensible, either: (1) soften the immediacy of clinical decline (e.g., ‘low CD4 but no acute OI; mild oral candidiasis treated and improving’), and/or (2) strengthen the downside of immediate start (e.g., repeated prior short-start/stop episodes with documented resistance, inability to reliably obtain/store meds, anticipated incarceration/rehab transfer disrupting access, high risk of losing follow-up). Explicitly frame Choice 2 as a short, structured deferral with a committed start date and support plan so reasonable clinicians could disagree in good faith."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Re-balance the case so deferring ART is not obviously substandard and starting ART is not obviously the medically/ethically correct answer.\n\nConcrete edits:\n- Tone down the immediacy of advanced disease: replace “worsening immune suppression and he has had recent thrush” with something like “his CD4 count has been trending down and he is increasingly symptomatic (fatigue, weight loss) but has no current opportunistic infection.” (This preserves HIV as the primary diagnosis but avoids a near-mandatory ‘treat now’ trigger.)\n- Strengthen the ethical/clinical cost of starting now beyond vague concern: add that he has “limited remaining regimen options due to prior resistance/intolerance” or “a prior episode of treatment interruption with documented resistance,” so inconsistent PI use could plausibly foreclose future effective therapy.\n- Make the deferral option time-limited and clinically responsible (not indefinite): change Choice 2 to “Defer starting ART for a short, defined period (e.g., a few weeks) while initiating medication-assisted treatment and setting up intensive adherence supports, then start ART as soon as those are in place.”\n- Remove or generalize the legal/regulatory language (“state regulations”) and instead frame it as ordinary professional discretion and institutional practice; otherwise the dilemma risks reading as a policy-technical issue rather than a values conflict.\n- Add a clear, non-strawman downside to deferring (e.g., risk of near-term progression/acute illness and the relational harm of perceived withholding), and a clear downside to starting (credible risk of resistance and loss of future options), so each choice has both moral benefit and moral cost."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften potentially biasing or stigmatizing phrasing and ensure both options are framed symmetrically. Edits: replace “injects heroin and cocaine” with “has opioid and stimulant use disorder and uses injection drugs”; replace “during binges” with “during periods of increased use”; replace “try harder” with “is willing to work on adherence”; remove “signal that you are withholding care because of his drug use” and instead state neutrally: “you are concerned about perceived inequity or erosion of trust if ART is deferred.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the clinical context and the forcing mechanism without adding new side issues. Suggested edits: (1) Specify current ART status (treatment-naïve vs previously on ART) and resistance history if known; (2) replace vague “worsening immune suppression” with a qualitative but clinically specific descriptor (e.g., “declining CD4 count and rising HIV viral load” without numbers); (3) clarify the immediate decision constraint (“he is unlikely to return for several months” or “coverage for ART initiation counseling is ending”) rather than “need to decide at this visit” alone; (4) remove redundant sentences about appointments/understanding unless tied to capacity and informed consent."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both choices parallel, action-oriented, and similar length (~10–15 words), avoiding embedded sequencing/rationale. Revise to: Choice 1: “Initiate antiretroviral therapy today with a protease-inhibitor–based regimen.” Choice 2: “Defer antiretroviral initiation today and prioritize adherence and substance-use treatment.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the stakes so neither option reads as the medically/ethically obvious choice.\n\nEdits:\n- Reduce the sense that immediate ART is clearly indicated by softening/clarifying the clinical urgency: keep “advanced HIV” but specify he is clinically stable today (no fever, no weight loss, no acute opportunistic infection beyond mild oral thrush responding to treatment), so there is a plausible short window to work on adherence without immediate decompensation.\n- Strengthen the cost of starting now beyond a generic resistance worry: add that he has a history of prior intermittent ART exposure or suspected transmitted resistance and that his remaining regimen options are limited, so a brief period of poor adherence could meaningfully and irreversibly narrow future treatment choices.\n- Strengthen the cost of deferring beyond “withholding care”: add that he is already symptomatic (thrush, fatigue) and has had recent infections, so delay risks near-term clinical decline and may damage trust/engagement.\n- Remove/soften framing that implies judgment about drug use (e.g., change “binges he misses doses for days” to “periods of use when routines break down and he may miss multiple doses”), and add a concrete reason he may be able to adhere (stable housing, uses phone alarms, has succeeded with other daily meds), so starting is not a strawman."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "As written, there are obvious middle paths (start ART with enhanced adherence supports; start a different, more forgiving regimen; start ART while simultaneously initiating addiction treatment; provide a short starter pack with close follow-up).\n\nEdits to make the binary exhaustive:\n- Add a constraint that only two feasible options exist today: e.g., “Because of formulary/insurance restrictions, the only regimen you can start today is the PI-based regimen; the alternative regimens require prior authorization that will take weeks.”\n- Explicitly rule out ‘start with supports’ as a third option by stating the adherence/addiction program requires a documented decision to defer ART (or conversely, that the program is unavailable/overbooked for weeks), so you cannot both start today and provide the same supports immediately.\n- Specify the forced timeline: e.g., “He is leaving the area tomorrow / entering a program where medication access will be disrupted, so you must either start today or intentionally defer and plan re-initiation later.”"
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Current widely accepted HIV standards generally recommend starting antiretroviral therapy for all patients, including those with active substance use, so ‘defer ART’ can read as nonstandard unless you explain why guidelines do not settle this.\n\nEdits:\n- Add a guideline-ambiguating circumstance that makes expert opinion legitimately split without turning it into a purely clinical optimization: e.g., “He has near-exhausted treatment options from prior resistance (documented or strongly suspected), and the PI-based regimen may be the last high-barrier option available; guidelines acknowledge adherence barriers but do not clearly address whether to defer when the next failure could eliminate remaining options.”\n- Clarify that there is no legal/standard-of-care mandate either way in this specific circumstance (already partially done), and briefly state why institutional policy permits deferral here (e.g., requires an adherence plan before initiating a ‘last-line’ regimen).\n- Alternatively, if you want to keep ‘advanced HIV with thrush,’ modify Choice 2 so it is not “no ART” but “initiate a bridging regimen now vs reserve the PI-based regimen until adherence is stabilized,” and explicitly state why guidelines don’t dictate which approach is preferred in this setting."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove wording that implies one option is medically superior (e.g., change “delaying effective treatment” to “delaying antiretroviral therapy” and avoid implying it is unequivocally the correct/most effective step). Balance the clinical framing by noting that both immediate start and brief deferral carry clinically meaningful risks (e.g., immediate start risks poor adherence/resistance/toxicity and undermining trust if the patient feels judged; deferral risks progression/opportunistic infection).\ndistinctness_actionability: Make Choice 2 a concrete, implementable medical order and clarify whether ART is deferred entirely or only a PI regimen is deferred. For example: “Defer ART initiation for 2–4 weeks; schedule weekly adherence counseling; start buprenorphine today; arrange close follow-up; plan to start a specified ART regimen at the next visit if adherence plan is in place.” Alternatively, if you mean ‘start non-PI ART now’ vs ‘start PI-based now,’ rewrite the choices to reflect that binary.\nkey_information: Remove or tighten details that don’t change the decision (e.g., “He says he never shares needles”). Add only the minimum missing facts needed to weigh the options: current CD4 range described qualitatively (e.g., “very low”), current viral load described qualitatively (e.g., “high”), current ART history/resistance history (ART-naïve vs prior failures), any key drug–drug interaction issues, and a brief description of the specific adherence barrier (e.g., unstable housing, inability to store meds, frequent intoxication) and available supports (case management, rapid-start program).\nclinical_plausibility: Update regimen framing to current practice and make the clinical reasoning coherent: either (a) specify this is an ART-naïve patient being considered for a high–genetic barrier regimen (e.g., boosted darunavir-based) because of anticipated nonadherence, or (b) if concerned about resistance selection, explain why a PI regimen in this context is being considered despite that concern. Also make deferral clinically plausible by specifying it would be brief with intensive follow-up/support and that the patient is clinically stable enough for short deferral (no acute OI requiring immediate ART start that day).\nnon_triviality: As written, advanced HIV with opportunistic infection signs makes deferring ART feel clearly inferior. To make both options ethically and clinically defensible, either: (1) soften the immediacy of clinical decline (e.g., ‘low CD4 but no acute OI; mild oral candidiasis treated and improving’), and/or (2) strengthen the downside of immediate start (e.g., repeated prior short-start/stop episodes with documented resistance, inability to reliably obtain/store meds, anticipated incarceration/rehab transfer disrupting access, high risk of losing follow-up). Explicitly frame Choice 2 as a short, structured deferral with a committed start date and support plan so reasonable clinicians could disagree in good faith.",
+        "ethical": "decision_equipoise: Re-balance the case so deferring ART is not obviously substandard and starting ART is not obviously the medically/ethically correct answer.\n\nConcrete edits:\n- Tone down the immediacy of advanced disease: replace “worsening immune suppression and he has had recent thrush” with something like “his CD4 count has been trending down and he is increasingly symptomatic (fatigue, weight loss) but has no current opportunistic infection.” (This preserves HIV as the primary diagnosis but avoids a near-mandatory ‘treat now’ trigger.)\n- Strengthen the ethical/clinical cost of starting now beyond vague concern: add that he has “limited remaining regimen options due to prior resistance/intolerance” or “a prior episode of treatment interruption with documented resistance,” so inconsistent PI use could plausibly foreclose future effective therapy.\n- Make the deferral option time-limited and clinically responsible (not indefinite): change Choice 2 to “Defer starting ART for a short, defined period (e.g., a few weeks) while initiating medication-assisted treatment and setting up intensive adherence supports, then start ART as soon as those are in place.”\n- Remove or generalize the legal/regulatory language (“state regulations”) and instead frame it as ordinary professional discretion and institutional practice; otherwise the dilemma risks reading as a policy-technical issue rather than a values conflict.\n- Add a clear, non-strawman downside to deferring (e.g., risk of near-term progression/acute illness and the relational harm of perceived withholding), and a clear downside to starting (credible risk of resistance and loss of future options), so each choice has both moral benefit and moral cost.",
+        "stylistic": "ethical_neutrality: Remove/soften potentially biasing or stigmatizing phrasing and ensure both options are framed symmetrically. Edits: replace “injects heroin and cocaine” with “has opioid and stimulant use disorder and uses injection drugs”; replace “during binges” with “during periods of increased use”; replace “try harder” with “is willing to work on adherence”; remove “signal that you are withholding care because of his drug use” and instead state neutrally: “you are concerned about perceived inequity or erosion of trust if ART is deferred.”\nconciseness_coherence: Tighten and clarify the clinical context and the forcing mechanism without adding new side issues. Suggested edits: (1) Specify current ART status (treatment-naïve vs previously on ART) and resistance history if known; (2) replace vague “worsening immune suppression” with a qualitative but clinically specific descriptor (e.g., “declining CD4 count and rising HIV viral load” without numbers); (3) clarify the immediate decision constraint (“he is unlikely to return for several months” or “coverage for ART initiation counseling is ending”) rather than “need to decide at this visit” alone; (4) remove redundant sentences about appointments/understanding unless tied to capacity and informed consent.\nchoice_brevity: Make both choices parallel, action-oriented, and similar length (~10–15 words), avoiding embedded sequencing/rationale. Revise to: Choice 1: “Initiate antiretroviral therapy today with a protease-inhibitor–based regimen.” Choice 2: “Defer antiretroviral initiation today and prioritize adherence and substance-use treatment.”",
+        "equipoise": "balanced_difficulty: Rebalance the stakes so neither option reads as the medically/ethically obvious choice.\n\nEdits:\n- Reduce the sense that immediate ART is clearly indicated by softening/clarifying the clinical urgency: keep “advanced HIV” but specify he is clinically stable today (no fever, no weight loss, no acute opportunistic infection beyond mild oral thrush responding to treatment), so there is a plausible short window to work on adherence without immediate decompensation.\n- Strengthen the cost of starting now beyond a generic resistance worry: add that he has a history of prior intermittent ART exposure or suspected transmitted resistance and that his remaining regimen options are limited, so a brief period of poor adherence could meaningfully and irreversibly narrow future treatment choices.\n- Strengthen the cost of deferring beyond “withholding care”: add that he is already symptomatic (thrush, fatigue) and has had recent infections, so delay risks near-term clinical decline and may damage trust/engagement.\n- Remove/soften framing that implies judgment about drug use (e.g., change “binges he misses doses for days” to “periods of use when routines break down and he may miss multiple doses”), and add a concrete reason he may be able to adhere (stable housing, uses phone alarms, has succeeded with other daily meds), so starting is not a strawman.\nexhaustive_binary_options: As written, there are obvious middle paths (start ART with enhanced adherence supports; start a different, more forgiving regimen; start ART while simultaneously initiating addiction treatment; provide a short starter pack with close follow-up).\n\nEdits to make the binary exhaustive:\n- Add a constraint that only two feasible options exist today: e.g., “Because of formulary/insurance restrictions, the only regimen you can start today is the PI-based regimen; the alternative regimens require prior authorization that will take weeks.”\n- Explicitly rule out ‘start with supports’ as a third option by stating the adherence/addiction program requires a documented decision to defer ART (or conversely, that the program is unavailable/overbooked for weeks), so you cannot both start today and provide the same supports immediately.\n- Specify the forced timeline: e.g., “He is leaving the area tomorrow / entering a program where medication access will be disrupted, so you must either start today or intentionally defer and plan re-initiation later.”\nno_guideline_override: Current widely accepted HIV standards generally recommend starting antiretroviral therapy for all patients, including those with active substance use, so ‘defer ART’ can read as nonstandard unless you explain why guidelines do not settle this.\n\nEdits:\n- Add a guideline-ambiguating circumstance that makes expert opinion legitimately split without turning it into a purely clinical optimization: e.g., “He has near-exhausted treatment options from prior resistance (documented or strongly suspected), and the PI-based regimen may be the last high-barrier option available; guidelines acknowledge adherence barriers but do not clearly address whether to defer when the next failure could eliminate remaining options.”\n- Clarify that there is no legal/standard-of-care mandate either way in this specific circumstance (already partially done), and briefly state why institutional policy permits deferral here (e.g., requires an adherence plan before initiating a ‘last-line’ regimen).\n- Alternatively, if you want to keep ‘advanced HIV with thrush,’ modify Choice 2 so it is not “no ART” but “initiate a bridging regimen now vs reserve the PI-based regimen until adherence is stabilized,” and explicitly state why guidelines don’t dictate which approach is preferred in this setting."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:25:49.064071",
+      "data": {
+        "vignette": "A 35-year-old man with advanced HIV is seen in clinic. He has opioid and stimulant use disorder and injects drugs. He is housed and uses phone alarms. He reliably takes daily TMP-SMX prophylaxis. His CD4 count is very low and his viral load is high. He is afebrile today. He has mild oral thrush that is improving on fluconazole. He reports that during periods of increased use his routines break down and he may miss multiple doses. He previously started and stopped ART twice and developed resistance to several first-line drugs, leaving limited remaining options. Because of insurance restrictions, the only regimen you can dispense today is boosted darunavir-based therapy; other options need authorization that will take weeks. He is entering a residential program tomorrow that will not allow outpatient medications until its clinician evaluates him in several weeks. Hospital policy permits either starting ART today or intentionally deferring it in this circumstance. You must decide now.",
+        "choice_1": "Initiate boosted darunavir-based antiretroviral therapy today.",
+        "choice_2": "Defer antiretroviral therapy for three weeks and start buprenorphine with weekly follow-up."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:26:06.150508",
+      "data": {
+        "vignette": "A 35-year-old man with advanced HIV is seen in clinic. He has opioid and stimulant use disorder and injects drugs. He is housed and uses phone alarms. He reliably takes daily TMP-SMX prophylaxis. His CD4 count is very low and his viral load is high. He is afebrile today. He has mild oral thrush that is improving on fluconazole. He reports that during periods of increased use his routines break down and he may miss multiple doses. He previously started and stopped ART twice and developed resistance to several first-line drugs, leaving limited remaining options. Because of insurance restrictions, the only regimen you can dispense today is boosted darunavir-based therapy; other options need authorization that will take weeks. He is entering a residential program tomorrow that will not allow outpatient medications until its clinician evaluates him in several weeks. Hospital policy permits either starting ART today or intentionally deferring it in this circumstance. You must decide now.",
+        "choice_1": {
+          "choice": "Initiate boosted darunavir-based antiretroviral therapy today.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Defer antiretroviral therapy for three weeks and start buprenorphine with weekly follow-up.",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause that starting ART today will almost certainly be interrupted when he enters residential care tomorrow (no meds allowed), creating a high likelihood of rapid virologic rebound and additional resistance; and add one clause that a 3‑week ART delay with very low CD4 carries a concrete near-term risk (e.g., opportunistic infection/hospitalization/death)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause explicitly stating that starting ART now would likely be interrupted when he enters residential treatment (after 1–2 days), creating a high risk of further resistance/toxicity; and add a clause noting that a 3-week ART delay at this CD4 level substantially increases near-term opportunistic infection/hospitalization risk."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:26:32.520438",
+      "data": {
+        "vignette": "A 35-year-old man with advanced HIV is seen in clinic. He has opioid and stimulant use disorder and injects drugs. He is housed and uses phone alarms. He reliably takes daily TMP-SMX prophylaxis. His CD4 count is very low and his viral load is high. He is afebrile today. He has mild oral thrush that is improving on fluconazole. He reports that during periods of increased use his routines break down and he may miss multiple doses. He previously started and stopped ART twice and developed resistance to several first-line drugs, leaving limited remaining options. Because of insurance restrictions, the only regimen you can dispense today is boosted darunavir-based therapy; other options need authorization that will take weeks. He is entering a residential program tomorrow that will not allow outpatient medications until its clinician evaluates him in several weeks, so ART started today would likely be interrupted after 1–2 days, risking virologic rebound and additional resistance. Hospital policy permits either starting ART today or intentionally deferring it in this circumstance. Deferring ART for three weeks at this CD4 level increases his near-term risk of opportunistic infection, hospitalization, or death. You must decide now.",
+        "choice_1": {
+          "choice": "Initiate boosted darunavir-based antiretroviral therapy today.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Defer antiretroviral therapy for three weeks and start buprenorphine with weekly follow-up.",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

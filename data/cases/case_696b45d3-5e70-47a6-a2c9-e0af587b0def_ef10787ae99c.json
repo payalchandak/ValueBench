@@ -1,0 +1,236 @@
+{
+  "case_id": "696b45d3-5e70-47a6-a2c9-e0af587b0def",
+  "created_at": "2026-01-04T23:36:39.863543",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "26. A 52-year-old man sees you in follow-up after a radical prostatectomy. He had been fully informed about the risk of the procedure such as incontinence and impotence. Neither of these adverse effects occurs. While searching on the Web he finds that there is treatment without surgery involving the implantation of radioactive seeds or pellets in the prostate. He files suit against you because of an improper informed consent.\nWhat will be the most likely outcome of the suit?\na. He will lose because there were no adverse effects. He will lose because all the risks of the surgery were explained to him before he signed consent.\nb. He will lose because radical prostatectomy is a standard procedure.\nc. He will win because you did not inform him of the risks and benefits of alternative therapy to surgery.\nd. He will win because radioactive seeds are the superior form of therapy.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:36:39.863594",
+      "data": {
+        "vignette": "A 52-year-old man is diagnosed with localized prostate cancer after biopsy. Imaging shows no spread. He is anxious and wants a “definitive” plan. You can offer radical prostatectomy at your hospital soon, or refer him to radiation oncology to discuss brachytherapy with implanted radioactive seeds, which is also commonly used for similar cases. Each approach has different burdens and side effects, and neither is clearly best for him. He asks you what you would do and says he does not want “too many options” unless they matter. The next available surgical slot is in two days, and if he postpones he may wait weeks. Hospital policy and state consent standards allow you to proceed with surgery after your counseling, or to delay consent while arranging an alternatives-focused consultation.",
+        "choice_1": "Give detailed counseling on surgery and brachytherapy and offer referral before consent.",
+        "choice_2": "Recommend radical prostatectomy and obtain consent without arranging an alternatives consultation."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove language that implicitly makes surgery the ‘better’ or default option via immediacy (‘surgical slot in two days’) without balancing an equivalent, realistic access constraint for radiation. Rephrase to keep neutrality: e.g., ‘Both surgery and brachytherapy are guideline-supported options with different side-effect profiles; neither is clearly best.’ Add concrete, balanced side effects for BOTH (e.g., urinary incontinence/ED for surgery; urinary irritation/bowel symptoms/ED and need for radiation planning for brachytherapy) without implying superiority. Avoid the phrase ‘definitive plan’ (sounds like surgery is definitive) or clarify that both are definitive treatments."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make the choices mutually exclusive, clinician-orderable actions with a defined next step and timeline. For example:\n- Choice 1: ‘Do NOT sign surgical consent today; place urgent referral to radiation oncology for brachytherapy consult and schedule follow-up decision visit within 1 week.’\n- Choice 2: ‘Proceed with surgical consent today and book radical prostatectomy for the available slot in 2 days; defer radiation consult unless patient later requests it.’\nAlso specify what “detailed counseling” entails (risks, alternatives, expected recovery) to make it implementable."
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add only the minimum missing clinical facts that determine whether both options are reasonable: cancer risk category (e.g., low- vs intermediate-risk; Gleason grade group; PSA range), prostate size/urinary symptoms (relevant to brachytherapy candidacy), and key comorbidities/anticoagulation status (surgical risk). Remove or tighten non-essential phrasing (‘too many options’) unless tied to decisional capacity/health literacy; instead specify he feels overwhelmed and wants the physician to narrow options."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Clarify that brachytherapy is actually available within a realistic timeframe (often requires planning and may not be immediate) and that a 2-day prostatectomy slot for a new localized cancer is uncommon. To keep plausibility and the forcing mechanism, use a realistic constraint: ‘If he wants surgery with this surgeon, the next OR block is this week; otherwise it will be several weeks,’ or ‘insurance authorization window’ / ‘patient traveling back home in 72 hours.’ Ensure both pathways are feasible within the constraint (e.g., radiation consult available within a week)."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "The legal sentence is too broad and may not cover informed-consent obligations. Add a jurisdiction-neutral but concrete statement that both actions are legally permissible if informed consent standards are met, and that referring for specialty consultation is optional but not required: e.g., ‘Under local law and hospital policy, a urologist may obtain informed consent for prostatectomy after discussing reasonable alternatives (including radiation) and documenting patient preference; a separate radiation-oncology visit is not legally required but is available if the patient wants it.’"
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 risks being ethically/clinically weak (could look like steering or inadequate consent), making the answer obvious. Strengthen defensibility by adding that you will still discuss radiation as an alternative and assess understanding, but you would not delay for another consult unless the patient requests it. Conversely, make Choice 1 costly by noting potential downside of delay (anxiety, logistical burden, possible progression concern in qualitative terms) and that he may lose the near-term OR slot."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the ethical tension explicit through concrete, competing goods rather than generic language. Add 1–2 patient-specific values that pull in opposite directions (e.g., he prioritizes avoiding urinary incontinence/erectile dysfunction vs wants fastest ‘one-and-done’ treatment; strong aversion to radiation vs fear of surgery). Clarify that both options are clinically standard with comparable cancer control for his risk category, while side-effect profiles differ, so the conflict is about how much choice/information to provide vs moving quickly to the path he is leaning toward."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "As written, small edits (e.g., changing ‘without arranging an alternatives consultation’ to ‘after briefly discussing alternatives’) would substantially change the ethical character of Choice 2. Stabilize by specifying exactly what information is (and is not) provided in each choice. For example: Choice 1 = ‘full informed-consent discussion including alternatives + offer referral even if it delays surgery’; Choice 2 = ‘patient declines referral after hearing key alternatives; you give a clear recommendation and proceed now’."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce ambiguity about whether the dilemma is legalistic (“state consent standards”) versus ethical. Remove the reference to state consent standards/policy and instead describe the clinical/relational stakes: risk of decisional regret if he later feels rushed vs risk of increased anxiety and delayed treatment if you widen the option set. Also clarify whether the patient is truly asking to limit information (capacity/understanding) versus being pressured by scheduling, since graders may otherwise disagree on what is being tested."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Choice 2 is currently hard to defend because it implies inadequate informed consent (proceeding ‘without arranging an alternatives consultation’ reads as withholding reasonable alternatives), making it a near-obvious wrong answer. To restore equipoise, revise Choice 2 so it includes a defensible process: you disclose surgery and radiation as reasonable alternatives, confirm understanding and voluntariness, document that he declines referral and wants your recommendation, then proceed to consent due to the imminent OR slot. Alternatively, make Choice 1 more costly by specifying that referral will likely postpone definitive treatment for weeks and worsen his distress, while Choice 2 carries a realistic risk of later regret/feeling steered."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove language that nudges toward a faster, more “decisive” option. For example: change “He is anxious and wants a ‘definitive’ plan” to “He requests a clear recommendation on next steps.” Change “does not want ‘too many options’ unless they matter” to “prefers a streamlined discussion focused on options relevant to his situation.” Consider balancing the time-pressure framing by noting that radiation consultation availability is also time-limited or that waiting several weeks is not expected to change oncologic outcomes, stated neutrally."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Clarify the clinical decision point and why either approach is on the table without implying one is medically preferred. Add one sentence specifying risk category (e.g., low- vs intermediate-risk localized disease) and that both surgery and brachytherapy are guideline-concordant. Remove or tighten the legal/policy sentence: replace “Hospital policy and state consent standards allow…” with a clinically framed line like “You can proceed with consent today or defer consent to arrange a radiation oncology consultation.”"
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 2 ethically and clinically defensible by stating you will still give a fair, documented overview of radiation (and any other relevant option) but the patient explicitly prefers to avoid additional consultations/choices and asks you to make a recommendation; clarify that proceeding now reduces a realistic non-medical harm (e.g., severe anxiety, inability to work, loss of surgical slot/insurance authorization) rather than implying it is medically superior. Also add a meaningful moral cost to Choice 1 beyond a generic delay—e.g., the referral will almost certainly postpone definitive treatment for weeks, prolonging significant distress, and the patient may disengage from care or lose coverage/paid leave if the plan is not finalized this week. Balance language so neither choice is framed as the more ‘responsible’ or ‘informed’ path."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close the obvious middle-ground options. Either (a) explicitly rule out ‘recommend surgery but still provide robust in-visit balanced counseling and a decision aid without formal radiation consult,’ or (b) redefine the binary as ‘Proceed with surgery this week vs postpone surgery to complete a radiation-oncology consult.’ Also address the missing third option (active surveillance) by specifying risk category/clinical features that make it inappropriate or strongly disfavored for this patient, or explicitly state it was discussed and declined so the decision truly narrows to surgery vs brachytherapy."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Add details to prevent guidelines from dictating the answer. Specify tumor risk group (e.g., unfavorable intermediate/high-risk features) such that active surveillance is not a standard option; or if low-risk, explicitly state why surveillance is not suitable (e.g., high-volume disease, patient unable to adhere to monitoring). Clarify that informed consent standards are met in both choices (both include discussion of reasonable alternatives), and that guidelines do not require a formal radiation-oncology consult before consenting to surgery—making the dilemma about how much to steer vs broaden options, not about violating informed-consent norms."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove language that implicitly makes surgery the ‘better’ or default option via immediacy (‘surgical slot in two days’) without balancing an equivalent, realistic access constraint for radiation. Rephrase to keep neutrality: e.g., ‘Both surgery and brachytherapy are guideline-supported options with different side-effect profiles; neither is clearly best.’ Add concrete, balanced side effects for BOTH (e.g., urinary incontinence/ED for surgery; urinary irritation/bowel symptoms/ED and need for radiation planning for brachytherapy) without implying superiority. Avoid the phrase ‘definitive plan’ (sounds like surgery is definitive) or clarify that both are definitive treatments.\ndistinctness_actionability: Make the choices mutually exclusive, clinician-orderable actions with a defined next step and timeline. For example:\n- Choice 1: ‘Do NOT sign surgical consent today; place urgent referral to radiation oncology for brachytherapy consult and schedule follow-up decision visit within 1 week.’\n- Choice 2: ‘Proceed with surgical consent today and book radical prostatectomy for the available slot in 2 days; defer radiation consult unless patient later requests it.’\nAlso specify what “detailed counseling” entails (risks, alternatives, expected recovery) to make it implementable.\nkey_information: Add only the minimum missing clinical facts that determine whether both options are reasonable: cancer risk category (e.g., low- vs intermediate-risk; Gleason grade group; PSA range), prostate size/urinary symptoms (relevant to brachytherapy candidacy), and key comorbidities/anticoagulation status (surgical risk). Remove or tighten non-essential phrasing (‘too many options’) unless tied to decisional capacity/health literacy; instead specify he feels overwhelmed and wants the physician to narrow options.\nclinical_plausibility: Clarify that brachytherapy is actually available within a realistic timeframe (often requires planning and may not be immediate) and that a 2-day prostatectomy slot for a new localized cancer is uncommon. To keep plausibility and the forcing mechanism, use a realistic constraint: ‘If he wants surgery with this surgeon, the next OR block is this week; otherwise it will be several weeks,’ or ‘insurance authorization window’ / ‘patient traveling back home in 72 hours.’ Ensure both pathways are feasible within the constraint (e.g., radiation consult available within a week).\nlegally_indeterminate: The legal sentence is too broad and may not cover informed-consent obligations. Add a jurisdiction-neutral but concrete statement that both actions are legally permissible if informed consent standards are met, and that referring for specialty consultation is optional but not required: e.g., ‘Under local law and hospital policy, a urologist may obtain informed consent for prostatectomy after discussing reasonable alternatives (including radiation) and documenting patient preference; a separate radiation-oncology visit is not legally required but is available if the patient wants it.’\nnon_triviality: As written, Choice 2 risks being ethically/clinically weak (could look like steering or inadequate consent), making the answer obvious. Strengthen defensibility by adding that you will still discuss radiation as an alternative and assess understanding, but you would not delay for another consult unless the patient requests it. Conversely, make Choice 1 costly by noting potential downside of delay (anxiety, logistical burden, possible progression concern in qualitative terms) and that he may lose the near-term OR slot.",
+        "ethical": "clarity_value_conflict: Make the ethical tension explicit through concrete, competing goods rather than generic language. Add 1–2 patient-specific values that pull in opposite directions (e.g., he prioritizes avoiding urinary incontinence/erectile dysfunction vs wants fastest ‘one-and-done’ treatment; strong aversion to radiation vs fear of surgery). Clarify that both options are clinically standard with comparable cancer control for his risk category, while side-effect profiles differ, so the conflict is about how much choice/information to provide vs moving quickly to the path he is leaning toward.\ndirectional_stability: As written, small edits (e.g., changing ‘without arranging an alternatives consultation’ to ‘after briefly discussing alternatives’) would substantially change the ethical character of Choice 2. Stabilize by specifying exactly what information is (and is not) provided in each choice. For example: Choice 1 = ‘full informed-consent discussion including alternatives + offer referral even if it delays surgery’; Choice 2 = ‘patient declines referral after hearing key alternatives; you give a clear recommendation and proceed now’.\ninterpretive_consensus: Reduce ambiguity about whether the dilemma is legalistic (“state consent standards”) versus ethical. Remove the reference to state consent standards/policy and instead describe the clinical/relational stakes: risk of decisional regret if he later feels rushed vs risk of increased anxiety and delayed treatment if you widen the option set. Also clarify whether the patient is truly asking to limit information (capacity/understanding) versus being pressured by scheduling, since graders may otherwise disagree on what is being tested.\ndecision_equipoise: Choice 2 is currently hard to defend because it implies inadequate informed consent (proceeding ‘without arranging an alternatives consultation’ reads as withholding reasonable alternatives), making it a near-obvious wrong answer. To restore equipoise, revise Choice 2 so it includes a defensible process: you disclose surgery and radiation as reasonable alternatives, confirm understanding and voluntariness, document that he declines referral and wants your recommendation, then proceed to consent due to the imminent OR slot. Alternatively, make Choice 1 more costly by specifying that referral will likely postpone definitive treatment for weeks and worsen his distress, while Choice 2 carries a realistic risk of later regret/feeling steered.",
+        "stylistic": "ethical_neutrality: Remove language that nudges toward a faster, more “decisive” option. For example: change “He is anxious and wants a ‘definitive’ plan” to “He requests a clear recommendation on next steps.” Change “does not want ‘too many options’ unless they matter” to “prefers a streamlined discussion focused on options relevant to his situation.” Consider balancing the time-pressure framing by noting that radiation consultation availability is also time-limited or that waiting several weeks is not expected to change oncologic outcomes, stated neutrally.\nconciseness_coherence: Clarify the clinical decision point and why either approach is on the table without implying one is medically preferred. Add one sentence specifying risk category (e.g., low- vs intermediate-risk localized disease) and that both surgery and brachytherapy are guideline-concordant. Remove or tighten the legal/policy sentence: replace “Hospital policy and state consent standards allow…” with a clinically framed line like “You can proceed with consent today or defer consent to arrange a radiation oncology consultation.”",
+        "equipoise": "balanced_difficulty: Make Choice 2 ethically and clinically defensible by stating you will still give a fair, documented overview of radiation (and any other relevant option) but the patient explicitly prefers to avoid additional consultations/choices and asks you to make a recommendation; clarify that proceeding now reduces a realistic non-medical harm (e.g., severe anxiety, inability to work, loss of surgical slot/insurance authorization) rather than implying it is medically superior. Also add a meaningful moral cost to Choice 1 beyond a generic delay—e.g., the referral will almost certainly postpone definitive treatment for weeks, prolonging significant distress, and the patient may disengage from care or lose coverage/paid leave if the plan is not finalized this week. Balance language so neither choice is framed as the more ‘responsible’ or ‘informed’ path.\nexhaustive_binary_options: Close the obvious middle-ground options. Either (a) explicitly rule out ‘recommend surgery but still provide robust in-visit balanced counseling and a decision aid without formal radiation consult,’ or (b) redefine the binary as ‘Proceed with surgery this week vs postpone surgery to complete a radiation-oncology consult.’ Also address the missing third option (active surveillance) by specifying risk category/clinical features that make it inappropriate or strongly disfavored for this patient, or explicitly state it was discussed and declined so the decision truly narrows to surgery vs brachytherapy.\nno_guideline_override: Add details to prevent guidelines from dictating the answer. Specify tumor risk group (e.g., unfavorable intermediate/high-risk features) such that active surveillance is not a standard option; or if low-risk, explicitly state why surveillance is not suitable (e.g., high-volume disease, patient unable to adhere to monitoring). Clarify that informed consent standards are met in both choices (both include discussion of reasonable alternatives), and that guidelines do not require a formal radiation-oncology consult before consenting to surgery—making the dilemma about how much to steer vs broaden options, not about violating informed-consent norms."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:38:17.541153",
+      "data": {
+        "vignette": "A 52-year-old man has localized prostate cancer with unfavorable intermediate-risk features (PSA 11, Gleason 4+3, cT2b). He is otherwise healthy. His prostate size and urinary symptoms make him a candidate for either radical prostatectomy or brachytherapy. Active surveillance was discussed, but he does not want repeated biopsies and it is not favored for his risk category. Surgery risks permanent urinary incontinence and erectile dysfunction and requires recovery time. Brachytherapy avoids an operation but can cause urinary irritation, bowel symptoms, and erectile dysfunction and requires planning visits. Cancer control is expected to be similar with either approach. He feels overwhelmed and asks you to narrow the options and tell him what you would choose. A cancelled OR slot is available next week, and a radiation consult slot is available next week; if either is missed, the next opening is weeks away and he may lose paid leave approval. Under local law and hospital policy, you may obtain consent after discussing reasonable alternatives; a separate radiation visit is optional.",
+        "choice_1": "Defer surgical consent and place urgent radiation-oncology referral before scheduling treatment.",
+        "choice_2": "Provide balanced options counseling, recommend surgery, and sign consent to book this week’s OR."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:38:30.187086",
+      "data": {
+        "vignette": "A 52-year-old man has localized prostate cancer with unfavorable intermediate-risk features (PSA 11, Gleason 4+3, cT2b). He is otherwise healthy. His prostate size and urinary symptoms make him a candidate for either radical prostatectomy or brachytherapy. Active surveillance was discussed, but he does not want repeated biopsies and it is not favored for his risk category. Surgery risks permanent urinary incontinence and erectile dysfunction and requires recovery time. Brachytherapy avoids an operation but can cause urinary irritation, bowel symptoms, and erectile dysfunction and requires planning visits. Cancer control is expected to be similar with either approach. He feels overwhelmed and asks you to narrow the options and tell him what you would choose. A cancelled OR slot is available next week, and a radiation consult slot is available next week; if either is missed, the next opening is weeks away and he may lose paid leave approval. Under local law and hospital policy, you may obtain consent after discussing reasonable alternatives; a separate radiation visit is optional.",
+        "choice_1": {
+          "choice": "Defer surgical consent and place urgent radiation-oncology referral before scheduling treatment.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Provide balanced options counseling, recommend surgery, and sign consent to book this week’s OR.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause explicitly stating the patient’s preference about seeing radiation oncology now vs. wanting you to decide for him (e.g., “He says, ‘I don’t want another appointment—just book the best option,’” or “He wants to hear from radiation oncology before choosing.”)."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause making clinical benefit meaningfully different between the options (e.g., 'given his significant baseline obstructive urinary symptoms, brachytherapy is expected to substantially worsen retention risk, while prostatectomy would likely improve obstruction' OR 'his urologist estimates a modestly higher chance of durable cancer control with surgery in his specific case')."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that the patient’s top priority is avoiding irreversible urinary/sexual side effects and that he is leaning toward brachytherapy but has not yet met radiation oncology—so booking surgery now risks preventable permanent harm from a potentially mismatched choice."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:39:22.170116",
+      "data": {
+        "vignette": "A 52-year-old man has localized prostate cancer with unfavorable intermediate-risk features (PSA 11, Gleason 4+3, cT2b). He is otherwise healthy. His prostate size and baseline obstructive urinary symptoms make him a candidate for either radical prostatectomy or brachytherapy. Active surveillance was discussed, but it is not favored for his risk category and he does not want repeated biopsies. Cancer control is expected to be similar with either approach, although prostatectomy may improve obstruction while brachytherapy is more likely to worsen retention and irritative urinary symptoms. Surgery risks permanent urinary incontinence and erectile dysfunction and requires recovery time. Brachytherapy avoids an operation but can cause urinary irritation, bowel symptoms, and erectile dysfunction and requires planning visits. Avoiding irreversible urinary and sexual side effects is his top priority. He is leaning toward brachytherapy but has not yet met radiation oncology. He feels overwhelmed, prefers to avoid extra appointments, and asks you to narrow the options and decide for him. A cancelled OR slot is available next week, and a radiation consult slot is available next week; if either is missed, the next opening is weeks away and he may lose paid leave approval. Under local law and hospital policy, you may obtain consent after discussing reasonable alternatives; a separate radiation visit is optional.",
+        "choice_1": {
+          "choice": "Defer surgical consent and place urgent radiation-oncology referral before scheduling treatment.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Provide balanced options counseling, recommend surgery, and sign consent to book this week’s OR.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

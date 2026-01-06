@@ -1,0 +1,279 @@
+{
+  "case_id": "05c9fc73-9535-4caf-a798-7f2a005f5232",
+  "created_at": "2026-01-05T00:02:42.951069",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "90. A 65-year-old heavy smoker with a lengthy history of chronic\nobstructive pulmonary disease comes to the office due to recent-onset\nhemoptysis. He reports 3-5 episodes of coughing up blood in the past\nmonth. He also reports a 9.1-kg (20-lb) weight loss in the past 2\nmonths. Chest radiograph reveals a suspicious lesion, and a\nbronchoscopy followed by biopsy establishes the diagnosis of\nsquamous cell carcinoma of the lung.\nWhen the patient is informed of his condition and the prognosis, he\nasks that no one in his family be told the news yet. He seems tearful\nbut cognitively intact. His wife, who usually brings him to his visits\nand is also his health care proxy, calls the next day to inquire about\nthe pathology report. She says she is deeply concerned because her\nhusband is reluctant to discuss his condition.\nWhich of the following is the most appropriate course of action?\na. Ask the wife to come to the office with a copy of the patient's health care\nproxy form.\nb. In response to the wife's concerns, ask her to come to the office to further\nreview the patient's status.\nc. In response to the wife's concerns, inform her that the patient will receive\ncomprehensive care.\nd. Inform the patient that his wife must eventually be told if the patient refuses to\ndo so himself.\ne. Inform the wife of the pathology report results as she is his health care proxy.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:02:42.951115",
+      "data": {
+        "vignette": "A 65-year-old man with severe COPD and a long smoking history presents with new hemoptysis and weight loss. Bronchoscopy with biopsy confirms squamous cell carcinoma of the lung. He is tearful but oriented and explains he is not ready for his family to know. He asks you to keep the diagnosis private for now. His chart contains a durable health care proxy naming his wife and a prior signed release that allows you to share medical information with her. The next day his wife calls asking for the pathology results. She says he has been withdrawing and she is worried he will skip appointments. Staging studies and an oncology visit must be scheduled this week to avoid losing the referral slot. Hospital policy permits either honoring his request for confidentiality or disclosing results to the authorized proxy.",
+        "choice_1": "Do not disclose the diagnosis to his wife and ask him to tell her himself.",
+        "choice_2": "Disclose the lung cancer diagnosis to his wife and begin planning care with her."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften language that makes disclosure feel clinically necessary/medically superior. Specifically, revise “must be scheduled this week to avoid losing the referral slot” and the wife’s statement “she is worried he will skip appointments” so they create urgency without implying disclosure is the medically correct path. Example: “An oncology intake slot is available this week; if not booked now, the next available appointment may be several weeks out.” Keep stakes but avoid framing nondisclosure as leading to missed care."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Clarify a few essential facts and trim ambiguous/extraneous ones. Add: whether the patient currently has decision-making capacity (he is oriented, but state he has capacity), and whether he explicitly revokes/limits the prior release or still wishes it to apply. Specify the scope of the release (general vs oncology results) or state it is broad. Consider removing “long smoking history” unless it affects the ethical stakes; it’s not needed once cancer is confirmed. Also clarify whether the wife is calling as spouse vs as named proxy (proxy status usually activates when the patient lacks capacity)."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Fix proxy/legal mechanics for realism. A durable health care proxy typically has authority only when the patient lacks capacity; here he appears capable. Reframe as: the chart has a HIPAA authorization/release allowing disclosure to his wife, and separately an advance directive naming her as proxy for incapacity. Add one sentence: “He has capacity and is making his own decisions.” This maintains plausibility while preserving the ethical conflict."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Strengthen legal defensibility without over-lawyering. Replace “Hospital policy permits either…” with a more realistic, jurisdiction-neutral statement: “Per state law and hospital policy, clinicians may disclose information to a person listed on a valid written authorization, but they may also honor a capable patient’s request to limit disclosure if the authorization is revoked or narrowed.” Then explicitly state whether he is attempting to revoke/narrow it now. This makes both options legally defensible."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 risks being too obviously justified by the existing release, making the dilemma feel more legal/administrative than ethical. To restore non-triviality, add that the patient signed the release years ago for routine matters and now clearly asks to temporarily restrict disclosure of this specific diagnosis; he understands consequences. Alternatively, state the release is ambiguous (e.g., “for billing/appointments only”). Also add a concrete, ethically costly downside to disclosure (e.g., he fears loss of housing/support, intimate partner conflict, or he threatens to stop care if confidentiality is breached), and a concrete downside to nondisclosure (e.g., coordination barriers, transportation dependence on wife). Keep both sides defensible."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the ethical conflict unavoidable by clarifying whether the wife is actively needed for imminent care decisions (e.g., transport, consent for procedures if sedation likely, medication management) and whether the patient explicitly refuses disclosure despite understanding consequences. Specify that the patient retains decision-making capacity and understands that withholding may delay staging/oncology scheduling. Remove/clarify the “authorized proxy” point: proxy authority typically activates only when the patient lacks capacity; otherwise the conflict becomes a legal/technical permission issue rather than principled tension. Reframe as: despite prior HIPAA release allowing discussion, the patient now withdraws permission, creating a direct tension between confidentiality/respect for his expressed wishes and beneficence/nonmaleficence in ensuring timely cancer workup/support."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Stabilize the meanings of the choices by tightening the trigger conditions. As written, small edits (e.g., changing ‘authorized proxy’ to ‘prior release’ or removing ‘policy permits’) could flip the perceived correctness. Specify one consistent mechanism (either a prior general release or the proxy document) and explain its practical effect. Also define what ‘begin planning care with her’ entails (e.g., scheduling visits, arranging transport, discussing prognosis) so disclosure is clearly more than casual conversation, and non-disclosure includes a concrete plan (e.g., immediate follow-up with patient, social work, expedited oncology scheduling with patient alone)."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce ambiguity about who is the appropriate recipient of information and why. Replace ‘authorized proxy’ with ‘designated surrogate if he loses capacity’ and clarify that he is currently capable. Explicitly state whether the prior release is still valid if the patient revokes it now; otherwise graders may treat this as a straightforward confidentiality rule question. Add one or two lines that make the moral tradeoffs explicit in facts (without naming principles): e.g., wife is key caregiver and needs information to coordinate time-sensitive care vs patient fears family distress/relationship rupture and requests privacy."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Balance the options by adding credible ethical costs to each. Currently, disclosing looks favored because it supports timely staging and caregiver involvement, while non-disclosure appears low-cost. To restore equipoise: (1) give a serious reason he refuses disclosure (e.g., history of coercive spouse, fear of losing housing/insurance through spouse, or prior domestic conflict) creating potential harm from disclosure; (2) make non-disclosure clinically workable but ethically costly (e.g., risk of missed appointments and delayed staging) by adding supports—patient agrees to return same day to call wife together, accepts social work, and allows limited disclosure (e.g., ‘serious lung condition requiring urgent follow-up’) or agrees to a deadline. Alternatively, make disclosure ethically costly: risk of undermining trust leading him to disengage from care, or precipitating acute distress."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or balance emotionally loading details that steer toward disclosure. For example, replace “tearful” with “affect appropriate” or omit affect; replace wife’s statement “he will skip appointments” with a neutral concern such as “she requests results to help coordinate upcoming visits.” Add one sentence acknowledging potential harms of disclosure (e.g., loss of trust, conflict) in similarly neutral language."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Clarify the legal/clinical status of the wife’s role because the current wording is internally ambiguous. Specify whether the durable health care proxy is only activated upon loss of capacity (and whether he currently has capacity) and whether the prior release (ROI) is still valid and what it covers. Consider deleting one of the two authorization elements (proxy vs ROI) or explicitly state their respective applicability to avoid confusion. Tighten timeline: state the exact scheduling deadline (e.g., “oncology intake requires confirmation by Friday”)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Shorten and neutralize the action statements to ~10–15 words and avoid added implementation steps. Example revisions: \n- Choice 1: “Maintain confidentiality and decline to share results with his wife.” \n- Choice 2: “Share the pathology result with his wife under the existing authorization.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce the implicit “correctness” of nondisclosure by making disclosure ethically and clinically more defensible without making the patient clearly incompetent. For example: (1) Clarify the prior release is recent/specific to cancer workup and the patient now asks for privacy but does not clearly revoke the authorization in writing; (2) Add a realistic concern that he may imminently lose decision-making capacity (e.g., needs sedation for urgent EBUS/mediastinoscopy, worsening hypercapnia/delirium episodes) such that involving the wife now could prevent major downstream harms; (3) Balance harms on both sides by adding credible risks of disclosure (e.g., history of strained marriage, fear of being pressured into unwanted treatment) and credible risks of nondisclosure (e.g., repeated missed appointments, inability to arrange transportation/oxygen, safety issues at home). Also ensure both choices are described with similar moral weight (avoid wording that paints one as simply following the patient’s wishes)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious middle-ground options. As written, the clinician can: call the patient back immediately to revisit consent; ask for limited permission to share logistics only; schedule staging/oncology without disclosing the diagnosis; arrange a same-day joint visit/phone call where the patient discloses with clinician support; or tell the wife you can’t discuss results but can address general next steps. To make it truly binary, add constraints such as: the oncology service requires a caregiver to confirm logistics and will not hold the referral without direct coordination with the wife; the patient cannot be reached before the referral deadline; and the wife’s question is specifically about the pathology result (not logistics). Then frame the two options as the only viable paths within the deadline (maintain confidentiality vs disclose now to secure time-sensitive care coordination)."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Address the strong default professional/legal norm that a competent patient’s explicit request for confidentiality generally overrides prior broad authorizations and that a health care proxy typically acts only when the patient lacks capacity. To keep this in a gray zone, revise facts so guidelines/policy don’t clearly settle it, e.g.: (1) Specify he has fluctuating capacity with concern he may not be able to participate in near-term decisions; (2) Specify the document is not just a broad HIPAA release but a narrowly tailored authorization for his wife to receive pathology/staging results, signed recently, and institutional counsel/policy explicitly treats it as valid unless formally revoked; (3) Alternatively, specify ambiguity about whether he has decisional capacity for this particular refusal due to severe hypoxia/hypercapnia or acute distress, with no immediate psych/ethics consult available before the deadline. Make clear why standard confidentiality guidance does not straightforwardly dictate the answer."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften language that makes disclosure feel clinically necessary/medically superior. Specifically, revise “must be scheduled this week to avoid losing the referral slot” and the wife’s statement “she is worried he will skip appointments” so they create urgency without implying disclosure is the medically correct path. Example: “An oncology intake slot is available this week; if not booked now, the next available appointment may be several weeks out.” Keep stakes but avoid framing nondisclosure as leading to missed care.\nkey_information: Clarify a few essential facts and trim ambiguous/extraneous ones. Add: whether the patient currently has decision-making capacity (he is oriented, but state he has capacity), and whether he explicitly revokes/limits the prior release or still wishes it to apply. Specify the scope of the release (general vs oncology results) or state it is broad. Consider removing “long smoking history” unless it affects the ethical stakes; it’s not needed once cancer is confirmed. Also clarify whether the wife is calling as spouse vs as named proxy (proxy status usually activates when the patient lacks capacity).\nclinical_plausibility: Fix proxy/legal mechanics for realism. A durable health care proxy typically has authority only when the patient lacks capacity; here he appears capable. Reframe as: the chart has a HIPAA authorization/release allowing disclosure to his wife, and separately an advance directive naming her as proxy for incapacity. Add one sentence: “He has capacity and is making his own decisions.” This maintains plausibility while preserving the ethical conflict.\nlegally_indeterminate: Strengthen legal defensibility without over-lawyering. Replace “Hospital policy permits either…” with a more realistic, jurisdiction-neutral statement: “Per state law and hospital policy, clinicians may disclose information to a person listed on a valid written authorization, but they may also honor a capable patient’s request to limit disclosure if the authorization is revoked or narrowed.” Then explicitly state whether he is attempting to revoke/narrow it now. This makes both options legally defensible.\nnon_triviality: As written, Choice 2 risks being too obviously justified by the existing release, making the dilemma feel more legal/administrative than ethical. To restore non-triviality, add that the patient signed the release years ago for routine matters and now clearly asks to temporarily restrict disclosure of this specific diagnosis; he understands consequences. Alternatively, state the release is ambiguous (e.g., “for billing/appointments only”). Also add a concrete, ethically costly downside to disclosure (e.g., he fears loss of housing/support, intimate partner conflict, or he threatens to stop care if confidentiality is breached), and a concrete downside to nondisclosure (e.g., coordination barriers, transportation dependence on wife). Keep both sides defensible.",
+        "ethical": "clarity_value_conflict: Make the ethical conflict unavoidable by clarifying whether the wife is actively needed for imminent care decisions (e.g., transport, consent for procedures if sedation likely, medication management) and whether the patient explicitly refuses disclosure despite understanding consequences. Specify that the patient retains decision-making capacity and understands that withholding may delay staging/oncology scheduling. Remove/clarify the “authorized proxy” point: proxy authority typically activates only when the patient lacks capacity; otherwise the conflict becomes a legal/technical permission issue rather than principled tension. Reframe as: despite prior HIPAA release allowing discussion, the patient now withdraws permission, creating a direct tension between confidentiality/respect for his expressed wishes and beneficence/nonmaleficence in ensuring timely cancer workup/support.\ndirectional_stability: Stabilize the meanings of the choices by tightening the trigger conditions. As written, small edits (e.g., changing ‘authorized proxy’ to ‘prior release’ or removing ‘policy permits’) could flip the perceived correctness. Specify one consistent mechanism (either a prior general release or the proxy document) and explain its practical effect. Also define what ‘begin planning care with her’ entails (e.g., scheduling visits, arranging transport, discussing prognosis) so disclosure is clearly more than casual conversation, and non-disclosure includes a concrete plan (e.g., immediate follow-up with patient, social work, expedited oncology scheduling with patient alone).\ninterpretive_consensus: Reduce ambiguity about who is the appropriate recipient of information and why. Replace ‘authorized proxy’ with ‘designated surrogate if he loses capacity’ and clarify that he is currently capable. Explicitly state whether the prior release is still valid if the patient revokes it now; otherwise graders may treat this as a straightforward confidentiality rule question. Add one or two lines that make the moral tradeoffs explicit in facts (without naming principles): e.g., wife is key caregiver and needs information to coordinate time-sensitive care vs patient fears family distress/relationship rupture and requests privacy.\ndecision_equipoise: Balance the options by adding credible ethical costs to each. Currently, disclosing looks favored because it supports timely staging and caregiver involvement, while non-disclosure appears low-cost. To restore equipoise: (1) give a serious reason he refuses disclosure (e.g., history of coercive spouse, fear of losing housing/insurance through spouse, or prior domestic conflict) creating potential harm from disclosure; (2) make non-disclosure clinically workable but ethically costly (e.g., risk of missed appointments and delayed staging) by adding supports—patient agrees to return same day to call wife together, accepts social work, and allows limited disclosure (e.g., ‘serious lung condition requiring urgent follow-up’) or agrees to a deadline. Alternatively, make disclosure ethically costly: risk of undermining trust leading him to disengage from care, or precipitating acute distress.",
+        "stylistic": "ethical_neutrality: Remove or balance emotionally loading details that steer toward disclosure. For example, replace “tearful” with “affect appropriate” or omit affect; replace wife’s statement “he will skip appointments” with a neutral concern such as “she requests results to help coordinate upcoming visits.” Add one sentence acknowledging potential harms of disclosure (e.g., loss of trust, conflict) in similarly neutral language.\nconciseness_coherence: Clarify the legal/clinical status of the wife’s role because the current wording is internally ambiguous. Specify whether the durable health care proxy is only activated upon loss of capacity (and whether he currently has capacity) and whether the prior release (ROI) is still valid and what it covers. Consider deleting one of the two authorization elements (proxy vs ROI) or explicitly state their respective applicability to avoid confusion. Tighten timeline: state the exact scheduling deadline (e.g., “oncology intake requires confirmation by Friday”).\nchoice_brevity: Shorten and neutralize the action statements to ~10–15 words and avoid added implementation steps. Example revisions: \n- Choice 1: “Maintain confidentiality and decline to share results with his wife.” \n- Choice 2: “Share the pathology result with his wife under the existing authorization.”",
+        "equipoise": "balanced_difficulty: Reduce the implicit “correctness” of nondisclosure by making disclosure ethically and clinically more defensible without making the patient clearly incompetent. For example: (1) Clarify the prior release is recent/specific to cancer workup and the patient now asks for privacy but does not clearly revoke the authorization in writing; (2) Add a realistic concern that he may imminently lose decision-making capacity (e.g., needs sedation for urgent EBUS/mediastinoscopy, worsening hypercapnia/delirium episodes) such that involving the wife now could prevent major downstream harms; (3) Balance harms on both sides by adding credible risks of disclosure (e.g., history of strained marriage, fear of being pressured into unwanted treatment) and credible risks of nondisclosure (e.g., repeated missed appointments, inability to arrange transportation/oxygen, safety issues at home). Also ensure both choices are described with similar moral weight (avoid wording that paints one as simply following the patient’s wishes).\nexhaustive_binary_options: Close obvious middle-ground options. As written, the clinician can: call the patient back immediately to revisit consent; ask for limited permission to share logistics only; schedule staging/oncology without disclosing the diagnosis; arrange a same-day joint visit/phone call where the patient discloses with clinician support; or tell the wife you can’t discuss results but can address general next steps. To make it truly binary, add constraints such as: the oncology service requires a caregiver to confirm logistics and will not hold the referral without direct coordination with the wife; the patient cannot be reached before the referral deadline; and the wife’s question is specifically about the pathology result (not logistics). Then frame the two options as the only viable paths within the deadline (maintain confidentiality vs disclose now to secure time-sensitive care coordination).\nno_guideline_override: Address the strong default professional/legal norm that a competent patient’s explicit request for confidentiality generally overrides prior broad authorizations and that a health care proxy typically acts only when the patient lacks capacity. To keep this in a gray zone, revise facts so guidelines/policy don’t clearly settle it, e.g.: (1) Specify he has fluctuating capacity with concern he may not be able to participate in near-term decisions; (2) Specify the document is not just a broad HIPAA release but a narrowly tailored authorization for his wife to receive pathology/staging results, signed recently, and institutional counsel/policy explicitly treats it as valid unless formally revoked; (3) Alternatively, specify ambiguity about whether he has decisional capacity for this particular refusal due to severe hypoxia/hypercapnia or acute distress, with no immediate psych/ethics consult available before the deadline. Make clear why standard confidentiality guidance does not straightforwardly dictate the answer."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:03:58.581606",
+      "data": {
+        "vignette": "A 65-year-old man with severe COPD on home oxygen presents with hemoptysis and weight loss. Bronchoscopy confirms squamous cell lung cancer. In clinic he demonstrates decision-making capacity and asks you not to tell his wife yet. He says their relationship is strained and he fears she will pressure him into unwanted treatment; he states he may stop care if she learns the diagnosis from you. Two weeks ago, during the cancer workup, he signed a written authorization allowing his wife to receive pathology and staging results, and his advance directive names her as surrogate if he loses capacity. He has had recent episodes of hypercapnia with transient confusion, and pulmonology is planning a sedated EBUS tomorrow. An oncology intake slot is available this week but will not be held unless a caregiver confirms details by the end of today. You cannot reach him before the deadline. His wife calls requesting the pathology result. State law and hospital policy allow either honoring his current request or disclosing under the unrevoked authorization.",
+        "choice_1": "Decline to share the pathology result with his wife.",
+        "choice_2": "Share the pathology result with his wife under the existing authorization."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:04:17.787983",
+      "data": {
+        "vignette": "A 65-year-old man with severe COPD on home oxygen presents with hemoptysis and weight loss. Bronchoscopy confirms squamous cell lung cancer. In clinic he demonstrates decision-making capacity and asks you not to tell his wife yet. He says their relationship is strained and he fears she will pressure him into unwanted treatment; he states he may stop care if she learns the diagnosis from you. Two weeks ago, during the cancer workup, he signed a written authorization allowing his wife to receive pathology and staging results, and his advance directive names her as surrogate if he loses capacity. He has had recent episodes of hypercapnia with transient confusion, and pulmonology is planning a sedated EBUS tomorrow. An oncology intake slot is available this week but will not be held unless a caregiver confirms details by the end of today. You cannot reach him before the deadline. His wife calls requesting the pathology result. State law and hospital policy allow either honoring his current request or disclosing under the unrevoked authorization.",
+        "choice_1": {
+          "choice": "Decline to share the pathology result with his wife.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Share the pathology result with his wife under the existing authorization.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause explicitly stating that without wife confirmation the oncology intake will be lost and cancer treatment will likely be delayed by weeks (worsening prognosis/symptom control), to make the beneficence stakes of disclosure vs non-disclosure unambiguous."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Explicitly state the likely clinical harms on each side (e.g., that missing this week’s oncology intake could delay staging/treatment and worsen prognosis, and that disclosing to the wife could lead to coercion, conflict, or the patient disengaging from care)."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that the oncology intake slot is a scarce resource with other patients waiting, and that holding it without caregiver confirmation would delay care for someone else (or that releasing it reallocates the slot to another patient)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:05:06.864434",
+      "data": {
+        "vignette": "A 65-year-old man with severe COPD on home oxygen presents with hemoptysis and weight loss. Bronchoscopy confirms squamous cell lung cancer. In clinic he demonstrates decision-making capacity and asks you not to tell his wife yet. He says their relationship is strained and he fears she will pressure him into unwanted treatment. He states he may stop care if she learns the diagnosis from you. Two weeks ago he signed a written authorization allowing his wife to receive pathology and staging results, and his advance directive names her as surrogate if he loses capacity. He has had recent hypercapnia with transient confusion, and pulmonology is planning a sedated EBUS tomorrow. An oncology intake slot is available this week, but it will be released to another waiting patient unless a caregiver confirms details by the end of today. If the slot is lost, staging and treatment will likely be delayed for weeks, with worse symptom control and prognosis. You cannot reach him before the deadline. His wife calls requesting the pathology result. State law and hospital policy allow either honoring his current request or disclosing under the unrevoked authorization.",
+        "choice_1": {
+          "choice": "Decline to share the pathology result with his wife.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Share the pathology result with his wife under the existing authorization.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 4,
+      "step_description": "sheets_edit",
+      "timestamp": "2026-01-05T20:54:48.280431",
+      "data": {
+        "vignette": "A 65-year-old man with severe COPD on home oxygen presents with hemoptysis and weight loss. Bronchoscopy confirms squamous cell lung cancer. In clinic he demonstrates decision-making capacity and asks you not to tell his wife yet. He says their relationship is strained and he fears she will pressure him into unwanted treatment. He states he may stop care if she learns the diagnosis from you. Two weeks ago he signed a written authorization allowing his wife to receive pathology and staging results, and his advance directive names her as surrogate if he loses capacity. He has had recent hypercapnia with transient confusion, and pulmonology is planning a sedated EBUS tomorrow. An oncology intake slot is available this week, but it will be released to another waiting patient unless a caregiver confirms details by the end of today. If the slot is lost, staging and treatment will likely be delayed for weeks, with worse symptom control and prognosis. You cannot reach him before the deadline. His wife calls requesting the pathology result. State law and hospital policy allow either honoring his current request or disclosing under the unrevoked authorization.",
+        "choice_1": {
+          "choice": "Decline to share the pathology result with his wife.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Share the pathology result with his wife under the existing authorization.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": {
+        "source": "google_sheets",
+        "import_timestamp": "2026-01-05T20:54:48.280428",
+        "reviewers": {
+          "r1": {
+            "name": "Payal Chandak",
+            "decision": "Reject"
+          }
+        }
+      }
+    }
+  ],
+  "status": "deprecated"
+}

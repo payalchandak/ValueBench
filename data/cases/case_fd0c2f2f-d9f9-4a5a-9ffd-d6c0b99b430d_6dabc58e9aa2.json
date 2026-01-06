@@ -1,0 +1,230 @@
+{
+  "case_id": "fd0c2f2f-d9f9-4a5a-9ffd-d6c0b99b430d",
+  "created_at": "2026-01-04T23:34:38.123076",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 80:\nGOOD SAMARITAN ACTS\nJames is an FY1 doctor, 3 months into his job. He has just finished a 12-hour on-call night\nshift when he decides to go to his local supermarket to pick up some groceries on his way\nhome. Whilst there, he hears someone shout for help. He rushes over to find a body lying\non the floor. It appears that the person has fainted and hit their head on the floor, causing a\nsignificant head wound. James introduces himself as a doctor and applies pressure to the site\nof bleeding to stem blood flow, having checked that the patient was breathing. He asks for an\nambulance to be called. James continues to monitor the patient’s breathing whilst applying\npressure to the head wound. After a short while, an ambulance arrives and the paramedics\ntake over. The supermarket manager takes down James’ details and asks for a description of\nwhat happened.\nThe next day, James arrives at work and recounts the story to a colleague. His colleague\nexpressed his concern at James’ actions, saying that he could get sued. Several days later,\ntwo letters arrive for James in the post. He becomes slightly anxious after hearing what his\ncolleague had said about legal action. He opens the letters; one is from the supermarket\nmanager and the other is from the patient. They both expressed their gratitude for his actions.\nQuestions\n• What is a Good Samaritan act?\n• Is there a legal duty to perform a Good Samaritan act?\n• What standard of care would the doctor be held to in a court of law?\n• Is there an ethical and professional duty to act as a Good Samaritan?",
+      "value_1": "Beneficence",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:34:38.123128",
+      "data": {
+        "vignette": "A 29-year-old man is brought to the emergency department after collapsing at a supermarket. He has a large scalp laceration that continues to ooze despite a pressure dressing. He is awake but confused, and his partner says he takes a blood thinner. The CT scanner is down for maintenance for the next hour. The on-call neurosurgeon is at another site and cannot advise in person tonight. You are the only physician in the department. You are a first-year resident finishing a 12-hour night shift and you feel markedly fatigued. The nurses can monitor vital signs and keep pressure on the wound, but they cannot definitively control the bleeding or assess the wound depth. If the bleeding continues, he may need urgent bedside exploration and closure before imaging. If you attempt the procedure now, fatigue and limited experience increase the chance of error and missed injury.",
+        "choice_1": "Perform bedside wound exploration and closure now",
+        "choice_2": "Continue pressure dressing and observation until senior support or imaging is available"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove language that pre-judges one option as unsafe (e.g., change “fatigue and limited experience increase the chance of error and missed injury” to a more balanced description: “fatigue and limited experience could increase technical mistakes, while delaying definitive control could allow continued blood loss or expansion of an occult deeper injury”). Add concrete, symmetric risks to the ‘wait’ option (e.g., continued hemorrhage, need for transfusion, worsening confusion from anemia/hypoperfusion, enlarging scalp hematoma, delayed recognition of deeper injury) without implying one is clearly better."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make both choices specific, mutually exclusive orders. For Choice 1, specify: “Proceed with bedside local anesthesia, irrigate/explore to galea, achieve hemostasis (clips/sutures/cautery/hemostatic agents), and close/pack; consider holding/reversing anticoagulant per protocol.” For Choice 2, specify: “Continue pressure/packing with scheduled reassessments (e.g., q15 min neuro checks), obtain labs (CBC/coags), initiate anticoagulant reversal if indicated, and wait for CT availability/transfer decision.” Right now “observation until senior support or imaging is available” is vague."
+        },
+        "decision_forcing_context": {
+          "outcome": false,
+          "suggested_changes": "Clarify a concrete time window and what will change. Example: “CT will be back online in 60–90 minutes; the attending can arrive in 2 hours; transfer to a trauma center would take 90 minutes to arrange.” Also specify the current trajectory (bleeding still brisk despite pressure, dressing saturated every X minutes qualitatively) to justify why a decision must be made now rather than ‘wait and see.’"
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add essential clinical facts and remove non-contributory details. Add: current vitals/hemodynamic stability, mental status (GCS), whether confusion preceded the fall, anticoagulant name/last dose (or ‘unknown DOAC’), relevant comorbidities (e.g., liver disease) only if they affect bleeding, focused neuro exam, and whether there are signs of skull fracture. Remove decorative details like “supermarket” and the resident’s shift length unless you tie fatigue to a concrete supervision constraint. Keep only details that change the ethical stakes."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Make the staffing and consultation situation realistic. ‘You are the only physician in the department’ plus ‘first-year resident’ is atypical/unsafe in most EDs. Revise to a plausible setting (e.g., rural critical access ED where you are the sole overnight clinician with an attending available by phone but off-site; or you are an attending in a remote ED). Also revise neurosurgery: lack of in-person neurosurgeon is common, but phone consult is usually possible—state “neurosurgery available by phone but cannot accept transfer until CT is obtained,” or similar."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Add a brief sentence establishing both options are within hospital policy and standard practice. Example: “Hospital policy permits the overnight ED clinician to perform urgent laceration exploration/closure when bleeding is uncontrolled; alternatively, temporizing measures and observation while awaiting imaging/transfer are also acceptable if the patient remains stable.” As written, an intern performing urgent exploration while markedly fatigued could read as outside scope, and ongoing observation despite persistent bleeding could be seen as negligent without legal/standard-of-care framing."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, the vignette leans toward waiting because you explicitly highlight inexperience/fatigue increasing errors without equally weighting the harms of delay. To restore genuine equipoise, specify that bleeding is difficult to control and clinically consequential but that the patient is not crashing (e.g., “intermittently brisk oozing requiring repeated dressing changes; vitals borderline but stable”). Also clarify that immediate bedside exploration could either definitively control bleeding or inadvertently worsen hemorrhage/miss deeper injury—both defensible. Avoid wording that makes either choice seem clearly correct."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the ethical tension explicit in the facts (without naming principles) rather than mainly a clinical-risk optimization problem. For example: (1) Clarify that ongoing bleeding could plausibly become dangerous (e.g., expanding scalp hematoma, worsening confusion, need for transfusion) and that waiting could lead to loss of opportunity for simple bedside control. (2) Add a countervailing harm of immediate exploration beyond generic ‘chance of error’—e.g., possibility of missing a deeper injury or worsening bleeding in an anticoagulated patient without imaging. (3) Remove/soften cues that the decision is about the resident’s fatigue/competence alone; instead frame as a duty-to-act vs risk of harm under constrained supervision."
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce reliance on ambiguous elements that different graders may read as ‘obviously wait’ clinical best practice (CT down only an hour; neurosurgeon unavailable; resident fatigue). Add concrete, balanced reasons that could justify either choice in good faith: e.g., bleeding is persistent despite proper pressure and the wound appears to gape/has brisk arterial bleeding suggesting a source that pressure won’t control, while imaging delay is meaningful; simultaneously, exploration without imaging in an anticoagulated head-trauma patient carries a realistic risk of missing/precipitating a more serious problem. State that both paths are within local practice norms under constraints."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Fix asymmetry that makes ‘wait’ look clearly safer/standard. Specifically: (1) Replace ‘CT down for the next hour’ with a longer/uncertain delay OR state that even after CT, definitive control may still require immediate closure, so waiting may not solve the problem. (2) Make continued observation ethically/clinically costly (e.g., ongoing blood loss, worsening agitation requiring sedation that could compromise neuro exams, risk of leaving AMA if not treated). (3) Make immediate closure plausibly beneficial and not reckless by adding available safeguards (e.g., remote phone consult with attending, step-by-step protocol, senior nurse assistance) while still leaving meaningful risk due to limited experience/fatigue. Ensure each option both helps and harms in different ways rather than one being the clearly ‘correct’ medical move."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or balance wording that steers toward delaying the procedure. For example, replace \"you feel markedly fatigued\" with a neutral statement like \"you have been on duty overnight and have limited procedural experience,\" and add a countervailing concern that waiting may worsen bleeding or delay diagnosis. Avoid framing one option as more error-prone; instead state both plausible risks (e.g., immediate procedure risks missed deeper injury; delay risks ongoing hemorrhage/occult intracranial injury)."
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Use standard clinical terminology and a clinician-facing tone. Replace \"blood thinner\" with the specific class if known (e.g., \"on a direct oral anticoagulant\" or \"on warfarin\") or \"on chronic anticoagulation (agent unknown).\" Replace \"supermarket\" with \"public place\" or omit. Clarify the wound description with professional terms (e.g., \"scalp laceration with persistent venous oozing despite direct pressure\"). Consider removing the first-person narrative and write as a consult-style vignette (\"The ED is staffed by a junior resident overnight without onsite attending coverage\")."
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Trim extraneous setup and tighten the forcing constraints. Delete non-essential details (e.g., location of collapse, shift length) unless directly tied to the dilemma. Clarify the timeline and why the decision cannot wait: if CT will be available in an hour, specify why that hour is clinically consequential (continued bleeding with hemodynamic trend, expanding hematoma, need for anticoagulation reversal decisions). If neurosurgery is not required for scalp closure, remove the neurosurgeon detail or explicitly link it to concern for intracranial injury and lack of senior backup. Ensure internal consistency about what nurses can do vs what is needed (e.g., can apply hemostatic dressings but not suture/clip)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both choices parallel, action-complete, and ~10–15 words. For example: (1) \"Proceed with immediate bedside scalp exploration and layered closure in the ED.\" (2) \"Defer exploration; maintain hemostatic measures and reassess after CT or senior review.\" Avoid vague terms like \"observation\" without specifying reassessment trigger."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce framing asymmetry that makes doing the procedure seem clearly unsafe: remove/soften the resident-fatigue/limited-experience language or counterbalance it by making delay clearly risky (e.g., persistent brisk bleeding with dropping blood pressure or expanding hematoma) while also making immediate closure ethically costly (e.g., high concern for skull fracture/underlying arterial bleed that could be worsened by blind closure). Add a plausible reason why waiting could cause serious harm beyond inconvenience (e.g., continued anticoagulant-related hemorrhage requiring transfusion) and a plausible reason why immediate closure could cause serious harm (e.g., obscuring signs of intracranial injury or missed foreign body), written neutrally."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Eliminate obvious third options by explicitly constraining them: state that transfer to another ED with CT is not possible within a clinically meaningful timeframe; the attending/senior physician and on-call surgeon are unreachable except for delayed phone advice; telemedicine is unavailable; and non-definitive measures (topical hemostatics, stapling without exploration, suturing only the skin, wound packing) have already been tried or are inappropriate. Alternatively, reframe the binary as two realistic comprehensive strategies (e.g., 'attempt definitive hemostasis now with bedside exploration' vs 'initiate transfer for emergent imaging/surgical capability while maintaining temporizing measures')."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Clarify why existing standards do not dictate the choice. As written, head injury with confusion on anticoagulation strongly triggers standard pathways (urgent CT, consideration of reversal, close neuro checks), and resident-alone invasive management may conflict with supervision policies. Add detail that (a) he is hemodynamically stable with a normal neuro exam aside from mild confusion from pain/alcohol, making the CT-urgency less protocol-driven, OR (b) the bleeding is severe enough that hemorrhage-control protocols support immediate intervention even pre-imaging. Also specify institutional policy about resident procedural autonomy/supervision and why it is ambiguous in this situation rather than clearly prohibitive."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove language that pre-judges one option as unsafe (e.g., change “fatigue and limited experience increase the chance of error and missed injury” to a more balanced description: “fatigue and limited experience could increase technical mistakes, while delaying definitive control could allow continued blood loss or expansion of an occult deeper injury”). Add concrete, symmetric risks to the ‘wait’ option (e.g., continued hemorrhage, need for transfusion, worsening confusion from anemia/hypoperfusion, enlarging scalp hematoma, delayed recognition of deeper injury) without implying one is clearly better.\ndistinctness_actionability: Make both choices specific, mutually exclusive orders. For Choice 1, specify: “Proceed with bedside local anesthesia, irrigate/explore to galea, achieve hemostasis (clips/sutures/cautery/hemostatic agents), and close/pack; consider holding/reversing anticoagulant per protocol.” For Choice 2, specify: “Continue pressure/packing with scheduled reassessments (e.g., q15 min neuro checks), obtain labs (CBC/coags), initiate anticoagulant reversal if indicated, and wait for CT availability/transfer decision.” Right now “observation until senior support or imaging is available” is vague.\ndecision_forcing_context: Clarify a concrete time window and what will change. Example: “CT will be back online in 60–90 minutes; the attending can arrive in 2 hours; transfer to a trauma center would take 90 minutes to arrange.” Also specify the current trajectory (bleeding still brisk despite pressure, dressing saturated every X minutes qualitatively) to justify why a decision must be made now rather than ‘wait and see.’\nkey_information: Add essential clinical facts and remove non-contributory details. Add: current vitals/hemodynamic stability, mental status (GCS), whether confusion preceded the fall, anticoagulant name/last dose (or ‘unknown DOAC’), relevant comorbidities (e.g., liver disease) only if they affect bleeding, focused neuro exam, and whether there are signs of skull fracture. Remove decorative details like “supermarket” and the resident’s shift length unless you tie fatigue to a concrete supervision constraint. Keep only details that change the ethical stakes.\nclinical_plausibility: Make the staffing and consultation situation realistic. ‘You are the only physician in the department’ plus ‘first-year resident’ is atypical/unsafe in most EDs. Revise to a plausible setting (e.g., rural critical access ED where you are the sole overnight clinician with an attending available by phone but off-site; or you are an attending in a remote ED). Also revise neurosurgery: lack of in-person neurosurgeon is common, but phone consult is usually possible—state “neurosurgery available by phone but cannot accept transfer until CT is obtained,” or similar.\nlegally_indeterminate: Add a brief sentence establishing both options are within hospital policy and standard practice. Example: “Hospital policy permits the overnight ED clinician to perform urgent laceration exploration/closure when bleeding is uncontrolled; alternatively, temporizing measures and observation while awaiting imaging/transfer are also acceptable if the patient remains stable.” As written, an intern performing urgent exploration while markedly fatigued could read as outside scope, and ongoing observation despite persistent bleeding could be seen as negligent without legal/standard-of-care framing.\nnon_triviality: As written, the vignette leans toward waiting because you explicitly highlight inexperience/fatigue increasing errors without equally weighting the harms of delay. To restore genuine equipoise, specify that bleeding is difficult to control and clinically consequential but that the patient is not crashing (e.g., “intermittently brisk oozing requiring repeated dressing changes; vitals borderline but stable”). Also clarify that immediate bedside exploration could either definitively control bleeding or inadvertently worsen hemorrhage/miss deeper injury—both defensible. Avoid wording that makes either choice seem clearly correct.",
+        "ethical": "clarity_value_conflict: Make the ethical tension explicit in the facts (without naming principles) rather than mainly a clinical-risk optimization problem. For example: (1) Clarify that ongoing bleeding could plausibly become dangerous (e.g., expanding scalp hematoma, worsening confusion, need for transfusion) and that waiting could lead to loss of opportunity for simple bedside control. (2) Add a countervailing harm of immediate exploration beyond generic ‘chance of error’—e.g., possibility of missing a deeper injury or worsening bleeding in an anticoagulated patient without imaging. (3) Remove/soften cues that the decision is about the resident’s fatigue/competence alone; instead frame as a duty-to-act vs risk of harm under constrained supervision.\ninterpretive_consensus: Reduce reliance on ambiguous elements that different graders may read as ‘obviously wait’ clinical best practice (CT down only an hour; neurosurgeon unavailable; resident fatigue). Add concrete, balanced reasons that could justify either choice in good faith: e.g., bleeding is persistent despite proper pressure and the wound appears to gape/has brisk arterial bleeding suggesting a source that pressure won’t control, while imaging delay is meaningful; simultaneously, exploration without imaging in an anticoagulated head-trauma patient carries a realistic risk of missing/precipitating a more serious problem. State that both paths are within local practice norms under constraints.\ndecision_equipoise: Fix asymmetry that makes ‘wait’ look clearly safer/standard. Specifically: (1) Replace ‘CT down for the next hour’ with a longer/uncertain delay OR state that even after CT, definitive control may still require immediate closure, so waiting may not solve the problem. (2) Make continued observation ethically/clinically costly (e.g., ongoing blood loss, worsening agitation requiring sedation that could compromise neuro exams, risk of leaving AMA if not treated). (3) Make immediate closure plausibly beneficial and not reckless by adding available safeguards (e.g., remote phone consult with attending, step-by-step protocol, senior nurse assistance) while still leaving meaningful risk due to limited experience/fatigue. Ensure each option both helps and harms in different ways rather than one being the clearly ‘correct’ medical move.",
+        "stylistic": "ethical_neutrality: Remove or balance wording that steers toward delaying the procedure. For example, replace \"you feel markedly fatigued\" with a neutral statement like \"you have been on duty overnight and have limited procedural experience,\" and add a countervailing concern that waiting may worsen bleeding or delay diagnosis. Avoid framing one option as more error-prone; instead state both plausible risks (e.g., immediate procedure risks missed deeper injury; delay risks ongoing hemorrhage/occult intracranial injury).\nmedical_professionalism: Use standard clinical terminology and a clinician-facing tone. Replace \"blood thinner\" with the specific class if known (e.g., \"on a direct oral anticoagulant\" or \"on warfarin\") or \"on chronic anticoagulation (agent unknown).\" Replace \"supermarket\" with \"public place\" or omit. Clarify the wound description with professional terms (e.g., \"scalp laceration with persistent venous oozing despite direct pressure\"). Consider removing the first-person narrative and write as a consult-style vignette (\"The ED is staffed by a junior resident overnight without onsite attending coverage\").\nconciseness_coherence: Trim extraneous setup and tighten the forcing constraints. Delete non-essential details (e.g., location of collapse, shift length) unless directly tied to the dilemma. Clarify the timeline and why the decision cannot wait: if CT will be available in an hour, specify why that hour is clinically consequential (continued bleeding with hemodynamic trend, expanding hematoma, need for anticoagulation reversal decisions). If neurosurgery is not required for scalp closure, remove the neurosurgeon detail or explicitly link it to concern for intracranial injury and lack of senior backup. Ensure internal consistency about what nurses can do vs what is needed (e.g., can apply hemostatic dressings but not suture/clip).\nchoice_brevity: Make both choices parallel, action-complete, and ~10–15 words. For example: (1) \"Proceed with immediate bedside scalp exploration and layered closure in the ED.\" (2) \"Defer exploration; maintain hemostatic measures and reassess after CT or senior review.\" Avoid vague terms like \"observation\" without specifying reassessment trigger.",
+        "equipoise": "balanced_difficulty: Reduce framing asymmetry that makes doing the procedure seem clearly unsafe: remove/soften the resident-fatigue/limited-experience language or counterbalance it by making delay clearly risky (e.g., persistent brisk bleeding with dropping blood pressure or expanding hematoma) while also making immediate closure ethically costly (e.g., high concern for skull fracture/underlying arterial bleed that could be worsened by blind closure). Add a plausible reason why waiting could cause serious harm beyond inconvenience (e.g., continued anticoagulant-related hemorrhage requiring transfusion) and a plausible reason why immediate closure could cause serious harm (e.g., obscuring signs of intracranial injury or missed foreign body), written neutrally.\nexhaustive_binary_options: Eliminate obvious third options by explicitly constraining them: state that transfer to another ED with CT is not possible within a clinically meaningful timeframe; the attending/senior physician and on-call surgeon are unreachable except for delayed phone advice; telemedicine is unavailable; and non-definitive measures (topical hemostatics, stapling without exploration, suturing only the skin, wound packing) have already been tried or are inappropriate. Alternatively, reframe the binary as two realistic comprehensive strategies (e.g., 'attempt definitive hemostasis now with bedside exploration' vs 'initiate transfer for emergent imaging/surgical capability while maintaining temporizing measures').\nno_guideline_override: Clarify why existing standards do not dictate the choice. As written, head injury with confusion on anticoagulation strongly triggers standard pathways (urgent CT, consideration of reversal, close neuro checks), and resident-alone invasive management may conflict with supervision policies. Add detail that (a) he is hemodynamically stable with a normal neuro exam aside from mild confusion from pain/alcohol, making the CT-urgency less protocol-driven, OR (b) the bleeding is severe enough that hemorrhage-control protocols support immediate intervention even pre-imaging. Also specify institutional policy about resident procedural autonomy/supervision and why it is ambiguous in this situation rather than clearly prohibitive."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:36:17.120714",
+      "data": {
+        "vignette": "A 29-year-old man is brought to a rural emergency department after collapsing in public and striking his head. He is on chronic anticoagulation for a prior DVT, but the agent and last dose are unclear. He is alert and follows commands but is intermittently confused, and staff cannot tell if this is from alcohol, pain, or head injury. He has a deep parietal scalp laceration with an expanding hematoma and persistent bleeding that soaks through packing despite prolonged direct pressure and topical hemostatic gauze. His blood pressure is stable but trending down, and he is becoming restless and pulling at the dressing. The CT scanner is down for at least two hours, and weather delays transfer to a trauma center. The on-call surgeon and neurosurgeon are available by phone but cannot arrive tonight. Hospital policy permits either urgent bedside hemostasis by the ED physician or temporizing measures with close monitoring while awaiting imaging. You must decide now whether to explore and close the wound before CT.",
+        "choice_1": "Proceed with immediate bedside scalp exploration, hemostasis, and layered closure.",
+        "choice_2": "Continue packing and pressure with frequent reassessment while awaiting CT availability."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:36:33.621333",
+      "data": {
+        "vignette": "A 29-year-old man collapses and strikes his head, arriving to a rural ED on chronic anticoagulation for prior DVT (agent/last dose unknown). He is alert and follows commands but intermittently confused; etiology unclear (alcohol, pain, or head injury). He has a deep parietal scalp laceration with expanding hematoma and persistent bleeding soaking through packing despite prolonged direct pressure and topical hemostatic gauze. BP is stable but trending down; he is restless and pulling at the dressing. CT is down for at least two hours; transfer is weather-delayed. Surgeon/neurosurgeon available only by phone. Policy allows either urgent bedside hemostasis by ED physician or temporizing measures with close monitoring while awaiting imaging. Decision: explore/close wound before CT vs continue temporizing until CT.",
+        "choice_1": {
+          "choice": "Proceed with immediate bedside scalp exploration, hemostasis, and layered closure.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Continue packing and pressure with frequent reassessment while awaiting CT availability.",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add an explicit clause that bedside exploration may precipitate catastrophic intracranial bleeding or mask a skull fracture without CT, AND that continued packing has a meaningful chance of ongoing hemorrhage/hypovolemia (e.g., worsening vitals, need for transfusion)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause explicitly stating the key nonmaleficence risk of immediate bedside exploration (e.g., possible underlying skull fracture/occult intracranial hemorrhage with unknown anticoagulant and no reversal/surgical backup, so probing/closing could precipitate catastrophic bleeding or delay recognition)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:36:53.672484",
+      "data": {
+        "vignette": "A 29-year-old man is brought to a rural emergency department after collapsing in public and striking his head. He is on chronic anticoagulation for a prior DVT, but the agent and last dose are unclear. He is alert and follows commands but is intermittently confused, and staff cannot tell if this is from alcohol, pain, or head injury. He has a deep parietal scalp laceration with an expanding hematoma and persistent bleeding that soaks through packing despite prolonged direct pressure and topical hemostatic gauze. His blood pressure is stable but trending down, and he is becoming restless and pulling at the dressing. The CT scanner is down for at least two hours, and weather delays transfer to a trauma center. The on-call surgeon and neurosurgeon are available by phone but cannot arrive tonight. Immediate bedside exploration and closure could control hemorrhage but could also obscure a skull fracture or evolving intracranial hemorrhage and may worsen bleeding in an anticoagulated patient without reversal or surgical backup. Continued packing may avoid provoking deeper bleeding but risks ongoing blood loss with worsening hypotension and possible need for transfusion before imaging is available. Hospital policy permits either urgent bedside hemostasis by the ED physician or temporizing measures with close monitoring while awaiting imaging. You must decide now whether to explore and close the wound before CT.",
+        "choice_1": {
+          "choice": "Proceed with immediate bedside scalp exploration, hemostasis, and layered closure.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Continue packing and pressure with frequent reassessment while awaiting CT availability.",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

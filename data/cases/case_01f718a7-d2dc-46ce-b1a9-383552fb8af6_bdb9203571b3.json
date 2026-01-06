@@ -1,0 +1,242 @@
+{
+  "case_id": "01f718a7-d2dc-46ce-b1a9-383552fb8af6",
+  "created_at": "2026-01-04T22:40:43.168037",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "1. You are a resident in the emergency department. An irate parent comes\nto you furious because the social worker has been asking him about\nstriking his child. The child is a 5-year-old boy who has been in the\nemergency department four times this year with several episodes of\ntrauma that did not seem related. Today, the child is brought in with a\nchild complaint of “slipping into a hot bathtub” with a bum wound on\nhis legs. The parent threatens to sue you and says “How dare you think\nthat about me?\nI love my son!”\nWhat should you do?\na. Admit the child to remove him from the possibly dangerous environment.\nb. Call the police.\nc. Ask the father yourself if there has been any abuse.\nd. Explain to the parents that the next time this happens you will have to call child\nprotective services.\ne. Report the family to child protective services.",
+      "value_1": "Non-maleficence",
+      "value_2": "Autonomy"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T22:40:43.168049",
+      "data": {
+        "vignette": "A 5-year-old boy is brought to the emergency department for painful burns and bruising on both thighs. The father says the child “slipped into a hot bathtub.” The pattern of injury does not fit the story, and the chart shows three prior ED visits this year for unrelated traumas with variable explanations. The child is quiet and avoids eye contact. The father is angry about the social worker’s questions and threatens to sue if anyone “accuses” him. The child is medically stable and could be discharged soon. A brief inpatient admission for observation is feasible, but it will require separating the child from the father overnight. Hospital policy and state guidance allow either filing an immediate report based on reasonable concern or admitting the child for safety assessment with the child protection team before deciding on a report. You must decide before disposition.",
+        "choice_1": "File an immediate report to child protective services today",
+        "choice_2": "Admit the child for safety assessment without filing a report yet"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Soften language that makes abuse essentially certain. E.g., change \"The pattern of injury does not fit the story\" to \"The injury pattern raises concern and is not clearly consistent with the history.\" Clarify there are possible accidental explanations (e.g., developmental level, caregiver stress) so the dilemma isn’t resolved by clinical certainty. Add a sentence noting that an immediate report can trigger an intrusive investigation and family separation if concerns are unfounded, while delaying could risk harm if abuse is real."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add only the minimum missing facts needed to make both pathways realistic: (1) whether a non-offending caregiver/relative is available for safe discharge tonight; (2) whether the child protection team can evaluate immediately or only the next day; (3) whether the burns require inpatient wound care anyway or are minor enough for discharge. Remove/trim intensifiers that don’t change the decision (e.g., consider dropping \"threatens to sue\" unless it specifically affects ability to obtain history/safety planning)."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "As written, delaying a CPS report despite reasonable suspicion may be illegal in many jurisdictions. Add a jurisdiction-agnostic legal grounding sentence that makes both options clearly permissible, e.g., \"In this state, clinicians may either make an immediate mandated report based on reasonable suspicion or, when the child is kept in a safe medical setting, may obtain an urgent child-protection-team assessment before filing, provided the report is made within 24 hours if concerns persist.\" Alternatively, explicitly frame Choice 2 as consulting the child protection team immediately and filing if suspicion remains within the legally allowed window."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 2 defensible and genuinely difficult by clarifying the ethical costs on both sides. For example: state that an immediate report will likely lead to automatic temporary removal/forensic interview that night, which could be traumatic and may irreparably damage trust if the injury is accidental; whereas delaying the report until after a brief inpatient safety assessment could allow a more accurate account and safer planning but risks missing an opportunity to intervene if the child returns home. Ensure the vignette explicitly states the child is medically stable and will remain separated/supervised in hospital overnight if admitted."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the dilemma primarily about competing ethical duties rather than policy permissiveness. Remove/soften the line “Hospital policy and state guidance allow either…” and instead state that you have enough concern to consider reporting but the diagnosis of abuse is not certain and additional assessment could clarify. Explicitly describe the ethical costs of each option: (a) immediate report may wrongly implicate a caregiver, fracture trust, and trigger disruptive interventions; (b) delaying a report may leave the child at risk and fails to act on a serious concern."
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Clarify what is uncertain and what is known so graders converge on the same tradeoff. For example, specify that the injury pattern is concerning but not diagnostic (e.g., could be accidental with certain bathing conditions), and that the prior ED visits have mixed plausibility. Also clarify what the “safety assessment” entails (e.g., full skin exam, skeletal survey decision, separate caregiver interview) and that CPS would be notified if concerns persist after a brief, time-limited evaluation."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Reduce the one-sidedness created by near-diagnostic abuse indicators (inconsistent story + patterned burns + multiple prior unexplained traumas), which makes immediate reporting feel mandatory. Either (1) dial back the inculpatory facts (e.g., fewer prior visits, less clearly incompatible pattern, plausible alternative explanations), or (2) strengthen the ethical downside of immediate reporting (credible risk the father will pull the child from care/leave AMA, potential for unnecessary family separation if mistaken, loss of future engagement) while also strengthening the downside of delaying (realistic chance of discharge back into danger). Keep both options clinically defensible by making reporting threshold genuinely ambiguous rather than clearly met."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Reduce language that implicitly vilifies the caregiver or pathologizes the child in a way that pushes toward immediate reporting. For example: change “The father is angry…threatens to sue” to “The father is visibly upset, challenges staff questions, and states he may contact legal counsel.” Replace “pattern of injury does not fit the story” with a clinically neutral formulation such as “the injury pattern raises concern for non-accidental trauma given the reported mechanism.” Consider adding one sentence that makes the delayed-report option ethically credible (e.g., concern that an immediate report could escalate confrontation and compromise the in-hospital safety assessment) without implying either option is correct."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Adjust choices to be parallel, complete, and within ~10–15 words. For example:\n- Choice 1: “File a mandated report to child protective services before discharge today.”\n- Choice 2: “Admit overnight for child protection team assessment before deciding on reporting.”\nAvoid extra rationale in the choices; keep all context in the vignette."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "As written, the injuries plus prior visits create strong suspicion, making immediate reporting look clearly safer and more professionally obligatory. Reduce asymmetry by adding plausible alternative explanations (e.g., confirmed history of a bleeding disorder/skin fragility; burn pattern partially consistent with accidental spill; a caregiver other than father provided prior inconsistent histories), and explicitly state that the child protection team believes the reporting threshold is close but not clearly met yet. Also add a concrete, nontrivial harm of immediate reporting (e.g., automatic police involvement leading to forcible separation in the ED, escalating the father’s behavior and increasing immediate risk to staff/child, or jeopardizing a safe discharge plan with a nonoffending caregiver who is en route)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "A realistic third option is to both admit for safety assessment AND file the report now, or to hold the child in the ED while consulting the child protection team before deciding. Make the binary exhaustive by explicitly ruling out hybrid/deferral paths, e.g.: (1) hospital policy requires either ‘report and discharge’ OR ‘admit under a safety hold without filing until the multidisciplinary review’; (2) filing a report automatically triggers law enforcement interview and CPS involvement that will not occur if the child is admitted under the internal safety pathway; and (3) the protection team cannot evaluate in the ED due to staffing, so the only way to get their assessment before disposition is admission."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "In many jurisdictions, mandated-reporter laws require an immediate CPS report when there is reasonable suspicion, which would override the dilemma. To keep this in a genuine gray zone, specify that (a) local statute permits reporting after initial medical evaluation within a defined short window (e.g., by end of shift/within 24 hours), (b) the clinician is uncertain whether the legal threshold of ‘reasonable suspicion’ is met because of competing medical explanations, and/or (c) institutional policy provides a legally vetted ‘internal safety evaluation’ pathway that is explicitly compliant with state law. Add a line confirming both options are legally permissible in that jurisdiction and endorsed by hospital legal/risk management."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Soften language that makes abuse essentially certain. E.g., change \"The pattern of injury does not fit the story\" to \"The injury pattern raises concern and is not clearly consistent with the history.\" Clarify there are possible accidental explanations (e.g., developmental level, caregiver stress) so the dilemma isn’t resolved by clinical certainty. Add a sentence noting that an immediate report can trigger an intrusive investigation and family separation if concerns are unfounded, while delaying could risk harm if abuse is real.\nkey_information: Add only the minimum missing facts needed to make both pathways realistic: (1) whether a non-offending caregiver/relative is available for safe discharge tonight; (2) whether the child protection team can evaluate immediately or only the next day; (3) whether the burns require inpatient wound care anyway or are minor enough for discharge. Remove/trim intensifiers that don’t change the decision (e.g., consider dropping \"threatens to sue\" unless it specifically affects ability to obtain history/safety planning).\nlegally_indeterminate: As written, delaying a CPS report despite reasonable suspicion may be illegal in many jurisdictions. Add a jurisdiction-agnostic legal grounding sentence that makes both options clearly permissible, e.g., \"In this state, clinicians may either make an immediate mandated report based on reasonable suspicion or, when the child is kept in a safe medical setting, may obtain an urgent child-protection-team assessment before filing, provided the report is made within 24 hours if concerns persist.\" Alternatively, explicitly frame Choice 2 as consulting the child protection team immediately and filing if suspicion remains within the legally allowed window.\nnon_triviality: Make Choice 2 defensible and genuinely difficult by clarifying the ethical costs on both sides. For example: state that an immediate report will likely lead to automatic temporary removal/forensic interview that night, which could be traumatic and may irreparably damage trust if the injury is accidental; whereas delaying the report until after a brief inpatient safety assessment could allow a more accurate account and safer planning but risks missing an opportunity to intervene if the child returns home. Ensure the vignette explicitly states the child is medically stable and will remain separated/supervised in hospital overnight if admitted.",
+        "ethical": "clarity_value_conflict: Make the dilemma primarily about competing ethical duties rather than policy permissiveness. Remove/soften the line “Hospital policy and state guidance allow either…” and instead state that you have enough concern to consider reporting but the diagnosis of abuse is not certain and additional assessment could clarify. Explicitly describe the ethical costs of each option: (a) immediate report may wrongly implicate a caregiver, fracture trust, and trigger disruptive interventions; (b) delaying a report may leave the child at risk and fails to act on a serious concern.\ninterpretive_consensus: Clarify what is uncertain and what is known so graders converge on the same tradeoff. For example, specify that the injury pattern is concerning but not diagnostic (e.g., could be accidental with certain bathing conditions), and that the prior ED visits have mixed plausibility. Also clarify what the “safety assessment” entails (e.g., full skin exam, skeletal survey decision, separate caregiver interview) and that CPS would be notified if concerns persist after a brief, time-limited evaluation.\ndecision_equipoise: Reduce the one-sidedness created by near-diagnostic abuse indicators (inconsistent story + patterned burns + multiple prior unexplained traumas), which makes immediate reporting feel mandatory. Either (1) dial back the inculpatory facts (e.g., fewer prior visits, less clearly incompatible pattern, plausible alternative explanations), or (2) strengthen the ethical downside of immediate reporting (credible risk the father will pull the child from care/leave AMA, potential for unnecessary family separation if mistaken, loss of future engagement) while also strengthening the downside of delaying (realistic chance of discharge back into danger). Keep both options clinically defensible by making reporting threshold genuinely ambiguous rather than clearly met.",
+        "stylistic": "ethical_neutrality: Reduce language that implicitly vilifies the caregiver or pathologizes the child in a way that pushes toward immediate reporting. For example: change “The father is angry…threatens to sue” to “The father is visibly upset, challenges staff questions, and states he may contact legal counsel.” Replace “pattern of injury does not fit the story” with a clinically neutral formulation such as “the injury pattern raises concern for non-accidental trauma given the reported mechanism.” Consider adding one sentence that makes the delayed-report option ethically credible (e.g., concern that an immediate report could escalate confrontation and compromise the in-hospital safety assessment) without implying either option is correct.\nchoice_brevity: Adjust choices to be parallel, complete, and within ~10–15 words. For example:\n- Choice 1: “File a mandated report to child protective services before discharge today.”\n- Choice 2: “Admit overnight for child protection team assessment before deciding on reporting.”\nAvoid extra rationale in the choices; keep all context in the vignette.",
+        "equipoise": "balanced_difficulty: As written, the injuries plus prior visits create strong suspicion, making immediate reporting look clearly safer and more professionally obligatory. Reduce asymmetry by adding plausible alternative explanations (e.g., confirmed history of a bleeding disorder/skin fragility; burn pattern partially consistent with accidental spill; a caregiver other than father provided prior inconsistent histories), and explicitly state that the child protection team believes the reporting threshold is close but not clearly met yet. Also add a concrete, nontrivial harm of immediate reporting (e.g., automatic police involvement leading to forcible separation in the ED, escalating the father’s behavior and increasing immediate risk to staff/child, or jeopardizing a safe discharge plan with a nonoffending caregiver who is en route).\nexhaustive_binary_options: A realistic third option is to both admit for safety assessment AND file the report now, or to hold the child in the ED while consulting the child protection team before deciding. Make the binary exhaustive by explicitly ruling out hybrid/deferral paths, e.g.: (1) hospital policy requires either ‘report and discharge’ OR ‘admit under a safety hold without filing until the multidisciplinary review’; (2) filing a report automatically triggers law enforcement interview and CPS involvement that will not occur if the child is admitted under the internal safety pathway; and (3) the protection team cannot evaluate in the ED due to staffing, so the only way to get their assessment before disposition is admission.\nno_guideline_override: In many jurisdictions, mandated-reporter laws require an immediate CPS report when there is reasonable suspicion, which would override the dilemma. To keep this in a genuine gray zone, specify that (a) local statute permits reporting after initial medical evaluation within a defined short window (e.g., by end of shift/within 24 hours), (b) the clinician is uncertain whether the legal threshold of ‘reasonable suspicion’ is met because of competing medical explanations, and/or (c) institutional policy provides a legally vetted ‘internal safety evaluation’ pathway that is explicitly compliant with state law. Add a line confirming both options are legally permissible in that jurisdiction and endorsed by hospital legal/risk management."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T22:41:57.750712",
+      "data": {
+        "vignette": "A 5-year-old boy is brought to the emergency department with painful scald burns on both thighs and several bruises. His father reports the child slipped into a hot bath. The burns have a sharp upper edge but also scattered splash marks that could occur with a spill. The chart notes von Willebrand disease and two prior ED visits this year for bruising after play; one visit involved the child’s mother, and the histories were inconsistent but not clearly false. The boy is quiet but answers simple questions. He is medically stable, and the burns can be managed as an outpatient. A paternal aunt is driving to pick him up and is willing to take him home tonight, but the father insists on leaving with him. If you file a report now, hospital protocol triggers an immediate CPS and police response in the ED, which may escalate the father’s behavior and could lead to a forensic interview and temporary separation tonight if concerns are unfounded. If you admit him, he can be kept supervised and apart from his father overnight for a child protection team assessment, but CPS would not be contacted until after that review. Hospital counsel confirms state rules allow either approach when the child remains in a safe medical setting, but you must choose before disposition.",
+        "choice_1": "File a report to child protective services before discharge today",
+        "choice_2": "Admit overnight for child protection team assessment before filing any report"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T22:42:14.288307",
+      "data": {
+        "vignette": "A 5-year-old boy is brought to the emergency department with painful scald burns on both thighs and several bruises. His father reports the child slipped into a hot bath. The burns have a sharp upper edge but also scattered splash marks that could occur with a spill. The chart notes von Willebrand disease and two prior ED visits this year for bruising after play; one visit involved the child’s mother, and the histories were inconsistent but not clearly false. The boy is quiet but answers simple questions. He is medically stable, and the burns can be managed as an outpatient. A paternal aunt is driving to pick him up and is willing to take him home tonight, but the father insists on leaving with him. If you file a report now, hospital protocol triggers an immediate CPS and police response in the ED, which may escalate the father’s behavior and could lead to a forensic interview and temporary separation tonight if concerns are unfounded. If you admit him, he can be kept supervised and apart from his father overnight for a child protection team assessment, but CPS would not be contacted until after that review. Hospital counsel confirms state rules allow either approach when the child remains in a safe medical setting, but you must choose before disposition.",
+        "choice_1": {
+          "choice": "File a report to child protective services before discharge today",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Admit overnight for child protection team assessment before filing any report",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that the father explicitly refuses both an overnight admission and any CPS involvement (e.g., \"He refuses admission and says he will leave AMA if you do not discharge the child now\")."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "To support Choice 1 = beneficence “violates,” add a clause indicating the clinical suspicion for abuse is low (e.g., burns/bruises are judged most consistent with accidental mechanisms and bleeding disorder) and that the immediate CPS/police response would likely impose substantial avoidable harm (e.g., delay pain control/wound care, provoke a frightening confrontation, or trigger an unnecessary overnight separation)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause quantifying suspicion level and harm tradeoff, e.g., “the child protection team feels abuse is unlikely, and an ED report would almost certainly trigger an unnecessary police hold/separation,” or alternatively “there is credible immediate danger if he leaves with father,” so nonmaleficence stakes clearly favor one option."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause explicitly tying each option to a justice concern (e.g., “the pediatric unit is near capacity, so an overnight admission would displace another child needing a bed,” and/or “there are other young children in the home who could be at risk if reporting is delayed”)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T22:43:40.384263",
+      "data": {
+        "vignette": "A 5-year-old boy is brought to the emergency department with scald burns on both thighs and several bruises. His father reports he slipped into a hot bath. The burns have a sharp upper edge but also splash marks. The chart notes von Willebrand disease and two prior ED visits this year for bruising with inconsistent histories. He is stable, and the burns can be managed as an outpatient. The bleeding disorder and exam findings make abuse unlikely, but it cannot be excluded. A paternal aunt can take him home tonight, but the father refuses admission and any CPS involvement and says he will leave if you do not discharge now. An ED report triggers a CPS and police response and could cause an unnecessary overnight separation. Admitting him allows supervised observation and a child protection team assessment overnight, but the pediatric unit is near capacity and the bed would displace another child. State rules allow either approach while he remains in a medical setting, and you must decide before disposition.",
+        "choice_1": {
+          "choice": "File a report to child protective services before discharge today",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Admit overnight for child protection team assessment before filing any report",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

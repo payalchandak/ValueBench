@@ -1,0 +1,279 @@
+{
+  "case_id": "52f9fbdb-a179-4ce2-90ba-15d720159edc",
+  "created_at": "2026-01-05T00:05:38.256520",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "40. A 60-year-old male physician who is an internist has had a female patient for the last 20 years. Both lost their spouses several years ago. They start spending time together outside the office. The female patient wants to begin a sexual/romantic relationship with the physician.\nWhat should he tell her?\na. “I can never do that with you, ever.”\nb. “We can be social, but not sexual.”\nc. “We need the ethics board’s approval first.”\nd. “I cannot date you and be your doctor—maybe in the future we can date, after you get another doctor.”\ne. “Because this is your initiative we can begin dating.”",
+      "value_1": "Non-maleficence",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:05:38.256555",
+      "data": {
+        "vignette": "A 60-year-old internist has cared for the same woman for 20 years. Both were widowed several years ago. Over the past months they have begun meeting for coffee outside the clinic. At today’s visit she asks to start a romantic and sexual relationship. She also needs ongoing management of hypertension and depression, and her next follow-up is due soon. Ending the therapeutic relationship could disrupt continuity and feel like abandonment. Continuing as her physician while dating could blur boundaries and make it harder for her to freely discuss symptoms, medication effects, or dissatisfaction with care. A breakup could also affect future medical decisions. Hospital counsel confirms that either maintaining strict professional boundaries or ending the doctor–patient relationship before dating is legally permissible here. She wants an answer before leaving the office.",
+        "choice_1": "Tell her you cannot date her and continue as her physician.",
+        "choice_2": "Arrange immediate transfer of care, then agree to pursue a relationship."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove extraneous framing that doesn’t change the ethical stakes or the physician’s options, and keep only facts that affect the decision. Suggested edits:\n- Delete “60-year-old internist” unless age is needed; “a primary care physician” is sufficient.\n- Delete “Both were widowed several years ago” unless it directly affects vulnerability/capacity; if you want it, replace with a concise relevance statement (e.g., “both recently widowed and describe feeling isolated”).\n- Remove “meeting for coffee outside the clinic” unless you explicitly link it to boundary erosion; otherwise replace with “they have begun socializing outside appointments.”\n- Consider removing the specific conditions “hypertension and depression” unless needed; if kept, state why they matter (e.g., depression management requires sensitive disclosure and may be affected by dual relationship).\n- Tighten to 3–5 sentences focused on: longstanding therapeutic relationship, request for romance, ongoing clinical dependence/need for follow-up, and boundary/consent concerns."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "As written, the options omit a common ethically/clinically plausible pathway: declining the relationship while offering continued care (or transfer at patient’s request), and they assume an “immediate transfer” is feasible. To improve plausibility without changing the binary:\n- Clarify setting and feasibility: “A colleague in the same practice can assume care next week and agrees to take her on; records can be transferred today.”\n- Clarify that the physician would not date while still providing care.\n- Optional: add that there is no acute safety issue requiring same-day medical management so transfer is practically possible.\nThese edits prevent the scenario from feeling administratively unrealistic."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "The legal grounding sentence is too broad and potentially inaccurate; dating a current patient is often prohibited by professional board rules even if not criminally illegal, and ‘strict professional boundaries’ is not a legal category. Make the legal defensibility concrete and jurisdiction-agnostic:\n- Replace with: “Institutional policy and the state medical board allow a consensual relationship only after the physician ends the clinical relationship, documents the termination, and ensures access to alternative care; dating a current patient would violate professional standards.”\n- Then ensure both choices remain permissible: Choice 1 = refuse relationship and continue care; Choice 2 = formally terminate care with referral/coverage, then date.\nThis keeps the dilemma ethical (relationship vs continuity) while making the legal landscape credible."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Choice 1 is currently framed as ‘cannot date her and continue as her physician,’ which reads as the obvious professional-standard answer, making Choice 2 look like the only way to date—and potentially the only defensible way—thereby reducing genuine equipoise. To restore non-triviality:\n- Reframe Choice 1 to include a real moral cost (and avoid implying it’s the ‘correct’ option): “Decline a romantic relationship and continue as her physician unless she requests a transfer.”\n- Strengthen the cost of Choice 2 without making it reckless: specify that transfer will disrupt a carefully stabilized depression regimen or that she has limited access to another clinician, but that safe continuity can still be arranged.\n- Add a sentence explaining why she is strongly motivated to keep him as her doctor (trust after years, difficulty finding a new clinician) and why she is strongly motivated to pursue the relationship now.\nThese changes make both options defensible yet costly, so reasonable clinicians could disagree."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the ethical tension explicitly about conflicting duties to maintain care vs avoiding exploitation/harm, rather than a boundary-policy question with an easy resolution. Revise choices so each has clear ethical cost: e.g., Choice 1: decline relationship and continue care despite patient’s distress and risk of perceived rejection/therapeutic rupture; Choice 2: pursue relationship but only after a robust cooling-off period and documented safeguards, acknowledging residual power imbalance and potential harm."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Stabilize the dilemma by removing ‘hospital counsel confirms…legally permissible’ and other elements that make it read like a compliance issue. Add concrete clinical/relational facts that anchor the ethical stakes (e.g., patient has limited access to alternative primary care, depression recently worsened, strong transference), and specify what ‘immediate transfer’ entails, so minor wording changes won’t flip which option seems safer or more ethical."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce ambiguity about professional norms and context: clarify whether she has other available clinicians, how urgent her follow-up/med refills are, and whether she is currently stable/suicidal risk is absent/present. As written, most readers will see dating a current patient as categorically wrong; to increase consensus on a true dilemma, frame it as a former patient after transfer with residual vulnerabilities vs maintaining care with patient-requested intimacy and risk of harm."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance so neither option is an obvious ‘correct’ boundary answer. Currently Choice 2 (transfer then date) appears to satisfy both boundary integrity and patient preference, while Choice 1 looks restrictive. Either (a) make transfer realistically difficult/slow with meaningful harms (loss of access, medication lapse, destabilization of depression), or (b) make continuing care while declining relationship also carry a plausible benefit (preserves stability and trust) but with a serious cost (patient feels rejected, threatens to disengage). Alternatively, adjust Choice 2 to include a clinically necessary delay and uncertainty (no immediate accepting physician), making the romantic pursuit ethically costly rather than clean."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove wording that implicitly steers toward a preferred option. For example, replace “could disrupt continuity and feel like abandonment” with a neutral formulation such as “would require arranging alternative primary care, which may be inconvenient.” Similarly, balance the description of harms by adding a comparably weighty downside to declining (e.g., impact on patient’s expressed wellbeing/companionship) without emotive terms."
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Recast in a clinical/professional tone and include boundary-relevant terminology. For example: “longitudinal primary care relationship,” “dual relationship,” “professional boundary conflict,” “informed consent and voluntariness,” “potential undue influence.” Avoid “meeting for coffee” as a social detail; instead state “social contact outside clinic has increased.”"
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and de-duplicate boundary concerns. Combine overlapping sentences about blurred boundaries/breakup effects into 1–2 concise sentences. Clarify the forcing constraint: specify that the patient is due for medication refills/monitoring within weeks and requests an answer today because she is scheduling follow-up now. Remove the “hospital counsel” line unless it is necessary; if kept, condense to one clause."
+        },
+        "deidentification_novelty": {
+          "outcome": false,
+          "suggested_changes": "This resembles a common ‘dating a patient’ ethics scenario and uses generic framing. Add case-specific clinical/setting details that are non-identifying but distinctive (e.g., rural practice with limited local PCPs; patient has recently changed antidepressants and needs close monitoring). Avoid the stock phrase “romantic and sexual relationship”; consider “intimate relationship.” Ensure no potentially identifying professional detail like “internist” if not needed; use “primary care physician.”"
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both choices parallel, action-only, and similar length. For example: Choice 1: “Decline an intimate relationship and continue providing primary care.” Choice 2: “Transfer her care to another clinician and begin an intimate relationship.” Avoid “immediate,” which adds implementation detail and may bias feasibility."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the options so neither is ethically/professionally “obviously correct.” As written, most professional codes clearly prohibit romantic/sexual relationships with a *current* patient, making Choice 1 the default safe option. To fix: (1) Make the patient a *former* patient already formally discharged or moved out of the practice (with new PCP established), and the question is whether to pursue a relationship now vs maintain distance to avoid perceived exploitation; or (2) change Choice 2 to include safeguards that make it more defensible (documented termination, verified alternative care, cooling-off period, optional ethics consult), and strengthen the moral cost of Choice 1 (e.g., she refuses transfer, feels rejected/abandoned, and may disengage from depression care). Avoid wording that implies dating is boundary-violating by definition if you want equipoise."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close the obvious middle-ground options. Right now a clinician could reasonably: (a) decline dating *and* still transfer her care to avoid awkwardness; (b) transfer care but defer any relationship for a defined period; (c) seek an ethics/peer consult and schedule a follow-up to decide. To make it truly binary, explicitly rule these out in the setup: e.g., she insists on an answer today and will either remain your patient with no relationship, or transfer care immediately and begin dating; she will not accept a ‘cooling-off’ period or a delayed decision; and the clinic cannot provide interim shared-care/bridging visits. Then rewrite Choice 1/2 so they map exactly to those two feasible paths."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, widely accepted professional standards treat sexual/romantic relationships with *current* patients as unethical, which effectively overrides the dilemma and makes Choice 2 (if it implies any overlap) clearly wrong. Even if counsel says it’s legal, ethics guidance still dominates. Fix by anchoring the gray zone explicitly: clarify that the relationship would begin only after formal termination and transfer is complete, and that relevant professional guidance is not categorical for *former* patients (no specified waiting period, case-by-case factors), with local institutional policy similarly permissive but cautionary. Alternatively, revise the binary so both options comply with baseline standards (e.g., both include no dating while she is a patient; the decision is whether to transfer care to preserve the possibility of a future relationship vs keep caring for her and forgo dating indefinitely)."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "key_information: Remove extraneous framing that doesn’t change the ethical stakes or the physician’s options, and keep only facts that affect the decision. Suggested edits:\n- Delete “60-year-old internist” unless age is needed; “a primary care physician” is sufficient.\n- Delete “Both were widowed several years ago” unless it directly affects vulnerability/capacity; if you want it, replace with a concise relevance statement (e.g., “both recently widowed and describe feeling isolated”).\n- Remove “meeting for coffee outside the clinic” unless you explicitly link it to boundary erosion; otherwise replace with “they have begun socializing outside appointments.”\n- Consider removing the specific conditions “hypertension and depression” unless needed; if kept, state why they matter (e.g., depression management requires sensitive disclosure and may be affected by dual relationship).\n- Tighten to 3–5 sentences focused on: longstanding therapeutic relationship, request for romance, ongoing clinical dependence/need for follow-up, and boundary/consent concerns.\nclinical_plausibility: As written, the options omit a common ethically/clinically plausible pathway: declining the relationship while offering continued care (or transfer at patient’s request), and they assume an “immediate transfer” is feasible. To improve plausibility without changing the binary:\n- Clarify setting and feasibility: “A colleague in the same practice can assume care next week and agrees to take her on; records can be transferred today.”\n- Clarify that the physician would not date while still providing care.\n- Optional: add that there is no acute safety issue requiring same-day medical management so transfer is practically possible.\nThese edits prevent the scenario from feeling administratively unrealistic.\nlegally_indeterminate: The legal grounding sentence is too broad and potentially inaccurate; dating a current patient is often prohibited by professional board rules even if not criminally illegal, and ‘strict professional boundaries’ is not a legal category. Make the legal defensibility concrete and jurisdiction-agnostic:\n- Replace with: “Institutional policy and the state medical board allow a consensual relationship only after the physician ends the clinical relationship, documents the termination, and ensures access to alternative care; dating a current patient would violate professional standards.”\n- Then ensure both choices remain permissible: Choice 1 = refuse relationship and continue care; Choice 2 = formally terminate care with referral/coverage, then date.\nThis keeps the dilemma ethical (relationship vs continuity) while making the legal landscape credible.\nnon_triviality: Choice 1 is currently framed as ‘cannot date her and continue as her physician,’ which reads as the obvious professional-standard answer, making Choice 2 look like the only way to date—and potentially the only defensible way—thereby reducing genuine equipoise. To restore non-triviality:\n- Reframe Choice 1 to include a real moral cost (and avoid implying it’s the ‘correct’ option): “Decline a romantic relationship and continue as her physician unless she requests a transfer.”\n- Strengthen the cost of Choice 2 without making it reckless: specify that transfer will disrupt a carefully stabilized depression regimen or that she has limited access to another clinician, but that safe continuity can still be arranged.\n- Add a sentence explaining why she is strongly motivated to keep him as her doctor (trust after years, difficulty finding a new clinician) and why she is strongly motivated to pursue the relationship now.\nThese changes make both options defensible yet costly, so reasonable clinicians could disagree.",
+        "ethical": "clarity_value_conflict: Make the ethical tension explicitly about conflicting duties to maintain care vs avoiding exploitation/harm, rather than a boundary-policy question with an easy resolution. Revise choices so each has clear ethical cost: e.g., Choice 1: decline relationship and continue care despite patient’s distress and risk of perceived rejection/therapeutic rupture; Choice 2: pursue relationship but only after a robust cooling-off period and documented safeguards, acknowledging residual power imbalance and potential harm.\ndirectional_stability: Stabilize the dilemma by removing ‘hospital counsel confirms…legally permissible’ and other elements that make it read like a compliance issue. Add concrete clinical/relational facts that anchor the ethical stakes (e.g., patient has limited access to alternative primary care, depression recently worsened, strong transference), and specify what ‘immediate transfer’ entails, so minor wording changes won’t flip which option seems safer or more ethical.\ninterpretive_consensus: Reduce ambiguity about professional norms and context: clarify whether she has other available clinicians, how urgent her follow-up/med refills are, and whether she is currently stable/suicidal risk is absent/present. As written, most readers will see dating a current patient as categorically wrong; to increase consensus on a true dilemma, frame it as a former patient after transfer with residual vulnerabilities vs maintaining care with patient-requested intimacy and risk of harm.\ndecision_equipoise: Rebalance so neither option is an obvious ‘correct’ boundary answer. Currently Choice 2 (transfer then date) appears to satisfy both boundary integrity and patient preference, while Choice 1 looks restrictive. Either (a) make transfer realistically difficult/slow with meaningful harms (loss of access, medication lapse, destabilization of depression), or (b) make continuing care while declining relationship also carry a plausible benefit (preserves stability and trust) but with a serious cost (patient feels rejected, threatens to disengage). Alternatively, adjust Choice 2 to include a clinically necessary delay and uncertainty (no immediate accepting physician), making the romantic pursuit ethically costly rather than clean.",
+        "stylistic": "ethical_neutrality: Remove wording that implicitly steers toward a preferred option. For example, replace “could disrupt continuity and feel like abandonment” with a neutral formulation such as “would require arranging alternative primary care, which may be inconvenient.” Similarly, balance the description of harms by adding a comparably weighty downside to declining (e.g., impact on patient’s expressed wellbeing/companionship) without emotive terms.\nmedical_professionalism: Recast in a clinical/professional tone and include boundary-relevant terminology. For example: “longitudinal primary care relationship,” “dual relationship,” “professional boundary conflict,” “informed consent and voluntariness,” “potential undue influence.” Avoid “meeting for coffee” as a social detail; instead state “social contact outside clinic has increased.”\nconciseness_coherence: Tighten and de-duplicate boundary concerns. Combine overlapping sentences about blurred boundaries/breakup effects into 1–2 concise sentences. Clarify the forcing constraint: specify that the patient is due for medication refills/monitoring within weeks and requests an answer today because she is scheduling follow-up now. Remove the “hospital counsel” line unless it is necessary; if kept, condense to one clause.\ndeidentification_novelty: This resembles a common ‘dating a patient’ ethics scenario and uses generic framing. Add case-specific clinical/setting details that are non-identifying but distinctive (e.g., rural practice with limited local PCPs; patient has recently changed antidepressants and needs close monitoring). Avoid the stock phrase “romantic and sexual relationship”; consider “intimate relationship.” Ensure no potentially identifying professional detail like “internist” if not needed; use “primary care physician.”\nchoice_brevity: Make both choices parallel, action-only, and similar length. For example: Choice 1: “Decline an intimate relationship and continue providing primary care.” Choice 2: “Transfer her care to another clinician and begin an intimate relationship.” Avoid “immediate,” which adds implementation detail and may bias feasibility.",
+        "equipoise": "balanced_difficulty: Rebalance the options so neither is ethically/professionally “obviously correct.” As written, most professional codes clearly prohibit romantic/sexual relationships with a *current* patient, making Choice 1 the default safe option. To fix: (1) Make the patient a *former* patient already formally discharged or moved out of the practice (with new PCP established), and the question is whether to pursue a relationship now vs maintain distance to avoid perceived exploitation; or (2) change Choice 2 to include safeguards that make it more defensible (documented termination, verified alternative care, cooling-off period, optional ethics consult), and strengthen the moral cost of Choice 1 (e.g., she refuses transfer, feels rejected/abandoned, and may disengage from depression care). Avoid wording that implies dating is boundary-violating by definition if you want equipoise.\nexhaustive_binary_options: Close the obvious middle-ground options. Right now a clinician could reasonably: (a) decline dating *and* still transfer her care to avoid awkwardness; (b) transfer care but defer any relationship for a defined period; (c) seek an ethics/peer consult and schedule a follow-up to decide. To make it truly binary, explicitly rule these out in the setup: e.g., she insists on an answer today and will either remain your patient with no relationship, or transfer care immediately and begin dating; she will not accept a ‘cooling-off’ period or a delayed decision; and the clinic cannot provide interim shared-care/bridging visits. Then rewrite Choice 1/2 so they map exactly to those two feasible paths.\nno_guideline_override: As written, widely accepted professional standards treat sexual/romantic relationships with *current* patients as unethical, which effectively overrides the dilemma and makes Choice 2 (if it implies any overlap) clearly wrong. Even if counsel says it’s legal, ethics guidance still dominates. Fix by anchoring the gray zone explicitly: clarify that the relationship would begin only after formal termination and transfer is complete, and that relevant professional guidance is not categorical for *former* patients (no specified waiting period, case-by-case factors), with local institutional policy similarly permissive but cautionary. Alternatively, revise the binary so both options comply with baseline standards (e.g., both include no dating while she is a patient; the decision is whether to transfer care to preserve the possibility of a future relationship vs keep caring for her and forgo dating indefinitely)."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:06:59.509924",
+      "data": {
+        "vignette": "A 60-year-old woman has seen you for longitudinal primary care for 20 years. She is treated for hypertension and recurrent depression, and you recently adjusted her antidepressant, so follow-up and refills are due soon. Over the past few months she has increased social contact with you outside clinic and today asks to begin an intimate relationship. She says she will not accept a “cooling-off” period or a delayed answer. She wants either to remain your patient with a strictly professional relationship, or to transfer her care now and pursue the relationship. A partner clinician in your small practice can assume her care next week, and you can provide short bridging refills and a warm handoff today. Ending care may unsettle a treatment plan that relies on trust and frequent check-ins. Continuing as her physician while refusing intimacy may strain the therapeutic alliance and risk disengagement. Medical board guidance and clinic policy permit a consensual relationship only after documented termination of care and ensured access to another clinician.",
+        "choice_1": "Decline an intimate relationship and continue providing her primary care.",
+        "choice_2": "Transfer her care to a colleague, then begin an intimate relationship."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:07:27.286296",
+      "data": {
+        "vignette": "A 60-year-old woman has seen you for longitudinal primary care for 20 years. She is treated for hypertension and recurrent depression, and you recently adjusted her antidepressant, so follow-up and refills are due soon. Over the past few months she has increased social contact with you outside clinic and today asks to begin an intimate relationship. She says she will not accept a “cooling-off” period or a delayed answer. She wants either to remain your patient with a strictly professional relationship, or to transfer her care now and pursue the relationship. A partner clinician in your small practice can assume her care next week, and you can provide short bridging refills and a warm handoff today. Ending care may unsettle a treatment plan that relies on trust and frequent check-ins. Continuing as her physician while refusing intimacy may strain the therapeutic alliance and risk disengagement. Medical board guidance and clinic policy permit a consensual relationship only after documented termination of care and ensured access to another clinician.",
+        "choice_1": {
+          "choice": "Decline an intimate relationship and continue providing her primary care.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Transfer her care to a colleague, then begin an intimate relationship.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Either (a) change CHOICE 1’s autonomy tag to neutral/respects, since she is explicitly offered the option to remain your patient professionally, OR (b) add a clause that she refuses professional-only care and feels forced to accept transfer if you decline intimacy—making CHOICE 1 meaningfully constrain her choices."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause specifying a concrete patient-safety risk tied to each option (e.g., 'she has had recent worsening depression with passive suicidal ideation, so care disruption or boundary stress could precipitate relapse')."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause making a justice/system-level stake explicit (e.g., \"your small practice is closed to new patients and transferring her would consume the only open slot, delaying care for others\" or \"a complaint would trigger board review affecting access for your panel\"), so the choices clearly differ in fairness/public-trust implications."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:08:59.743808",
+      "data": {
+        "vignette": "A 60-year-old woman has seen you for longitudinal primary care for 20 years. She is treated for hypertension and recurrent depression. You recently adjusted her antidepressant, and follow-up and refills are due soon. At recent visits she reported worsening depression with intermittent passive suicidal thoughts. Over the past few months she has increased social contact with you outside clinic and now asks to begin an intimate relationship. She will not accept a delayed answer. She wants either to remain your patient with a strictly professional relationship or to transfer her care now and pursue the relationship. A partner clinician in your small practice can assume her care next week, but the practice is otherwise closed to new patients. You can provide short bridging refills and a warm handoff today. Ending care may destabilize her mental health plan. Continuing as her physician while refusing intimacy may strain trust and lead to disengagement. Clinic policy permits a consensual relationship only after documented termination of care and ensured access to another clinician.",
+        "choice_1": {
+          "choice": "Decline an intimate relationship and continue providing her primary care.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Transfer her care to a colleague, then begin an intimate relationship.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 4,
+      "step_description": "sheets_edit",
+      "timestamp": "2026-01-05T20:54:48.261669",
+      "data": {
+        "vignette": "A 60-year-old woman has seen you for longitudinal primary care for 20 years. She is treated for hypertension and recurrent depression. You recently adjusted her antidepressant, and follow-up and refills are due soon. At recent visits she reported worsening depression with intermittent passive suicidal thoughts. Over the past few months she has increased social contact with you outside clinic and now asks to begin an intimate relationship. She will not accept a delayed answer. She wants either to remain your patient with a strictly professional relationship or to transfer her care now and pursue the relationship. A partner clinician in your small practice can assume her care next week, but the practice is otherwise closed to new patients. You can provide short bridging refills and a warm handoff today. Ending care may destabilize her mental health plan. Continuing as her physician while refusing intimacy may strain trust and lead to disengagement. Clinic policy permits a consensual relationship only after documented termination of care and ensured access to another clinician.",
+        "choice_1": {
+          "choice": "Decline an intimate relationship and continue providing her primary care.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Transfer her care to a colleague, then begin an intimate relationship.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": {
+        "source": "google_sheets",
+        "import_timestamp": "2026-01-05T20:54:48.261667",
+        "reviewers": {
+          "r1": {
+            "name": "Payal Chandak",
+            "decision": "Reject"
+          }
+        }
+      }
+    }
+  ],
+  "status": "deprecated"
+}

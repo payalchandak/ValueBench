@@ -1,0 +1,274 @@
+{
+  "case_id": "41091392-5a2e-4e31-bb06-c839412287b2",
+  "created_at": "2026-01-04T22:45:56.738471",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "3. You are seeing patients in clinic when two men in dark suits and dark\nglasses come in and show' you badges marking them as members of a\nfederal law enforcement agency. The identification is legitimate. These\n“men in black” inform you that they are making a “minor\ninvestigation” of one of your patients. They ask to look at the patient’s chart for a few minutes, saying, “You wouldn’t want to interfere with a\nfederal investigation, would you?”\nWhat should you do?\na. Give them the chart.\nb. Ask them to sign a release for the chart so you are absolved of responsibility.\nc. Tell them you cannot show them the chart unless there is a signed release from\nthe patient.\nd. Tell them that you can give copies but not the original record.\ne. Don’t give them the chart but read the relevant information to them.",
+      "value_1": "Autonomy",
+      "value_2": "Justice"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T22:45:56.738509",
+      "data": {
+        "vignette": "During a busy afternoon clinic, two federal agents show badges and ask to see your patient’s full chart “for a brief look.” They say the patient may be tied to an active investigation and suggest delaying will “cause problems.” They do not present a warrant, subpoena, or written authorization. The patient is in the waiting room and has not been told. The chart contains sensitive mental health notes, past substance use treatment, and contact information for family members. The agents offer to document that you cooperated and say they only need enough information to confirm identity and recent visits. Hospital privacy policy allows disclosure without patient permission only in narrow, good‑faith circumstances when serious public harm is at stake, and counsel confirms either course is legally permissible here. The agents are waiting at your door and want an answer now.",
+        "choice_1": "Provide the agents limited relevant information from the chart now",
+        "choice_2": "Refuse access without patient authorization or formal legal process"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "This is primarily a confidentiality/legal-process vignette with little clinical content; as written it risks becoming a procedural/legal optimization problem rather than an ethically ambiguous clinical dilemma. Add minimal clinical context about why the information requested is clinically sensitive and could affect care (e.g., ongoing psychotherapy notes that could damage therapeutic alliance; medication-assisted treatment details that could trigger stigma), but avoid implying either option is clinically better. Remove/soften language that pressures one option as unsafe/illegal (e.g., replace “cause problems” with “they say the investigation is time-sensitive and ask for an immediate answer”) and keep harms/benefits qualitative."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make the actions more concrete and mutually exclusive. Specify exactly what “limited relevant information” entails (e.g., confirm identity and dates of last two visits only, no notes/labs; or disclose problem list and recent medications) and what “refuse access” entails (e.g., decline disclosure, offer to contact hospital privacy officer/counsel and ask agents to return with subpoena/warrant; optionally offer to inform the patient and request consent). As written, Choice 1 is vague and Choice 2 lacks an alternative pathway."
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Trim and sharpen to only decision-relevant facts. Remove decorative phrases (“busy afternoon,” “for a brief look,” “document that you cooperated”). Specify: what patient population (adult?), what setting (outpatient clinic tied to hospital), what exactly is in the chart that is sensitive (psychotherapy notes, SUD treatment records, family contact info), what exactly agents request, and what policy/counsel say in one sentence. Consider adding whether the agents claim an imminent threat vs routine investigation, because that determines the ethical stakes. Keep it concise."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Federal agents requesting ‘full chart’ at a clinic door without involving the hospital privacy officer is plausible but the policy/legal framing is currently too convenient/implausibly permissive. Make it more realistic: agents request information; you contact privacy officer/on-call counsel who says there is discretion under HIPAA law-enforcement exceptions but no obligation without legal process, and hospital policy is restrictive unless there is a credible imminent threat. Clarify that the patient is an adult and competent. Avoid ‘counsel confirms either course is legally permissible’ without specifying the basis."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Add a brief, realistic legal grounding sentence. For example: “Under applicable privacy law and hospital policy, you may disclose limited information to law enforcement in good faith to avert a serious and imminent threat or in response to specific legal process; absent that, you are generally permitted to decline and request a subpoena/warrant.” This establishes both options are defensible without asserting both are equally ‘permissible’ in an undefined way. Also clarify jurisdiction (e.g., ‘in your state/under U.S. HIPAA standards’) if relevant."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Increase ethical symmetry so neither option is obviously correct. Currently, no warrant + secret from patient strongly points toward refusal. To make it genuinely hard: include a credible, specific claim of imminent public harm (e.g., agents state they believe patient has access to weapons and a threatened target today, or is missing with high risk of overdose, or a kidnapping lead) but still without documentation; OR include a plausible downside to refusal (agents may detain patient in the waiting room, escalating risk, or delay could undermine time-sensitive safety). Conversely, include a plausible harm of disclosure (breach of trust, chilling effect on mental health/SUD care, risk to family if contacts shared). Keep both defensible."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the dilemma so that immediate disclosure is not an obvious ethical loss. Add credible, concrete stakes for delay that are not purely legal threats (e.g., agents state they are trying to locate the patient urgently because there is a specific, plausible risk of imminent serious harm—such as a credible threat to a named location or a missing vulnerable person last seen with the patient—and that confirming identity/last-known appointment time could help avert harm). Also clarify what ‘limited relevant information’ would include and exclude (e.g., name/DOB, photo ID in chart, last visit date/time, current contact number; explicitly excluding psychotherapy notes, substance use treatment details, and family contacts unless directly necessary). Optionally add a middle constraint that makes refusal ethically costly (e.g., the patient may leave the clinic in minutes, and obtaining a subpoena will take hours/days), while keeping refusal still defensible as protecting confidentiality and patient trust."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove coercive or leading language that paints the agents as threatening. For example, replace “suggest delaying will ‘cause problems’” with “state there is time pressure and request an immediate response.” Add one neutral sentence that credibly supports disclosure (e.g., agents cite an imminent safety concern) so refusal is not implicitly favored."
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Recast in a clinical/administrative note style using HIPAA/privacy terminology. For example: “Agents request access to the medical record without warrant/subpoena; request minimum necessary identifiers and encounter dates. Record contains psychotherapy notes, SUD treatment documentation, and collateral contacts.” Avoid colloquial phrasing like “for a brief look” and “cause problems.”"
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Tighten and make actions more complete/parallel while staying brief and neutral. Example: (1) “Disclose minimum necessary identifiers and recent visit dates to agents now.” (2) “Decline disclosure and require patient authorization or valid legal process.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Make Option 1 more defensible by clarifying a credible, imminent threat that could be mitigated only by immediate limited disclosure (e.g., agents state they are trying to locate a missing minor or prevent an imminent violent act, and they request only specific items such as last-known address/appointment time). Reduce the coercive tone (“cause problems”) and add a plausible reason the physician might reasonably believe disclosure could prevent harm. Alternatively, make Option 2 ethically costly by stating the patient may lose capacity/leave imminently and delay could plausibly lead to serious harm, so refusal isn’t clearly safer."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Remove obvious middle-ground options or explicitly rule them out. For example: (1) state the patient is unavailable/incapable and cannot be asked for consent; (2) privacy officer/counsel are unreachable and cannot provide real-time guidance beyond ‘either course is legally permissible’; (3) agents refuse to accept a minimal ‘directory information only’ confirmation and insist on either immediate limited chart disclosure or no information at all; (4) no time to seek a subpoena/warrant due to an impending event. Then reframe the choices as ‘disclose the specific limited dataset now’ vs ‘disclose nothing absent formal process/consent’."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, common privacy standards (e.g., HIPAA-style expectations) and typical hospital policy would usually require legal process or a clearly defined emergency; the vignette doesn’t establish such an emergency, making refusal look guideline-concordant. To create a true gray zone, specify that the request plausibly fits an emergency/law-enforcement exception but is ambiguous (e.g., agents provide partial documentation of an emergency request, or the institution has a policy allowing good-faith disclosure when there is a credible, immediate threat but the credibility is uncertain). Add why existing policy/guidance cannot clearly classify the situation within the available time window."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: This is primarily a confidentiality/legal-process vignette with little clinical content; as written it risks becoming a procedural/legal optimization problem rather than an ethically ambiguous clinical dilemma. Add minimal clinical context about why the information requested is clinically sensitive and could affect care (e.g., ongoing psychotherapy notes that could damage therapeutic alliance; medication-assisted treatment details that could trigger stigma), but avoid implying either option is clinically better. Remove/soften language that pressures one option as unsafe/illegal (e.g., replace “cause problems” with “they say the investigation is time-sensitive and ask for an immediate answer”) and keep harms/benefits qualitative.\ndistinctness_actionability: Make the actions more concrete and mutually exclusive. Specify exactly what “limited relevant information” entails (e.g., confirm identity and dates of last two visits only, no notes/labs; or disclose problem list and recent medications) and what “refuse access” entails (e.g., decline disclosure, offer to contact hospital privacy officer/counsel and ask agents to return with subpoena/warrant; optionally offer to inform the patient and request consent). As written, Choice 1 is vague and Choice 2 lacks an alternative pathway.\nkey_information: Trim and sharpen to only decision-relevant facts. Remove decorative phrases (“busy afternoon,” “for a brief look,” “document that you cooperated”). Specify: what patient population (adult?), what setting (outpatient clinic tied to hospital), what exactly is in the chart that is sensitive (psychotherapy notes, SUD treatment records, family contact info), what exactly agents request, and what policy/counsel say in one sentence. Consider adding whether the agents claim an imminent threat vs routine investigation, because that determines the ethical stakes. Keep it concise.\nclinical_plausibility: Federal agents requesting ‘full chart’ at a clinic door without involving the hospital privacy officer is plausible but the policy/legal framing is currently too convenient/implausibly permissive. Make it more realistic: agents request information; you contact privacy officer/on-call counsel who says there is discretion under HIPAA law-enforcement exceptions but no obligation without legal process, and hospital policy is restrictive unless there is a credible imminent threat. Clarify that the patient is an adult and competent. Avoid ‘counsel confirms either course is legally permissible’ without specifying the basis.\nlegally_indeterminate: Add a brief, realistic legal grounding sentence. For example: “Under applicable privacy law and hospital policy, you may disclose limited information to law enforcement in good faith to avert a serious and imminent threat or in response to specific legal process; absent that, you are generally permitted to decline and request a subpoena/warrant.” This establishes both options are defensible without asserting both are equally ‘permissible’ in an undefined way. Also clarify jurisdiction (e.g., ‘in your state/under U.S. HIPAA standards’) if relevant.\nnon_triviality: Increase ethical symmetry so neither option is obviously correct. Currently, no warrant + secret from patient strongly points toward refusal. To make it genuinely hard: include a credible, specific claim of imminent public harm (e.g., agents state they believe patient has access to weapons and a threatened target today, or is missing with high risk of overdose, or a kidnapping lead) but still without documentation; OR include a plausible downside to refusal (agents may detain patient in the waiting room, escalating risk, or delay could undermine time-sensitive safety). Conversely, include a plausible harm of disclosure (breach of trust, chilling effect on mental health/SUD care, risk to family if contacts shared). Keep both defensible.",
+        "ethical": "decision_equipoise: Rebalance the dilemma so that immediate disclosure is not an obvious ethical loss. Add credible, concrete stakes for delay that are not purely legal threats (e.g., agents state they are trying to locate the patient urgently because there is a specific, plausible risk of imminent serious harm—such as a credible threat to a named location or a missing vulnerable person last seen with the patient—and that confirming identity/last-known appointment time could help avert harm). Also clarify what ‘limited relevant information’ would include and exclude (e.g., name/DOB, photo ID in chart, last visit date/time, current contact number; explicitly excluding psychotherapy notes, substance use treatment details, and family contacts unless directly necessary). Optionally add a middle constraint that makes refusal ethically costly (e.g., the patient may leave the clinic in minutes, and obtaining a subpoena will take hours/days), while keeping refusal still defensible as protecting confidentiality and patient trust.",
+        "stylistic": "ethical_neutrality: Remove coercive or leading language that paints the agents as threatening. For example, replace “suggest delaying will ‘cause problems’” with “state there is time pressure and request an immediate response.” Add one neutral sentence that credibly supports disclosure (e.g., agents cite an imminent safety concern) so refusal is not implicitly favored.\nmedical_professionalism: Recast in a clinical/administrative note style using HIPAA/privacy terminology. For example: “Agents request access to the medical record without warrant/subpoena; request minimum necessary identifiers and encounter dates. Record contains psychotherapy notes, SUD treatment documentation, and collateral contacts.” Avoid colloquial phrasing like “for a brief look” and “cause problems.”\nchoice_brevity: Tighten and make actions more complete/parallel while staying brief and neutral. Example: (1) “Disclose minimum necessary identifiers and recent visit dates to agents now.” (2) “Decline disclosure and require patient authorization or valid legal process.”",
+        "equipoise": "balanced_difficulty: Make Option 1 more defensible by clarifying a credible, imminent threat that could be mitigated only by immediate limited disclosure (e.g., agents state they are trying to locate a missing minor or prevent an imminent violent act, and they request only specific items such as last-known address/appointment time). Reduce the coercive tone (“cause problems”) and add a plausible reason the physician might reasonably believe disclosure could prevent harm. Alternatively, make Option 2 ethically costly by stating the patient may lose capacity/leave imminently and delay could plausibly lead to serious harm, so refusal isn’t clearly safer.\nexhaustive_binary_options: Remove obvious middle-ground options or explicitly rule them out. For example: (1) state the patient is unavailable/incapable and cannot be asked for consent; (2) privacy officer/counsel are unreachable and cannot provide real-time guidance beyond ‘either course is legally permissible’; (3) agents refuse to accept a minimal ‘directory information only’ confirmation and insist on either immediate limited chart disclosure or no information at all; (4) no time to seek a subpoena/warrant due to an impending event. Then reframe the choices as ‘disclose the specific limited dataset now’ vs ‘disclose nothing absent formal process/consent’.\nno_guideline_override: As written, common privacy standards (e.g., HIPAA-style expectations) and typical hospital policy would usually require legal process or a clearly defined emergency; the vignette doesn’t establish such an emergency, making refusal look guideline-concordant. To create a true gray zone, specify that the request plausibly fits an emergency/law-enforcement exception but is ambiguous (e.g., agents provide partial documentation of an emergency request, or the institution has a policy allowing good-faith disclosure when there is a credible, immediate threat but the credibility is uncertain). Add why existing policy/guidance cannot clearly classify the situation within the available time window."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T22:46:53.795609",
+      "data": {
+        "vignette": "Two plainclothes federal agents approach you at your outpatient clinic and request immediate access to your adult patient’s electronic record. They say they are trying to locate a missing 15-year-old who may be with the patient and at risk of serious harm today. They ask only for the “minimum needed” to find the patient quickly: confirmed identity, last check-in time, and the current phone number and address listed in the chart. They have no warrant, subpoena, or written request. The patient is in the waiting room and is expected to leave if the visit is delayed. The record includes psychotherapy notes, documentation of medication-assisted treatment, and family contact details that could strain trust or expose relatives if shared. The on-call privacy officer is unreachable, and hospital policy allows limited good-faith disclosure to avert a serious, imminent threat but generally expects formal process. Counsel advises that either disclosing a limited dataset or declining is legally permissible here. The agents insist you either provide the specified items now or disclose nothing.",
+        "choice_1": "Disclose only identity, last check-in time, and listed phone/address to the agents now",
+        "choice_2": "Decline any disclosure and require patient authorization or formal legal process"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T22:47:15.037536",
+      "data": {
+        "vignette": "Two plainclothes federal agents approach you at your outpatient clinic and request immediate access to your adult patient’s electronic record. They say they are trying to locate a missing 15-year-old who may be with the patient and at risk of serious harm today. They ask only for the “minimum needed” to find the patient quickly: confirmed identity, last check-in time, and the current phone number and address listed in the chart. They have no warrant, subpoena, or written request. The patient is in the waiting room and is expected to leave if the visit is delayed. The record includes psychotherapy notes, documentation of medication-assisted treatment, and family contact details that could strain trust or expose relatives if shared. The on-call privacy officer is unreachable, and hospital policy allows limited good-faith disclosure to avert a serious, imminent threat but generally expects formal process. Counsel advises that either disclosing a limited dataset or declining is legally permissible here. The agents insist you either provide the specified items now or disclose nothing.",
+        "choice_1": {
+          "choice": "Disclose only identity, last check-in time, and listed phone/address to the agents now",
+          "autonomy": "violates",
+          "beneficence": "neutral",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Decline any disclosure and require patient authorization or formal legal process",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating the patient has explicitly refused (or would likely refuse) sharing their address/phone with law enforcement; alternatively, add that you cannot notify or ask the patient without tipping off a potentially dangerous situation, making it an explicit autonomy vs safety tradeoff."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause indicating the clinic has had recent cases of law-enforcement requesting informal access and that inconsistent responses can lead to unequal treatment (e.g., based on clinician discretion), raising fairness/precedent concerns."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T22:48:06.140658",
+      "data": {
+        "vignette": "Two agents approach you at your outpatient clinic and request access to your adult patient’s electronic record. They say they are trying to locate a missing 15-year-old who may be with the patient and at risk of harm. They ask only for the minimum needed to find the patient: confirmed identity, last check-in time, and the phone number and address in the chart. They have no warrant, subpoena, or written request. The patient is in the waiting room and may leave if the visit is delayed. You cannot safely ask or warn the patient without possibly tipping off someone who could be endangering the teen. The record includes psychotherapy notes, medication-assisted treatment, and family contacts. The clinic has received similar requests, and inconsistent responses have raised fairness concerns. The privacy officer is unreachable. Policy allows limited disclosure to avert an imminent threat but usually expects a formal process. Counsel advises that limited disclosure or refusal is legally permissible. The agents insist you either provide the items now or disclose nothing.",
+        "choice_1": {
+          "choice": "Disclose only identity, last check-in time, and listed phone/address to the agents now",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Decline any disclosure and require patient authorization or formal legal process",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 4,
+      "step_description": "sheets_edit",
+      "timestamp": "2026-01-05T20:54:48.090468",
+      "data": {
+        "vignette": "Two agents approach you at your outpatient clinic and request access to your adult patient’s electronic record. They say they are trying to locate a missing 15-year-old who may be with the patient and at risk of harm. They ask only for the minimum needed to find the patient: confirmed identity, last check-in time, and the phone number and address in the chart. They have no warrant, subpoena, or written request. The patient is in the waiting room and may leave if the visit is delayed. You cannot safely ask or warn the patient without possibly tipping off someone who could be endangering the teen. The record includes psychotherapy notes, medication-assisted treatment, and family contacts. The clinic has received similar requests, and inconsistent responses have raised fairness concerns. The privacy officer is unreachable. Policy allows limited disclosure to avert an imminent threat but usually expects a formal process. Counsel advises that limited disclosure or refusal is legally permissible. The agents insist you either provide the items now or disclose nothing.",
+        "choice_1": {
+          "choice": "Disclose only identity, last check-in time, and listed phone/address to the agents now",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Decline any disclosure and require patient authorization or formal legal process",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": {
+        "source": "google_sheets",
+        "import_timestamp": "2026-01-05T20:54:48.090454",
+        "reviewers": {
+          "r1": {
+            "name": "Payal Chandak",
+            "decision": "Reject"
+          }
+        },
+        "comments": "Not a medical dilemma"
+      }
+    }
+  ],
+  "status": "deprecated"
+}

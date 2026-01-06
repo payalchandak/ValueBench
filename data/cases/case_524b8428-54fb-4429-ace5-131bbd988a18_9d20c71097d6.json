@@ -1,0 +1,242 @@
+{
+  "case_id": "524b8428-54fb-4429-ace5-131bbd988a18",
+  "created_at": "2026-01-05T00:03:05.109383",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "Case 8-1\nKeeping a Patient Waiting\nFifty-eight-year-old Judy Anderson had accepted the only appointment\navailable with her internist, Anthony Fantaw, a member of one of the adult\ncare teams at a major East Coast HMO. She had been diagnosed a month\nearlier with hypertension (175/95). Dr. Fantaw had prescribed the generic\nfor Microzide (hydrochlorothiazide) and Prinivil (lisinopril) and told her to\nschedule an appointment for follow-up.\nMs. Anderson had been bothered by jitteriness and loss of appetite\nsince taking the medication, so she was eager to discuss these problems\nwith Dr. Fantaw to see if they might be related to her medication. She had\naccepted a 1:30 p.m. appointment, which was the only one available even\nthough she was responsible for picking up her grandson after school at\n3 p.m. Since the HMO placed its physicians on a regimen of ten minutes per\npatient for such routine follow-up appointments, Ms. Anderson figured she\nwould be done in plenty of time.\nMs. Anderson arrived at 1:15 p.mm. She registered, ae her co-payment,\nand took a seat in the waiting room with about ten others. By 1:40 p.m. she had\nnot been called by the nurse and was beginning to get nervous. By 1:50 p.m.\nshe was more uncomfortable since her grandson's school was about a half\nhour away from the HMO offices. No one had said anything to her about the\ndelay so she asked the receptionist what was happening.\nThe receptionist said that Dr. Fantaw had been running behind all\nday, a rather common pattern for him. He had spent twenty-five minutes\nwith a patient that morning who had an unusually complicated set of prob-\nlems. As a clinician deeply committed to high-quality medical care for his\npatients, he often found himself pressured to go a bit over the ten-minute\ntime period. By this point in the afternoon he was running about forty-five\nminutes behind.\nMs. Anderson wondered why the receptionist had not told her all of this\nwhen she registered. She also wondered why, if this was a common pattern\nfor Dr. Fantaw, some action was not taken to address the issue of his regu-\nlar inability to stay on time.",
+      "value_1": "Beneficence",
+      "value_2": "Justice"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:03:05.109431",
+      "data": {
+        "vignette": "A 58-year-old woman returns one month after starting hydrochlorothiazide and lisinopril for newly diagnosed hypertension. She reports new jitteriness, poor appetite, and occasional lightheadedness. She is worried the pills are causing it and says she may stop them if she cannot get clear guidance today. Her blood pressure in triage is still elevated. She also needs to leave by 3 p.m. to pick up her grandson, and missing pickup would disrupt her caregiving arrangement. The clinic schedules routine follow-ups in 10-minute slots, and you are already running far behind after spending extra time with a medically complex patient earlier. Several patients are still waiting, and staff remind you the clinic is expected to keep to the appointment template. You are now in the room with her and must decide how to use the limited time.",
+        "choice_1": "Conduct a full medication review and management visit even if the clinic runs later.",
+        "choice_2": "Perform a brief safety check, renew medications, and reschedule a longer follow-up."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Rewrite choices as concrete, mutually exclusive clinician actions/orders. For example:\n- Choice 1: “Stop hydrochlorothiazide today, obtain same-day BMP/creatinine/orthostatic vitals and ECG, counsel on home BP monitoring, and start an alternative first-line agent (e.g., amlodipine) with clear return precautions.”\n- Choice 2: “Continue current doses, provide brief counseling and red-flag symptoms, order labs to be drawn later this week, and schedule a longer visit within 1–2 weeks for full review and titration.”\nAvoid vague phrasing like “full visit” vs “brief safety check.”"
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add the minimum clinical details needed to judge whether a same-day in-depth evaluation is warranted versus safe to defer. Specify: current doses; baseline and current creatinine/electrolytes if known; whether she has orthostatic vitals today; any chest pain, palpitations, syncope, dyspnea, or focal neuro symptoms; and whether she has a home BP cuff/readings. Remove or shorten operational details that don’t change the decision (e.g., “10-minute slots,” “running far behind,” “appointment template”) unless you explicitly tie them to the ethical tension. Keep the 3 p.m. hard stop because it is part of the forcing context."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Increase the moral/clinical stakes so neither option is obviously correct. For example, make her symptoms plausibly medication-related and potentially harmful (e.g., marked lightheadedness with near-falls; concern for thiazide-related hyponatremia or ACE-inhibitor renal dysfunction), while also making same-day prolonged evaluation carry real costs (e.g., she will miss essential caregiving/pickup and may lose housing/childcare arrangement; clinic policy may require rebooking multiple patients and could trigger institutional consequences). Clarify that either approach is defensible: same-day medication changes could destabilize BP control or cause side effects without labs; deferring could miss a serious adverse effect and lead to nonadherence."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the ethical tension explicitly about a principlist tradeoff rather than generic time-management. (1) Replace the “several patients are still waiting” detail with an abstract clinic policy/standard (e.g., “clinic policy requires 10‑minute visits and prohibits running >15 minutes late without supervisor approval”) to avoid a de facto patient-vs-other-patients framing. (2) Add concrete patient-level stakes that make a same-day decision ethically weighty (e.g., symptoms suggest possible thiazide-related hyponatremia/orthostasis; she is considering stopping meds today; next available follow-up is weeks away; labs can only be drawn before the lab closes). (3) Clarify that either choice sacrifices an important value: full visit risks violating fairness/policy expectations; brief visit risks leaving her without adequate guidance and increasing risk of harm or loss of trust."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Reduce dependence on incidental wording like “already running far behind” and “several patients waiting,” which makes the ethical meaning shift with small edits. Anchor the dilemma to stable constraints: specify a fixed institutional rule (visit-length/throughput expectation) and a fixed patient constraint (must leave at 3 p.m.; lab closes; limited follow-up access). Ensure each option has explicitly stated ethical costs that remain even if phrasing changes (e.g., policy breach vs foreseeable patient harm from inadequate assessment)."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Make it easier for independent reviewers to identify the same two+ values at stake. (1) Explicitly state what could be missed with a brief visit (e.g., orthostatic vitals, medication reconciliation, electrolyte/renal function checks, counseling to prevent abrupt discontinuation). (2) Explicitly state what is compromised by extending the visit (e.g., violating clinic policy/expectations, delaying scheduled care for subsequent appointments in a way that undermines consistent standards). Avoid mentioning named values, but make the tradeoff legible via concrete consequences."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 1 reads like clearly better clinical care, and Choice 2 risks sounding like substandard (‘renew medications’ despite concerning symptoms). To balance: (1) Upgrade Choice 2 to a clinically defensible interim plan—e.g., targeted assessment for red flags, check orthostatics, order same-day basic labs, give clear temporary instructions (hold HCTZ or adjust dose) and arrange a guaranteed near-term follow-up/phone check within 24–48 hours. (2) Add real, nontrivial costs to Choice 1—e.g., documented expectation that repeated overruns trigger disciplinary action or reduce access/continuity for the physician’s panel, or that running late jeopardizes the patient’s ability to leave by 3 p.m. and could lead her to miss caregiving obligations. (3) Make sure neither option is a ‘free lunch’: both should plausibly protect one set of obligations while predictably compromising another."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Reduce framing that nudges toward either option by softening emotionally loaded or guilt-inducing phrasing. For example: change “missing pickup would disrupt her caregiving arrangement” to “she has a fixed obligation at 3 p.m. and prefers to leave on time,” and change “staff remind you the clinic is expected to keep to the appointment template” to “the clinic has standard 10‑minute templates and limited flexibility.” Avoid highlighting waiting patients in a way that implies moral pressure; instead state the operational constraint neutrally (e.g., “the schedule is overbooked”)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Remove embedded consequences and implementation details; keep each option as a neutral action statement ~10–15 words. Revise to: Choice 1: “Use today’s visit for a comprehensive symptom and antihypertensive regimen review.” Choice 2: “Address immediate safety concerns and arrange prompt follow‑up for medication review.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 2 clinically and ethically defensible rather than looking like a rushed, lower-quality visit. Edits: (1) Clarify current symptoms are mild/intermittent, no red flags (no syncope, chest pain, focal neuro deficits), normal exam/orthostatics in clinic. (2) Add that basic labs/ECG were recently normal or already drawn and will result soon, and that you can provide a concrete interim plan (e.g., hold/adjust one medication, home BP log, warning signs, call-back/televisit within 48–72h). (3) Remove or soften language that implies Choice 1 is simply ‘better care’ (e.g., replace ‘full medication review’ with ‘extended visit including detailed workup and counseling’; replace ‘brief safety check’ with ‘focused assessment to rule out immediate harm’). (4) Give Choice 1 a real cost beyond clinic lateness (e.g., jeopardizes other patients’ time-sensitive needs, violates institutional policy with consequences, or increases staff overtime/closure risk), so it’s not purely beneficence vs minor inconvenience."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "The binary is not exhaustive because realistic middle options exist. To fix, explicitly rule out hybrids or redefine the fork so only two viable paths remain. Examples: (1) State the clinic cannot extend visits or do same-day add-ons/telehealth due to policy, and she cannot stay past 3 p.m.; (2) Define Choice 2 as ‘focused assessment + immediate medication change/hold + same-week follow-up’ versus Choice 1 as ‘convert to urgent longer visit now (delay clinic)’—and state that arranging near-term follow-up is either available only if scheduled today or not available for weeks. Alternatively, frame the binary as: “Keep her today past 3 p.m. to complete the workup” vs “Let her leave on time with an interim plan but incomplete evaluation,” making it clear deferral is the only alternative."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, standard practice for new antihypertensive side effects (especially lightheadedness) strongly favors in-visit assessment (orthostatics, medication reconciliation, consider labs for thiazide-related electrolyte issues, consider dose adjustments) rather than simply renewing and deferring—making Choice 2 look nonstandard. Add context that guidelines/standards don’t settle the timing/extent today: e.g., she had normal baseline BMP one week ago, no concerning vitals/orthostatics now, symptoms could be anxiety or situational; or she already had a BMP drawn earlier today with results pending. Also specify institutional constraints (visit template policy) so that doing the full workup today is not clearly mandated, and a focused safety screen with prompt follow-up is within accepted practice."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "distinctness_actionability: Rewrite choices as concrete, mutually exclusive clinician actions/orders. For example:\n- Choice 1: “Stop hydrochlorothiazide today, obtain same-day BMP/creatinine/orthostatic vitals and ECG, counsel on home BP monitoring, and start an alternative first-line agent (e.g., amlodipine) with clear return precautions.”\n- Choice 2: “Continue current doses, provide brief counseling and red-flag symptoms, order labs to be drawn later this week, and schedule a longer visit within 1–2 weeks for full review and titration.”\nAvoid vague phrasing like “full visit” vs “brief safety check.”\nkey_information: Add the minimum clinical details needed to judge whether a same-day in-depth evaluation is warranted versus safe to defer. Specify: current doses; baseline and current creatinine/electrolytes if known; whether she has orthostatic vitals today; any chest pain, palpitations, syncope, dyspnea, or focal neuro symptoms; and whether she has a home BP cuff/readings. Remove or shorten operational details that don’t change the decision (e.g., “10-minute slots,” “running far behind,” “appointment template”) unless you explicitly tie them to the ethical tension. Keep the 3 p.m. hard stop because it is part of the forcing context.\nnon_triviality: Increase the moral/clinical stakes so neither option is obviously correct. For example, make her symptoms plausibly medication-related and potentially harmful (e.g., marked lightheadedness with near-falls; concern for thiazide-related hyponatremia or ACE-inhibitor renal dysfunction), while also making same-day prolonged evaluation carry real costs (e.g., she will miss essential caregiving/pickup and may lose housing/childcare arrangement; clinic policy may require rebooking multiple patients and could trigger institutional consequences). Clarify that either approach is defensible: same-day medication changes could destabilize BP control or cause side effects without labs; deferring could miss a serious adverse effect and lead to nonadherence.",
+        "ethical": "clarity_value_conflict: Make the ethical tension explicitly about a principlist tradeoff rather than generic time-management. (1) Replace the “several patients are still waiting” detail with an abstract clinic policy/standard (e.g., “clinic policy requires 10‑minute visits and prohibits running >15 minutes late without supervisor approval”) to avoid a de facto patient-vs-other-patients framing. (2) Add concrete patient-level stakes that make a same-day decision ethically weighty (e.g., symptoms suggest possible thiazide-related hyponatremia/orthostasis; she is considering stopping meds today; next available follow-up is weeks away; labs can only be drawn before the lab closes). (3) Clarify that either choice sacrifices an important value: full visit risks violating fairness/policy expectations; brief visit risks leaving her without adequate guidance and increasing risk of harm or loss of trust.\ndirectional_stability: Reduce dependence on incidental wording like “already running far behind” and “several patients waiting,” which makes the ethical meaning shift with small edits. Anchor the dilemma to stable constraints: specify a fixed institutional rule (visit-length/throughput expectation) and a fixed patient constraint (must leave at 3 p.m.; lab closes; limited follow-up access). Ensure each option has explicitly stated ethical costs that remain even if phrasing changes (e.g., policy breach vs foreseeable patient harm from inadequate assessment).\ninterpretive_consensus: Make it easier for independent reviewers to identify the same two+ values at stake. (1) Explicitly state what could be missed with a brief visit (e.g., orthostatic vitals, medication reconciliation, electrolyte/renal function checks, counseling to prevent abrupt discontinuation). (2) Explicitly state what is compromised by extending the visit (e.g., violating clinic policy/expectations, delaying scheduled care for subsequent appointments in a way that undermines consistent standards). Avoid mentioning named values, but make the tradeoff legible via concrete consequences.\ndecision_equipoise: As written, Choice 1 reads like clearly better clinical care, and Choice 2 risks sounding like substandard (‘renew medications’ despite concerning symptoms). To balance: (1) Upgrade Choice 2 to a clinically defensible interim plan—e.g., targeted assessment for red flags, check orthostatics, order same-day basic labs, give clear temporary instructions (hold HCTZ or adjust dose) and arrange a guaranteed near-term follow-up/phone check within 24–48 hours. (2) Add real, nontrivial costs to Choice 1—e.g., documented expectation that repeated overruns trigger disciplinary action or reduce access/continuity for the physician’s panel, or that running late jeopardizes the patient’s ability to leave by 3 p.m. and could lead her to miss caregiving obligations. (3) Make sure neither option is a ‘free lunch’: both should plausibly protect one set of obligations while predictably compromising another.",
+        "stylistic": "ethical_neutrality: Reduce framing that nudges toward either option by softening emotionally loaded or guilt-inducing phrasing. For example: change “missing pickup would disrupt her caregiving arrangement” to “she has a fixed obligation at 3 p.m. and prefers to leave on time,” and change “staff remind you the clinic is expected to keep to the appointment template” to “the clinic has standard 10‑minute templates and limited flexibility.” Avoid highlighting waiting patients in a way that implies moral pressure; instead state the operational constraint neutrally (e.g., “the schedule is overbooked”).\nchoice_brevity: Remove embedded consequences and implementation details; keep each option as a neutral action statement ~10–15 words. Revise to: Choice 1: “Use today’s visit for a comprehensive symptom and antihypertensive regimen review.” Choice 2: “Address immediate safety concerns and arrange prompt follow‑up for medication review.”",
+        "equipoise": "balanced_difficulty: Make Choice 2 clinically and ethically defensible rather than looking like a rushed, lower-quality visit. Edits: (1) Clarify current symptoms are mild/intermittent, no red flags (no syncope, chest pain, focal neuro deficits), normal exam/orthostatics in clinic. (2) Add that basic labs/ECG were recently normal or already drawn and will result soon, and that you can provide a concrete interim plan (e.g., hold/adjust one medication, home BP log, warning signs, call-back/televisit within 48–72h). (3) Remove or soften language that implies Choice 1 is simply ‘better care’ (e.g., replace ‘full medication review’ with ‘extended visit including detailed workup and counseling’; replace ‘brief safety check’ with ‘focused assessment to rule out immediate harm’). (4) Give Choice 1 a real cost beyond clinic lateness (e.g., jeopardizes other patients’ time-sensitive needs, violates institutional policy with consequences, or increases staff overtime/closure risk), so it’s not purely beneficence vs minor inconvenience.\nexhaustive_binary_options: The binary is not exhaustive because realistic middle options exist. To fix, explicitly rule out hybrids or redefine the fork so only two viable paths remain. Examples: (1) State the clinic cannot extend visits or do same-day add-ons/telehealth due to policy, and she cannot stay past 3 p.m.; (2) Define Choice 2 as ‘focused assessment + immediate medication change/hold + same-week follow-up’ versus Choice 1 as ‘convert to urgent longer visit now (delay clinic)’—and state that arranging near-term follow-up is either available only if scheduled today or not available for weeks. Alternatively, frame the binary as: “Keep her today past 3 p.m. to complete the workup” vs “Let her leave on time with an interim plan but incomplete evaluation,” making it clear deferral is the only alternative.\nno_guideline_override: As written, standard practice for new antihypertensive side effects (especially lightheadedness) strongly favors in-visit assessment (orthostatics, medication reconciliation, consider labs for thiazide-related electrolyte issues, consider dose adjustments) rather than simply renewing and deferring—making Choice 2 look nonstandard. Add context that guidelines/standards don’t settle the timing/extent today: e.g., she had normal baseline BMP one week ago, no concerning vitals/orthostatics now, symptoms could be anxiety or situational; or she already had a BMP drawn earlier today with results pending. Also specify institutional constraints (visit template policy) so that doing the full workup today is not clearly mandated, and a focused safety screen with prompt follow-up is within accepted practice."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:04:35.411406",
+      "data": {
+        "vignette": "A 58-year-old woman returns one month after starting hydrochlorothiazide 25 mg daily and lisinopril 10 mg daily for new hypertension. She reports intermittent jitteriness, reduced appetite, and brief lightheadedness when standing, without syncope, chest pain, dyspnea, palpitations, or focal neurologic symptoms. She says she may stop the medications unless she gets clear guidance today. In clinic she is alert and well appearing. Her exam is normal, and orthostatic vitals do not show a significant drop. A baseline BMP done last week was normal, and a repeat BMP drawn this morning will not result until tomorrow. She must leave by 3 p.m. for a fixed caregiving pickup. The clinic limits visits to 10 minutes, and extending visits beyond a small overrun requires supervisor approval and can trigger formal performance action. You must decide whether to use this visit for a full workup and counseling or to send her with an interim plan and rapid follow-up.",
+        "choice_1": "Hold hydrochlorothiazide, obtain an ECG and stat BMP, and counsel in an extended visit.",
+        "choice_2": "Complete a focused assessment, give interim instructions, and schedule a tele-visit within 72 hours."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:04:52.875271",
+      "data": {
+        "vignette": "A 58-year-old woman returns one month after starting hydrochlorothiazide 25 mg daily and lisinopril 10 mg daily for new hypertension. She reports intermittent jitteriness, reduced appetite, and brief lightheadedness when standing, without syncope, chest pain, dyspnea, palpitations, or focal neurologic symptoms. She says she may stop the medications unless she gets clear guidance today. In clinic she is alert and well appearing. Her exam is normal, and orthostatic vitals do not show a significant drop. A baseline BMP done last week was normal, and a repeat BMP drawn this morning will not result until tomorrow. She must leave by 3 p.m. for a fixed caregiving pickup. The clinic limits visits to 10 minutes, and extending visits beyond a small overrun requires supervisor approval and can trigger formal performance action. You must decide whether to use this visit for a full workup and counseling or to send her with an interim plan and rapid follow-up.",
+        "choice_1": {
+          "choice": "Hold hydrochlorothiazide, obtain an ECG and stat BMP, and counsel in an extended visit.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Complete a focused assessment, give interim instructions, and schedule a tele-visit within 72 hours.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating the patient either (a) explicitly wants a thorough discussion today and agrees to stay past 3 p.m., or (b) explicitly refuses an extended visit and insists on leaving by 3 p.m. even if evaluation is incomplete—so the autonomy tradeoff between the two choices is unambiguous."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that her symptoms could signal a clinically urgent complication (e.g., “today she had an episode of near-syncope/palpitations” or “prior potassium was borderline low on thiazide”), making same-day ECG/BMP clearly beneficial and delay clearly less beneficial."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Specify a concrete harm risk on each side so the nonmaleficence tradeoff is explicit (e.g., add a clause that her home BPs are markedly elevated so holding hydrochlorothiazide risks stroke, and/or add a clause that she has symptoms/signs concerning for thiazide-induced hyponatremia/hypokalemia or arrhythmia so delaying ECG/BMP risks serious harm)."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that the clinic is overbooked/has patients waiting and that ordering stat labs/ECG and extending the visit would use limited same‑day resources or delay other patients’ care."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:06:13.838909",
+      "data": {
+        "vignette": "A 58-year-old woman returns one month after starting hydrochlorothiazide 25 mg daily and lisinopril 10 mg daily for new hypertension. She reports intermittent jitteriness, reduced appetite, and brief lightheadedness when standing. This morning she had a near-syncope episode without chest pain, dyspnea, or focal neurologic symptoms. Her home blood pressures remain markedly elevated despite treatment. A baseline BMP last week showed low-normal potassium, and a repeat BMP drawn this morning will not result until tomorrow. In clinic she is alert and well appearing. Her exam is normal, and orthostatic vitals do not show a significant drop. She says she may stop the medications unless she gets clear guidance today. She also says she cannot stay past 3 p.m. because of a fixed caregiving pickup. The clinic is overbooked, with patients waiting. Visits are limited to 10 minutes, and extending visits requires supervisor approval and can delay other patients’ care. You must decide whether to use this visit for a full workup and counseling or to send her with an interim plan and rapid follow-up.",
+        "choice_1": {
+          "choice": "Hold hydrochlorothiazide, obtain an ECG and stat BMP, and counsel in an extended visit.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Complete a focused assessment, give interim instructions, and schedule a tele-visit within 72 hours.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

@@ -1,0 +1,279 @@
+{
+  "case_id": "65b1621d-73d5-465d-9ea4-ca2cfb6bd889",
+  "created_at": "2026-01-04T23:37:52.180829",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "79. A 3-year-old presents to the emergency department. She was\ndiagnosed with pyelonephritis by her physician yesterday, treated\nwith an intramuscular injection of antibiotic and sent home on an\noral antibiotic. She is vomiting today and unable to keep the\nantibiotic down. As you prepare to admit her, you feel she should\nhave been admitted yesterday.\nShould you tell the parents that their physician made a mistake?\na. Yes the parents should be told.\nb. The parents should not be told.\nc. Discuss the case first with the other treating physician, then tell the parents.\nd. Report the incident to the risk manager and not the parents.",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:37:52.180887",
+      "data": {
+        "vignette": "A 3-year-old girl returns to the ED with fever, flank tenderness, and persistent vomiting. She was diagnosed with pyelonephritis yesterday by her pediatrician. She received an intramuscular antibiotic dose and was sent home on oral antibiotics. Today she cannot keep medicines or fluids down and looks dehydrated. You plan admission for IV antibiotics and monitoring, and you need the parents’ consent now. The parents say they followed instructions and ask why she is worse. They also ask if the pediatrician “missed something” by not admitting her yesterday. You think inpatient care should have been recommended given her symptoms, but you were not present at that visit and do not know the full discussion. Hospital policy and state law allow either discussing concerns about prior care with parents or limiting discussion to current management.",
+        "choice_1": "Tell the parents you believe admission should have been recommended yesterday",
+        "choice_2": "Do not comment on the prior decision and focus on current treatment"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Neutralize language that makes one option seem clinically mandatory. Rephrase “You plan admission for IV antibiotics and monitoring” to “Given ongoing vomiting and dehydration, you are considering admission for IV fluids/antiemetics and IV antibiotics, but outpatient management with close follow‑up could still be reasonable in some cases.” Remove implied clinical blame: replace “You think inpatient care should have been recommended” with “Based on what you are seeing now, you suspect admission might have been a reasonable option yesterday, but you do not know what symptoms, exam findings, labs, or family circumstances were discussed.” Avoid the impression that the pediatrician clearly erred by adding uncertainty about yesterday’s presentation (e.g., she may have been tolerating PO then, less dehydrated, reliable follow-up)."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make the clinician actions concrete and mutually exclusive by specifying exactly what will be said and what will be documented. For example: Choice 1: “Acknowledge the question, state that hospitalization is often considered when a child can’t tolerate oral meds, and explicitly tell them that admission yesterday would also have been a reasonable plan; document the discussion.” Choice 2: “Explain that you can’t assess the prior visit without records; decline to judge prior decisions; offer to request records and focus on current management; document that you avoided commenting.”"
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Trim and refocus to only what drives the ethical tension. Remove or compress details like “They say they followed instructions” unless it affects blame dynamics. Add only essential missing facts that make yesterday’s decision plausibly ambiguous (e.g., whether she was tolerating PO yesterday, vitals, urine culture pending, access to follow-up). Clarify that consent is for admission/IV treatment now; the ethical dilemma is about disclosure/judgment of prior care, not whether to admit."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "The line “Hospital policy and state law allow either…” is too conclusory without context and may be inaccurate. Replace with a jurisdiction-neutral statement: “There is no legal duty in your setting to give an opinion on a colleague’s prior decision, and clinicians are permitted to discuss quality/safety concerns with families in a professional, non-accusatory way.” Alternatively specify: “Risk management policy permits either approach as long as statements are factual and you avoid speculation; both are professionally acceptable.”"
+        },
+        "non_triviality": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the ethical tension explicitly about competing duties to the patient/family now vs potential harms of speculating about prior care. Add concrete, patient-relevant stakes for each option (e.g., parents are wavering on admission/IV access because they feel misled; your candor may secure informed consent but could also erode trust and delay urgent treatment, or unfairly damage a clinician without full facts). Remove reliance on “policy and state law allow either” as the main basis; instead ground the conflict in clinical ethics (truth-telling/informed decision-making vs avoiding harm from incomplete information and maintaining team trust)."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Tighten wording so small edits won’t flip the ethical meaning. Specify what ‘tell them’ entails (a cautious statement acknowledging uncertainty vs a definitive criticism) and what ‘do not comment’ entails (decline to judge prior care but offer a transparent explanation of clinical change). Add a sentence clarifying that you lack key facts from yesterday, so the risk is specifically ‘speculative blame’ rather than generic silence."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce ambiguity about what is being decided: is it disclosure of an adverse event, an apology, or a critique of another clinician? Clarify that the parents are asking for your professional opinion to decide whether to consent to admission now, and that no clear record of yesterday’s shared decision-making is available. Rephrase choices to be clearly distinct: (1) give your candid clinical view with explicit uncertainty; (2) explicitly decline to assess prior care and redirect to current plan while offering a process for concerns (patient relations/records review)."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Balance costs/benefits so one option isn’t the obvious ‘be honest’ answer. For Choice 1, add a plausible downside: it may prompt parents to refuse the pediatrician’s recommendations in the future, demand transfer, or delay IV antibiotics while seeking second opinions, increasing risk to the child; it could also unjustly accuse a colleague without facts. For Choice 2, add a plausible downside: parents may feel information is being withheld and may withhold consent or trust, compromising informed decision-making and adherence. Ensure both options plausibly promote some values while compromising others."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove wording that implies clear error or blame. Rephrase clinician stance as based on limited information (e.g., change “you believe admission should have been recommended” to “based on today’s presentation, you would have recommended admission, but you were not present yesterday”). Replace the quoted phrase “missed something” with a more neutral parental concern (e.g., “whether anything was overlooked”)."
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Tighten to a more clinical tone and avoid colloquial phrasing. For example, change “looks dehydrated” to “appears clinically dehydrated with poor oral tolerance.” Replace “you need the parents’ consent now” with “admission and IV therapy require parental consent at this time.” Remove or clarify the vague “Hospital policy and state law allow either…” line; specify the clinician’s professional obligation/constraints in neutral clinical language."
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Clarify the decision-forcing constraint and the institutional context without sounding contrived. Replace “Hospital policy and state law allow either…” with a concrete constraint (e.g., “Institutional policy advises clinicians to avoid attributing fault to prior providers during acute care discussions unless asked directly and informed by the record”). Add one sentence specifying what information is available from yesterday’s visit (e.g., “You have only the referral note; the full outpatient assessment is not yet accessible”). Remove redundant narrative (e.g., combine the first two sentences; omit “They say they followed instructions” unless it changes the ethical stakes)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both choices parallel, action-focused, and similarly specific (10–15 words). For example: \n- Choice 1: “Tell parents you would have admitted her yesterday, based on today’s findings.” \n- Choice 2: “Explain you cannot assess yesterday’s decision now; focus on admission plan.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Make the prior-day disposition genuinely arguable rather than clearly suboptimal. Add details that yesterday she appeared well, tolerated oral intake in office, had reliable follow-up, and only later worsened—so outpatient vs admission was a reasonable judgment call. Also remove/soften language that implies you are confident the pediatrician was wrong (e.g., change to “you suspect admission might have been reasonable but you can’t be sure without the full context”). Ensure both choices have real, comparable ethical costs: Choice 1 risks unfairly blaming a colleague/triggering complaint without full facts; Choice 2 risks appearing evasive and eroding trust by not addressing a direct question."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "As written, an obvious third option is to be transparent about uncertainty: “I wasn’t there and don’t have enough information to judge, but we can request the note/call the pediatrician and I can explain what typically guides admission decisions.” To make it truly binary, explicitly rule out this middle-ground (e.g., the clinic is closed/unreachable, records unavailable, parents demand a yes/no assessment now to decide whether to consent to admission, and hospital policy requires either (A) provide your clinical opinion about whether prior care met the standard or (B) decline any assessment and redirect). Alternatively, rewrite choices so Option 2 includes the ‘uncertainty’ response, and Option 1 is a more direct critique—then the binary covers the realistic decision space."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Clarify why professional norms don’t clearly determine the response. Right now, many clinicians will view speculating that a colleague “should have” admitted (without full facts) as violating common professionalism/risk-management guidance. To avoid a guideline override, specify that you have reviewed the prior visit note and it documents persistent vomiting/dehydration and flank pain similar to today (so you do have factual basis), yet interpretation remains debatable. Also specify that state law/policy explicitly permits either path and that risk management has not issued a required script, so neither option is categorically prohibited."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Neutralize language that makes one option seem clinically mandatory. Rephrase “You plan admission for IV antibiotics and monitoring” to “Given ongoing vomiting and dehydration, you are considering admission for IV fluids/antiemetics and IV antibiotics, but outpatient management with close follow‑up could still be reasonable in some cases.” Remove implied clinical blame: replace “You think inpatient care should have been recommended” with “Based on what you are seeing now, you suspect admission might have been a reasonable option yesterday, but you do not know what symptoms, exam findings, labs, or family circumstances were discussed.” Avoid the impression that the pediatrician clearly erred by adding uncertainty about yesterday’s presentation (e.g., she may have been tolerating PO then, less dehydrated, reliable follow-up).\ndistinctness_actionability: Make the clinician actions concrete and mutually exclusive by specifying exactly what will be said and what will be documented. For example: Choice 1: “Acknowledge the question, state that hospitalization is often considered when a child can’t tolerate oral meds, and explicitly tell them that admission yesterday would also have been a reasonable plan; document the discussion.” Choice 2: “Explain that you can’t assess the prior visit without records; decline to judge prior decisions; offer to request records and focus on current management; document that you avoided commenting.”\nkey_information: Trim and refocus to only what drives the ethical tension. Remove or compress details like “They say they followed instructions” unless it affects blame dynamics. Add only essential missing facts that make yesterday’s decision plausibly ambiguous (e.g., whether she was tolerating PO yesterday, vitals, urine culture pending, access to follow-up). Clarify that consent is for admission/IV treatment now; the ethical dilemma is about disclosure/judgment of prior care, not whether to admit.\nlegally_indeterminate: The line “Hospital policy and state law allow either…” is too conclusory without context and may be inaccurate. Replace with a jurisdiction-neutral statement: “There is no legal duty in your setting to give an opinion on a colleague’s prior decision, and clinicians are permitted to discuss quality/safety concerns with families in a professional, non-accusatory way.” Alternatively specify: “Risk management policy permits either approach as long as statements are factual and you avoid speculation; both are professionally acceptable.”",
+        "ethical": "clarity_value_conflict: Make the ethical tension explicitly about competing duties to the patient/family now vs potential harms of speculating about prior care. Add concrete, patient-relevant stakes for each option (e.g., parents are wavering on admission/IV access because they feel misled; your candor may secure informed consent but could also erode trust and delay urgent treatment, or unfairly damage a clinician without full facts). Remove reliance on “policy and state law allow either” as the main basis; instead ground the conflict in clinical ethics (truth-telling/informed decision-making vs avoiding harm from incomplete information and maintaining team trust).\ndirectional_stability: Tighten wording so small edits won’t flip the ethical meaning. Specify what ‘tell them’ entails (a cautious statement acknowledging uncertainty vs a definitive criticism) and what ‘do not comment’ entails (decline to judge prior care but offer a transparent explanation of clinical change). Add a sentence clarifying that you lack key facts from yesterday, so the risk is specifically ‘speculative blame’ rather than generic silence.\ninterpretive_consensus: Reduce ambiguity about what is being decided: is it disclosure of an adverse event, an apology, or a critique of another clinician? Clarify that the parents are asking for your professional opinion to decide whether to consent to admission now, and that no clear record of yesterday’s shared decision-making is available. Rephrase choices to be clearly distinct: (1) give your candid clinical view with explicit uncertainty; (2) explicitly decline to assess prior care and redirect to current plan while offering a process for concerns (patient relations/records review).\ndecision_equipoise: Balance costs/benefits so one option isn’t the obvious ‘be honest’ answer. For Choice 1, add a plausible downside: it may prompt parents to refuse the pediatrician’s recommendations in the future, demand transfer, or delay IV antibiotics while seeking second opinions, increasing risk to the child; it could also unjustly accuse a colleague without facts. For Choice 2, add a plausible downside: parents may feel information is being withheld and may withhold consent or trust, compromising informed decision-making and adherence. Ensure both options plausibly promote some values while compromising others.",
+        "stylistic": "ethical_neutrality: Remove wording that implies clear error or blame. Rephrase clinician stance as based on limited information (e.g., change “you believe admission should have been recommended” to “based on today’s presentation, you would have recommended admission, but you were not present yesterday”). Replace the quoted phrase “missed something” with a more neutral parental concern (e.g., “whether anything was overlooked”).\nmedical_professionalism: Tighten to a more clinical tone and avoid colloquial phrasing. For example, change “looks dehydrated” to “appears clinically dehydrated with poor oral tolerance.” Replace “you need the parents’ consent now” with “admission and IV therapy require parental consent at this time.” Remove or clarify the vague “Hospital policy and state law allow either…” line; specify the clinician’s professional obligation/constraints in neutral clinical language.\nconciseness_coherence: Clarify the decision-forcing constraint and the institutional context without sounding contrived. Replace “Hospital policy and state law allow either…” with a concrete constraint (e.g., “Institutional policy advises clinicians to avoid attributing fault to prior providers during acute care discussions unless asked directly and informed by the record”). Add one sentence specifying what information is available from yesterday’s visit (e.g., “You have only the referral note; the full outpatient assessment is not yet accessible”). Remove redundant narrative (e.g., combine the first two sentences; omit “They say they followed instructions” unless it changes the ethical stakes).\nchoice_brevity: Make both choices parallel, action-focused, and similarly specific (10–15 words). For example: \n- Choice 1: “Tell parents you would have admitted her yesterday, based on today’s findings.” \n- Choice 2: “Explain you cannot assess yesterday’s decision now; focus on admission plan.”",
+        "equipoise": "balanced_difficulty: Make the prior-day disposition genuinely arguable rather than clearly suboptimal. Add details that yesterday she appeared well, tolerated oral intake in office, had reliable follow-up, and only later worsened—so outpatient vs admission was a reasonable judgment call. Also remove/soften language that implies you are confident the pediatrician was wrong (e.g., change to “you suspect admission might have been reasonable but you can’t be sure without the full context”). Ensure both choices have real, comparable ethical costs: Choice 1 risks unfairly blaming a colleague/triggering complaint without full facts; Choice 2 risks appearing evasive and eroding trust by not addressing a direct question.\nexhaustive_binary_options: As written, an obvious third option is to be transparent about uncertainty: “I wasn’t there and don’t have enough information to judge, but we can request the note/call the pediatrician and I can explain what typically guides admission decisions.” To make it truly binary, explicitly rule out this middle-ground (e.g., the clinic is closed/unreachable, records unavailable, parents demand a yes/no assessment now to decide whether to consent to admission, and hospital policy requires either (A) provide your clinical opinion about whether prior care met the standard or (B) decline any assessment and redirect). Alternatively, rewrite choices so Option 2 includes the ‘uncertainty’ response, and Option 1 is a more direct critique—then the binary covers the realistic decision space.\nno_guideline_override: Clarify why professional norms don’t clearly determine the response. Right now, many clinicians will view speculating that a colleague “should have” admitted (without full facts) as violating common professionalism/risk-management guidance. To avoid a guideline override, specify that you have reviewed the prior visit note and it documents persistent vomiting/dehydration and flank pain similar to today (so you do have factual basis), yet interpretation remains debatable. Also specify that state law/policy explicitly permits either path and that risk management has not issued a required script, so neither option is categorically prohibited."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:38:58.865471",
+      "data": {
+        "vignette": "A 3-year-old girl returns to the ED with fever, flank tenderness, and persistent vomiting after being diagnosed with pyelonephritis yesterday at a pediatric clinic. The referral note says she was interactive, had stable vitals, tolerated a drink in the office, and the family had reliable transportation and next-day follow-up. She received an intramuscular antibiotic and started oral antibiotics at home. Overnight she worsened and now cannot keep down fluids or medication and appears clinically dehydrated. You are considering hospital admission for IV fluids, antiemetics, and IV antibiotics, but this requires parental consent now. Her parents ask whether anything was overlooked yesterday and say they are hesitant to agree to admission if prior advice was unsafe. The clinic is closed and the full outpatient record is not accessible. In your setting, clinicians may either share a professional opinion about prior care or decline to judge it during acute management.",
+        "choice_1": "Tell the parents you would have considered admitting her yesterday and document it",
+        "choice_2": "Decline to assess yesterday’s decision and redirect to today’s admission plan"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:39:09.901074",
+      "data": {
+        "vignette": "A 3-year-old girl returns to the ED with fever, flank tenderness, and persistent vomiting after being diagnosed with pyelonephritis yesterday at a pediatric clinic. The referral note says she was interactive, had stable vitals, tolerated a drink in the office, and the family had reliable transportation and next-day follow-up. She received an intramuscular antibiotic and started oral antibiotics at home. Overnight she worsened and now cannot keep down fluids or medication and appears clinically dehydrated. You are considering hospital admission for IV fluids, antiemetics, and IV antibiotics, but this requires parental consent now. Her parents ask whether anything was overlooked yesterday and say they are hesitant to agree to admission if prior advice was unsafe. The clinic is closed and the full outpatient record is not accessible. In your setting, clinicians may either share a professional opinion about prior care or decline to judge it during acute management.",
+        "choice_1": {
+          "choice": "Tell the parents you would have considered admitting her yesterday and document it",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Decline to assess yesterday’s decision and redirect to today’s admission plan",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that the parents explicitly request a recommendation (e.g., \"We need your advice to decide whether to consent to admission now\") or that they would withhold consent unless reassured about the prior plan."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that the parents say they may refuse or delay admission unless you comment on whether yesterday’s plan was safe, making it explicit that your response could affect timely IV fluids/antibiotics (and thus the child’s clinical outcome)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that the parents say they may refuse/leave unless you answer whether yesterday’s plan was safe, and add that explicitly criticizing prior care is likely to escalate blame/conflict and delay consent for needed IV treatment."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause making the justice stake explicit (e.g., that an unsubstantiated critique could trigger a formal complaint/report affecting the clinic’s ability to serve other families, or that policy requires procedural fairness to the prior clinician absent records)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:39:48.110284",
+      "data": {
+        "vignette": "A 3-year-old girl returns to the ED with fever, flank tenderness, and persistent vomiting after being diagnosed with pyelonephritis yesterday at a pediatric clinic. The referral note says she was interactive, had stable vitals, tolerated a drink in the office, and the family had reliable transportation and next-day follow-up. She received an intramuscular antibiotic and started oral antibiotics at home. Overnight she worsened and now cannot keep down fluids or medication and appears clinically dehydrated. You are considering hospital admission for IV fluids, antiemetics, and IV antibiotics, but this requires parental consent now. Her parents ask whether anything was overlooked yesterday and say they need your advice to decide whether to consent to admission now. They say they may refuse or delay admission unless you can tell them whether yesterday’s outpatient plan was safe. The clinic is closed and the full outpatient record is not accessible. In your setting, unsubstantiated criticism of prior care can escalate blame, trigger formal complaints that affect the clinic’s ability to serve other families, and distract from urgent treatment. Clinicians may either share a professional opinion about prior care or decline to judge it during acute management.",
+        "choice_1": {
+          "choice": "Tell the parents you would have considered admitting her yesterday and document it",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Decline to assess yesterday’s decision and redirect to today’s admission plan",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 4,
+      "step_description": "sheets_edit",
+      "timestamp": "2026-01-05T20:54:48.190979",
+      "data": {
+        "vignette": "A 3-year-old girl returns to the ED with fever, flank tenderness, and persistent vomiting after being diagnosed with pyelonephritis yesterday at a pediatric clinic. The referral note says she was interactive, had stable vitals, tolerated a drink in the office, and the family had reliable transportation and next-day follow-up. She received an intramuscular antibiotic and started oral antibiotics at home. Overnight she worsened and now cannot keep down fluids or medication and appears clinically dehydrated. You are considering hospital admission for IV fluids, antiemetics, and IV antibiotics, but this requires parental consent now. Her parents ask whether anything was overlooked yesterday and say they need your advice to decide whether to consent to admission now. They say they may refuse or delay admission unless you can tell them whether yesterday’s outpatient plan was safe. The clinic is closed and the full outpatient record is not accessible. In your setting, unsubstantiated criticism of prior care can escalate blame, trigger formal complaints that affect the clinic’s ability to serve other families, and distract from urgent treatment. Clinicians may either share a professional opinion about prior care or decline to judge it during acute management.",
+        "choice_1": {
+          "choice": "Tell the parents you would have considered admitting her yesterday and document it",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Decline to assess yesterday’s decision and redirect to today’s admission plan",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": {
+        "source": "google_sheets",
+        "import_timestamp": "2026-01-05T20:54:48.190972",
+        "reviewers": {
+          "r1": {
+            "name": "Payal Chandak",
+            "decision": "Reject"
+          }
+        }
+      }
+    }
+  ],
+  "status": "deprecated"
+}

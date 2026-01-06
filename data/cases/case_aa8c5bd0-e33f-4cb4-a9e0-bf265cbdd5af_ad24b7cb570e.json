@@ -1,0 +1,236 @@
+{
+  "case_id": "aa8c5bd0-e33f-4cb4-a9e0-bf265cbdd5af",
+  "created_at": "2026-01-05T00:00:27.150606",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 91:\nRAMADAN AND PROFESSIONAL RESPONSIBILITY\nAhmed is a newly qualified doctor and is due to be on-call for 4 days in a row. This involves\nconsecutive 14-hour days and can be very busy and tiring. His on-call week has coincided\nwith the last week of Ramadan and since it is May the hours of darkness where he is allowed\nto eat and drink are more limited. He is adamant that he does not want to break his fast\nduring the on-call as he is a devout Muslim. During the second of his on-call days, the ST2\ntrainee calls in sick and the consultant asks Ahmed to assist with surgery. Things are going\nwell and Ahmed is really enjoying the extra surgical experience and responsibility he is\ngaining. During a lunch break the consultant praises Ahmed’s skills but notices that he has\nnothing to eat or drink at all, not even a glass of water. During the next operation an emer-\ngency arrives in A&E. A 70-year-old man has been diagnosed with a leaking abdominal\naortic aneurysm. He is rushed to theatre and Ahmed is told to scrub. The additional concen-\ntration needed to learn new skills all morning combined with not having eaten is beginning\nto affect Ahmed’s focus, and on several occasions he has to be retold what he needs to do.\nQuestions\n• What does the Qur’an say about Ramadan and illness?\n• What advice should you give Ahmed?\n• Who else can you ask for help in this situation?",
+      "value_1": "Non-maleficence",
+      "value_2": "Autonomy"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:00:27.150665",
+      "data": {
+        "vignette": "A 70-year-old man is brought to the emergency department late afternoon during Ramadan. He has vomiting and weakness after fasting in hot weather. He is dehydrated and intermittently confused, and he cannot clearly explain his wishes. His labs suggest worsening kidney function and dangerous electrolyte abnormalities, and the team expects further decline overnight without IV rehydration and close monitoring. His adult children say he is a devout Muslim who would not want anything given by vein during daylight because it would break his fast. They ask you to wait until sunset for fluids and most medications. The ICU has a bed now, but transfer decisions and orders must be placed before the evening shift change. Hospital policy and state law allow treatment based on either best interests or a surrogate’s substituted judgment when capacity is lacking.",
+        "choice_1": "Begin IV fluids and needed medications now",
+        "choice_2": "Defer IV fluids and most medications until after sunset"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften language that makes immediate IV clearly medically superior. For example, change “the team expects further decline overnight without IV rehydration” to “there is concern his kidney function and electrolytes could worsen if fluids are delayed, though he is currently hemodynamically stable.” Add a concrete countervailing clinical consideration for immediate IV (e.g., history of heart failure or CKD with risk of fluid overload, need for frequent labs/possible ICU-level monitoring, risk of agitation/restraints with IV access) so neither option reads as the obvious medically correct choice."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Clarify the clinical threshold so that *either* acting on best interests now or honoring surrogate substituted judgment to wait a few hours is legally defensible. Add a sentence such as: “He is not in shock and is protecting his airway; the question is whether delaying IV therapy for a few hours is acceptable risk.” Also specify that the children are the legally recognized surrogates (or that the next-of-kin hierarchy applies) and that temporary delay of non-emergent treatment at surrogate request is permitted when the patient lacks capacity, while clinicians may proceed immediately if an emergency develops."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Rebalance stakes so waiting until sunset is not obviously reckless. Specify that the electrolyte abnormalities are serious but not yet causing arrhythmia/seizure, vitals are stable, and the remaining time to sunset is a few hours. Offer a feasible interim plan (e.g., aggressive oral rehydration if tolerated, antiemetic orally/IM if acceptable, continuous cardiac monitoring, repeat labs at set intervals) so deferral is a defensible option. Conversely, articulate the ethical/clinical cost of immediate IV beyond ‘breaking the fast’ (e.g., anticipated profound religious/moral distress, long-term loss of trust, patient previously expressed strong views about fasting even when ill, or need for sedation/restraints to place an IV in a confused patient)."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce ambiguity about what the surrogate request represents and make the patient’s prior wishes clearer. E.g., add a line like: “His children report that he has repeatedly refused IV fluids during daylight in prior hospitalizations and signed a note in his wallet stating this preference during Ramadan.” Also remove the legal/policy sentence, which can pull graders toward a procedural/legal reading rather than a values conflict."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Neutralize the clinical one-sidedness that makes immediate IV treatment look obviously correct. Reframe severity so deferring is medically *plausible* but still risky (e.g., ‘borderline low blood pressure, rising creatinine, and moderate electrolyte abnormalities that could worsen overnight’ rather than ‘dangerous’/‘expects further decline’). Add ethical cost to treating now (e.g., patient is agitated and would require restraints/sedation to place/maintain IV; family warns he would experience this as a profound violation). Alternatively, add a middle-ground constraint that forces the binary (e.g., only two protocols available: full IV rehydration now vs no parenteral therapy until sunset), while clarifying that waiting could still be defended (close monitoring, cooling, limited oral sips/antiemetics, frequent labs)."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove framing that implies one option is clearly medically mandatory (e.g., replace “dangerous electrolyte abnormalities” and “expects further decline overnight without IV rehydration” with neutral, qualitative language such as “significant electrolyte abnormalities and acute kidney injury; clinicians are concerned about deterioration without timely fluids/monitoring”). Avoid “devout” as a value-laden descriptor; use “observant” or “practicing” and present the religious constraint as reported, not asserted as fact."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Clarify key clinical facts that make the dilemma coherent without overdetermining the answer: specify whether oral rehydration is feasible vs limited by vomiting/mental status, and whether any non-IV options exist (e.g., antiemetic, oral/NG, subcutaneous). Remove operational detail unless essential (e.g., “evening shift change”); keep a single forcing mechanism (e.g., “ICU bed must be accepted within the hour”). Tighten by combining overlapping sentences about decline/monitoring."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make each option 10–15 words and parallel in scope, without ‘needed’/‘most’ ambiguity. Example: Choice 1: “Start IV fluids and electrolyte correction now; admit to ICU for monitoring.” Choice 2: “Delay IV therapy until sunset; provide non‑IV comfort care and monitoring.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce the clinical immediacy so deferring IV fluids is not clearly dangerous: e.g., make electrolytes abnormal but not described as \"dangerous\"/\"expected further decline overnight\"; specify he is hemodynamically stable, not severely altered, and sunset is soon (e.g., 1–2 hours). Add a credible countervailing harm of treating now (e.g., strongly documented prior refusal of IV during fasting even in illness, concern about violating deeply held beliefs causing profound distress/erosion of trust for family/community). Balance framing by giving parallel detail for both options’ risks/benefits, avoiding language that implies one is medically mandatory."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Rule out or explicitly close middle options that would dissolve the dilemma: state oral/NG rehydration is not feasible due to persistent vomiting/aspiration risk; clarify that subcutaneous/IM alternatives are inadequate for correction; specify there is no rapid ethics consult/imam chaplain available before sunset; and explain why a brief compromise (e.g., start limited IV now then reassess at sunset) is not feasible (e.g., orders must be placed as either full protocol now vs hold all IV due to nursing/ICU admission workflow). Alternatively, explicitly present the binary as \"treat now despite surrogate objection\" vs \"honor surrogate substituted judgment and wait\" with no partial measures."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, this reads like an emergency where standard practice/legal doctrine allows treatment without consent when delay risks serious harm, making \"treat now\" the guideline-aligned answer. To keep it in a gray zone, revise so it’s not an emergency exception case: describe that delay until sunset is unlikely to cause serious, irreversible harm (but still carries meaningful risk), and that the key uncertainty is whether the children’s request reflects the patient’s prior expressed wishes. Add that institutional policy does not clearly prioritize best-interests over substituted judgment in this situation (or that they conflict), and that both approaches are considered acceptable by local practice."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften language that makes immediate IV clearly medically superior. For example, change “the team expects further decline overnight without IV rehydration” to “there is concern his kidney function and electrolytes could worsen if fluids are delayed, though he is currently hemodynamically stable.” Add a concrete countervailing clinical consideration for immediate IV (e.g., history of heart failure or CKD with risk of fluid overload, need for frequent labs/possible ICU-level monitoring, risk of agitation/restraints with IV access) so neither option reads as the obvious medically correct choice.\nlegally_indeterminate: Clarify the clinical threshold so that *either* acting on best interests now or honoring surrogate substituted judgment to wait a few hours is legally defensible. Add a sentence such as: “He is not in shock and is protecting his airway; the question is whether delaying IV therapy for a few hours is acceptable risk.” Also specify that the children are the legally recognized surrogates (or that the next-of-kin hierarchy applies) and that temporary delay of non-emergent treatment at surrogate request is permitted when the patient lacks capacity, while clinicians may proceed immediately if an emergency develops.\nnon_triviality: Rebalance stakes so waiting until sunset is not obviously reckless. Specify that the electrolyte abnormalities are serious but not yet causing arrhythmia/seizure, vitals are stable, and the remaining time to sunset is a few hours. Offer a feasible interim plan (e.g., aggressive oral rehydration if tolerated, antiemetic orally/IM if acceptable, continuous cardiac monitoring, repeat labs at set intervals) so deferral is a defensible option. Conversely, articulate the ethical/clinical cost of immediate IV beyond ‘breaking the fast’ (e.g., anticipated profound religious/moral distress, long-term loss of trust, patient previously expressed strong views about fasting even when ill, or need for sedation/restraints to place an IV in a confused patient).",
+        "ethical": "interpretive_consensus: Reduce ambiguity about what the surrogate request represents and make the patient’s prior wishes clearer. E.g., add a line like: “His children report that he has repeatedly refused IV fluids during daylight in prior hospitalizations and signed a note in his wallet stating this preference during Ramadan.” Also remove the legal/policy sentence, which can pull graders toward a procedural/legal reading rather than a values conflict.\ndecision_equipoise: Neutralize the clinical one-sidedness that makes immediate IV treatment look obviously correct. Reframe severity so deferring is medically *plausible* but still risky (e.g., ‘borderline low blood pressure, rising creatinine, and moderate electrolyte abnormalities that could worsen overnight’ rather than ‘dangerous’/‘expects further decline’). Add ethical cost to treating now (e.g., patient is agitated and would require restraints/sedation to place/maintain IV; family warns he would experience this as a profound violation). Alternatively, add a middle-ground constraint that forces the binary (e.g., only two protocols available: full IV rehydration now vs no parenteral therapy until sunset), while clarifying that waiting could still be defended (close monitoring, cooling, limited oral sips/antiemetics, frequent labs).",
+        "stylistic": "ethical_neutrality: Remove framing that implies one option is clearly medically mandatory (e.g., replace “dangerous electrolyte abnormalities” and “expects further decline overnight without IV rehydration” with neutral, qualitative language such as “significant electrolyte abnormalities and acute kidney injury; clinicians are concerned about deterioration without timely fluids/monitoring”). Avoid “devout” as a value-laden descriptor; use “observant” or “practicing” and present the religious constraint as reported, not asserted as fact.\nconciseness_coherence: Clarify key clinical facts that make the dilemma coherent without overdetermining the answer: specify whether oral rehydration is feasible vs limited by vomiting/mental status, and whether any non-IV options exist (e.g., antiemetic, oral/NG, subcutaneous). Remove operational detail unless essential (e.g., “evening shift change”); keep a single forcing mechanism (e.g., “ICU bed must be accepted within the hour”). Tighten by combining overlapping sentences about decline/monitoring.\nchoice_brevity: Make each option 10–15 words and parallel in scope, without ‘needed’/‘most’ ambiguity. Example: Choice 1: “Start IV fluids and electrolyte correction now; admit to ICU for monitoring.” Choice 2: “Delay IV therapy until sunset; provide non‑IV comfort care and monitoring.”",
+        "equipoise": "balanced_difficulty: Reduce the clinical immediacy so deferring IV fluids is not clearly dangerous: e.g., make electrolytes abnormal but not described as \"dangerous\"/\"expected further decline overnight\"; specify he is hemodynamically stable, not severely altered, and sunset is soon (e.g., 1–2 hours). Add a credible countervailing harm of treating now (e.g., strongly documented prior refusal of IV during fasting even in illness, concern about violating deeply held beliefs causing profound distress/erosion of trust for family/community). Balance framing by giving parallel detail for both options’ risks/benefits, avoiding language that implies one is medically mandatory.\nexhaustive_binary_options: Rule out or explicitly close middle options that would dissolve the dilemma: state oral/NG rehydration is not feasible due to persistent vomiting/aspiration risk; clarify that subcutaneous/IM alternatives are inadequate for correction; specify there is no rapid ethics consult/imam chaplain available before sunset; and explain why a brief compromise (e.g., start limited IV now then reassess at sunset) is not feasible (e.g., orders must be placed as either full protocol now vs hold all IV due to nursing/ICU admission workflow). Alternatively, explicitly present the binary as \"treat now despite surrogate objection\" vs \"honor surrogate substituted judgment and wait\" with no partial measures.\nno_guideline_override: As written, this reads like an emergency where standard practice/legal doctrine allows treatment without consent when delay risks serious harm, making \"treat now\" the guideline-aligned answer. To keep it in a gray zone, revise so it’s not an emergency exception case: describe that delay until sunset is unlikely to cause serious, irreversible harm (but still carries meaningful risk), and that the key uncertainty is whether the children’s request reflects the patient’s prior expressed wishes. Add that institutional policy does not clearly prioritize best-interests over substituted judgment in this situation (or that they conflict), and that both approaches are considered acceptable by local practice."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:01:43.643260",
+      "data": {
+        "vignette": "A 70-year-old man arrives to the emergency department late afternoon during Ramadan after fasting in hot weather. He has repeated vomiting and weakness. He is dehydrated and intermittently confused but is hemodynamically stable, protecting his airway, and has no arrhythmia on the monitor. Labs show acute kidney injury with significant electrolyte abnormalities that could worsen if fluids are delayed, though a short delay may be tolerated. Oral or nasogastric rehydration is not feasible because he cannot keep liquids down and is at aspiration risk. IM antiemetics and cooling can be given, but they will not correct the electrolyte problem. His adult children are the legally recognized surrogates and report he previously refused IV therapy during daylight in prior admissions; he carries a signed note stating this preference during Ramadan. They warn he would feel violated and may need sedation or restraints to keep an IV in place. An ICU bed must be accepted within the hour, and no chaplain or ethics consult is available before sunset in about 90 minutes; hospital counsel confirms either approach is legally permissible while he remains stable.",
+        "choice_1": "Start IV fluids and electrolyte correction now with ICU admission.",
+        "choice_2": "Wait until sunset for IV therapy, using monitoring and non-IV measures."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:01:54.194785",
+      "data": {
+        "vignette": "A 70-year-old man arrives to the emergency department late afternoon during Ramadan after fasting in hot weather. He has repeated vomiting and weakness. He is dehydrated and intermittently confused but is hemodynamically stable, protecting his airway, and has no arrhythmia on the monitor. Labs show acute kidney injury with significant electrolyte abnormalities that could worsen if fluids are delayed, though a short delay may be tolerated. Oral or nasogastric rehydration is not feasible because he cannot keep liquids down and is at aspiration risk. IM antiemetics and cooling can be given, but they will not correct the electrolyte problem. His adult children are the legally recognized surrogates and report he previously refused IV therapy during daylight in prior admissions; he carries a signed note stating this preference during Ramadan. They warn he would feel violated and may need sedation or restraints to keep an IV in place. An ICU bed must be accepted within the hour, and no chaplain or ethics consult is available before sunset in about 90 minutes; hospital counsel confirms either approach is legally permissible while he remains stable.",
+        "choice_1": {
+          "choice": "Start IV fluids and electrolyte correction now with ICU admission.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Wait until sunset for IV therapy, using monitoring and non-IV measures.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause specifying the estimated clinical risk of waiting 90 minutes (e.g., ‘could progress to life-threatening arrhythmia/seizure if delayed’) versus that monitoring/IM antiemetics make waiting medically reasonable while stable."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:02:58.498044",
+      "data": {
+        "vignette": "A 70-year-old man arrives to the emergency department during Ramadan after fasting in hot weather. He has repeated vomiting, weakness, dehydration, and intermittent confusion. He is hemodynamically stable and has no arrhythmia on the monitor. Labs show acute kidney injury with significant electrolyte abnormalities. Prolonged delay in IV fluids and correction could lead to seizure or a life-threatening arrhythmia, though a short delay may be medically tolerated with close monitoring while he remains stable. Oral or nasogastric rehydration is not feasible because he cannot keep liquids down and is at aspiration risk. IM antiemetics and cooling can be given but will not correct the electrolytes. His adult children are the legally recognized surrogates and report he previously refused IV therapy during daylight; he carries a signed note stating this preference during Ramadan. They warn he may need sedation or restraints to keep an IV in place. An ICU bed must be accepted within the hour, and no chaplain or ethics consult is available before sunset in about 90 minutes; legal counsel confirms either approach is permissible while he remains stable.",
+        "choice_1": {
+          "choice": "Start IV fluids and electrolyte correction now with ICU admission.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Wait until sunset for IV therapy, using monitoring and non-IV measures.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

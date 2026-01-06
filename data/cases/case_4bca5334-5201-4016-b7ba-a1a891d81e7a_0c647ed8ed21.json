@@ -1,0 +1,242 @@
+{
+  "case_id": "4bca5334-5201-4016-b7ba-a1a891d81e7a",
+  "created_at": "2026-01-05T00:24:01.262954",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "A rivalry of care case In their book, The Patient in the Family, Hilde and James Lindemann Nelson describe the case of a man whose daughter is suffering from kidney failure (Lindemann Nelson and Lindemann Nelson, 1995). She is spending six hours, three times a week on a dialysis machine and the effects of this are becoming increasingly hard for her and her family to bear. She has already had one kidney transplant, which her body rejected, and her doctors are unsure whether a second would work but are willing to try if they can find a suitable donor. After some tests the paediatrician privately tells the father that he is compatible and therefore a suitable donor.\nIt may seem inconceivable that a father would refuse to donate his kidney to his daughter under such circumstances. Yet he does refuse and justifies his decision both on the grounds that the success of the transplant is uncertain and also on the basis of his concerns about the implications of the operation itself for him and his family. He is frightened and worried about what would happen to him and his other children if his remaining kidney were to fail. But he is ashamed to feel this way and cannot bear to refuse openly so he asks the paediatrician to tell the family that he is in fact not compatible. However, whilst having some sympathy, she says she cannot lie for him and, after a silence, the father says, ‘OK then I’ll do it. If they knew that I was compatible but wouldn’t donate my kidney, it would wreck the family’.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:24:01.263021",
+      "data": {
+        "vignette": "A 42-year-old father is being evaluated as a living kidney donor for his 12-year-old daughter with end-stage kidney disease. She is exhausted by frequent dialysis and has already lost a prior transplant. Testing shows he is medically compatible. In a private visit, he says he does not want surgery and is afraid of long-term health and work impacts, but he feels trapped. He asks you to tell his family he is not a match. When you refuse, he says he will donate anyway because refusing openly would “destroy the family.” The transplant is tentatively scheduled for next week and the daughter’s team needs a final donor decision within days. Hospital policy and state law permit either proceeding with donation after consent or stopping the donation process if voluntariness is in doubt.",
+        "choice_1": "Clear him for living donation and schedule nephrectomy this week",
+        "choice_2": "Deem him unsuitable and stop the living donor evaluation"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften language that implies the daughter’s condition makes donation the medically obvious choice (e.g., replace “exhausted by frequent dialysis” with “experiencing significant burden from dialysis” and avoid phrasing that could be read as urging donation). Add a brief sentence that both paths are clinically acceptable: e.g., “Continuing dialysis while awaiting another deceased-donor offer is medically appropriate, though burdensome.” Avoid any implication that stopping donation is clinically ‘worse’ rather than ethically motivated."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make the clinician actions precise and mutually exclusive as orders within the donor evaluation process. For example: Choice 1: “Document that donor consent is voluntary, complete final clearance, and proceed with scheduled nephrectomy.” Choice 2: “Document concern for coercion, formally close the donor file as ‘not a candidate’ per protocol, and inform the recipient team only that he is not eligible (without disclosing reasons).” This clarifies what is done and communicated."
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add essential donor-evaluation facts that anchor plausibility and stakes without adding clutter: baseline kidney function normal, no major comorbidities, psychosocial evaluation pending/negative/flagged, and that the donor can confidentially withdraw at any time. Remove potentially extraneous detail (“father” is fine; ‘already lost a prior transplant’ may be kept but tighten). Consider adding whether the family is pressuring him directly or it’s internal fear—this affects ethical stakes. Keep the timeline sentence but avoid extra emotive descriptors."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Clarify realistic transplant-process details: living donor nephrectomy would not be scheduled “this week” unless evaluation is complete; adjust to “proceed with the planned surgery next week” or state that he has already completed medical workup and is awaiting final psychosocial/consent clearance. Add that transplant programs routinely protect donor confidentiality and may label donors ‘medically unsuitable’ to allow face-saving withdrawal—this makes Choice 2 operationally plausible."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 1 risks being clinically/ethically indefensible because he explicitly states he does not want surgery and requests deception; proceeding could be seen as non-voluntary consent. To make both options defensible, modify the disclosure so voluntariness is ambiguous rather than clearly absent: e.g., he expresses fear and pressure, asks about a ‘medical out,’ but when counseled privately he states he still wishes to proceed if confidentiality can be protected. Alternatively, specify that after counseling and a cooling-off period he reaffirms willingness but still requests you tell family he is not a match. Then the dilemma becomes whether to accept consent that may be influenced by family dynamics vs stopping to protect him from coercion and preserve program integrity."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the case so proceeding is not obviously unethical/against standard transplant practice when voluntariness is clearly lacking. Edit the father's statement to be ambivalent rather than explicit refusal (e.g., change “I do not want surgery” to “I want to help her, but I’m terrified and unsure I can go through with it; I wish I could withdraw without blame”). Add a brief note that an independent living-donor advocate/psychosocial team has evaluated him and finds no clear evidence of threats or incapacity, only strong family pressure, making consent plausibly voluntary after counseling. Clarify the concrete moral cost of stopping: likely prolonged dialysis with worsening symptoms and limited alternative options in the near term, plus high likelihood of family rupture and the father’s lasting guilt. Clarify the moral cost of proceeding: real risk of later regret/psychological harm and concern that family pressure is functioning as coercion. Keep both options framed as defensible clinical-ethical judgments rather than one being mandated by policy."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove emotionally loaded framing and family-role cues. Examples: change “exhausted by frequent dialysis” to “undergoing thrice-weekly dialysis with significant symptom burden”; change “feels trapped” to “reports feeling pressured”; replace “destroy the family” with “cause significant family conflict.” Avoid labeling him as “father” unless clinically necessary."
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Recast into a clinician-facing note style without second-person narration. Replace “In a private visit, he says…” with “During the independent living donor advocate interview, he reports…”. Replace “When you refuse” with “When informed the team cannot misrepresent compatibility…”. Specify standard elements: capacity assessment, independent donor advocate involvement, and voluntariness evaluation."
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the decision point. Remove implied moral judgment (“when you refuse”) and explicitly state the immediate task: whether to medically clear and list him as donor versus terminate evaluation due to concern for coercion. Clarify who has authority to stop evaluation (donor team) and that results can be reported as “not cleared” per policy without stating incompatibility."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make choices symmetric, neutral, and avoid embedding timing/implementation details unless essential. Example revisions: (1) “Approve him as donor and proceed with planned living nephrectomy.” (2) “Decline donor clearance and close the living donor evaluation.” If deception is the crux, state it explicitly but briefly: “Report him as ‘not cleared’ without disclosing his stated reluctance.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 is strongly favored: the donor explicitly states he does not want surgery, feels trapped, and would donate only to avoid family consequences—this makes voluntariness highly doubtful and renders proceeding clinically/ethically non-defensible in most transplant programs. To restore equipoise, revise facts so both paths are defensible, e.g.: (1) donor expresses ambivalence but also independently endorsed reasons to donate; (2) reports family pressure but denies threats and, after repeated counseling with an independent living-donor advocate, can articulate a stable, voluntary choice; (3) he requests a confidentiality-preserving ‘medical out’ primarily to avoid family conflict rather than because he refuses donation. Also give real moral costs to stopping (e.g., daughter’s access to deceased donor is limited, dialysis complications worsening, and father may experience severe guilt/relationship rupture) and real moral costs to proceeding (e.g., residual concern about subtle coercion, psychosocial risk, potential regret, and institutional integrity)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "The binary is not exhaustive because there are obvious intermediate/standard options: pause the process, refer to independent donor advocate/psychosocial evaluation, hold a cooling-off period, or proceed only after additional consent sessions; also you could provide a non-specific ‘not a donor candidate’ statement without definitively labeling him unsuitable. To make the binary exhaustive, explicitly constrain alternatives, e.g.: ‘He has already completed the independent donor advocate and psychosocial evaluation twice; the next available re-evaluation slot is months away and the recipient surgery block/paired-donation chain will be lost if not decided in 48 hours; policy requires either final approval today or closure of the file.’ Then frame choices as “approve now” vs “close evaluation now,” with no ability to defer."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Living donor standards and common transplant ethics norms require free, informed, uncoerced consent; explicit statements like ‘I do not want surgery’ and ‘I feel trapped’ typically mandate stopping or at least deferring donation rather than proceeding. This creates a guideline/professional-standards override that makes Choice 1 effectively non-viable. To fix, rewrite so guidelines do not clearly dictate the outcome: make voluntariness genuinely ambiguous (e.g., donor initially asked for a ‘not a match’ cover story but later, in repeated private interviews, affirms he does want to donate and meets psychosocial criteria; the concern is primarily about confidentiality vs transparency and family dynamics). Add a line explaining why policy is permissive/unclear in this edge case (e.g., differing interpretations of what constitutes undue influence when donor ultimately reaffirms consent)."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften language that implies the daughter’s condition makes donation the medically obvious choice (e.g., replace “exhausted by frequent dialysis” with “experiencing significant burden from dialysis” and avoid phrasing that could be read as urging donation). Add a brief sentence that both paths are clinically acceptable: e.g., “Continuing dialysis while awaiting another deceased-donor offer is medically appropriate, though burdensome.” Avoid any implication that stopping donation is clinically ‘worse’ rather than ethically motivated.\ndistinctness_actionability: Make the clinician actions precise and mutually exclusive as orders within the donor evaluation process. For example: Choice 1: “Document that donor consent is voluntary, complete final clearance, and proceed with scheduled nephrectomy.” Choice 2: “Document concern for coercion, formally close the donor file as ‘not a candidate’ per protocol, and inform the recipient team only that he is not eligible (without disclosing reasons).” This clarifies what is done and communicated.\nkey_information: Add essential donor-evaluation facts that anchor plausibility and stakes without adding clutter: baseline kidney function normal, no major comorbidities, psychosocial evaluation pending/negative/flagged, and that the donor can confidentially withdraw at any time. Remove potentially extraneous detail (“father” is fine; ‘already lost a prior transplant’ may be kept but tighten). Consider adding whether the family is pressuring him directly or it’s internal fear—this affects ethical stakes. Keep the timeline sentence but avoid extra emotive descriptors.\nclinical_plausibility: Clarify realistic transplant-process details: living donor nephrectomy would not be scheduled “this week” unless evaluation is complete; adjust to “proceed with the planned surgery next week” or state that he has already completed medical workup and is awaiting final psychosocial/consent clearance. Add that transplant programs routinely protect donor confidentiality and may label donors ‘medically unsuitable’ to allow face-saving withdrawal—this makes Choice 2 operationally plausible.\nnon_triviality: As written, Choice 1 risks being clinically/ethically indefensible because he explicitly states he does not want surgery and requests deception; proceeding could be seen as non-voluntary consent. To make both options defensible, modify the disclosure so voluntariness is ambiguous rather than clearly absent: e.g., he expresses fear and pressure, asks about a ‘medical out,’ but when counseled privately he states he still wishes to proceed if confidentiality can be protected. Alternatively, specify that after counseling and a cooling-off period he reaffirms willingness but still requests you tell family he is not a match. Then the dilemma becomes whether to accept consent that may be influenced by family dynamics vs stopping to protect him from coercion and preserve program integrity.",
+        "ethical": "decision_equipoise: Rebalance the case so proceeding is not obviously unethical/against standard transplant practice when voluntariness is clearly lacking. Edit the father's statement to be ambivalent rather than explicit refusal (e.g., change “I do not want surgery” to “I want to help her, but I’m terrified and unsure I can go through with it; I wish I could withdraw without blame”). Add a brief note that an independent living-donor advocate/psychosocial team has evaluated him and finds no clear evidence of threats or incapacity, only strong family pressure, making consent plausibly voluntary after counseling. Clarify the concrete moral cost of stopping: likely prolonged dialysis with worsening symptoms and limited alternative options in the near term, plus high likelihood of family rupture and the father’s lasting guilt. Clarify the moral cost of proceeding: real risk of later regret/psychological harm and concern that family pressure is functioning as coercion. Keep both options framed as defensible clinical-ethical judgments rather than one being mandated by policy.",
+        "stylistic": "ethical_neutrality: Remove emotionally loaded framing and family-role cues. Examples: change “exhausted by frequent dialysis” to “undergoing thrice-weekly dialysis with significant symptom burden”; change “feels trapped” to “reports feeling pressured”; replace “destroy the family” with “cause significant family conflict.” Avoid labeling him as “father” unless clinically necessary.\nmedical_professionalism: Recast into a clinician-facing note style without second-person narration. Replace “In a private visit, he says…” with “During the independent living donor advocate interview, he reports…”. Replace “When you refuse” with “When informed the team cannot misrepresent compatibility…”. Specify standard elements: capacity assessment, independent donor advocate involvement, and voluntariness evaluation.\nconciseness_coherence: Tighten and clarify the decision point. Remove implied moral judgment (“when you refuse”) and explicitly state the immediate task: whether to medically clear and list him as donor versus terminate evaluation due to concern for coercion. Clarify who has authority to stop evaluation (donor team) and that results can be reported as “not cleared” per policy without stating incompatibility.\nchoice_brevity: Make choices symmetric, neutral, and avoid embedding timing/implementation details unless essential. Example revisions: (1) “Approve him as donor and proceed with planned living nephrectomy.” (2) “Decline donor clearance and close the living donor evaluation.” If deception is the crux, state it explicitly but briefly: “Report him as ‘not cleared’ without disclosing his stated reluctance.”",
+        "equipoise": "balanced_difficulty: As written, Choice 2 is strongly favored: the donor explicitly states he does not want surgery, feels trapped, and would donate only to avoid family consequences—this makes voluntariness highly doubtful and renders proceeding clinically/ethically non-defensible in most transplant programs. To restore equipoise, revise facts so both paths are defensible, e.g.: (1) donor expresses ambivalence but also independently endorsed reasons to donate; (2) reports family pressure but denies threats and, after repeated counseling with an independent living-donor advocate, can articulate a stable, voluntary choice; (3) he requests a confidentiality-preserving ‘medical out’ primarily to avoid family conflict rather than because he refuses donation. Also give real moral costs to stopping (e.g., daughter’s access to deceased donor is limited, dialysis complications worsening, and father may experience severe guilt/relationship rupture) and real moral costs to proceeding (e.g., residual concern about subtle coercion, psychosocial risk, potential regret, and institutional integrity).\nexhaustive_binary_options: The binary is not exhaustive because there are obvious intermediate/standard options: pause the process, refer to independent donor advocate/psychosocial evaluation, hold a cooling-off period, or proceed only after additional consent sessions; also you could provide a non-specific ‘not a donor candidate’ statement without definitively labeling him unsuitable. To make the binary exhaustive, explicitly constrain alternatives, e.g.: ‘He has already completed the independent donor advocate and psychosocial evaluation twice; the next available re-evaluation slot is months away and the recipient surgery block/paired-donation chain will be lost if not decided in 48 hours; policy requires either final approval today or closure of the file.’ Then frame choices as “approve now” vs “close evaluation now,” with no ability to defer.\nno_guideline_override: Living donor standards and common transplant ethics norms require free, informed, uncoerced consent; explicit statements like ‘I do not want surgery’ and ‘I feel trapped’ typically mandate stopping or at least deferring donation rather than proceeding. This creates a guideline/professional-standards override that makes Choice 1 effectively non-viable. To fix, rewrite so guidelines do not clearly dictate the outcome: make voluntariness genuinely ambiguous (e.g., donor initially asked for a ‘not a match’ cover story but later, in repeated private interviews, affirms he does want to donate and meets psychosocial criteria; the concern is primarily about confidentiality vs transparency and family dynamics). Add a line explaining why policy is permissive/unclear in this edge case (e.g., differing interpretations of what constitutes undue influence when donor ultimately reaffirms consent)."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:25:42.318766",
+      "data": {
+        "vignette": "A 42-year-old man is completing evaluation as a living kidney donor for his 12-year-old daughter with end-stage kidney disease. She has a failed prior transplant and is back on thrice-weekly dialysis with significant symptom burden. Continuing dialysis while awaiting another deceased-donor offer is medically appropriate, but the timing is uncertain. His medical workup is complete. Kidney function is normal and he has no major comorbidities. In two private meetings with the independent living-donor advocate, he reports strong family expectations and fear about surgery and missed work. He also says he wants to help his daughter and can describe the risks and alternatives. He asks the team to tell his family he is “not a match” if he withdraws. He is told the team cannot misstate compatibility, but can report only that he is “not cleared.” The transplant is scheduled for next week. Per program policy, the donor team must either give final clearance within 48 hours or close the file, and the next re-evaluation slot is months away. Hospital policy and state law permit either course in this situation.",
+        "choice_1": "Approve him as donor and proceed with planned nephrectomy next week",
+        "choice_2": "Decline donor clearance and close the living-donor evaluation as not cleared"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:26:06.419413",
+      "data": {
+        "vignette": "A 42-year-old man is completing evaluation as a living kidney donor for his 12-year-old daughter with end-stage kidney disease. She has a failed prior transplant and is back on thrice-weekly dialysis with significant symptom burden. Continuing dialysis while awaiting another deceased-donor offer is medically appropriate, but the timing is uncertain. His medical workup is complete. Kidney function is normal and he has no major comorbidities. In two private meetings with the independent living-donor advocate, he reports strong family expectations and fear about surgery and missed work. He also says he wants to help his daughter and can describe the risks and alternatives. He asks the team to tell his family he is “not a match” if he withdraws. He is told the team cannot misstate compatibility, but can report only that he is “not cleared.” The transplant is scheduled for next week. Per program policy, the donor team must either give final clearance within 48 hours or close the file, and the next re-evaluation slot is months away. Hospital policy and state law permit either course in this situation.",
+        "choice_1": {
+          "choice": "Approve him as donor and proceed with planned nephrectomy next week",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Decline donor clearance and close the living-donor evaluation as not cleared",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that in the private meeting he explicitly asks to withdraw/stop the donation process despite family pressure (e.g., \"he privately requests to withdraw\")."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause specifying whether beneficence is being judged primarily toward the donor, the recipient child, or both (e.g., 'the team prioritizes the donor’s welfare as an independent patient' or 'the primary beneficence target is the child’s health outcome')."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause clarifying the key harm tradeoff (e.g., specify that he has decided he wants to withdraw due to fear/pressure, or alternatively that delaying transplant would likely cause the child a concrete near-term harm such as recurrent line infections/hospitalizations)."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause explicitly linking the 48-hour policy to scarce system resources (e.g., OR time/bed allocation and waitlist equity) and another noting that proceeding would consume a pediatric transplant slot that could go to another candidate."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:27:20.434758",
+      "data": {
+        "vignette": "A 42-year-old man is completing evaluation as a living kidney donor for his 12-year-old daughter with end-stage kidney disease. She has a failed prior transplant and is back on thrice-weekly dialysis with significant symptom burden and recent catheter-related hospitalizations. Continuing dialysis while awaiting another deceased-donor offer is medically appropriate, but the timing is uncertain. His medical workup is complete. Kidney function is normal and he has no major comorbidities. In two private meetings with the independent living-donor advocate, he reports strong family expectations and fear about surgery and missed work. He can describe the risks and alternatives, but he privately requests to withdraw from donation. He asks the team to tell his family he is “not a match” if he withdraws. He is told the team cannot misstate compatibility, but can report only that he is “not cleared.” The transplant is scheduled for next week. The team is asked to prioritize the donor’s welfare as an independent patient while weighing the child’s need for timely transplant. Per program policy, the donor team must either give final clearance within 48 hours or close the file to protect scarce OR time, beds, and waitlist equity. Proceeding would use a pediatric transplant slot that could otherwise go to another candidate.",
+        "choice_1": {
+          "choice": "Approve him as donor and proceed with planned nephrectomy next week",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Decline donor clearance and close the living-donor evaluation as not cleared",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

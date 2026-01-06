@@ -1,0 +1,279 @@
+{
+  "case_id": "6b694948-03fb-4791-9706-76f585e1d46c",
+  "created_at": "2026-01-04T23:45:10.101682",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "29. A patient of yours has gone to the hospital to obtain a copy of her medical record for her own review. The hospital refuses to release them to her on the grounds that she must provide an adequate reason for wishing to see the records. She has come to see you to ask if this is true and how can she get her records.\nWhat should you tell her?\na. You, as the physician, can get the records for yourself to view, but she cannot.\nb. The hospital will give her the records as long as you ask.\nc. She has the right to have her own records as long as she has a legitimate reason.\nd. She has the right to her own records even without giving a reason.\ne. Only another physician, hospital, or insurance company can have free access to her records.",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:45:10.101706",
+      "data": {
+        "vignette": "A 34-year-old woman you treat for severe depression was discharged last week after a suicide attempt. She comes to clinic angry that the hospital refused to give her a copy of her full medical record unless she “explains why.” She says she needs the record today for an urgent appointment with a new therapist and for her own review. You know the chart contains detailed notes about her attempt, concerns about possible intimate partner violence, and several blunt staff comments she has previously found shaming. She insists she can handle reading everything and threatens to file a complaint if you “block” her. You worry that immediate, unfiltered access could trigger worsening suicidality or conflict at home, but delaying access could undermine trust and limit her ability to coordinate care. Hospital policy and state law allow either direct release or a temporary limitation when serious harm is a credible concern.",
+        "choice_1": "Help her obtain her complete record immediately, including narrative notes",
+        "choice_2": "Request a temporary limitation and offer a clinician-prepared summary for now"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Revise the record-access mechanics to match typical HIPAA/clinic workflows. Replace “the hospital refused to give her a copy…unless she explains why” with a realistic barrier (e.g., ‘medical records office says full chart release will take several days unless you authorize expedited portal release today’ or ‘she is requesting immediate portal access and you can choose to release now vs delay under the harm exception’). Clarify that she is currently medically stable, not intoxicated/psychotic, and has decision-making capacity at this visit. Briefly specify that the ‘temporary limitation’ is permitted under an applicable patient-access harm exception with an internal review process."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the options so neither is the obvious ethical default. Add facts that make immediate release plausibly necessary (e.g., the new therapist requires the full discharge summary and medication list today to continue treatment; without it, care may be interrupted), and also facts that make the risk of harm from unfiltered notes credible but not certain (e.g., she is still emotionally labile, has had recent passive suicidal thoughts, lives with the partner referenced in the notes, and previously reacted strongly to judgmental documentation). Clarify that a ‘temporary limitation’ would take time and could materially delay access beyond today’s appointment, and that a clinician-prepared summary may omit information the patient considers important or could be perceived as censoring, undermining trust."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or neutralize emotionally charged descriptors and adversarial framing. For example: change “comes to clinic angry” to “returns to clinic dissatisfied”; change “threatens to file a complaint if you ‘block’ her” to “states she will file a complaint if access is delayed”; replace “blunt staff comments she has previously found shaming” with “staff comments she previously reported as distressing.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten by removing nonessential quotation marks and redundant phrases, and clarify the specific legal/policy threshold. For example, replace “unless she ‘explains why’” with “without stating a purpose,” and specify “temporary limitation is permitted when release is reasonably likely to cause substantial harm to the patient or another person.”"
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": false,
+          "suggested_changes": "Reduce use of high-trigger terms and keep risk language clinical. Replace “suicide attempt” and “worsening suicidality” with “recent self-harm with intent to die” (used once) and “worsening self-harm risk.” Avoid repeating the term across sentences."
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both choices parallel, action-only, and ~10–15 words without extra qualifiers. Example revisions: \n- Choice 1: “Release the complete record today, including narrative and collateral notes.” \n- Choice 2: “Place a temporary limitation; provide a clinician-prepared summary today.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close the obvious middle-ground options or explicitly incorporate them into one of the two choices. For example: (a) state that the patient refuses release directly to the new therapist and refuses staged/partial release or supervised in-office review; (b) clarify that the record must be released either in full today or not at all due to the hospital portal/process (no redaction mechanism available on short notice); and (c) make Choice 2 explicitly include a defined, short time window (e.g., 48–72 hours) with a plan to reassess and then release the full record, so it competes with Choice 1 rather than feeling like an indefinite delay."
+        },
+        "no_guideline_override": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "clinical_plausibility: Revise the record-access mechanics to match typical HIPAA/clinic workflows. Replace “the hospital refused to give her a copy…unless she explains why” with a realistic barrier (e.g., ‘medical records office says full chart release will take several days unless you authorize expedited portal release today’ or ‘she is requesting immediate portal access and you can choose to release now vs delay under the harm exception’). Clarify that she is currently medically stable, not intoxicated/psychotic, and has decision-making capacity at this visit. Briefly specify that the ‘temporary limitation’ is permitted under an applicable patient-access harm exception with an internal review process.",
+        "ethical": "decision_equipoise: Rebalance the options so neither is the obvious ethical default. Add facts that make immediate release plausibly necessary (e.g., the new therapist requires the full discharge summary and medication list today to continue treatment; without it, care may be interrupted), and also facts that make the risk of harm from unfiltered notes credible but not certain (e.g., she is still emotionally labile, has had recent passive suicidal thoughts, lives with the partner referenced in the notes, and previously reacted strongly to judgmental documentation). Clarify that a ‘temporary limitation’ would take time and could materially delay access beyond today’s appointment, and that a clinician-prepared summary may omit information the patient considers important or could be perceived as censoring, undermining trust.",
+        "stylistic": "ethical_neutrality: Remove or neutralize emotionally charged descriptors and adversarial framing. For example: change “comes to clinic angry” to “returns to clinic dissatisfied”; change “threatens to file a complaint if you ‘block’ her” to “states she will file a complaint if access is delayed”; replace “blunt staff comments she has previously found shaming” with “staff comments she previously reported as distressing.”\nconciseness_coherence: Tighten by removing nonessential quotation marks and redundant phrases, and clarify the specific legal/policy threshold. For example, replace “unless she ‘explains why’” with “without stating a purpose,” and specify “temporary limitation is permitted when release is reasonably likely to cause substantial harm to the patient or another person.”\nsafety_compliance: Reduce use of high-trigger terms and keep risk language clinical. Replace “suicide attempt” and “worsening suicidality” with “recent self-harm with intent to die” (used once) and “worsening self-harm risk.” Avoid repeating the term across sentences.\nchoice_brevity: Make both choices parallel, action-only, and ~10–15 words without extra qualifiers. Example revisions: \n- Choice 1: “Release the complete record today, including narrative and collateral notes.” \n- Choice 2: “Place a temporary limitation; provide a clinician-prepared summary today.”",
+        "equipoise": "exhaustive_binary_options: Close the obvious middle-ground options or explicitly incorporate them into one of the two choices. For example: (a) state that the patient refuses release directly to the new therapist and refuses staged/partial release or supervised in-office review; (b) clarify that the record must be released either in full today or not at all due to the hospital portal/process (no redaction mechanism available on short notice); and (c) make Choice 2 explicitly include a defined, short time window (e.g., 48–72 hours) with a plan to reassess and then release the full record, so it competes with Choice 1 rather than feeling like an indefinite delay."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:46:04.910756",
+      "data": {
+        "vignette": "A 34-year-old woman you treat for severe depression returns one week after an inpatient stay for recent self-harm with intent to die. She is calm, not intoxicated or psychotic, and demonstrates decision-making capacity. She requests immediate online access today to her full hospital chart for a same-day intake with a new therapist who will not prescribe or assume care without the discharge summary, medication changes, and inpatient notes. The chart includes detailed descriptions of the event, documentation of possible intimate partner violence, and staff comments she previously reported as distressing. She currently denies a plan but reports intermittent passive thoughts and is emotionally labile. She lives with the partner referenced in the notes and says she will review the record at home. You worry unfiltered notes could increase distress or create conflict at home, but delaying access could interrupt treatment and damage trust. Hospital policy and state law permit either immediate release or a short “harm-exception” delay with internal review when release is reasonably likely to cause substantial harm.",
+        "choice_1": "Release the complete record today, including narrative and collateral notes.",
+        "choice_2": "Initiate a 72-hour harm-exception delay and provide a clinician summary today."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:46:16.527600",
+      "data": {
+        "vignette": "A 34-year-old woman you treat for severe depression returns one week after an inpatient stay for recent self-harm with intent to die. She is calm, not intoxicated or psychotic, and demonstrates decision-making capacity. She requests immediate online access today to her full hospital chart for a same-day intake with a new therapist who will not prescribe or assume care without the discharge summary, medication changes, and inpatient notes. The chart includes detailed descriptions of the event, documentation of possible intimate partner violence, and staff comments she previously reported as distressing. She currently denies a plan but reports intermittent passive thoughts and is emotionally labile. She lives with the partner referenced in the notes and says she will review the record at home. You worry unfiltered notes could increase distress or create conflict at home, but delaying access could interrupt treatment and damage trust. Hospital policy and state law permit either immediate release or a short “harm-exception” delay with internal review when release is reasonably likely to cause substantial harm.",
+        "choice_1": {
+          "choice": "Release the complete record today, including narrative and collateral notes.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Initiate a 72-hour harm-exception delay and provide a clinician summary today.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Make the beneficence tradeoff explicit by adding one clause to each option: for Choice 1, note that immediate full access is expected to speed initiation of therapy/med adherence; for Choice 2, note that the 72-hour delay could postpone or jeopardize the same-day intake/continuity of care despite the provided summary."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause making the fairness/system impact explicit (e.g., that same-day portal release is the standard policy for all patients and that invoking the 72‑hour harm-exception triggers a limited internal review process that must be applied consistently across patients)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:47:09.773357",
+      "data": {
+        "vignette": "A 34-year-old woman you treat for severe depression returns one week after an inpatient stay for recent self-harm with intent to die. She is calm, not intoxicated or psychotic, and demonstrates decision-making capacity. She requests immediate online access today to her full hospital chart for a same-day intake with a new therapist who will not prescribe or assume care without the discharge summary, medication changes, and inpatient notes. She says full access will help her start treatment and follow the updated plan. The chart includes detailed descriptions of the event, documentation of possible intimate partner violence, and staff comments she previously reported as distressing. She currently denies a plan but reports intermittent passive thoughts and is emotionally labile. She lives with the partner referenced in the notes and will review the record at home. Same-day portal release is the standard for all patients. You worry unfiltered notes could increase distress or trigger conflict at home. You also worry a 72-hour delay could jeopardize the intake despite a clinician summary and create unequal access if used inconsistently. Policy and state law permit either immediate release or a short harm-exception delay with internal review when release is reasonably likely to cause substantial harm.",
+        "choice_1": {
+          "choice": "Release the complete record today, including narrative and collateral notes.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Initiate a 72-hour harm-exception delay and provide a clinician summary today.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 4,
+      "step_description": "sheets_edit",
+      "timestamp": "2026-01-05T20:54:48.192858",
+      "data": {
+        "vignette": "A 34-year-old woman you treat for severe depression returns one week after an inpatient stay for recent self-harm with intent to die. She is calm, not intoxicated or psychotic, and demonstrates decision-making capacity. She requests immediate online access today to her full hospital chart for a same-day intake with a new therapist who will not prescribe or assume care without the discharge summary, medication changes, and inpatient notes. She says full access will help her start treatment and follow the updated plan. The chart includes detailed descriptions of the event, documentation of possible intimate partner violence, and staff comments she previously reported as distressing. She currently denies a plan but reports intermittent passive thoughts and is emotionally labile. She lives with the partner referenced in the notes and will review the record at home. Same-day portal release is the standard for all patients. You worry unfiltered notes could increase distress or trigger conflict at home. You also worry a 72-hour delay could jeopardize the intake despite a clinician summary and create unequal access if used inconsistently. Policy and state law permit either immediate release or a short harm-exception delay with internal review when release is reasonably likely to cause substantial harm.",
+        "choice_1": {
+          "choice": "Release the complete record today, including narrative and collateral notes.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Initiate a 72-hour harm-exception delay and provide a clinician summary today.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": {
+        "source": "google_sheets",
+        "import_timestamp": "2026-01-05T20:54:48.192853",
+        "reviewers": {
+          "r1": {
+            "name": "Payal Chandak",
+            "decision": "Reject"
+          }
+        }
+      }
+    }
+  ],
+  "status": "deprecated"
+}

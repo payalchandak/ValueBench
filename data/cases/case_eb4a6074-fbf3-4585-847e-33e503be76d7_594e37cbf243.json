@@ -1,0 +1,242 @@
+{
+  "case_id": "eb4a6074-fbf3-4585-847e-33e503be76d7",
+  "created_at": "2026-01-04T23:11:36.366432",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "The Benefits and Harms of High-Risk Chemotherapy\nJoe Cavanaugh, a 58-year-old professor of economics, was diagnosed\nwith chronic myelogenous leukemia (CML) several months ago. Though\nthis particular type of leukemia is somewhat less responsive to chemo-\ntherapy, Dr. Cavanaugh responded well to a course of chemotherapy\nthat he took orally shortly after his diagnosis. Dr. Cavanaugh’s last blood\ncount indicated that his white blood count was greatly reduced. During\nthe course of his chemotherapy, Dr. Cavanaugh had become close to\nHeather Eyberg, Pharm.D., the clinical pharmacist in the cancer treat-\nment center.\nAfter a follow-up visit with the oncologist, Dr. Cavanaugh stopped by\nDr. Eyberg’s office. Dr. Cavanaugh said, “The doctor has suggested several\npossibilities regarding my treatment. I trust you, and I would appreciate\nyour opinion on my options. The doctor said that now that I have finished\ntaking the oral chemotherapy, I could start interferon alpha or, if I want to\nbe “cured,” I should think about a stem cell transplant. The type of leuke-\nmia I have can rapidly change from this chronic phase into acute leukemia.\nIf that happens, it is unlikely that anything would help, and I would not\nhave long to live. The doctor wants me to think about a stem cell transplant.\nHe said I could remain in this holding pattern for years, but there is no\nway of knowing. Or I could have high-dose chemotherapy and stem cell\ntransplant. What do you think?”\nDr. Eyberg respects Dr. Cavanaugh and his capacity to understand the\nrisks and benefits involved in stem cell transplantation. She knows that al-\nlogenic hematopoietic stem cell transplantation (HSCT) is the only therapy\nproven to cure CML. If Dr. Cavanaugh has a sibling that is a match and has\nthe HSCT within the first year of his diagnosis, he has a better five-year\nsurvival rate than those who undergo HSCT after the first year of diagnosis.\nSo time is of the essence. The two options presented to Dr. Cavanaugh are\nessentially: watch, wait, take the interferon alpha and hope that the disease\nnever progresses or take a chance on HSCT now. The risks of HSCT are sub-\nstantial. The possibility of infection and other complications is very high.\nIt is not inconceivable that Dr. Cavanaugh could die from the HSCT itself.\nSince Dr. Eyberg is part of the cancer treatment team, she is unsure of\nwhere her moral commitment should lie. Should she counsel Dr. Cavanaugh\nto choose the least harmful course of therapy? The conservative route would\nprobably be to watch and wait and take the interferon alpha. Yet, if the\ndisease progresses to acute leukemia, there is little anyone could do to\nhelp Dr. Cavanaugh. However, Dr. Cavanaugh could be in the percentage\nof patients who never progress to this fatal phase of the disease. Even if he\neventually did change to the fatal phase, Dr. Cavanaugh might have many\ngood years with his wife and children until then.\n_ Dr. Eyberg could also counsel Dr. Cavanaugh to choose that option\nthat maximizes the benefit for him. It is hard in this situation to determine\nwhich course of action will do the most good in the long run. Clearly, HSCT\nholds greater risk in the short run but offers the potential for a cure of\nDr. Cavanaugh’s leukemia in the long run.\nFinally, Dr. Eyberg is troubled by the memory of another patient witha\nsimilar diagnosis who recently chose the option of HSCT and did not sur-\nvive the procedure. Given all of these considerations, Dr. Eyberg is not\nsure where to begin.",
+      "value_1": "Beneficence",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:11:36.366482",
+      "data": {
+        "vignette": "A 58-year-old man with chronic myelogenous leukemia had a good initial response to oral therapy. He is currently stable and working, with mild fatigue. His oncologist explains that his disease can remain controlled for a long time, but it can also shift unpredictably into an aggressive phase when treatment options become limited. A matched sibling donor appears likely, and the transplant team can schedule conditioning soon. The oncologist also reviews that an allogeneic stem cell transplant offers the best chance of long-term remission but requires high-dose chemotherapy and carries a real risk of severe infection, graft complications, prolonged disability, or death from the procedure itself. If the oncologist delays, the patient may keep good quality of life on medical therapy, but he could lose the earlier opportunity for transplant if his condition worsens. A decision is needed this week to reserve the transplant slot and begin donor workup.",
+        "choice_1": "Proceed with allogeneic stem cell transplant now",
+        "choice_2": "Continue medical therapy and defer transplant with close monitoring"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove language that declares transplant medically superior (e.g., change “offers the best chance of long-term remission” to “offers a possibility of deep, durable remission for some patients but involves substantial upfront risk,” and add that ongoing oral therapy can often control disease long-term but may not be curative). Rephrase prognostic statements to avoid implying a clinically ‘correct’ choice."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "As written, a stable CML patient with a good response to oral therapy is typically not offered upfront allogeneic transplant because risks often outweigh benefits. To make both options medically plausible, add clinical details that make transplant a realistic consideration now (e.g., TKI intolerance or resistance, rising BCR-ABL despite adherence, high-risk cytogenetics/mutations such as T315I with limited options, progression to accelerated phase, or recurrent severe side effects limiting continued TKI use). Clarify that transplant is being considered because standard medical options are becoming constrained, not despite good control."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Revise the clinical context so neither option is obviously inferior: (1) add reasons continuing oral therapy has meaningful downside (e.g., evidence of impending progression or diminishing response; limited remaining TKIs), and (2) temper any phrasing that makes transplant clearly ‘best.’ Option 1 should be a reasonable, guideline-consistent path for this specific patient, while option 2 remains defensible due to transplant morbidity/mortality and current functional stability."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the tension explicitly value-based rather than primarily prognostic/clinical optimization. Add a short line that the patient prioritizes maintaining current function/avoiding hospitalization (and is risk-averse), while the oncologist worries about losing a potentially curative window and feels a duty to recommend the more aggressive path. Rephrase the medical claims so neither option sounds medically ‘correct’ (e.g., replace “offers the best chance of long-term remission” with “offers a chance at durable remission for some patients but with substantial upfront risk,” and add that continued oral therapy “often controls disease for years but is not reliably curative and may fail abruptly”)."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Reduce framing that pre-labels one option as superior (e.g., “best chance”) because minor wording tweaks would flip the ethical pull. Use parallel, symmetric language for both options: each should clearly include one major benefit and one major moral cost. Add one stable constraint that anchors the dilemma (e.g., transplant slot/donor availability expiring; patient may lose eligibility if organ function declines), while also stating that proceeding now could cause long-term harm that cannot be undone (e.g., chronic GVHD/disability)."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Improve clinical plausibility so graders don’t disagree about whether this is simply nonstandard care. In chronic-phase CML with good response, early allogeneic transplant is generally not routine; revise to a scenario where both paths are genuinely debated: e.g., CML with inadequate response/intolerance to multiple TKIs, high-risk mutation, or rising counts suggesting impending progression but still transplant-eligible. Clarify that both the transplant team and oncologist consider either path acceptable, and that the controversy is about timing/risk tolerance rather than factual effectiveness."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Remove the implication that transplant is the medically preferred/default option and ensure each choice has credible ethical upsides and downsides. Concretely: (1) state that continuing medical therapy is a widely accepted standard approach in his current state and could preserve quality of life, but risks sudden loss of control and missed eligibility; (2) state that transplant now could avert future progression and may offer durable control, but carries substantial immediate mortality/morbidity risk and potential permanent disability. Adjust disease status (as above) so transplant is reasonable but not mandated by guidelines."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Replace comparative/superlative language that implies a medically ‘correct’ option. For example, change “offers the best chance of long-term remission” to “may offer a greater chance of durable remission for some patients,” and add a parallel sentence that continued TKI therapy can also provide long-term disease control for selected patients. Avoid framing delay as ‘losing’ an opportunity; rephrase to “eligibility for transplant could change if his condition or comorbidities evolve.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Adjust both options to be neutral, complete action statements of ~10–15 words each, without extra rationale. Example:\n- Choice 1: “Start donor workup and proceed with allogeneic transplant during current stable phase.”\n- Choice 2: “Continue tyrosine kinase inhibitor therapy and reassess transplant candidacy at scheduled intervals.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Make both options comparably defensible by removing language that frames transplant as clearly superior (e.g., change “offers the best chance of long-term remission” to “offers a possibility of deeper, treatment-free remission for some patients but with substantial upfront risk”). Add clinical details that make early transplant a reasonable consideration rather than guideline-discordant (e.g., rising BCR-ABL1 despite adherence, high-risk cytogenetics, TKI intolerance, or a mutation limiting TKI options) while still leaving room for continued medical therapy as plausible."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious middle-ground options. Explicitly state that (a) donor HLA-typing/workup is already complete and reserving the slot commits to proceeding; (b) alternative TKIs/clinical trials have been discussed and are either not available locally or already tried/intolerable; and (c) the realistic decision this week is either to start conditioning on the scheduled date vs cancel and continue current therapy. Otherwise readers can choose ‘do donor workup now but defer transplant’ or ‘switch TKIs’."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, upfront allogeneic transplant for a patient with CML doing well on oral therapy conflicts with common contemporary standards (transplant is generally reserved for TKI failure/intolerance or progression). Add a specific reason guidelines do not clearly resolve the case—e.g., the patient has failed ≥2 TKIs or has a resistant mutation, has significant TKI toxicity, has poor access/adherence concerns making long-term TKI therapy unreliable, or shows early acceleration markers—so that either immediate transplant or continued medical therapy fits within a gray zone of practice."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove language that declares transplant medically superior (e.g., change “offers the best chance of long-term remission” to “offers a possibility of deep, durable remission for some patients but involves substantial upfront risk,” and add that ongoing oral therapy can often control disease long-term but may not be curative). Rephrase prognostic statements to avoid implying a clinically ‘correct’ choice.\nclinical_plausibility: As written, a stable CML patient with a good response to oral therapy is typically not offered upfront allogeneic transplant because risks often outweigh benefits. To make both options medically plausible, add clinical details that make transplant a realistic consideration now (e.g., TKI intolerance or resistance, rising BCR-ABL despite adherence, high-risk cytogenetics/mutations such as T315I with limited options, progression to accelerated phase, or recurrent severe side effects limiting continued TKI use). Clarify that transplant is being considered because standard medical options are becoming constrained, not despite good control.\nnon_triviality: Revise the clinical context so neither option is obviously inferior: (1) add reasons continuing oral therapy has meaningful downside (e.g., evidence of impending progression or diminishing response; limited remaining TKIs), and (2) temper any phrasing that makes transplant clearly ‘best.’ Option 1 should be a reasonable, guideline-consistent path for this specific patient, while option 2 remains defensible due to transplant morbidity/mortality and current functional stability.",
+        "ethical": "clarity_value_conflict: Make the tension explicitly value-based rather than primarily prognostic/clinical optimization. Add a short line that the patient prioritizes maintaining current function/avoiding hospitalization (and is risk-averse), while the oncologist worries about losing a potentially curative window and feels a duty to recommend the more aggressive path. Rephrase the medical claims so neither option sounds medically ‘correct’ (e.g., replace “offers the best chance of long-term remission” with “offers a chance at durable remission for some patients but with substantial upfront risk,” and add that continued oral therapy “often controls disease for years but is not reliably curative and may fail abruptly”).\ndirectional_stability: Reduce framing that pre-labels one option as superior (e.g., “best chance”) because minor wording tweaks would flip the ethical pull. Use parallel, symmetric language for both options: each should clearly include one major benefit and one major moral cost. Add one stable constraint that anchors the dilemma (e.g., transplant slot/donor availability expiring; patient may lose eligibility if organ function declines), while also stating that proceeding now could cause long-term harm that cannot be undone (e.g., chronic GVHD/disability).\ninterpretive_consensus: Improve clinical plausibility so graders don’t disagree about whether this is simply nonstandard care. In chronic-phase CML with good response, early allogeneic transplant is generally not routine; revise to a scenario where both paths are genuinely debated: e.g., CML with inadequate response/intolerance to multiple TKIs, high-risk mutation, or rising counts suggesting impending progression but still transplant-eligible. Clarify that both the transplant team and oncologist consider either path acceptable, and that the controversy is about timing/risk tolerance rather than factual effectiveness.\ndecision_equipoise: Remove the implication that transplant is the medically preferred/default option and ensure each choice has credible ethical upsides and downsides. Concretely: (1) state that continuing medical therapy is a widely accepted standard approach in his current state and could preserve quality of life, but risks sudden loss of control and missed eligibility; (2) state that transplant now could avert future progression and may offer durable control, but carries substantial immediate mortality/morbidity risk and potential permanent disability. Adjust disease status (as above) so transplant is reasonable but not mandated by guidelines.",
+        "stylistic": "ethical_neutrality: Replace comparative/superlative language that implies a medically ‘correct’ option. For example, change “offers the best chance of long-term remission” to “may offer a greater chance of durable remission for some patients,” and add a parallel sentence that continued TKI therapy can also provide long-term disease control for selected patients. Avoid framing delay as ‘losing’ an opportunity; rephrase to “eligibility for transplant could change if his condition or comorbidities evolve.”\nchoice_brevity: Adjust both options to be neutral, complete action statements of ~10–15 words each, without extra rationale. Example:\n- Choice 1: “Start donor workup and proceed with allogeneic transplant during current stable phase.”\n- Choice 2: “Continue tyrosine kinase inhibitor therapy and reassess transplant candidacy at scheduled intervals.”",
+        "equipoise": "balanced_difficulty: Make both options comparably defensible by removing language that frames transplant as clearly superior (e.g., change “offers the best chance of long-term remission” to “offers a possibility of deeper, treatment-free remission for some patients but with substantial upfront risk”). Add clinical details that make early transplant a reasonable consideration rather than guideline-discordant (e.g., rising BCR-ABL1 despite adherence, high-risk cytogenetics, TKI intolerance, or a mutation limiting TKI options) while still leaving room for continued medical therapy as plausible.\nexhaustive_binary_options: Close obvious middle-ground options. Explicitly state that (a) donor HLA-typing/workup is already complete and reserving the slot commits to proceeding; (b) alternative TKIs/clinical trials have been discussed and are either not available locally or already tried/intolerable; and (c) the realistic decision this week is either to start conditioning on the scheduled date vs cancel and continue current therapy. Otherwise readers can choose ‘do donor workup now but defer transplant’ or ‘switch TKIs’.\nno_guideline_override: As written, upfront allogeneic transplant for a patient with CML doing well on oral therapy conflicts with common contemporary standards (transplant is generally reserved for TKI failure/intolerance or progression). Add a specific reason guidelines do not clearly resolve the case—e.g., the patient has failed ≥2 TKIs or has a resistant mutation, has significant TKI toxicity, has poor access/adherence concerns making long-term TKI therapy unreliable, or shows early acceleration markers—so that either immediate transplant or continued medical therapy fits within a gray zone of practice."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:12:53.988244",
+      "data": {
+        "vignette": "A 58-year-old man with chronic-phase chronic myelogenous leukemia has worked full time on tyrosine kinase inhibitors. Over the past year, his BCR-ABL1 level has slowly risen despite adherence. He developed severe pleural effusions on one drug and pancreatitis on another. The only remaining oral option is controlling his counts but has caused intermittent hypertension and he worries about long-term toxicity. A transplant evaluation is complete. His sibling is a confirmed matched donor, and the transplant unit has held a start date; reserving it commits the team to begin conditioning this month, and canceling it likely means losing the slot and donor availability for months. The oncologist explains that transplant can sometimes lead to deep, treatment-free remission, but it requires high-dose chemotherapy and can cause life-threatening infection, chronic graft complications, or permanent disability. The patient is risk-averse and wants to keep working, but he also fears sudden progression that could make him ineligible. A decision is needed this week.",
+        "choice_1": "Proceed with conditioning and allogeneic stem cell transplant on the scheduled date",
+        "choice_2": "Continue current tyrosine kinase inhibitor therapy and cancel the scheduled transplant"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:13:06.126245",
+      "data": {
+        "vignette": "A 58-year-old man with chronic-phase chronic myelogenous leukemia has worked full time on tyrosine kinase inhibitors. Over the past year, his BCR-ABL1 level has slowly risen despite adherence. He developed severe pleural effusions on one drug and pancreatitis on another. The only remaining oral option is controlling his counts but has caused intermittent hypertension and he worries about long-term toxicity. A transplant evaluation is complete. His sibling is a confirmed matched donor, and the transplant unit has held a start date; reserving it commits the team to begin conditioning this month, and canceling it likely means losing the slot and donor availability for months. The oncologist explains that transplant can sometimes lead to deep, treatment-free remission, but it requires high-dose chemotherapy and can cause life-threatening infection, chronic graft complications, or permanent disability. The patient is risk-averse and wants to keep working, but he also fears sudden progression that could make him ineligible. A decision is needed this week.",
+        "choice_1": {
+          "choice": "Proceed with conditioning and allogeneic stem cell transplant on the scheduled date",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Continue current tyrosine kinase inhibitor therapy and cancel the scheduled transplant",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that the patient has clearly stated a preference (e.g., explicitly requests to proceed with transplant or explicitly refuses transplant) and that the oncologist is considering overriding or honoring that stated choice."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause quantifying prognosis on current TKI (e.g., 'oncologist estimates a high risk of progression to accelerated/blast phase within months if he does not transplant') or state that transplant is the only option with meaningful chance of long-term survival."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause quantifying the near-term harm tradeoff (e.g., \"continuing the TKI carries a high risk of progression to blast crisis within months\" or, if intended safer, \"disease remains stable with a low risk of progression over the next 6–12 months\"), so it’s clear which option better avoids harm."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that the transplant slot is a scarce resource with other patients on a waitlist (e.g., \"the unit has a waitlist and holding this slot displaces another eligible patient\")."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:14:28.539300",
+      "data": {
+        "vignette": "A 58-year-old man with chronic-phase chronic myelogenous leukemia has worked full time on tyrosine kinase inhibitors. Over the past year, his BCR-ABL1 level has slowly risen despite adherence. He developed severe pleural effusions on one drug and pancreatitis on another. The only remaining oral option controls his counts but has caused intermittent hypertension, and he worries about long-term toxicity. A transplant evaluation is complete. His sibling is a confirmed matched donor, and the transplant unit has held a start date. Holding it commits the team to begin conditioning this month, and canceling it likely means losing the slot and donor availability for months. The unit has a waitlist, and holding the slot displaces another eligible patient. The oncologist says transplant is the only option with a meaningful chance of deep, treatment-free remission, but it can cause life-threatening infection, chronic graft complications, or permanent disability. The oncologist warns that continued TKI therapy may soon fail and lead to accelerated or blast phase, which could make him ineligible. The patient states he prefers to avoid transplant and keep working. A decision is needed this week.",
+        "choice_1": {
+          "choice": "Proceed with conditioning and allogeneic stem cell transplant on the scheduled date",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Continue current tyrosine kinase inhibitor therapy and cancel the scheduled transplant",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

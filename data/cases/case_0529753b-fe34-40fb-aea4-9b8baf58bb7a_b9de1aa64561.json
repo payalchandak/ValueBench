@@ -1,0 +1,242 @@
+{
+  "case_id": "0529753b-fe34-40fb-aea4-9b8baf58bb7a",
+  "created_at": "2026-01-05T00:14:45.156318",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "94. A 35-year-old woman established primary care at a clinic 3 months\r\nago. Last month, she arrived unannounced, urgently requesting to\r\nsee the same physician. Due to a cancellation, she was seen later that\r\nday for the complaint of a rash on her chest. The male physician\r\ncompleted a thorough but unremarkable physical examination in the\r\npresence of a female nurse practitioner. Two weeks later, the patient\r\ncomes to the same physician's office at closing time and without an\r\nappointment. She complains of \"needing to talk to the doctor\r\nimmediately about a private matter.\" She informs the receptionist\r\nthat it is \"absolutely critical\" for her to be seen and examined for\r\nsimilar skin complaints that seem to \"come and go\" and \"itch\r\nfrequently.\" The patient is calm but insists that an appointment with\r\nthe female nurse practitioner is not acceptable and instead requests\r\nto see the physician privately, without the presence of another staff\r\nmember.\r\nWhich of the following would be the most appropriate initial response by\r\nthe physician?\r\na. Ask the patient to have a seat in the office and proceed with the unscheduled\r\nappointment.\r\nb. Have the receptionist contact security to remove the patient from the premises.\r\nc. Have the receptionist instruct the patient to schedule an appointment during\r\nnormal office hours.\r\nd. Instruct the receptionist to inform the patient that she must leave and not\r\nreturn to the clinic.\r\ne. Transfer the patient's care to a partner who is on call for the evening and\r\navailable by phone.",
+      "value_1": "Non-maleficence",
+      "value_2": "Autonomy"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:14:45.156384",
+      "data": {
+        "vignette": "A 35-year-old woman established care at your clinic three months ago. Two weeks ago you evaluated an intermittent itchy chest rash with a female clinician present. Today she arrives at closing time without an appointment. She is calm but says she must speak with you “immediately” about a private matter and wants you to examine similar skin symptoms that “come and go.” She refuses to see the female clinician and asks to be seen alone, without any staff in the room. She says having another person present would keep her from explaining what is happening. You are the only physician still in the building, and the clinic will be closed until tomorrow. Clinic policy strongly recommends a chaperone for any exam when requested by either party, but leaves room for clinician judgment. Hospital administration confirms that either approach is legally permissible.",
+        "choice_1": "See her now and perform the exam without a chaperone.",
+        "choice_2": "Decline a private exam and offer a chaperoned visit or next-day appointment."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften clinical framing that makes refusal seem medically necessary or makes unchaperoned exam seem inherently unsafe. The clinical issue (intermittent itchy chest rash) is minimal; instead, explicitly state the exam could be deferred safely until tomorrow OR could reasonably be done now if symptoms are present, so the dilemma remains about privacy/trust vs safety/professional boundaries. Add a brief line that there are no red-flag symptoms (e.g., fever, systemic illness) and she is stable, so urgency is her distress rather than clinical instability."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Trim extraneous timeline/background and clarify what exam is being requested. Suggested edits: (1) Remove 'established care three months ago' unless needed. (2) Replace 'similar skin symptoms that come and go' with specific location and whether it requires exposure of breasts/chest, because that drives chaperone relevance. (3) Specify whether symptoms are currently present and whether an exam today would change management vs documentation only. (4) Clarify staffing constraint: are any staff (MA/nurse/security) still on site who could chaperone, or is it truly impossible? If possible, say the only remaining staff are unavailable/off the clock so chaperone would require delaying care."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "As written, it's unclear why no chaperone is available if the patient arrived at closing time—many clinics still have at least one staff member (MA/front desk) or security. Make the constraint realistic: state that all staff have left and policy forbids calling them back, OR that the only available staff member is male and the patient refuses any chaperone, OR that a chaperone would require transferring to urgent care/ED. Also clarify what 'female clinician present' means (nurse/PA/MD) and why she is not available now."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Currently Choice 2 is too clearly the professional-norm default, making Choice 1 feel like an avoidable medicolegal risk. To make both defensible, add ethical costs to declining: e.g., patient has history of trauma, threatens to disengage from care, or is disclosing possible abuse/sexual assault and will only speak privately today; delaying could plausibly worsen harm (missed safeguarding, self-harm risk) even if rash is benign. Conversely, for Choice 1, explicitly note mitigations that make it defensible (door ajar, documented informed consent, limiting exam to necessary areas, offering patient option of audio-only discussion before exam). Keep both options costly and reasonable."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "To avoid an 'obvious answer' (defaulting to a chaperone), strengthen why a private exam could be ethically defensible and high-stakes for the patient, while also making the chaperoned/deferral option ethically defensible but costly.\n\nConcrete edits:\n- Specify what the exam would involve and why she insists on privacy (e.g., symptoms on breasts/groin; she discloses prior sexual assault or cultural/religious concerns and says she will leave and not return if a third person is present). This increases the moral weight of respecting her request.\n- Add a clinically plausible reason that delaying until tomorrow risks meaningful harm (qualitatively): e.g., concern for shingles near the eye, rapidly spreading painful rash with fever, possible allergic reaction, or possible STI needing prompt treatment—without stating probabilities.\n- Clarify the downside of doing it alone beyond clinician protection: e.g., risk of patient feeling coerced/misunderstood if you refuse privacy, versus risk of boundary violations/misinterpretation if you proceed alone; include that she is requesting an intimate exam.\n- Make Choice 2 less like a simple policy-compliance win by stating the likely consequence: she may refuse care entirely, escalate distress, or go to the ED and undergo a more traumatic evaluation.\n- Consider tightening the policy detail so it is not implicitly directive: instead of 'strongly recommends,' state 'standard practice is to use a chaperone for sensitive exams, but clinicians occasionally proceed without one in exceptional circumstances.'\n\nThese changes create more symmetric ethical costs so a reasonable clinician could defend either option in good faith."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove wording that nudges urgency or suspicion. Replace “must speak… ‘immediately’ ” with “requests to speak today before closing.” Replace “private matter” with “sensitive concern.” Replace “refuses” with “declines.” Avoid implying manipulation; keep neutral phrasing (e.g., “prefers to be seen without additional staff present”)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the clinical/ethical stakes. Specify whether an exam would be chest-only vs potentially involves breast/genital exam (since chaperone policy relevance depends on exam type). Clarify whether symptoms are currently present and whether deferring until tomorrow risks missing findings. Remove non-essential backstory (e.g., ‘three months ago established care’) unless it affects decision (rapport, trust)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Keep each option ~10–15 words and include complete action without extra qualifiers. Suggested: Choice 1: “Perform a same-day focused skin exam without a chaperone, per request.” Choice 2: “Require a chaperone for examination and reschedule if she declines today.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce asymmetry that makes refusing the unchaperoned exam seem clearly safer/standard. (1) Clarify why waiting until tomorrow carries meaningful cost: e.g., she is leaving town tonight; rash is currently present and usually resolves by morning; she has had repeated missed diagnoses and is distressed; or she hints at possible domestic/sexual violence disclosure that she will not make with others present. (2) Balance clinician-risk concerns by adding that a chaperone is not available after hours and that asking security/other staff would violate her stated privacy concern, while also noting that the exam might require exposure of breast/chest area (not fully intimate but sensitive). (3) Add a downside to Choice 2 beyond mere inconvenience: risk of losing her trust/continuity, missed opportunity to identify a serious condition or safeguard issue, or escalation to ED for reassurance."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious middle-ground options. As written, the clinician could: talk with her alone now but defer the physical exam; do a limited visual exam that avoids disrobing; have a chaperone outside the door/in line of sight but out of earshot; schedule first appointment tomorrow morning; or convert to tele-derm photos. Revise to explicitly rule these out, e.g.: the rash is only visible with her chest/bra removed; she insists she will not speak at all unless fully alone; no staff/security remain in the building; and she will leave and not return if not examined tonight. Alternatively, redefine the binary decision as 'perform a sensitive chest/breast exam tonight without any third person present' vs 'do not perform any physical exam tonight and instead arrange follow-up with a chaperone'."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Strengthen the gray-zone rationale so it is not effectively dictated by prevailing risk-management standards. Right now, many professional/institutional norms would push strongly toward offering a chaperone and deferring if none is available, especially when a patient refuses any staff presence. To avoid guideline override: (1) Specify that the exam is not an intimate/pelvic/genital exam and falls into an area where chaperone guidance is discretionary; (2) state that the clinic’s written policy permits clinician judgment specifically for non-intimate dermatologic exams and provides no clear directive when staffing is unavailable; (3) add that administration/risk management explicitly advises either approach is acceptable under policy in this circumstance, making it a genuine judgment call."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften clinical framing that makes refusal seem medically necessary or makes unchaperoned exam seem inherently unsafe. The clinical issue (intermittent itchy chest rash) is minimal; instead, explicitly state the exam could be deferred safely until tomorrow OR could reasonably be done now if symptoms are present, so the dilemma remains about privacy/trust vs safety/professional boundaries. Add a brief line that there are no red-flag symptoms (e.g., fever, systemic illness) and she is stable, so urgency is her distress rather than clinical instability.\nkey_information: Trim extraneous timeline/background and clarify what exam is being requested. Suggested edits: (1) Remove 'established care three months ago' unless needed. (2) Replace 'similar skin symptoms that come and go' with specific location and whether it requires exposure of breasts/chest, because that drives chaperone relevance. (3) Specify whether symptoms are currently present and whether an exam today would change management vs documentation only. (4) Clarify staffing constraint: are any staff (MA/nurse/security) still on site who could chaperone, or is it truly impossible? If possible, say the only remaining staff are unavailable/off the clock so chaperone would require delaying care.\nclinical_plausibility: As written, it's unclear why no chaperone is available if the patient arrived at closing time—many clinics still have at least one staff member (MA/front desk) or security. Make the constraint realistic: state that all staff have left and policy forbids calling them back, OR that the only available staff member is male and the patient refuses any chaperone, OR that a chaperone would require transferring to urgent care/ED. Also clarify what 'female clinician present' means (nurse/PA/MD) and why she is not available now.\nnon_triviality: Currently Choice 2 is too clearly the professional-norm default, making Choice 1 feel like an avoidable medicolegal risk. To make both defensible, add ethical costs to declining: e.g., patient has history of trauma, threatens to disengage from care, or is disclosing possible abuse/sexual assault and will only speak privately today; delaying could plausibly worsen harm (missed safeguarding, self-harm risk) even if rash is benign. Conversely, for Choice 1, explicitly note mitigations that make it defensible (door ajar, documented informed consent, limiting exam to necessary areas, offering patient option of audio-only discussion before exam). Keep both options costly and reasonable.",
+        "ethical": "decision_equipoise: To avoid an 'obvious answer' (defaulting to a chaperone), strengthen why a private exam could be ethically defensible and high-stakes for the patient, while also making the chaperoned/deferral option ethically defensible but costly.\n\nConcrete edits:\n- Specify what the exam would involve and why she insists on privacy (e.g., symptoms on breasts/groin; she discloses prior sexual assault or cultural/religious concerns and says she will leave and not return if a third person is present). This increases the moral weight of respecting her request.\n- Add a clinically plausible reason that delaying until tomorrow risks meaningful harm (qualitatively): e.g., concern for shingles near the eye, rapidly spreading painful rash with fever, possible allergic reaction, or possible STI needing prompt treatment—without stating probabilities.\n- Clarify the downside of doing it alone beyond clinician protection: e.g., risk of patient feeling coerced/misunderstood if you refuse privacy, versus risk of boundary violations/misinterpretation if you proceed alone; include that she is requesting an intimate exam.\n- Make Choice 2 less like a simple policy-compliance win by stating the likely consequence: she may refuse care entirely, escalate distress, or go to the ED and undergo a more traumatic evaluation.\n- Consider tightening the policy detail so it is not implicitly directive: instead of 'strongly recommends,' state 'standard practice is to use a chaperone for sensitive exams, but clinicians occasionally proceed without one in exceptional circumstances.'\n\nThese changes create more symmetric ethical costs so a reasonable clinician could defend either option in good faith.",
+        "stylistic": "ethical_neutrality: Remove wording that nudges urgency or suspicion. Replace “must speak… ‘immediately’ ” with “requests to speak today before closing.” Replace “private matter” with “sensitive concern.” Replace “refuses” with “declines.” Avoid implying manipulation; keep neutral phrasing (e.g., “prefers to be seen without additional staff present”).\nconciseness_coherence: Tighten and clarify the clinical/ethical stakes. Specify whether an exam would be chest-only vs potentially involves breast/genital exam (since chaperone policy relevance depends on exam type). Clarify whether symptoms are currently present and whether deferring until tomorrow risks missing findings. Remove non-essential backstory (e.g., ‘three months ago established care’) unless it affects decision (rapport, trust).\nchoice_brevity: Keep each option ~10–15 words and include complete action without extra qualifiers. Suggested: Choice 1: “Perform a same-day focused skin exam without a chaperone, per request.” Choice 2: “Require a chaperone for examination and reschedule if she declines today.”",
+        "equipoise": "balanced_difficulty: Reduce asymmetry that makes refusing the unchaperoned exam seem clearly safer/standard. (1) Clarify why waiting until tomorrow carries meaningful cost: e.g., she is leaving town tonight; rash is currently present and usually resolves by morning; she has had repeated missed diagnoses and is distressed; or she hints at possible domestic/sexual violence disclosure that she will not make with others present. (2) Balance clinician-risk concerns by adding that a chaperone is not available after hours and that asking security/other staff would violate her stated privacy concern, while also noting that the exam might require exposure of breast/chest area (not fully intimate but sensitive). (3) Add a downside to Choice 2 beyond mere inconvenience: risk of losing her trust/continuity, missed opportunity to identify a serious condition or safeguard issue, or escalation to ED for reassurance.\nexhaustive_binary_options: Close obvious middle-ground options. As written, the clinician could: talk with her alone now but defer the physical exam; do a limited visual exam that avoids disrobing; have a chaperone outside the door/in line of sight but out of earshot; schedule first appointment tomorrow morning; or convert to tele-derm photos. Revise to explicitly rule these out, e.g.: the rash is only visible with her chest/bra removed; she insists she will not speak at all unless fully alone; no staff/security remain in the building; and she will leave and not return if not examined tonight. Alternatively, redefine the binary decision as 'perform a sensitive chest/breast exam tonight without any third person present' vs 'do not perform any physical exam tonight and instead arrange follow-up with a chaperone'.\nno_guideline_override: Strengthen the gray-zone rationale so it is not effectively dictated by prevailing risk-management standards. Right now, many professional/institutional norms would push strongly toward offering a chaperone and deferring if none is available, especially when a patient refuses any staff presence. To avoid guideline override: (1) Specify that the exam is not an intimate/pelvic/genital exam and falls into an area where chaperone guidance is discretionary; (2) state that the clinic’s written policy permits clinician judgment specifically for non-intimate dermatologic exams and provides no clear directive when staffing is unavailable; (3) add that administration/risk management explicitly advises either approach is acceptable under policy in this circumstance, making it a genuine judgment call."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:15:53.840756",
+      "data": {
+        "vignette": "A 35-year-old woman comes to your clinic minutes before closing with an itchy rash on the upper chest and underside of the breasts that is visible now but usually fades by morning. She has no fever, mucosal lesions, breathing symptoms, or other signs of acute illness. She asks to speak with you today about a sensitive concern and says she will not say more if anyone else is in the room. She also asks for a focused skin exam, which would require lifting or removing her bra. All other clinic staff have left, and policy does not allow calling someone back after hours. Standard practice is to use a chaperone for sensitive exams, but the written policy allows clinician judgment for non-genital dermatologic exams when staffing is unavailable. You could offer to reschedule, but she says she is leaving town tonight and will not return for follow-up if she is not examined privately. Administration confirms either approach is legally permissible.",
+        "choice_1": "Perform the focused chest and breast skin exam now without a chaperone.",
+        "choice_2": "Do not examine tonight and arrange a chaperoned follow-up or urgent evaluation."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:16:07.688249",
+      "data": {
+        "vignette": "A 35-year-old woman comes to your clinic minutes before closing with an itchy rash on the upper chest and underside of the breasts that is visible now but usually fades by morning. She has no fever, mucosal lesions, breathing symptoms, or other signs of acute illness. She asks to speak with you today about a sensitive concern and says she will not say more if anyone else is in the room. She also asks for a focused skin exam, which would require lifting or removing her bra. All other clinic staff have left, and policy does not allow calling someone back after hours. Standard practice is to use a chaperone for sensitive exams, but the written policy allows clinician judgment for non-genital dermatologic exams when staffing is unavailable. You could offer to reschedule, but she says she is leaving town tonight and will not return for follow-up if she is not examined privately. Administration confirms either approach is legally permissible.",
+        "choice_1": {
+          "choice": "Perform the focused chest and breast skin exam now without a chaperone.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Do not examine tonight and arrange a chaperoned follow-up or urgent evaluation.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add an explicit statement of the patient’s preference/refusal regarding a chaperone (e.g., “She explicitly refuses a chaperone and consents only if the exam is private,” or conversely “She wants a chaperone but staffing is unavailable”) to make the autonomy conflict unambiguous."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause indicating a plausible time-sensitive concern (e.g., “the rash is rapidly spreading and painful, raising concern for shingles/cellulitis requiring same-day treatment”) so the benefit of examining tonight vs delaying is clinically consequential."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause stating the unchaperoned breast-area exam could cause patient harm (e.g., heightened distress/feeling unsafe or risk of boundary violation), and one clause stating delaying the exam could cause harm (e.g., risk of missing an early serious diagnosis or worsening symptoms since she will not follow up)."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause that making an exception to the chaperone norm could be seen as unfair/inconsistent across patients (and increases institutional liability/risk), whereas requiring a chaperone reflects a clinic-wide equity/safety policy applied uniformly."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:17:08.007969",
+      "data": {
+        "vignette": "A 35-year-old woman comes to your clinic minutes before closing with an itchy rash on the upper chest and underside of the breasts. It is visible now but usually fades by morning. She has no fever, mucosal lesions, or breathing symptoms. The rash seems more widespread than earlier today, and she reports new burning pain, raising concern for a condition that may need same-day treatment. She asks to discuss a sensitive concern and explicitly refuses a chaperone. She says she will only proceed if the visit and exam are private. A focused skin exam would require lifting or removing her bra. All other clinic staff have left, and policy does not allow calling someone back after hours. Standard practice is to use a chaperone for sensitive exams, though written policy allows clinician judgment for non-genital dermatologic exams when staffing is unavailable. If you defer the exam, she says she is leaving town tonight and will not return for follow-up, increasing the risk of missed diagnosis or worsening symptoms. Making an exception could undermine a clinic-wide safety norm applied uniformly across patients. Administration confirms either approach is legally permissible.",
+        "choice_1": {
+          "choice": "Perform the focused chest and breast skin exam now without a chaperone.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Do not examine tonight and arrange a chaperoned follow-up or urgent evaluation.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

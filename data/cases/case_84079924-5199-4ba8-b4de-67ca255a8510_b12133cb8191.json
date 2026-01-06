@@ -1,0 +1,230 @@
+{
+  "case_id": "84079924-5199-4ba8-b4de-67ca255a8510",
+  "created_at": "2026-01-04T23:56:19.719813",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "The case of JW \nJW was a 12-year-old boy who had cystic fibrosis. \nSince his condition had been diagnosed JW had \nbeen visiting the same hospital and physicians regu- \nIarly for many years. Both he and his family were well \nknown to the staff there and enjoyed a good relation- \nship with them. In recent months, however, the boy’s \ncondition had become very serious. He had devel- \noped extensive varices of the oesophagus which \nbrought with them an accompanying risk of serious \nbleeding which would put the boy’s life in danger. \nWhen the doctor informed the family that the \nseriousness of the boy’s condition might require a \nblood transfusion in order to save his life, both the \nboy and his family refused to consider such an option \nbecause of their faith. For the whole family were \ndevout and active Jehovah’s Witnesses. \nThe paediatricians involved in the case disagreed \nabout how they ought to proceed and asked a child \npsychiatrist to assess the child’s competence to make \nthe decision to refuse treatment. One possible option \nwhich was considered was to make an application for \na court order to take custody of the boy away from his \nparents in order to allow the transfusion to take place. \nThe psychiatrist reported that the boy was intelli- \ngent and sensitive, that he was in no sense emotion- \nally or socially disturbed and that he had a good \nrelationship with his parents. He also had a clear \nunderstanding of his illness and of the treatment \nand was conscious of the consequences of his deci- \nsions to refuse a blood transfusion. He stuck to his \ndecision and said that his parents had exerted no \npressure on him. He simply wanted to live according \nto the principles of his faith. \nAfter interviewing the parents as well, it seemed \nclear that they cared very much for their son and \nindeed for all of their children. On the whole they \nwere rational about the decision to refuse the trans- \nfusion and appeared, as the boy himself had said, not \nto have put any explicit pressure on the boy to refuse \nthe treatment.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:56:19.719861",
+      "data": {
+        "vignette": "A 12-year-old boy with cystic fibrosis is admitted for worsening portal hypertension and large esophageal varices. He has had several episodes of vomiting blood-tinged fluid and is scheduled for urgent endoscopy and possible variceal banding. The team believes a major bleed could occur during the procedure or overnight, and transfusion might be the only rapid way to stabilize him. The boy and his parents, long known to the clinic, refuse any blood products for religious reasons. A psychiatry consult finds the boy calm, consistent, and able to explain his illness, the proposed transfusion, and that refusal could lead to death. The parents appear supportive but not coercive. Hospital policy and state law permit either seeking court authorization for transfusion or honoring a capable minor’s refusal in this circumstance. You must decide before the endoscopy starts.",
+        "choice_1": "Seek a court order to permit transfusion if life-threatening bleeding occurs",
+        "choice_2": "Proceed with bloodless management and honor the refusal of transfusion"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften language that makes transfusion seem like the only reasonable medical option. Specifically: change “transfusion might be the only rapid way to stabilize him” to “transfusion is one rapid way to stabilize him if severe bleeding occurs, though it carries its own risks and alternatives (volume resuscitation, vasoactive agents, endoscopic control) may or may not be sufficient.” Also replace “The team believes a major bleed could occur during the procedure or overnight” with “There is concern for significant bleeding during or after the procedure,” avoiding implying inevitability or superiority."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Tighten and correct clinical framing to include only necessary and coherent details: (1) clarify the liver disease etiology in a CF patient (e.g., “CF-related liver disease/cirrhosis with portal hypertension”) to avoid confusion; (2) remove extraneous relational detail (“long known to the clinic”) unless used to establish prior documented refusal/advance planning; (3) specify what “bloodless management” entails at least in brief (e.g., “no transfusions, but allow crystalloids/albumin/iron/erythropoietin, endoscopic therapy, vasoactive meds”) to make the stakes concrete; (4) simplify “vomiting blood-tinged fluid” to “hematemesis/melena” and state current hemodynamic status (stable vs borderline) only if it affects urgency."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Improve plausibility: CF can cause portal hypertension via CF-related biliary cirrhosis, but the vignette should state this explicitly (“CF-related cirrhosis/portal hypertension”). Also, urgent endoscopy for active or recent variceal bleeding is plausible, but “overnight major bleed” is less tied to an endoscopy schedule—either make him actively bleeding/unstable (temporal urgency) or frame as scheduled urgent endoscopy within hours due to recent significant hematemesis. Add standard supportive measures already started (octreotide/vasopressin analogue, antibiotics) to ground the scenario without making one option superior."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, the medical narrative heavily weights toward transfusion (“only rapid way to stabilize”), making honoring refusal look foreseeably disastrous and thus not equally defensible. To restore equipoise, add realistic clinical and ethical costs to seeking a court order (e.g., likely need for sedation/restraint, rupture of trust, potential trauma, delays to endoscopy, possibility transfusion won’t change outcome, and transfusion risks) and make clear that bloodless strategies may be reasonably attempted first but could fail. Rephrase to show that reasonable clinicians disagree: e.g., “Some team members argue emergent court authorization is warranted given imminent catastrophic hemorrhage; others argue his demonstrated understanding and consistent refusal should be respected, with maximal bloodless measures and contingency planning.”"
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Stabilize the ethical meaning by tightening the decision trigger and removing ambiguity about timing: specify whether the court order would be sought pre-emptively now (before endoscopy) versus only if catastrophic bleeding occurs, and whether Choice 2 includes a commitment not to seek emergency judicial override even if he decompensates. Add one sentence clarifying that non-blood alternatives (cell salvage, erythropoietin, volume expanders, endoscopic therapy) are available but may be insufficient in a catastrophic bleed. This prevents small wording changes from flipping the interpretation (e.g., 'seek court order now' vs 'consider later')."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce reliance on jurisdiction-specific/legal framing and make the ethical stakes legible without it. Replace 'Hospital policy and state law permit...' with a clinically realistic note that the institution has an ethics/legal pathway for emergency judicial review, and that the team is divided about whether to invoke it. Also clarify the boy’s decisional status in the moment (e.g., not hypoxic, not encephalopathic, understands consequences) and whether assent/consent standards for minors apply at this hospital. This will help graders converge on the same core autonomy vs beneficence/nonmaleficence conflict rather than debating legal permissibility or minor-capacity doctrine."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance to avoid making Choice 1 look like the obvious 'save his life' option. Add ethically costly downsides to Choice 1 (e.g., likely need for physical restraint/sedation to administer transfusion, long-term rupture of trust leading to refusal of future CF care, moral distress/trauma, potential family withdrawal from care). Add ethically defensible upsides to Choice 2 beyond 'respect refusal' (e.g., preserving therapeutic alliance, honoring mature minor’s values, avoiding coercion/trauma; note that bloodless strategies could plausibly succeed but are not guaranteed). Also avoid language implying transfusion is 'the only rapid way'—rephrase to 'may be the most effective rapid stabilization, though not the only supportive measure.'"
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or balance wording that makes transfusion sound uniquely lifesaving. For example, replace “transfusion might be the only rapid way to stabilize him” with “transfusion is a commonly used stabilizing measure during massive hemorrhage; alternatives (volume resuscitation, vasoactive agents, endoscopic therapy, cell salvage if acceptable) may be limited.” Also soften “The team believes a major bleed could occur” to a neutral risk statement such as “Given the size of the varices and recent hematemesis, there is concern for significant hemorrhage peri-procedurally.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Delete low-yield identifiers and tighten clinical course. Remove “long known to the clinic.” Consider clarifying the timeline and indication: e.g., “admitted for acute upper GI bleeding with known large esophageal varices from CF-related cirrhosis/portal hypertension; urgent EGD planned tonight.” This avoids redundancy between ‘large varices’ and multiple episodes of blood-tinged emesis."
+        },
+        "deidentification_novelty": {
+          "outcome": false,
+          "suggested_changes": "Increase distinctiveness to avoid a stock ‘religious refusal of blood’ template while keeping the same ethical dilemma. Add 1–2 specific, plausible details that personalize the clinical constraints without identifying the patient, e.g., prior banding history, baseline anemia, whether albumin/cryoprecipitate are also refused, and what bloodless measures the family would accept (cell saver, erythropoietin, iron). Avoid phrasing closely mirroring common textbook cases (e.g., replace “refuse any blood products for religious reasons” with “decline transfusion and major blood components based on faith commitments”)."
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce the one-sided “imminent death unless transfused” framing. For example: clarify he is hemodynamically stable after initial resuscitation, that major bleeding is possible but not expected, and that endoscopy/banding plus vasoactive meds can often control bleeding without transfusion. Add concrete ethical/clinical downsides to court action (e.g., likely delay of endoscopy while awaiting judge, need for sedation/restraints if transfusion is ordered, severe rupture of therapeutic relationship, risk the family leaves AMA and loses follow-up). Also add meaningful downside to honoring refusal beyond abstract risk (e.g., higher chance of needing ICU intubation/pressors, increased risk of death or neurologic injury if bleeding occurs without transfusion) so each option has morally serious costs."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close off obvious middle paths. Explicitly state (1) gastroenterology and anesthesia agree the endoscopy cannot be delayed until morning without unacceptable risk, and (2) the court process would require pausing/canceling tonight’s procedure if initiated (or conversely that once the procedure starts there is no time to seek an order). Also rule out compromise options the reader will reach for: clarify the family refuses all fractions/albumin/cryoprecipitate, no cell-saver acceptable, no acceptable blood substitutes available on formulary, and transfer to another facility would be unsafe or impossible tonight."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, many clinicians will view transfusing a 12-year-old in life-threatening hemorrhage as a clear professional/legal mandate, making Choice 2 look noncompliant with standard pediatric practice. To restore genuine gray-zone ambiguity, specify a jurisdiction with a well-established mature minor doctrine *and* that hospital counsel/ethics committee confirms there is no clear controlling precedent and either path is legally defensible. Alternatively, shift the trigger away from unequivocal life-saving transfusion: e.g., the likely need is peri-procedural blood availability for anticipated anemia/volume support rather than certain exsanguination, so guidelines do not clearly compel overriding refusal."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften language that makes transfusion seem like the only reasonable medical option. Specifically: change “transfusion might be the only rapid way to stabilize him” to “transfusion is one rapid way to stabilize him if severe bleeding occurs, though it carries its own risks and alternatives (volume resuscitation, vasoactive agents, endoscopic control) may or may not be sufficient.” Also replace “The team believes a major bleed could occur during the procedure or overnight” with “There is concern for significant bleeding during or after the procedure,” avoiding implying inevitability or superiority.\nkey_information: Tighten and correct clinical framing to include only necessary and coherent details: (1) clarify the liver disease etiology in a CF patient (e.g., “CF-related liver disease/cirrhosis with portal hypertension”) to avoid confusion; (2) remove extraneous relational detail (“long known to the clinic”) unless used to establish prior documented refusal/advance planning; (3) specify what “bloodless management” entails at least in brief (e.g., “no transfusions, but allow crystalloids/albumin/iron/erythropoietin, endoscopic therapy, vasoactive meds”) to make the stakes concrete; (4) simplify “vomiting blood-tinged fluid” to “hematemesis/melena” and state current hemodynamic status (stable vs borderline) only if it affects urgency.\nclinical_plausibility: Improve plausibility: CF can cause portal hypertension via CF-related biliary cirrhosis, but the vignette should state this explicitly (“CF-related cirrhosis/portal hypertension”). Also, urgent endoscopy for active or recent variceal bleeding is plausible, but “overnight major bleed” is less tied to an endoscopy schedule—either make him actively bleeding/unstable (temporal urgency) or frame as scheduled urgent endoscopy within hours due to recent significant hematemesis. Add standard supportive measures already started (octreotide/vasopressin analogue, antibiotics) to ground the scenario without making one option superior.\nnon_triviality: As written, the medical narrative heavily weights toward transfusion (“only rapid way to stabilize”), making honoring refusal look foreseeably disastrous and thus not equally defensible. To restore equipoise, add realistic clinical and ethical costs to seeking a court order (e.g., likely need for sedation/restraint, rupture of trust, potential trauma, delays to endoscopy, possibility transfusion won’t change outcome, and transfusion risks) and make clear that bloodless strategies may be reasonably attempted first but could fail. Rephrase to show that reasonable clinicians disagree: e.g., “Some team members argue emergent court authorization is warranted given imminent catastrophic hemorrhage; others argue his demonstrated understanding and consistent refusal should be respected, with maximal bloodless measures and contingency planning.”",
+        "ethical": "directional_stability: Stabilize the ethical meaning by tightening the decision trigger and removing ambiguity about timing: specify whether the court order would be sought pre-emptively now (before endoscopy) versus only if catastrophic bleeding occurs, and whether Choice 2 includes a commitment not to seek emergency judicial override even if he decompensates. Add one sentence clarifying that non-blood alternatives (cell salvage, erythropoietin, volume expanders, endoscopic therapy) are available but may be insufficient in a catastrophic bleed. This prevents small wording changes from flipping the interpretation (e.g., 'seek court order now' vs 'consider later').\ninterpretive_consensus: Reduce reliance on jurisdiction-specific/legal framing and make the ethical stakes legible without it. Replace 'Hospital policy and state law permit...' with a clinically realistic note that the institution has an ethics/legal pathway for emergency judicial review, and that the team is divided about whether to invoke it. Also clarify the boy’s decisional status in the moment (e.g., not hypoxic, not encephalopathic, understands consequences) and whether assent/consent standards for minors apply at this hospital. This will help graders converge on the same core autonomy vs beneficence/nonmaleficence conflict rather than debating legal permissibility or minor-capacity doctrine.\ndecision_equipoise: Rebalance to avoid making Choice 1 look like the obvious 'save his life' option. Add ethically costly downsides to Choice 1 (e.g., likely need for physical restraint/sedation to administer transfusion, long-term rupture of trust leading to refusal of future CF care, moral distress/trauma, potential family withdrawal from care). Add ethically defensible upsides to Choice 2 beyond 'respect refusal' (e.g., preserving therapeutic alliance, honoring mature minor’s values, avoiding coercion/trauma; note that bloodless strategies could plausibly succeed but are not guaranteed). Also avoid language implying transfusion is 'the only rapid way'—rephrase to 'may be the most effective rapid stabilization, though not the only supportive measure.'",
+        "stylistic": "ethical_neutrality: Remove or balance wording that makes transfusion sound uniquely lifesaving. For example, replace “transfusion might be the only rapid way to stabilize him” with “transfusion is a commonly used stabilizing measure during massive hemorrhage; alternatives (volume resuscitation, vasoactive agents, endoscopic therapy, cell salvage if acceptable) may be limited.” Also soften “The team believes a major bleed could occur” to a neutral risk statement such as “Given the size of the varices and recent hematemesis, there is concern for significant hemorrhage peri-procedurally.”\nconciseness_coherence: Delete low-yield identifiers and tighten clinical course. Remove “long known to the clinic.” Consider clarifying the timeline and indication: e.g., “admitted for acute upper GI bleeding with known large esophageal varices from CF-related cirrhosis/portal hypertension; urgent EGD planned tonight.” This avoids redundancy between ‘large varices’ and multiple episodes of blood-tinged emesis.\ndeidentification_novelty: Increase distinctiveness to avoid a stock ‘religious refusal of blood’ template while keeping the same ethical dilemma. Add 1–2 specific, plausible details that personalize the clinical constraints without identifying the patient, e.g., prior banding history, baseline anemia, whether albumin/cryoprecipitate are also refused, and what bloodless measures the family would accept (cell saver, erythropoietin, iron). Avoid phrasing closely mirroring common textbook cases (e.g., replace “refuse any blood products for religious reasons” with “decline transfusion and major blood components based on faith commitments”).",
+        "equipoise": "balanced_difficulty: Reduce the one-sided “imminent death unless transfused” framing. For example: clarify he is hemodynamically stable after initial resuscitation, that major bleeding is possible but not expected, and that endoscopy/banding plus vasoactive meds can often control bleeding without transfusion. Add concrete ethical/clinical downsides to court action (e.g., likely delay of endoscopy while awaiting judge, need for sedation/restraints if transfusion is ordered, severe rupture of therapeutic relationship, risk the family leaves AMA and loses follow-up). Also add meaningful downside to honoring refusal beyond abstract risk (e.g., higher chance of needing ICU intubation/pressors, increased risk of death or neurologic injury if bleeding occurs without transfusion) so each option has morally serious costs.\nexhaustive_binary_options: Close off obvious middle paths. Explicitly state (1) gastroenterology and anesthesia agree the endoscopy cannot be delayed until morning without unacceptable risk, and (2) the court process would require pausing/canceling tonight’s procedure if initiated (or conversely that once the procedure starts there is no time to seek an order). Also rule out compromise options the reader will reach for: clarify the family refuses all fractions/albumin/cryoprecipitate, no cell-saver acceptable, no acceptable blood substitutes available on formulary, and transfer to another facility would be unsafe or impossible tonight.\nno_guideline_override: As written, many clinicians will view transfusing a 12-year-old in life-threatening hemorrhage as a clear professional/legal mandate, making Choice 2 look noncompliant with standard pediatric practice. To restore genuine gray-zone ambiguity, specify a jurisdiction with a well-established mature minor doctrine *and* that hospital counsel/ethics committee confirms there is no clear controlling precedent and either path is legally defensible. Alternatively, shift the trigger away from unequivocal life-saving transfusion: e.g., the likely need is peri-procedural blood availability for anticipated anemia/volume support rather than certain exsanguination, so guidelines do not clearly compel overriding refusal."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:57:27.466159",
+      "data": {
+        "vignette": "A 12-year-old boy with cystic fibrosis has CF-related cirrhosis with portal hypertension and known large esophageal varices. He was admitted after two episodes of hematemesis and melena. After IV fluids and proton pump inhibitor, he is awake and hemodynamically stable. He is on antibiotics and a vasoactive infusion while awaiting urgent endoscopy with possible banding tonight. Gastroenterology and anesthesia agree the procedure should not be delayed until morning. Transfusion is a common rescue therapy if severe bleeding occurs, but endoscopic control and non-blood resuscitation may be sufficient. The boy and his parents decline transfusion and all major blood components and fractions based on faith commitments. No cell-saver is acceptable, no substitute is available, and transfer is unsafe tonight. Psychiatry finds him calm and able to explain the risks, including death or neurologic injury. Counsel and the ethics service confirm that either seeking emergency judicial authorization or honoring his refusal is legally permissible here. Starting the court process would pause tonight’s endoscopy and could irreparably damage trust; honoring refusal could leave few options if hemorrhage is uncontrolled.",
+        "choice_1": "Initiate emergency judicial review now to permit transfusion during tonight’s endoscopy",
+        "choice_2": "Proceed tonight without transfusion and do not seek emergency judicial override"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:57:39.053828",
+      "data": {
+        "vignette": "A 12-year-old boy with cystic fibrosis has CF-related cirrhosis with portal hypertension and known large esophageal varices. He was admitted after two episodes of hematemesis and melena. After IV fluids and proton pump inhibitor, he is awake and hemodynamically stable. He is on antibiotics and a vasoactive infusion while awaiting urgent endoscopy with possible banding tonight. Gastroenterology and anesthesia agree the procedure should not be delayed until morning. Transfusion is a common rescue therapy if severe bleeding occurs, but endoscopic control and non-blood resuscitation may be sufficient. The boy and his parents decline transfusion and all major blood components and fractions based on faith commitments. No cell-saver is acceptable, no substitute is available, and transfer is unsafe tonight. Psychiatry finds him calm and able to explain the risks, including death or neurologic injury. Counsel and the ethics service confirm that either seeking emergency judicial authorization or honoring his refusal is legally permissible here. Starting the court process would pause tonight’s endoscopy and could irreparably damage trust; honoring refusal could leave few options if hemorrhage is uncontrolled.",
+        "choice_1": {
+          "choice": "Initiate emergency judicial review now to permit transfusion during tonight’s endoscopy",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Proceed tonight without transfusion and do not seek emergency judicial override",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause clarifying decisional authority (e.g., “he is considered a mature minor with medical decision-making authority in this jurisdiction” or “his parents are the legal decision-makers and he assents to their refusal”)."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause quantifying/clarifying clinical benefit tradeoffs, e.g., \"judicial review would delay endoscopy by several hours, increasing rebleeding risk,\" and \"if massive variceal bleeding occurs, transfusion is likely lifesaving and non-blood measures are unlikely to suffice.\""
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:58:14.070525",
+      "data": {
+        "vignette": "A 12-year-old boy with cystic fibrosis has CF-related cirrhosis with portal hypertension and known large esophageal varices. He was admitted after two episodes of hematemesis and melena. After IV fluids and a proton pump inhibitor, he is awake and hemodynamically stable. He is on antibiotics and a vasoactive infusion while awaiting urgent endoscopy with possible banding tonight. Gastroenterology and anesthesia agree the procedure should not be delayed until morning. If massive variceal bleeding occurs, transfusion is likely lifesaving and non-blood resuscitation may not be sufficient. The boy and his parents decline transfusion and all major blood components and fractions based on faith commitments. In this jurisdiction, his parents are the legal decision-makers, and he assents and gives a consistent refusal. Psychiatry finds him calm and able to explain the risks, including death or neurologic injury. Counsel and the ethics service confirm that either seeking emergency judicial authorization or honoring refusal is legally permissible here. Starting the court process would delay tonight’s endoscopy by several hours and could damage trust; honoring refusal could leave few options if hemorrhage is uncontrolled.",
+        "choice_1": {
+          "choice": "Initiate emergency judicial review now to permit transfusion during tonight’s endoscopy",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Proceed tonight without transfusion and do not seek emergency judicial override",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

@@ -1,0 +1,236 @@
+{
+  "case_id": "b3f8664c-ddaf-4d9a-81b8-6bb06c11e9c6",
+  "created_at": "2026-01-04T23:00:40.663496",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "62. A 25-year-old female medical student was doing a rotation in an HIV clinic. Sara is a 30-year-old woman who dropped out of college after she found that she contracted HIV from her husband, who has hemophilia. In talking to Sara, it turns out that the medical student and the patient shared a number of things--both are from the same part of Montana originally, also have young children, and like to cook. Sara now has advanced HIV.\nHow should the medical student tell Sara about the advanced HIV and that she will need some blood tests without making her angry or upset?\na. The medical student should follow the protocol for breaking bad news because it covers everything.\nb. The medical student should tell Sara about the advanced HIV and the need for blood tests and not be concerned about provoking a reaction.\nc. The medical student should get another perspective perhaps from someone in clinic who has known Sara before breaking the bad news.\nd. None of the above.",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:00:40.663548",
+      "data": {
+        "vignette": "A 30-year-old woman with HIV re-establishes care after years without treatment. She has weight loss and oral thrush but is not in acute distress. Prior records sent this morning suggest advanced disease and a past history of panic attacks after medical news. She came today expecting “a routine check-in” and arranged childcare for only an hour. She tells you she cannot take “bad news” today and asks you to keep the visit brief. You want blood tests today to confirm staging and guide urgent decisions about prophylaxis and starting antiretroviral therapy. You also worry that a blunt conversation could overwhelm her, trigger an acute crisis, or make her avoid care entirely. The clinic has a social worker available, but only if you reschedule her for later this week.",
+        "choice_1": "Tell her today that her HIV appears advanced and order the blood tests now",
+        "choice_2": "Offer only a brief update today and defer full disclosure and testing to a supported visit"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove language that implies clinical necessity/superiority of immediate testing and disclosure. Rephrase “confirm staging and guide urgent decisions about prophylaxis and starting antiretroviral therapy” to a more neutral statement such as: “Blood tests today would help you understand her current health status and discuss near-term treatment and infection-prevention options; waiting a few days may delay that planning.” Avoid “urgent decisions” unless you add a concrete, time-bound clinical trigger (e.g., O2 sat, fever, neurologic symptoms) that makes it truly urgent."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make each option a concrete, clinician-actionable order set, not a vague communication style. Specify exactly what is disclosed and which tests are ordered now vs later. Example: Choice 1: ‘Disclose concern for advanced immunosuppression today; order CD4 count, HIV viral load, CBC/CMP, and cryptococcal Ag; arrange same-day phlebotomy; start/plan prophylaxis per protocol pending results.’ Choice 2: ‘Acknowledge concern but do not discuss severity today; do not draw labs today; schedule a longer visit within 72 hours with social worker present and place lab orders for that visit.’"
+        },
+        "decision_forcing_context": {
+          "outcome": false,
+          "suggested_changes": "Add a clear forcing mechanism. Either (a) temporal: ‘The lab is open only this afternoon; if not drawn today, results will not be available before the next available HIV visit in 2–3 weeks,’ or ‘She is leaving town tomorrow,’ or ‘She may lose insurance at week’s end’; or (b) capacity/access: ‘Next social-work-supported slot is later this week and she has a history of missed follow-up,’ making the choice between acting now vs risking prolonged delay."
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Trim or tie details to the decision. Keep only: untreated HIV, current symptoms suggest immunosuppression (weight loss, thrush), limited time today, request to avoid bad news, concern for panic/avoidance, availability of social worker later this week. Remove vague phrasing like “prior records sent this morning suggest advanced disease” unless you specify what in the records matters (e.g., ‘last known CD4 was very low years ago’—but keep qualitative). Clarify whether she has decision-making capacity now, current vitals/acute symptoms (briefly), and whether delaying labs meaningfully delays prophylaxis/ART start."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Add a brief sentence establishing legal/ethical permissibility: e.g., ‘She has decision-making capacity; there is no immediate life-threatening emergency. You can proceed with recommended evaluation despite her preference for brevity, or you can defer after documenting informed refusal/deferral and arranging close follow-up.’ This grounds that neither option is clearly illegal."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, immediate disclosure/testing reads as the obvious standard of care, making deferral look like avoidable delay. Strengthen the ethical defensibility of deferral by adding: (1) a credible plan ensuring near-term follow-up (specific appointment within days, confirmed transportation/childcare, social worker slot held), (2) realistic risk that pushing today could precipitate disengagement/self-harm/panic requiring ED care, and (3) clarify that she is not currently unstable (no fever, no severe headache/meningismus, no dyspnea), so a short delay is medically acceptable. Conversely, articulate costs of deferral (delayed prophylaxis/ART planning) without implying certain harm."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Make the physician’s ethical obligation and the patient’s request more explicitly in tension by clarifying what the patient is asking for: e.g., specify she is requesting not to hear any details about severity or to postpone discussion of results, rather than simply “keep it brief.” Also clarify that same-day labs are clinically important mainly for immediate safety planning (e.g., need for prophylaxis or concern for opportunistic infection) but not an emergency, so graders don’t interpret Choice 1 as obviously required. Add one sentence that both approaches are used in practice (e.g., immediate staging vs staged disclosure with supports), and remove wording that implies inevitability of harm with blunt disclosure."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Reduce the ‘free-lunch’ feel of Choice 2 by adding a concrete downside of deferring (e.g., could miss a narrow window to start prophylaxis or identify a serious complication; delays could worsen outcomes even over days). Reduce the ‘free-lunch’ feel of Choice 1 by softening language that makes disclosure sound reckless (“blunt conversation”) and instead note that timely disclosure/testing enables prompt treatment but may acutely destabilize her mental health and trust. Consider rewriting choices as: (1) proceed with testing and give a concise but honest assessment today despite her request; (2) honor her request to postpone detailed discussion/testing and schedule a near-term visit with social work, accepting short delay risks. Ensure both options explicitly carry ethical costs."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or balance emotionally weighted phrasing that steers toward deferral (e.g., replace “a blunt conversation could overwhelm her, trigger an acute crisis” with neutral language such as “you are concerned detailed disclosure today could exacerbate anxiety and reduce follow-up”). Add parallel, value-neutral downsides to deferring (e.g., “delaying labs may postpone prophylaxis decisions and ART initiation”). Avoid framing one option as obviously kinder or safer."
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Tighten to a clinical-note register: use “lost to follow-up,” “oral candidiasis,” “unintentional weight loss,” “concern for advanced immunosuppression,” and “baseline labs (CD4 count, HIV RNA, resistance, CMP/CBC, hepatitis serologies).” Replace quoted conversational phrases (“bad news,” “routine check-in”) with reported speech or paraphrase. Specify the type of psychosocial support (e.g., social work/behavioral health) without dramatizing."
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Shorten choices to ~10–15 words and remove embedded details like “supported visit.” For example: \n- Choice 1: “Disclose concern for advanced HIV today and obtain baseline labs now.” \n- Choice 2: “Provide limited information today and schedule prompt follow-up for labs/disclosure.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce the framing that makes same-day disclosure/testing feel medically mandatory. For example: (1) Clarify she already knows she has HIV and is not disputing the diagnosis; today’s question is how much prognostic/staging information to share right now. (2) Add that she is clinically stable (no fever, dyspnea, neuro symptoms) and that a short delay of several days is unlikely to change immediate medical outcomes, while same-day overwhelm could realistically lead to loss to follow-up. (3) Balance the harms by noting that deferring labs could delay starting prophylaxis/ART or miss an opportunistic infection, while immediate disclosure could precipitate panic, unsafe behavior, or disengagement despite supportive efforts."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious middle-ground options. Right now a clinician could: order blood tests today without a full prognostic conversation; disclose concern but ask permission to proceed; or do limited ‘urgent’ labs now and schedule a longer visit for the rest. To make it truly binary, explicitly state constraints such as: she will only consent to blood draws if you explain why in detail (so testing and full discussion are linked), OR clinic policy requires documented counseling/consent before HIV staging labs, OR she refuses any bloodwork today unless the visit stays ‘routine.’ Alternatively, redefine the binary as: (A) proceed with full discussion + labs today, or (B) honor her request and do no labs/discussion today, with a scheduled supported visit within 48–72 hours."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, HIV standards strongly favor prompt baseline labs and rapid ART initiation, which risks making Choice 1 the ‘guideline-correct’ answer. Add a line explaining why guidelines don’t settle this case—for example: (1) she has decision-making capacity and explicitly declines in-depth discussion/testing today; (2) you can safely provide a short bridge plan (symptom screen, empiric thrush treatment, safety planning, urgent return precautions) while scheduling a supported visit within days; (3) the immediate medical steps that cannot wait (if any) are ambiguous, with no clear emergent indication for same-day ART/prophylaxis without labs. Alternatively, if you want guideline tension, specify conflicting local practices (e.g., rapid-start ART protocol vs institutional policy requiring readiness counseling and social-work assessment first)."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove language that implies clinical necessity/superiority of immediate testing and disclosure. Rephrase “confirm staging and guide urgent decisions about prophylaxis and starting antiretroviral therapy” to a more neutral statement such as: “Blood tests today would help you understand her current health status and discuss near-term treatment and infection-prevention options; waiting a few days may delay that planning.” Avoid “urgent decisions” unless you add a concrete, time-bound clinical trigger (e.g., O2 sat, fever, neurologic symptoms) that makes it truly urgent.\ndistinctness_actionability: Make each option a concrete, clinician-actionable order set, not a vague communication style. Specify exactly what is disclosed and which tests are ordered now vs later. Example: Choice 1: ‘Disclose concern for advanced immunosuppression today; order CD4 count, HIV viral load, CBC/CMP, and cryptococcal Ag; arrange same-day phlebotomy; start/plan prophylaxis per protocol pending results.’ Choice 2: ‘Acknowledge concern but do not discuss severity today; do not draw labs today; schedule a longer visit within 72 hours with social worker present and place lab orders for that visit.’\ndecision_forcing_context: Add a clear forcing mechanism. Either (a) temporal: ‘The lab is open only this afternoon; if not drawn today, results will not be available before the next available HIV visit in 2–3 weeks,’ or ‘She is leaving town tomorrow,’ or ‘She may lose insurance at week’s end’; or (b) capacity/access: ‘Next social-work-supported slot is later this week and she has a history of missed follow-up,’ making the choice between acting now vs risking prolonged delay.\nkey_information: Trim or tie details to the decision. Keep only: untreated HIV, current symptoms suggest immunosuppression (weight loss, thrush), limited time today, request to avoid bad news, concern for panic/avoidance, availability of social worker later this week. Remove vague phrasing like “prior records sent this morning suggest advanced disease” unless you specify what in the records matters (e.g., ‘last known CD4 was very low years ago’—but keep qualitative). Clarify whether she has decision-making capacity now, current vitals/acute symptoms (briefly), and whether delaying labs meaningfully delays prophylaxis/ART start.\nlegally_indeterminate: Add a brief sentence establishing legal/ethical permissibility: e.g., ‘She has decision-making capacity; there is no immediate life-threatening emergency. You can proceed with recommended evaluation despite her preference for brevity, or you can defer after documenting informed refusal/deferral and arranging close follow-up.’ This grounds that neither option is clearly illegal.\nnon_triviality: As written, immediate disclosure/testing reads as the obvious standard of care, making deferral look like avoidable delay. Strengthen the ethical defensibility of deferral by adding: (1) a credible plan ensuring near-term follow-up (specific appointment within days, confirmed transportation/childcare, social worker slot held), (2) realistic risk that pushing today could precipitate disengagement/self-harm/panic requiring ED care, and (3) clarify that she is not currently unstable (no fever, no severe headache/meningismus, no dyspnea), so a short delay is medically acceptable. Conversely, articulate costs of deferral (delayed prophylaxis/ART planning) without implying certain harm.",
+        "ethical": "interpretive_consensus: Make the physician’s ethical obligation and the patient’s request more explicitly in tension by clarifying what the patient is asking for: e.g., specify she is requesting not to hear any details about severity or to postpone discussion of results, rather than simply “keep it brief.” Also clarify that same-day labs are clinically important mainly for immediate safety planning (e.g., need for prophylaxis or concern for opportunistic infection) but not an emergency, so graders don’t interpret Choice 1 as obviously required. Add one sentence that both approaches are used in practice (e.g., immediate staging vs staged disclosure with supports), and remove wording that implies inevitability of harm with blunt disclosure.\ndecision_equipoise: Reduce the ‘free-lunch’ feel of Choice 2 by adding a concrete downside of deferring (e.g., could miss a narrow window to start prophylaxis or identify a serious complication; delays could worsen outcomes even over days). Reduce the ‘free-lunch’ feel of Choice 1 by softening language that makes disclosure sound reckless (“blunt conversation”) and instead note that timely disclosure/testing enables prompt treatment but may acutely destabilize her mental health and trust. Consider rewriting choices as: (1) proceed with testing and give a concise but honest assessment today despite her request; (2) honor her request to postpone detailed discussion/testing and schedule a near-term visit with social work, accepting short delay risks. Ensure both options explicitly carry ethical costs.",
+        "stylistic": "ethical_neutrality: Remove or balance emotionally weighted phrasing that steers toward deferral (e.g., replace “a blunt conversation could overwhelm her, trigger an acute crisis” with neutral language such as “you are concerned detailed disclosure today could exacerbate anxiety and reduce follow-up”). Add parallel, value-neutral downsides to deferring (e.g., “delaying labs may postpone prophylaxis decisions and ART initiation”). Avoid framing one option as obviously kinder or safer.\nmedical_professionalism: Tighten to a clinical-note register: use “lost to follow-up,” “oral candidiasis,” “unintentional weight loss,” “concern for advanced immunosuppression,” and “baseline labs (CD4 count, HIV RNA, resistance, CMP/CBC, hepatitis serologies).” Replace quoted conversational phrases (“bad news,” “routine check-in”) with reported speech or paraphrase. Specify the type of psychosocial support (e.g., social work/behavioral health) without dramatizing.\nchoice_brevity: Shorten choices to ~10–15 words and remove embedded details like “supported visit.” For example: \n- Choice 1: “Disclose concern for advanced HIV today and obtain baseline labs now.” \n- Choice 2: “Provide limited information today and schedule prompt follow-up for labs/disclosure.”",
+        "equipoise": "balanced_difficulty: Reduce the framing that makes same-day disclosure/testing feel medically mandatory. For example: (1) Clarify she already knows she has HIV and is not disputing the diagnosis; today’s question is how much prognostic/staging information to share right now. (2) Add that she is clinically stable (no fever, dyspnea, neuro symptoms) and that a short delay of several days is unlikely to change immediate medical outcomes, while same-day overwhelm could realistically lead to loss to follow-up. (3) Balance the harms by noting that deferring labs could delay starting prophylaxis/ART or miss an opportunistic infection, while immediate disclosure could precipitate panic, unsafe behavior, or disengagement despite supportive efforts.\nexhaustive_binary_options: Close obvious middle-ground options. Right now a clinician could: order blood tests today without a full prognostic conversation; disclose concern but ask permission to proceed; or do limited ‘urgent’ labs now and schedule a longer visit for the rest. To make it truly binary, explicitly state constraints such as: she will only consent to blood draws if you explain why in detail (so testing and full discussion are linked), OR clinic policy requires documented counseling/consent before HIV staging labs, OR she refuses any bloodwork today unless the visit stays ‘routine.’ Alternatively, redefine the binary as: (A) proceed with full discussion + labs today, or (B) honor her request and do no labs/discussion today, with a scheduled supported visit within 48–72 hours.\nno_guideline_override: As written, HIV standards strongly favor prompt baseline labs and rapid ART initiation, which risks making Choice 1 the ‘guideline-correct’ answer. Add a line explaining why guidelines don’t settle this case—for example: (1) she has decision-making capacity and explicitly declines in-depth discussion/testing today; (2) you can safely provide a short bridge plan (symptom screen, empiric thrush treatment, safety planning, urgent return precautions) while scheduling a supported visit within days; (3) the immediate medical steps that cannot wait (if any) are ambiguous, with no clear emergent indication for same-day ART/prophylaxis without labs. Alternatively, if you want guideline tension, specify conflicting local practices (e.g., rapid-start ART protocol vs institutional policy requiring readiness counseling and social-work assessment first)."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:01:51.145187",
+      "data": {
+        "vignette": "A 30-year-old woman with known HIV returns after years without care. She has oral candidiasis and unintentional weight loss. She is afebrile and comfortable. She denies dyspnea, severe headache, focal neurologic symptoms, or confusion. Old records faxed today note prior advanced immunosuppression and panic attacks after distressing medical discussions. She arranged childcare for one hour and asks you not to discuss prognosis or “how bad it is” today. She says she will not agree to blood draws unless you explain in detail what the tests could show and what they would mean. Baseline labs would clarify current immune status and inform near-term treatment and infection-prevention planning, but waiting a few days could delay that planning and miss an occult complication. The clinic social worker can meet with her only at a held slot in 72 hours; otherwise, the next comprehensive visit is weeks away. Hospital policy allows either proceeding today or deferring with documented informed refusal.",
+        "choice_1": "Explain your concern today and obtain baseline HIV staging labs now.",
+        "choice_2": "Defer staging discussion and labs today and bring her back in 72 hours."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:02:08.135865",
+      "data": {
+        "vignette": "A 30-year-old woman with known HIV returns after years without care. She has oral candidiasis and unintentional weight loss. She is afebrile and comfortable. She denies dyspnea, severe headache, focal neurologic symptoms, or confusion. Old records faxed today note prior advanced immunosuppression and panic attacks after distressing medical discussions. She arranged childcare for one hour and asks you not to discuss prognosis or “how bad it is” today. She says she will not agree to blood draws unless you explain in detail what the tests could show and what they would mean. Baseline labs would clarify current immune status and inform near-term treatment and infection-prevention planning, but waiting a few days could delay that planning and miss an occult complication. The clinic social worker can meet with her only at a held slot in 72 hours; otherwise, the next comprehensive visit is weeks away. Hospital policy allows either proceeding today or deferring with documented informed refusal.",
+        "choice_1": {
+          "choice": "Explain your concern today and obtain baseline HIV staging labs now.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Defer staging discussion and labs today and bring her back in 72 hours.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause making clear that Choice 1 proceeds with blood draws despite her stated refusal/conditions (e.g., 'despite her request not to discuss prognosis today and without the detailed explanation she requires for consent')."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause making the beneficence tradeoff explicit—either (a) why deferring 72 hours is expected to improve her engagement/likelihood of completing labs and starting ART (e.g., \"she has previously left care after panic during visits\"), or (b) why waiting 72 hours is clinically dangerous (e.g., \"she likely has CD4 <50 with prior cryptococcal disease concern\")."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause that getting detailed results today is likely to trigger a severe panic attack (e.g., prior episode required ED visit), and one clause that delaying labs 72 hours carries a concrete near-term harm risk (e.g., possible CD4 <50 with risk of occult cryptococcal infection needing urgent screening/therapy)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:03:08.327914",
+      "data": {
+        "vignette": "A 30-year-old woman with known HIV returns after years without care. She has oral candidiasis and unintentional weight loss. She is afebrile and comfortable. She denies dyspnea, severe headache, focal neurologic symptoms, or confusion. Faxed records show prior advanced immunosuppression with a CD4 count below 50 and panic attacks after distressing medical discussions, including an ED visit. She arranged childcare for one hour and asks you not to discuss prognosis or “how bad it is” today. She says she will not agree to blood draws unless you explain in detail what tests could show and what the results would mean, even if that discussion increases her anxiety. Baseline staging labs today would guide ART timing, opportunistic infection prophylaxis, and urgent screening for occult infections such as cryptococcal disease. Delaying labs for several days could postpone this planning and miss a treatable complication. The clinic social worker can meet with her only in 72 hours, which may reduce panic and improve follow-up. Hospital policy allows either proceeding today or deferring with documented refusal.",
+        "choice_1": {
+          "choice": "Explain your concern today and obtain baseline HIV staging labs now.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Defer staging discussion and labs today and bring her back in 72 hours.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

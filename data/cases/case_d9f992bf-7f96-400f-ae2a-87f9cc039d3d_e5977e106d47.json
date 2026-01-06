@@ -1,0 +1,236 @@
+{
+  "case_id": "d9f992bf-7f96-400f-ae2a-87f9cc039d3d",
+  "created_at": "2026-01-04T23:44:15.734839",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "82. Mrs. Franklin, an 81-year-old Alzheimer's patient hospitalized\nunder your care has been asked to participate in a clinical trial\ntesting a new drug designed to help improve memory. You were\npresent when the clinical investigator obtained a signed informed\nconsent from Mrs. Franklin a few days ago. However, when you visit\nMrs. Franklin today and ask her if she is ready to begin the study\ntomorrow, she looks at you blankly and seems to have no idea what\nyou are talking about.\nWhat should you do?\na. The signed informed consent for the clinical drug testing is in doubt, and\nshould not be done.\nb. The primary investigator should be contacted to discuss Mrs. Franklin's\nparticipation in the trial.\nc. A surrogate who can give consent for her participation may be contacted if the\nclinical trial is deemed to be in her best interests.\nd. All of the above.",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:44:15.734905",
+      "data": {
+        "vignette": "An 81-year-old woman with moderate Alzheimer disease is admitted for pneumonia and is now improving. Two days ago, she met with a research investigator and signed consent to join a blinded drug trial aimed at slowing memory decline. You witnessed the discussion and she appeared to understand the study at the time. Today she is calm but cannot recall the study and says, “I don’t know what you’re talking about,” when you mention starting the first dose tomorrow. Her daughter visits daily but was not present for the consent visit and has not been asked to decide. The study requires extra blood draws and monitoring, and the investigational drug has uncertain side effects in frail elders. The research team says her enrollment slot and drug shipment will be released if dosing does not start tomorrow. Hospital policy and the IRB allow either withdrawal or continued participation with appropriate documentation.",
+        "choice_1": "Allow the trial to start tomorrow under the signed consent.",
+        "choice_2": "Stop enrollment and reassess decision-making with possible surrogate consent."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 2 a single, concrete order rather than a multi-step plan. For example: \"Pause/withdraw from the trial now and do not administer the first dose tomorrow; request a formal capacity assessment and, if she lacks capacity, approach the legally authorized representative for re-consent.\" Also clarify whether the patient remains enrolled vs fully withdrawn while reassessing."
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove or streamline non-essential phrasing and add a few missing decision-critical details. Suggested edits: (1) Specify whether she is currently delirious or has fluctuating cognition from pneumonia/hypoxia, since this drives whether today’s inability to recall should invalidate prior consent. (2) Clarify whether she is expressing refusal/objection vs simple amnesia (e.g., does she say she does not want to participate, or does she simply not remember but is agreeable?). (3) State whether she has a documented health care proxy/POA and whether the daughter is the legally authorized representative. Delete minor details that don’t change the dilemma (e.g., \"drug shipment\"), unless needed for the forcing mechanism."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Increase ethical equipoise by making both options plausibly defensible. Add facts that plausibly support continuing: e.g., the investigator documented a capacity evaluation at consent; the patient historically expressed a consistent desire to join research or to try any treatment to slow decline; the trial procedures are low-to-moderate burden; and she is not actively refusing now (no distress/objection). Also add facts that plausibly support pausing: current cognitive status may be temporarily impaired by illness; extra blood draws may meaningfully burden her recovery; and surrogate input is needed to respect her current interests. Avoid language that implies one option is the obvious standard (e.g., \"cannot recall\" alone) by acknowledging fluctuating cognition and the ambiguity of what constitutes ongoing consent in this context."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Strengthen the unavoidable value clash by specifying that starting tomorrow is the only way to remain in the trial, but that delaying to formally reassess capacity/surrogate consent will forfeit enrollment permanently (not merely “slot released”). Also clarify what clinical or research benefit is realistically at stake (e.g., potential to slow decline with no alternative access) so that stopping is not simply the safer option."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "As written, small wording changes (e.g., changing “cannot recall” to “does not recall but affirms she wants to participate”) would flip the ethical meaning. Stabilize by explicitly stating whether she currently has decisional capacity for research participation (e.g., fluctuating delirium vs baseline dementia), whether she is expressing refusal vs confusion, and whether she can consistently indicate a preference when re-oriented."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce ambiguity about whether this is primarily a capacity problem, a withdrawal of consent, or mere memory impairment. Add: (1) a brief bedside capacity assessment today (understanding/appreciation/reasoning/choice), (2) whether she is intermittently lucid, (3) whether the daughter is the legally/ethically appropriate surrogate and is reachable before dosing, and (4) whether the investigator judged capacity at consent and documented it. This will align graders on the core values in conflict."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Currently Choice 2 reads as the clear ethical default (protects from harm and respects apparent present refusal/confusion) while Choice 1 risks unethical enrollment. To restore equipoise, make Choice 1 ethically defensible by clarifying that today she lacks recall but still, when re-explained, affirms participation and demonstrates sufficient capacity, or that she has a prior written research directive/consistent prior preference to participate. Make Choice 2 ethically costly by specifying that reassessment/delaying will definitively exclude her from the only potentially beneficial option and that her previously expressed values strongly supported participation."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove language that subtly biases against participation (e.g., “frail elders,” “uncertain side effects”) or balance it with equally concrete burdens of withdrawal (e.g., loss of potential benefit/commitment). Rephrase patient quote to neutral clinical description (e.g., “unable to describe the study or express a choice today”)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Clarify the forcing mechanism and decision point: specify whether first dose is inpatient and whether capacity is fluctuating due to acute illness/delirium. Add 1 sentence on current cognitive status (e.g., CAM positive/negative) and whether she can understand/communicate a choice today. Remove minor padding (“calm but”) if not clinically relevant."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both options parallel, action-only, ~10–15 words, without extra steps. Example: Choice 1: “Initiate the first trial dose tomorrow based on prior written consent.” Choice 2: “Hold trial dosing and withdraw enrollment pending capacity reassessment and surrogate input.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 1 more ethically/clinically defensible and Choice 2 more morally costly. Edits: (1) Add that during the consent visit she demonstrated task-specific capacity with teach-back, consistently expressed a long-held wish to contribute to research/try experimental options, and was not pressured. (2) Clarify today’s response: she cannot recall the prior meeting but, when the study is re-explained in simple terms, she is not distressed and says something like “If it might help me and it’s what I agreed to, okay,” vs alternatively she shows mild ambivalence rather than clear refusal. (3) Increase the downside of stopping: enrollment cannot be reopened, this trial is the only local option, and she previously said she would be upset to ‘miss her chance’ if she became sicker. (4) Reduce the ‘obvious safety’ tilt: describe study procedures as modest additional burden (e.g., one extra blood draw) and side effects as uncertain but monitored, rather than emphasizing frailty/uncertain harms without counterweight."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious middle-ground paths. Edits: (1) Explicitly state that the sponsor will not allow a dosing delay or ‘hold’ beyond tomorrow and the investigator is unavailable for a full re-consent visit before the dosing window closes. (2) State whether the daughter is reachable today; if she is, then the current binary is not exhaustive—revise to make her unreachable until after the window, or clarify protocol prohibits surrogate consent unless the patient is formally deemed incapable (which cannot be completed before tomorrow). (3) Define the decision precisely as: ‘Administer first dose tomorrow morning vs withdraw her before first dose,’ and note that partial steps (ethics consult, extension request) cannot be completed in time."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, research ethics norms (capacity/assent and respecting apparent dissent) risk making Choice 2 seem mandated. To keep it a gray zone: (1) Add that the IRB-approved protocol explicitly permits continued participation when prior consent was valid and the participant does not demonstrate objection after information is re-presented; OR alternatively, that it requires withdrawal only for persistent objection, and her current statements are ambiguous (memory lapse without refusal). (2) Document that a brief capacity screen today is equivocal rather than clearly absent, and that psychiatry/ethics consult for formal capacity determination cannot occur before dosing. (3) Clarify that local policy allows either approach and that both have been used in similar dementia-fluctuation cases, preventing a clear professional-standard answer."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "distinctness_actionability: Make Choice 2 a single, concrete order rather than a multi-step plan. For example: \"Pause/withdraw from the trial now and do not administer the first dose tomorrow; request a formal capacity assessment and, if she lacks capacity, approach the legally authorized representative for re-consent.\" Also clarify whether the patient remains enrolled vs fully withdrawn while reassessing.\nkey_information: Remove or streamline non-essential phrasing and add a few missing decision-critical details. Suggested edits: (1) Specify whether she is currently delirious or has fluctuating cognition from pneumonia/hypoxia, since this drives whether today’s inability to recall should invalidate prior consent. (2) Clarify whether she is expressing refusal/objection vs simple amnesia (e.g., does she say she does not want to participate, or does she simply not remember but is agreeable?). (3) State whether she has a documented health care proxy/POA and whether the daughter is the legally authorized representative. Delete minor details that don’t change the dilemma (e.g., \"drug shipment\"), unless needed for the forcing mechanism.\nnon_triviality: Increase ethical equipoise by making both options plausibly defensible. Add facts that plausibly support continuing: e.g., the investigator documented a capacity evaluation at consent; the patient historically expressed a consistent desire to join research or to try any treatment to slow decline; the trial procedures are low-to-moderate burden; and she is not actively refusing now (no distress/objection). Also add facts that plausibly support pausing: current cognitive status may be temporarily impaired by illness; extra blood draws may meaningfully burden her recovery; and surrogate input is needed to respect her current interests. Avoid language that implies one option is the obvious standard (e.g., \"cannot recall\" alone) by acknowledging fluctuating cognition and the ambiguity of what constitutes ongoing consent in this context.",
+        "ethical": "clarity_value_conflict: Strengthen the unavoidable value clash by specifying that starting tomorrow is the only way to remain in the trial, but that delaying to formally reassess capacity/surrogate consent will forfeit enrollment permanently (not merely “slot released”). Also clarify what clinical or research benefit is realistically at stake (e.g., potential to slow decline with no alternative access) so that stopping is not simply the safer option.\ndirectional_stability: As written, small wording changes (e.g., changing “cannot recall” to “does not recall but affirms she wants to participate”) would flip the ethical meaning. Stabilize by explicitly stating whether she currently has decisional capacity for research participation (e.g., fluctuating delirium vs baseline dementia), whether she is expressing refusal vs confusion, and whether she can consistently indicate a preference when re-oriented.\ninterpretive_consensus: Reduce ambiguity about whether this is primarily a capacity problem, a withdrawal of consent, or mere memory impairment. Add: (1) a brief bedside capacity assessment today (understanding/appreciation/reasoning/choice), (2) whether she is intermittently lucid, (3) whether the daughter is the legally/ethically appropriate surrogate and is reachable before dosing, and (4) whether the investigator judged capacity at consent and documented it. This will align graders on the core values in conflict.\ndecision_equipoise: Currently Choice 2 reads as the clear ethical default (protects from harm and respects apparent present refusal/confusion) while Choice 1 risks unethical enrollment. To restore equipoise, make Choice 1 ethically defensible by clarifying that today she lacks recall but still, when re-explained, affirms participation and demonstrates sufficient capacity, or that she has a prior written research directive/consistent prior preference to participate. Make Choice 2 ethically costly by specifying that reassessment/delaying will definitively exclude her from the only potentially beneficial option and that her previously expressed values strongly supported participation.",
+        "stylistic": "ethical_neutrality: Remove language that subtly biases against participation (e.g., “frail elders,” “uncertain side effects”) or balance it with equally concrete burdens of withdrawal (e.g., loss of potential benefit/commitment). Rephrase patient quote to neutral clinical description (e.g., “unable to describe the study or express a choice today”).\nconciseness_coherence: Clarify the forcing mechanism and decision point: specify whether first dose is inpatient and whether capacity is fluctuating due to acute illness/delirium. Add 1 sentence on current cognitive status (e.g., CAM positive/negative) and whether she can understand/communicate a choice today. Remove minor padding (“calm but”) if not clinically relevant.\nchoice_brevity: Make both options parallel, action-only, ~10–15 words, without extra steps. Example: Choice 1: “Initiate the first trial dose tomorrow based on prior written consent.” Choice 2: “Hold trial dosing and withdraw enrollment pending capacity reassessment and surrogate input.”",
+        "equipoise": "balanced_difficulty: Make Choice 1 more ethically/clinically defensible and Choice 2 more morally costly. Edits: (1) Add that during the consent visit she demonstrated task-specific capacity with teach-back, consistently expressed a long-held wish to contribute to research/try experimental options, and was not pressured. (2) Clarify today’s response: she cannot recall the prior meeting but, when the study is re-explained in simple terms, she is not distressed and says something like “If it might help me and it’s what I agreed to, okay,” vs alternatively she shows mild ambivalence rather than clear refusal. (3) Increase the downside of stopping: enrollment cannot be reopened, this trial is the only local option, and she previously said she would be upset to ‘miss her chance’ if she became sicker. (4) Reduce the ‘obvious safety’ tilt: describe study procedures as modest additional burden (e.g., one extra blood draw) and side effects as uncertain but monitored, rather than emphasizing frailty/uncertain harms without counterweight.\nexhaustive_binary_options: Close obvious middle-ground paths. Edits: (1) Explicitly state that the sponsor will not allow a dosing delay or ‘hold’ beyond tomorrow and the investigator is unavailable for a full re-consent visit before the dosing window closes. (2) State whether the daughter is reachable today; if she is, then the current binary is not exhaustive—revise to make her unreachable until after the window, or clarify protocol prohibits surrogate consent unless the patient is formally deemed incapable (which cannot be completed before tomorrow). (3) Define the decision precisely as: ‘Administer first dose tomorrow morning vs withdraw her before first dose,’ and note that partial steps (ethics consult, extension request) cannot be completed in time.\nno_guideline_override: As written, research ethics norms (capacity/assent and respecting apparent dissent) risk making Choice 2 seem mandated. To keep it a gray zone: (1) Add that the IRB-approved protocol explicitly permits continued participation when prior consent was valid and the participant does not demonstrate objection after information is re-presented; OR alternatively, that it requires withdrawal only for persistent objection, and her current statements are ambiguous (memory lapse without refusal). (2) Document that a brief capacity screen today is equivocal rather than clearly absent, and that psychiatry/ethics consult for formal capacity determination cannot occur before dosing. (3) Clarify that local policy allows either approach and that both have been used in similar dementia-fluctuation cases, preventing a clear professional-standard answer."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:45:31.077792",
+      "data": {
+        "vignette": "An 81-year-old woman with moderate Alzheimer disease is hospitalized for pneumonia and is improving. Two days ago she met a study investigator and signed consent for a blinded drug trial to slow memory decline. The note documents a teach-back capacity check and that she repeatedly said she wanted to join research and “try anything” while she still could. This morning her attention is variable and you suspect a mild, resolving delirium. She cannot recall the consent visit. When you re-explain the trial in simple terms, she can restate the purpose and the main procedures but cannot weigh risks consistently. She says, “If that’s what I agreed to and it might help, I guess okay,” and does not show distress or resistance. The protocol adds one extra blood draw and closer monitoring, with side effects uncertain but closely watched. The sponsor requires the first dose tomorrow morning or she is permanently withdrawn; the investigator and her health care proxy daughter are unreachable until after that window, and formal capacity review cannot occur in time. Hospital policy and the IRB permit either course in this situation.",
+        "choice_1": "Administer the first trial dose tomorrow under her prior written consent.",
+        "choice_2": "Withdraw her from the trial and do not administer the first dose tomorrow."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:45:41.125925",
+      "data": {
+        "vignette": "An 81-year-old woman with moderate Alzheimer disease is hospitalized for pneumonia and is improving. Two days ago she met a study investigator and signed consent for a blinded drug trial to slow memory decline. The note documents a teach-back capacity check and that she repeatedly said she wanted to join research and “try anything” while she still could. This morning her attention is variable and you suspect a mild, resolving delirium. She cannot recall the consent visit. When you re-explain the trial in simple terms, she can restate the purpose and the main procedures but cannot weigh risks consistently. She says, “If that’s what I agreed to and it might help, I guess okay,” and does not show distress or resistance. The protocol adds one extra blood draw and closer monitoring, with side effects uncertain but closely watched. The sponsor requires the first dose tomorrow morning or she is permanently withdrawn; the investigator and her health care proxy daughter are unreachable until after that window, and formal capacity review cannot occur in time. Hospital policy and the IRB permit either course in this situation.",
+        "choice_1": {
+          "choice": "Administer the first trial dose tomorrow under her prior written consent.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Withdraw her from the trial and do not administer the first dose tomorrow.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating she either explicitly affirms participation now (e.g., “Yes, I still want to be in the study”) or explicitly declines/objects now (e.g., “No, I don’t want any research now”), so the autonomy conflict between honoring prior consent vs current wishes is unambiguous."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause quantifying expected direct clinical benefit (e.g., ‘phase 3 data suggest a modest but meaningful slowing of decline in similar patients’) and a clause naming a plausible serious risk/burden (e.g., ‘can cause symptomatic bradycardia/bleeding risk requiring additional labs’), so beneficence tradeoffs between treating vs withdrawing are explicit."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause specifying a concrete, nontrivial potential harm from the investigational drug (e.g., \"early-phase data suggest risk of symptomatic bradycardia/serious hypotension in frail elders\"), so administering tomorrow clearly increases risk relative to withdrawing."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:46:28.180909",
+      "data": {
+        "vignette": "An 81-year-old woman with moderate Alzheimer disease is hospitalized for pneumonia and is improving. Two days ago she met a study investigator and signed consent for a blinded drug trial to slow memory decline. The note documents a teach-back capacity check and that she repeatedly said she wanted to join research and “try anything” while she still could. This morning her attention is variable and you suspect a mild, resolving delirium. She cannot recall the consent visit. You re-explain the trial in simple terms. She can restate the purpose and main procedures but cannot weigh risks consistently. When asked if she still wants to participate, she affirms participation and does not resist. Prior phase 3 data suggest modest slowing of decline in similar patients. Early data also suggest symptomatic bradycardia and syncope in frail elders. The sponsor requires the first dose tomorrow morning or she is permanently withdrawn. The investigator and her health care proxy daughter are unreachable until after that window, and formal capacity review cannot occur in time. Hospital policy and the IRB permit either course.",
+        "choice_1": {
+          "choice": "Administer the first trial dose tomorrow under her prior written consent.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Withdraw her from the trial and do not administer the first dose tomorrow.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

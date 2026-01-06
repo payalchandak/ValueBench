@@ -1,0 +1,236 @@
+{
+  "case_id": "fa4e3d16-e388-4d68-945b-042e8cbcffe8",
+  "created_at": "2026-01-04T22:43:29.917722",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "101. A middle-aged married couple brings their 1 0-year-old\ndaughter to the pediatrician because \"she is too tired to play\nnowadays and sleeps all the time.\" The parents say that their\ndaughter becomes winded with minimal exertion. For the past 2\nweeks, the girl's gums have bled when she brushes her teeth.\nPhysical examination demonstrates pallor and hepatosplenomegaly.\nAn extensive workup indicates that she is suffering from acute\nlymphoblastic leukemia, and the parents are informed that\nchemotherapy will be necessary. They firmly refuse to comply with\nthis treatment plan, however, due to their belief that the side effects\nwill be too severe and her quality of life will be poor. Despite a\nlengthy discussion about the benefits of treatment and the likely\nconsequences if therapy is withheld, the parents insist on taking the\ngirl home.\nWhich of the following is the most appropriate next step?\na. Comply with the parents' wishes\nb. Obtain a court order for chemotherapy\nc. Proceed with the chemotherapy\nd. Provide supportive treatment only\ne. Transfer care to a pediatrician willing to provide supportive treatment only",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T22:43:29.917763",
+      "data": {
+        "vignette": "A 10-year-old girl is admitted with fatigue, gum bleeding, pallor, and hepatosplenomegaly. Bone marrow testing confirms acute lymphoblastic leukemia. The oncology team recommends starting induction chemotherapy during this admission. Her parents refuse. They say they have watched a relative suffer through cancer treatment and want to take her home for “natural” care. The child is anxious and says she does not want “medicine that will make me sicker,” but she cannot explain the illness or what will happen without treatment. Without timely therapy, she is expected to worsen quickly from infection or bleeding. The team must decide before discharge planning later today. Hospital policy and counsel confirm that either seeking emergency court authorization or allowing discharge with a palliative plan is legally permissible in this situation.",
+        "choice_1": "Seek emergency court authorization to begin chemotherapy despite parental refusal",
+        "choice_2": "Honor the parents’ refusal and discharge with supportive and palliative care only"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften language that makes chemotherapy the clearly medically correct option and add concrete countervailing clinical burdens so the dilemma isn’t resolved by clinical superiority. For example: replace “Without timely therapy, she is expected to worsen quickly” with “Without treatment, she is at significant risk of serious complications from infection or bleeding over the coming days to weeks,” and add 1–2 sentences that induction chemotherapy itself carries substantial near-term risks (e.g., prolonged hospitalization, severe infections, mucositis, transfusion needs, possible ICU-level complications) and may be less effective/especially toxic in her situation (e.g., very high-risk features or significant comorbid organ dysfunction) without using numbers."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Make the ‘honor refusal and discharge with supportive/palliative care’ pathway more clinically realistic in a hospital setting. Add that the parents are requesting discharge against medical advice and that the team must decide whether to initiate an emergency custody/court process now versus permitting AMA discharge with a documented plan (hospice enrollment/close outpatient follow-up). Alternatively, specify a context in which palliative-only care is a commonly considered option (e.g., very-high-risk or relapsed/refractory ALL with poor expected response and high toxicity risk), while keeping the primary diagnosis as ALL."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "As written, allowing discharge of a minor with newly diagnosed, potentially curable ALL for palliative-only care is often legally treated as medical neglect, making Choice 2 potentially indefensible. Add jurisdictional/legal grounding that makes BOTH options clearly permissible, e.g.: ‘State law allows clinicians to seek an emergency order for potentially life-saving treatment, but also permits discharge if parents decline and the child is not currently unstable, provided child protective services is notified and hospice/supportive services are arranged.’ Or reframe Choice 2 as ‘allow parents to leave AMA while initiating CPS notification and arranging hospice/supportive care,’ rather than an institutionally endorsed discharge."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Increase genuine ethical difficulty so neither option is obviously inferior. Add elements that make forced chemotherapy ethically costly and not a straightforward rescue: (1) describe the child’s distress/active resistance and the likelihood treatment would require sedation/restraints and prolonged separation from parents; (2) add a clinically plausible reason benefit is less clear or burdens unusually high (e.g., severe baseline frailty/organ dysfunction, prior serious infection, very high-risk/relapsed disease) so palliative-focused care is not clearly unreasonable; (3) clarify that the parents are otherwise attentive and willing to pursue intensive symptom management, transfusions, and antibiotics but refuse chemotherapy specifically. Keep the decision binary but ensure both options remain medically and ethically defensible."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Revise the clinical/ethical setup so that honoring refusal is not tantamount to permitting a preventable pediatric death (a scenario where most clinicians feel professionally compelled to override parents). Keep the primary diagnosis (ALL) and age, but add contextual facts that make either path ethically defensible and costly:\n- Reduce the “near-certain rapid decline without treatment” framing and avoid language implying chemotherapy is the medically obvious answer. Replace with: “Without treatment, she will likely worsen over weeks to months, with risk of serious infection/bleeding; the exact course is uncertain.” Keep a time-forcing mechanism via logistics (e.g., induction slot/central line placement scheduled tomorrow; family must decide before leaving).\n- Add a plausible reason chemotherapy is not straightforward beneficence: e.g., very-high-risk genetics/relapsed ALL with limited chance of durable remission; or major comorbidity (severe cardiomyopathy, prior anthracycline exposure, or significant baseline frailty) making induction especially hazardous and potentially prolonging suffering.\n- Make the parents’ refusal more ethically weighty than “natural care”: e.g., they will accept transfusions/antibiotics and request a short, structured delay for a second opinion at a tertiary center or to consider a less intensive protocol; OR they accept chemo only if burdensome ICU-level escalation is limited. Then the binary can be framed as (1) seek court order for standard induction now vs (2) allow discharge with a defined supportive-care/second-opinion plan that preserves future treatment options.\n- Strengthen the child’s voice in an age-appropriate way (still 10): include that she consistently refuses after repeated, child-friendly explanation with child-life support, and expresses specific values (fear of needles/hospitalization vs desire to be home), while still not fully appreciating consequences.\nThese edits create real tradeoffs (respecting family values/child’s expressed preferences and avoiding iatrogenic suffering vs overriding refusal to pursue a potentially beneficial but burdensome, uncertain course), making both choices arguable in good faith."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Replace emotionally loaded or quotation-mark framing with neutral clinical language. E.g., change “natural care” to “non‑medical therapies outside the hospital” and remove “suffer through”; instead write “had significant treatment-related toxicity.” Rephrase “expected to worsen quickly” to “at high near-term risk of life-threatening infection or hemorrhage without induction therapy.” Remove the emphasis that the team ‘must’ act by discharge planning; instead state a neutral forcing constraint such as “a discharge decision is required today unless legal hold is pursued.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify capacity/assent details. Specify whether the child has been assessed for decision-making capacity/assent (e.g., “developmentally appropriate assent sought; she demonstrates limited understanding despite explanation”). Clarify what “supportive” entails (e.g., transfusions/antibiotics) without expanding into a full care plan. Remove redundant symptom listing if not needed (e.g., keep 2–3 key findings plus pancytopenia)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make choices neutral action statements without embedded contrast language. Revise Choice 1 to “Petition the court today for authorization to start induction chemotherapy.” Revise Choice 2 to “Discharge today with a palliative-focused plan and outpatient follow-up.” Remove “despite parental refusal” and “only,” which function as persuasive modifiers."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance so honoring refusal is ethically/clinically defensible. Keep age 10 and ALL, but modify to a gray-zone scenario such as relapsed/refractory ALL after prior intensive therapy (e.g., induction + transplant) with severe prior toxicities and now a low-likelihood, high-burden salvage regimen; or newly diagnosed ALL with a major comorbidity that makes induction unusually dangerous (e.g., severe cardiomyopathy, uncontrolled invasive fungal infection) such that immediate chemo could plausibly cause death or profound suffering. Make clear both paths carry serious moral costs: forcing treatment risks significant harm/suffering with uncertain benefit; discharge risks potentially preventable death. Remove/soften language implying chemo is clearly the medically correct option (e.g., replace 'expected to worsen quickly' with 'may deteriorate rapidly' and add that some stabilization/supportive measures could temporarily reduce imminent risk)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious middle-ground options. Explicitly state that: (1) an ethics consult has already occurred; (2) the parents have declined a time-limited trial, second opinion, and involvement of chaplain/social work; (3) transfer to another oncology center is not feasible before the clinical window closes; and (4) the only immediate actionable choices today are to petition the court for authorization now vs discharge the family with a hospice/supportive plan. Alternatively, redefine the binary to reflect the real fork: 'File for emergency protective custody/court order today' vs 'Do not escalate to legal action and proceed with discharge plan,' while explicitly noting that negotiation has failed and delay is not an option."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, pediatric refusal of clearly life-saving standard therapy (newly diagnosed ALL induction) is typically addressed by child-protection/court involvement; this makes Choice 1 effectively mandated by prevailing standards. To avoid guideline override, revise the clinical context so guidelines do not clearly dictate action: e.g., relapsed ALL with no established curative standard and only high-toxicity salvage/experimental options; or profound comorbidities/contraindications making standard induction non-standard and risk-benefit genuinely contested among oncologists. Add a line that multiple attending oncologists disagree about whether immediate induction is appropriate vs medically nonbeneficial/overly burdensome in this specific child, and that institutional policy permits either approach."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften language that makes chemotherapy the clearly medically correct option and add concrete countervailing clinical burdens so the dilemma isn’t resolved by clinical superiority. For example: replace “Without timely therapy, she is expected to worsen quickly” with “Without treatment, she is at significant risk of serious complications from infection or bleeding over the coming days to weeks,” and add 1–2 sentences that induction chemotherapy itself carries substantial near-term risks (e.g., prolonged hospitalization, severe infections, mucositis, transfusion needs, possible ICU-level complications) and may be less effective/especially toxic in her situation (e.g., very high-risk features or significant comorbid organ dysfunction) without using numbers.\nclinical_plausibility: Make the ‘honor refusal and discharge with supportive/palliative care’ pathway more clinically realistic in a hospital setting. Add that the parents are requesting discharge against medical advice and that the team must decide whether to initiate an emergency custody/court process now versus permitting AMA discharge with a documented plan (hospice enrollment/close outpatient follow-up). Alternatively, specify a context in which palliative-only care is a commonly considered option (e.g., very-high-risk or relapsed/refractory ALL with poor expected response and high toxicity risk), while keeping the primary diagnosis as ALL.\nlegally_indeterminate: As written, allowing discharge of a minor with newly diagnosed, potentially curable ALL for palliative-only care is often legally treated as medical neglect, making Choice 2 potentially indefensible. Add jurisdictional/legal grounding that makes BOTH options clearly permissible, e.g.: ‘State law allows clinicians to seek an emergency order for potentially life-saving treatment, but also permits discharge if parents decline and the child is not currently unstable, provided child protective services is notified and hospice/supportive services are arranged.’ Or reframe Choice 2 as ‘allow parents to leave AMA while initiating CPS notification and arranging hospice/supportive care,’ rather than an institutionally endorsed discharge.\nnon_triviality: Increase genuine ethical difficulty so neither option is obviously inferior. Add elements that make forced chemotherapy ethically costly and not a straightforward rescue: (1) describe the child’s distress/active resistance and the likelihood treatment would require sedation/restraints and prolonged separation from parents; (2) add a clinically plausible reason benefit is less clear or burdens unusually high (e.g., severe baseline frailty/organ dysfunction, prior serious infection, very high-risk/relapsed disease) so palliative-focused care is not clearly unreasonable; (3) clarify that the parents are otherwise attentive and willing to pursue intensive symptom management, transfusions, and antibiotics but refuse chemotherapy specifically. Keep the decision binary but ensure both options remain medically and ethically defensible.",
+        "ethical": "decision_equipoise: Revise the clinical/ethical setup so that honoring refusal is not tantamount to permitting a preventable pediatric death (a scenario where most clinicians feel professionally compelled to override parents). Keep the primary diagnosis (ALL) and age, but add contextual facts that make either path ethically defensible and costly:\n- Reduce the “near-certain rapid decline without treatment” framing and avoid language implying chemotherapy is the medically obvious answer. Replace with: “Without treatment, she will likely worsen over weeks to months, with risk of serious infection/bleeding; the exact course is uncertain.” Keep a time-forcing mechanism via logistics (e.g., induction slot/central line placement scheduled tomorrow; family must decide before leaving).\n- Add a plausible reason chemotherapy is not straightforward beneficence: e.g., very-high-risk genetics/relapsed ALL with limited chance of durable remission; or major comorbidity (severe cardiomyopathy, prior anthracycline exposure, or significant baseline frailty) making induction especially hazardous and potentially prolonging suffering.\n- Make the parents’ refusal more ethically weighty than “natural care”: e.g., they will accept transfusions/antibiotics and request a short, structured delay for a second opinion at a tertiary center or to consider a less intensive protocol; OR they accept chemo only if burdensome ICU-level escalation is limited. Then the binary can be framed as (1) seek court order for standard induction now vs (2) allow discharge with a defined supportive-care/second-opinion plan that preserves future treatment options.\n- Strengthen the child’s voice in an age-appropriate way (still 10): include that she consistently refuses after repeated, child-friendly explanation with child-life support, and expresses specific values (fear of needles/hospitalization vs desire to be home), while still not fully appreciating consequences.\nThese edits create real tradeoffs (respecting family values/child’s expressed preferences and avoiding iatrogenic suffering vs overriding refusal to pursue a potentially beneficial but burdensome, uncertain course), making both choices arguable in good faith.",
+        "stylistic": "ethical_neutrality: Replace emotionally loaded or quotation-mark framing with neutral clinical language. E.g., change “natural care” to “non‑medical therapies outside the hospital” and remove “suffer through”; instead write “had significant treatment-related toxicity.” Rephrase “expected to worsen quickly” to “at high near-term risk of life-threatening infection or hemorrhage without induction therapy.” Remove the emphasis that the team ‘must’ act by discharge planning; instead state a neutral forcing constraint such as “a discharge decision is required today unless legal hold is pursued.”\nconciseness_coherence: Tighten and clarify capacity/assent details. Specify whether the child has been assessed for decision-making capacity/assent (e.g., “developmentally appropriate assent sought; she demonstrates limited understanding despite explanation”). Clarify what “supportive” entails (e.g., transfusions/antibiotics) without expanding into a full care plan. Remove redundant symptom listing if not needed (e.g., keep 2–3 key findings plus pancytopenia).\nchoice_brevity: Make choices neutral action statements without embedded contrast language. Revise Choice 1 to “Petition the court today for authorization to start induction chemotherapy.” Revise Choice 2 to “Discharge today with a palliative-focused plan and outpatient follow-up.” Remove “despite parental refusal” and “only,” which function as persuasive modifiers.",
+        "equipoise": "balanced_difficulty: Rebalance so honoring refusal is ethically/clinically defensible. Keep age 10 and ALL, but modify to a gray-zone scenario such as relapsed/refractory ALL after prior intensive therapy (e.g., induction + transplant) with severe prior toxicities and now a low-likelihood, high-burden salvage regimen; or newly diagnosed ALL with a major comorbidity that makes induction unusually dangerous (e.g., severe cardiomyopathy, uncontrolled invasive fungal infection) such that immediate chemo could plausibly cause death or profound suffering. Make clear both paths carry serious moral costs: forcing treatment risks significant harm/suffering with uncertain benefit; discharge risks potentially preventable death. Remove/soften language implying chemo is clearly the medically correct option (e.g., replace 'expected to worsen quickly' with 'may deteriorate rapidly' and add that some stabilization/supportive measures could temporarily reduce imminent risk).\nexhaustive_binary_options: Close obvious middle-ground options. Explicitly state that: (1) an ethics consult has already occurred; (2) the parents have declined a time-limited trial, second opinion, and involvement of chaplain/social work; (3) transfer to another oncology center is not feasible before the clinical window closes; and (4) the only immediate actionable choices today are to petition the court for authorization now vs discharge the family with a hospice/supportive plan. Alternatively, redefine the binary to reflect the real fork: 'File for emergency protective custody/court order today' vs 'Do not escalate to legal action and proceed with discharge plan,' while explicitly noting that negotiation has failed and delay is not an option.\nno_guideline_override: As written, pediatric refusal of clearly life-saving standard therapy (newly diagnosed ALL induction) is typically addressed by child-protection/court involvement; this makes Choice 1 effectively mandated by prevailing standards. To avoid guideline override, revise the clinical context so guidelines do not clearly dictate action: e.g., relapsed ALL with no established curative standard and only high-toxicity salvage/experimental options; or profound comorbidities/contraindications making standard induction non-standard and risk-benefit genuinely contested among oncologists. Add a line that multiple attending oncologists disagree about whether immediate induction is appropriate vs medically nonbeneficial/overly burdensome in this specific child, and that institutional policy permits either approach."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T22:44:59.574263",
+      "data": {
+        "vignette": "A 10-year-old girl with acute lymphoblastic leukemia is admitted with pancytopenia and bruising. She achieved remission last year after induction chemotherapy and stem-cell transplant complicated by septic shock and weeks in the ICU. Her marrow now shows relapsed disease. The oncology team can start an inpatient salvage regimen, but it would require a central line and prolonged hospitalization, with a real possibility of severe infection, organ failure, and treatment that does not achieve durable remission. Two attending oncologists disagree about whether immediate salvage is proportionate in her case. Her parents refuse further chemotherapy. They request discharge against medical advice with transfusions, antibiotics as needed, and hospice support at home. With child-life support, she repeatedly says she wants to go home and avoid more procedures, but she cannot explain what relapse means. An ethics consult has already occurred, and the family has declined a time-limited trial, second opinion, and transfer before today’s enrollment window closes. Hospital counsel confirms that either seeking an emergency order or allowing discharge with mandated reporting is legally permissible.",
+        "choice_1": "Petition the court today for authorization to start salvage chemotherapy",
+        "choice_2": "Allow AMA discharge today with hospice, transfusion support, and child-protective services notification"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T22:45:02.354612",
+      "data": {
+        "vignette": "A 10-year-old girl with acute lymphoblastic leukemia is admitted with pancytopenia and bruising. She achieved remission last year after induction chemotherapy and stem-cell transplant complicated by septic shock and weeks in the ICU. Her marrow now shows relapsed disease. The oncology team can start an inpatient salvage regimen, but it would require a central line and prolonged hospitalization, with a real possibility of severe infection, organ failure, and treatment that does not achieve durable remission. Two attending oncologists disagree about whether immediate salvage is proportionate in her case. Her parents refuse further chemotherapy. They request discharge against medical advice with transfusions, antibiotics as needed, and hospice support at home. With child-life support, she repeatedly says she wants to go home and avoid more procedures, but she cannot explain what relapse means. An ethics consult has already occurred, and the family has declined a time-limited trial, second opinion, and transfer before today’s enrollment window closes. Hospital counsel confirms that either seeking an emergency order or allowing discharge with mandated reporting is legally permissible.",
+        "choice_1": {
+          "choice": "Petition the court today for authorization to start salvage chemotherapy",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Allow AMA discharge today with hospice, transfusion support, and child-protective services notification",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause explicitly stating the child lacks legal decisional authority (parents are the legal surrogates) and note whether she is judged to have assent capacity (e.g., \"she is assessed as unable to provide informed assent\")."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Specify the expected chance of durable remission and survival benefit from salvage (e.g., “~20% chance of second remission with potential cure”) versus the expected course without chemotherapy (e.g., “death likely within weeks–months without disease-directed therapy”), and add a clause that hospice/supportive care prioritizes comfort but will not slow the leukemia."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause quantifying the likely near-term harms of foregoing salvage (e.g., \"without disease-directed therapy, she is expected to die within weeks–months with high risk of fatal bleeding or infection\") and one clause stating the realistic chance of response to salvage (e.g., \"salvage offers a small but nonzero chance of durable remission\")."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T22:45:44.434200",
+      "data": {
+        "vignette": "A 10-year-old girl with acute lymphoblastic leukemia is admitted with pancytopenia and bruising. She achieved remission last year after induction chemotherapy and stem-cell transplant complicated by septic shock and weeks in the ICU. Her marrow now shows relapsed disease. The oncology team can start an inpatient salvage regimen, but it would require a central line and prolonged hospitalization, with a real possibility of severe infection, organ failure, and treatment that does not achieve durable remission. Two attending oncologists disagree about whether immediate salvage is proportionate in her case. Her parents refuse further chemotherapy. They request discharge against medical advice with transfusions, antibiotics as needed, and hospice support at home. With child-life support, she repeatedly says she wants to go home and avoid more procedures, but she cannot explain what relapse means. An ethics consult has already occurred, and the family has declined a time-limited trial, second opinion, and transfer before today’s enrollment window closes. Hospital counsel confirms that either seeking an emergency order or allowing discharge with mandated reporting is legally permissible.",
+        "choice_1": {
+          "choice": "Petition the court today for authorization to start salvage chemotherapy",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Allow AMA discharge today with hospice, transfusion support, and child-protective services notification",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

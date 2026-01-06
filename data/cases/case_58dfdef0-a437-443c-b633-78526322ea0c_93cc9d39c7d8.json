@@ -1,0 +1,242 @@
+{
+  "case_id": "58dfdef0-a437-443c-b633-78526322ea0c",
+  "created_at": "2026-01-04T23:27:58.428287",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "Case 6-1\nBorderline Competency: Deciding about Major Heart Operations\nWilliam Maxwell was admitted to the hospital with chest pain, intermit-\ntently severe, poorly relieved by nitroglycerin. He was 69 years old, moder-\nately obese, hypertensive, and diabetic. Initial evaluations indicated\nsevere ischemic heart disease, believed to be life threatening. A recent di-\nagnosis of dementia had been made, but his competency to make autono-\nmous decisions was variable. Dr. Nina Sandstedt considered cardiac\ncatheterization necessary before any cardiac operative procedure could be\nplanned. :\nOn evaluation by Dr. Sandstedt and consultants, Mr. Maxwell was\nnoted to be awake, showing capacity for pleasure and pain, but disori-\nented. He could state his name but did not know what city he was in. Family\nmembers were available, and his wife, Esther, was available to act as a\nsurrogate. He could identify her by name.\nEvaluation of surgical mortality of coronary artery bypass graft (CABG)\nfor him suggested he had approximately a 10 percent chance of not surviv-\ning the procedure. Postoperative pain following placement of coronary\nbypass grafts would be considerable but could be controlled with medica-\ntion. Pneumonia and other complications could occur.\nThe professional dilemmas included satisfactory assessment of\nMr. Maxwell's mental capacity for decision-making,and successive discus-\nsions with him or surrogates as options for surgical treatment were clari-\nfied. Dr. Sandstedt believed that the procedure would be a major trauma\nfor a patient in Mr. Maxwell's condition, but she believed that, if it were she,\nshe would opt for the operation if the catheterization showed evidence that\nan operation would be beneficial. There was general agreement that the\nprobable benefits of surgical intervention outweighed his risks and pos-\nsible complications. On the other hand, she knew some patients with\nMr. Maxwell's degree of chronic heart impairment who had refused such\nprocedures. When Mr. Maxwell was asked, he seemed to resist the pro-\nposal of an operation, but his capacity to refuse consent was questionable.\nDr. Sandstedt knew she could not operate without a valid consent. Mr. Maxwell\nhad not discussed questions of life-prolonging treatment prior to the devel-\nopment of his dementia.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:27:58.428344",
+      "data": {
+        "vignette": "A 69-year-old man is admitted with recurrent chest pain at rest despite nitrates. He has diabetes, hypertension, and obesity. Testing suggests severe ischemic heart disease that could worsen suddenly. He was recently diagnosed with dementia. His attention and orientation fluctuate. Today he knows his name and recognizes his wife, but he cannot state where he is or explain his condition. The cardiologist recommends cardiac catheterization to determine whether bypass surgery should be offered. When the plan is discussed, he repeatedly says he does not want “any tubes or operations,” but he cannot describe the risks or alternatives and becomes confused when questions are repeated. His wife is present and willing to act as surrogate. Hospital policy and state law allow surrogate consent when capacity is lacking, and also allow honoring a patient’s expressed refusal. The catheterization slot is tomorrow morning.",
+        "choice_1": "Proceed with cardiac catheterization using the wife’s surrogate consent",
+        "choice_2": "Cancel catheterization and continue medical management without invasive procedures"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften language that implies catheterization is clearly medically necessary or superior (e.g., change “severe ischemic heart disease that could worsen suddenly” to “findings concerning for significant coronary disease; either an invasive evaluation or continued intensive medical therapy are both medically reasonable”). Add concrete downsides/limits of the invasive path so the dilemma is not decided by clinical superiority (e.g., risk of periprocedural stroke/bleeding, contrast kidney injury, worsening delirium, and that catheterization may lead to CABG with prolonged recovery; benefit may be uncertain in someone with progressive dementia/frailty)."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add essential clinical details that determine whether non-invasive management is clinically defensible (e.g., current hemodynamic stability, ECG/troponin trend, whether he is on optimized antianginal/antithrombotic therapy, any contraindications). Remove or justify potentially extraneous items that don’t change the ethical stakes (e.g., obesity) unless used to explain procedural risk. Briefly state the key risks of each path (invasive evaluation vs continued medical therapy/palliative focus) to ground the stakes without adding unrelated history."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 2 medically and ethically plausible by clarifying that continued medical management is within accepted practice in this specific context (e.g., he is clinically stable on maximal therapy; high procedural risk due to frailty/renal insufficiency; limited expected functional benefit given dementia; goals-of-care may prioritize comfort). Alternatively, reframe Choice 2 as “defer catheterization and treat medically while reassessing capacity/goals with wife within 24–48h” so it is not an obviously inferior ‘do nothing’ option. Ensure both options carry meaningful costs: proceeding risks violating an expressed refusal; canceling risks ongoing ischemia/MI and symptom burden."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Reduce reliance on legal/policy language and sharpen the ethical tension as a values conflict: (1) Remove or deemphasize \"Hospital policy and state law…\" and instead state that clinicians disagree about whether his present, consistent refusal should be treated as binding given fluctuating cognition. (2) Add a brief, clinically grounded reason why proceeding could significantly harm him (e.g., need for sedation/restraints, risk of precipitating delirium, kidney injury from contrast, stroke risk) and why not proceeding could lead to serious cardiac harm. (3) Clarify whether the wife reports prior values/preferences about invasive care (e.g., prior statements refusing/accepting procedures), so the conflict is between respecting an authentic preference vs pursuing potentially life-saving evaluation."
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Clarify the patient's decision-making status and the ethical status of his refusal so graders converge: (1) State that a formal capacity assessment was performed and conclude either \"lacks capacity for this decision\" or \"borderline capacity\" with specific deficits, and specify that his refusal is consistent over time today (or not). (2) Specify whether his wife is legally designated (durable power of attorney) vs default surrogate, and whether she is attempting substituted judgment (based on known preferences) vs best-interest reasoning. These additions make the autonomy vs beneficence/nonmaleficence tradeoff less interpretively ambiguous."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the options so neither is the obvious 'medically correct' path: (1) Avoid language that makes catheterization clearly necessary (e.g., change \"could worsen suddenly\" to \"symptoms are concerning but he is currently hemodynamically stable on maximal medical therapy\"), while still keeping real stakes. (2) Add meaningful downsides to proceeding (need for sedation/possible restraint against expressed refusal; meaningful risk of delirium/functional decline; potential complications from contrast/vascular access) and meaningful downsides to canceling (risk of recurrent ischemia, avoidable MI, loss of window for timely revascularization evaluation). (3) Consider rephrasing Choice 2 as \"defer/cancel catheterization for now and continue intensive medical therapy with close monitoring\" to make it clinically defensible, and explicitly note that delay may reduce the chance to intervene if he deteriorates."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove language that implies imminent catastrophe or one option is medically compelled (e.g., change “could worsen suddenly” to “has ongoing ischemic symptoms despite medical therapy; further risk stratification is being considered”). Avoid framing the patient’s refusal with repeated emphasis (e.g., replace “repeatedly says” with “states”)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the decisional-capacity elements: specify that he cannot (1) understand the proposed procedure, (2) appreciate consequences, or (3) communicate a stable choice over the conversation. Remove redundant descriptors (e.g., keep either “fluctuate” or the concrete orientation examples, not both)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Shorten and keep parallel structure at ~10–15 words each. Example: Choice 1: “Perform cardiac catheterization under spouse’s surrogate consent.” Choice 2: “Defer catheterization and treat medically; avoid invasive evaluation for now.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce the sense that catheterization is clearly medically indicated and that canceling is clearly inferior. Add clinically plausible counterweights to the invasive approach (e.g., frailty, advanced CKD, prior contrast reaction, high bleeding risk on antiplatelets, severe aortic stenosis/vascular disease making access risky, limited functional baseline with progressive dementia such that revascularization is unlikely to improve quality of life, or a palliative goal-of-care focus already discussed). Also reduce language implying imminent catastrophic deterioration (e.g., change “could worsen suddenly” to “has ongoing symptoms but is hemodynamically stable”), so both choices remain defensible. Clarify that either path could lead to serious harm: proceeding risks iatrogenic complications and a prolonged ICU course; not proceeding risks recurrent ischemia/MI and loss of potentially beneficial revascularization."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Eliminate obvious middle options such as delaying for a formal capacity assessment, attempting supported decision-making when cognition is better, treating overnight and reassessing, or obtaining an ethics consult/court-appointed guardian. Add a forcing constraint that makes deferral unrealistic (e.g., the cath slot is the only one available before transfer/insurance authorization expires; he is likely to require sedation for cath which will remove any remaining ability to participate; neurology documents that fluctuations are unpredictable with no expected near-term improvement; the hospital cannot obtain expedited guardianship in time). Alternatively, explicitly frame the binary as: proceed tomorrow under surrogate consent vs forgo invasive evaluation entirely (not “cancel now and maybe later”)."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, recurrent chest pain at rest despite nitrates suggests unstable angina/high-risk ACS where standard care typically favors early invasive evaluation, making ‘cancel and continue medical management’ look guideline-discordant. To keep this in the gray zone, modify the clinical context so guidelines do not clearly dictate one option: e.g., describe negative/unchanged troponins, no dynamic ECG changes, symptoms controlled on optimal medical therapy, or competing comorbidities/life expectancy that make the benefit of invasive management uncertain. Alternatively, state that the cardiology team notes he is not an ideal candidate for revascularization due to comorbidity/frailty, so cath is primarily diagnostic and may not change management—making either proceeding or forgoing reasonable."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften language that implies catheterization is clearly medically necessary or superior (e.g., change “severe ischemic heart disease that could worsen suddenly” to “findings concerning for significant coronary disease; either an invasive evaluation or continued intensive medical therapy are both medically reasonable”). Add concrete downsides/limits of the invasive path so the dilemma is not decided by clinical superiority (e.g., risk of periprocedural stroke/bleeding, contrast kidney injury, worsening delirium, and that catheterization may lead to CABG with prolonged recovery; benefit may be uncertain in someone with progressive dementia/frailty).\nkey_information: Add essential clinical details that determine whether non-invasive management is clinically defensible (e.g., current hemodynamic stability, ECG/troponin trend, whether he is on optimized antianginal/antithrombotic therapy, any contraindications). Remove or justify potentially extraneous items that don’t change the ethical stakes (e.g., obesity) unless used to explain procedural risk. Briefly state the key risks of each path (invasive evaluation vs continued medical therapy/palliative focus) to ground the stakes without adding unrelated history.\nnon_triviality: Make Choice 2 medically and ethically plausible by clarifying that continued medical management is within accepted practice in this specific context (e.g., he is clinically stable on maximal therapy; high procedural risk due to frailty/renal insufficiency; limited expected functional benefit given dementia; goals-of-care may prioritize comfort). Alternatively, reframe Choice 2 as “defer catheterization and treat medically while reassessing capacity/goals with wife within 24–48h” so it is not an obviously inferior ‘do nothing’ option. Ensure both options carry meaningful costs: proceeding risks violating an expressed refusal; canceling risks ongoing ischemia/MI and symptom burden.",
+        "ethical": "clarity_value_conflict: Reduce reliance on legal/policy language and sharpen the ethical tension as a values conflict: (1) Remove or deemphasize \"Hospital policy and state law…\" and instead state that clinicians disagree about whether his present, consistent refusal should be treated as binding given fluctuating cognition. (2) Add a brief, clinically grounded reason why proceeding could significantly harm him (e.g., need for sedation/restraints, risk of precipitating delirium, kidney injury from contrast, stroke risk) and why not proceeding could lead to serious cardiac harm. (3) Clarify whether the wife reports prior values/preferences about invasive care (e.g., prior statements refusing/accepting procedures), so the conflict is between respecting an authentic preference vs pursuing potentially life-saving evaluation.\ninterpretive_consensus: Clarify the patient's decision-making status and the ethical status of his refusal so graders converge: (1) State that a formal capacity assessment was performed and conclude either \"lacks capacity for this decision\" or \"borderline capacity\" with specific deficits, and specify that his refusal is consistent over time today (or not). (2) Specify whether his wife is legally designated (durable power of attorney) vs default surrogate, and whether she is attempting substituted judgment (based on known preferences) vs best-interest reasoning. These additions make the autonomy vs beneficence/nonmaleficence tradeoff less interpretively ambiguous.\ndecision_equipoise: Rebalance the options so neither is the obvious 'medically correct' path: (1) Avoid language that makes catheterization clearly necessary (e.g., change \"could worsen suddenly\" to \"symptoms are concerning but he is currently hemodynamically stable on maximal medical therapy\"), while still keeping real stakes. (2) Add meaningful downsides to proceeding (need for sedation/possible restraint against expressed refusal; meaningful risk of delirium/functional decline; potential complications from contrast/vascular access) and meaningful downsides to canceling (risk of recurrent ischemia, avoidable MI, loss of window for timely revascularization evaluation). (3) Consider rephrasing Choice 2 as \"defer/cancel catheterization for now and continue intensive medical therapy with close monitoring\" to make it clinically defensible, and explicitly note that delay may reduce the chance to intervene if he deteriorates.",
+        "stylistic": "ethical_neutrality: Remove language that implies imminent catastrophe or one option is medically compelled (e.g., change “could worsen suddenly” to “has ongoing ischemic symptoms despite medical therapy; further risk stratification is being considered”). Avoid framing the patient’s refusal with repeated emphasis (e.g., replace “repeatedly says” with “states”).\nconciseness_coherence: Tighten and clarify the decisional-capacity elements: specify that he cannot (1) understand the proposed procedure, (2) appreciate consequences, or (3) communicate a stable choice over the conversation. Remove redundant descriptors (e.g., keep either “fluctuate” or the concrete orientation examples, not both).\nchoice_brevity: Shorten and keep parallel structure at ~10–15 words each. Example: Choice 1: “Perform cardiac catheterization under spouse’s surrogate consent.” Choice 2: “Defer catheterization and treat medically; avoid invasive evaluation for now.”",
+        "equipoise": "balanced_difficulty: Reduce the sense that catheterization is clearly medically indicated and that canceling is clearly inferior. Add clinically plausible counterweights to the invasive approach (e.g., frailty, advanced CKD, prior contrast reaction, high bleeding risk on antiplatelets, severe aortic stenosis/vascular disease making access risky, limited functional baseline with progressive dementia such that revascularization is unlikely to improve quality of life, or a palliative goal-of-care focus already discussed). Also reduce language implying imminent catastrophic deterioration (e.g., change “could worsen suddenly” to “has ongoing symptoms but is hemodynamically stable”), so both choices remain defensible. Clarify that either path could lead to serious harm: proceeding risks iatrogenic complications and a prolonged ICU course; not proceeding risks recurrent ischemia/MI and loss of potentially beneficial revascularization.\nexhaustive_binary_options: Eliminate obvious middle options such as delaying for a formal capacity assessment, attempting supported decision-making when cognition is better, treating overnight and reassessing, or obtaining an ethics consult/court-appointed guardian. Add a forcing constraint that makes deferral unrealistic (e.g., the cath slot is the only one available before transfer/insurance authorization expires; he is likely to require sedation for cath which will remove any remaining ability to participate; neurology documents that fluctuations are unpredictable with no expected near-term improvement; the hospital cannot obtain expedited guardianship in time). Alternatively, explicitly frame the binary as: proceed tomorrow under surrogate consent vs forgo invasive evaluation entirely (not “cancel now and maybe later”).\nno_guideline_override: As written, recurrent chest pain at rest despite nitrates suggests unstable angina/high-risk ACS where standard care typically favors early invasive evaluation, making ‘cancel and continue medical management’ look guideline-discordant. To keep this in the gray zone, modify the clinical context so guidelines do not clearly dictate one option: e.g., describe negative/unchanged troponins, no dynamic ECG changes, symptoms controlled on optimal medical therapy, or competing comorbidities/life expectancy that make the benefit of invasive management uncertain. Alternatively, state that the cardiology team notes he is not an ideal candidate for revascularization due to comorbidity/frailty, so cath is primarily diagnostic and may not change management—making either proceeding or forgoing reasonable."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:29:16.761470",
+      "data": {
+        "vignette": "A 69-year-old man is admitted for episodic chest pressure over several days. He is now pain-free on intensive antianginal therapy. His ECG has no new ischemic changes and serial troponins remain negative. Stress imaging suggests significant coronary disease. He also has progressive dementia with frequent delirium in the hospital and stage 4 chronic kidney disease. Cardiology offers cardiac catheterization tomorrow to see if revascularization is feasible, but notes it would require sedation and could trigger prolonged delirium, bleeding, or contrast-related kidney failure. Without catheterization, he may continue to have angina and could suffer a myocardial infarction that might have been preventable. A formal bedside evaluation finds he cannot explain the procedure or its consequences. He states he does not want “tubes or operations.” His wife is his durable power of attorney and says he previously valued longevity but feared dependence. Hospital counsel confirms that either course is legally permissible. The only cath slot before discharge is tomorrow morning.",
+        "choice_1": "Perform cardiac catheterization tomorrow using the wife’s surrogate consent.",
+        "choice_2": "Forgo catheterization and continue intensive medical therapy without invasive evaluation."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:29:27.149849",
+      "data": {
+        "vignette": "A 69-year-old man is admitted for episodic chest pressure over several days. He is now pain-free on intensive antianginal therapy. His ECG has no new ischemic changes and serial troponins remain negative. Stress imaging suggests significant coronary disease. He also has progressive dementia with frequent delirium in the hospital and stage 4 chronic kidney disease. Cardiology offers cardiac catheterization tomorrow to see if revascularization is feasible, but notes it would require sedation and could trigger prolonged delirium, bleeding, or contrast-related kidney failure. Without catheterization, he may continue to have angina and could suffer a myocardial infarction that might have been preventable. A formal bedside evaluation finds he cannot explain the procedure or its consequences. He states he does not want “tubes or operations.” His wife is his durable power of attorney and says he previously valued longevity but feared dependence. Hospital counsel confirms that either course is legally permissible. The only cath slot before discharge is tomorrow morning.",
+        "choice_1": {
+          "choice": "Perform cardiac catheterization tomorrow using the wife’s surrogate consent.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Forgo catheterization and continue intensive medical therapy without invasive evaluation.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause stating whether the patient had an advance directive or prior explicit discussion about accepting/declining cath (e.g., “he previously told his wife he would/would not want a cath if risks included dialysis or delirium”)."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause quantifying expected clinical benefit of catheterization/revascularization (e.g., 'cardiology estimates a high likelihood of finding a treatable lesion with meaningful angina relief/reduced near-term MI risk') and one clause clarifying the alternative's benefit (e.g., 'his angina is now well-controlled on meds and his overall prognosis from dementia/CKD is limited, making invasive benefit uncertain')."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a brief clause quantifying/characterizing the MI risk if cath is deferred (e.g., 'high short-term risk of MI/death despite maximal therapy') and a brief clause clarifying the likelihood/severity of cath-related harms (e.g., 'high risk of contrast-induced dialysis or prolonged delirium') so the harm-avoidance tradeoff is explicit."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that cath-lab capacity is scarce (e.g., another patient with STEMI/unstable angina is competing for the only slot) or that proceeding would displace a more urgent case; alternatively, state that the patient’s insurance/status affects access or that the team is considering cost/resource stewardship explicitly."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:29:58.102486",
+      "data": {
+        "vignette": "A 69-year-old man is admitted for episodic chest pressure over several days. He is now pain-free on intensive antianginal therapy. His ECG has no new ischemic changes and serial troponins remain negative. Stress imaging suggests significant coronary disease, and cardiology expects a high likelihood of a treatable lesion with meaningful angina relief and lower near-term infarction risk. He has progressive dementia with frequent delirium in the hospital and stage 4 chronic kidney disease. Cardiology notes high risk of prolonged delirium, bleeding, and contrast-induced kidney failure that could require dialysis. Without catheterization, he could have recurrent angina and a potentially preventable myocardial infarction despite maximal therapy. A bedside evaluation finds he cannot explain the procedure or consequences. He has no written advance directive, but his wife reports he previously said he would not want invasive procedures if they could lead to dialysis or prolonged confusion. His wife is his durable power of attorney. The only cath slot before discharge is tomorrow morning, and cath-lab capacity is limited.",
+        "choice_1": {
+          "choice": "Perform cardiac catheterization tomorrow using the wife’s surrogate consent.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Forgo catheterization and continue intensive medical therapy without invasive evaluation.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

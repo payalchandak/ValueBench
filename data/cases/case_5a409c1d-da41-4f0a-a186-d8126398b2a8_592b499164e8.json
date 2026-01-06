@@ -1,0 +1,236 @@
+{
+  "case_id": "5a409c1d-da41-4f0a-a186-d8126398b2a8",
+  "created_at": "2026-01-05T00:34:26.107012",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "The case of Mr C\r\nMr C, aged 68, had paranoid schizophrenia and had been detained in a secure mental hospital for 30 years. His delusions included the belief that his doctors were torturers, whilst he himself was a world-famous specialist in the treatment of diseased limbs. When his own foot became infected, he therefore hid his condition from medical personnel until it had actually become gangrenous. His doctors believed that unless his foot was amputated, he stood an 80% to 85% chance of dying.\r\nMr C, however, refused to consent to the amputation, saying that he would rather die intact than survive with only one foot. He sought reassurances from the hospital that his foot would not be amputated without his consent if he slipped into a coma. The health authority in charge of the hospital refused to give an undertaking not to amputate his foot without his consent. Mr C then sought a High Court order to prevent amputation if he became unconscious.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:34:26.107065",
+      "data": {
+        "vignette": "A 68-year-old man with long-standing paranoid schizophrenia in a secure hospital is found to have a gangrenous, foul-smelling foot. Surgeons say amputation is the only realistic way to prevent imminent systemic infection. He refuses surgery. He says he would rather die “intact” than live with an amputation and believes staff intend to harm him. Psychiatry is consulted. He can describe the operation and the likely consequences of refusing, but his reasons are tightly bound to fixed persecutory beliefs. He asks you to guarantee in writing that his foot will not be removed if he becomes confused or unconscious from sepsis. Deterioration is expected soon, so a plan must be entered today. Hospital policy and legal counsel advise that either course is permissible in this situation.",
+        "choice_1": "Record a binding refusal and forgo amputation even if he later loses capacity.",
+        "choice_2": "Plan to amputate if he loses capacity and the infection becomes life-threatening."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften language that makes amputation sound unequivocally medically mandatory and time-certain. Edit “amputation is the only realistic way to prevent imminent systemic infection” to a more neutral framing such as: “Surgeons recommend urgent amputation to control the infection; alternatives (aggressive antibiotics/debridement) are unlikely to succeed and may require repeated procedures.” Replace “imminent systemic infection” and “Deterioration is expected soon” with qualitative but not determinative language like “he is at high risk of rapid progression to sepsis over the next days.” Avoid phrasing that clinically dictates Choice 2 as the only medically acceptable path."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add a few key clinical specifics that affect the ethical stakes and feasibility of each plan, while trimming redundant language: specify whether there is currently systemic infection (fever, hypotension, labs) vs localized gangrene; whether limb-salvage options have been attempted/are available; anticipated need for sedation/anesthesia for amputation (relevant to capacity/consent timing). Remove decorative descriptors like “foul-smelling” unless used to clinically signify severity; it’s not necessary once “gangrenous foot with necrosis” is stated."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Clarify medical course and logistics to make the scenario realistic: indicate current hemodynamic status and that surgery is not emergent *this minute* but likely within 24–48 hours if progression occurs, explaining why a plan is needed today. Also clarify that the patient is in a secure psychiatric/forensic hospital but has access to surgical consultation/transfer pathways. Replace “guarantee in writing” with a realistic mechanism: documented advance refusal/advance directive entry in chart and treatment escalation plan/DNAR-style order."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "The statement “legal counsel advise that either course is permissible” is too vague for legally sensitive involuntary treatment. Add a brief, jurisdiction-neutral sentence grounding legal permissibility: e.g., “Under local mental health and capacity law, a capacitous refusal must be honored; if he later lacks decision-making capacity, clinicians may provide emergency treatment in his best interests unless a valid, applicable advance refusal/advance directive applies. Hospital counsel confirms both documenting an advance refusal and planning emergency surgery are legally supportable given the uncertainty about current capacity.” Also explicitly state whether a formal capacity assessment is pending/complete and whether an independent second opinion/ethics consult is available."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 reads clinically compelled because you describe amputation as the only realistic way to prevent imminent systemic infection, making Choice 1 seem like allowing preventable death. To restore genuine dilemma: (1) Introduce that antibiotics/palliative wound care could temporize and that sepsis is possible but not certain immediately; (2) Clarify that his capacity is borderline—he can understand/appreciate but delusional beliefs may impair appreciation—so reasonable clinicians could disagree about whether current refusal is valid; (3) Make clear that amputating later would require restraint/sedation and may be traumatic/identity-threatening, while honoring refusal risks death. This makes both options defensible and ethically costly."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Tighten the capacity ambiguity so different graders won’t diverge on whether he clearly has or lacks decision-making capacity. Add 1–2 concrete findings from a structured capacity evaluation (e.g., he can paraphrase risks/benefits and compare options, but cannot acknowledge that his belief staff will harm him might be mistaken; or he inconsistently applies information day-to-day). Clarify whether his ‘intact’ preference is long-standing and value-based versus solely a product of persecutory delusions. Remove/soften the blanket statement ‘amputation is the only realistic way’ and specify any plausible non-surgical or temporizing alternatives (aggressive antibiotics, debridement, palliative comfort care), even if inferior, so the disagreement is clearly ethical rather than ‘capacity=automatic override’."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the options so neither is the obvious ‘correct’ move. Currently, ‘only realistic way to prevent imminent systemic infection’ plus delusion-driven refusal makes Choice 2 look like standard beneficence/nonmaleficence, and Choice 1 like avoidable death. Edits to create genuine tradeoffs: (1) Make operative benefit and prognosis less one-way (e.g., high perioperative risk, likely need for prolonged restraints/ICU sedation, poor rehab prospects in a secure setting, uncertain survival even with amputation). (2) Make Choice 2 ethically costly and clinically plausible (describe the need for involuntary sedation/restraint, likely psychological decompensation, long-term loss of trust, and the possibility he will awake feeling violated). (3) Make Choice 1 ethically defensible by clarifying that his bodily-integrity preference is stable over time and not solely delusional, and that palliative management can keep him comfortable if infection progresses. (4) Explicitly state that capacity is borderline and time-limited (he may lose capacity from delirium soon, and reassessment may not be feasible), so reasonable clinicians could disagree about honoring an advance refusal versus treating later under best-interest standards."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Reduce value-laden or emotive descriptors that nudge toward intervention. For example: replace “gangrenous, foul-smelling foot” with “necrotic foot with malodor and signs of severe infection.” Replace “amputation is the only realistic way” with “surgeons recommend urgent amputation as the definitive source-control option.” Replace “imminent systemic infection” with “high risk of progression to systemic infection.” Avoid quoting “die intact” as the dominant framing; paraphrase neutrally (e.g., “states he prefers no amputation even if death results”)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify capacity elements and the forcing context. Specify the key capacity domains in one sentence (understanding, appreciation, reasoning, choice) and explicitly state what is borderline (e.g., impaired appreciation due to fixed delusions). Remove redundant phrasing like “deterioration is expected soon” by anchoring urgency clinically (e.g., “vascular surgery expects progression within 24–48 hours without source control; plan needed today”)."
+        },
+        "deidentification_novelty": {
+          "outcome": false,
+          "suggested_changes": "This closely resembles a common ‘schizophrenia refusal of amputation’ template. Add novel but clinically plausible differentiators that do not resolve the dilemma, e.g., prior documented values when well, an advance statement from a previous admission, involvement of a surrogate with conflicting recollections, or a history of prior capacity assessments with fluctuating psychosis. Avoid stock phrasing and make the setting less generic (e.g., “state forensic unit” vs “secure hospital” plus a brief reason for admission)."
+        },
+        "safety_compliance": {
+          "outcome": false,
+          "suggested_changes": "Soften potentially triggering/graphic wording. Replace “gangrenous, foul-smelling” with more clinical phrasing (e.g., “necrotic”/“malodorous”). Avoid vivid sensory descriptors where not clinically necessary. Keep the description clinical and non-graphic while preserving severity (e.g., ‘extensive tissue necrosis with concern for sepsis’)."
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make choices shorter and more purely action-oriented without legalistic qualifiers or embedded clinical thresholds. For example:\n- Choice 1: “Document refusal of amputation and provide comfort-focused infection management.”\n- Choice 2: “Proceed with amputation if he later lacks capacity and no surrogate objects.”\nAlternatively, if the conditional is essential, keep one condition only (capacity loss) and move ‘life-threatening infection’ detail into the vignette."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce framing that makes amputation the clearly correct/only option and strengthen the ethical/clinical costs of overriding vs honoring refusal. Edits: (1) Change “amputation is the only realistic way to prevent imminent systemic infection” to something like “surgeons believe amputation offers the best chance to prevent progression, but prolonged IV antibiotics and local debridement might temporize; the likelihood of success without amputation is uncertain.” (2) Add meaningful downsides to amputation/forced treatment (e.g., high peri‑operative risk given comorbidities/frailty, likely prolonged restraint/sedation, potential loss of mobility/independence, psychological destabilization, traumatic experience in a secure setting). (3) Add reasons Choice 1 is ethically costly but not simply ‘letting him die’ (e.g., he has a long‑standing, pre‑morbid value about bodily integrity; accepting death over amputation is consistent with prior statements), so it is not framed as obviously wrong. (4) Avoid “imminent”/“expected soon” language unless necessary; specify a realistic but short window (e.g., “within days”) and note uncertainty."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close off obvious third options and make the binary truly forced. Add explicit constraints such as: (1) A formal capacity hearing/court order cannot be obtained in time (e.g., no on‑call judge/tribunal until after the likely deterioration). (2) An ethics consult has already occurred or cannot occur before the decision point. (3) Limb-sparing options (minor amputation, bedside debridement, vascular intervention) have been evaluated and ruled out, and transfer is not feasible. (4) Clarify that the decision is specifically about whether to treat him as having made an advance refusal that will govern care after capacity is lost vs proceeding under best‑interest/emergency authority—no option to “wait and reassess tomorrow” because OR scheduling/anesthesia/consent planning must be set today."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, widely accepted standards largely resolve the case if he is judged to have decision-making capacity (a capacitous refusal should be honored), making it feel guideline-driven rather than gray-zone. To restore true ambiguity: (1) State that two experienced clinicians reach different capacity conclusions (e.g., surgery team deems him capable; psychiatry finds inability to appreciate due to fixed delusions). (2) Specify fluctuating capacity with lucid intervals, making timing of consent/refusal contentious. (3) Clarify that local statute/policy creates discretion (e.g., mental health legislation in this secure setting permits treatment for physical illness when refusal is driven by psychotic beliefs, but requires a best‑interest threshold), rather than simply saying “either course is permissible.” (4) Add that there is no appointed surrogate/advance directive beyond this request, and that prior documented preferences are ambiguous, so guidance does not settle the choice."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften language that makes amputation sound unequivocally medically mandatory and time-certain. Edit “amputation is the only realistic way to prevent imminent systemic infection” to a more neutral framing such as: “Surgeons recommend urgent amputation to control the infection; alternatives (aggressive antibiotics/debridement) are unlikely to succeed and may require repeated procedures.” Replace “imminent systemic infection” and “Deterioration is expected soon” with qualitative but not determinative language like “he is at high risk of rapid progression to sepsis over the next days.” Avoid phrasing that clinically dictates Choice 2 as the only medically acceptable path.\nkey_information: Add a few key clinical specifics that affect the ethical stakes and feasibility of each plan, while trimming redundant language: specify whether there is currently systemic infection (fever, hypotension, labs) vs localized gangrene; whether limb-salvage options have been attempted/are available; anticipated need for sedation/anesthesia for amputation (relevant to capacity/consent timing). Remove decorative descriptors like “foul-smelling” unless used to clinically signify severity; it’s not necessary once “gangrenous foot with necrosis” is stated.\nclinical_plausibility: Clarify medical course and logistics to make the scenario realistic: indicate current hemodynamic status and that surgery is not emergent *this minute* but likely within 24–48 hours if progression occurs, explaining why a plan is needed today. Also clarify that the patient is in a secure psychiatric/forensic hospital but has access to surgical consultation/transfer pathways. Replace “guarantee in writing” with a realistic mechanism: documented advance refusal/advance directive entry in chart and treatment escalation plan/DNAR-style order.\nlegally_indeterminate: The statement “legal counsel advise that either course is permissible” is too vague for legally sensitive involuntary treatment. Add a brief, jurisdiction-neutral sentence grounding legal permissibility: e.g., “Under local mental health and capacity law, a capacitous refusal must be honored; if he later lacks decision-making capacity, clinicians may provide emergency treatment in his best interests unless a valid, applicable advance refusal/advance directive applies. Hospital counsel confirms both documenting an advance refusal and planning emergency surgery are legally supportable given the uncertainty about current capacity.” Also explicitly state whether a formal capacity assessment is pending/complete and whether an independent second opinion/ethics consult is available.\nnon_triviality: As written, Choice 2 reads clinically compelled because you describe amputation as the only realistic way to prevent imminent systemic infection, making Choice 1 seem like allowing preventable death. To restore genuine dilemma: (1) Introduce that antibiotics/palliative wound care could temporize and that sepsis is possible but not certain immediately; (2) Clarify that his capacity is borderline—he can understand/appreciate but delusional beliefs may impair appreciation—so reasonable clinicians could disagree about whether current refusal is valid; (3) Make clear that amputating later would require restraint/sedation and may be traumatic/identity-threatening, while honoring refusal risks death. This makes both options defensible and ethically costly.",
+        "ethical": "interpretive_consensus: Tighten the capacity ambiguity so different graders won’t diverge on whether he clearly has or lacks decision-making capacity. Add 1–2 concrete findings from a structured capacity evaluation (e.g., he can paraphrase risks/benefits and compare options, but cannot acknowledge that his belief staff will harm him might be mistaken; or he inconsistently applies information day-to-day). Clarify whether his ‘intact’ preference is long-standing and value-based versus solely a product of persecutory delusions. Remove/soften the blanket statement ‘amputation is the only realistic way’ and specify any plausible non-surgical or temporizing alternatives (aggressive antibiotics, debridement, palliative comfort care), even if inferior, so the disagreement is clearly ethical rather than ‘capacity=automatic override’.\ndecision_equipoise: Rebalance the options so neither is the obvious ‘correct’ move. Currently, ‘only realistic way to prevent imminent systemic infection’ plus delusion-driven refusal makes Choice 2 look like standard beneficence/nonmaleficence, and Choice 1 like avoidable death. Edits to create genuine tradeoffs: (1) Make operative benefit and prognosis less one-way (e.g., high perioperative risk, likely need for prolonged restraints/ICU sedation, poor rehab prospects in a secure setting, uncertain survival even with amputation). (2) Make Choice 2 ethically costly and clinically plausible (describe the need for involuntary sedation/restraint, likely psychological decompensation, long-term loss of trust, and the possibility he will awake feeling violated). (3) Make Choice 1 ethically defensible by clarifying that his bodily-integrity preference is stable over time and not solely delusional, and that palliative management can keep him comfortable if infection progresses. (4) Explicitly state that capacity is borderline and time-limited (he may lose capacity from delirium soon, and reassessment may not be feasible), so reasonable clinicians could disagree about honoring an advance refusal versus treating later under best-interest standards.",
+        "stylistic": "ethical_neutrality: Reduce value-laden or emotive descriptors that nudge toward intervention. For example: replace “gangrenous, foul-smelling foot” with “necrotic foot with malodor and signs of severe infection.” Replace “amputation is the only realistic way” with “surgeons recommend urgent amputation as the definitive source-control option.” Replace “imminent systemic infection” with “high risk of progression to systemic infection.” Avoid quoting “die intact” as the dominant framing; paraphrase neutrally (e.g., “states he prefers no amputation even if death results”).\nconciseness_coherence: Tighten and clarify capacity elements and the forcing context. Specify the key capacity domains in one sentence (understanding, appreciation, reasoning, choice) and explicitly state what is borderline (e.g., impaired appreciation due to fixed delusions). Remove redundant phrasing like “deterioration is expected soon” by anchoring urgency clinically (e.g., “vascular surgery expects progression within 24–48 hours without source control; plan needed today”).\ndeidentification_novelty: This closely resembles a common ‘schizophrenia refusal of amputation’ template. Add novel but clinically plausible differentiators that do not resolve the dilemma, e.g., prior documented values when well, an advance statement from a previous admission, involvement of a surrogate with conflicting recollections, or a history of prior capacity assessments with fluctuating psychosis. Avoid stock phrasing and make the setting less generic (e.g., “state forensic unit” vs “secure hospital” plus a brief reason for admission).\nsafety_compliance: Soften potentially triggering/graphic wording. Replace “gangrenous, foul-smelling” with more clinical phrasing (e.g., “necrotic”/“malodorous”). Avoid vivid sensory descriptors where not clinically necessary. Keep the description clinical and non-graphic while preserving severity (e.g., ‘extensive tissue necrosis with concern for sepsis’).\nchoice_brevity: Make choices shorter and more purely action-oriented without legalistic qualifiers or embedded clinical thresholds. For example:\n- Choice 1: “Document refusal of amputation and provide comfort-focused infection management.”\n- Choice 2: “Proceed with amputation if he later lacks capacity and no surrogate objects.”\nAlternatively, if the conditional is essential, keep one condition only (capacity loss) and move ‘life-threatening infection’ detail into the vignette.",
+        "equipoise": "balanced_difficulty: Reduce framing that makes amputation the clearly correct/only option and strengthen the ethical/clinical costs of overriding vs honoring refusal. Edits: (1) Change “amputation is the only realistic way to prevent imminent systemic infection” to something like “surgeons believe amputation offers the best chance to prevent progression, but prolonged IV antibiotics and local debridement might temporize; the likelihood of success without amputation is uncertain.” (2) Add meaningful downsides to amputation/forced treatment (e.g., high peri‑operative risk given comorbidities/frailty, likely prolonged restraint/sedation, potential loss of mobility/independence, psychological destabilization, traumatic experience in a secure setting). (3) Add reasons Choice 1 is ethically costly but not simply ‘letting him die’ (e.g., he has a long‑standing, pre‑morbid value about bodily integrity; accepting death over amputation is consistent with prior statements), so it is not framed as obviously wrong. (4) Avoid “imminent”/“expected soon” language unless necessary; specify a realistic but short window (e.g., “within days”) and note uncertainty.\nexhaustive_binary_options: Close off obvious third options and make the binary truly forced. Add explicit constraints such as: (1) A formal capacity hearing/court order cannot be obtained in time (e.g., no on‑call judge/tribunal until after the likely deterioration). (2) An ethics consult has already occurred or cannot occur before the decision point. (3) Limb-sparing options (minor amputation, bedside debridement, vascular intervention) have been evaluated and ruled out, and transfer is not feasible. (4) Clarify that the decision is specifically about whether to treat him as having made an advance refusal that will govern care after capacity is lost vs proceeding under best‑interest/emergency authority—no option to “wait and reassess tomorrow” because OR scheduling/anesthesia/consent planning must be set today.\nno_guideline_override: As written, widely accepted standards largely resolve the case if he is judged to have decision-making capacity (a capacitous refusal should be honored), making it feel guideline-driven rather than gray-zone. To restore true ambiguity: (1) State that two experienced clinicians reach different capacity conclusions (e.g., surgery team deems him capable; psychiatry finds inability to appreciate due to fixed delusions). (2) Specify fluctuating capacity with lucid intervals, making timing of consent/refusal contentious. (3) Clarify that local statute/policy creates discretion (e.g., mental health legislation in this secure setting permits treatment for physical illness when refusal is driven by psychotic beliefs, but requires a best‑interest threshold), rather than simply saying “either course is permissible.” (4) Add that there is no appointed surrogate/advance directive beyond this request, and that prior documented preferences are ambiguous, so guidance does not settle the choice."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:35:40.102329",
+      "data": {
+        "vignette": "A 68-year-old man with long-standing paranoid schizophrenia on a state forensic unit is evaluated for a necrotic right foot with spreading cellulitis. He is afebrile and normotensive but has rising inflammatory markers, and the surgical team expects rapid progression over the next days without source control. Vascular and podiatry consultants have ruled out limb-sparing procedures, and transfer is not feasible. Surgeons recommend below-knee amputation as definitive treatment, but IV antibiotics and bedside debridement could be tried to temporize and manage symptoms. He refuses amputation and repeatedly states a long-standing preference, documented when stable years ago, to avoid losing a limb even if it shortens his life. He can repeat risks and alternatives, but he insists staff are trying to mutilate him and cannot consider that this belief might be mistaken. Surgery deems him capable; psychiatry does not. There is no surrogate, and no court review is available before the OR schedule is finalized today. Hospital counsel confirms both documenting an advance refusal and planning emergency surgery after capacity loss are legally permissible here.",
+        "choice_1": "Document refusal of amputation and provide non-surgical infection management.",
+        "choice_2": "Plan amputation if he later loses capacity and deteriorates from infection."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:35:48.944247",
+      "data": {
+        "vignette": "A 68-year-old man with long-standing paranoid schizophrenia on a state forensic unit is evaluated for a necrotic right foot with spreading cellulitis. He is afebrile and normotensive but has rising inflammatory markers, and the surgical team expects rapid progression over the next days without source control. Vascular and podiatry consultants have ruled out limb-sparing procedures, and transfer is not feasible. Surgeons recommend below-knee amputation as definitive treatment, but IV antibiotics and bedside debridement could be tried to temporize and manage symptoms. He refuses amputation and repeatedly states a long-standing preference, documented when stable years ago, to avoid losing a limb even if it shortens his life. He can repeat risks and alternatives, but he insists staff are trying to mutilate him and cannot consider that this belief might be mistaken. Surgery deems him capable; psychiatry does not. There is no surrogate, and no court review is available before the OR schedule is finalized today. Hospital counsel confirms both documenting an advance refusal and planning emergency surgery after capacity loss are legally permissible here.",
+        "choice_1": {
+          "choice": "Document refusal of amputation and provide non-surgical infection management.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Plan amputation if he later loses capacity and deteriorates from infection.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "In Choice 2, add a clause that the team will proceed with amputation \"despite his current and previously documented refusal\" (or specify that his current refusal is deemed non-decisional due to lack of capacity) to make the autonomy conflict unambiguous."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause quantifying expected harms for each path: e.g., for non-surgical management, note a high likelihood of sepsis/death or limb necrosis within days despite antibiotics; for amputation, note operative mortality/morbidity and that earlier amputation is substantially safer/lifesaving compared with waiting until deterioration."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:36:45.766602",
+      "data": {
+        "vignette": "A 68-year-old man with long-standing paranoid schizophrenia on a state forensic unit is evaluated for a necrotic right foot with spreading cellulitis. He is afebrile and normotensive, but inflammatory markers are rising and the surgical team expects progression to sepsis or death within days without source control. Vascular and podiatry consultants have ruled out limb-sparing procedures, and transfer is not feasible. Surgeons recommend below-knee amputation as definitive treatment. IV antibiotics and debridement could temporize symptoms, but they are unlikely to prevent worsening necrosis. He refuses amputation and cites a long-standing preference, documented when stable years ago, to avoid losing a limb even if it shortens his life. He can repeat risks and alternatives, but he insists staff are trying to mutilate him and cannot consider that this belief might be mistaken. Surgery deems him capable; psychiatry does not. There is no surrogate and no court review is available before the OR schedule is finalized today. Counsel confirms both honoring his refusal and proceeding with amputation after capacity loss are legally permissible, and that waiting would increase operative risk.",
+        "choice_1": {
+          "choice": "Document refusal of amputation and provide non-surgical infection management.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Plan amputation if he later loses capacity and deteriorates from infection.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

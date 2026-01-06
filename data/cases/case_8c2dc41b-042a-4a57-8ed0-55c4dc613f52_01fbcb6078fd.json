@@ -1,0 +1,236 @@
+{
+  "case_id": "8c2dc41b-042a-4a57-8ed0-55c4dc613f52",
+  "created_at": "2026-01-04T22:58:33.953146",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "Case 3-2\nWhen Should Clergy Intervene for the Patient?\nRev. Geoffrey Kerman, the minister at Wesley Methodist Church, visited\nthe hospital to call on a parishioner. When he reached the hospital he\nfound the name of Mrs. Olive Patterson on the admissions list. She was a\nwoman in her sixties who was a long-term member of Wesley Methodist\nChurch. She had been hospitalized two to three times in the past five years\nfor abdominal cancer, but Rev. Kerman had not been aware of the current\nhospitalization.\nHe decided to visit Mrs. Patterson's room. He found her in some pain and\ngroggy. She had come to the hospital over the past weekend and was now\ncomplaining about all the tests they were running. She said to Rev. Kerman,\n“I know I'm dying but I don’t know why I can’t go out awake. I can hardly\nkeep my eyes open. There must be a way to keep the pain under control\nwithout knocking me out.”\nHer physician, Dr. Gordon Simweiler, had told her that the only way to\ncontrol the pain was to “knock her out.” Rev. Kerman offered a brief prayer\nand left the room.\nRev. Kerman met Dr. Simweiler at the nurse's station. Dr. Simweiler com-\nmented, “She doesn't look good. We'll have to increase her pain medication.”\nRev. Kerman felt certain that Mrs. Patterson would not want to be “knocked\nout” further. He knew that, since the days their church's founder, John Wesley,\nhad run clinics in eighteenth-century England, their denomination had stood\nfirmly for the active involvement of the patient in choosing appropriate medi-\ncal care including care for cancer and other critical illnesses.\nThe church's position is that patients have a responsibility to prepare for\ntheir own deaths working with their physicians, their families, their friends,\nand their faith community. Rev. Kerman was concerned that Mrs. Patterson\nwas not being given this opportunity regarding her pain management. At\nthe same time, he was aware that she had not asked him to intervene; in fact,\nshe had not even told him she was in the hospital. Should Rev. Kerman take\nsteps to question Dr. Simweiler’s orders for pain medication?",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T22:58:33.953205",
+      "data": {
+        "vignette": "A woman in her sixties with metastatic abdominal cancer is admitted for escalating pain and vomiting. She is alert but exhausted. Over the last day she has needed repeated opioid doses and is now intermittently too drowsy to hold conversations. She tells you she knows she is dying and wants to stay awake to speak with family and clergy and to make final decisions. She also asks you not to “be left suffering” if the pain becomes unbearable. Her adult daughter says the family wants her comfortable and worries that untreated pain will be traumatic. Nursing staff report that current dosing is not controlling pain without heavy sedation. The palliative team is available now, and tonight’s medication plan needs to be ordered before symptoms predictably worsen overnight. Hospital policy permits either deep palliative sedation for refractory symptoms or an awake-focused regimen if the patient prefers.",
+        "choice_1": "Escalate to continuous palliative sedation with opioids and sedatives.",
+        "choice_2": "Pursue an awake-focused pain plan and accept higher breakthrough pain."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften language that makes continuous deep sedation appear medically inevitable. Edit: change “Nursing staff report that current dosing is not controlling pain without heavy sedation” to “Nursing staff report pain remains severe despite frequent dosing; increasing doses is likely to cause deeper sedation.” Avoid labeling symptoms as definitively “refractory” unless you also note there are still reasonable non-sedating options (e.g., adjuvants, antiemetics, bowel decompression, regional techniques) that might help but may be slower/less reliable."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make each option a concrete, implementable order set and ensure they are mutually exclusive. For example:\n- Choice 1: “Initiate continuous palliative sedation to unconsciousness overnight (e.g., start midazolam infusion with opioid titration) with the goal of eliminating awareness of suffering; reassess in the morning.”\n- Choice 2: “Continue analgesia but cap sedatives to preserve wakefulness (e.g., opioid rotation/lower bolus dosing + non-opioid adjuvants/antiemetics), accepting the possibility of ongoing severe pain and distress.”"
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Clarify a few essential points and trim/target the rest:\n- Add whether the patient is having malignant bowel obstruction/ascites or another cause of vomiting, because this affects feasible symptom strategies.\n- Specify the current analgesic regimen and what has been tried (e.g., opioid rotation, adjuvants), to justify why sedation is being considered while keeping it qualitative (no doses required).\n- Clarify current decision-making capacity at the time of the decision (lucid now vs fluctuating). Remove any nonessential phrasing like “predictably worsen” unless tied to a concrete clinical reason (e.g., obstruction worsening overnight)."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Add a brief legally grounding sentence addressing consent/capacity for palliative sedation in a patient with fluctuating alertness. For example: “She is currently lucid and demonstrates understanding, appreciation, and consistent preferences; under state law and hospital policy, palliative sedation for refractory symptoms is permissible with informed consent (or, if she loses capacity, with her previously stated wishes and the daughter as authorized surrogate).” Without this, deep sedation could be interpreted as legally/ethically improper if capacity is unclear."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Rebalance so neither option is obviously clinically superior:\n- Emphasize that an awake-focused plan could still provide meaningful relief (though possibly incomplete) using reasonable measures available tonight.\n- Also acknowledge that deep sedation has significant downsides beyond “sleepy” (loss of interaction, inability to complete final conversations/decisions, possible need for monitoring/airway support depending on depth).\n- Avoid framing Choice 2 as simply “accept higher pain” by adding that it aims to relieve pain as much as possible while preserving wakefulness, but may leave periods of severe suffering."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the framing so neither option reads as the clinically/procedurally correct default. (1) Remove or soften language that implies symptoms are already definitively ‘refractory’ (e.g., change “policy permits either deep palliative sedation for refractory symptoms” to “policy permits continuous palliative sedation when symptoms cannot be acceptably relieved without unacceptable sedation, and also permits prioritizing wakefulness if the patient chooses”). (2) Clarify the patient’s decisional status at the decision point: specify whether she is currently able to participate in an informed discussion and whether she explicitly consents (or declines) continuous sedation now versus ‘only if pain becomes unbearable.’ (3) Add an ethically costly downside to Choice 1 beyond loss of wakefulness (e.g., family may experience it as shortening meaningful time, patient may lose the chance to complete spiritual/legal conversations) and an ethically defensible upside to Choice 2 beyond autonomy (e.g., intermittent, titrated analgesia and nonpharmacologic measures can keep her engaged at times, but risk more suffering/possible crisis overnight). (4) Consider making Choice 2 less like accepting unmanaged suffering by specifying a realistic awake-focused regimen (e.g., lower-dose opioids with adjuvants/antiemetics and rapid PRN dosing) while still acknowledging it may leave significant pain."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove subtly value-laden phrasing. Rephrase “not to ‘be left suffering’” to a neutral statement such as “she requests that symptoms be aggressively treated if pain becomes difficult to tolerate.” Replace “untreated pain will be traumatic” with “the daughter is concerned about visible distress and poor symptom control.” Avoid “predictably worsen” unless clinically justified; use “may worsen overnight.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Clarify the decision-making capacity issue and refractory status. Specify whether pain is deemed refractory despite appropriate titration/adjuncts, and whether the patient can consistently participate in consent given intermittent somnolence. Remove redundant clauses (e.g., “alert but exhausted”) unless tied to capacity. Tighten: describe current regimen (opioid type/route, antiemetic/NG options) only if essential, and explicitly state what is being decided: initiating continuous deep sedation vs maintaining lighter/episodic dosing aiming wakefulness."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both choices parallel, complete, and ~10–15 words without embedded tradeoffs. For example: \n- Choice 1: “Initiate continuous palliative sedation for refractory symptoms with proportional titration.” \n- Choice 2: “Continue proportionate analgesia targeting wakefulness, using intermittent rescue doses as needed.” \nAvoid “accept higher breakthrough pain,” which embeds a consequence/rationale rather than an action plan."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance framing so neither option seems clinically forced. Currently, 'current dosing is not controlling pain without heavy sedation' implies escalation is the only effective/standard choice and makes the awake-focused plan look like knowingly undertreating pain. Edit to clarify that: (a) there are plausible awake-preserving options (e.g., opioid rotation, adjuvants like ketamine/lidocaine, regional techniques, antiemetics, decompression) that might reduce pain but could still leave significant breakthrough symptoms; and (b) continuous deep sedation would likely relieve suffering but would almost certainly prevent meaningful interaction/decision-making and may require ICU-level monitoring or remove ability to take part in final rituals. Add one morally costly downside to sedation beyond 'she’ll be asleep' (e.g., family conflict about ‘missing last conversations’, patient’s fear of not completing final decisions), and one morally defensible upside to the awake plan beyond preference (e.g., she can complete a will, reconcile, or participate in rituals) while acknowledging real risk of distress."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious middle-ground/third options. As written, a proportional/intermittent sedation strategy (nighttime sedation with daytime wakefulness; time-limited sedation trial; targeted sedation only during severe episodes) is an immediate compromise that undermines the binary. Revise the setup to explicitly rule these out (e.g., symptoms are continuous and unpredictable with rapid escalation; any sedative dose that meaningfully relieves suffering causes near-continuous unresponsiveness; short-acting trials have already been attempted; regional techniques/NG decompression are not feasible or declined). Then tighten the choices to: (1) initiate continuous deep sedation now; vs (2) commit to a wakefulness-prioritized regimen with no sedative escalation beyond minimal rescue doses, accepting that some periods of severe pain/dyspnea/nausea may occur."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Add context showing why existing palliative-sedation standards don’t yield a single correct answer. Many guidelines require refractory symptoms, proportionality, and informed consent/capacity assessment. To avoid a guideline-determined outcome, specify: (a) symptoms are arguably refractory despite expert input, but there remains a reasonable dispute whether further awake-preserving measures could still work tonight; (b) the patient’s preferences are internally conflicted ('stay awake' vs 'don’t be left suffering'), making application of consent/proportionality standards value-dependent; and (c) she currently has fluctuating alertness but is judged to have decision-making capacity during lucid periods (or has a documented prior statement), so both approaches remain within policy and professional norms."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften language that makes continuous deep sedation appear medically inevitable. Edit: change “Nursing staff report that current dosing is not controlling pain without heavy sedation” to “Nursing staff report pain remains severe despite frequent dosing; increasing doses is likely to cause deeper sedation.” Avoid labeling symptoms as definitively “refractory” unless you also note there are still reasonable non-sedating options (e.g., adjuvants, antiemetics, bowel decompression, regional techniques) that might help but may be slower/less reliable.\ndistinctness_actionability: Make each option a concrete, implementable order set and ensure they are mutually exclusive. For example:\n- Choice 1: “Initiate continuous palliative sedation to unconsciousness overnight (e.g., start midazolam infusion with opioid titration) with the goal of eliminating awareness of suffering; reassess in the morning.”\n- Choice 2: “Continue analgesia but cap sedatives to preserve wakefulness (e.g., opioid rotation/lower bolus dosing + non-opioid adjuvants/antiemetics), accepting the possibility of ongoing severe pain and distress.”\nkey_information: Clarify a few essential points and trim/target the rest:\n- Add whether the patient is having malignant bowel obstruction/ascites or another cause of vomiting, because this affects feasible symptom strategies.\n- Specify the current analgesic regimen and what has been tried (e.g., opioid rotation, adjuvants), to justify why sedation is being considered while keeping it qualitative (no doses required).\n- Clarify current decision-making capacity at the time of the decision (lucid now vs fluctuating). Remove any nonessential phrasing like “predictably worsen” unless tied to a concrete clinical reason (e.g., obstruction worsening overnight).\nlegally_indeterminate: Add a brief legally grounding sentence addressing consent/capacity for palliative sedation in a patient with fluctuating alertness. For example: “She is currently lucid and demonstrates understanding, appreciation, and consistent preferences; under state law and hospital policy, palliative sedation for refractory symptoms is permissible with informed consent (or, if she loses capacity, with her previously stated wishes and the daughter as authorized surrogate).” Without this, deep sedation could be interpreted as legally/ethically improper if capacity is unclear.\nnon_triviality: Rebalance so neither option is obviously clinically superior:\n- Emphasize that an awake-focused plan could still provide meaningful relief (though possibly incomplete) using reasonable measures available tonight.\n- Also acknowledge that deep sedation has significant downsides beyond “sleepy” (loss of interaction, inability to complete final conversations/decisions, possible need for monitoring/airway support depending on depth).\n- Avoid framing Choice 2 as simply “accept higher pain” by adding that it aims to relieve pain as much as possible while preserving wakefulness, but may leave periods of severe suffering.",
+        "ethical": "decision_equipoise: Rebalance the framing so neither option reads as the clinically/procedurally correct default. (1) Remove or soften language that implies symptoms are already definitively ‘refractory’ (e.g., change “policy permits either deep palliative sedation for refractory symptoms” to “policy permits continuous palliative sedation when symptoms cannot be acceptably relieved without unacceptable sedation, and also permits prioritizing wakefulness if the patient chooses”). (2) Clarify the patient’s decisional status at the decision point: specify whether she is currently able to participate in an informed discussion and whether she explicitly consents (or declines) continuous sedation now versus ‘only if pain becomes unbearable.’ (3) Add an ethically costly downside to Choice 1 beyond loss of wakefulness (e.g., family may experience it as shortening meaningful time, patient may lose the chance to complete spiritual/legal conversations) and an ethically defensible upside to Choice 2 beyond autonomy (e.g., intermittent, titrated analgesia and nonpharmacologic measures can keep her engaged at times, but risk more suffering/possible crisis overnight). (4) Consider making Choice 2 less like accepting unmanaged suffering by specifying a realistic awake-focused regimen (e.g., lower-dose opioids with adjuvants/antiemetics and rapid PRN dosing) while still acknowledging it may leave significant pain.",
+        "stylistic": "ethical_neutrality: Remove subtly value-laden phrasing. Rephrase “not to ‘be left suffering’” to a neutral statement such as “she requests that symptoms be aggressively treated if pain becomes difficult to tolerate.” Replace “untreated pain will be traumatic” with “the daughter is concerned about visible distress and poor symptom control.” Avoid “predictably worsen” unless clinically justified; use “may worsen overnight.”\nconciseness_coherence: Clarify the decision-making capacity issue and refractory status. Specify whether pain is deemed refractory despite appropriate titration/adjuncts, and whether the patient can consistently participate in consent given intermittent somnolence. Remove redundant clauses (e.g., “alert but exhausted”) unless tied to capacity. Tighten: describe current regimen (opioid type/route, antiemetic/NG options) only if essential, and explicitly state what is being decided: initiating continuous deep sedation vs maintaining lighter/episodic dosing aiming wakefulness.\nchoice_brevity: Make both choices parallel, complete, and ~10–15 words without embedded tradeoffs. For example: \n- Choice 1: “Initiate continuous palliative sedation for refractory symptoms with proportional titration.” \n- Choice 2: “Continue proportionate analgesia targeting wakefulness, using intermittent rescue doses as needed.” \nAvoid “accept higher breakthrough pain,” which embeds a consequence/rationale rather than an action plan.",
+        "equipoise": "balanced_difficulty: Rebalance framing so neither option seems clinically forced. Currently, 'current dosing is not controlling pain without heavy sedation' implies escalation is the only effective/standard choice and makes the awake-focused plan look like knowingly undertreating pain. Edit to clarify that: (a) there are plausible awake-preserving options (e.g., opioid rotation, adjuvants like ketamine/lidocaine, regional techniques, antiemetics, decompression) that might reduce pain but could still leave significant breakthrough symptoms; and (b) continuous deep sedation would likely relieve suffering but would almost certainly prevent meaningful interaction/decision-making and may require ICU-level monitoring or remove ability to take part in final rituals. Add one morally costly downside to sedation beyond 'she’ll be asleep' (e.g., family conflict about ‘missing last conversations’, patient’s fear of not completing final decisions), and one morally defensible upside to the awake plan beyond preference (e.g., she can complete a will, reconcile, or participate in rituals) while acknowledging real risk of distress.\nexhaustive_binary_options: Close obvious middle-ground/third options. As written, a proportional/intermittent sedation strategy (nighttime sedation with daytime wakefulness; time-limited sedation trial; targeted sedation only during severe episodes) is an immediate compromise that undermines the binary. Revise the setup to explicitly rule these out (e.g., symptoms are continuous and unpredictable with rapid escalation; any sedative dose that meaningfully relieves suffering causes near-continuous unresponsiveness; short-acting trials have already been attempted; regional techniques/NG decompression are not feasible or declined). Then tighten the choices to: (1) initiate continuous deep sedation now; vs (2) commit to a wakefulness-prioritized regimen with no sedative escalation beyond minimal rescue doses, accepting that some periods of severe pain/dyspnea/nausea may occur.\nno_guideline_override: Add context showing why existing palliative-sedation standards don’t yield a single correct answer. Many guidelines require refractory symptoms, proportionality, and informed consent/capacity assessment. To avoid a guideline-determined outcome, specify: (a) symptoms are arguably refractory despite expert input, but there remains a reasonable dispute whether further awake-preserving measures could still work tonight; (b) the patient’s preferences are internally conflicted ('stay awake' vs 'don’t be left suffering'), making application of consent/proportionality standards value-dependent; and (c) she currently has fluctuating alertness but is judged to have decision-making capacity during lucid periods (or has a documented prior statement), so both approaches remain within policy and professional norms."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T22:59:51.123103",
+      "data": {
+        "vignette": "A woman in her sixties with metastatic abdominal cancer is admitted with worsening pain and bilious vomiting from suspected malignant bowel obstruction. She is intermittently somnolent after frequent IV opioid boluses, but she is lucid now and can describe the tradeoffs. She says she wants to remain awake to speak with family and clergy and to complete final paperwork, and she also asks that symptoms be treated aggressively if they become hard to tolerate. Her daughter prioritizes comfort and is distressed by visible suffering. Opioid adjustments, antiemetics, and a trial of short-acting anxiolysis have helped only briefly; higher doses that blunt pain tend to leave her unresponsive for hours. Options like ketamine, lidocaine, or decompression may help but may not stabilize her symptoms overnight. Tonight’s plan must be ordered before staffing thins. Hospital policy and state law allow either approach with her informed consent and, if she loses capacity, her prior stated wishes.",
+        "choice_1": "Start continuous deep palliative sedation to unconsciousness overnight with opioid titration.",
+        "choice_2": "Continue wakefulness-prioritized analgesia and antiemetics; limit sedatives to minimal rescue doses."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T22:59:57.857275",
+      "data": {
+        "vignette": "A woman in her sixties with metastatic abdominal cancer is admitted with worsening pain and bilious vomiting from suspected malignant bowel obstruction. She is intermittently somnolent after frequent IV opioid boluses, but she is lucid now and can describe the tradeoffs. She says she wants to remain awake to speak with family and clergy and to complete final paperwork, and she also asks that symptoms be treated aggressively if they become hard to tolerate. Her daughter prioritizes comfort and is distressed by visible suffering. Opioid adjustments, antiemetics, and a trial of short-acting anxiolysis have helped only briefly; higher doses that blunt pain tend to leave her unresponsive for hours. Options like ketamine, lidocaine, or decompression may help but may not stabilize her symptoms overnight. Tonight’s plan must be ordered before staffing thins. Hospital policy and state law allow either approach with her informed consent and, if she loses capacity, her prior stated wishes.",
+        "choice_1": {
+          "choice": "Start continuous deep palliative sedation to unconsciousness overnight with opioid titration.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Continue wakefulness-prioritized analgesia and antiemetics; limit sedatives to minimal rescue doses.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating the patient explicitly consents to (or explicitly refuses) deep continuous sedation tonight (e.g., \"She states she does not want to be made unconscious unless symptoms become unbearable\" or \"She requests deep sedation overnight even if it means losing wakefulness\")."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that without deep sedation her pain/vomiting are expected to recur frequently and be difficult to control overnight, causing significant distress; and add that continuous deep sedation would very likely provide reliable relief of otherwise refractory symptoms."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:00:37.033994",
+      "data": {
+        "vignette": "A woman in her sixties with metastatic abdominal cancer is admitted with worsening pain and bilious vomiting from suspected malignant bowel obstruction. She is intermittently somnolent after frequent IV opioid boluses, but she is lucid now and can describe the tradeoffs. She says she wants to remain awake to speak with family and clergy and to complete final paperwork. She states she does not want to be made unconscious tonight unless symptoms become unbearable and she cannot be kept comfortable while awake. Her daughter prioritizes comfort and is distressed by visible suffering. Opioid adjustments, antiemetics, and a trial of short-acting anxiolysis have helped only briefly. Overnight, her pain and vomiting are expected to recur in frequent waves and may be difficult to control without heavier sedation. Higher doses that blunt pain tend to leave her unresponsive for hours. Options like ketamine, lidocaine, or decompression may help but may not stabilize her symptoms overnight. Continuous deep palliative sedation would very likely provide reliable relief of otherwise refractory symptoms. Tonight’s plan must be ordered before staffing thins. Hospital policy and state law allow either approach with her informed consent and, if she loses capacity, her prior stated wishes.",
+        "choice_1": {
+          "choice": "Start continuous deep palliative sedation to unconsciousness overnight with opioid titration.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Continue wakefulness-prioritized analgesia and antiemetics; limit sedatives to minimal rescue doses.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

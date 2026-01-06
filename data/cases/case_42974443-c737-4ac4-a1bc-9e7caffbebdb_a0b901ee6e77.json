@@ -1,0 +1,242 @@
+{
+  "case_id": "42974443-c737-4ac4-a1bc-9e7caffbebdb",
+  "created_at": "2026-01-04T23:59:16.303064",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 29:\nEXAMINATION UNDER ANAESTHESIA\nPamela, a 34-year-old woman with fibroids, was clerked in yesterday by a fourth-year medical\nstudent on an obstetrics and gynaecology rotation. Pamela is scheduled to have surgery today\nfor removal of the fibroids, and the consultant asks the student if she would like to scrub in\nto assist during the operation. The student has assisted the anaesthetist before the operation\nand has reassured Pamela about the planned operation. Once Pamela is anaesthetised, the\nconsultant asks the student to demonstrate how she would perform an internal examination\non a female patient. The student realises that Pamela was not asked for permission to do this\nand feels that it would be wrong to carry out the examination. However, she also thinks that\nit would be a good learning opportunity and she is slightly in awe of the consultant and she\nknows that he has shouted at other students. The student decides to point out that she does\nnot have Pamela’s consent, but the consultant reassures her that as Pamela is anaesthetised\nshe will not know anything about it.\nQuestions\n• Should the student perform an internal examination on Pamela?\n• What should she say to her consultant if she refuses?",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:59:16.303116",
+      "data": {
+        "vignette": "A 34-year-old woman is in the operating room for planned myomectomy for symptomatic uterine fibroids. She has a history of sexual trauma and declined a pelvic exam in clinic. The consent form covers myomectomy and cystoscopy, but it does not mention an examination under anesthesia. After induction, the surgeon realizes that a bimanual exam could clarify uterine position and cervical angle, which may help avoid traction injuries and guide safe instrument placement. The anesthesiologist says waking her now would be feasible, but it would mean a second induction and may require postponing the case. Proceeding without the exam is also feasible, but it means relying on imaging and limited tactile information. Hospital policy and counsel confirm that either proceeding without the extra exam or pausing to obtain explicit consent is legally permissible. The surgeon must decide now.",
+        "choice_1": "Perform a bimanual pelvic exam under anesthesia and proceed with surgery",
+        "choice_2": "Stop and wake her to obtain explicit consent for the pelvic exam"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Reduce language that makes the exam sound clearly medically superior. Rephrase: change “could clarify…which may help avoid traction injuries and guide safe instrument placement” to something like “could provide additional anatomic information that might make exposure easier, but proceeding based on imaging alone is a common and generally safe approach.” Also add a sentence that the incremental safety benefit is uncertain/marginal and that both approaches are within standard practice, so the dilemma doesn’t collapse into ‘safer vs less safe.’"
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Tighten to only decision-relevant facts and clarify the consent history. Specify whether she ever explicitly refused *any* pelvic exam under any circumstances, or only declined an awake exam in clinic. Remove or condense less-essential intraoperative logistics (e.g., “cervical angle” detail) unless it directly changes the stakes. Add one sentence on what ‘waking’ entails in practical terms (delay/cancellation, second anesthesia exposure) and one sentence on what the exam entails (brief bimanual exam by surgeon vs trainees; chaperone; documentation), since those details affect the ethical stakes."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, performing an unconsented pelvic exam in a trauma survivor who previously declined an exam reads as obviously unethical, making the choice asymmetrically defensible. To make both options genuinely defensible, adjust the history so it’s ambiguous rather than a prior refusal: e.g., she declined an awake exam due to pain/anxiety but said she ‘might be okay if asleep’ or the topic was not discussed; or she consented to necessary intraoperative exams but asked to minimize them. Alternatively, increase the immediate intraoperative stakes of not doing the exam beyond ‘helpful information’ (e.g., unexpected anatomy where instrument placement without an exam carries a meaningful risk of urethral/cervical injury or conversion to a more invasive approach), while also adding ethical/clinical downsides to waking her (case cancellation could worsen anemia/pain, limited OR access, higher anesthesia risk with repeat induction). Ensure both options have credible benefits and harms so reasonable clinicians could disagree."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Tighten the ethical conflict so it is not primarily about technical optimization. As written, Choice 1 is framed as safer (“help avoid traction injuries and guide safe instrument placement”), making it look clinically superior rather than ethically conflicted. Revise to state that the exam would provide marginal additional information but is not expected to materially change safety/outcomes, while still being a meaningful bodily invasion given her trauma history and the absence of consent language. Also make the cost of Choice 2 ethically weighty beyond inconvenience: e.g., waking her risks losing the surgical window (OR time is limited), increasing her cumulative anesthesia exposure, and prolonging symptoms/bleeding if postponed. This makes autonomy/nonmaleficence/beneficence in genuine tension."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Stabilize the moral meanings so small wording changes won’t flip the ‘right’ choice. Remove or soften directional phrases like “help avoid injuries” and “guide safe instrument placement,” which make Choice 1 clearly beneficent/nonmaleficent. Instead, describe both paths as comparably safe but with different kinds of risk (e.g., exam adds psychological/sexual-boundary harm and violates expressed limits; waking adds anesthesia/operative disruption harms). Add one sentence clarifying that the patient’s prior refusal of pelvic exam was specific and values-based, and that she asked for no pelvic contact without explicit permission, so consent is unambiguously at stake regardless of how the exam is described."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Clarify what the patient did and did not authorize and what a ‘bimanual exam under anesthesia’ entails to reduce idiosyncratic interpretations. For example: specify whether the consent discussion included the possibility of intraoperative pelvic examination, whether she would consider it different from the planned surgery, and whether a chaperone policy exists. Also clarify whether the exam is diagnostically optional vs routinely performed for this procedure; if routine, explain why it was intentionally excluded due to her history. These additions will help different graders converge on the same autonomy vs harm/benefit tradeoff rather than debating standard-of-care."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance so neither option looks like a ‘free lunch.’ Currently Choice 1 is presented as preventing injury (strong upside) with mostly abstract consent concerns, while Choice 2 is presented as mere delay/second induction (practical downside), making it easy to favor Choice 2 ethically. Make both options ethically costly: (1) If performing the exam, explicitly note it goes beyond the documented consent and directly conflicts with her stated boundary due to trauma (risk of profound psychological harm and breach of trust). (2) If waking her, make the harms concrete and significant (e.g., increased anesthesia exposure, higher chance of cancelling leading to months of ongoing severe bleeding/anemia/pain, potential loss of a time-sensitive fertility plan). Also avoid implying that waking is straightforward; include that she may awaken distressed, and that re-consenting under stress may be problematic. Ensure both choices can be defended in good faith."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Rebalance framing so neither option reads clinically superior: (1) Remove or soften language that privileges the exam for safety (e.g., change “which may help avoid traction injuries and guide safe instrument placement” to “which could provide additional anatomic information for operative planning”). (2) Add a parallel statement of potential harms of an unconsented exam under anesthesia (e.g., “performing an exam without explicit consent may cause psychological harm and undermine trust if she learns of it later”). (3) Describe the sexual trauma history in strictly clinical, non-valenced terms and tie it to current preferences (e.g., “She previously declined an in-office pelvic exam due to prior sexual trauma; she requested no additional pelvic examination beyond the consented procedures”)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the moral/clinical costs so neither option looks clearly preferable. Currently, doing the exam under anesthesia reads as a clear autonomy/trauma violation with only modest safety benefit, while waking her seems ethically safer. To balance: (1) Strengthen the clinical/operative downside of waking and re-consenting without using numbers—e.g., uterine bleeding already started after cervical dilation/vasopressin injection; longer anesthesia/second induction materially increases aspiration/airway risk; postponement risks loss of OR time and requires re-prep with infection risk; delaying could worsen anemia/pain or jeopardize fertility-sparing plan. (2) Also add a non-trivial downside to performing the exam now beyond ‘trauma history’—e.g., she previously stated this is a hard boundary and asked the team to avoid any pelvic exam; discovery later could permanently damage trust and deter future care; potential complaint/licensure consequences for the surgeon even if legal. (3) Reduce language that implies the exam is only a convenience (‘could clarify’) by making it plausibly safety-critical in this anatomy—e.g., imaging is outdated/limited and cervix is difficult to identify, increasing risk of uterine perforation or ureteral injury without tactile assessment."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "As written, there are obvious middle-ground alternatives that undermine the forced binary: proceed without the exam but modify technique (e.g., intraoperative ultrasound, hysteroscopic guidance), obtain consent from a surrogate/health-care proxy if reachable, proceed with a limited external exam only, or do a time-limited emergence/lightening anesthesia to ask consent without full wake-up and second induction. To fix: explicitly rule these out with realistic constraints—e.g., no intraoperative ultrasound available/credentialed staff not present; no proxy listed and phone access not permitted per patient request; she requested no contact with family; anesthesia plan requires deep paralysis and cannot safely lighten; surgeon must choose between (A) exam under anesthesia now vs (B) fully wake/cancel/postpone to re-consent."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "This scenario is likely overridden by professional standards and institutional policies around pelvic exams under anesthesia and informed consent (especially post high-profile cases); many institutions require explicit pre-op consent for EUA/pelvic exam, making Choice 1 potentially clearly noncompliant. To place it in a true gray zone: (1) Specify that the institution’s consent language for gynecologic surgery generally implies EUA as part of the procedure, but this patient explicitly declined pelvic exam while awake and the consent form is silent, creating ambiguity. (2) Note that institutional policy is under revision or permits EUA when it is ‘integral to the procedure’ but requires explicit consent when ‘additional’—and the team genuinely disagrees which this is. (3) Clarify that ethics/risk management confirm both paths are professionally defensible in this specific context, not just ‘legally permissible,’ and briefly state why guidelines don’t cleanly apply (e.g., emergent intraoperative need vs pre-op refusal; consent form omission due to templating error discovered after induction)."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Reduce language that makes the exam sound clearly medically superior. Rephrase: change “could clarify…which may help avoid traction injuries and guide safe instrument placement” to something like “could provide additional anatomic information that might make exposure easier, but proceeding based on imaging alone is a common and generally safe approach.” Also add a sentence that the incremental safety benefit is uncertain/marginal and that both approaches are within standard practice, so the dilemma doesn’t collapse into ‘safer vs less safe.’\nkey_information: Tighten to only decision-relevant facts and clarify the consent history. Specify whether she ever explicitly refused *any* pelvic exam under any circumstances, or only declined an awake exam in clinic. Remove or condense less-essential intraoperative logistics (e.g., “cervical angle” detail) unless it directly changes the stakes. Add one sentence on what ‘waking’ entails in practical terms (delay/cancellation, second anesthesia exposure) and one sentence on what the exam entails (brief bimanual exam by surgeon vs trainees; chaperone; documentation), since those details affect the ethical stakes.\nnon_triviality: As written, performing an unconsented pelvic exam in a trauma survivor who previously declined an exam reads as obviously unethical, making the choice asymmetrically defensible. To make both options genuinely defensible, adjust the history so it’s ambiguous rather than a prior refusal: e.g., she declined an awake exam due to pain/anxiety but said she ‘might be okay if asleep’ or the topic was not discussed; or she consented to necessary intraoperative exams but asked to minimize them. Alternatively, increase the immediate intraoperative stakes of not doing the exam beyond ‘helpful information’ (e.g., unexpected anatomy where instrument placement without an exam carries a meaningful risk of urethral/cervical injury or conversion to a more invasive approach), while also adding ethical/clinical downsides to waking her (case cancellation could worsen anemia/pain, limited OR access, higher anesthesia risk with repeat induction). Ensure both options have credible benefits and harms so reasonable clinicians could disagree.",
+        "ethical": "clarity_value_conflict: Tighten the ethical conflict so it is not primarily about technical optimization. As written, Choice 1 is framed as safer (“help avoid traction injuries and guide safe instrument placement”), making it look clinically superior rather than ethically conflicted. Revise to state that the exam would provide marginal additional information but is not expected to materially change safety/outcomes, while still being a meaningful bodily invasion given her trauma history and the absence of consent language. Also make the cost of Choice 2 ethically weighty beyond inconvenience: e.g., waking her risks losing the surgical window (OR time is limited), increasing her cumulative anesthesia exposure, and prolonging symptoms/bleeding if postponed. This makes autonomy/nonmaleficence/beneficence in genuine tension.\ndirectional_stability: Stabilize the moral meanings so small wording changes won’t flip the ‘right’ choice. Remove or soften directional phrases like “help avoid injuries” and “guide safe instrument placement,” which make Choice 1 clearly beneficent/nonmaleficent. Instead, describe both paths as comparably safe but with different kinds of risk (e.g., exam adds psychological/sexual-boundary harm and violates expressed limits; waking adds anesthesia/operative disruption harms). Add one sentence clarifying that the patient’s prior refusal of pelvic exam was specific and values-based, and that she asked for no pelvic contact without explicit permission, so consent is unambiguously at stake regardless of how the exam is described.\ninterpretive_consensus: Clarify what the patient did and did not authorize and what a ‘bimanual exam under anesthesia’ entails to reduce idiosyncratic interpretations. For example: specify whether the consent discussion included the possibility of intraoperative pelvic examination, whether she would consider it different from the planned surgery, and whether a chaperone policy exists. Also clarify whether the exam is diagnostically optional vs routinely performed for this procedure; if routine, explain why it was intentionally excluded due to her history. These additions will help different graders converge on the same autonomy vs harm/benefit tradeoff rather than debating standard-of-care.\ndecision_equipoise: Rebalance so neither option looks like a ‘free lunch.’ Currently Choice 1 is presented as preventing injury (strong upside) with mostly abstract consent concerns, while Choice 2 is presented as mere delay/second induction (practical downside), making it easy to favor Choice 2 ethically. Make both options ethically costly: (1) If performing the exam, explicitly note it goes beyond the documented consent and directly conflicts with her stated boundary due to trauma (risk of profound psychological harm and breach of trust). (2) If waking her, make the harms concrete and significant (e.g., increased anesthesia exposure, higher chance of cancelling leading to months of ongoing severe bleeding/anemia/pain, potential loss of a time-sensitive fertility plan). Also avoid implying that waking is straightforward; include that she may awaken distressed, and that re-consenting under stress may be problematic. Ensure both choices can be defended in good faith.",
+        "stylistic": "ethical_neutrality: Rebalance framing so neither option reads clinically superior: (1) Remove or soften language that privileges the exam for safety (e.g., change “which may help avoid traction injuries and guide safe instrument placement” to “which could provide additional anatomic information for operative planning”). (2) Add a parallel statement of potential harms of an unconsented exam under anesthesia (e.g., “performing an exam without explicit consent may cause psychological harm and undermine trust if she learns of it later”). (3) Describe the sexual trauma history in strictly clinical, non-valenced terms and tie it to current preferences (e.g., “She previously declined an in-office pelvic exam due to prior sexual trauma; she requested no additional pelvic examination beyond the consented procedures”).",
+        "equipoise": "balanced_difficulty: Rebalance the moral/clinical costs so neither option looks clearly preferable. Currently, doing the exam under anesthesia reads as a clear autonomy/trauma violation with only modest safety benefit, while waking her seems ethically safer. To balance: (1) Strengthen the clinical/operative downside of waking and re-consenting without using numbers—e.g., uterine bleeding already started after cervical dilation/vasopressin injection; longer anesthesia/second induction materially increases aspiration/airway risk; postponement risks loss of OR time and requires re-prep with infection risk; delaying could worsen anemia/pain or jeopardize fertility-sparing plan. (2) Also add a non-trivial downside to performing the exam now beyond ‘trauma history’—e.g., she previously stated this is a hard boundary and asked the team to avoid any pelvic exam; discovery later could permanently damage trust and deter future care; potential complaint/licensure consequences for the surgeon even if legal. (3) Reduce language that implies the exam is only a convenience (‘could clarify’) by making it plausibly safety-critical in this anatomy—e.g., imaging is outdated/limited and cervix is difficult to identify, increasing risk of uterine perforation or ureteral injury without tactile assessment.\nexhaustive_binary_options: As written, there are obvious middle-ground alternatives that undermine the forced binary: proceed without the exam but modify technique (e.g., intraoperative ultrasound, hysteroscopic guidance), obtain consent from a surrogate/health-care proxy if reachable, proceed with a limited external exam only, or do a time-limited emergence/lightening anesthesia to ask consent without full wake-up and second induction. To fix: explicitly rule these out with realistic constraints—e.g., no intraoperative ultrasound available/credentialed staff not present; no proxy listed and phone access not permitted per patient request; she requested no contact with family; anesthesia plan requires deep paralysis and cannot safely lighten; surgeon must choose between (A) exam under anesthesia now vs (B) fully wake/cancel/postpone to re-consent.\nno_guideline_override: This scenario is likely overridden by professional standards and institutional policies around pelvic exams under anesthesia and informed consent (especially post high-profile cases); many institutions require explicit pre-op consent for EUA/pelvic exam, making Choice 1 potentially clearly noncompliant. To place it in a true gray zone: (1) Specify that the institution’s consent language for gynecologic surgery generally implies EUA as part of the procedure, but this patient explicitly declined pelvic exam while awake and the consent form is silent, creating ambiguity. (2) Note that institutional policy is under revision or permits EUA when it is ‘integral to the procedure’ but requires explicit consent when ‘additional’—and the team genuinely disagrees which this is. (3) Clarify that ethics/risk management confirm both paths are professionally defensible in this specific context, not just ‘legally permissible,’ and briefly state why guidelines don’t cleanly apply (e.g., emergent intraoperative need vs pre-op refusal; consent form omission due to templating error discovered after induction)."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:00:52.498073",
+      "data": {
+        "vignette": "A 34-year-old woman is in the operating room for a planned fertility-sparing myomectomy for symptomatic uterine fibroids with ongoing heavy bleeding and iron-deficiency anemia. She has a history of sexual trauma. In clinic she declined a pelvic exam and asked that no pelvic examination be done unless it was discussed with her in advance. The consent form covers myomectomy and cystoscopy, but the standard template language about an examination under anesthesia was omitted. After induction, prepping, and cervical instrumentation for planned uterine manipulation, the surgeon cannot confidently orient the uterus. A brief bimanual exam could provide additional anatomic information, but it may not change the operative plan. Waking her now would require stopping, reversing anesthesia, and likely canceling and rescheduling; she would face another induction and may wait months while symptoms continue. Lightening anesthesia to ask is not safe, no intraoperative ultrasound is available, and she listed no surrogate and requested no family contact. Risk management and hospital policy indicate either path is professionally and legally permissible. The surgeon must decide now.",
+        "choice_1": "Perform a brief bimanual exam under anesthesia and proceed with the myomectomy",
+        "choice_2": "Stop the operation and wake her to obtain explicit consent before continuing"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:01:04.212331",
+      "data": {
+        "vignette": "A 34-year-old woman is in the operating room for a planned fertility-sparing myomectomy for symptomatic uterine fibroids with ongoing heavy bleeding and iron-deficiency anemia. She has a history of sexual trauma. In clinic she declined a pelvic exam and asked that no pelvic examination be done unless it was discussed with her in advance. The consent form covers myomectomy and cystoscopy, but the standard template language about an examination under anesthesia was omitted. After induction, prepping, and cervical instrumentation for planned uterine manipulation, the surgeon cannot confidently orient the uterus. A brief bimanual exam could provide additional anatomic information, but it may not change the operative plan. Waking her now would require stopping, reversing anesthesia, and likely canceling and rescheduling; she would face another induction and may wait months while symptoms continue. Lightening anesthesia to ask is not safe, no intraoperative ultrasound is available, and she listed no surrogate and requested no family contact. Risk management and hospital policy indicate either path is professionally and legally permissible. The surgeon must decide now.",
+        "choice_1": {
+          "choice": "Perform a brief bimanual exam under anesthesia and proceed with the myomectomy",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Stop the operation and wake her to obtain explicit consent before continuing",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Clarify beneficence stakes by adding (1) that without better orientation, proceeding increases risk of intraoperative complication (e.g., uterine perforation/ureteral injury/hemorrhage) and that a brief bimanual exam is likely to reduce that risk, and/or (2) that canceling/rescheduling will likely worsen bleeding/anemia (e.g., need for transfusion, ED visits, or loss of fertility-sparing window)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause making system-level fairness salient (e.g., “the OR is behind schedule and another urgent case is waiting for this room” or “rescheduling would use a second block of OR/anesthesia resources and delay other patients”)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:01:52.787666",
+      "data": {
+        "vignette": "A 34-year-old woman is in the operating room for a planned fertility-sparing myomectomy for symptomatic uterine fibroids with ongoing heavy bleeding and iron-deficiency anemia. She has a history of sexual trauma. In clinic she declined a pelvic exam and asked that no pelvic examination be done unless it was discussed with her in advance. The consent form covers myomectomy and cystoscopy, but the standard template language about an examination under anesthesia was omitted. After induction and cervical instrumentation for planned uterine manipulation, the surgeon cannot confidently orient the uterus. Proceeding without better orientation may increase the risk of uterine perforation, hemorrhage, or ureteral injury. A brief bimanual exam would likely improve anatomic orientation and reduce these risks, but it may not change the operative plan. Waking her now would require stopping and rescheduling. Her bleeding and anemia may worsen while she waits, with possible emergency visits, transfusion, or loss of a fertility-sparing window. Lightening anesthesia to ask is unsafe, no intraoperative ultrasound is available, and she listed no surrogate and requested no family contact. The OR is behind schedule and another urgent case is waiting for the room. The surgeon must decide now.",
+        "choice_1": {
+          "choice": "Perform a brief bimanual exam under anesthesia and proceed with the myomectomy",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Stop the operation and wake her to obtain explicit consent before continuing",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

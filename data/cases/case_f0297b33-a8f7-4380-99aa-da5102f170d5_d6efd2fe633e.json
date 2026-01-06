@@ -1,0 +1,236 @@
+{
+  "case_id": "f0297b33-a8f7-4380-99aa-da5102f170d5",
+  "created_at": "2026-01-05T00:36:20.999179",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 50:\nCONFLICT IN TREATMENT AIMS\nJohn is a 56-year-old university lecturer. He has been diagnosed with inoperable lung cancer\nand has been admitted to an oncology ward to receive intensive radiotherapy. John also had\nan episode of psychosis in his 20s which required him to be sectioned under the Mental\nHealth Act. Fortunately, following this episode he has remained well and has had a very\nsuccessful career. His main concern when learning of his cancer diagnosis was that he would\nnot get a chance to finish the current projects he was currently involved with at the university,\nincluding setting up a bursary.\nShortly after arriving on the oncology ward to commence radiotherapy he began display-\ning signs of psychosis. He had flight of ideas and pressured speech and was quite agitated.\nMultiple investigations ruled out a physical cause for these new symptoms, and in light of his\nprevious medical history oral antipsychotic medication was started.\nOver the next few days his mental state worsened. He began making abusive phone calls to\nhis family, removing his oxygen, telling ward staff he was cured of his cancer and that he was\nbeing awarded a Nobel prize. Whilst happy to continue with his radiotherapy, John stopped\ntaking the antipsychotic medication prescribed by the psychiatrist. He was aware of some of\nthe detrimental effects of his psychosis, but denied he needed medicine to resolve it and was\nadamant he just needed to be left in peace so that he could focus on his university work.\nAs an articulate, intelligent man, John had insight that some of his beliefs and behaviours\nwere characteristic of psychosis and hid them from the doctors; he denied saying he was\ncured of cancer when confronted by the consultant looking after him. His consultant is\nconcerned – he is reluctant to continue giving radiotherapy in light of his worsening mental\nhealth, but delaying treatment for his cancer may ultimately hasten disease progression.\nQuestions\n• Is it more important for John to stay on the oncology ward and receive radiotherapy\nor be sectioned and treated for his psychosis?\n• Who should be involved in this decision?",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:36:20.999216",
+      "data": {
+        "vignette": "A 56-year-old university lecturer with inoperable lung cancer is inpatient to start intensive radiotherapy. He has a remote history of psychosis. Within days he becomes increasingly agitated with pressured speech and grandiose beliefs. Medical workup does not show a reversible cause. Psychiatry prescribes an oral antipsychotic, but he refuses it after reading about side effects. He insists he feels “clear” and wants uninterrupted radiotherapy so he can finish major work projects. He intermittently removes his oxygen and makes hostile calls to family. He can be charming and minimizes symptoms during medical rounds, but nursing staff report escalating disorganization overnight. Tomorrow’s radiotherapy slot is the last available for a week, and he may soon require sedation for safety, which would prevent participation in decisions. Hospital policy and mental health law permit either continuing cancer treatment with close supervision or involuntary psychiatric treatment in this setting.",
+        "choice_1": "Proceed with radiotherapy as scheduled while accepting refusal of antipsychotic medication.",
+        "choice_2": "Pause radiotherapy and initiate involuntary psychiatric treatment to stabilize his mental state."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften language that implies a clinically correct path. Specifically: (1) Replace “Medical workup does not show a reversible cause” with “No clear reversible medical trigger is identified so far” to avoid implying psychiatry is definitively indicated. (2) Remove “may soon require sedation for safety, which would prevent participation in decisions” or rephrase to neutral: “may require medication or seclusion for safety, which could affect his ability to engage in decisions,” since this currently nudges toward preemptive involuntary treatment. (3) Add a sentence acknowledging that delaying radiotherapy could affect symptom control/progression and that proceeding while severely agitated could compromise treatment tolerance/safety—balance harms on both sides without implying superiority. (4) Avoid character-loading like “hostile calls”; use neutral descriptors such as “makes repeated distressed calls.”"
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make the orders more concrete and mutually exclusive. For example: \n- Choice 1: “Proceed with radiotherapy tomorrow; document capacity assessment for refusing antipsychotic; implement 1:1 observation and PRN non-coercive de-escalation only.” \n- Choice 2: “Place patient on an involuntary psychiatric hold; administer antipsychotic over objection per policy; defer radiotherapy until stabilized and reassessed.” \nAlso specify what ‘pause radiotherapy’ means (cancel tomorrow’s session vs stop the whole course) and what ‘involuntary psychiatric treatment’ entails (hold, forced meds, transfer to psych unit, etc.)."
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Trim or refocus extraneous/loaded details and add missing decision-critical facts.\n- Remove occupational flourish (“university lecturer,” “major work projects”) unless it directly affects the ethical stakes; if retained, condense to “wants to continue working.”\n- Replace “charming” and “hostile calls” with clinically relevant descriptors (e.g., “inconsistent presentation across settings; staff report worse nighttime disorganization”).\n- Add key clinical details needed to judge the dilemma: baseline functional status and goals of radiotherapy (curative vs palliative intent), current respiratory status/oxygen requirement relevance to radiotherapy, and whether he can cooperate with immobilization/mask positioning.\n- Clarify current capacity concerns: what elements of decision-making are impaired (understanding, appreciation, reasoning) and whether there is fluctuating capacity.\n- Clarify who is surrogate/next of kin and whether there is an advance directive, since this affects ethical stakes if capacity is lost."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Tighten medical realism around radiotherapy logistics and psychiatric management.\n- Radiotherapy: clarify that it is a scheduled fractionated course and why ‘tomorrow’s slot is last available for a week’ (machine downtime, holiday staffing, referral center travel) to make the constraint plausible.\n- Safety/cooperation: specify whether agitation/oxygen removal threatens ability to undergo simulation/positioning safely; otherwise the need to pause radiotherapy is less coherent.\n- Psychiatric pathway: specify whether involuntary treatment would require transfer to a psychiatric unit (which might interrupt radiotherapy) or can be managed on the oncology floor with consultation-liaison psychiatry, consistent with many hospitals.\n- Diagnosis: consider describing as “acute mania/psychosis” rather than relying on “remote history of psychosis,” and note that delirium has been considered with basic workup, to avoid seeming clinically incomplete."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Add a brief, jurisdiction-neutral legal grounding that makes both paths clearly permissible. For example: “Under applicable law, if he is found to lack decision-making capacity and poses a risk of harm, emergency involuntary treatment (including medication over objection) can be authorized; if he retains capacity, his refusal must generally be respected while providing reasonable safety measures.” As written, ‘policy and law permit either’ is too conclusory without specifying the hinge conditions (capacity and danger) that make both legally defensible."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 is framed as the safer/inevitable option because of escalating agitation and impending sedation, making the decision less ethically balanced. To restore non-triviality:\n- Add credible arguments for proceeding: radiotherapy is time-sensitive for symptom control or disease control; delaying could cause significant suffering/clinical deterioration; he can intermittently cooperate; non-coercive supports may suffice.\n- Add credible costs/risks of involuntary treatment: forced antipsychotics may cause significant side effects, worsen respiratory status, prolong hospitalization, and damage therapeutic alliance; a psychiatric hold/transfer could delay or preclude radiotherapy.\n- Clarify that risk level is concerning but not unequivocally emergent (e.g., no clear imminent violence), so reasonable clinicians could disagree about threshold for coercion."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce ambiguity about whether the patient clearly lacks decision-making capacity, because if incapacity is obvious many graders will see Choice 2 as mandatory. Add 1–2 concrete capacity-relevant observations that cut both ways (e.g., he can accurately describe radiotherapy purpose/risks and articulate a consistent reason for refusing antipsychotics, but he cannot appreciate how his agitation/disorganization could compromise safe delivery or his relationships; he fluctuates and is worse at night). State that a brief bedside capacity assessment was attempted and found borderline/fluctuating rather than clearly absent."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Make each option carry a distinct, credible ethical cost and remove cues that one is simply safer/standard. For Choice 1, add concrete safeguards that make proceeding clinically/ethically defensible (e.g., 1:1 observation, de-escalation plan, radiation team believes treatment can be delivered safely without sedation if he remains cooperative; stopping radiotherapy risks tumor progression/symptom worsening and loss of a narrow treatment window). For Choice 2, specify the realistic harms of involuntary treatment (e.g., likely need for IM medication/restraints or sedation that would delay or preclude radiotherapy for days, could damage therapeutic alliance, and may lead him to later refuse cancer care). Also soften the ‘may soon require sedation for safety’ line or balance it with an alternative (‘may soon require sedation unless stabilized or supported’), so Choice 1 is not framed as foreseeably reckless."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Replace potentially loaded descriptors with clinically neutral terms. For example, change “makes hostile calls to family” to “makes repeated, confrontational calls to family” or “places frequent calls to family with escalating conflict.” Remove character-judgment language like “can be charming” and instead describe observable behavior: “appears organized during brief rounds but is reported to be markedly disorganized overnight.” Consider removing “grandiose” if not needed, or anchor it as a symptom: “grandiose ideation.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Delete or tighten nonessential identifiers and narrative flourishes. For example, remove “university lecturer” unless occupation directly affects decision-making capacity assessment; shorten “so he can finish major work projects” to “to complete work obligations.” Clarify the safety issue without extra color: replace the sequence about oxygen removal/calls with a single sentence summarizing risk behaviors and nursing observations. Ensure the decision hinge is explicit: specify whether clinicians believe capacity is fluctuating/likely impaired, rather than implying it indirectly."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Rewrite choices as short, parallel action statements without embedded framing. Example:\n- Choice 1: “Continue scheduled radiotherapy without antipsychotic treatment; provide close inpatient supervision.”\n- Choice 2: “Hold radiotherapy and initiate involuntary psychiatric treatment for acute stabilization.”\nKeep each to ~10–15 words and avoid phrases like “accepting refusal,” which reads like commentary rather than an action."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the vignette so neither option is clearly safer/standard. Currently agitation, disorganization, hostile behavior, and impending need for sedation make involuntary stabilization seem obviously indicated and make proceeding with radiotherapy look unsafe. Edits: (1) Clarify that he is medically stable, not violent, and can cooperate with setup when calm; nursing concerns are about judgment/insomnia rather than inability to complete treatment. (2) Add that delaying radiotherapy meaningfully risks losing tumor-control opportunity or worsened symptoms, but not in a way that makes one option clearly superior. (3) Add ethically significant downsides to involuntary treatment (e.g., high likelihood of severe adverse effects given prior reactions, or strong prior expressed values/trauma around coercion; involuntary hold would predictably derail radiotherapy course). (4) Add downsides to proceeding without antipsychotic beyond ‘he’s symptomatic’ (e.g., may compromise safety of staff/patient or undermine validity of consent), but keep them moderate/uncertain so it’s not a slam dunk."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "As written, there are obvious middle-ground options that resolve much of the dilemma: time-limited capacity assessment, enhanced observation/1:1 sitter, de-escalation, switching to a different antipsychotic/route, involving surrogate decision-maker, brief delay (e.g., 24–48h) rather than a week, or proceeding with radiotherapy under minimal anxiolysis without full psychiatric commitment. To make it truly binary, explicitly rule out these hybrids: (1) State that the radiotherapy slot is ‘tomorrow only; if missed, the current treatment plan must be re-simulated and restarted in >1 week and tumor symptoms are expected to worsen,’ AND that a shorter delay is not feasible. (2) State that alternative meds/routes and de-escalation have been tried/declined and that 1:1 supervision is unavailable. (3) State that capacity evaluation has already occurred and concluded he either has borderline capacity (allowing either approach) or lacks capacity but there is a legally permitted exception to proceed with radiotherapy under substituted judgment—otherwise guidelines make the answer one-sided."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "The case invokes ‘policy and mental health law permit either,’ but clinical-legal standards around decision-making capacity and consent could still make one option clearly required: if he lacks capacity, proceeding with radiotherapy on his contemporaneous refusal of antipsychotic may be impermissible without surrogate/exception; if he meets criteria for involuntary treatment due to danger/grave disability, many settings require initiation. Fix by clarifying the gray zone: (1) Include a documented, contemporaneous capacity assessment finding him ‘fluctuating/borderline’—able to understand radiotherapy basics but with impaired appreciation of mania-related risks—so clinicians could reasonably disagree. (2) Specify he does not meet clear imminent-danger criteria (no assaults, can be redirected), making involuntary treatment discretionary rather than mandated. (3) Alternatively, specify that radiotherapy can legally proceed under a narrow emergency/therapeutic privilege or prior consent directive despite impaired capacity—otherwise established consent norms override the dilemma."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften language that implies a clinically correct path. Specifically: (1) Replace “Medical workup does not show a reversible cause” with “No clear reversible medical trigger is identified so far” to avoid implying psychiatry is definitively indicated. (2) Remove “may soon require sedation for safety, which would prevent participation in decisions” or rephrase to neutral: “may require medication or seclusion for safety, which could affect his ability to engage in decisions,” since this currently nudges toward preemptive involuntary treatment. (3) Add a sentence acknowledging that delaying radiotherapy could affect symptom control/progression and that proceeding while severely agitated could compromise treatment tolerance/safety—balance harms on both sides without implying superiority. (4) Avoid character-loading like “hostile calls”; use neutral descriptors such as “makes repeated distressed calls.”\ndistinctness_actionability: Make the orders more concrete and mutually exclusive. For example: \n- Choice 1: “Proceed with radiotherapy tomorrow; document capacity assessment for refusing antipsychotic; implement 1:1 observation and PRN non-coercive de-escalation only.” \n- Choice 2: “Place patient on an involuntary psychiatric hold; administer antipsychotic over objection per policy; defer radiotherapy until stabilized and reassessed.” \nAlso specify what ‘pause radiotherapy’ means (cancel tomorrow’s session vs stop the whole course) and what ‘involuntary psychiatric treatment’ entails (hold, forced meds, transfer to psych unit, etc.).\nkey_information: Trim or refocus extraneous/loaded details and add missing decision-critical facts.\n- Remove occupational flourish (“university lecturer,” “major work projects”) unless it directly affects the ethical stakes; if retained, condense to “wants to continue working.”\n- Replace “charming” and “hostile calls” with clinically relevant descriptors (e.g., “inconsistent presentation across settings; staff report worse nighttime disorganization”).\n- Add key clinical details needed to judge the dilemma: baseline functional status and goals of radiotherapy (curative vs palliative intent), current respiratory status/oxygen requirement relevance to radiotherapy, and whether he can cooperate with immobilization/mask positioning.\n- Clarify current capacity concerns: what elements of decision-making are impaired (understanding, appreciation, reasoning) and whether there is fluctuating capacity.\n- Clarify who is surrogate/next of kin and whether there is an advance directive, since this affects ethical stakes if capacity is lost.\nclinical_plausibility: Tighten medical realism around radiotherapy logistics and psychiatric management.\n- Radiotherapy: clarify that it is a scheduled fractionated course and why ‘tomorrow’s slot is last available for a week’ (machine downtime, holiday staffing, referral center travel) to make the constraint plausible.\n- Safety/cooperation: specify whether agitation/oxygen removal threatens ability to undergo simulation/positioning safely; otherwise the need to pause radiotherapy is less coherent.\n- Psychiatric pathway: specify whether involuntary treatment would require transfer to a psychiatric unit (which might interrupt radiotherapy) or can be managed on the oncology floor with consultation-liaison psychiatry, consistent with many hospitals.\n- Diagnosis: consider describing as “acute mania/psychosis” rather than relying on “remote history of psychosis,” and note that delirium has been considered with basic workup, to avoid seeming clinically incomplete.\nlegally_indeterminate: Add a brief, jurisdiction-neutral legal grounding that makes both paths clearly permissible. For example: “Under applicable law, if he is found to lack decision-making capacity and poses a risk of harm, emergency involuntary treatment (including medication over objection) can be authorized; if he retains capacity, his refusal must generally be respected while providing reasonable safety measures.” As written, ‘policy and law permit either’ is too conclusory without specifying the hinge conditions (capacity and danger) that make both legally defensible.\nnon_triviality: As written, Choice 2 is framed as the safer/inevitable option because of escalating agitation and impending sedation, making the decision less ethically balanced. To restore non-triviality:\n- Add credible arguments for proceeding: radiotherapy is time-sensitive for symptom control or disease control; delaying could cause significant suffering/clinical deterioration; he can intermittently cooperate; non-coercive supports may suffice.\n- Add credible costs/risks of involuntary treatment: forced antipsychotics may cause significant side effects, worsen respiratory status, prolong hospitalization, and damage therapeutic alliance; a psychiatric hold/transfer could delay or preclude radiotherapy.\n- Clarify that risk level is concerning but not unequivocally emergent (e.g., no clear imminent violence), so reasonable clinicians could disagree about threshold for coercion.",
+        "ethical": "interpretive_consensus: Reduce ambiguity about whether the patient clearly lacks decision-making capacity, because if incapacity is obvious many graders will see Choice 2 as mandatory. Add 1–2 concrete capacity-relevant observations that cut both ways (e.g., he can accurately describe radiotherapy purpose/risks and articulate a consistent reason for refusing antipsychotics, but he cannot appreciate how his agitation/disorganization could compromise safe delivery or his relationships; he fluctuates and is worse at night). State that a brief bedside capacity assessment was attempted and found borderline/fluctuating rather than clearly absent.\ndecision_equipoise: Make each option carry a distinct, credible ethical cost and remove cues that one is simply safer/standard. For Choice 1, add concrete safeguards that make proceeding clinically/ethically defensible (e.g., 1:1 observation, de-escalation plan, radiation team believes treatment can be delivered safely without sedation if he remains cooperative; stopping radiotherapy risks tumor progression/symptom worsening and loss of a narrow treatment window). For Choice 2, specify the realistic harms of involuntary treatment (e.g., likely need for IM medication/restraints or sedation that would delay or preclude radiotherapy for days, could damage therapeutic alliance, and may lead him to later refuse cancer care). Also soften the ‘may soon require sedation for safety’ line or balance it with an alternative (‘may soon require sedation unless stabilized or supported’), so Choice 1 is not framed as foreseeably reckless.",
+        "stylistic": "ethical_neutrality: Replace potentially loaded descriptors with clinically neutral terms. For example, change “makes hostile calls to family” to “makes repeated, confrontational calls to family” or “places frequent calls to family with escalating conflict.” Remove character-judgment language like “can be charming” and instead describe observable behavior: “appears organized during brief rounds but is reported to be markedly disorganized overnight.” Consider removing “grandiose” if not needed, or anchor it as a symptom: “grandiose ideation.”\nconciseness_coherence: Delete or tighten nonessential identifiers and narrative flourishes. For example, remove “university lecturer” unless occupation directly affects decision-making capacity assessment; shorten “so he can finish major work projects” to “to complete work obligations.” Clarify the safety issue without extra color: replace the sequence about oxygen removal/calls with a single sentence summarizing risk behaviors and nursing observations. Ensure the decision hinge is explicit: specify whether clinicians believe capacity is fluctuating/likely impaired, rather than implying it indirectly.\nchoice_brevity: Rewrite choices as short, parallel action statements without embedded framing. Example:\n- Choice 1: “Continue scheduled radiotherapy without antipsychotic treatment; provide close inpatient supervision.”\n- Choice 2: “Hold radiotherapy and initiate involuntary psychiatric treatment for acute stabilization.”\nKeep each to ~10–15 words and avoid phrases like “accepting refusal,” which reads like commentary rather than an action.",
+        "equipoise": "balanced_difficulty: Rebalance the vignette so neither option is clearly safer/standard. Currently agitation, disorganization, hostile behavior, and impending need for sedation make involuntary stabilization seem obviously indicated and make proceeding with radiotherapy look unsafe. Edits: (1) Clarify that he is medically stable, not violent, and can cooperate with setup when calm; nursing concerns are about judgment/insomnia rather than inability to complete treatment. (2) Add that delaying radiotherapy meaningfully risks losing tumor-control opportunity or worsened symptoms, but not in a way that makes one option clearly superior. (3) Add ethically significant downsides to involuntary treatment (e.g., high likelihood of severe adverse effects given prior reactions, or strong prior expressed values/trauma around coercion; involuntary hold would predictably derail radiotherapy course). (4) Add downsides to proceeding without antipsychotic beyond ‘he’s symptomatic’ (e.g., may compromise safety of staff/patient or undermine validity of consent), but keep them moderate/uncertain so it’s not a slam dunk.\nexhaustive_binary_options: As written, there are obvious middle-ground options that resolve much of the dilemma: time-limited capacity assessment, enhanced observation/1:1 sitter, de-escalation, switching to a different antipsychotic/route, involving surrogate decision-maker, brief delay (e.g., 24–48h) rather than a week, or proceeding with radiotherapy under minimal anxiolysis without full psychiatric commitment. To make it truly binary, explicitly rule out these hybrids: (1) State that the radiotherapy slot is ‘tomorrow only; if missed, the current treatment plan must be re-simulated and restarted in >1 week and tumor symptoms are expected to worsen,’ AND that a shorter delay is not feasible. (2) State that alternative meds/routes and de-escalation have been tried/declined and that 1:1 supervision is unavailable. (3) State that capacity evaluation has already occurred and concluded he either has borderline capacity (allowing either approach) or lacks capacity but there is a legally permitted exception to proceed with radiotherapy under substituted judgment—otherwise guidelines make the answer one-sided.\nno_guideline_override: The case invokes ‘policy and mental health law permit either,’ but clinical-legal standards around decision-making capacity and consent could still make one option clearly required: if he lacks capacity, proceeding with radiotherapy on his contemporaneous refusal of antipsychotic may be impermissible without surrogate/exception; if he meets criteria for involuntary treatment due to danger/grave disability, many settings require initiation. Fix by clarifying the gray zone: (1) Include a documented, contemporaneous capacity assessment finding him ‘fluctuating/borderline’—able to understand radiotherapy basics but with impaired appreciation of mania-related risks—so clinicians could reasonably disagree. (2) Specify he does not meet clear imminent-danger criteria (no assaults, can be redirected), making involuntary treatment discretionary rather than mandated. (3) Alternatively, specify that radiotherapy can legally proceed under a narrow emergency/therapeutic privilege or prior consent directive despite impaired capacity—otherwise established consent norms override the dilemma."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:37:48.137368",
+      "data": {
+        "vignette": "A 56-year-old man with inoperable lung cancer is hospitalized to start an intensive course of radiotherapy meant to relieve worsening cough and shortness of breath and to slow local tumor growth. He has a remote history of psychosis. Over several days he develops insomnia, pressured speech, and expansive, sometimes paranoid ideas. No clear reversible medical trigger is identified so far. He refuses any antipsychotic after reading about side effects and describing a prior episode of severe stiffness and confusion on a similar drug. He can accurately explain the purpose and main risks of radiotherapy and consistently says he wants treatment, but a bedside capacity assessment finds his decision-making is fluctuating and that he does not fully appreciate how his nighttime disorganization and impulsivity could disrupt safe delivery. He has not been violent and can cooperate with immobilization when calm, but he has tried to leave the unit and repeatedly calls family in escalating conflict. Tomorrow’s slot is the only opening before a weeklong machine shutdown; if missed, the plan must be rescheduled and his symptoms may worsen. Hospital policy and applicable law allow either approach in this gray zone.",
+        "choice_1": "Proceed with radiotherapy tomorrow and use noncoercive inpatient supervision without antipsychotics.",
+        "choice_2": "Defer radiotherapy and initiate an involuntary psychiatric hold with medication over objection."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:38:10.902363",
+      "data": {
+        "vignette": "A 56-year-old man with inoperable lung cancer is hospitalized to start an intensive course of radiotherapy meant to relieve worsening cough and shortness of breath and to slow local tumor growth. He has a remote history of psychosis. Over several days he develops insomnia, pressured speech, and expansive, sometimes paranoid ideas. No clear reversible medical trigger is identified so far. He refuses any antipsychotic after reading about side effects and describing a prior episode of severe stiffness and confusion on a similar drug. He can accurately explain the purpose and main risks of radiotherapy and consistently says he wants treatment, but a bedside capacity assessment finds his decision-making is fluctuating and that he does not fully appreciate how his nighttime disorganization and impulsivity could disrupt safe delivery. He has not been violent and can cooperate with immobilization when calm, but he has tried to leave the unit and repeatedly calls family in escalating conflict. Tomorrow’s slot is the only opening before a weeklong machine shutdown; if missed, the plan must be rescheduled and his symptoms may worsen. Hospital policy and applicable law allow either approach in this gray zone.",
+        "choice_1": {
+          "choice": "Proceed with radiotherapy tomorrow and use noncoercive inpatient supervision without antipsychotics.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Defer radiotherapy and initiate an involuntary psychiatric hold with medication over objection.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause explicitly stating whether the patient is judged to have capacity for the radiotherapy decision (e.g., 'the team determines he lacks/retains capacity for consenting to radiotherapy') so the autonomy stakes for proceeding vs deferring are unambiguous."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause specifying the concrete harm risk if radiotherapy proceeds while he is disorganized (e.g., moving during immobilization could cause significant mistargeted radiation/physical injury), and one clause specifying the concrete harm risk of the involuntary hold/medication (e.g., likely need IM antipsychotic with meaningful risk of recurrent severe rigidity/delirium)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:38:41.182274",
+      "data": {
+        "vignette": "A 56-year-old man with inoperable lung cancer is hospitalized to start an intensive course of radiotherapy meant to relieve worsening cough and shortness of breath and to slow local tumor growth. He has a remote history of psychosis. Over several days he develops insomnia, pressured speech, and expansive, sometimes paranoid ideas. No clear reversible medical trigger is identified so far. He refuses any antipsychotic after reading about side effects and describing a prior episode of severe stiffness and confusion on a similar drug. He can accurately explain the purpose and main risks of radiotherapy and consistently says he wants treatment, but the team determines he lacks stable capacity to consent because his decision-making fluctuates and he does not fully appreciate how his nighttime disorganization and impulsivity could disrupt safe delivery. If he moves during immobilization, radiation could be mistargeted and cause avoidable injury to healthy tissue. He has not been violent and can cooperate with immobilization when calm, but he has tried to leave the unit and repeatedly calls family in escalating conflict. Tomorrow’s slot is the only opening before a weeklong machine shutdown; if missed, the plan must be rescheduled and his symptoms may worsen. If an involuntary hold is used, he would likely require medication over objection, with a meaningful risk of recurrent severe rigidity or delirium. Hospital policy and applicable law allow either approach in this gray zone.",
+        "choice_1": {
+          "choice": "Proceed with radiotherapy tomorrow and use noncoercive inpatient supervision without antipsychotics.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Defer radiotherapy and initiate an involuntary psychiatric hold with medication over objection.",
+          "autonomy": "violates",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

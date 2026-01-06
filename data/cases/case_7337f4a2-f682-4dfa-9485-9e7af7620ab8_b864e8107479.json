@@ -1,0 +1,242 @@
+{
+  "case_id": "7337f4a2-f682-4dfa-9485-9e7af7620ab8",
+  "created_at": "2026-01-04T23:27:52.720370",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "23. A 34-year-old man is brought to the emergency department with fever,\nheadache, and a change in mental status leading to significant\ndisorientation. His head CT is normal and he is in need of an urgent\nlumbar puncture and intravenous antibiotics. He is agitated and is\nwaving off anyone who tries to get near him. Co-workers accompany\nhim. The resident informs you that the patient is pushing away the\nlumbar puncture needle.\nWhat should you do?\na. Sedate the patient with lorazepam and perform the lumbar puncture.\nb. Wait for the family to obtain consent.\nc. Use blood cultures as an alternative.\nd. MRI of the brain.\ne. Ask the co-workers to sign consent.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:27:52.720421",
+      "data": {
+        "vignette": "A 34-year-old man is brought to the emergency department with fever, severe headache, and new confusion. He is disoriented and cannot describe his symptoms or repeat back information. The team is concerned for meningitis or encephalitis. Blood cultures are drawn. He needs immediate intravenous antimicrobials, and cerebrospinal fluid testing would guide whether to add antivirals, narrow therapy, and decide on isolation and public health reporting. When staff approach with the lumbar puncture kit, he swats hands away and tries to leave the bed. He is not violent but is escalating. His co-workers do not know his wishes and cannot reach family. You must decide within the next hour. Hospital policy and state law support either proceeding over objection when a patient lacks capacity in an emergency or deferring an invasive procedure to seek surrogate input when feasible.",
+        "choice_1": "Sedate and restrain him to perform a lumbar puncture now.",
+        "choice_2": "Defer lumbar puncture and treat empirically while seeking surrogate consent."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Rebalance clinical framing so the dilemma is not resolved by implying LP is clearly the medically correct path. \n- Change “cerebrospinal fluid testing would guide whether to add antivirals, narrow therapy, and decide on isolation and public health reporting” to a more neutral sentence such as: “CSF results could help clarify the diagnosis and tailor therapy and infection-control steps, but empiric antibiotics (and antivirals if indicated) can be started without CSF results.”\n- Add 1–2 sentences that make the downsides of Choice 1 clinically concrete (e.g., sedation can depress respiration/require airway support; restraints can cause injury; LP has bleeding/headache risk), so Choice 1 isn’t framed as pure medical benefit.\n- Add 1 sentence that acknowledges a clinically meaningful downside of Choice 2 (e.g., delaying CSF may reduce diagnostic yield after antibiotics and prolong uncertainty/isolation), without using numbers."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Include minimal missing clinical details needed to make both options realistically weighable without turning it into a purely clinical optimization problem:\n- State whether there are signs/concerns for elevated intracranial pressure or focal neurologic deficits, and whether head CT has been done or is planned before LP (e.g., “He has no focal deficits and a head CT is being obtained now/has no mass effect”).\n- Add brief sedation/restraint risk context (e.g., “would likely require IV sedatives with risk of hypoventilation/need for monitoring”).\n- Clarify that empiric antimicrobials will be started immediately in either choice, to keep the ethical focus on coercion vs deferral/surrogacy rather than ‘treat vs don’t treat.’"
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "As written, proceeding directly to LP in an acutely confused patient without mentioning evaluation for contraindications is borderline unrealistic. Edit to add one of:\n- “A head CT shows no mass effect and labs show platelets are adequate; he is not anticoagulated,” OR\n- “You can start empiric antimicrobials now; CT is pending but CSF would ideally be obtained soon if safe.”\nAlso specify that appropriate monitoring/resources for procedural sedation in the ED are available if Choice 1 is selected."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance so deferring LP is not an obvious ‘least harmful’ path and doing LP over objection is not automatically justified as standard emergency practice.\n\nConcrete edits:\n- Add a clinically realistic, time-sensitive consequence that cannot be addressed by empiric therapy alone, making LP meaningfully benefit the patient now (e.g., ‘CT is already cleared; without CSF you cannot decide whether to start high-dose acyclovir and adjunctive steroids, and delays risk irreversible neurologic injury; also he is likely to require intubation within hours, after which LP becomes technically harder and results delayed’). Keep this qualitative—no percentages.\n- Make deferral ethically defensible but costly by specifying harms of empiric-only treatment and delay (e.g., ‘empiric broad-spectrum therapy and antivirals carry nontrivial toxicity and require ICU-level monitoring; prolonged isolation and public health actions may be unnecessarily triggered or delayed without CSF confirmation’).\n- Clarify why surrogate input is realistically obtainable within a short window (e.g., ‘family can likely be reached in 2–3 hours’) AND why waiting has real downside (e.g., ‘neurologic status is fluctuating and may worsen, narrowing the chance to obtain CSF safely’).\n- Add a sentence that restraint/sedation itself carries serious, patient-specific risks (e.g., aspiration risk, airway compromise, or history of adverse reaction), so Choice 1 is not a clean beneficence win."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Reduce language that makes lumbar puncture sound clearly obligatory. For example: change “He needs immediate intravenous antimicrobials, and cerebrospinal fluid testing would guide…” to “Empiric intravenous antimicrobials are indicated now; cerebrospinal fluid testing could help refine therapy and public health measures but may be deferred.” Add parallel harms of proceeding (e.g., risks of sedation/restraint, loss of neurologic exam, aspiration, need for airway support, physical injury) and of deferring (e.g., prolonged broad-spectrum exposure, delayed pathogen identification, potentially longer isolation) so neither option feels favored."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and add one clinically key clarifier to avoid an ‘obvious’ pathway. Specify whether empiric antibiotics have already been started and whether CT head is indicated before LP (given confusion), because these affect feasibility and urgency. Remove minor narrative phrasing like “lumbar puncture kit” and replace with clinical framing (e.g., “LP”). Consider consolidating the policy sentence into one clause to reduce clutter."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Make the downside of deferring the LP more immediate and clinically consequential so Choice 2 is not the “default safe” option. For example: specify that without CSF in the next few hours the team must continue a highly toxic broad regimen (e.g., nephrotoxic combination, ICU-level monitoring), cannot safely stop antivirals/steroids, and must keep the patient in strict isolation with mandatory public health actions that carry serious consequences; also note that after several doses of antibiotics the diagnostic yield will likely drop, potentially locking the patient into prolonged broad therapy. Simultaneously, make Choice 1 ethically/clinically costly but still defensible by adding concrete sedation/restraint harms (e.g., high aspiration risk due to vomiting, likely need for airway support/intubation, risk of worsening delirium/trauma) and that the patient is not imminently crashing so the procedure is not clearly lifesaving right now. Remove any wording that implies “he needs” LP rather than that it would materially change management."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close off obvious middle options (de-escalation/short wait/minimal sedation/alternate tests) so the decision is truly binary. Add details such as: verbal de-escalation and a brief trial of anxiolysis already failed; security can keep him safe but he will not tolerate positioning; surrogate cannot be reached for many hours; anesthesia/sedation team is available only now (or not again until morning); and rapid blood/respiratory PCR or imaging cannot substitute for CSF for the key management decisions. Also explicitly state that delaying ‘a little’ is not feasible because he is escalating toward elopement and the team must either proceed now under emergency authority or accept no CSF until substantially later."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Right now, common practice in suspected meningitis/encephalitis is to start empiric antimicrobials immediately and defer LP if unsafe/unobtainable; forcibly sedating/restraining solely for a diagnostic LP may be viewed as outside standard practice, making Choice 2 look guideline-favored. To keep this in a gray zone, add why guidelines/policies don’t settle it: (1) CSF results are needed urgently to determine a high-consequence step that cannot safely be done on empiric treatment alone (e.g., whether to initiate/continue contact prophylaxis and mandated reporting, whether to continue a potentially harmful antiviral/steroid course, whether to discontinue isolation that is causing significant harm); (2) both pathways are described as acceptable within your institution’s emergency-treatment policy for incapacitated patients when the procedure is time-sensitive but not strictly lifesaving; and (3) explicitly note that ethics/legal consult is not available within the decision window and that regional practice varies on using restraint for time-sensitive diagnostics in incapacitated patients."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Rebalance clinical framing so the dilemma is not resolved by implying LP is clearly the medically correct path. \n- Change “cerebrospinal fluid testing would guide whether to add antivirals, narrow therapy, and decide on isolation and public health reporting” to a more neutral sentence such as: “CSF results could help clarify the diagnosis and tailor therapy and infection-control steps, but empiric antibiotics (and antivirals if indicated) can be started without CSF results.”\n- Add 1–2 sentences that make the downsides of Choice 1 clinically concrete (e.g., sedation can depress respiration/require airway support; restraints can cause injury; LP has bleeding/headache risk), so Choice 1 isn’t framed as pure medical benefit.\n- Add 1 sentence that acknowledges a clinically meaningful downside of Choice 2 (e.g., delaying CSF may reduce diagnostic yield after antibiotics and prolong uncertainty/isolation), without using numbers.\nkey_information: Include minimal missing clinical details needed to make both options realistically weighable without turning it into a purely clinical optimization problem:\n- State whether there are signs/concerns for elevated intracranial pressure or focal neurologic deficits, and whether head CT has been done or is planned before LP (e.g., “He has no focal deficits and a head CT is being obtained now/has no mass effect”).\n- Add brief sedation/restraint risk context (e.g., “would likely require IV sedatives with risk of hypoventilation/need for monitoring”).\n- Clarify that empiric antimicrobials will be started immediately in either choice, to keep the ethical focus on coercion vs deferral/surrogacy rather than ‘treat vs don’t treat.’\nclinical_plausibility: As written, proceeding directly to LP in an acutely confused patient without mentioning evaluation for contraindications is borderline unrealistic. Edit to add one of:\n- “A head CT shows no mass effect and labs show platelets are adequate; he is not anticoagulated,” OR\n- “You can start empiric antimicrobials now; CT is pending but CSF would ideally be obtained soon if safe.”\nAlso specify that appropriate monitoring/resources for procedural sedation in the ED are available if Choice 1 is selected.",
+        "ethical": "decision_equipoise: Rebalance so deferring LP is not an obvious ‘least harmful’ path and doing LP over objection is not automatically justified as standard emergency practice.\n\nConcrete edits:\n- Add a clinically realistic, time-sensitive consequence that cannot be addressed by empiric therapy alone, making LP meaningfully benefit the patient now (e.g., ‘CT is already cleared; without CSF you cannot decide whether to start high-dose acyclovir and adjunctive steroids, and delays risk irreversible neurologic injury; also he is likely to require intubation within hours, after which LP becomes technically harder and results delayed’). Keep this qualitative—no percentages.\n- Make deferral ethically defensible but costly by specifying harms of empiric-only treatment and delay (e.g., ‘empiric broad-spectrum therapy and antivirals carry nontrivial toxicity and require ICU-level monitoring; prolonged isolation and public health actions may be unnecessarily triggered or delayed without CSF confirmation’).\n- Clarify why surrogate input is realistically obtainable within a short window (e.g., ‘family can likely be reached in 2–3 hours’) AND why waiting has real downside (e.g., ‘neurologic status is fluctuating and may worsen, narrowing the chance to obtain CSF safely’).\n- Add a sentence that restraint/sedation itself carries serious, patient-specific risks (e.g., aspiration risk, airway compromise, or history of adverse reaction), so Choice 1 is not a clean beneficence win.",
+        "stylistic": "ethical_neutrality: Reduce language that makes lumbar puncture sound clearly obligatory. For example: change “He needs immediate intravenous antimicrobials, and cerebrospinal fluid testing would guide…” to “Empiric intravenous antimicrobials are indicated now; cerebrospinal fluid testing could help refine therapy and public health measures but may be deferred.” Add parallel harms of proceeding (e.g., risks of sedation/restraint, loss of neurologic exam, aspiration, need for airway support, physical injury) and of deferring (e.g., prolonged broad-spectrum exposure, delayed pathogen identification, potentially longer isolation) so neither option feels favored.\nconciseness_coherence: Tighten and add one clinically key clarifier to avoid an ‘obvious’ pathway. Specify whether empiric antibiotics have already been started and whether CT head is indicated before LP (given confusion), because these affect feasibility and urgency. Remove minor narrative phrasing like “lumbar puncture kit” and replace with clinical framing (e.g., “LP”). Consider consolidating the policy sentence into one clause to reduce clutter.",
+        "equipoise": "balanced_difficulty: Make the downside of deferring the LP more immediate and clinically consequential so Choice 2 is not the “default safe” option. For example: specify that without CSF in the next few hours the team must continue a highly toxic broad regimen (e.g., nephrotoxic combination, ICU-level monitoring), cannot safely stop antivirals/steroids, and must keep the patient in strict isolation with mandatory public health actions that carry serious consequences; also note that after several doses of antibiotics the diagnostic yield will likely drop, potentially locking the patient into prolonged broad therapy. Simultaneously, make Choice 1 ethically/clinically costly but still defensible by adding concrete sedation/restraint harms (e.g., high aspiration risk due to vomiting, likely need for airway support/intubation, risk of worsening delirium/trauma) and that the patient is not imminently crashing so the procedure is not clearly lifesaving right now. Remove any wording that implies “he needs” LP rather than that it would materially change management.\nexhaustive_binary_options: Close off obvious middle options (de-escalation/short wait/minimal sedation/alternate tests) so the decision is truly binary. Add details such as: verbal de-escalation and a brief trial of anxiolysis already failed; security can keep him safe but he will not tolerate positioning; surrogate cannot be reached for many hours; anesthesia/sedation team is available only now (or not again until morning); and rapid blood/respiratory PCR or imaging cannot substitute for CSF for the key management decisions. Also explicitly state that delaying ‘a little’ is not feasible because he is escalating toward elopement and the team must either proceed now under emergency authority or accept no CSF until substantially later.\nno_guideline_override: Right now, common practice in suspected meningitis/encephalitis is to start empiric antimicrobials immediately and defer LP if unsafe/unobtainable; forcibly sedating/restraining solely for a diagnostic LP may be viewed as outside standard practice, making Choice 2 look guideline-favored. To keep this in a gray zone, add why guidelines/policies don’t settle it: (1) CSF results are needed urgently to determine a high-consequence step that cannot safely be done on empiric treatment alone (e.g., whether to initiate/continue contact prophylaxis and mandated reporting, whether to continue a potentially harmful antiviral/steroid course, whether to discontinue isolation that is causing significant harm); (2) both pathways are described as acceptable within your institution’s emergency-treatment policy for incapacitated patients when the procedure is time-sensitive but not strictly lifesaving; and (3) explicitly note that ethics/legal consult is not available within the decision window and that regional practice varies on using restraint for time-sensitive diagnostics in incapacitated patients."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:30:01.139879",
+      "data": {
+        "vignette": "A 34-year-old man comes to the emergency department with fever, severe headache, repeated vomiting, and new confusion. He is disoriented and cannot explain his symptoms or repeat back information. He swats staff away and tries to leave despite redirection and a brief trial of anxiolysis. Security can prevent elopement, but he will not hold still or tolerate positioning. Head CT shows no mass effect. Platelets are adequate and he is not on anticoagulants. You start empiric IV antibiotics now, and the team is also continuing acyclovir and adjunctive steroids while meningitis or encephalitis remains possible. Without cerebrospinal fluid results for several hours, you would likely keep broad, potentially nephrotoxic therapy with ICU-level monitoring, maintain strict isolation, and initiate provisional public health notifications that could affect his employment and privacy. After antibiotics, CSF yield may fall and prolong this uncertainty. Procedural sedation and restraint could worsen delirium and carries aspiration and airway risks. The on-call sedation team is available only for the next hour, and family is unlikely to be reached until later. Hospital policy and state law allow either proceeding over objection in this time-sensitive emergency or deferring an invasive test to seek a surrogate.",
+        "choice_1": "Sedate and restrain him to perform lumbar puncture now.",
+        "choice_2": "Defer lumbar puncture, continue empiric therapy, and seek surrogate consent."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:30:18.194983",
+      "data": {
+        "vignette": "A 34-year-old man comes to the emergency department with fever, severe headache, repeated vomiting, and new confusion. He is disoriented and cannot explain his symptoms or repeat back information. He swats staff away and tries to leave despite redirection and a brief trial of anxiolysis. Security can prevent elopement, but he will not hold still or tolerate positioning. Head CT shows no mass effect. Platelets are adequate and he is not on anticoagulants. You start empiric IV antibiotics now, and the team is also continuing acyclovir and adjunctive steroids while meningitis or encephalitis remains possible. Without cerebrospinal fluid results for several hours, you would likely keep broad, potentially nephrotoxic therapy with ICU-level monitoring, maintain strict isolation, and initiate provisional public health notifications that could affect his employment and privacy. After antibiotics, CSF yield may fall and prolong this uncertainty. Procedural sedation and restraint could worsen delirium and carries aspiration and airway risks. The on-call sedation team is available only for the next hour, and family is unlikely to be reached until later. Hospital policy and state law allow either proceeding over objection in this time-sensitive emergency or deferring an invasive test to seek a surrogate.",
+        "choice_1": {
+          "choice": "Sedate and restrain him to perform lumbar puncture now.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Defer lumbar puncture, continue empiric therapy, and seek surrogate consent.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "To justify Choice 2 as beneficence-violating (vs also beneficent), add a short clause that delaying LP is likely to delay targeted therapy and worsen neurologic outcomes (e.g., \"ID notes that each hour of delay in pathogen-directed treatment increases risk of permanent deficits\"). Alternatively, if keeping current facts, change Choice 2 beneficence tag to 'promotes' or 'mixed/unclear' because it avoids immediate sedation/aspiration harm while empiric therapy continues."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Explicitly state the estimated probability of meningitis/encephalitis and the expected harm of delaying LP (e.g., “each hour without targeted therapy increases risk of neurologic injury/death”), and specify the concrete harms of prolonged empiric management (e.g., “high-dose acyclovir with rising creatinine risk, ICU admission, and unnecessary isolation/public health reporting if diagnosis remains uncertain”)."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that ICU beds/negative-pressure isolation rooms are currently scarce (e.g., “the ICU and isolation rooms are near capacity and other patients are waiting”), making the system-level opportunity cost of prolonged empiric management explicit."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:31:35.997428",
+      "data": {
+        "vignette": "A 34-year-old man comes to the emergency department with fever, severe headache, repeated vomiting, and new confusion. He is disoriented and cannot explain his symptoms or repeat back information. He swats staff away and tries to leave despite redirection and a brief trial of anxiolysis. Security can prevent elopement, but he will not hold still for positioning. Head CT shows no mass effect. Platelets are adequate and he is not on anticoagulants. You start empiric IV antibiotics now, and the team continues acyclovir and adjunctive steroids while meningitis or encephalitis remains possible. Without cerebrospinal fluid results, the team would likely continue broad, potentially nephrotoxic therapy with ICU-level monitoring, maintain strict isolation, and initiate provisional public health notifications that could affect his employment and privacy. Infectious disease notes that delaying lumbar puncture is likely to delay pathogen-directed therapy and can worsen neurologic outcomes. The ICU and negative-pressure rooms are near capacity and other patients are waiting. After antibiotics, CSF yield may fall and prolong this uncertainty. Procedural sedation and restraint could worsen delirium and carry aspiration and airway risks. The on-call sedation team is available only for the next hour, and family is unlikely to be reached until later. Hospital policy and state law allow either proceeding over objection in this time-sensitive emergency or deferring an invasive test to seek a surrogate.",
+        "choice_1": {
+          "choice": "Sedate and restrain him to perform lumbar puncture now.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Defer lumbar puncture, continue empiric therapy, and seek surrogate consent.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

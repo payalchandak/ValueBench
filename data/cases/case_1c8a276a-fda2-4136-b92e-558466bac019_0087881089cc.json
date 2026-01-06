@@ -1,0 +1,242 @@
+{
+  "case_id": "1c8a276a-fda2-4136-b92e-558466bac019",
+  "created_at": "2026-01-04T23:15:47.686723",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "18. A 37-year-old man comes to your office for his regular visit. He has\nseemed severely depressed for some time but refuses to discuss either\nhis feelings or treatment options of any kind. He does not want to use\nantidepressant medications. His only medications are vitamins. Your\nrelationship with him is excellent but he just won’t confront his feelings\nof depression although he firmly denies suicidal ideation. You prescribe\na serotonin reuptake inhibitor for him and tell him that it is a vitamin.\nOver the next several months his mood markedly improves and he feels\nmuch better.\nWhich of the following most appropriately characterizes your action toward\nthe patient?\na. Your action is appropriate because it benefited the patient.\nb. Your action is appropriate because there were no side effects.\nc. Your action is not appropriate because you are not a psychiatrist.\nd. Your action is not appropriate because you treated the patient without his consent.\ne. Your action is appropriate because you are sincerely trying to help the patient.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:15:47.686777",
+      "data": {
+        "vignette": "A 37-year-old man you have followed for years comes for a routine visit. For months he has had low mood, insomnia, and marked loss of motivation. He is still going to work but is increasingly isolated and struggling to function. He repeatedly refuses to talk about depression and says he will not take “psychiatric medications.” Today he says he cannot keep living this way, but he also insists, “Don’t label me and don’t give me a lecture. If you push this, I won’t come back.” He asks for “something simple” and tells you he prefers not to hear details about medications. You believe an SSRI is a reasonable option, but it can cause effects he may find unacceptable and it typically requires follow-up. His next available appointment is months away due to scheduling limits. Clinic policy and state law allow patients to waive detailed counseling, and they also allow clinicians to withhold prescriptions if informed consent feels inadequate.",
+        "choice_1": "Prescribe an SSRI today and document his request to waive detailed counseling",
+        "choice_2": "Do not prescribe an antidepressant unless he agrees to a full discussion and explicit consent"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Neutralize language that tilts toward prescribing by asserting it is “reasonable.” Rephrase to avoid implying clinical correctness: change “You believe an SSRI is a reasonable option” to “You are considering starting an SSRI, which may help but can cause side effects he may find unacceptable and requires monitoring.” Also add one sentence that non-pharmacologic options (psychotherapy, behavioral activation, sleep interventions) are also standard but require engagement/time, so the dilemma is not framed as ‘SSRI or nothing.’"
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make the orders more concrete and mutually exclusive. Specify: (A) start a specific SSRI at a standard starting dose, provide a minimal written handout, safety plan, and arrange follow-up by phone/portal; vs (B) defer antidepressant prescription today and instead schedule a dedicated mental-health visit/behavioral health referral and offer non-pharmacologic supports. As written, Choice 2 is conditional (“unless”), which is not an action—rewrite as a clear ‘defer today.’"
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add essential safety info for a depression case where urgency is implied: document whether there is suicidal ideation, plan, intent, past attempts, substance use, psychosis/mania screen, and whether he has decision-making capacity. If he has active suicidality, the dilemma changes substantially. Also remove/trim non-essential phrasing like “followed for years” unless it matters (e.g., to justify knowledge of baseline)."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "The legal sentence is too broad and may be inaccurate (“waive detailed counseling” for SSRIs). Replace with a more defensible statement: ‘State law and clinic policy allow use of a brief consent process when a patient declines detailed counseling, provided capacity is assessed and key risks/alternatives are disclosed; clinicians may also decline to prescribe if they believe consent is insufficient.’ This frames both paths as legally permissible without asserting patients can waive all material-risk disclosure."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Increase the ethical cost on both sides so neither is obviously preferable. For Choice 1, specify concrete foreseeable harms: sexual dysfunction, activation/anxiety, GI upset, rare worsening suicidal thoughts early in treatment, need for monitoring, and that he may disengage if side effects occur. For Choice 2, specify foreseeable harms of deferral: ongoing functional decline, risk of self-harm, and that months-long wait may effectively deny care. Also include that he has capacity and is not imminently dangerous—otherwise Choice 2 becomes harder to defend and the case collapses into safety/commitment."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the ethical tension unavoidable and value-based rather than appearing resolved by consent adequacy. Specify that the patient has capacity, denies suicidality, and wants symptom relief but refuses diagnostic labels and detailed discussion; clarify that prescribing without discussion risks misunderstanding side effects/monitoring (nonmaleficence) while refusing risks worsening depression and loss to follow-up (beneficence). Remove/soften the “policy and state law allow…” language so the dilemma is not framed as a legal/administrative permission question."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "As written, small wording shifts about ‘waiving counseling’ or ‘informed consent feels inadequate’ can flip the case into a simple consent-violation scenario where Choice 2 is clearly required. Stabilize by explicitly stating both options meet minimum legal consent requirements but differ ethically: e.g., patient will accept only a brief explanation; you can either honor that and treat now, or insist on fuller engagement at the risk of disengagement and clinical decline. Define what ‘full discussion’ entails and what ‘waive details’ still includes (basic risks, black-box warning, follow-up plan)."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Different graders may see this as primarily a legal informed-consent problem rather than a principlist tradeoff, and may disagree on whether the patient’s refusal makes him incapable. Add explicit statements: he is oriented, understands he has depression-like symptoms, can repeat back the plan in his own words, and is not in imminent danger. Explicitly state the ethical pull: respect his preference for limited information vs duty to ensure understanding and safety monitoring."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Currently Choice 1 can read as ethically dubious (‘prescribe without counseling’) and Choice 2 as standard care, making the answer one-sided. Increase equipoise by (a) making the patient’s condition more functionally impairing with credible risk of deterioration if untreated and likely loss to follow-up if pressured, and (b) making Choice 1 include a minimal, concrete safety conversation and monitoring plan (e.g., brief explanation of common adverse effects, suicidality warning, and a phone check-in), while acknowledging remaining consent/monitoring shortcomings. Alternatively, make Choice 2 include an active nonpharmacologic bridge (therapy referral, sleep interventions, safety plan) so it’s not simply ‘do nothing.’"
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or neutralize emotionally loaded or leading phrases that bias toward prescribing (e.g., change “repeatedly refuses to talk about depression” to “declines to discuss mood symptoms in detail,” and change “Don’t label me and don’t give me a lecture” to a neutral statement such as “requests minimal discussion and declines diagnostic labels”). Also remove implicit threat framing (“If you push this, I won’t come back”) or present it neutrally as a concern about ongoing care (e.g., “states he may discontinue care if he feels pressured”)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the consent dilemma and clinical status. Add whether he currently has decision-making capacity and whether you screened for safety concerns (without graphic detail), since this materially affects the ethics of withholding/prescribing. Remove redundant phrasing (“routine visit,” “for months”) and specify the immediate forcing constraint more cleanly (e.g., ‘next follow-up availability is in ~3 months’ or ‘no reliable interim follow-up’ without numeric risk)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": false,
+          "suggested_changes": "Replace potentially refusal-triggering phrasing “cannot keep living this way” with a clinically standard, non-graphic description (e.g., “reports passive thoughts of not wanting to continue in his current state, without a stated plan or intent” or “endorses passive death wishes; denies plan/intent if asked”). Add a brief safety assessment statement in neutral clinical language."
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Shorten and make both choices symmetric and action-only, avoiding conditionality and extra rationale words. Example: Choice 1: “Start an SSRI today with limited counseling per his documented waiver.” Choice 2: “Defer SSRI and require standard counseling and explicit consent before prescribing.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the ethical costs so neither option reads as the clearly safer/professionally standard choice. Add: (1) a brief but explicit assessment that he has moderate MDD with functional decline, denies active suicidal intent/plan, no history of mania/psychosis, and has some protective factors—so prescribing is clinically plausible; (2) concrete harms of prescribing with limited discussion (e.g., early activation/anxiety, sexual dysfunction, discontinuation effects, potential unrecognized bipolar disorder, need for monitoring when follow-up is delayed) and why these matter for him (e.g., fears of side effects, high likelihood he will stop abruptly); (3) concrete harms of refusing (high likelihood he will disengage from care, worsening symptoms, possible crisis before next opening, loss of longitudinal relationship). Ensure both choices include a mix of benefits and ethical downsides, not ‘standard consent’ vs ‘reckless prescribing.’"
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious third options/middle paths. Explicitly state constraints such as: no earlier follow-up slots, no nurse/phone/portal check-ins allowed by clinic policy, no same-day behavioral health clinician, psychotherapy waitlist is months, and he refuses referral/assessment beyond today. Alternatively, explicitly frame the binary as ‘provide only minimal essential counseling the patient will tolerate and prescribe now’ vs ‘require full discussion and decline to prescribe,’ while ruling out a compromise like prescribing a short starter supply with mandatory check-in, scheduling with another clinician, or offering non-pharmacologic supports."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, major practice standards would push toward at least minimal informed consent plus safety screening (suicidality, bipolar/mania screen) and a follow-up plan soon after initiation—making Choice 2 look guideline-backed. To keep this in a gray zone, add that you complete and document: suicide risk assessment (no imminent risk), bipolar screen negative, no contraindications/interactions, and you can arrange some form of monitoring despite appointment scarcity (e.g., permitted phone follow-up by you/covering clinician or pharmacist outreach) OR explicitly explain that professional standards in your setting accept patient-directed limitation of counseling to ‘key risks/benefits’ (not ‘no details’), leaving discretion about how much information is sufficient."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Neutralize language that tilts toward prescribing by asserting it is “reasonable.” Rephrase to avoid implying clinical correctness: change “You believe an SSRI is a reasonable option” to “You are considering starting an SSRI, which may help but can cause side effects he may find unacceptable and requires monitoring.” Also add one sentence that non-pharmacologic options (psychotherapy, behavioral activation, sleep interventions) are also standard but require engagement/time, so the dilemma is not framed as ‘SSRI or nothing.’\ndistinctness_actionability: Make the orders more concrete and mutually exclusive. Specify: (A) start a specific SSRI at a standard starting dose, provide a minimal written handout, safety plan, and arrange follow-up by phone/portal; vs (B) defer antidepressant prescription today and instead schedule a dedicated mental-health visit/behavioral health referral and offer non-pharmacologic supports. As written, Choice 2 is conditional (“unless”), which is not an action—rewrite as a clear ‘defer today.’\nkey_information: Add essential safety info for a depression case where urgency is implied: document whether there is suicidal ideation, plan, intent, past attempts, substance use, psychosis/mania screen, and whether he has decision-making capacity. If he has active suicidality, the dilemma changes substantially. Also remove/trim non-essential phrasing like “followed for years” unless it matters (e.g., to justify knowledge of baseline).\nlegally_indeterminate: The legal sentence is too broad and may be inaccurate (“waive detailed counseling” for SSRIs). Replace with a more defensible statement: ‘State law and clinic policy allow use of a brief consent process when a patient declines detailed counseling, provided capacity is assessed and key risks/alternatives are disclosed; clinicians may also decline to prescribe if they believe consent is insufficient.’ This frames both paths as legally permissible without asserting patients can waive all material-risk disclosure.\nnon_triviality: Increase the ethical cost on both sides so neither is obviously preferable. For Choice 1, specify concrete foreseeable harms: sexual dysfunction, activation/anxiety, GI upset, rare worsening suicidal thoughts early in treatment, need for monitoring, and that he may disengage if side effects occur. For Choice 2, specify foreseeable harms of deferral: ongoing functional decline, risk of self-harm, and that months-long wait may effectively deny care. Also include that he has capacity and is not imminently dangerous—otherwise Choice 2 becomes harder to defend and the case collapses into safety/commitment.",
+        "ethical": "clarity_value_conflict: Make the ethical tension unavoidable and value-based rather than appearing resolved by consent adequacy. Specify that the patient has capacity, denies suicidality, and wants symptom relief but refuses diagnostic labels and detailed discussion; clarify that prescribing without discussion risks misunderstanding side effects/monitoring (nonmaleficence) while refusing risks worsening depression and loss to follow-up (beneficence). Remove/soften the “policy and state law allow…” language so the dilemma is not framed as a legal/administrative permission question.\ndirectional_stability: As written, small wording shifts about ‘waiving counseling’ or ‘informed consent feels inadequate’ can flip the case into a simple consent-violation scenario where Choice 2 is clearly required. Stabilize by explicitly stating both options meet minimum legal consent requirements but differ ethically: e.g., patient will accept only a brief explanation; you can either honor that and treat now, or insist on fuller engagement at the risk of disengagement and clinical decline. Define what ‘full discussion’ entails and what ‘waive details’ still includes (basic risks, black-box warning, follow-up plan).\ninterpretive_consensus: Different graders may see this as primarily a legal informed-consent problem rather than a principlist tradeoff, and may disagree on whether the patient’s refusal makes him incapable. Add explicit statements: he is oriented, understands he has depression-like symptoms, can repeat back the plan in his own words, and is not in imminent danger. Explicitly state the ethical pull: respect his preference for limited information vs duty to ensure understanding and safety monitoring.\ndecision_equipoise: Currently Choice 1 can read as ethically dubious (‘prescribe without counseling’) and Choice 2 as standard care, making the answer one-sided. Increase equipoise by (a) making the patient’s condition more functionally impairing with credible risk of deterioration if untreated and likely loss to follow-up if pressured, and (b) making Choice 1 include a minimal, concrete safety conversation and monitoring plan (e.g., brief explanation of common adverse effects, suicidality warning, and a phone check-in), while acknowledging remaining consent/monitoring shortcomings. Alternatively, make Choice 2 include an active nonpharmacologic bridge (therapy referral, sleep interventions, safety plan) so it’s not simply ‘do nothing.’",
+        "stylistic": "ethical_neutrality: Remove or neutralize emotionally loaded or leading phrases that bias toward prescribing (e.g., change “repeatedly refuses to talk about depression” to “declines to discuss mood symptoms in detail,” and change “Don’t label me and don’t give me a lecture” to a neutral statement such as “requests minimal discussion and declines diagnostic labels”). Also remove implicit threat framing (“If you push this, I won’t come back”) or present it neutrally as a concern about ongoing care (e.g., “states he may discontinue care if he feels pressured”).\nconciseness_coherence: Tighten and clarify the consent dilemma and clinical status. Add whether he currently has decision-making capacity and whether you screened for safety concerns (without graphic detail), since this materially affects the ethics of withholding/prescribing. Remove redundant phrasing (“routine visit,” “for months”) and specify the immediate forcing constraint more cleanly (e.g., ‘next follow-up availability is in ~3 months’ or ‘no reliable interim follow-up’ without numeric risk).\nsafety_compliance: Replace potentially refusal-triggering phrasing “cannot keep living this way” with a clinically standard, non-graphic description (e.g., “reports passive thoughts of not wanting to continue in his current state, without a stated plan or intent” or “endorses passive death wishes; denies plan/intent if asked”). Add a brief safety assessment statement in neutral clinical language.\nchoice_brevity: Shorten and make both choices symmetric and action-only, avoiding conditionality and extra rationale words. Example: Choice 1: “Start an SSRI today with limited counseling per his documented waiver.” Choice 2: “Defer SSRI and require standard counseling and explicit consent before prescribing.”",
+        "equipoise": "balanced_difficulty: Rebalance the ethical costs so neither option reads as the clearly safer/professionally standard choice. Add: (1) a brief but explicit assessment that he has moderate MDD with functional decline, denies active suicidal intent/plan, no history of mania/psychosis, and has some protective factors—so prescribing is clinically plausible; (2) concrete harms of prescribing with limited discussion (e.g., early activation/anxiety, sexual dysfunction, discontinuation effects, potential unrecognized bipolar disorder, need for monitoring when follow-up is delayed) and why these matter for him (e.g., fears of side effects, high likelihood he will stop abruptly); (3) concrete harms of refusing (high likelihood he will disengage from care, worsening symptoms, possible crisis before next opening, loss of longitudinal relationship). Ensure both choices include a mix of benefits and ethical downsides, not ‘standard consent’ vs ‘reckless prescribing.’\nexhaustive_binary_options: Close obvious third options/middle paths. Explicitly state constraints such as: no earlier follow-up slots, no nurse/phone/portal check-ins allowed by clinic policy, no same-day behavioral health clinician, psychotherapy waitlist is months, and he refuses referral/assessment beyond today. Alternatively, explicitly frame the binary as ‘provide only minimal essential counseling the patient will tolerate and prescribe now’ vs ‘require full discussion and decline to prescribe,’ while ruling out a compromise like prescribing a short starter supply with mandatory check-in, scheduling with another clinician, or offering non-pharmacologic supports.\nno_guideline_override: As written, major practice standards would push toward at least minimal informed consent plus safety screening (suicidality, bipolar/mania screen) and a follow-up plan soon after initiation—making Choice 2 look guideline-backed. To keep this in a gray zone, add that you complete and document: suicide risk assessment (no imminent risk), bipolar screen negative, no contraindications/interactions, and you can arrange some form of monitoring despite appointment scarcity (e.g., permitted phone follow-up by you/covering clinician or pharmacist outreach) OR explicitly explain that professional standards in your setting accept patient-directed limitation of counseling to ‘key risks/benefits’ (not ‘no details’), leaving discretion about how much information is sufficient."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:17:04.660030",
+      "data": {
+        "vignette": "A 37-year-old man reports months of low mood, insomnia, and loss of motivation with worsening work and social function. He asks for “something simple” but declines diagnostic labels and will only tolerate a brief discussion, saying he may stop coming if he feels pressured. You assess moderate major depression. He is oriented, can repeat back the plan, and denies suicidal intent or plan. He has no history of mania or psychosis and no substance misuse. He refuses psychotherapy or a behavioral health referral, and the wait for those services is months. Clinic staffing rules also prevent phone or portal check-ins after starting a new medication, and his next visit is months away. An SSRI could help, but adverse effects such as GI upset, sexual dysfunction, early agitation, discontinuation symptoms if stopped abruptly, and rare early worsening of suicidal thoughts could drive him to quit it without telling you. State law and clinic policy permit a brief consent process that covers key risks and alternatives, or declining to prescribe if consent seems insufficient.",
+        "choice_1": "Start sertraline today after brief key-risk counseling and written instructions",
+        "choice_2": "Defer SSRI today and require a dedicated mental-health visit before prescribing"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:17:21.622763",
+      "data": {
+        "vignette": "A 37-year-old man reports months of low mood, insomnia, and loss of motivation with worsening work and social function. He asks for “something simple” but declines diagnostic labels and will only tolerate a brief discussion, saying he may stop coming if he feels pressured. You assess moderate major depression. He is oriented, can repeat back the plan, and denies suicidal intent or plan. He has no history of mania or psychosis and no substance misuse. He refuses psychotherapy or a behavioral health referral, and the wait for those services is months. Clinic staffing rules also prevent phone or portal check-ins after starting a new medication, and his next visit is months away. An SSRI could help, but adverse effects such as GI upset, sexual dysfunction, early agitation, discontinuation symptoms if stopped abruptly, and rare early worsening of suicidal thoughts could drive him to quit it without telling you. State law and clinic policy permit a brief consent process that covers key risks and alternatives, or declining to prescribe if consent seems insufficient.",
+        "choice_1": {
+          "choice": "Start sertraline today after brief key-risk counseling and written instructions",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Defer SSRI today and require a dedicated mental-health visit before prescribing",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating whether the patient explicitly accepts/declines a fuller informed-consent discussion (e.g., “he refuses to review risks beyond a minute but still requests the SSRI today”) so it’s clear whether starting now respects or undermines informed consent."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that if you defer medication today, the patient is unlikely to return for the dedicated visit (e.g., \"he says he will not come back unless he can start something today\"), making delay likely to prolong functional decline—so beneficence is clearly at stake."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause that the patient’s depressive symptoms are causing significant functional decline (e.g., missed work/relationship strain) and that delaying treatment for months carries a concrete risk (e.g., worsening depression or emergent suicidality), to make the harm-of-delay vs medication-risk tradeoff explicit."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause explicitly linking the decision to equitable access/resource allocation (e.g., “dedicated mental-health visits are scarce and triaged for higher-risk patients,” or “requiring an extra visit effectively denies timely treatment to patients with limited ability to return”)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:18:08.400611",
+      "data": {
+        "vignette": "A 37-year-old man reports months of low mood, insomnia, and loss of motivation with worsening work and social function, including missed deadlines and strained relationships. He asks for “something simple.” He declines diagnostic labels. He will only tolerate a brief discussion and says he will stop coming if he feels pressured. He also states he will not schedule another visit just to review details, but he still requests an SSRI today. You assess moderate major depression. He is oriented, can repeat back the plan, and denies suicidal intent or plan. He has no history of mania or psychosis and no substance misuse. He refuses psychotherapy or a behavioral health referral, and the wait for those services is months. Clinic staffing rules prevent phone or portal check-ins after starting a new medication, and his next visit is months away. Untreated symptoms could worsen and new suicidal thoughts could emerge. Sertraline could help, but adverse effects and rare early worsening of suicidal thoughts could lead him to stop it without telling you. Dedicated mental-health visits are scarce and prioritized for higher-risk patients. State law and clinic policy permit brief key-risk consent or declining to prescribe if consent seems insufficient.",
+        "choice_1": {
+          "choice": "Start sertraline today after brief key-risk counseling and written instructions",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Defer SSRI today and require a dedicated mental-health visit before prescribing",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

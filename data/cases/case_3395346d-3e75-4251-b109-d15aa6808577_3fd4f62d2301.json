@@ -1,0 +1,242 @@
+{
+  "case_id": "3395346d-3e75-4251-b109-d15aa6808577",
+  "created_at": "2026-01-04T23:26:49.531397",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "74. A 28-year-old woman presents for diagnostic laparoscopy for pelvic\npain. During laparoscopy, the surgeon announces that she intends\nto proceed to hysterectomy for multiple uterine myomata. The\nanesthesiologist then declares that he will \"wake the patient up\"\nrather than allow the surgeon to proceed, due to lack of consent for\nthe procedure, and questionable medical necessity.\nCan the anesthesiologist \"tell\" the surgeon what to do?\na. No, the anesthesiologist cannot “tell” the surgeon what to do.\nb. No because the hysterectomy will obviate the need for a second\nsurgery.\nc. No because the hysterectomy is medically necessary at the moment.\nd. Yes he can legally and ethically.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:26:49.531453",
+      "data": {
+        "vignette": "A 28-year-old woman with chronic pelvic pain is under general anesthesia for planned diagnostic laparoscopy. In clinic she emphasized that preserving fertility matters to her. Her signed consent allows treatment of unexpected findings, but it does not specifically list hysterectomy. During the procedure you find multiple large uterine fibroids and dense adhesions that likely explain her symptoms. You judge that definitive symptom control would be most reliable with hysterectomy, and completing it now would avoid another anesthesia and operation. A fertility-sparing approach is still technically possible but may leave her with persistent pain and a likely return to the operating room. The anesthesiologist asks you to stop and wake her so she can decide. Hospital policy and counsel indicate either proceeding under the existing consent or stopping to obtain explicit consent is legally permissible.",
+        "choice_1": "Proceed with hysterectomy during the same operation",
+        "choice_2": "End the procedure and wake her to obtain explicit consent"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove language that frames hysterectomy as clearly medically superior (e.g., “definitive symptom control would be most reliable”). Rephrase to make outcomes ethically ambiguous and qualitative without implying a correct medical choice: e.g., “hysterectomy is more likely to relieve pain but permanently ends fertility; myomectomy/lysis of adhesions may relieve pain but could require additional surgery and carries recurrence risk.” Avoid wording like “definitive” and “most reliable,” and balance harms/benefits on both sides."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "As written, proceeding to hysterectomy without explicit, procedure-specific consent in a non-emergent setting is often not legally defensible; the vignette’s “policy/counsel indicate… legally permissible” reads implausible. Revise to explicitly establish why both options are legally permissible in the implied jurisdiction: e.g., (a) pre-op written consent explicitly included ‘possible hysterectomy if significant pathology is found’ AND documentation of a prior discussion acknowledging this possibility, or (b) a jurisdiction/policy that allows ‘therapeutic extension’ under broad consent when the additional procedure is reasonably necessary and not contrary to known patient wishes. Alternatively, make the intra-op finding time-sensitive (e.g., uncontrolled uterine bleeding or torsion/necrosis) such that proceeding is within emergency exception—while also making stopping/waking still defensible (e.g., bleeding controlled temporarily). Add one sentence clarifying this legal context."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Currently, the patient’s stated priority (fertility preservation) plus lack of explicit hysterectomy consent makes proceeding look clearly unethical/possibly illegal, so the dilemma is too one-sided. To restore genuine ethical difficulty, add facts that make proceeding a reasonable, debated choice: e.g., she previously said she would accept hysterectomy if the uterus was severely diseased and fertility-sparing surgery would likely fail; or she consented in writing to hysterectomy as a contingency but reiterated fertility hopes; or fertility-sparing surgery carries a substantial risk of immediate complications or rapid reoperation that she may want to avoid. Then rewrite both choices to show each has real moral cost (risk of violating her wishes vs exposing her to repeat anesthesia/ongoing suffering)."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the dilemma so proceeding is ethically defensible in good faith (not merely convenient). For example: (1) Add a forcing mechanism that makes delaying materially risky (e.g., intraoperative finding of actively bleeding fibroid/uterine injury where closing without definitive surgery carries high likelihood of rebleeding/urgent reoperation), while still leaving a reasonable alternative (stabilize, close, and return later). (2) Clarify pre-op values as genuinely mixed: she strongly wants fertility but also previously stated that if fertility-sparing surgery is unlikely to work or would require multiple operations, she would prefer definitive pain control; however, she did not explicitly authorize hysterectomy today. (3) Make the consent ambiguity more realistic and weighty: the consent form includes ‘possible hysterectomy if necessary’ in the risks/possible procedures section but she declined to decide pre-op; or she signed a broad intraoperative decision clause after counseling that unforeseen pathology might require uterus removal. Without these changes, waking her is overwhelmingly favored because hysterectomy is elective/irreversible and directly contradicts her stated priority."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove outcome-weighted phrasing that favors hysterectomy. For example, change “definitive symptom control would be most reliable with hysterectomy” to “hysterectomy is one option for symptom control, but it would permanently eliminate fertility.” Change “completing it now would avoid another anesthesia and operation” to “performing it now would avoid a second operation, while delaying would allow her to participate in the decision.” Add parallel harms for each option (e.g., immediate irreversible loss of fertility vs risk of ongoing pain/need for reoperation) using similarly weighted language."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both choices similarly sized (about 10–15 words) and fully specified without extra framing. For example: (1) “Proceed now with hysterectomy under existing consent and complete the operation.” (2) “Stop after diagnostic laparoscopy and wake her for explicit hysterectomy consent.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance so Choice 1 is not an apparent autonomy violation. Edit the history/consent to create genuine ambiguity about the patient’s wishes and scope of permission, e.g.: (a) pre-op discussion documented that she would accept loss of fertility if extensive disease was found and pain relief required it, but she also voiced hope to preserve fertility if feasible; (b) consent form explicitly includes the possibility of hysterectomy/uterine removal under “definitive surgery if necessary,” yet the patient’s verbal emphasis on fertility creates conflict. Also soften outcome language that makes hysterectomy sound medically ‘correct’ (“most reliable”) by stating both approaches have meaningful but uncertain tradeoffs and neither is clearly superior."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close the ‘third option’ loophole by explicitly ruling out a fertility-sparing operative step as a viable middle path. Add a sentence such as: “Given the extent/location of fibroids and adhesions, myomectomy/lysis would be incomplete and would substantially increase operative time and complication risk, so intraoperatively the only realistic options are to convert to hysterectomy now or stop after diagnostic evaluation and plan a second staged surgery after a new consent discussion.” Also clarify that deferral beyond today is not feasible (e.g., surgeon availability/insurance authorization window), so ‘pause and rebook soon’ is not an easy compromise."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, widely accepted informed-consent norms make non-consensual hysterectomy (a sterilizing, non-emergent procedure) look clearly impermissible, even if legal counsel says it’s ‘legally permissible.’ To avoid a guideline/professional-standard override, revise so the dispute is about interpretation of existing explicit consent rather than absence of consent: document that hysterectomy was discussed as a contingency and included in the signed consent language, but the patient’s statements about fertility create doubt about how to apply that consent. Alternatively, if you keep hysterectomy off the consent, make the intraoperative finding time-sensitive in a way short of ‘life-saving emergency’ (e.g., uncontrolled bleeding risk if you do not proceed) and explicitly note that professional guidance is not definitive in this edge case, rather than simply citing legal permissibility."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove language that frames hysterectomy as clearly medically superior (e.g., “definitive symptom control would be most reliable”). Rephrase to make outcomes ethically ambiguous and qualitative without implying a correct medical choice: e.g., “hysterectomy is more likely to relieve pain but permanently ends fertility; myomectomy/lysis of adhesions may relieve pain but could require additional surgery and carries recurrence risk.” Avoid wording like “definitive” and “most reliable,” and balance harms/benefits on both sides.\nlegally_indeterminate: As written, proceeding to hysterectomy without explicit, procedure-specific consent in a non-emergent setting is often not legally defensible; the vignette’s “policy/counsel indicate… legally permissible” reads implausible. Revise to explicitly establish why both options are legally permissible in the implied jurisdiction: e.g., (a) pre-op written consent explicitly included ‘possible hysterectomy if significant pathology is found’ AND documentation of a prior discussion acknowledging this possibility, or (b) a jurisdiction/policy that allows ‘therapeutic extension’ under broad consent when the additional procedure is reasonably necessary and not contrary to known patient wishes. Alternatively, make the intra-op finding time-sensitive (e.g., uncontrolled uterine bleeding or torsion/necrosis) such that proceeding is within emergency exception—while also making stopping/waking still defensible (e.g., bleeding controlled temporarily). Add one sentence clarifying this legal context.\nnon_triviality: Currently, the patient’s stated priority (fertility preservation) plus lack of explicit hysterectomy consent makes proceeding look clearly unethical/possibly illegal, so the dilemma is too one-sided. To restore genuine ethical difficulty, add facts that make proceeding a reasonable, debated choice: e.g., she previously said she would accept hysterectomy if the uterus was severely diseased and fertility-sparing surgery would likely fail; or she consented in writing to hysterectomy as a contingency but reiterated fertility hopes; or fertility-sparing surgery carries a substantial risk of immediate complications or rapid reoperation that she may want to avoid. Then rewrite both choices to show each has real moral cost (risk of violating her wishes vs exposing her to repeat anesthesia/ongoing suffering).",
+        "ethical": "decision_equipoise: Rebalance the dilemma so proceeding is ethically defensible in good faith (not merely convenient). For example: (1) Add a forcing mechanism that makes delaying materially risky (e.g., intraoperative finding of actively bleeding fibroid/uterine injury where closing without definitive surgery carries high likelihood of rebleeding/urgent reoperation), while still leaving a reasonable alternative (stabilize, close, and return later). (2) Clarify pre-op values as genuinely mixed: she strongly wants fertility but also previously stated that if fertility-sparing surgery is unlikely to work or would require multiple operations, she would prefer definitive pain control; however, she did not explicitly authorize hysterectomy today. (3) Make the consent ambiguity more realistic and weighty: the consent form includes ‘possible hysterectomy if necessary’ in the risks/possible procedures section but she declined to decide pre-op; or she signed a broad intraoperative decision clause after counseling that unforeseen pathology might require uterus removal. Without these changes, waking her is overwhelmingly favored because hysterectomy is elective/irreversible and directly contradicts her stated priority.",
+        "stylistic": "ethical_neutrality: Remove outcome-weighted phrasing that favors hysterectomy. For example, change “definitive symptom control would be most reliable with hysterectomy” to “hysterectomy is one option for symptom control, but it would permanently eliminate fertility.” Change “completing it now would avoid another anesthesia and operation” to “performing it now would avoid a second operation, while delaying would allow her to participate in the decision.” Add parallel harms for each option (e.g., immediate irreversible loss of fertility vs risk of ongoing pain/need for reoperation) using similarly weighted language.\nchoice_brevity: Make both choices similarly sized (about 10–15 words) and fully specified without extra framing. For example: (1) “Proceed now with hysterectomy under existing consent and complete the operation.” (2) “Stop after diagnostic laparoscopy and wake her for explicit hysterectomy consent.”",
+        "equipoise": "balanced_difficulty: Rebalance so Choice 1 is not an apparent autonomy violation. Edit the history/consent to create genuine ambiguity about the patient’s wishes and scope of permission, e.g.: (a) pre-op discussion documented that she would accept loss of fertility if extensive disease was found and pain relief required it, but she also voiced hope to preserve fertility if feasible; (b) consent form explicitly includes the possibility of hysterectomy/uterine removal under “definitive surgery if necessary,” yet the patient’s verbal emphasis on fertility creates conflict. Also soften outcome language that makes hysterectomy sound medically ‘correct’ (“most reliable”) by stating both approaches have meaningful but uncertain tradeoffs and neither is clearly superior.\nexhaustive_binary_options: Close the ‘third option’ loophole by explicitly ruling out a fertility-sparing operative step as a viable middle path. Add a sentence such as: “Given the extent/location of fibroids and adhesions, myomectomy/lysis would be incomplete and would substantially increase operative time and complication risk, so intraoperatively the only realistic options are to convert to hysterectomy now or stop after diagnostic evaluation and plan a second staged surgery after a new consent discussion.” Also clarify that deferral beyond today is not feasible (e.g., surgeon availability/insurance authorization window), so ‘pause and rebook soon’ is not an easy compromise.\nno_guideline_override: As written, widely accepted informed-consent norms make non-consensual hysterectomy (a sterilizing, non-emergent procedure) look clearly impermissible, even if legal counsel says it’s ‘legally permissible.’ To avoid a guideline/professional-standard override, revise so the dispute is about interpretation of existing explicit consent rather than absence of consent: document that hysterectomy was discussed as a contingency and included in the signed consent language, but the patient’s statements about fertility create doubt about how to apply that consent. Alternatively, if you keep hysterectomy off the consent, make the intraoperative finding time-sensitive in a way short of ‘life-saving emergency’ (e.g., uncontrolled bleeding risk if you do not proceed) and explicitly note that professional guidance is not definitive in this edge case, rather than simply citing legal permissibility."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:28:05.978189",
+      "data": {
+        "vignette": "A 28-year-old woman with chronic pelvic pain is under general anesthesia for diagnostic laparoscopy. Pre-op she said preserving fertility is important, but she also told you she would consider uterus removal if extensive disease was found and a fertility-sparing operation was unlikely to help or would require multiple surgeries. The signed consent lists “definitive surgery as needed, including possible hysterectomy,” yet she asked to “avoid hysterectomy if there is any reasonable option.” Intraoperatively you find multiple large intramural fibroids and dense adhesions. A fertility-sparing myomectomy and adhesiolysis today would be incomplete and would substantially lengthen the case with higher bleeding and organ-injury risk, so the realistic options are to proceed to hysterectomy now or stop after the diagnostic portion. If you stop, she may face ongoing pain and a second operation soon because your operative block and her insurance authorization expire this month. Hospital counsel confirms either path is legally permissible under the current consent language.",
+        "choice_1": "Proceed now with hysterectomy under the existing consent",
+        "choice_2": "Stop the procedure and wake her to re-consent for hysterectomy"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:28:19.527802",
+      "data": {
+        "vignette": "A 28-year-old woman with chronic pelvic pain is under general anesthesia for diagnostic laparoscopy. Pre-op she said preserving fertility is important, but she also told you she would consider uterus removal if extensive disease was found and a fertility-sparing operation was unlikely to help or would require multiple surgeries. The signed consent lists “definitive surgery as needed, including possible hysterectomy,” yet she asked to “avoid hysterectomy if there is any reasonable option.” Intraoperatively you find multiple large intramural fibroids and dense adhesions. A fertility-sparing myomectomy and adhesiolysis today would be incomplete and would substantially lengthen the case with higher bleeding and organ-injury risk, so the realistic options are to proceed to hysterectomy now or stop after the diagnostic portion. If you stop, she may face ongoing pain and a second operation soon because your operative block and her insurance authorization expire this month. Hospital counsel confirms either path is legally permissible under the current consent language.",
+        "choice_1": {
+          "choice": "Proceed now with hysterectomy under the existing consent",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Stop the procedure and wake her to re-consent for hysterectomy",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Explicitly state that proceeding with hysterectomy now would likely resolve her pain/bleeding and avoid a near-term second operation, whereas stopping would prolong symptoms and risk loss of insurance coverage/OR access leading to delayed definitive care."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause that explicitly contrasts the harms: e.g., note that hysterectomy is the lowest-risk/shortest operation but causes irreversible loss of fertility, while stopping now likely means a second anesthesia/operation with its own quantified complication risk and prolonged pain."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a brief clause noting the OR schedule is overbooked/there is a long waitlist and that needing a second operation would consume an additional scarce OR slot and potentially delay other patients."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:29:15.070726",
+      "data": {
+        "vignette": "A 28-year-old woman with chronic pelvic pain is under general anesthesia for diagnostic laparoscopy. Preoperatively she said fertility preservation is important. She also said she would consider hysterectomy if extensive disease was found and fertility-sparing surgery was unlikely to help or would require multiple operations. The signed consent allows definitive surgery as needed, including possible hysterectomy, yet she asked to avoid hysterectomy if any reasonable option existed. Intraoperatively you find multiple large intramural fibroids and dense adhesions. A fertility-sparing myomectomy and adhesiolysis today would be incomplete and would substantially prolong the case with higher bleeding and organ-injury risk. The realistic options are hysterectomy now or stopping after the diagnostic portion. Hysterectomy is the shortest, lowest-risk operation and would likely resolve her symptoms, but it causes irreversible loss of fertility. Stopping preserves the option to decide while awake, but likely means a second anesthesia and operation, ongoing pain, possible loss of time-limited insurance and OR access, and use of another scarce OR slot on an overbooked schedule. Hospital counsel confirms either path is legally permissible under the current consent language.",
+        "choice_1": {
+          "choice": "Proceed now with hysterectomy under the existing consent",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Stop the procedure and wake her to re-consent for hysterectomy",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "neutral",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

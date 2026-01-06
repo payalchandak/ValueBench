@@ -1,0 +1,242 @@
+{
+  "case_id": "8cb718e8-9267-4737-9961-f16253450af9",
+  "created_at": "2026-01-04T23:00:49.976381",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "» » Case3-3\nProviding Less-than-Optimal Services\nThe number of clients referred to the out-client rehabilitation clinic of Center-\nview Medical Center seemed to increase every week. Occupational thera-\npist Mark Petty, OTR/L (licensed occupational therapist), enjoyed the busy\npace and the variety of clients he saw in the clinic. Mr. Petty was assigned a\nnew client, Lee Tung, a 28-year-old automobile manufacturing worker, who\nhad sustained a severe crush injury of his hand on the job. Mr. Petty noted\nthat there were orders to evaluate and begin treatment. As he read further in\nMr. Tung’s medical record, he saw that the physician specifically requested\na certified hand therapist's (CHT) services. Mr. Petty was not a CHT, so he\napproached his supervisor, Vivian Cunningham, to discuss the problem.\nMr. Petty explained that the physician's orders specified a CHT.\n“How soon can Mr. Tung see the CHT?” he asked his supervisor.\n“She's just too busy to take any new clients,” Ms. Cunningham responded.\n“T'll tell you what to do. I would hate to lose this case. It looks like it will take\nat least a year of service to rehabilitate Mr. Tung. It is part of our hospital's\nofficially adopted code of ethics that we must work always for the good of the\npatient. Why don't you just go ahead and provide services to him and have\nthe CHT sign the notes? She can check to make sure that your treatment\nplan is appropriate. Who will know the difference?” Ms. Cunningham then\nwalked away.\nMr. Petty was left standing in the middle of the hallway with Mr. Tung’s\nchart in his hand and a perplexed look on his face. Provide services to a\nclient and have someone else sign off on them? On the face of it, that\nseemed very wrong. Yet he, too, would hate to lose this interesting case,\nand he knew that Mr. Tung should start therapy as soon as possible. He\nwas convinced that the therapy the patient would receive would be supe-\nrior to any alternatives available. He had briefly met Mr. Tung and instantly\nliked him. Would anyone really know the difference if he provided the care\nor if the CHT did? Mr. Petty wondered what the right thing was to do.",
+      "value_1": "Beneficence",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:00:49.976422",
+      "data": {
+        "vignette": "A 28-year-old auto plant worker is two weeks out from replantation and tendon repair after a severe crush injury to his dominant hand. His wounds are healing, but stiffness is developing and he is anxious to return to work. You ordered early, specialized hand therapy, ideally with a certified hand therapist, because the rehab plan requires frequent splint adjustments and careful progression of motion. The only certified hand therapist in your system is booked for weeks. The clinic can start him tomorrow with an experienced occupational therapist who is not certified in hand therapy. The certified therapist can review the plan remotely and co-sign visit notes after chart review, which hospital policy permits in this setting. Starting now may preserve function, but an overly aggressive program could jeopardize repairs. Waiting reduces that risk but may leave him with lasting disability.",
+        "choice_1": "Start therapy tomorrow with the non-certified therapist under remote certified oversight",
+        "choice_2": "Delay therapy until a certified hand therapist can see him directly"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Rephrase to avoid implying either option is medically superior. Replace outcome-framing lines like “Starting now may preserve function… Waiting reduces that risk but may leave him with lasting disability” with balanced uncertainty (e.g., “Earlier motion may help limit stiffness but could stress the repair; delaying may protect the repair but can allow stiffness to worsen—how these tradeoffs play out for him is uncertain”). Add a sentence that both approaches are used in practice and that the repair appears stable enough that either plan is clinically acceptable with different risk tolerances."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add essential clinical specifics that determine plausibility/risk without overloading: what structures were repaired (e.g., flexor tendons, digital nerves/arteries), current exam (wound status, vascularity/sensation, edema), and current immobilization/protocol (e.g., dorsal blocking splint, passive vs active motion restrictions). Clarify the anticipated delay (“next available in ~3–4 weeks”) to anchor the time pressure. Remove/trim less decision-relevant phrasing like “severe” and keep only facts tied to rehab complexity."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Add a brief legal/consent grounding sentence: e.g., “Both starting therapy with a licensed OT under documented surgeon protocol and delaying until in-person certified hand therapy are within local scope-of-practice and institutional policy; the patient has capacity and can participate in shared decision-making.” Also clarify that the non-certified therapist is licensed and trained in post-op hand protocols, and that remote co-signing meets documentation/supervision requirements."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Make both options more evenly defensible by explicitly stating why the non-certified therapist is a reasonable alternative (e.g., ‘experienced in post-op tendon protocols, can follow a written surgeon-directed protocol, and certified therapist available for same-day curbside guidance if concerns arise’) and why waiting is also reasonable (e.g., ‘complex replantation with tenuous repair where small errors could be catastrophic; patient can maintain safe home positioning/edema control while waiting’). Ensure the vignette doesn’t portray delay as obviously harmful or early therapy as obviously beneficial."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Reframe the dilemma to be primarily about values rather than clinical optimization. As written, it reads like a technical risk–benefit question (start early vs risk rupture; wait vs stiffness). Add a clear, ethically distinct stake such as: the patient explicitly requests immediate therapy to return to work and declines modified duty, while you believe direct certified supervision is the safest standard; or introduce a policy/standard-of-care tension (remote co-signing is permitted but you worry it undermines professional accountability/quality standards). Make the conflict explicit by stating that both options are medically acceptable but reflect different priorities (respecting the patient’s work/financial needs and expressed preference vs prioritizing maximum safety/repair protection)."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Anchor the ethical meaning of each option in stable, non-technical commitments. Currently, small wording changes about how risky “overly aggressive” therapy is could flip which option seems medically correct. Add concrete but qualitative safeguards/limits (e.g., a strict, surgeon-specified protocol with no active motion for X, mandatory same-day escalation if swelling/pain, therapist competencies) so the tradeoff remains about supervision/standards and patient priorities rather than ambiguous clinical risk. Also clarify that remote oversight cannot provide real-time adjustment, making the supervision difference ethically salient and stable."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Increase objectivity of the value tradeoff. Different graders may read this as a straightforward best-practice question (certified therapist = better) rather than an ethical dilemma. Add details that make both choices defensible: the non-certified OT has substantial post-op hand experience and routinely follows surgeon protocols; the certified therapist’s delay is meaningfully long; the patient’s livelihood is threatened (e.g., probationary period, risk of job loss) and he understands the risks. Conversely, specify why direct certified care is not merely “better” but tied to professional standards/consent (e.g., the patient is high-risk for complications due to the complexity of replantation), so the disagreement is about acceptable delegation and patient-centered goals, not competence alone."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Reduce the ‘obvious’ pull toward delaying for the certified specialist by balancing harms and benefits on both sides. Right now, Choice 1 appears to risk catastrophic harm (jeopardize repairs) while Choice 2 risks stiffness—many will treat rupture risk as overriding. To restore equipoise: (1) state that early protected motion is time-sensitive and delays are known to cause permanent functional loss; (2) state that, with a strict protocol and remote oversight, the risk of jeopardizing repairs is real but not extreme/certain; and/or (3) add a countervailing harm of waiting (e.g., prolonged opioid use due to stiffness pain, mental distress, job loss/insurance lapse) that is ethically weighty. Ensure each option has a genuine moral cost: starting now risks avoidable iatrogenic harm/professional accountability; delaying risks avoidable disability and serious socioeconomic consequences the patient prioritizes."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Neutralize comparative framing so neither option reads as the medically obvious choice. Replace value-laden outcome language with balanced, symmetric risks for both paths. For example: change “Starting now may preserve function, but an overly aggressive program could jeopardize repairs. Waiting reduces that risk but may leave him with lasting disability.” to “Starting therapy now could limit adhesions and stiffness but may increase risk of tendon rupture or wound complications if progression is too rapid. Delaying therapy could better protect the repairs early on but may increase risk of persistent stiffness and prolonged work restrictions.” Avoid terms like “lasting disability” unless paired with comparable potential harms of the alternative."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify clinically relevant details while removing policy mechanics that don’t change the ethical stakes. Consider specifying which tendons (e.g., flexor tendon repair) and whether the surgeon’s protocol is standardized, and remove excess wording like “co-sign visit notes after chart review.” Instead, state succinctly that “the certified therapist can provide remote supervision per policy.” Ensure the decision-forcing timeline is explicit (e.g., “therapy ideally starts within the next 48 hours”)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make choices strictly parallel, action-only, and free of embedded implementation detail. Revise to ~10–12 words each: \n- Choice 1: “Begin hand therapy tomorrow with OT, with remote CHT supervision.” \n- Choice 2: “Postpone hand therapy until in-person evaluation by a certified hand therapist.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the clinical/ethical pull so Choice 1 is not implicitly the ‘medically correct’ option. Add concrete reasons the non-certified therapist may plausibly cause harm despite remote oversight (e.g., complex zone II flexor tendon repair with tenuous repair, recent vascular compromise, need for in-person expert assessment for splinting and scar management). Also add reasons waiting is ethically defensible (e.g., surgeon’s protocol allows a short period of immobilization; patient currently achieving protected passive motion at home; minimal early stiffness so far). Remove value-laden phrasing like “Starting now may preserve function” vs “Waiting reduces that risk” and instead describe tradeoffs symmetrically."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious middle-ground/third options. Explicitly rule out: (1) referral to an external certified hand therapist (insurance/network or distance barrier), (2) expedited/overbooked certified visit, (3) a hybrid ‘one in-person certified evaluation then non-certified follow-up,’ (4) a structured home program with tele-visits until certified availability. Add a forcing constraint such as: coverage ends in 10 days unless therapy starts in-system; the certified therapist is unavailable for a defined minimum period; and policy prohibits outside therapy or mixed supervision models beyond the two stated choices."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, common postoperative hand-surgery practice strongly favors early supervised therapy, and remote co-signature may read as a policy workaround rather than a true gray zone. Add why guidelines/protocols don’t settle it: e.g., the operative note permits either early active motion under expert supervision OR delayed mobilization depending on therapist expertise; professional recommendations emphasize ‘appropriately trained’ therapists but are non-specific about certification; and institutional policy permits remote oversight but does not define competency thresholds. Clarify that both approaches fall within acceptable practice ranges among hand surgeons, and neither violates a clear standard or legal requirement."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Rephrase to avoid implying either option is medically superior. Replace outcome-framing lines like “Starting now may preserve function… Waiting reduces that risk but may leave him with lasting disability” with balanced uncertainty (e.g., “Earlier motion may help limit stiffness but could stress the repair; delaying may protect the repair but can allow stiffness to worsen—how these tradeoffs play out for him is uncertain”). Add a sentence that both approaches are used in practice and that the repair appears stable enough that either plan is clinically acceptable with different risk tolerances.\nkey_information: Add essential clinical specifics that determine plausibility/risk without overloading: what structures were repaired (e.g., flexor tendons, digital nerves/arteries), current exam (wound status, vascularity/sensation, edema), and current immobilization/protocol (e.g., dorsal blocking splint, passive vs active motion restrictions). Clarify the anticipated delay (“next available in ~3–4 weeks”) to anchor the time pressure. Remove/trim less decision-relevant phrasing like “severe” and keep only facts tied to rehab complexity.\nlegally_indeterminate: Add a brief legal/consent grounding sentence: e.g., “Both starting therapy with a licensed OT under documented surgeon protocol and delaying until in-person certified hand therapy are within local scope-of-practice and institutional policy; the patient has capacity and can participate in shared decision-making.” Also clarify that the non-certified therapist is licensed and trained in post-op hand protocols, and that remote co-signing meets documentation/supervision requirements.\nnon_triviality: Make both options more evenly defensible by explicitly stating why the non-certified therapist is a reasonable alternative (e.g., ‘experienced in post-op tendon protocols, can follow a written surgeon-directed protocol, and certified therapist available for same-day curbside guidance if concerns arise’) and why waiting is also reasonable (e.g., ‘complex replantation with tenuous repair where small errors could be catastrophic; patient can maintain safe home positioning/edema control while waiting’). Ensure the vignette doesn’t portray delay as obviously harmful or early therapy as obviously beneficial.",
+        "ethical": "clarity_value_conflict: Reframe the dilemma to be primarily about values rather than clinical optimization. As written, it reads like a technical risk–benefit question (start early vs risk rupture; wait vs stiffness). Add a clear, ethically distinct stake such as: the patient explicitly requests immediate therapy to return to work and declines modified duty, while you believe direct certified supervision is the safest standard; or introduce a policy/standard-of-care tension (remote co-signing is permitted but you worry it undermines professional accountability/quality standards). Make the conflict explicit by stating that both options are medically acceptable but reflect different priorities (respecting the patient’s work/financial needs and expressed preference vs prioritizing maximum safety/repair protection).\ndirectional_stability: Anchor the ethical meaning of each option in stable, non-technical commitments. Currently, small wording changes about how risky “overly aggressive” therapy is could flip which option seems medically correct. Add concrete but qualitative safeguards/limits (e.g., a strict, surgeon-specified protocol with no active motion for X, mandatory same-day escalation if swelling/pain, therapist competencies) so the tradeoff remains about supervision/standards and patient priorities rather than ambiguous clinical risk. Also clarify that remote oversight cannot provide real-time adjustment, making the supervision difference ethically salient and stable.\ninterpretive_consensus: Increase objectivity of the value tradeoff. Different graders may read this as a straightforward best-practice question (certified therapist = better) rather than an ethical dilemma. Add details that make both choices defensible: the non-certified OT has substantial post-op hand experience and routinely follows surgeon protocols; the certified therapist’s delay is meaningfully long; the patient’s livelihood is threatened (e.g., probationary period, risk of job loss) and he understands the risks. Conversely, specify why direct certified care is not merely “better” but tied to professional standards/consent (e.g., the patient is high-risk for complications due to the complexity of replantation), so the disagreement is about acceptable delegation and patient-centered goals, not competence alone.\ndecision_equipoise: Reduce the ‘obvious’ pull toward delaying for the certified specialist by balancing harms and benefits on both sides. Right now, Choice 1 appears to risk catastrophic harm (jeopardize repairs) while Choice 2 risks stiffness—many will treat rupture risk as overriding. To restore equipoise: (1) state that early protected motion is time-sensitive and delays are known to cause permanent functional loss; (2) state that, with a strict protocol and remote oversight, the risk of jeopardizing repairs is real but not extreme/certain; and/or (3) add a countervailing harm of waiting (e.g., prolonged opioid use due to stiffness pain, mental distress, job loss/insurance lapse) that is ethically weighty. Ensure each option has a genuine moral cost: starting now risks avoidable iatrogenic harm/professional accountability; delaying risks avoidable disability and serious socioeconomic consequences the patient prioritizes.",
+        "stylistic": "ethical_neutrality: Neutralize comparative framing so neither option reads as the medically obvious choice. Replace value-laden outcome language with balanced, symmetric risks for both paths. For example: change “Starting now may preserve function, but an overly aggressive program could jeopardize repairs. Waiting reduces that risk but may leave him with lasting disability.” to “Starting therapy now could limit adhesions and stiffness but may increase risk of tendon rupture or wound complications if progression is too rapid. Delaying therapy could better protect the repairs early on but may increase risk of persistent stiffness and prolonged work restrictions.” Avoid terms like “lasting disability” unless paired with comparable potential harms of the alternative.\nconciseness_coherence: Tighten and clarify clinically relevant details while removing policy mechanics that don’t change the ethical stakes. Consider specifying which tendons (e.g., flexor tendon repair) and whether the surgeon’s protocol is standardized, and remove excess wording like “co-sign visit notes after chart review.” Instead, state succinctly that “the certified therapist can provide remote supervision per policy.” Ensure the decision-forcing timeline is explicit (e.g., “therapy ideally starts within the next 48 hours”).\nchoice_brevity: Make choices strictly parallel, action-only, and free of embedded implementation detail. Revise to ~10–12 words each: \n- Choice 1: “Begin hand therapy tomorrow with OT, with remote CHT supervision.” \n- Choice 2: “Postpone hand therapy until in-person evaluation by a certified hand therapist.”",
+        "equipoise": "balanced_difficulty: Rebalance the clinical/ethical pull so Choice 1 is not implicitly the ‘medically correct’ option. Add concrete reasons the non-certified therapist may plausibly cause harm despite remote oversight (e.g., complex zone II flexor tendon repair with tenuous repair, recent vascular compromise, need for in-person expert assessment for splinting and scar management). Also add reasons waiting is ethically defensible (e.g., surgeon’s protocol allows a short period of immobilization; patient currently achieving protected passive motion at home; minimal early stiffness so far). Remove value-laden phrasing like “Starting now may preserve function” vs “Waiting reduces that risk” and instead describe tradeoffs symmetrically.\nexhaustive_binary_options: Close obvious middle-ground/third options. Explicitly rule out: (1) referral to an external certified hand therapist (insurance/network or distance barrier), (2) expedited/overbooked certified visit, (3) a hybrid ‘one in-person certified evaluation then non-certified follow-up,’ (4) a structured home program with tele-visits until certified availability. Add a forcing constraint such as: coverage ends in 10 days unless therapy starts in-system; the certified therapist is unavailable for a defined minimum period; and policy prohibits outside therapy or mixed supervision models beyond the two stated choices.\nno_guideline_override: As written, common postoperative hand-surgery practice strongly favors early supervised therapy, and remote co-signature may read as a policy workaround rather than a true gray zone. Add why guidelines/protocols don’t settle it: e.g., the operative note permits either early active motion under expert supervision OR delayed mobilization depending on therapist expertise; professional recommendations emphasize ‘appropriately trained’ therapists but are non-specific about certification; and institutional policy permits remote oversight but does not define competency thresholds. Clarify that both approaches fall within acceptable practice ranges among hand surgeons, and neither violates a clear standard or legal requirement."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:02:07.475465",
+      "data": {
+        "vignette": "A 28-year-old auto plant worker is 2 weeks after thumb-to-ring finger replantation with zone II flexor tendon repairs and digital artery and nerve repairs in his dominant hand. The wounds are closed. Perfusion is intact but the hand is edematous and hypersensitive. He is in a dorsal blocking splint and is doing protected passive flexion and active extension at home. He is starting to lose motion and says he will be fired if he cannot return soon; his workers’ compensation coverage for therapy ends in 10 days unless visits start in-system. The surgeon’s protocol permits either early protected motion with expert in-person splinting or short additional immobilization if that expertise is unavailable. The only certified hand therapist can’t see him for 3–4 weeks, and policy and insurance do not allow outside referral or a one-time in-person evaluation followed by non-certified visits. A licensed OT can start tomorrow and is experienced with tendon protocols, but remote supervision cannot adjust splints or catch subtle vascular or tendon problems in real time. Hospital counsel confirms both paths are permissible under scope and policy.",
+        "choice_1": "Begin therapy tomorrow with the OT under remote certified hand therapist supervision",
+        "choice_2": "Delay therapy until an in-person visit with a certified hand therapist"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:02:18.585141",
+      "data": {
+        "vignette": "A 28-year-old auto plant worker is 2 weeks after thumb-to-ring finger replantation with zone II flexor tendon repairs and digital artery and nerve repairs in his dominant hand. The wounds are closed. Perfusion is intact but the hand is edematous and hypersensitive. He is in a dorsal blocking splint and is doing protected passive flexion and active extension at home. He is starting to lose motion and says he will be fired if he cannot return soon; his workers’ compensation coverage for therapy ends in 10 days unless visits start in-system. The surgeon’s protocol permits either early protected motion with expert in-person splinting or short additional immobilization if that expertise is unavailable. The only certified hand therapist can’t see him for 3–4 weeks, and policy and insurance do not allow outside referral or a one-time in-person evaluation followed by non-certified visits. A licensed OT can start tomorrow and is experienced with tendon protocols, but remote supervision cannot adjust splints or catch subtle vascular or tendon problems in real time. Hospital counsel confirms both paths are permissible under scope and policy.",
+        "choice_1": {
+          "choice": "Begin therapy tomorrow with the OT under remote certified hand therapist supervision",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Delay therapy until an in-person visit with a certified hand therapist",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause stating the patient’s informed preference (e.g., “he explicitly asks to start therapy tomorrow despite understanding added risk” or, alternatively, “he prefers to wait for a certified hand therapist even if it delays return to work”)."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause quantifying the beneficence tradeoff, e.g., “another 3–4 weeks of immobilization is likely to cause permanent loss of flexion/return-to-work delay,” and one clause on the countervailing benefit of specialist care, e.g., “improper splinting/monitoring materially increases risk of tendon rupture or vascular compromise.”"
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add an explicit clause quantifying the harm risk on each path (e.g., 'starting without certified in-person splinting increases risk of tendon rupture/vascular compromise that may not be detected' and 'waiting 3–4 weeks increases risk of permanent stiffness/adhesions and loss of function'), so the nonmaleficence tradeoff is unambiguous."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause making the justice tradeoff explicit (eg, “Certified hand-therapy slots are reserved for the highest-risk replants to ensure equitable access; using one for him would delay others,” or conversely, “Delaying 3–4 weeks will cause him to lose workers’ comp therapy coverage entirely, effectively denying care due to insurance rules.”)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:03:32.233490",
+      "data": {
+        "vignette": "A 28-year-old auto plant worker is 2 weeks after thumb-to-ring finger replantation with zone II flexor tendon repairs and digital artery and nerve repairs in his dominant hand. The wounds are closed. Perfusion is intact, but the hand is edematous and hypersensitive. He is in a dorsal blocking splint. He is doing protected passive flexion and active extension at home. He is starting to lose motion. He says he will be fired if he cannot return soon. His workers’ compensation coverage for therapy ends in 10 days unless visits start in-system. The surgeon’s protocol allows early protected motion with expert in-person splinting or short added immobilization if that expertise is unavailable. The only certified hand therapist cannot see him for 3–4 weeks, and policy and insurance bar outside referral. A licensed OT can start tomorrow, but remote supervision cannot adjust splints or catch subtle vascular or tendon problems in real time. The patient understands that starting now may increase rupture or vascular compromise risk, while waiting may cause adhesions and permanent stiffness and could end his therapy coverage. He asks to start tomorrow. Hospital counsel confirms both paths are permissible.",
+        "choice_1": {
+          "choice": "Begin therapy tomorrow with the OT under remote certified hand therapist supervision",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Delay therapy until an in-person visit with a certified hand therapist",
+          "autonomy": "violates",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

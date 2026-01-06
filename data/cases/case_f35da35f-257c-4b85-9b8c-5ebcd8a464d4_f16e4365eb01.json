@@ -1,0 +1,242 @@
+{
+  "case_id": "f35da35f-257c-4b85-9b8c-5ebcd8a464d4",
+  "created_at": "2026-01-04T23:31:15.753750",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "The Bournewood case\nMr L was a severely autistic man, with profound learning disability and complex needs, requiring 24-hour care. After spending many years in a psychiatric hospital, Mr L lived with foster carers for three years. Whilst attending a day centre, he became extremely agitated. Staff were unable to contact his carers, and Mr L was informally admitted to hospital. Mr L was unable to speak, so that he had no ability to communicate consent or dissent to hospital admission, but his consultant concluded that Mr L’s apparent compliance rendered formal admission unnecessary.\nWhilst he was being assessed, Mr L was denied access to his foster carers, on the grounds that he might attempt to leave with them before he was fit for discharge.\nThe European Court of Human Rights decided that this amounted to a deprivation of Mr L’s liberty. The judges noted that Mr L had no recourse to the protections offered by the Mental Health Act 1983, such as the ability to challenge his detention and the restrictions on treatment. The lack of procedural safeguards and access to the court amounted to a breach of article 5.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:31:15.753804",
+      "data": {
+        "vignette": "A 38-year-old man with severe autism and profound intellectual disability is brought from his day program for sudden agitation and attempts to run into traffic. He is nonverbal and cannot describe distress or understand admission paperwork. In the ED he has settled with a quiet room and a small dose of sedative, and he now sits calmly and follows simple prompts. Staff cannot reach his long-term foster carers, who usually interpret his routines and triggers. The inpatient unit can accept him now, but only if the team decides how to admit him and what restrictions to use overnight. The psychiatrist worries that if carers arrive he may leave before medical and psychiatric causes are assessed, yet keeping him “voluntarily” could mean locked doors and limited outside contact without any formal review process. Hospital policy and mental health law permit either pathway in this circumstance.",
+        "choice_1": "Admit him informally and limit contact and egress during inpatient assessment.",
+        "choice_2": "Start a formal involuntary detention process with protections and carer involvement."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove language implying one pathway is clinically necessary or safer (e.g., “worries that … he may leave before medical and psychiatric causes are assessed”). Rephrase as value-neutral: “the team is concerned he may wish to leave once carers arrive, potentially before assessment is complete.” Avoid implying assessment completion is unequivocally the correct medical outcome. Add balanced acknowledgement that detention also carries clinical/psychological harms (distress, trauma, behavioral escalation) so clinical framing doesn’t point to detention as the medically ‘right’ choice."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make both options concrete, mutually exclusive physician orders. Specify what “informally” and “limit contact and egress” means (e.g., admit as voluntary patient without legal hold; use locked unit/1:1 observation; PRN medication; allow/deny leaving AMA). For Choice 2, specify initiating the jurisdiction’s emergency hold/involuntary commitment evaluation, notifying appropriate authority, and required timelines for review. Ensure the two choices differ primarily by legal status and associated safeguards, not a vague bundle of restrictions."
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add minimal but essential clinical facts to make the restriction/detention decision credible: brief vitals/medical screen status (e.g., no fever, glucose normal), any signs of intoxication/pain, past history of elopement/self-harm, and current level of imminent danger (still attempts to bolt? only earlier?). Clarify his decision-making capacity assessment (unable to understand/communicate choice) and whether he is currently objecting to admission. Remove/trim nonessential narrative (e.g., “admission paperwork” detail) unless tied to capacity/consent."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Clarify the legal/operational plausibility of ‘informal’ admission with locked doors and restricted egress. In many settings, if a patient is not consenting and is prevented from leaving, that constitutes detention and triggers legal safeguards. Revise to a plausible alternative such as: (a) voluntary admission with least-restrictive measures and open-door policy, escalating only if he attempts to leave; versus (b) placing an emergency psychiatric hold due to imminent risk and inability to consent. Alternatively, explicitly state that local law allows short-term ‘incapacity hold’/medical hold for capacity-lacking patients with immediate risk, and that this can occur without formal mental health detention—but then specify required monitoring/review."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "The line “policy and mental health law permit either pathway” is too conclusory. Add 1–2 sentences specifying the jurisdictional/legal basis that makes both defensible: e.g., ‘State law allows up to 24 hours of emergency containment for patients lacking capacity when there is imminent risk, without initiating a psychiatric hold; alternatively, clinicians may initiate an emergency involuntary hold that triggers a rights advisor, timely review, and mandated notification of carers/guardian.’ Also clarify whether there is a legal surrogate/guardian and how consent works in that framework."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 appears clearly preferable because it adds “protections and carer involvement,” making Choice 1 sound like rights-restricting without safeguards. Rebalance so each option has real ethical cost: For Choice 2, state likely harms (stigmatizing record, police/security involvement, increased agitation/trauma, longer hospitalization, potential damage to trust/caregiver relationship). For Choice 1, state potential benefits (less coercion, quieter environment, avoids triggering him) and its risks (fewer formal safeguards/appeal, risk of de facto detention). Also clarify uncertainty about current dangerousness so reasonable clinicians could disagree."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the value conflict explicit through concrete, symmetric costs. As written, Choice 1 reads like covert involuntary confinement without safeguards, making it hard to see a principled tradeoff. Revise so Choice 1 is a clearly defined, least-restrictive, time-limited safety plan (e.g., open unit with 1:1 staff observation, de-escalation plan, ability to leave with carers once reached) that avoids the harms of formal detention (trauma, escalation, stigma). Revise Choice 2 so formal detention clearly enables thorough medical/psychiatric evaluation and prevents dangerous elopement, but at the cost of coercion, restraint use, and longer loss of liberty."
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Clarify the patient's decision-making status and the exact restrictions in Choice 1. Specify whether he is presumed to lack capacity for admission decisions and how assent/dissent is assessed (e.g., calm now but becomes distressed when approached, tries to leave). Define what 'limit egress' means (locked unit vs staff redirection vs chemical restraint). Without this, graders may disagree whether the dilemma is about capacity, risk management, legal compliance, or convenience. Add 1–2 sentences stating the clinician’s immediate concern (e.g., intermittent bolting toward exits; possible pain, intoxication, seizure, or psychosis not yet ruled out) and why overnight observation is needed."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the options so neither is an obvious ethical winner. Currently Choice 2 includes 'protections and carer involvement' (all upside) while Choice 1 implies restriction 'without any formal review' (all downside). Give Choice 2 real ethical/clinical costs (e.g., would require security hold, physical restraint for exam/labs, may worsen agitation and cause injury; could damage trust with carers; triggers mandatory reporting/longer minimum detention). Give Choice 1 real benefits (least coercive, avoids retraumatization and iatrogenic harm, aligns with least-restrictive care) but real risks (higher chance of elopement before workup; staff may still need to block exits without clear authority; less structured oversight). Consider reframing Choice 1 as an explicit short-term emergency hold/observation status with minimal restrictions and rapid reassessment, versus Choice 2 as full involuntary admission."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove value-laden phrasing that biases toward detention, e.g., replace “attempts to run into traffic” with “attempted to enter a roadway,” replace “worries” with “is concerned,” and avoid scare quotes around “voluntarily.” State the risks and drawbacks of each pathway in parallel, using neutral wording (e.g., note potential distress/trauma and relationship damage from formal detention, and potential rights limitations/lack of safeguards with informal admission)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Clarify the forcing constraint and legal context without ambiguity: specify whether he is currently judged to have decision-making capacity for admission, whether he is attempting to leave now, and what “restrictions overnight” entail (locked unit, 1:1 observation, PRN meds). Remove or tighten extraneous phrasing (e.g., “admission paperwork”). Ensure internal logic: if he is calm and following prompts, explain why restrictions are still being considered (risk of elopement, recurrence of agitation)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": false,
+          "suggested_changes": "Rephrase potentially triggering language about traffic: change to “attempted to enter a roadway” or “unsafe elopement toward a busy street,” without vivid imagery. Avoid words that could trigger refusals; keep it clinically framed as “acute behavioral dysregulation with elopement risk.”"
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both options parallel, action-only, ~10–15 words, without embedded justifications. Example edits: Choice 1: “Admit under informal status and use locked-unit precautions overnight.” Choice 2: “Initiate involuntary hold under statute and proceed with inpatient evaluation.” Add “notify carers when reached” to both if essential, or keep it in vignette."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the ethical/clinical costs so Choice 1 is not obviously inferior. Add explicit downsides to formal detention (e.g., requires security involvement, risks escalating him into restraint/injury, creates trauma and mistrust that may worsen behavior long-term, delays admission/evaluation overnight while paperwork/court-authorized clinician is obtained). Add explicit upsides/justifications for informal admission (e.g., least disruptive/least coercive environment, can use 1:1 staffing and a quiet room rather than legal detention, preserves rapport and reduces iatrogenic distress). Also add credible downsides to informal admission beyond ‘no review’—e.g., risk of de facto detention without clear authority, potential for carers to allege rights violations—so both choices carry real moral cost."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious third options by stating why they are not feasible: e.g., ED cannot safely observe him overnight due to staffing/space; no sitter available; medical workup requires inpatient monitoring; carers cannot be reached for at least 12–18 hours; no on-call guardian/advocate is available overnight; outpatient discharge is unsafe due to repeated elopement attempts earlier. Explicitly state that the unit’s admission process forces an either/or decision tonight (informal admission with unit-level restrictions vs invoking the statutory detention pathway), and that ‘wait until morning’ or ‘admit informally with no restrictions’ is not permissible/safe."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, the scenario implies a legal/standards answer: if you will lock doors/restrict egress for a person lacking capacity, many jurisdictions require a formal legal basis and rights review. To keep this in the gray zone, specify why standards don’t clearly dictate the pathway: e.g., he is currently calm, not expressing suicidal intent, and risk is ambiguous; the unit’s ‘informal’ pathway is explicitly authorized for short-term safety restrictions under hospital policy/mental health law (name it generically without citing statutes), but it lacks the same automatic external review; the detention criteria are arguably met but not clearly, and invoking detention may be seen as disproportionate. Clarify that both pathways are compliant but value-laden, not that one is required by law."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove language implying one pathway is clinically necessary or safer (e.g., “worries that … he may leave before medical and psychiatric causes are assessed”). Rephrase as value-neutral: “the team is concerned he may wish to leave once carers arrive, potentially before assessment is complete.” Avoid implying assessment completion is unequivocally the correct medical outcome. Add balanced acknowledgement that detention also carries clinical/psychological harms (distress, trauma, behavioral escalation) so clinical framing doesn’t point to detention as the medically ‘right’ choice.\ndistinctness_actionability: Make both options concrete, mutually exclusive physician orders. Specify what “informally” and “limit contact and egress” means (e.g., admit as voluntary patient without legal hold; use locked unit/1:1 observation; PRN medication; allow/deny leaving AMA). For Choice 2, specify initiating the jurisdiction’s emergency hold/involuntary commitment evaluation, notifying appropriate authority, and required timelines for review. Ensure the two choices differ primarily by legal status and associated safeguards, not a vague bundle of restrictions.\nkey_information: Add minimal but essential clinical facts to make the restriction/detention decision credible: brief vitals/medical screen status (e.g., no fever, glucose normal), any signs of intoxication/pain, past history of elopement/self-harm, and current level of imminent danger (still attempts to bolt? only earlier?). Clarify his decision-making capacity assessment (unable to understand/communicate choice) and whether he is currently objecting to admission. Remove/trim nonessential narrative (e.g., “admission paperwork” detail) unless tied to capacity/consent.\nclinical_plausibility: Clarify the legal/operational plausibility of ‘informal’ admission with locked doors and restricted egress. In many settings, if a patient is not consenting and is prevented from leaving, that constitutes detention and triggers legal safeguards. Revise to a plausible alternative such as: (a) voluntary admission with least-restrictive measures and open-door policy, escalating only if he attempts to leave; versus (b) placing an emergency psychiatric hold due to imminent risk and inability to consent. Alternatively, explicitly state that local law allows short-term ‘incapacity hold’/medical hold for capacity-lacking patients with immediate risk, and that this can occur without formal mental health detention—but then specify required monitoring/review.\nlegally_indeterminate: The line “policy and mental health law permit either pathway” is too conclusory. Add 1–2 sentences specifying the jurisdictional/legal basis that makes both defensible: e.g., ‘State law allows up to 24 hours of emergency containment for patients lacking capacity when there is imminent risk, without initiating a psychiatric hold; alternatively, clinicians may initiate an emergency involuntary hold that triggers a rights advisor, timely review, and mandated notification of carers/guardian.’ Also clarify whether there is a legal surrogate/guardian and how consent works in that framework.\nnon_triviality: As written, Choice 2 appears clearly preferable because it adds “protections and carer involvement,” making Choice 1 sound like rights-restricting without safeguards. Rebalance so each option has real ethical cost: For Choice 2, state likely harms (stigmatizing record, police/security involvement, increased agitation/trauma, longer hospitalization, potential damage to trust/caregiver relationship). For Choice 1, state potential benefits (less coercion, quieter environment, avoids triggering him) and its risks (fewer formal safeguards/appeal, risk of de facto detention). Also clarify uncertainty about current dangerousness so reasonable clinicians could disagree.",
+        "ethical": "clarity_value_conflict: Make the value conflict explicit through concrete, symmetric costs. As written, Choice 1 reads like covert involuntary confinement without safeguards, making it hard to see a principled tradeoff. Revise so Choice 1 is a clearly defined, least-restrictive, time-limited safety plan (e.g., open unit with 1:1 staff observation, de-escalation plan, ability to leave with carers once reached) that avoids the harms of formal detention (trauma, escalation, stigma). Revise Choice 2 so formal detention clearly enables thorough medical/psychiatric evaluation and prevents dangerous elopement, but at the cost of coercion, restraint use, and longer loss of liberty.\ninterpretive_consensus: Clarify the patient's decision-making status and the exact restrictions in Choice 1. Specify whether he is presumed to lack capacity for admission decisions and how assent/dissent is assessed (e.g., calm now but becomes distressed when approached, tries to leave). Define what 'limit egress' means (locked unit vs staff redirection vs chemical restraint). Without this, graders may disagree whether the dilemma is about capacity, risk management, legal compliance, or convenience. Add 1–2 sentences stating the clinician’s immediate concern (e.g., intermittent bolting toward exits; possible pain, intoxication, seizure, or psychosis not yet ruled out) and why overnight observation is needed.\ndecision_equipoise: Rebalance the options so neither is an obvious ethical winner. Currently Choice 2 includes 'protections and carer involvement' (all upside) while Choice 1 implies restriction 'without any formal review' (all downside). Give Choice 2 real ethical/clinical costs (e.g., would require security hold, physical restraint for exam/labs, may worsen agitation and cause injury; could damage trust with carers; triggers mandatory reporting/longer minimum detention). Give Choice 1 real benefits (least coercive, avoids retraumatization and iatrogenic harm, aligns with least-restrictive care) but real risks (higher chance of elopement before workup; staff may still need to block exits without clear authority; less structured oversight). Consider reframing Choice 1 as an explicit short-term emergency hold/observation status with minimal restrictions and rapid reassessment, versus Choice 2 as full involuntary admission.",
+        "stylistic": "ethical_neutrality: Remove value-laden phrasing that biases toward detention, e.g., replace “attempts to run into traffic” with “attempted to enter a roadway,” replace “worries” with “is concerned,” and avoid scare quotes around “voluntarily.” State the risks and drawbacks of each pathway in parallel, using neutral wording (e.g., note potential distress/trauma and relationship damage from formal detention, and potential rights limitations/lack of safeguards with informal admission).\nconciseness_coherence: Clarify the forcing constraint and legal context without ambiguity: specify whether he is currently judged to have decision-making capacity for admission, whether he is attempting to leave now, and what “restrictions overnight” entail (locked unit, 1:1 observation, PRN meds). Remove or tighten extraneous phrasing (e.g., “admission paperwork”). Ensure internal logic: if he is calm and following prompts, explain why restrictions are still being considered (risk of elopement, recurrence of agitation).\nsafety_compliance: Rephrase potentially triggering language about traffic: change to “attempted to enter a roadway” or “unsafe elopement toward a busy street,” without vivid imagery. Avoid words that could trigger refusals; keep it clinically framed as “acute behavioral dysregulation with elopement risk.”\nchoice_brevity: Make both options parallel, action-only, ~10–15 words, without embedded justifications. Example edits: Choice 1: “Admit under informal status and use locked-unit precautions overnight.” Choice 2: “Initiate involuntary hold under statute and proceed with inpatient evaluation.” Add “notify carers when reached” to both if essential, or keep it in vignette.",
+        "equipoise": "balanced_difficulty: Rebalance the ethical/clinical costs so Choice 1 is not obviously inferior. Add explicit downsides to formal detention (e.g., requires security involvement, risks escalating him into restraint/injury, creates trauma and mistrust that may worsen behavior long-term, delays admission/evaluation overnight while paperwork/court-authorized clinician is obtained). Add explicit upsides/justifications for informal admission (e.g., least disruptive/least coercive environment, can use 1:1 staffing and a quiet room rather than legal detention, preserves rapport and reduces iatrogenic distress). Also add credible downsides to informal admission beyond ‘no review’—e.g., risk of de facto detention without clear authority, potential for carers to allege rights violations—so both choices carry real moral cost.\nexhaustive_binary_options: Close obvious third options by stating why they are not feasible: e.g., ED cannot safely observe him overnight due to staffing/space; no sitter available; medical workup requires inpatient monitoring; carers cannot be reached for at least 12–18 hours; no on-call guardian/advocate is available overnight; outpatient discharge is unsafe due to repeated elopement attempts earlier. Explicitly state that the unit’s admission process forces an either/or decision tonight (informal admission with unit-level restrictions vs invoking the statutory detention pathway), and that ‘wait until morning’ or ‘admit informally with no restrictions’ is not permissible/safe.\nno_guideline_override: As written, the scenario implies a legal/standards answer: if you will lock doors/restrict egress for a person lacking capacity, many jurisdictions require a formal legal basis and rights review. To keep this in the gray zone, specify why standards don’t clearly dictate the pathway: e.g., he is currently calm, not expressing suicidal intent, and risk is ambiguous; the unit’s ‘informal’ pathway is explicitly authorized for short-term safety restrictions under hospital policy/mental health law (name it generically without citing statutes), but it lacks the same automatic external review; the detention criteria are arguably met but not clearly, and invoking detention may be seen as disproportionate. Clarify that both pathways are compliant but value-laden, not that one is required by law."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:32:38.652716",
+      "data": {
+        "vignette": "A 38-year-old man with severe autism and profound intellectual disability is brought from his day program for acute behavioral dysregulation with unsafe elopement toward a busy street. He is nonverbal and cannot demonstrate understanding of admission or communicate a consistent choice. In the ED he is afebrile with stable vital signs. A brief exam shows no obvious trauma or intoxication, but pain, seizure, or medical delirium have not been excluded and labs and observation are pending. After a low dose sedative and a quiet room, he sits calmly, but he intermittently walks toward exits and becomes distressed with repeated redirection. His long-term foster carers cannot be reached until the morning, and the ED cannot provide overnight 1:1 observation. The inpatient unit can accept him now, but tonight the team must choose either a time-limited hospital “observation/incapacity” pathway with unit precautions or the statutory involuntary hold process; hospital policy and state law allow either in this situation.",
+        "choice_1": "Admit under time-limited observation status with 1:1 monitoring and least-restrictive precautions.",
+        "choice_2": "Initiate a formal involuntary hold and admit under locked-unit detention procedures."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:32:55.220006",
+      "data": {
+        "vignette": "A 38-year-old man with severe autism and profound intellectual disability is brought from his day program for acute behavioral dysregulation with unsafe elopement toward a busy street. He is nonverbal and cannot demonstrate understanding of admission or communicate a consistent choice. In the ED he is afebrile with stable vital signs. A brief exam shows no obvious trauma or intoxication, but pain, seizure, or medical delirium have not been excluded and labs and observation are pending. After a low dose sedative and a quiet room, he sits calmly, but he intermittently walks toward exits and becomes distressed with repeated redirection. His long-term foster carers cannot be reached until the morning, and the ED cannot provide overnight 1:1 observation. The inpatient unit can accept him now, but tonight the team must choose either a time-limited hospital “observation/incapacity” pathway with unit precautions or the statutory involuntary hold process; hospital policy and state law allow either in this situation.",
+        "choice_1": {
+          "choice": "Admit under time-limited observation status with 1:1 monitoring and least-restrictive precautions.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Initiate a formal involuntary hold and admit under locked-unit detention procedures.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause specifying whether any surrogate/guardian exists (and that they cannot be reached) and, if applicable, any known prior preferences about hospitalization/restraints; also add that the involuntary hold removes the possibility of leaving even when calm, whereas observation status would allow discharge/leave if he stabilizes and criteria are not met."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause specifying a concrete health benefit difference between pathways (e.g., “observation status cannot legally prevent him from leaving the unit, risking elopement and missed workup,” or conversely “involuntary hold requires locked-unit detention with restraints that may worsen agitation and impede evaluation”)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause clarifying that the observation/incapacity pathway cannot legally prevent him from leaving the unit (higher elopement/traffic-injury risk), whereas a formal involuntary hold requires locked-door detention and may involve physical restraints/IM sedation (higher risk of distress/injury)."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that 1:1 monitoring requires a limited sitter resource that would be pulled from other high-risk patients, and that a formal involuntary hold triggers statutory due-process protections (and/or uses a scarce locked-bed resource)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:34:00.420153",
+      "data": {
+        "vignette": "A 38-year-old man with severe autism and profound intellectual disability is brought from his day program for acute behavioral dysregulation with unsafe elopement toward a busy street. He is nonverbal and cannot demonstrate understanding of admission or communicate a consistent choice. No legal guardian or prior documented preferences are available in the chart. His long-term foster carers cannot be reached until the morning. In the ED he is afebrile with stable vital signs. A brief exam shows no obvious trauma or intoxication, but pain, seizure, or medical delirium have not been excluded and labs and observation are pending. After a low-dose sedative and a quiet room, he is calmer but intermittently heads toward exits and becomes distressed with repeated redirection. The ED cannot provide overnight 1:1 observation. Observation status may not legally prevent him from leaving if he calms, increasing elopement and missed workup risk. A statutory involuntary hold would prevent leaving even when calm and provides due-process review, but typically requires locked-door detention and may involve restraints or IM medication. A 1:1 sitter is a limited resource needed for other high-risk patients. The team must choose a pathway tonight.",
+        "choice_1": {
+          "choice": "Admit under time-limited observation status with 1:1 monitoring and least-restrictive precautions.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Initiate a formal involuntary hold and admit under locked-unit detention procedures.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

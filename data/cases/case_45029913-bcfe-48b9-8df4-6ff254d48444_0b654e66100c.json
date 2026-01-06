@@ -1,0 +1,273 @@
+{
+  "case_id": "45029913-bcfe-48b9-8df4-6ff254d48444",
+  "created_at": "2026-01-05T00:16:29.827828",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "Case 8-6\nIncompetent Colleagues and Basic Patient Assessment\nMary Jo Orlando, RN, believed that careful inspection of the skin was one of\nthe most important parts of patient assessment. She was well aware that\nmost of the patients on the post-critical care unit where she worked were at\nhigh risk for skin impairment because they were elderly and often dehy-\ndrated and malnourished in addition to other chronic health problems. As\npart of each admission, the nursés on all of the units in the hospital were\nrequired to inspect newly admitted patients from head to toe to determine\nthe general condition of the skin. This inspection included assessment of the\nskin over bony prominences such as the sacrum, trochanters, and even\nthe elbows and heels. Needless to say, this part of the overall patient assess-\nment took time and often the involvement of more than one nurse since many\nof the patients were unable to stand or roll over in the bed without assis-\ntance. For the past month, Ms. Orlando suspected that a new nurse on the\nfloor, Nancy Hess, RN, didn't share her view about the importance of good\nskin assessment. One reason for her suspicion was that Ms. Hess never\nasked for help during her assessments of new patients. Another reason that\nMs. Orlando thinks Ms. Hess is just filling in the computer form and not really\nchecking her patients’ skin condition is that, when she works on the evening\nshift and takes care of Ms. Hess's patients, she found skin problems with\npatients that Ms. Hess hadn't documented on the admission assessment.\nSkin problems can develop relatively quickly, but it is highly unlikely that\nthey developed within a single shift. Ms. Orlando tried to be subtle and help-\nful to Ms. Hess by pointing out high-risk patients and offering to help with the\nskin assessment, yet Ms. Hess never asked for Ms. Orlando's or anyone else's\nhelp. Ms. Orlando spoke to the head nurse on the unit to share her concerns,\nand that seemed to result in some improvement for a short time, but then\nMs. Hess returned to her previous behavior. Ms. Orlando believes that\nMs. Hess's treatment of patients in this regard is substandard and poten-\ntially dangerous for this vulnerable population of patients.",
+      "value_1": "Non-maleficence",
+      "value_2": "Justice"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:16:29.827881",
+      "data": {
+        "vignette": "An 82-year-old man is admitted to the post‑ICU step-down unit after septic shock. He is frail, bedbound, and has poor nutrition. On morning rounds, you examine his skin and find a deep red, nonblanching area over the sacrum that was not documented on the admission note or nursing intake, which lists “skin intact.” The bedside nurse is newly hired and says she completed the required head-to-toe check but did it alone because the unit was busy. You have heard similar concerns from other staff, and a prior informal conversation with the charge nurse led to brief improvement. This patient will be transferred to a nursing facility tomorrow, so today’s documentation and prevention plan will guide his next team. Hospital policy permits either an internal safety report or informal remediation.",
+        "choice_1": "File a formal patient-safety report naming the nurse",
+        "choice_2": "Address it privately with the nurse and increase monitoring without reporting"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Reduce clinical certainty that the lesion is definitely a hospital-acquired pressure injury attributable to nursing omission. For example, change “find a deep red, nonblanching area over the sacrum” to “find a new area of erythema over the sacrum that could represent an early pressure injury or moisture-associated dermatitis; it is unclear whether it developed before or after ICU transfer.” Avoid wording that implies the nurse’s actions clearly caused harm."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make each option a concrete clinician action and avoid the potentially unrealistic/punitive element of “naming the nurse.” Revise to: \n- Choice 1: “File an internal patient-safety event report describing a possible hospital-acquired pressure injury and the documentation discrepancy, triggering unit review.” \n- Choice 2: “Do not file an event report today; instead, document the finding in the chart, implement a pressure-injury prevention bundle (turning schedule, barrier cream, specialty mattress consult), and provide immediate coaching to the nurse and charge nurse.”"
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add the minimum missing clinical facts that determine stakes and plausibility: whether the patient is alert/can report pain, whether a wound-care consult has evaluated the area, and what prevention measures are currently ordered (turning schedule, mattress type). Remove extraneous hearsay (“heard similar concerns from other staff”) unless you specify it is unverified but raises concern about a pattern; otherwise it biases toward reporting."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Fix clinical imprecision: “deep red, nonblanching” suggests an early/stage 1 pressure injury, not “deep.” Clarify that ICU-to-step-down transfers can miss skin findings and that the lesion could have started in ICU. Consider adding: “ICU notes did not include a full skin exam” or “sedation/vasopressors increased risk,” to make the timing ambiguity realistic."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Include a brief sentence grounding that both paths are permissible: e.g., “Hospital policy allows clinicians to submit nonpunitive safety event reports for suspected pressure injuries, but it does not require naming individuals; there is no concern for abuse/intentional neglect that would trigger external mandatory reporting.” This keeps the dilemma ethical rather than about legal obligations."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Rebalance so neither choice is an obvious ‘right answer.’ Currently, repeated prior concerns + transfer tomorrow makes reporting feel clearly favored, while “naming the nurse” makes reporting feel punitive. To increase genuine tension: \n- Emphasize uncertainty about when/how the skin change developed (could be pre-existing/ICU-acquired). \n- Note that an event report will automatically trigger a formal investigation that could place the new nurse on probation during a staffing shortage, potentially affecting care continuity. \n- For the non-report option, explicitly include robust documentation and escalation to charge nurse/wound care, so it is defensible rather than a cover-up."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the ethical tradeoff explicitly about protecting the current patient’s immediate welfare and the next team’s ability to prevent worsening (accurate staging, offloading, wound consult) versus the risk of unfairly blaming/punishing a staff member when causality is uncertain. Concretely: (1) Add that the erythema is consistent with an early pressure injury that likely developed on the step-down unit overnight and would have been visible during a proper two-person skin check; (2) Clarify that filing a report triggers a formal review that may lead to corrective action for the named nurse, while also prompting unit-level changes; (3) Clarify that not reporting preserves a supportive learning environment but may allow repeated documentation failures and weaker handoff to the nursing facility."
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce ambiguity about whether the nurse actually contributed to harm. Right now the lesion could plausibly be from the ICU and the nurse’s role is unclear, making graders disagree about whether this is a professionalism/HR issue vs a patient-safety duty. Add 1–2 sentences anchoring timeline (e.g., documented intact skin on arrival to step-down yesterday afternoon; new finding this morning) and the standard practice (policy expects two-person skin assessment on transfer). Also define what “informal remediation” entails (e.g., coaching and a corrective prevention plan without triggering a formal review) so the two options are clearly distinct."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the options so neither is an obvious ‘report the nurse’ vs ‘cover it up’ dichotomy. Edits: (1) Change Choice 1 from “naming the nurse” to “file an internal safety report with objective facts (including who performed the intake assessment) to trigger formal review,” emphasizing nonpunitive intent; (2) Strengthen Choice 2 so it has genuine ethical upside: e.g., “conduct bedside coaching, initiate an immediate prevention bundle and corrected documentation before transfer, and escalate staffing/process concerns to the charge nurse without a formal report.” (3) Add a realistic downside to Choice 2: prior informal efforts led only to brief improvement and a near-term transfer means errors may propagate unless the system is alerted; (4) Add a realistic downside to Choice 1: formal reporting may damage trust, discourage new staff from speaking up, or feel unjust if the nurse was assigned an unsafe workload."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or neutralize language that implies blame (e.g., delete “newly hired,” and rephrase “did it alone because the unit was busy” to a neutral description of staffing/context). Reframe the report option to avoid punitive tone: change “naming the nurse” to “include involved staff per policy” or omit staff-identification language entirely. Consider adding a sentence acknowledging uncertainty about whether the lesion was present-on-admission vs developed in-house to avoid implying misconduct."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the clinical facts and timeline: specify whether the finding is suspected stage 1 pressure injury/deep tissue injury and whether it is ‘new since last documented exam’ or ‘undocumented on admission.’ Remove redundant context (“heard similar concerns,” “prior informal conversation…brief improvement”) unless it directly affects the ethical stakes; if kept, condense to one sentence about a pattern of incomplete assessments."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Rewrite both choices as neutral 10–15 word action statements without punitive/implementation details. Example: (1) “Submit an internal patient-safety report documenting the missed or undocumented skin assessment.” (2) “Provide direct feedback to the nurse and implement a documented pressure-injury prevention plan.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reframe Choice 1 so it is not obviously punitive or disproportionate. Change “naming the nurse” to “submit an internal safety report describing the documentation discrepancy and system factors, with names only as required by the form.” Add a concrete, defensible downside to reporting (e.g., could undermine trust with a novice nurse during staffing crisis, risk defensive documentation/underreporting, or trigger a formal HR process that may not improve bedside prevention). Also add a concrete downside to the private approach (e.g., pattern already noted by others; without a report the facility will not get wound-care resources/process review; risk of future patients having similar injuries). Ensure both options include some patient-facing prevention steps so the choice is about accountability vs learning culture rather than “do something” vs “do nothing.”"
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close the obvious middle-ground options. As written, a clinician could both (a) speak privately with the nurse and (b) file an internal report, or could escalate to the charge nurse/manager, request a wound-care consult, or amend the transfer documentation—none of which are excluded. Add a constraint such as: “Only one action can be initiated today before transfer: either file an internal report that automatically triggers manager review, or handle it informally without entering a report.” Alternatively, define Choice 2 as “do not file a report and do not escalate beyond the bedside team,” and explicitly state that wound-care orders and accurate transfer documentation will occur regardless of the chosen pathway."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Clarify that neither option violates policy or mandatory reporting expectations. Internal safety reports are typically nonpunitive and may not require ‘naming’ an individual; conversely, if the event meets criteria for mandatory reporting or immediate escalation (e.g., suspected neglect, falsified documentation), then not reporting would be clearly noncompliant. Add a line that risk management and nursing leadership have stated that this type of discrepancy/early pressure injury finding can be handled either via (1) safety report for trend monitoring or (2) direct coaching without formal escalation, and that there is no requirement to identify the nurse unless willful misconduct is suspected—which is not established here."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Reduce clinical certainty that the lesion is definitely a hospital-acquired pressure injury attributable to nursing omission. For example, change “find a deep red, nonblanching area over the sacrum” to “find a new area of erythema over the sacrum that could represent an early pressure injury or moisture-associated dermatitis; it is unclear whether it developed before or after ICU transfer.” Avoid wording that implies the nurse’s actions clearly caused harm.\ndistinctness_actionability: Make each option a concrete clinician action and avoid the potentially unrealistic/punitive element of “naming the nurse.” Revise to: \n- Choice 1: “File an internal patient-safety event report describing a possible hospital-acquired pressure injury and the documentation discrepancy, triggering unit review.” \n- Choice 2: “Do not file an event report today; instead, document the finding in the chart, implement a pressure-injury prevention bundle (turning schedule, barrier cream, specialty mattress consult), and provide immediate coaching to the nurse and charge nurse.”\nkey_information: Add the minimum missing clinical facts that determine stakes and plausibility: whether the patient is alert/can report pain, whether a wound-care consult has evaluated the area, and what prevention measures are currently ordered (turning schedule, mattress type). Remove extraneous hearsay (“heard similar concerns from other staff”) unless you specify it is unverified but raises concern about a pattern; otherwise it biases toward reporting.\nclinical_plausibility: Fix clinical imprecision: “deep red, nonblanching” suggests an early/stage 1 pressure injury, not “deep.” Clarify that ICU-to-step-down transfers can miss skin findings and that the lesion could have started in ICU. Consider adding: “ICU notes did not include a full skin exam” or “sedation/vasopressors increased risk,” to make the timing ambiguity realistic.\nlegally_indeterminate: Include a brief sentence grounding that both paths are permissible: e.g., “Hospital policy allows clinicians to submit nonpunitive safety event reports for suspected pressure injuries, but it does not require naming individuals; there is no concern for abuse/intentional neglect that would trigger external mandatory reporting.” This keeps the dilemma ethical rather than about legal obligations.\nnon_triviality: Rebalance so neither choice is an obvious ‘right answer.’ Currently, repeated prior concerns + transfer tomorrow makes reporting feel clearly favored, while “naming the nurse” makes reporting feel punitive. To increase genuine tension: \n- Emphasize uncertainty about when/how the skin change developed (could be pre-existing/ICU-acquired). \n- Note that an event report will automatically trigger a formal investigation that could place the new nurse on probation during a staffing shortage, potentially affecting care continuity. \n- For the non-report option, explicitly include robust documentation and escalation to charge nurse/wound care, so it is defensible rather than a cover-up.",
+        "ethical": "clarity_value_conflict: Make the ethical tradeoff explicitly about protecting the current patient’s immediate welfare and the next team’s ability to prevent worsening (accurate staging, offloading, wound consult) versus the risk of unfairly blaming/punishing a staff member when causality is uncertain. Concretely: (1) Add that the erythema is consistent with an early pressure injury that likely developed on the step-down unit overnight and would have been visible during a proper two-person skin check; (2) Clarify that filing a report triggers a formal review that may lead to corrective action for the named nurse, while also prompting unit-level changes; (3) Clarify that not reporting preserves a supportive learning environment but may allow repeated documentation failures and weaker handoff to the nursing facility.\ninterpretive_consensus: Reduce ambiguity about whether the nurse actually contributed to harm. Right now the lesion could plausibly be from the ICU and the nurse’s role is unclear, making graders disagree about whether this is a professionalism/HR issue vs a patient-safety duty. Add 1–2 sentences anchoring timeline (e.g., documented intact skin on arrival to step-down yesterday afternoon; new finding this morning) and the standard practice (policy expects two-person skin assessment on transfer). Also define what “informal remediation” entails (e.g., coaching and a corrective prevention plan without triggering a formal review) so the two options are clearly distinct.\ndecision_equipoise: Rebalance the options so neither is an obvious ‘report the nurse’ vs ‘cover it up’ dichotomy. Edits: (1) Change Choice 1 from “naming the nurse” to “file an internal safety report with objective facts (including who performed the intake assessment) to trigger formal review,” emphasizing nonpunitive intent; (2) Strengthen Choice 2 so it has genuine ethical upside: e.g., “conduct bedside coaching, initiate an immediate prevention bundle and corrected documentation before transfer, and escalate staffing/process concerns to the charge nurse without a formal report.” (3) Add a realistic downside to Choice 2: prior informal efforts led only to brief improvement and a near-term transfer means errors may propagate unless the system is alerted; (4) Add a realistic downside to Choice 1: formal reporting may damage trust, discourage new staff from speaking up, or feel unjust if the nurse was assigned an unsafe workload.",
+        "stylistic": "ethical_neutrality: Remove or neutralize language that implies blame (e.g., delete “newly hired,” and rephrase “did it alone because the unit was busy” to a neutral description of staffing/context). Reframe the report option to avoid punitive tone: change “naming the nurse” to “include involved staff per policy” or omit staff-identification language entirely. Consider adding a sentence acknowledging uncertainty about whether the lesion was present-on-admission vs developed in-house to avoid implying misconduct.\nconciseness_coherence: Tighten and clarify the clinical facts and timeline: specify whether the finding is suspected stage 1 pressure injury/deep tissue injury and whether it is ‘new since last documented exam’ or ‘undocumented on admission.’ Remove redundant context (“heard similar concerns,” “prior informal conversation…brief improvement”) unless it directly affects the ethical stakes; if kept, condense to one sentence about a pattern of incomplete assessments.\nchoice_brevity: Rewrite both choices as neutral 10–15 word action statements without punitive/implementation details. Example: (1) “Submit an internal patient-safety report documenting the missed or undocumented skin assessment.” (2) “Provide direct feedback to the nurse and implement a documented pressure-injury prevention plan.”",
+        "equipoise": "balanced_difficulty: Reframe Choice 1 so it is not obviously punitive or disproportionate. Change “naming the nurse” to “submit an internal safety report describing the documentation discrepancy and system factors, with names only as required by the form.” Add a concrete, defensible downside to reporting (e.g., could undermine trust with a novice nurse during staffing crisis, risk defensive documentation/underreporting, or trigger a formal HR process that may not improve bedside prevention). Also add a concrete downside to the private approach (e.g., pattern already noted by others; without a report the facility will not get wound-care resources/process review; risk of future patients having similar injuries). Ensure both options include some patient-facing prevention steps so the choice is about accountability vs learning culture rather than “do something” vs “do nothing.”\nexhaustive_binary_options: Close the obvious middle-ground options. As written, a clinician could both (a) speak privately with the nurse and (b) file an internal report, or could escalate to the charge nurse/manager, request a wound-care consult, or amend the transfer documentation—none of which are excluded. Add a constraint such as: “Only one action can be initiated today before transfer: either file an internal report that automatically triggers manager review, or handle it informally without entering a report.” Alternatively, define Choice 2 as “do not file a report and do not escalate beyond the bedside team,” and explicitly state that wound-care orders and accurate transfer documentation will occur regardless of the chosen pathway.\nno_guideline_override: Clarify that neither option violates policy or mandatory reporting expectations. Internal safety reports are typically nonpunitive and may not require ‘naming’ an individual; conversely, if the event meets criteria for mandatory reporting or immediate escalation (e.g., suspected neglect, falsified documentation), then not reporting would be clearly noncompliant. Add a line that risk management and nursing leadership have stated that this type of discrepancy/early pressure injury finding can be handled either via (1) safety report for trend monitoring or (2) direct coaching without formal escalation, and that there is no requirement to identify the nurse unless willful misconduct is suspected—which is not established here."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:18:07.696527",
+      "data": {
+        "vignette": "An 82-year-old man is on a step-down unit after septic shock. He is frail, mostly bedbound, and intermittently delirious. He arrived from the ICU yesterday afternoon; the transfer intake note documents “skin intact,” but the ICU note does not include a complete skin exam. On rounds this morning you find a new, nonblanching erythematous area over his sacrum that could be an early pressure injury or moisture-associated dermatitis, and its timing is uncertain. A unit standard calls for a two-person skin check on transfer when feasible, but staffing has been strained. The nursing facility transfer is scheduled for tomorrow, so today’s charting and prevention plan will guide his next team. You will document the finding, place wound-care and offloading orders, and update the discharge paperwork either way. Risk management confirms that both filing a nonpunitive internal safety report or handling it through bedside coaching is permitted and does not require external reporting here. Because the manager-review queue closes this afternoon, you can initiate only one pathway today.",
+        "choice_1": "Submit an internal safety event report about the skin finding and documentation discrepancy.",
+        "choice_2": "Do not file a report today; address it with the bedside nurse and charge nurse."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:18:21.704411",
+      "data": {
+        "vignette": "An 82-year-old man is on a step-down unit after septic shock. He is frail, mostly bedbound, and intermittently delirious. He arrived from the ICU yesterday afternoon; the transfer intake note documents “skin intact,” but the ICU note does not include a complete skin exam. On rounds this morning you find a new, nonblanching erythematous area over his sacrum that could be an early pressure injury or moisture-associated dermatitis, and its timing is uncertain. A unit standard calls for a two-person skin check on transfer when feasible, but staffing has been strained. The nursing facility transfer is scheduled for tomorrow, so today’s charting and prevention plan will guide his next team. You will document the finding, place wound-care and offloading orders, and update the discharge paperwork either way. Risk management confirms that both filing a nonpunitive internal safety report or handling it through bedside coaching is permitted and does not require external reporting here. Because the manager-review queue closes this afternoon, you can initiate only one pathway today.",
+        "choice_1": {
+          "choice": "Submit an internal safety event report about the skin finding and documentation discrepancy.",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Do not file a report today; address it with the bedside nurse and charge nurse.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that completing the safety report today would meaningfully delay time-sensitive bedside prevention/wound-care actions (e.g., offloading, barrier cream, turning schedule), increasing the patient’s risk of the area progressing before discharge."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add an explicit nonmaleficence-relevant consequence for each pathway (e.g., that filing a report will likely delay bedside interventions today due to time/queue burden, whereas bedside coaching risks the issue being missed by the next facility/team without system-level follow-up, increasing risk of worsening pressure injury)."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that internal event reports are used to track pressure-injury rates and trigger unit-level quality improvement/staffing/resource allocation, whereas bedside coaching alone leaves the event uncounted and limits system learning that protects other patients."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:19:28.427743",
+      "data": {
+        "vignette": "An 82-year-old man is on a step-down unit after septic shock. He is frail, mostly bedbound, and intermittently delirious. He arrived from the ICU yesterday afternoon. The transfer intake note documents “skin intact,” but the ICU note lacks a complete skin exam. On rounds this morning you find a new, nonblanching erythematous area over his sacrum that could be an early pressure injury or moisture-associated dermatitis, and its timing is uncertain. A unit standard calls for a two-person skin check on transfer when feasible, but staffing has been strained. A nursing facility transfer is scheduled for tomorrow, so today’s documentation and prevention plan will guide his next team. Submitting an internal safety report today typically takes enough time that bedside measures may be delayed during a busy shift. If the area worsens before discharge, he could leave with a higher-stage injury. If you handle it only through bedside coaching, the finding may be underemphasized in handoff and remain uncounted in unit pressure-injury tracking that drives quality improvement and staffing decisions. Risk management confirms either pathway is permitted and nonpunitive here. Because the manager-review queue closes this afternoon, you can initiate only one pathway today.",
+        "choice_1": {
+          "choice": "Submit an internal safety event report about the skin finding and documentation discrepancy.",
+          "autonomy": "neutral",
+          "beneficence": "neutral",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Do not file a report today; address it with the bedside nurse and charge nurse.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 4,
+      "step_description": "sheets_edit",
+      "timestamp": "2026-01-05T20:54:48.283981",
+      "data": {
+        "vignette": "An 82-year-old man is on a step-down unit after septic shock. He is frail, mostly bedbound, and intermittently delirious. He arrived from the ICU yesterday afternoon. The transfer intake note documents “skin intact,” but the ICU note lacks a complete skin exam. On rounds this morning you find a new, nonblanching erythematous area over his sacrum that could be an early pressure injury or moisture-associated dermatitis, and its timing is uncertain. A unit standard calls for a two-person skin check on transfer when feasible, but staffing has been strained. A nursing facility transfer is scheduled for tomorrow, so today’s documentation and prevention plan will guide his next team. Submitting an internal safety report today typically takes enough time that bedside measures may be delayed during a busy shift. If the area worsens before discharge, he could leave with a higher-stage injury. If you handle it only through bedside coaching, the finding may be underemphasized in handoff and remain uncounted in unit pressure-injury tracking that drives quality improvement and staffing decisions. Risk management confirms either pathway is permitted and nonpunitive here. Because the manager-review queue closes this afternoon, you can initiate only one pathway today.",
+        "choice_1": {
+          "choice": "Submit an internal safety event report about the skin finding and documentation discrepancy.",
+          "autonomy": "neutral",
+          "beneficence": "neutral",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Do not file a report today; address it with the bedside nurse and charge nurse.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": {
+        "source": "google_sheets",
+        "import_timestamp": "2026-01-05T20:54:48.283979",
+        "reviewers": {
+          "r1": {
+            "name": "Payal Chandak",
+            "decision": "Reject"
+          }
+        }
+      }
+    }
+  ],
+  "status": "deprecated"
+}

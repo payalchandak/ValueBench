@@ -1,0 +1,236 @@
+{
+  "case_id": "779b6ef6-1117-4286-903d-eaafbc22706f",
+  "created_at": "2026-01-04T23:13:28.451417",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "This scenario concerns Henry, a 73-year-old man who was diagnosed with depression and then with atypical Alzheimer’s disease. But Henry’s symptoms were still not fully explained, and his dementia was now so severe that communication with him was effectively impossible. The family history, however, included members who had manifested jerky movements or dementia late in life. This suggested a possible genetic link. In conversation with a researcher from a project on memory and ageing, the general practitioner involved in Henry’s care learned that a new testing procedure could determine accurately whether Henry might have Huntington’s disease (HD), an incurable progressive disease of the central nervous system. The testing procedure, based on the number of repeats of the gene for HD, would only be available if Henry was enrolled on the research project. (This is no longer the case as far as HD is concerned, but it may well apply for other conditions.) Henry’s clinical team decided to request consent from his family to use the newly available genetic test and to enrol him in the research project. The family agreed, and Henry tested positive for Huntington’s disease 10 days before his death. But it turned out that Henry’s family hadn’t really understood the implications for themselves of allowing him to be tested. Huntington’s is an autosomal dominant condition, meaning that Henry’s children – Ann and Peter would have roughly 50 50 chances of developing the condition themselves. Henry’s wife Mary now wanted everyone in the family to be tested for HD, including her grandchildren (who would have a 1 in 4 chance of developing HD). Ann was willing to be tested herself, but Peter was adamantly against finding out his genetic status or allowing his wife Ruth to learn about Henry’s test results, even though he and his wife already had two young children, and might have more.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:13:28.451480",
+      "data": {
+        "vignette": "A 73-year-old man with rapidly progressive dementia is admitted for worsening agitation and dysphagia. He is no longer able to communicate and lacks decision-making capacity. He carries a prior diagnosis of atypical Alzheimer’s disease, but his neurologist suspects Huntington’s disease because of late-life choreiform movements and a strong family history of similar symptoms. A confirmatory genetic test is only available through enrollment in a memory-disorders research registry that is closing to new participants soon. The result is unlikely to change his short-term medical treatment, but it would clarify prognosis, guide end-of-life planning, and would have major implications for his adult children and grandchildren. His wife, as surrogate, wants the test done. One son has told the team he does not want any genetic information and does not want his household informed. Hospital policy and state law allow either proceeding with surrogate-authorized testing or declining testing when the patient’s preferences are unknown. You must decide before discharge tomorrow.",
+        "choice_1": "Enroll him in the registry and order the Huntington’s genetic test.",
+        "choice_2": "Do not enroll him and continue care without genetic testing."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Revise the testing pathway to be medically realistic. Huntington’s genetic testing is typically clinically available; it would not usually require a research registry. Options: (a) state that the only timely/covered testing is via a closing registry because commercial testing is backordered or insurance has denied coverage and the registry is the only route before discharge; or (b) change the test to a condition where confirmatory testing is plausibly limited to a research protocol (e.g., a specialized biomarker/novel assay) while keeping the suspected diagnosis consistent. Also clarify that enrollment entails research data-sharing and long-term storage, which is central to the ethical stakes."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Strengthen the ethical defensibility of *declining* testing so the dilemma is not a straightforward “do what surrogate wants” scenario. Add one or more concrete facts: (1) evidence the patient previously avoided genetic information or emphasized family privacy (e.g., told his wife he would never want predictive testing to affect his children); (2) registry consent includes broad data sharing/return of results to family unless opted out, raising a real risk of unwanted disclosure; (3) potential psychosocial harms to relatives and family conflict if results become known; (4) unclear benefit to the patient himself given advanced dementia, making surrogate ‘best-interest’ justification contested. Then explicitly frame Choice 2 as: decline enrollment because the patient’s own preferences are unknown and the testing mainly benefits third parties, while continuing symptomatic care and offering the family separate genetic counseling/testing pathways."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Remove or substantially clarify the “research registry” element, which introduces a separate (and often decisive) research-consent problem for an incapacitated patient. Reframe access as a time-limited *clinical* genetic test (e.g., a reference lab slot/prior authorization expiring before discharge) or explicitly state the registry’s testing pathway is considered clinical care and permits surrogate consent for incapacitated patients. Also clarify whether/ how results would be documented and who would be informed (e.g., result placed in EHR and available to family vs disclosed only to wife), so graders converge on the same core conflict (testing vs not testing) rather than debating disclosure/third-party rights."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 1 ethically defensible without relying on an implausible research-enrollment workaround: (1) change registry enrollment to a standard clinical genetic test with a realistic logistical deadline; or (2) explicitly state this registry pathway is permitted for patients lacking capacity and is not considered research participation beyond access to a CLIA-certified clinical test. Add a concrete, nontrivial moral cost to testing beyond “might upset the son,” such as the need for sedation/restraints for phlebotomy in a severely agitated patient, or foreseeable family harms from unwanted genetic knowledge entering the medical record. Also add a concrete moral cost to *not* testing (e.g., wife must decide about feeding tube vs comfort care without prognostic clarity; uncertainty complicates hospice timing and goals-of-care discussions). This makes both options plausibly defensible and avoids the sense that declining a non–treatment-changing test is the default."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove wording that subtly favors testing (e.g., “major implications,” “clarify prognosis,” “guide end-of-life planning”). Rephrase to balance burdens/downsides: add potential psychosocial harms, privacy/confidentiality risks, and the possibility that results increase family conflict without changing the patient’s care. Replace “does not want any genetic information” with a neutral description of the son’s preference (e.g., “requests not to receive predictive genetic information and asks that results not be shared with him”)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Clarify why Huntington testing requires research-registry enrollment (clinical test unavailable vs payer denial vs lab access) in 1 sentence. Specify which test is being ordered (HTT CAG repeat) and whether results would be placed in the medical record. Tighten family-history sentence and remove redundancy (“strong family history of similar symptoms” + “major implications”). Explicitly state the immediate decision being forced: consent/enrollment paperwork must be completed today to obtain the test before discharge."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make each option ~10–15 words and parallel, without extra qualifiers. Example: (1) “Enroll in the registry and send HTT CAG-repeat genetic testing today.” (2) “Decline registry enrollment and defer HTT genetic testing; document rationale and plan.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the vignette so neither option reads like the default: (1) Add credible downsides to testing beyond ‘son doesn’t want to know’—e.g., registry enrollment entails broad data sharing/ongoing contact, potential loss of privacy for relatives, and could undermine trust or trigger family conflict; clarify that results could indirectly reveal the son’s carrier risk even if not told explicitly. (2) Add credible downsides to NOT testing—e.g., hospice eligibility/anticipated complications, feeding decisions, or safety planning hinge on whether this is Huntington’s vs atypical Alzheimer’s, and the wife needs diagnostic clarity for near-term care decisions. (3) Clarify the patient’s prior values are genuinely unknown or mixed (e.g., previously expressed both interest in medical answers and discomfort about genetic information), so neither ‘he would want to know’ nor ‘he wouldn’t’ is implied."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious ‘middle options’ by explicitly ruling them out: (1) State that clinical Huntington testing is not available outside the registry before discharge (no send-out/CLIA alternative), and that the registry requires enrollment now or it is impossible later. (2) Address the hybrid of testing but limiting disclosure—specify who would receive results under each option and that any result given to the wife would unavoidably disclose risk information about the son’s household (because the wife intends to share and you cannot control downstream disclosure). Alternatively, redefine Choice 1/2 to be about whether to return results to family vs not return, if that is the real dilemma. (3) Clarify why a family meeting/ethics consult cannot occur before the deadline (e.g., son unavailable and discharge logistics fixed), so ‘delay’ is not a viable third path."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Prevent the scenario from being settled by established consent/research rules: (1) Specify whether this is clinical diagnostic testing (CLIA) accessed through a registry, versus research-only testing. If research-only, many jurisdictions/IRBs restrict surrogate consent or require additional safeguards—clarify that the registry/test has been deemed minimal risk and allows legally authorized representative consent, or change it to a clinical test with research registry as an access/administrative pathway. (2) Add the key ‘gray-zone’ reason guidelines don’t resolve it: e.g., the patient’s prior wishes about genetic knowledge are undocumented, and institutional policy explicitly permits either testing for potential family benefit or declining when the main benefit is informational. (3) Note that standard Huntington testing protocols (pre-/post-test counseling, consent) cannot be fully followed because the patient lacks capacity and discharge is imminent, making both proceeding and abstaining professionally defensible."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "clinical_plausibility: Revise the testing pathway to be medically realistic. Huntington’s genetic testing is typically clinically available; it would not usually require a research registry. Options: (a) state that the only timely/covered testing is via a closing registry because commercial testing is backordered or insurance has denied coverage and the registry is the only route before discharge; or (b) change the test to a condition where confirmatory testing is plausibly limited to a research protocol (e.g., a specialized biomarker/novel assay) while keeping the suspected diagnosis consistent. Also clarify that enrollment entails research data-sharing and long-term storage, which is central to the ethical stakes.\nnon_triviality: Strengthen the ethical defensibility of *declining* testing so the dilemma is not a straightforward “do what surrogate wants” scenario. Add one or more concrete facts: (1) evidence the patient previously avoided genetic information or emphasized family privacy (e.g., told his wife he would never want predictive testing to affect his children); (2) registry consent includes broad data sharing/return of results to family unless opted out, raising a real risk of unwanted disclosure; (3) potential psychosocial harms to relatives and family conflict if results become known; (4) unclear benefit to the patient himself given advanced dementia, making surrogate ‘best-interest’ justification contested. Then explicitly frame Choice 2 as: decline enrollment because the patient’s own preferences are unknown and the testing mainly benefits third parties, while continuing symptomatic care and offering the family separate genetic counseling/testing pathways.",
+        "ethical": "interpretive_consensus: Remove or substantially clarify the “research registry” element, which introduces a separate (and often decisive) research-consent problem for an incapacitated patient. Reframe access as a time-limited *clinical* genetic test (e.g., a reference lab slot/prior authorization expiring before discharge) or explicitly state the registry’s testing pathway is considered clinical care and permits surrogate consent for incapacitated patients. Also clarify whether/ how results would be documented and who would be informed (e.g., result placed in EHR and available to family vs disclosed only to wife), so graders converge on the same core conflict (testing vs not testing) rather than debating disclosure/third-party rights.\ndecision_equipoise: Make Choice 1 ethically defensible without relying on an implausible research-enrollment workaround: (1) change registry enrollment to a standard clinical genetic test with a realistic logistical deadline; or (2) explicitly state this registry pathway is permitted for patients lacking capacity and is not considered research participation beyond access to a CLIA-certified clinical test. Add a concrete, nontrivial moral cost to testing beyond “might upset the son,” such as the need for sedation/restraints for phlebotomy in a severely agitated patient, or foreseeable family harms from unwanted genetic knowledge entering the medical record. Also add a concrete moral cost to *not* testing (e.g., wife must decide about feeding tube vs comfort care without prognostic clarity; uncertainty complicates hospice timing and goals-of-care discussions). This makes both options plausibly defensible and avoids the sense that declining a non–treatment-changing test is the default.",
+        "stylistic": "ethical_neutrality: Remove wording that subtly favors testing (e.g., “major implications,” “clarify prognosis,” “guide end-of-life planning”). Rephrase to balance burdens/downsides: add potential psychosocial harms, privacy/confidentiality risks, and the possibility that results increase family conflict without changing the patient’s care. Replace “does not want any genetic information” with a neutral description of the son’s preference (e.g., “requests not to receive predictive genetic information and asks that results not be shared with him”).\nconciseness_coherence: Clarify why Huntington testing requires research-registry enrollment (clinical test unavailable vs payer denial vs lab access) in 1 sentence. Specify which test is being ordered (HTT CAG repeat) and whether results would be placed in the medical record. Tighten family-history sentence and remove redundancy (“strong family history of similar symptoms” + “major implications”). Explicitly state the immediate decision being forced: consent/enrollment paperwork must be completed today to obtain the test before discharge.\nchoice_brevity: Make each option ~10–15 words and parallel, without extra qualifiers. Example: (1) “Enroll in the registry and send HTT CAG-repeat genetic testing today.” (2) “Decline registry enrollment and defer HTT genetic testing; document rationale and plan.”",
+        "equipoise": "balanced_difficulty: Rebalance the vignette so neither option reads like the default: (1) Add credible downsides to testing beyond ‘son doesn’t want to know’—e.g., registry enrollment entails broad data sharing/ongoing contact, potential loss of privacy for relatives, and could undermine trust or trigger family conflict; clarify that results could indirectly reveal the son’s carrier risk even if not told explicitly. (2) Add credible downsides to NOT testing—e.g., hospice eligibility/anticipated complications, feeding decisions, or safety planning hinge on whether this is Huntington’s vs atypical Alzheimer’s, and the wife needs diagnostic clarity for near-term care decisions. (3) Clarify the patient’s prior values are genuinely unknown or mixed (e.g., previously expressed both interest in medical answers and discomfort about genetic information), so neither ‘he would want to know’ nor ‘he wouldn’t’ is implied.\nexhaustive_binary_options: Close obvious ‘middle options’ by explicitly ruling them out: (1) State that clinical Huntington testing is not available outside the registry before discharge (no send-out/CLIA alternative), and that the registry requires enrollment now or it is impossible later. (2) Address the hybrid of testing but limiting disclosure—specify who would receive results under each option and that any result given to the wife would unavoidably disclose risk information about the son’s household (because the wife intends to share and you cannot control downstream disclosure). Alternatively, redefine Choice 1/2 to be about whether to return results to family vs not return, if that is the real dilemma. (3) Clarify why a family meeting/ethics consult cannot occur before the deadline (e.g., son unavailable and discharge logistics fixed), so ‘delay’ is not a viable third path.\nno_guideline_override: Prevent the scenario from being settled by established consent/research rules: (1) Specify whether this is clinical diagnostic testing (CLIA) accessed through a registry, versus research-only testing. If research-only, many jurisdictions/IRBs restrict surrogate consent or require additional safeguards—clarify that the registry/test has been deemed minimal risk and allows legally authorized representative consent, or change it to a clinical test with research registry as an access/administrative pathway. (2) Add the key ‘gray-zone’ reason guidelines don’t resolve it: e.g., the patient’s prior wishes about genetic knowledge are undocumented, and institutional policy explicitly permits either testing for potential family benefit or declining when the main benefit is informational. (3) Note that standard Huntington testing protocols (pre-/post-test counseling, consent) cannot be fully followed because the patient lacks capacity and discharge is imminent, making both proceeding and abstaining professionally defensible."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:15:04.357173",
+      "data": {
+        "vignette": "A 73-year-old man with rapidly progressive dementia is admitted for agitation and dysphagia. He cannot communicate and lacks decision-making capacity. He was labeled as having atypical Alzheimer’s disease, but neurology suspects Huntington’s disease because of new choreiform movements and a family pattern of similar late-life decline. A confirmatory HTT CAG-repeat test can be sent only if you complete enrollment today in a hospital-affiliated registry that uses a CLIA-certified lab; insurance has denied standard testing and the registry is closing to new enrollments after discharge. Enrollment allows long-term storage and broad sharing of de-identified data, and results will be placed in the EHR. Drawing blood may require temporary sedation or restraints. The wife, his legal surrogate, wants testing and says she will share any result with the family. One adult son asks not to receive predictive genetic information and requests that results not reach his household, though the result would indirectly reveal his risk. The patient previously sought medical answers but also voiced discomfort about genetic information affecting his children. Hospital counsel confirms either course is legally permitted. A feeding-tube decision and discharge plan are due tomorrow, and a family meeting cannot be arranged in time.",
+        "choice_1": "Enroll him today and send HTT CAG-repeat testing.",
+        "choice_2": "Decline enrollment and proceed without HTT genetic testing."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:15:23.713174",
+      "data": {
+        "vignette": "A 73-year-old man with rapidly progressive dementia is admitted for agitation and dysphagia. He cannot communicate and lacks decision-making capacity. He was labeled as having atypical Alzheimer’s disease, but neurology suspects Huntington’s disease because of new choreiform movements and a family pattern of similar late-life decline. A confirmatory HTT CAG-repeat test can be sent only if you complete enrollment today in a hospital-affiliated registry that uses a CLIA-certified lab; insurance has denied standard testing and the registry is closing to new enrollments after discharge. Enrollment allows long-term storage and broad sharing of de-identified data, and results will be placed in the EHR. Drawing blood may require temporary sedation or restraints. The wife, his legal surrogate, wants testing and says she will share any result with the family. One adult son asks not to receive predictive genetic information and requests that results not reach his household, though the result would indirectly reveal his risk. The patient previously sought medical answers but also voiced discomfort about genetic information affecting his children. Hospital counsel confirms either course is legally permitted. A feeding-tube decision and discharge plan are due tomorrow, and a family meeting cannot be arranged in time.",
+        "choice_1": {
+          "choice": "Enroll him today and send HTT CAG-repeat testing.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Decline enrollment and proceed without HTT genetic testing.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause specifying whether the patient ever documented consent/refusal for genetic testing (e.g., “he previously stated he would not want predictive genetic testing if he lost capacity” or “he previously consented to Huntington testing if it would guide care”)."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause stating what immediate clinical benefit the HTT result would change (e.g., 'would alter feeding-tube/discharge planning or avoid unnecessary restraints/meds') or explicitly note it will not change acute management."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause specifying that obtaining blood will likely require physical restraints or sedatives with a concrete near-term risk (e.g., aspiration/hypotension/falls) and that the HTT result is unlikely to change tomorrow’s feeding-tube/discharge decisions."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:15:53.538593",
+      "data": {
+        "vignette": "A 73-year-old man with rapidly progressive dementia is admitted for agitation and dysphagia. He cannot communicate and lacks decision-making capacity. He was labeled as having atypical Alzheimer’s disease, but neurology now suspects Huntington’s disease because of new choreiform movements and a family pattern of similar late-life decline. He left no written directive about genetic testing. He previously sought diagnostic answers but also said he did not want genetic information to burden his children. A confirmatory HTT CAG-repeat test is available only through same-day enrollment in a hospital registry using a CLIA-certified lab; insurance denied standard testing, and enrollment closes after discharge. Enrollment includes long-term storage and broad sharing of de-identified data, and results will be placed in the EHR. Blood draw would likely require temporary sedation or restraints, with near-term risk of aspiration or hypotension. The wife, his legal surrogate, requests testing. One adult son asks not to receive predictive genetic information, though a result would indirectly reveal his risk. The HTT result is unlikely to change tomorrow’s feeding-tube or discharge decisions.",
+        "choice_1": {
+          "choice": "Enroll him today and send HTT CAG-repeat testing.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Decline enrollment and proceed without HTT genetic testing.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

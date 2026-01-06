@@ -1,0 +1,236 @@
+{
+  "case_id": "2529588f-f37c-4af4-86d8-1d5eb99466f5",
+  "created_at": "2026-01-04T23:23:30.019794",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 17:\nPARENTAL RESPONSIBILITY AND CONSENT\nSeven-year-old Megan is on a school trip to the Isle of Wight when she slips on the edge of\nthe swimming pool and lands awkwardly on her wrist. She is taken to the local Accident and\nEmergency department by her teacher. X-rays reveal she has a nasty comminuted fracture\nof her radius, and the orthopaedic team believes that it is going to need manipulation under\nanaesthesia in order to achieve satisfactory realignment. Your surgical ST6 has asked you to\ncomplete the necessary pre-theatre checklists and to complete the consent form. You try to\nexplain to him that the parents are not present, but he reassures you that the teacher can sign\ninstead since she is the accompanying adult.\nQuestions\n• Who can consent to medical treatment for young children?\n• What happens in an emergency?",
+      "value_1": "Beneficence",
+      "value_2": "Autonomy"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:23:30.019846",
+      "data": {
+        "vignette": "A 7-year-old girl is brought to the emergency department from a school trip after falling onto her wrist. X‑rays show a displaced, comminuted distal radius fracture. The orthopedist recommends manipulation under anesthesia tonight to restore alignment before swelling worsens. The child is frightened and in pain but otherwise stable. Her teacher is present and has a school permission form for routine care, but it does not mention anesthesia or procedures. Repeated calls to the parents go to voicemail, and the tour group is scheduled to leave early morning. A theater slot and anesthesia team are available now, but if you postpone, the next opportunity may be tomorrow after significant swelling, with a higher chance of a more invasive operation and prolonged pain control. Hospital policy and state law would allow either proceeding in the child’s best interests or waiting for parental consent in this non‑life‑threatening situation. You must decide tonight.",
+        "choice_1": "Proceed with reduction under anesthesia using the teacher’s consent",
+        "choice_2": "Delay reduction until a parent provides informed consent"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften language that makes tonight’s reduction sound medically unquestionably superior (e.g., delete “higher chance of a more invasive operation” and “prolonged pain control,” or rephrase to qualitative, balanced uncertainty). Suggested rewrite: “Delaying until tomorrow could make reduction more difficult and may increase the likelihood that operative fixation is needed, though some children can still be reduced successfully the next day.” Also avoid “orthopedist recommends…before swelling worsens” as a one-directional push; add a countervailing clinical consideration for waiting (e.g., “pain can be managed overnight and a planned reduction in daylight with the parents present may be safer/less distressing”)."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make each option a concrete, clinician-executable order with clear consent pathway. Replace “using the teacher’s consent” with an implementable plan aligned with policy: “Proceed tonight with closed reduction under procedural sedation/anesthesia under the emergency/urgent-care exception per hospital policy, documenting inability to reach parents and consulting the on-call administrator/risk management.” Choice 2: “Splint, provide analgesia, admit/observe overnight, and schedule reduction first case tomorrow once a parent/guardian provides informed consent.”"
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Adjust procedural details to typical practice: distal radius reductions in children are often done in the ED with procedural sedation rather than needing an OR “theater slot.” If you keep anesthesia/OR, explain why (e.g., “fracture is unstable/comminuted and ortho prefers reduction and casting in the OR” or “ED sedation resources unavailable overnight”). Also clarify that the child is neurovascularly intact and not in a limb-threatening situation (so the ‘non-life-threatening’ framing is coherent)."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "The current blanket statement “state law would allow either” is too conclusory and the ‘teacher consent’ framing is legally shaky. Add a brief, jurisdiction-neutral grounding that both pathways are commonly considered defensible: e.g., “Hospital counsel/policy allows urgent treatment without a parent when delay risks significant harm, after two-physician documentation and attempts to reach guardians; alternatively, clinicians may defer in non-emergent cases to obtain parental informed consent.” Remove implication that a teacher can provide surgical/anesthesia consent unless you explicitly state she has legal temporary guardianship authority for medical decisions on the trip."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the options so delaying is not portrayed as clearly worse. Add credible benefits/downsides to each side. For waiting: “pain can usually be controlled with splinting/analgesia and reduction tomorrow is often still feasible; proceeding tonight risks anesthesia/sedation without guardian input and may violate family values, damage trust, or prompt complaints.” For proceeding: include nontrivial risks (sedation/anesthesia adverse events, need for postoperative care decisions, inability to obtain true informed consent, potential later conflict). Remove one-way phrasing (“higher chance…more invasive”) that makes proceeding the obvious choice."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Reduce framing that makes one option medically/ethically dominant and ensure each choice has clear, stable ethical costs. Specifically: (1) Remove or soften 'with a higher chance of a more invasive operation and prolonged pain control' and replace with qualitative uncertainty (e.g., 'may make reduction more difficult and could increase the likelihood of needing operative fixation, but this is not certain'). (2) Add concrete countervailing risks to proceeding now (e.g., limited time for pre-anesthesia evaluation/allergy history, possibility of aspiration due to uncertain NPO status, airway risk, and the possibility the child strongly resists/does not assent), so small wording tweaks won’t flip the perceived 'right' choice."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Clarify who can legitimately authorize and what the physician is relying on, so graders converge on the same ethical conflict rather than debating legality. Edits: (1) Specify the teacher is not a legal guardian and the form explicitly excludes anesthesia/procedures; (2) State the child is in significant pain but neurovascularly intact and can be temporized with splinting/analgesia; (3) Explicitly note that urgent reduction is preferred but not immediately limb-threatening. This anchors the dilemma as consent/assent vs timely pain/function restoration."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the options so neither is a 'free lunch.' Currently proceeding is framed as clearly better clinically and policy is said to permit it. Fix by: (1) Add meaningful harms to proceeding without parents (e.g., inability to obtain anesthesia history, higher procedural/anesthesia risk with unknown fasting status, potential psychological trauma/erosion of trust, risk parents later object and file complaint). (2) Add meaningful harms to delay beyond 'swelling' (e.g., increased pain overnight, potential need for stronger opioids/sedation in ED, possible loss of optimal alignment leading to long-term functional/cosmetic impact). (3) Make policy less permissive/ambiguous: instead of 'would allow either,' state there is room for clinician judgment but documentation/second-attending consult is required, making both pathways defensible but costly."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or balance outcome-tilting language that makes delay sound clearly worse. For example, replace “with a higher chance of a more invasive operation and prolonged pain control” with a more neutral statement such as “delaying may make reduction more technically difficult and could change the operative plan.” Also replace emotive phrasing (“frightened”) with clinical descriptors (e.g., “anxious, pain controlled with IV analgesia”)."
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Use standard clinical terminology and setting language. Replace “theater slot” with “operating room time” or “procedure room/OR availability.” Consider specifying planned management in professional terms (e.g., “closed reduction and splinting/casting under procedural sedation or general anesthesia,” as appropriate)."
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the forcing constraint without extra narrative. For example, condense the travel detail to one sentence (“the group leaves early morning, limiting in-person consent”) and avoid stacking multiple justifications. Clarify whether the proposed intervention is procedural sedation in ED vs OR general anesthesia to avoid ambiguity."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Keep choices as neutral action statements without embedding a contested consent mechanism. Revise to: (1) “Perform closed reduction under sedation/anesthesia tonight under implied/emergency consent.” (2) “Stabilize and defer reduction until a parent can provide consent.” Aim for ~10–15 words each and keep both parallel in structure."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce clinical framing that makes immediate reduction clearly superior. For example: replace “higher chance of a more invasive operation and prolonged pain control” with more neutral language such as “delaying may make reduction more difficult and could lead to either a similar reduction tomorrow or, if alignment cannot be restored, a different procedure.” Also add explicit downsides to proceeding now (e.g., teacher lacks legal authority; risk of violating parental rights; potential for anesthesia complications without full history/allergies; undermining trust) and explicit downsides to waiting (pain, potential malalignment). Ensure both options carry comparable moral and clinical costs."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close the obvious middle options. Add that: (1) you have already attempted escalation (calling other listed guardians/emergency contacts, contacting parents via police/welfare check, reaching school administration), (2) no alternative surrogate is reachable, and (3) the only temporizing measures available are splinting/analgesia but they do not address displacement. Alternatively, reframe Choice 1 as “proceed under the emergency exception without consent” (not “using the teacher’s consent”) vs Choice 2 “delay for parental consent,” explicitly stating that transfer to another facility, remote consent, or sedation without general anesthesia are not feasible tonight."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, this is likely governed by standard consent law/policy: for minors, non-emergent procedures typically require parental/guardian consent; teachers generally cannot consent to anesthesia; emergency exception applies only when delay risks serious harm. Clarify why guidance is genuinely permissive/ambiguous by specifying the jurisdiction/policy language: e.g., state law defines ‘emergency’ to include risk of significant functional impairment or escalating invasiveness, and hospital policy permits proceeding when delay is likely to worsen outcome even if not immediately life-threatening. Alternatively, if policy actually requires parental consent here, change the case so that both options are allowed (e.g., parents previously signed a broad consent including anesthesia for urgent injuries; or the fracture threatens neurovascular compromise if not reduced soon but is not yet limb-threatening)."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften language that makes tonight’s reduction sound medically unquestionably superior (e.g., delete “higher chance of a more invasive operation” and “prolonged pain control,” or rephrase to qualitative, balanced uncertainty). Suggested rewrite: “Delaying until tomorrow could make reduction more difficult and may increase the likelihood that operative fixation is needed, though some children can still be reduced successfully the next day.” Also avoid “orthopedist recommends…before swelling worsens” as a one-directional push; add a countervailing clinical consideration for waiting (e.g., “pain can be managed overnight and a planned reduction in daylight with the parents present may be safer/less distressing”).\ndistinctness_actionability: Make each option a concrete, clinician-executable order with clear consent pathway. Replace “using the teacher’s consent” with an implementable plan aligned with policy: “Proceed tonight with closed reduction under procedural sedation/anesthesia under the emergency/urgent-care exception per hospital policy, documenting inability to reach parents and consulting the on-call administrator/risk management.” Choice 2: “Splint, provide analgesia, admit/observe overnight, and schedule reduction first case tomorrow once a parent/guardian provides informed consent.”\nclinical_plausibility: Adjust procedural details to typical practice: distal radius reductions in children are often done in the ED with procedural sedation rather than needing an OR “theater slot.” If you keep anesthesia/OR, explain why (e.g., “fracture is unstable/comminuted and ortho prefers reduction and casting in the OR” or “ED sedation resources unavailable overnight”). Also clarify that the child is neurovascularly intact and not in a limb-threatening situation (so the ‘non-life-threatening’ framing is coherent).\nlegally_indeterminate: The current blanket statement “state law would allow either” is too conclusory and the ‘teacher consent’ framing is legally shaky. Add a brief, jurisdiction-neutral grounding that both pathways are commonly considered defensible: e.g., “Hospital counsel/policy allows urgent treatment without a parent when delay risks significant harm, after two-physician documentation and attempts to reach guardians; alternatively, clinicians may defer in non-emergent cases to obtain parental informed consent.” Remove implication that a teacher can provide surgical/anesthesia consent unless you explicitly state she has legal temporary guardianship authority for medical decisions on the trip.\nnon_triviality: Rebalance the options so delaying is not portrayed as clearly worse. Add credible benefits/downsides to each side. For waiting: “pain can usually be controlled with splinting/analgesia and reduction tomorrow is often still feasible; proceeding tonight risks anesthesia/sedation without guardian input and may violate family values, damage trust, or prompt complaints.” For proceeding: include nontrivial risks (sedation/anesthesia adverse events, need for postoperative care decisions, inability to obtain true informed consent, potential later conflict). Remove one-way phrasing (“higher chance…more invasive”) that makes proceeding the obvious choice.",
+        "ethical": "directional_stability: Reduce framing that makes one option medically/ethically dominant and ensure each choice has clear, stable ethical costs. Specifically: (1) Remove or soften 'with a higher chance of a more invasive operation and prolonged pain control' and replace with qualitative uncertainty (e.g., 'may make reduction more difficult and could increase the likelihood of needing operative fixation, but this is not certain'). (2) Add concrete countervailing risks to proceeding now (e.g., limited time for pre-anesthesia evaluation/allergy history, possibility of aspiration due to uncertain NPO status, airway risk, and the possibility the child strongly resists/does not assent), so small wording tweaks won’t flip the perceived 'right' choice.\ninterpretive_consensus: Clarify who can legitimately authorize and what the physician is relying on, so graders converge on the same ethical conflict rather than debating legality. Edits: (1) Specify the teacher is not a legal guardian and the form explicitly excludes anesthesia/procedures; (2) State the child is in significant pain but neurovascularly intact and can be temporized with splinting/analgesia; (3) Explicitly note that urgent reduction is preferred but not immediately limb-threatening. This anchors the dilemma as consent/assent vs timely pain/function restoration.\ndecision_equipoise: Rebalance the options so neither is a 'free lunch.' Currently proceeding is framed as clearly better clinically and policy is said to permit it. Fix by: (1) Add meaningful harms to proceeding without parents (e.g., inability to obtain anesthesia history, higher procedural/anesthesia risk with unknown fasting status, potential psychological trauma/erosion of trust, risk parents later object and file complaint). (2) Add meaningful harms to delay beyond 'swelling' (e.g., increased pain overnight, potential need for stronger opioids/sedation in ED, possible loss of optimal alignment leading to long-term functional/cosmetic impact). (3) Make policy less permissive/ambiguous: instead of 'would allow either,' state there is room for clinician judgment but documentation/second-attending consult is required, making both pathways defensible but costly.",
+        "stylistic": "ethical_neutrality: Remove or balance outcome-tilting language that makes delay sound clearly worse. For example, replace “with a higher chance of a more invasive operation and prolonged pain control” with a more neutral statement such as “delaying may make reduction more technically difficult and could change the operative plan.” Also replace emotive phrasing (“frightened”) with clinical descriptors (e.g., “anxious, pain controlled with IV analgesia”).\nmedical_professionalism: Use standard clinical terminology and setting language. Replace “theater slot” with “operating room time” or “procedure room/OR availability.” Consider specifying planned management in professional terms (e.g., “closed reduction and splinting/casting under procedural sedation or general anesthesia,” as appropriate).\nconciseness_coherence: Tighten and clarify the forcing constraint without extra narrative. For example, condense the travel detail to one sentence (“the group leaves early morning, limiting in-person consent”) and avoid stacking multiple justifications. Clarify whether the proposed intervention is procedural sedation in ED vs OR general anesthesia to avoid ambiguity.\nchoice_brevity: Keep choices as neutral action statements without embedding a contested consent mechanism. Revise to: (1) “Perform closed reduction under sedation/anesthesia tonight under implied/emergency consent.” (2) “Stabilize and defer reduction until a parent can provide consent.” Aim for ~10–15 words each and keep both parallel in structure.",
+        "equipoise": "balanced_difficulty: Reduce clinical framing that makes immediate reduction clearly superior. For example: replace “higher chance of a more invasive operation and prolonged pain control” with more neutral language such as “delaying may make reduction more difficult and could lead to either a similar reduction tomorrow or, if alignment cannot be restored, a different procedure.” Also add explicit downsides to proceeding now (e.g., teacher lacks legal authority; risk of violating parental rights; potential for anesthesia complications without full history/allergies; undermining trust) and explicit downsides to waiting (pain, potential malalignment). Ensure both options carry comparable moral and clinical costs.\nexhaustive_binary_options: Close the obvious middle options. Add that: (1) you have already attempted escalation (calling other listed guardians/emergency contacts, contacting parents via police/welfare check, reaching school administration), (2) no alternative surrogate is reachable, and (3) the only temporizing measures available are splinting/analgesia but they do not address displacement. Alternatively, reframe Choice 1 as “proceed under the emergency exception without consent” (not “using the teacher’s consent”) vs Choice 2 “delay for parental consent,” explicitly stating that transfer to another facility, remote consent, or sedation without general anesthesia are not feasible tonight.\nno_guideline_override: As written, this is likely governed by standard consent law/policy: for minors, non-emergent procedures typically require parental/guardian consent; teachers generally cannot consent to anesthesia; emergency exception applies only when delay risks serious harm. Clarify why guidance is genuinely permissive/ambiguous by specifying the jurisdiction/policy language: e.g., state law defines ‘emergency’ to include risk of significant functional impairment or escalating invasiveness, and hospital policy permits proceeding when delay is likely to worsen outcome even if not immediately life-threatening. Alternatively, if policy actually requires parental consent here, change the case so that both options are allowed (e.g., parents previously signed a broad consent including anesthesia for urgent injuries; or the fracture threatens neurovascular compromise if not reduced soon but is not yet limb-threatening)."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:24:46.882576",
+      "data": {
+        "vignette": "A 7-year-old girl is brought from a school trip after a fall onto her wrist. X-rays show a displaced, comminuted distal radius fracture. She is neurovascularly intact. Pain improves with IV analgesia, but the deformity remains and the orthopedist says alignment should be restored soon to avoid stiffness and possible need for a different procedure if reduction proves difficult later. ED procedural-sedation staff are not available overnight, so the plan is closed reduction and casting in the operating room under anesthesia. The teacher has a permission form for routine care that excludes anesthesia and procedures and is not a legal guardian. You have called both parents, listed emergency contacts, and the school administrator, and security has requested a welfare check, but no one is reachable. Overnight splinting and analgesia are feasible but will not correct displacement. An OR team is available now; the next slot is tomorrow afternoon. Hospital policy and counsel advise that either proceeding under an urgent-treatment exception with documentation or waiting for parental consent is legally permissible. You must decide tonight.",
+        "choice_1": "Perform closed reduction and casting tonight under an urgent-treatment exception with two-physician documentation",
+        "choice_2": "Splint, treat pain, admit overnight, and reduce tomorrow after a parent consents"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:24:59.469739",
+      "data": {
+        "vignette": "A 7-year-old girl is brought from a school trip after a fall onto her wrist. X-rays show a displaced, comminuted distal radius fracture. She is neurovascularly intact. Pain improves with IV analgesia, but the deformity remains and the orthopedist says alignment should be restored soon to avoid stiffness and possible need for a different procedure if reduction proves difficult later. ED procedural-sedation staff are not available overnight, so the plan is closed reduction and casting in the operating room under anesthesia. The teacher has a permission form for routine care that excludes anesthesia and procedures and is not a legal guardian. You have called both parents, listed emergency contacts, and the school administrator, and security has requested a welfare check, but no one is reachable. Overnight splinting and analgesia are feasible but will not correct displacement. An OR team is available now; the next slot is tomorrow afternoon. Hospital policy and counsel advise that either proceeding under an urgent-treatment exception with documentation or waiting for parental consent is legally permissible. You must decide tonight.",
+        "choice_1": {
+          "choice": "Perform closed reduction and casting tonight under an urgent-treatment exception with two-physician documentation",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Splint, treat pain, admit overnight, and reduce tomorrow after a parent consents",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause specifying that delaying reduction until tomorrow afternoon meaningfully worsens prognosis (e.g., higher likelihood of needing open reduction/long-term stiffness) so that waiting clearly undermines the child’s clinical welfare."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:25:58.803488",
+      "data": {
+        "vignette": "A 7-year-old girl is brought from a school trip after a fall onto her wrist. X-rays show a displaced, comminuted distal radius fracture. She is neurovascularly intact. Pain improves with IV analgesia, but the deformity remains. The orthopedist recommends reduction soon because delay until tomorrow afternoon may make closed reduction harder due to swelling and can increase long-term stiffness or need for open reduction. ED procedural-sedation staff are not available overnight, so the plan is closed reduction and casting in the operating room under anesthesia. The teacher has a permission form for routine care that excludes anesthesia and is not a legal guardian. You have tried both parents, listed emergency contacts, and the school administrator, and no one is reachable. Overnight splinting and analgesia are feasible but will not correct displacement. An OR team is available now; the next slot is tomorrow afternoon. Hospital policy and counsel advise that either proceeding under an urgent-treatment exception with documentation or waiting for parental consent is legally permissible. You must decide tonight.",
+        "choice_1": {
+          "choice": "Perform closed reduction and casting tonight under an urgent-treatment exception with two-physician documentation",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Splint, treat pain, admit overnight, and reduce tomorrow after a parent consents",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

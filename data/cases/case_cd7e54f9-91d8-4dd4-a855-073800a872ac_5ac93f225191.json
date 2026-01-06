@@ -1,0 +1,236 @@
+{
+  "case_id": "cd7e54f9-91d8-4dd4-a855-073800a872ac",
+  "created_at": "2026-01-04T23:57:32.582573",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "Case 17-1\nTherapeutic Privilege: Scaring the Patient to Death with News\nabout Risks\nThe patient, Steven Mendos, was a 55-year-old white male with a history of\ncomplex heart problems, hypertension, and unstable ventricular arrhyth-\nmias. He complained of cramping pain in his legs and intermittent limping.\nThe physician, Susan Therapides, suspected a block in his abdominal\naorta and recommended translumbar aortography to locate the block. She\nneeded to inject a dye, sodium urokon.\nDr. Therapides knew that this was a procedure that exposed the pa-\ntient to some risk. The injection could cause an anaphylactic response\nand, in rare cases, paralysis or even death. The standard procedure called\nfor informing the patient of these risks and obtaining a written consent for\nthe test. But Dr. Therapides was concerned about getting the consent. The\npatient was very frightened about his condition, he was apprehensive and\nhad serious heart disease with hypertension. Dr. Therapides came to the\nethics committee with the problem. She argued, “If you frighten him fur-\nther, you have a problem that you have created. If I mention the risk of\nparalysis to him, I think it might be a terrible mistake.” She claimed that\nshe should have a “therapeutic privilege” to omit getting the consent for\nthe procedure.",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:57:32.582632",
+      "data": {
+        "vignette": "A 55-year-old man with severe cardiomyopathy and recurrent ventricular arrhythmias has progressive calf pain and exertional leg fatigue. You suspect aortoiliac occlusive disease and plan urgent translumbar aortography with iodinated contrast to guide a possible intervention. He is visibly anxious and repeatedly asks whether “anything could go wrong.” His cardiologist notes that panic has triggered dangerous rhythms for him in the past, and sedation could blunt his ability to participate in consent. The test carries uncommon but serious complications, including severe allergic reaction, neurologic injury, and death, alongside more routine risks. The angiography suite is available only this afternoon, and delaying will likely postpone definitive evaluation for weeks. Hospital policy permits either full disclosure or limited disclosure when the clinician believes disclosure itself would cause immediate, serious harm.\n\nYou must decide how to discuss risks before proceeding.",
+        "choice_1": "Describe all serious risks and obtain written informed consent.",
+        "choice_2": "Limit disclosure to common risks and proceed with consent today."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften language that implies the procedure is clearly medically necessary or that delay is clearly harmful. For example: change “plan urgent translumbar aortography…to guide a possible intervention” to “are considering catheter-based angiography…to clarify anatomy and plan next steps.” Replace “delaying will likely postpone definitive evaluation for weeks” with “delaying could defer further evaluation for weeks and prolong symptoms,” unless you add clinical features that make delay clearly risky (e.g., rest pain, tissue loss). Avoid presenting translumbar aortography as the default best test; briefly note that noninvasive imaging exists but is less suitable here for a practical reason (e.g., prior stent artifact, renal function limits CT contrast load, inability to lie flat for CTA), without claiming superiority."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Trim or clarify details that don’t directly affect the disclosure decision and add one or two missing facts needed to judge the ethical stakes. Specifically: (1) Either remove “sedation could blunt his ability to participate in consent” or explicitly tie it to the plan (e.g., “the team recommends minimal anxiolysis before the procedure, which may affect recall/engagement”). (2) Add a sentence on his decisional capacity right now (alert, oriented, understands information) and whether he has asked for full details or prefers less information. (3) Clarify what “limit disclosure” entails (e.g., omit rare catastrophic risks vs defer them; allow questions; offer to stop if anxious)."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Ensure the diagnostic/test choice and urgency are medically realistic. “Translumbar aortography” is uncommon in contemporary practice; if you intend standard catheter angiography, call it “catheter-based diagnostic angiography” or “aortography via femoral/radial access.” If you keep translumbar, add a brief rationale (e.g., no femoral access due to occlusion, prior grafts). Also justify why the decision must be today for claudication—either add features of limb threat (rest pain, ischemic ulcers, rapidly progressive symptoms) or reframe urgency as logistical rather than clinical (e.g., travel distance, anesthesia team availability) while avoiding claims that delay worsens outcomes."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Add a brief jurisdiction-neutral statement that both approaches are legally permissible under narrow conditions and institutionally supported. For example: “In this jurisdiction and under hospital policy, clinicians may invoke therapeutic privilege in rare cases where disclosure is expected to cause immediate, serious harm, provided the patient has capacity, the rationale is documented, and an ethics/second-physician consult is available.” Without this, Choice 2 risks reading as legally/disciplinarily indefensible."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 2 more ethically and clinically defensible so the dilemma is not ‘obviously disclose everything.’ Add details indicating a credible, imminent risk of serious harm from disclosure itself (e.g., prior documented episodes of malignant arrhythmia triggered by panic during medical discussions; telemetry shows frequent ectopy; cardiologist advises minimizing acute stress today). Also strengthen the countervailing cost of limited disclosure (e.g., the patient has explicitly expressed a desire to know all serious risks; procedure is elective; risk of undermining trust if he later learns information was withheld). Tighten Choice 2 wording to a defensible therapeutic-privilege approach: “Provide a focused discussion of the most likely and most preventable risks, invite questions, document rationale, and arrange to revisit rare catastrophic risks once anxiety is controlled,” rather than “limit disclosure to common risks,” which sounds like unjustified omission."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Tighten what counts as “limited disclosure” and what is still disclosed so graders agree on the ethical object. For example, rewrite Choice 2 as either (a) “Explain that there are rare but serious complications without listing them, focusing on the most likely risks,” or (b) “Omit mention of rare catastrophic risks entirely,” and state explicitly which one you mean. Also clarify whether the patient currently has decision-making capacity and whether sedation is being proposed solely to control panic or as routine procedural sedation."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Reduce the ‘obvious wrongness’ of Choice 2 by strengthening the immediacy/credibility of harm from disclosure and by adding ethical costs to Choice 1. Edits: (1) Specify that prior informed-consent discussions have directly precipitated life-threatening arrhythmias (e.g., ICD shocks/syncope) despite reassurance, making detailed risk disclosure likely to cause immediate serious harm today. (2) Add that delaying weeks carries a plausible serious downside (e.g., progression to rest pain/limb-threatening ischemia or inability to plan needed intervention before his cardiac status worsens) without using numbers. (3) Add the ethical/clinical downside of full disclosure today: potential need for heavy anxiolysis/restraints or aborting the procedure after triggering arrhythmia, which could itself increase procedural risk and compromise care. (4) Make Choice 2 include some protective step (offer follow-up disclosure after stabilization, involve a surrogate, or propose a staged consent) so it is a defensible but still ethically costly option rather than straightforward deception."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Reduce wording that nudges toward limited disclosure by portraying disclosure as dangerous. For example, change “He is visibly anxious” to “He reports significant procedure-related anxiety,” and change “panic has triggered dangerous rhythms” to “prior episodes of severe anxiety have been temporally associated with ventricular arrhythmias.” Add one neutral countervailing detail that makes full disclosure ethically/clinically plausible (e.g., “He has previously stated he prefers detailed information before procedures” or “He asks for a full list of potential complications”)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Clarify the timeline and apparent contradiction around sedation and consent. Specify whether anxiolysis would be given before consent or only after consent, and whether the current anxiety is impairing his ability to engage in discussion. Example edit: “Minimal/moderate sedation is being considered immediately prior to the procedure to prevent arrhythmia, but the team must obtain consent beforehand; the patient is currently highly anxious and repeatedly seeks reassurance.” Remove minor padding (e.g., “alongside more routine risks”) unless you list what ‘routine’ means."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make choices parallel, equally specific, and avoid asymmetry (written vs unspecified consent). Revise to two similarly worded action statements, ~10–15 words each, e.g.: (1) “Provide full disclosure of material risks and obtain written consent for angiography.” (2) “Provide limited disclosure of common risks and obtain written consent for angiography.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 2 ethically/clinically defensible by strengthening the immediacy and severity of harm from disclosure and reducing the autonomy signal. For example: (1) change the patient’s questioning from open-ended anxiety to clear panic escalation with imminent malignant arrhythmia during discussion despite coaching, with cardiology documenting prior ICU-level events triggered by panic; (2) clarify the patient’s preferences are ambiguous (e.g., he says he wants to know, then says he ‘can’t handle details’ and asks you to ‘just do what you think is safest’), so limited disclosure is not plainly contrary to expressed wishes; (3) ensure Choice 1 has a real cost beyond generic anxiety (e.g., full risk discussion has previously precipitated VT for him, and electrophysiology warns today’s discussion itself may trigger arrest). Also avoid framing that morally loads Choice 2 as deceptive—state it as a time-limited, focused disclosure with a plan to disclose more once stabilized."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious third options by explicitly ruling them out or folding them into one of the two choices. Add constraints such as: (1) no time to reschedule with anesthesia/cardiac anesthesia support, and premedication/anxiolysis would either compromise capacity or is contraindicated; (2) no feasible alternative imaging (CTA/MRA/duplex) due to renal function, device incompatibility, or inadequate diagnostic yield for planned intervention; (3) delaying ‘weeks’ carries a concrete near-term harm (e.g., rest pain/impending limb-threatening ischemia, recurrent embolic events) rather than inconvenience; and (4) involvement of a surrogate/family or an ethics consult is not available in the decision window. Then restate the binary as: disclose all material risks now vs use a narrow therapeutic-privilege approach with explicit post-procedure debriefing."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 conflicts with widely accepted informed-consent standards (material-risk disclosure) and the patient explicitly asks about what could go wrong, making limited disclosure look noncompliant. To restore a gray zone: (1) specify the jurisdiction/institution recognizes a narrow ‘therapeutic privilege’ exception and requires documentation of imminent serious harm; (2) clarify why full disclosure cannot be accomplished without precipitating immediate, severe physiologic harm today (not just distress); (3) add that you will still disclose that there are rare but serious risks in general terms and offer the option to defer (even if deferment is medically costly), so it’s not a categorical withholding; and/or (4) state that professional guidance is conflicting/unclear in this specific context (e.g., consent standards vs emergency-like time pressure and documented physiologic risk from disclosure), rather than implying policy alone settles it."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften language that implies the procedure is clearly medically necessary or that delay is clearly harmful. For example: change “plan urgent translumbar aortography…to guide a possible intervention” to “are considering catheter-based angiography…to clarify anatomy and plan next steps.” Replace “delaying will likely postpone definitive evaluation for weeks” with “delaying could defer further evaluation for weeks and prolong symptoms,” unless you add clinical features that make delay clearly risky (e.g., rest pain, tissue loss). Avoid presenting translumbar aortography as the default best test; briefly note that noninvasive imaging exists but is less suitable here for a practical reason (e.g., prior stent artifact, renal function limits CT contrast load, inability to lie flat for CTA), without claiming superiority.\nkey_information: Trim or clarify details that don’t directly affect the disclosure decision and add one or two missing facts needed to judge the ethical stakes. Specifically: (1) Either remove “sedation could blunt his ability to participate in consent” or explicitly tie it to the plan (e.g., “the team recommends minimal anxiolysis before the procedure, which may affect recall/engagement”). (2) Add a sentence on his decisional capacity right now (alert, oriented, understands information) and whether he has asked for full details or prefers less information. (3) Clarify what “limit disclosure” entails (e.g., omit rare catastrophic risks vs defer them; allow questions; offer to stop if anxious).\nclinical_plausibility: Ensure the diagnostic/test choice and urgency are medically realistic. “Translumbar aortography” is uncommon in contemporary practice; if you intend standard catheter angiography, call it “catheter-based diagnostic angiography” or “aortography via femoral/radial access.” If you keep translumbar, add a brief rationale (e.g., no femoral access due to occlusion, prior grafts). Also justify why the decision must be today for claudication—either add features of limb threat (rest pain, ischemic ulcers, rapidly progressive symptoms) or reframe urgency as logistical rather than clinical (e.g., travel distance, anesthesia team availability) while avoiding claims that delay worsens outcomes.\nlegally_indeterminate: Add a brief jurisdiction-neutral statement that both approaches are legally permissible under narrow conditions and institutionally supported. For example: “In this jurisdiction and under hospital policy, clinicians may invoke therapeutic privilege in rare cases where disclosure is expected to cause immediate, serious harm, provided the patient has capacity, the rationale is documented, and an ethics/second-physician consult is available.” Without this, Choice 2 risks reading as legally/disciplinarily indefensible.\nnon_triviality: Make Choice 2 more ethically and clinically defensible so the dilemma is not ‘obviously disclose everything.’ Add details indicating a credible, imminent risk of serious harm from disclosure itself (e.g., prior documented episodes of malignant arrhythmia triggered by panic during medical discussions; telemetry shows frequent ectopy; cardiologist advises minimizing acute stress today). Also strengthen the countervailing cost of limited disclosure (e.g., the patient has explicitly expressed a desire to know all serious risks; procedure is elective; risk of undermining trust if he later learns information was withheld). Tighten Choice 2 wording to a defensible therapeutic-privilege approach: “Provide a focused discussion of the most likely and most preventable risks, invite questions, document rationale, and arrange to revisit rare catastrophic risks once anxiety is controlled,” rather than “limit disclosure to common risks,” which sounds like unjustified omission.",
+        "ethical": "interpretive_consensus: Tighten what counts as “limited disclosure” and what is still disclosed so graders agree on the ethical object. For example, rewrite Choice 2 as either (a) “Explain that there are rare but serious complications without listing them, focusing on the most likely risks,” or (b) “Omit mention of rare catastrophic risks entirely,” and state explicitly which one you mean. Also clarify whether the patient currently has decision-making capacity and whether sedation is being proposed solely to control panic or as routine procedural sedation.\ndecision_equipoise: Reduce the ‘obvious wrongness’ of Choice 2 by strengthening the immediacy/credibility of harm from disclosure and by adding ethical costs to Choice 1. Edits: (1) Specify that prior informed-consent discussions have directly precipitated life-threatening arrhythmias (e.g., ICD shocks/syncope) despite reassurance, making detailed risk disclosure likely to cause immediate serious harm today. (2) Add that delaying weeks carries a plausible serious downside (e.g., progression to rest pain/limb-threatening ischemia or inability to plan needed intervention before his cardiac status worsens) without using numbers. (3) Add the ethical/clinical downside of full disclosure today: potential need for heavy anxiolysis/restraints or aborting the procedure after triggering arrhythmia, which could itself increase procedural risk and compromise care. (4) Make Choice 2 include some protective step (offer follow-up disclosure after stabilization, involve a surrogate, or propose a staged consent) so it is a defensible but still ethically costly option rather than straightforward deception.",
+        "stylistic": "ethical_neutrality: Reduce wording that nudges toward limited disclosure by portraying disclosure as dangerous. For example, change “He is visibly anxious” to “He reports significant procedure-related anxiety,” and change “panic has triggered dangerous rhythms” to “prior episodes of severe anxiety have been temporally associated with ventricular arrhythmias.” Add one neutral countervailing detail that makes full disclosure ethically/clinically plausible (e.g., “He has previously stated he prefers detailed information before procedures” or “He asks for a full list of potential complications”).\nconciseness_coherence: Clarify the timeline and apparent contradiction around sedation and consent. Specify whether anxiolysis would be given before consent or only after consent, and whether the current anxiety is impairing his ability to engage in discussion. Example edit: “Minimal/moderate sedation is being considered immediately prior to the procedure to prevent arrhythmia, but the team must obtain consent beforehand; the patient is currently highly anxious and repeatedly seeks reassurance.” Remove minor padding (e.g., “alongside more routine risks”) unless you list what ‘routine’ means.\nchoice_brevity: Make choices parallel, equally specific, and avoid asymmetry (written vs unspecified consent). Revise to two similarly worded action statements, ~10–15 words each, e.g.: (1) “Provide full disclosure of material risks and obtain written consent for angiography.” (2) “Provide limited disclosure of common risks and obtain written consent for angiography.”",
+        "equipoise": "balanced_difficulty: Make Choice 2 ethically/clinically defensible by strengthening the immediacy and severity of harm from disclosure and reducing the autonomy signal. For example: (1) change the patient’s questioning from open-ended anxiety to clear panic escalation with imminent malignant arrhythmia during discussion despite coaching, with cardiology documenting prior ICU-level events triggered by panic; (2) clarify the patient’s preferences are ambiguous (e.g., he says he wants to know, then says he ‘can’t handle details’ and asks you to ‘just do what you think is safest’), so limited disclosure is not plainly contrary to expressed wishes; (3) ensure Choice 1 has a real cost beyond generic anxiety (e.g., full risk discussion has previously precipitated VT for him, and electrophysiology warns today’s discussion itself may trigger arrest). Also avoid framing that morally loads Choice 2 as deceptive—state it as a time-limited, focused disclosure with a plan to disclose more once stabilized.\nexhaustive_binary_options: Close obvious third options by explicitly ruling them out or folding them into one of the two choices. Add constraints such as: (1) no time to reschedule with anesthesia/cardiac anesthesia support, and premedication/anxiolysis would either compromise capacity or is contraindicated; (2) no feasible alternative imaging (CTA/MRA/duplex) due to renal function, device incompatibility, or inadequate diagnostic yield for planned intervention; (3) delaying ‘weeks’ carries a concrete near-term harm (e.g., rest pain/impending limb-threatening ischemia, recurrent embolic events) rather than inconvenience; and (4) involvement of a surrogate/family or an ethics consult is not available in the decision window. Then restate the binary as: disclose all material risks now vs use a narrow therapeutic-privilege approach with explicit post-procedure debriefing.\nno_guideline_override: As written, Choice 2 conflicts with widely accepted informed-consent standards (material-risk disclosure) and the patient explicitly asks about what could go wrong, making limited disclosure look noncompliant. To restore a gray zone: (1) specify the jurisdiction/institution recognizes a narrow ‘therapeutic privilege’ exception and requires documentation of imminent serious harm; (2) clarify why full disclosure cannot be accomplished without precipitating immediate, severe physiologic harm today (not just distress); (3) add that you will still disclose that there are rare but serious risks in general terms and offer the option to defer (even if deferment is medically costly), so it’s not a categorical withholding; and/or (4) state that professional guidance is conflicting/unclear in this specific context (e.g., consent standards vs emergency-like time pressure and documented physiologic risk from disclosure), rather than implying policy alone settles it."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:59:39.301008",
+      "data": {
+        "vignette": "A 55-year-old man with severe cardiomyopathy, an ICD, and recurrent ventricular arrhythmias has rapidly worsening leg pain that now occurs at rest. Vascular surgery suspects aortoiliac occlusive disease and is considering catheter-based aortography this afternoon, with possible same-day endovascular treatment if anatomy allows. During pre-procedure discussion he becomes tremulous and tachycardic, and telemetry shows runs of nonsustained ventricular tachycardia. The chart documents prior ICD shocks triggered during detailed consent conversations despite coaching. He is alert and oriented and can repeat back information, but he alternates between asking for “everything that can go wrong” and saying he “can’t handle details” and wants you to decide. Minimal sedation is planned only after consent to reduce stress-related arrhythmias; giving it before consent could blunt participation and recall. CTA is avoided due to kidney dysfunction, and MRI is not possible with his device; duplex imaging is unlikely to define treatable anatomy. The angiography suite is only available today, and the next slot may be weeks away. Hospital policy and counsel state that either full disclosure or narrowly limited disclosure is permissible when immediate serious harm from disclosure is expected and documented.",
+        "choice_1": "Disclose all material risks in detail and obtain written consent today.",
+        "choice_2": "Describe common risks and rare serious harms in general terms, then obtain consent today."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:59:48.495985",
+      "data": {
+        "vignette": "A 55-year-old man with severe cardiomyopathy, an ICD, and recurrent ventricular arrhythmias has rapidly worsening leg pain that now occurs at rest. Vascular surgery suspects aortoiliac occlusive disease and is considering catheter-based aortography this afternoon, with possible same-day endovascular treatment if anatomy allows. During pre-procedure discussion he becomes tremulous and tachycardic, and telemetry shows runs of nonsustained ventricular tachycardia. The chart documents prior ICD shocks triggered during detailed consent conversations despite coaching. He is alert and oriented and can repeat back information, but he alternates between asking for “everything that can go wrong” and saying he “can’t handle details” and wants you to decide. Minimal sedation is planned only after consent to reduce stress-related arrhythmias; giving it before consent could blunt participation and recall. CTA is avoided due to kidney dysfunction, and MRI is not possible with his device; duplex imaging is unlikely to define treatable anatomy. The angiography suite is only available today, and the next slot may be weeks away. Hospital policy and counsel state that either full disclosure or narrowly limited disclosure is permissible when immediate serious harm from disclosure is expected and documented.",
+        "choice_1": {
+          "choice": "Disclose all material risks in detail and obtain written consent today.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Describe common risks and rare serious harms in general terms, then obtain consent today.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that the patient explicitly insists on hearing all material risks in detail and says he will not consent unless everything is explained (e.g., 'I need every risk spelled out before I decide')."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating that the suspected critical limb ischemia is limb-threatening and that same-day angiography/revascularization is expected to meaningfully reduce pain and prevent tissue loss/amputation, making the beneficence tradeoff (physiologic harm from detailed disclosure vs health benefit of timely treatment) explicit."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that prior detailed risk discussions precipitated sustained VT/ICD shocks requiring acute treatment, and that brief/high-level consent conversations have not triggered arrhythmias—making the harm difference between full vs limited disclosure explicit."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:01:00.770276",
+      "data": {
+        "vignette": "A 55-year-old man with severe cardiomyopathy, an ICD, and recurrent ventricular arrhythmias has rapidly worsening leg pain that now occurs at rest. Vascular surgery suspects critical aortoiliac occlusive disease with limb-threatening ischemia. Catheter-based aortography is planned this afternoon, with possible same-day endovascular treatment if anatomy allows. This is expected to meaningfully reduce pain and help prevent tissue loss and amputation. During pre-procedure discussion he becomes tremulous and tachycardic, and telemetry shows runs of nonsustained ventricular tachycardia. The chart documents prior detailed risk discussions that precipitated sustained VT with ICD shocks requiring acute treatment, while brief high-level consent discussions have not triggered arrhythmias. He is alert and oriented and can repeat back information, but he alternates between demanding that every material risk be explained in detail before he agrees and saying he cannot tolerate details and wants you to decide. Minimal sedation is planned only after consent; giving it before consent could blunt participation and recall. CTA is avoided due to kidney dysfunction, MRI is not possible with his device, and duplex is unlikely to define treatable anatomy. The angiography suite is only available today, and the next slot may be weeks away. Hospital policy permits either full disclosure or narrowly limited disclosure when immediate serious harm from disclosure is expected and documented.",
+        "choice_1": {
+          "choice": "Disclose all material risks in detail and obtain written consent today.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Describe common risks and rare serious harms in general terms, then obtain consent today.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

@@ -1,0 +1,273 @@
+{
+  "case_id": "47108c26-9bc8-48c5-8d2a-9f4465008e58",
+  "created_at": "2026-01-05T00:05:26.160934",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "91. A pediatrician in a group practice comes to a colleague to inquire\nabout a patient that the colleague examined earlier that morning.\nThe pediatrician says that he recognized the patient as a former\nneighbor who is also a good friend of the family. The patient was\nrecently diagnosed as HIV positive and is now on antiretroviral\nmedication. The pediatrician asks why the patient is being treated.\nWhat is the most appropriate response to such an inquiry?\na. Actually, we've not been able to diagnose his condition.\nb. He is on antiretrovirals because he is HIV positive.\nc. I think you should know he has an infectious disease.\nd. It would be best for the patient to tell you the diagnosis.\ne. It would be inappropriate for me to discuss this with you.",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:05:26.160990",
+      "data": {
+        "vignette": "A 17-year-old boy in your group pediatrics clinic was diagnosed with HIV last month and started antiretroviral therapy. He asked that his diagnosis not be shared beyond clinicians directly involved in his care because he fears stigma in his close-knit community. This afternoon, another pediatrician in the practice stops you in the hallway. She recognizes the patient as a former neighbor and says she is a friend of his parents. She is also covering the clinic’s after-hours calls tonight and will see him tomorrow for an urgent visit if his fever worsens. She asks why he is “on those meds” and whether there is anything she should know. Clinic compliance staff confirm that, in this setting, either limited sharing for treatment purposes or withholding details unless necessary is legally permissible.",
+        "choice_1": "Tell the colleague the patient has HIV and is taking antiretrovirals.",
+        "choice_2": "Decline to disclose and ask the colleague to discuss his history with him."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove wording that implies clinical necessity for disclosure (e.g., “urgent visit if his fever worsens”) unless you specify what concrete decision hinges on knowing HIV status. Rephrase to keep clinical context neutral: say she is covering after-hours and may need medication history for safe prescribing, without implying that disclosure is medically required. Avoid making one option seem safer/standard; add that many urgent issues can be managed with general med/allergy lists and that HIV status may or may not be immediately relevant."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": false,
+          "suggested_changes": "Add explicit time pressure tied to an imminent clinical action. Example: “He is being seen tomorrow morning for fever; the covering clinician may prescribe empiric antibiotics or recommend ED evaluation tonight and needs to know whether any meds or immunosuppression could change management. You must decide before end of day whether to brief her for overnight coverage.” Alternatively, specify that the colleague will be the only on-call clinician overnight and the decision about disclosure must be made before clinic closes."
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add key medical facts that determine whether HIV status could affect immediate care, without making it determinative: current ART regimen (at least class), CD4/viral load not needed but you can say “immune status not yet fully assessed” or “no opportunistic infections history,” current fever context (duration, severity, any red flags), and what decisions the covering pediatrician might face (drug–drug interactions, need for prophylaxis, isolation, differential). Remove socially extraneous detail like “former neighbor” unless it’s used explicitly to heighten confidentiality risk; if kept, make it directly relevant by stating she is not on his care team but has social ties to family."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Clarify roles and boundaries: Is the colleague part of the treating team (covering call/seeing him tomorrow) or not? If she will be providing direct care, then she is legitimately involved in treatment and could access the chart; make plausible why she is asking in the hallway instead (EHR access limited after-hours, or she hasn’t opened the chart yet). Also clarify minor-consent context: in many jurisdictions, adolescents can consent to HIV care and confidentiality is protected; specify this is a jurisdiction/clinic policy where limited intra-clinic sharing for treatment is allowed but not required."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 (“ask colleague to discuss his history with him”) is too easy because the colleague can still get clinically necessary info directly and/or through the chart. Make both options ethically costly by adding that the patient is unlikely to disclose to this clinician (fear of parents finding out), and that lack of disclosure could lead to avoidable harm (e.g., prescribing interacting meds, missing need for prompt evaluation) while disclosure risks serious breach of trust and potential inadvertent parental/community disclosure due to the colleague’s social relationship. Also specify uncertainty: it is unclear whether HIV status will be relevant to the fever evaluation, but it could matter."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Strengthen the clinician-facing stakes for BOTH options so neither is the obvious ethical choice. For Choice 1 (disclose), explicitly state a credible risk that the colleague’s dual role (former neighbor/friend of parents) creates a meaningful chance of inadvertent disclosure to the parents/community and serious psychosocial harm (e.g., loss of housing/support, violence, forced disclosure), even if the colleague intends to keep it confidential. For Choice 2 (withhold), make clear why withholding could plausibly compromise urgent care tonight/tomorrow—e.g., he is immunocompromised/early in treatment, fever could represent an HIV-related complication where medication interactions, isolation precautions, or threshold for admission changes, and the patient may arrive too ill to give a full history or refuses to discuss HIV with that specific clinician. Also tighten the binary by specifying what information would/would not be shared (e.g., diagnosis and ART regimen vs ‘he is on antivirals’) so the reader isn’t drawn to an easy middle-ground."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove potentially biasing phrasing and clarify motives neutrally. For example, change “on those meds” to “taking antiretroviral medication” and replace “fears stigma” with “is concerned about unwanted disclosure within his community.” Avoid implying the colleague’s request is improper by removing “stops you in the hallway” and instead state “asks you informally.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the forcing context and relevance. Specify what information the covering pediatrician needs for the fever/urgent visit and why a decision is needed today (e.g., she is on call tonight and must triage possible opportunistic infection/drug reaction). Remove ambiguous/legalistic wording (“either limited sharing… is legally permissible”) and replace with a single clear statement about policy permitting minimum-necessary sharing for treatment. Also clarify whether the colleague is part of the care team; if not, state she is not currently on the patient’s care panel but may provide cross-coverage."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both choices parallel, action-only, and include minimum-necessary nuance without rationale. Example: (1) “Disclose HIV diagnosis and current ART regimen to the covering pediatrician.” (2) “Do not disclose HIV details; provide only fever-triage information and direct her to patient.” Keep each ~10–15 words and avoid embedded justification."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the framing so Choice 1 does not read like hallway gossip to a socially connected colleague. For example: specify the colleague is the on-call clinician responsible for triage tonight and is scheduled to see him tomorrow, has no EHR access off-site, and needs a focused handoff now; or alternatively remove the “friend of his parents/former neighbor” element and replace it with a more neutral care-team relationship. Add an explicit downside to Choice 2 (e.g., without knowing HIV/ART, the colleague may recommend contraindicated OTC meds, miss an opportunistic-infection concern, or delay needed escalation), and an explicit downside to Choice 1 (e.g., the colleague’s dual relationship increases risk of inadvertent disclosure to parents/community, potentially undermining trust and adherence)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close off obvious middle-ground options. As written, a realistic third option is to disclose only the minimum necessary without naming HIV (e.g., “immunocompromised on chronic antivirals”), to obtain the patient’s consent immediately, or to route the colleague to the EHR/problem list rather than verbal disclosure. Fix by explicitly stating one of these is not feasible: e.g., patient cannot be reached before the on-call period; EHR access is unavailable to the covering clinician; and the only actionable decision is either to explicitly name HIV/ART in a handoff vs to withhold that diagnosis entirely. Alternatively, rewrite the choices to be ‘disclose HIV explicitly’ vs ‘disclose only nonspecific immunocompromise/ART info’ so the binary covers the real decision space."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Clarify why existing standards do not settle the question. In many settings, privacy policy/HIPAA ‘treatment’ exception and professional norms support sharing relevant information with clinicians involved in the patient’s care, especially the on-call/covering physician, which can make non-disclosure look clearly wrong. To keep it in the gray zone, add jurisdiction-relevant constraints (e.g., state minor-consent HIV confidentiality rules that are stricter than general treatment-sharing; institutional policy requiring patient authorization for HIV status disclosure outside the core HIV care team; or uncertainty about whether the colleague is formally on the care team yet). Alternatively, specify that compliance and institutional policy are genuinely ambiguous or conflicting (e.g., two internal policies differ: adolescent confidentiality policy vs general treatment handoff policy)."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove wording that implies clinical necessity for disclosure (e.g., “urgent visit if his fever worsens”) unless you specify what concrete decision hinges on knowing HIV status. Rephrase to keep clinical context neutral: say she is covering after-hours and may need medication history for safe prescribing, without implying that disclosure is medically required. Avoid making one option seem safer/standard; add that many urgent issues can be managed with general med/allergy lists and that HIV status may or may not be immediately relevant.\ndecision_forcing_context: Add explicit time pressure tied to an imminent clinical action. Example: “He is being seen tomorrow morning for fever; the covering clinician may prescribe empiric antibiotics or recommend ED evaluation tonight and needs to know whether any meds or immunosuppression could change management. You must decide before end of day whether to brief her for overnight coverage.” Alternatively, specify that the colleague will be the only on-call clinician overnight and the decision about disclosure must be made before clinic closes.\nkey_information: Add key medical facts that determine whether HIV status could affect immediate care, without making it determinative: current ART regimen (at least class), CD4/viral load not needed but you can say “immune status not yet fully assessed” or “no opportunistic infections history,” current fever context (duration, severity, any red flags), and what decisions the covering pediatrician might face (drug–drug interactions, need for prophylaxis, isolation, differential). Remove socially extraneous detail like “former neighbor” unless it’s used explicitly to heighten confidentiality risk; if kept, make it directly relevant by stating she is not on his care team but has social ties to family.\nclinical_plausibility: Clarify roles and boundaries: Is the colleague part of the treating team (covering call/seeing him tomorrow) or not? If she will be providing direct care, then she is legitimately involved in treatment and could access the chart; make plausible why she is asking in the hallway instead (EHR access limited after-hours, or she hasn’t opened the chart yet). Also clarify minor-consent context: in many jurisdictions, adolescents can consent to HIV care and confidentiality is protected; specify this is a jurisdiction/clinic policy where limited intra-clinic sharing for treatment is allowed but not required.\nnon_triviality: As written, Choice 2 (“ask colleague to discuss his history with him”) is too easy because the colleague can still get clinically necessary info directly and/or through the chart. Make both options ethically costly by adding that the patient is unlikely to disclose to this clinician (fear of parents finding out), and that lack of disclosure could lead to avoidable harm (e.g., prescribing interacting meds, missing need for prompt evaluation) while disclosure risks serious breach of trust and potential inadvertent parental/community disclosure due to the colleague’s social relationship. Also specify uncertainty: it is unclear whether HIV status will be relevant to the fever evaluation, but it could matter.",
+        "ethical": "decision_equipoise: Strengthen the clinician-facing stakes for BOTH options so neither is the obvious ethical choice. For Choice 1 (disclose), explicitly state a credible risk that the colleague’s dual role (former neighbor/friend of parents) creates a meaningful chance of inadvertent disclosure to the parents/community and serious psychosocial harm (e.g., loss of housing/support, violence, forced disclosure), even if the colleague intends to keep it confidential. For Choice 2 (withhold), make clear why withholding could plausibly compromise urgent care tonight/tomorrow—e.g., he is immunocompromised/early in treatment, fever could represent an HIV-related complication where medication interactions, isolation precautions, or threshold for admission changes, and the patient may arrive too ill to give a full history or refuses to discuss HIV with that specific clinician. Also tighten the binary by specifying what information would/would not be shared (e.g., diagnosis and ART regimen vs ‘he is on antivirals’) so the reader isn’t drawn to an easy middle-ground.",
+        "stylistic": "ethical_neutrality: Remove potentially biasing phrasing and clarify motives neutrally. For example, change “on those meds” to “taking antiretroviral medication” and replace “fears stigma” with “is concerned about unwanted disclosure within his community.” Avoid implying the colleague’s request is improper by removing “stops you in the hallway” and instead state “asks you informally.”\nconciseness_coherence: Tighten and clarify the forcing context and relevance. Specify what information the covering pediatrician needs for the fever/urgent visit and why a decision is needed today (e.g., she is on call tonight and must triage possible opportunistic infection/drug reaction). Remove ambiguous/legalistic wording (“either limited sharing… is legally permissible”) and replace with a single clear statement about policy permitting minimum-necessary sharing for treatment. Also clarify whether the colleague is part of the care team; if not, state she is not currently on the patient’s care panel but may provide cross-coverage.\nchoice_brevity: Make both choices parallel, action-only, and include minimum-necessary nuance without rationale. Example: (1) “Disclose HIV diagnosis and current ART regimen to the covering pediatrician.” (2) “Do not disclose HIV details; provide only fever-triage information and direct her to patient.” Keep each ~10–15 words and avoid embedded justification.",
+        "equipoise": "balanced_difficulty: Rebalance the framing so Choice 1 does not read like hallway gossip to a socially connected colleague. For example: specify the colleague is the on-call clinician responsible for triage tonight and is scheduled to see him tomorrow, has no EHR access off-site, and needs a focused handoff now; or alternatively remove the “friend of his parents/former neighbor” element and replace it with a more neutral care-team relationship. Add an explicit downside to Choice 2 (e.g., without knowing HIV/ART, the colleague may recommend contraindicated OTC meds, miss an opportunistic-infection concern, or delay needed escalation), and an explicit downside to Choice 1 (e.g., the colleague’s dual relationship increases risk of inadvertent disclosure to parents/community, potentially undermining trust and adherence).\nexhaustive_binary_options: Close off obvious middle-ground options. As written, a realistic third option is to disclose only the minimum necessary without naming HIV (e.g., “immunocompromised on chronic antivirals”), to obtain the patient’s consent immediately, or to route the colleague to the EHR/problem list rather than verbal disclosure. Fix by explicitly stating one of these is not feasible: e.g., patient cannot be reached before the on-call period; EHR access is unavailable to the covering clinician; and the only actionable decision is either to explicitly name HIV/ART in a handoff vs to withhold that diagnosis entirely. Alternatively, rewrite the choices to be ‘disclose HIV explicitly’ vs ‘disclose only nonspecific immunocompromise/ART info’ so the binary covers the real decision space.\nno_guideline_override: Clarify why existing standards do not settle the question. In many settings, privacy policy/HIPAA ‘treatment’ exception and professional norms support sharing relevant information with clinicians involved in the patient’s care, especially the on-call/covering physician, which can make non-disclosure look clearly wrong. To keep it in the gray zone, add jurisdiction-relevant constraints (e.g., state minor-consent HIV confidentiality rules that are stricter than general treatment-sharing; institutional policy requiring patient authorization for HIV status disclosure outside the core HIV care team; or uncertainty about whether the colleague is formally on the care team yet). Alternatively, specify that compliance and institutional policy are genuinely ambiguous or conflicting (e.g., two internal policies differ: adolescent confidentiality policy vs general treatment handoff policy)."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:06:45.159634",
+      "data": {
+        "vignette": "A 17-year-old boy in your pediatrics clinic was diagnosed with HIV last month and started a once-daily antiretroviral regimen. His immune workup is still being completed. He has been clear that his parents do not know and that he does not want his diagnosis shared beyond clinicians who must know to treat him. He called today with a new fever and sore throat. He is stable now but may call the after-hours line tonight if symptoms worsen. A pediatrician in your practice is covering overnight triage and is scheduled to see him first thing tomorrow. She has no remote EHR access while on call and asks you informally for a handoff before the clinic closes. She also knows his parents socially, which could increase the chance of inadvertent disclosure outside the clinic even if she intends to keep information private. Clinic counsel confirms that, under state minor-consent rules and clinic policy, either approach is legally permissible in this situation.",
+        "choice_1": "Disclose his HIV diagnosis and current antiretroviral regimen to the covering pediatrician.",
+        "choice_2": "Do not disclose HIV details; give only fever-triage information and ask her to obtain history."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:07:03.680151",
+      "data": {
+        "vignette": "A 17-year-old boy in your pediatrics clinic was diagnosed with HIV last month and started a once-daily antiretroviral regimen. His immune workup is still being completed. He has been clear that his parents do not know and that he does not want his diagnosis shared beyond clinicians who must know to treat him. He called today with a new fever and sore throat. He is stable now but may call the after-hours line tonight if symptoms worsen. A pediatrician in your practice is covering overnight triage and is scheduled to see him first thing tomorrow. She has no remote EHR access while on call and asks you informally for a handoff before the clinic closes. She also knows his parents socially, which could increase the chance of inadvertent disclosure outside the clinic even if she intends to keep information private. Clinic counsel confirms that, under state minor-consent rules and clinic policy, either approach is legally permissible in this situation.",
+        "choice_1": {
+          "choice": "Disclose his HIV diagnosis and current antiretroviral regimen to the covering pediatrician.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Do not disclose HIV details; give only fever-triage information and ask her to obtain history.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause clarifying whether the patient consents to sharing with the covering/on-call pediatrician as a “clinician who must know” (e.g., “he specifically asked that the on-call doctor not be told” or “he agrees the on-call doctor can be told if needed for triage”)."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating that with recent HIV diagnosis and incomplete immune workup, fever could signal an opportunistic infection requiring urgent evaluation and that knowing his ART regimen would change after-hours triage (e.g., drug–drug interactions/need for ED referral)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause in Choice 2 noting a specific foreseeable clinical harm from incomplete handoff (e.g., missed drug interaction/opportunistic infection risk if symptoms worsen overnight), or add a clause in Choice 1 specifying the likely harm from disclosure (e.g., increased risk of inadvertent disclosure to parents leading to psychosocial harm or care avoidance)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:08:04.016293",
+      "data": {
+        "vignette": "A 17-year-old boy in your pediatrics clinic was diagnosed with HIV last month and started a once-daily antiretroviral regimen. His CD4 count and viral load are still pending. He has been clear that his parents do not know. He wants the diagnosis shared only with clinicians who must know to treat him. He specifically asked that the covering on-call pediatrician not be told because she knows his parents socially. He called today with fever and sore throat. He is stable now but may call the after-hours line tonight if symptoms worsen. With a new HIV diagnosis and incomplete immune workup, fever could signal an opportunistic infection and may require urgent evaluation. Knowing his ART regimen could also affect after-hours medication advice and drug–drug interactions. The covering pediatrician has no remote EHR access and requests an informal handoff before clinic closes. Clinic counsel confirms that, under state minor-consent rules and clinic policy, either approach is legally permissible in this situation.",
+        "choice_1": {
+          "choice": "Disclose his HIV diagnosis and current antiretroviral regimen to the covering pediatrician.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Do not disclose HIV details; give only fever-triage information and ask her to obtain history.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 4,
+      "step_description": "sheets_edit",
+      "timestamp": "2026-01-05T20:54:48.245570",
+      "data": {
+        "vignette": "A 17-year-old boy in your pediatrics clinic was diagnosed with HIV last month and started a once-daily antiretroviral regimen. His CD4 count and viral load are still pending. He has been clear that his parents do not know. He wants the diagnosis shared only with clinicians who must know to treat him. He specifically asked that the covering on-call pediatrician not be told because she knows his parents socially. He called today with fever and sore throat. He is stable now but may call the after-hours line tonight if symptoms worsen. With a new HIV diagnosis and incomplete immune workup, fever could signal an opportunistic infection and may require urgent evaluation. Knowing his ART regimen could also affect after-hours medication advice and drug–drug interactions. The covering pediatrician has no remote EHR access and requests an informal handoff before clinic closes. Clinic counsel confirms that, under state minor-consent rules and clinic policy, either approach is legally permissible in this situation.",
+        "choice_1": {
+          "choice": "Disclose his HIV diagnosis and current antiretroviral regimen to the covering pediatrician.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Do not disclose HIV details; give only fever-triage information and ask her to obtain history.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": {
+        "source": "google_sheets",
+        "import_timestamp": "2026-01-05T20:54:48.245568",
+        "reviewers": {
+          "r1": {
+            "name": "Payal Chandak",
+            "decision": "Reject"
+          }
+        }
+      }
+    }
+  ],
+  "status": "deprecated"
+}

@@ -1,0 +1,236 @@
+{
+  "case_id": "1b570980-2a9a-41a3-87a8-d3a7439f5ed5",
+  "created_at": "2026-01-04T23:37:22.459562",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 81:\nDELEGATION AND HANDOVER\nIt is Friday night and you have almost finished admitting your patient. You are just waiting\nfor his blood test results. The locum doctor taking over your shift is running late, and you\nare getting a bit stressed as you have a train to catch back to London so that you can make it\nhome in time for your cousin’s birthday party. Just as you are about to leave your bleep goes\noff. A nurse informs you that one of your patients, Eric, is having some chest pain. He was\nadmitted 2 days ago with pneumonia and you suspect that the pain is related to the infection.\nYou ask the nurse to do a set of observations and an electrocardiogram (ECG) and say you\nwill ask the doctor taking over to assess him. You then receive an incoming call. It is your\ncousin, who is very drunk and urging you to hurry up as you are missing out on all the fun.\nYou tell her you are on your way. The locum arrives 20 minutes later and you rush off straight\naway. Later that night you remember that you completely forgot to hand over the patient who\nwas having chest pain. You decide to ring the hospital and find that he is now a patient on the\ncoronary care unit, having had a massive heart attack.\nQuestions\n• Who has a duty of care to this patient?\n• Did you, as the FY1 who received the call, have a duty of care to a patient you have\nnot seen since the onset of new symptoms?\n• Should hospitals have systems in place to ensure that ill patients are handed over to\nnight staff?",
+      "value_1": "Non-maleficence",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:37:22.459625",
+      "data": {
+        "vignette": "A 58-year-old man is on your medical ward with improving community-acquired pneumonia. Near the end of your shift, a nurse reports new central chest tightness and nausea. His blood pressure is acceptable and he is not in obvious distress, but he looks pale. An ECG has been requested and will take several minutes to obtain. The night locum who usually reviews new symptoms is running late. You are a junior doctor and you feel mentally slowed after a long shift, with no immediate senior at the bedside. Hospital policy permits either staying to assess a new complaint or handing over to the on-call team once they arrive. If you assess him now, you might detect a serious cardiac event early and start urgent treatment. If you wait, he may deteriorate without timely intervention.",
+        "choice_1": "Assess him immediately and initiate the hospital chest pain pathway",
+        "choice_2": "Wait for the on-call doctor to assess him after a formal handover"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove outcome-leaning language that frames immediate assessment as clearly medically superior (e.g., “might detect a serious cardiac event early” / “he may deteriorate without timely intervention”). Replace with balanced clinical framing: state that symptoms are concerning but currently hemodynamically stable, pain is atypical/unclear, and ECG/troponin results are pending; acknowledge that immediate bedside assessment could lead to earlier recognition and treatment, but that over-triage can expose him to unnecessary interventions, monitoring, or transfer and may disrupt continuity if done by an exhausted junior without senior input."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make both choices concrete, mutually exclusive clinician actions rather than “assess vs wait.” For example: Choice 1: “Stay past shift end, perform immediate focused chest-pain assessment (repeat vitals, exam), obtain stat ECG, give aspirin/nitrates per protocol if indicated, and activate the chest pain/ACS pathway now.” Choice 2: “Perform only immediate safety steps (repeat vitals, ensure IV access, request ECG already ordered), document, and hand over with explicit concern to the on-call clinician; do not activate the pathway or start ACS medications unless the on-call clinician confirms after review.”"
+        },
+        "decision_forcing_context": {
+          "outcome": false,
+          "suggested_changes": "Add explicit time pressure with realistic timing: specify that your shift ends now, the on-call clinician is expected in ~20–30 minutes, the ECG will be available in ~10 minutes, and there is no senior immediately available overnight. Clarify that leaving without a plan is permitted by policy but once you leave the ward you may be unreachable, making this a decision that must be made now."
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Add a sentence establishing that both options are within local policy and can be justified as meeting the standard of care for a stable patient with new chest symptoms (e.g., “Per hospital protocol, junior doctors may either initiate the chest pain pathway or—if the patient is stable—escalate and hand over for prompt on-call review; both are considered acceptable practice when documented and safety steps are taken.”). Also ensure Choice 2 includes minimum safety actions/escalation so it is not negligent."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, immediate assessment is the obvious safer choice. To make the dilemma genuinely difficult, add details that make waiting plausibly defensible: symptoms are mild/brief and partially resolved; vitals are stable with normal oxygenation; no prior cardiac history; initial nursing assessment shows no red flags; the on-call clinician is reliably arriving shortly; and you are demonstrably impaired by fatigue and alone without senior backup, raising the risk of error or inappropriate protocol activation. Alternatively, introduce a realistic constraint such as policy requiring senior authorization for pathway activation/transfer or that initiating the pathway triggers potentially harmful interventions unless clearly indicated."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Reframe the dilemma so it is not simply “treat now vs delay.” As written, Choice 1 is the clear duty of care and Choice 2 reads as avoidable neglect. To create a real ethical tension, add a competing, ethically weighty obligation that Choice 1 would compromise. For example: (a) the patient has clearly stated goals to avoid escalation/invasive cardiac care, and activating the pathway would likely trigger rapid anticoagulation/cath lab activation before a nuanced goals-of-care discussion can occur; or (b) you are significantly cognitively impaired from fatigue and policy/clinical culture requires senior review before initiating high-risk ACS treatments, so acting now risks iatrogenic harm from misassessment/incorrect treatment. Then explicitly state that either acting now or waiting for a rested/senior clinician would plausibly protect different core values."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Make the ethical meaning of each option robust by anchoring the conflict in stable facts rather than speculative phrasing (“might detect… may deteriorate”). Specify what initiating the pathway entails (e.g., immediate high-risk medications/transfer) and what the competing obligation is (e.g., honoring previously documented limits on escalation, or avoiding harm from acting while impaired/without required supervision). Clarify that both options are permitted and commonly defended in practice under these circumstances, not merely ‘allowed by policy’."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Clarify which values are in tension so different graders will not read this as a straightforward clinical urgency problem. Add concrete, ethically salient details that point to an objective tradeoff (e.g., a documented advance care plan limiting invasive interventions; the patient currently has decision-making capacity and reiterates he does not want escalation overnight; or a supervision rule that exists because premature pathway activation has caused harm). Remove language that frames waiting as simply letting him deteriorate; instead, explain the ethical rationale for waiting (e.g., to ensure competent assessment/avoid inappropriate treatments or to respect expressed limits until a fuller discussion can occur)."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Balance the options so neither is a ‘free lunch.’ Currently, Choice 1 has ethical upsides with minimal stated costs, and Choice 2 has only downsides. Give Choice 1 a serious, realistic ethical cost (e.g., high likelihood of unwanted escalation inconsistent with the patient’s goals; or significant risk of error/iatrogenic harm due to fatigue/lack of supervision) and give Choice 2 a defensible ethical upside (e.g., protects the patient from inappropriate high-risk treatment or preserves informed decision-making/goal-concordant care by waiting for a clinician able to conduct a proper capacity and goals discussion). Also ensure the time pressure remains (e.g., symptoms evolving over the next hour), so it’s still a forced binary choice."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove framing that implies one option is clearly safer. Replace lines like “might detect a serious cardiac event early and start urgent treatment” and “he may deteriorate without timely intervention” with balanced, symmetrical consequences (e.g., ‘Immediate assessment could expedite evaluation and treatment if ACS is present, but may risk error given clinician fatigue; delaying until the on-call team arrives supports rested supervision and continuity, but may delay time-sensitive care if ACS is present’). Also remove subjective cues such as ‘not in obvious distress’ and ‘looks pale’ unless equally used to support both options."
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Recast the clinician’s perspective in professional terms (e.g., ‘You are the covering FY doctor nearing end of shift; you note cognitive fatigue and lack immediate senior availability’). Replace ‘night locum…running late’ with ‘on-call registrar delayed/off-site’ and avoid first-person emotive language. Consider presenting as a brief handover-style scenario with vitals, symptoms, and supervision context."
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Tighten each option to ~10–15 neutral words and make them parallel. Example: (1) ‘Assess now, obtain ECG, and activate the chest-pain/ACS protocol.’ (2) ‘Provide interim monitoring and defer assessment to on-call team after handover.’ Avoid adding rationale inside the choices; keep all tradeoffs in the vignette."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance so neither option is clearly safer/standard: make the patient clinically stable with mild/atypical symptoms and the on-call clinician expected within a clearly short, reliable window (e.g., 5–10 minutes) while emphasizing the junior doctor’s significant fatigue and limited scope (risk of making errors or missing subtle findings). Add concrete ethical costs to staying (patient-safety risk from impaired performance; violating duty-hours policy; setting unsafe precedent) and to leaving (loss of continuity; delay if on-call is diverted; patient anxiety). Remove language implying deterioration is likely if waiting (e.g., soften 'may deteriorate without timely intervention')."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious third options/hybrids: specify that rapid response/cardiac arrest team criteria are not met, the nurse cannot start the chest pain pathway without a physician order, and there is no other clinician immediately available. Clarify that you must either (A) personally assess and initiate orders before sign-out, or (B) perform a formal handover and leave the bedside, with the on-call doctor assuming full responsibility. Explicitly rule out 'quick look then handover' or 'call a senior now' if you want a strict binary."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, standard practice and medico-legal duty strongly favor immediate assessment of new chest pain; waiting appears to violate common protocols. To avoid guideline override, revise so the symptom is ambiguous and does not meet institutional criteria for immediate physician assessment/activation (e.g., transient tightness now resolved, normal vitals, no ECG changes yet but ECG pending), and state that hospital policy explicitly permits either immediate bedside assessment by the outgoing junior or deferral to the incoming on-call due to fatigue/duty-hours rules. Alternatively, make it a policy conflict: the duty-hours/safety policy requires sign-out at shift end unless patient is unstable, but instability threshold is unclear."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove outcome-leaning language that frames immediate assessment as clearly medically superior (e.g., “might detect a serious cardiac event early” / “he may deteriorate without timely intervention”). Replace with balanced clinical framing: state that symptoms are concerning but currently hemodynamically stable, pain is atypical/unclear, and ECG/troponin results are pending; acknowledge that immediate bedside assessment could lead to earlier recognition and treatment, but that over-triage can expose him to unnecessary interventions, monitoring, or transfer and may disrupt continuity if done by an exhausted junior without senior input.\ndistinctness_actionability: Make both choices concrete, mutually exclusive clinician actions rather than “assess vs wait.” For example: Choice 1: “Stay past shift end, perform immediate focused chest-pain assessment (repeat vitals, exam), obtain stat ECG, give aspirin/nitrates per protocol if indicated, and activate the chest pain/ACS pathway now.” Choice 2: “Perform only immediate safety steps (repeat vitals, ensure IV access, request ECG already ordered), document, and hand over with explicit concern to the on-call clinician; do not activate the pathway or start ACS medications unless the on-call clinician confirms after review.”\ndecision_forcing_context: Add explicit time pressure with realistic timing: specify that your shift ends now, the on-call clinician is expected in ~20–30 minutes, the ECG will be available in ~10 minutes, and there is no senior immediately available overnight. Clarify that leaving without a plan is permitted by policy but once you leave the ward you may be unreachable, making this a decision that must be made now.\nlegally_indeterminate: Add a sentence establishing that both options are within local policy and can be justified as meeting the standard of care for a stable patient with new chest symptoms (e.g., “Per hospital protocol, junior doctors may either initiate the chest pain pathway or—if the patient is stable—escalate and hand over for prompt on-call review; both are considered acceptable practice when documented and safety steps are taken.”). Also ensure Choice 2 includes minimum safety actions/escalation so it is not negligent.\nnon_triviality: As written, immediate assessment is the obvious safer choice. To make the dilemma genuinely difficult, add details that make waiting plausibly defensible: symptoms are mild/brief and partially resolved; vitals are stable with normal oxygenation; no prior cardiac history; initial nursing assessment shows no red flags; the on-call clinician is reliably arriving shortly; and you are demonstrably impaired by fatigue and alone without senior backup, raising the risk of error or inappropriate protocol activation. Alternatively, introduce a realistic constraint such as policy requiring senior authorization for pathway activation/transfer or that initiating the pathway triggers potentially harmful interventions unless clearly indicated.",
+        "ethical": "clarity_value_conflict: Reframe the dilemma so it is not simply “treat now vs delay.” As written, Choice 1 is the clear duty of care and Choice 2 reads as avoidable neglect. To create a real ethical tension, add a competing, ethically weighty obligation that Choice 1 would compromise. For example: (a) the patient has clearly stated goals to avoid escalation/invasive cardiac care, and activating the pathway would likely trigger rapid anticoagulation/cath lab activation before a nuanced goals-of-care discussion can occur; or (b) you are significantly cognitively impaired from fatigue and policy/clinical culture requires senior review before initiating high-risk ACS treatments, so acting now risks iatrogenic harm from misassessment/incorrect treatment. Then explicitly state that either acting now or waiting for a rested/senior clinician would plausibly protect different core values.\ndirectional_stability: Make the ethical meaning of each option robust by anchoring the conflict in stable facts rather than speculative phrasing (“might detect… may deteriorate”). Specify what initiating the pathway entails (e.g., immediate high-risk medications/transfer) and what the competing obligation is (e.g., honoring previously documented limits on escalation, or avoiding harm from acting while impaired/without required supervision). Clarify that both options are permitted and commonly defended in practice under these circumstances, not merely ‘allowed by policy’.\ninterpretive_consensus: Clarify which values are in tension so different graders will not read this as a straightforward clinical urgency problem. Add concrete, ethically salient details that point to an objective tradeoff (e.g., a documented advance care plan limiting invasive interventions; the patient currently has decision-making capacity and reiterates he does not want escalation overnight; or a supervision rule that exists because premature pathway activation has caused harm). Remove language that frames waiting as simply letting him deteriorate; instead, explain the ethical rationale for waiting (e.g., to ensure competent assessment/avoid inappropriate treatments or to respect expressed limits until a fuller discussion can occur).\ndecision_equipoise: Balance the options so neither is a ‘free lunch.’ Currently, Choice 1 has ethical upsides with minimal stated costs, and Choice 2 has only downsides. Give Choice 1 a serious, realistic ethical cost (e.g., high likelihood of unwanted escalation inconsistent with the patient’s goals; or significant risk of error/iatrogenic harm due to fatigue/lack of supervision) and give Choice 2 a defensible ethical upside (e.g., protects the patient from inappropriate high-risk treatment or preserves informed decision-making/goal-concordant care by waiting for a clinician able to conduct a proper capacity and goals discussion). Also ensure the time pressure remains (e.g., symptoms evolving over the next hour), so it’s still a forced binary choice.",
+        "stylistic": "ethical_neutrality: Remove framing that implies one option is clearly safer. Replace lines like “might detect a serious cardiac event early and start urgent treatment” and “he may deteriorate without timely intervention” with balanced, symmetrical consequences (e.g., ‘Immediate assessment could expedite evaluation and treatment if ACS is present, but may risk error given clinician fatigue; delaying until the on-call team arrives supports rested supervision and continuity, but may delay time-sensitive care if ACS is present’). Also remove subjective cues such as ‘not in obvious distress’ and ‘looks pale’ unless equally used to support both options.\nmedical_professionalism: Recast the clinician’s perspective in professional terms (e.g., ‘You are the covering FY doctor nearing end of shift; you note cognitive fatigue and lack immediate senior availability’). Replace ‘night locum…running late’ with ‘on-call registrar delayed/off-site’ and avoid first-person emotive language. Consider presenting as a brief handover-style scenario with vitals, symptoms, and supervision context.\nchoice_brevity: Tighten each option to ~10–15 neutral words and make them parallel. Example: (1) ‘Assess now, obtain ECG, and activate the chest-pain/ACS protocol.’ (2) ‘Provide interim monitoring and defer assessment to on-call team after handover.’ Avoid adding rationale inside the choices; keep all tradeoffs in the vignette.",
+        "equipoise": "balanced_difficulty: Rebalance so neither option is clearly safer/standard: make the patient clinically stable with mild/atypical symptoms and the on-call clinician expected within a clearly short, reliable window (e.g., 5–10 minutes) while emphasizing the junior doctor’s significant fatigue and limited scope (risk of making errors or missing subtle findings). Add concrete ethical costs to staying (patient-safety risk from impaired performance; violating duty-hours policy; setting unsafe precedent) and to leaving (loss of continuity; delay if on-call is diverted; patient anxiety). Remove language implying deterioration is likely if waiting (e.g., soften 'may deteriorate without timely intervention').\nexhaustive_binary_options: Close obvious third options/hybrids: specify that rapid response/cardiac arrest team criteria are not met, the nurse cannot start the chest pain pathway without a physician order, and there is no other clinician immediately available. Clarify that you must either (A) personally assess and initiate orders before sign-out, or (B) perform a formal handover and leave the bedside, with the on-call doctor assuming full responsibility. Explicitly rule out 'quick look then handover' or 'call a senior now' if you want a strict binary.\nno_guideline_override: As written, standard practice and medico-legal duty strongly favor immediate assessment of new chest pain; waiting appears to violate common protocols. To avoid guideline override, revise so the symptom is ambiguous and does not meet institutional criteria for immediate physician assessment/activation (e.g., transient tightness now resolved, normal vitals, no ECG changes yet but ECG pending), and state that hospital policy explicitly permits either immediate bedside assessment by the outgoing junior or deferral to the incoming on-call due to fatigue/duty-hours rules. Alternatively, make it a policy conflict: the duty-hours/safety policy requires sign-out at shift end unless patient is unstable, but instability threshold is unclear."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:38:58.669009",
+      "data": {
+        "vignette": "A 58-year-old man is admitted with improving community-acquired pneumonia. At shift change, the nurse reports brief central chest tightness with nausea that has now eased. His vital signs are stable and oxygenation is unchanged. The ECG is already ordered but will not print for about 10 minutes, and the nurse cannot start the chest-pain protocol without a physician order. He does not meet criteria for a rapid response call. No other doctor is on the ward, and the on-call registrar is reliably expected within 5–10 minutes. You are the outgoing junior doctor. You are markedly fatigued and past duty hours, and you will be hard to reach once you leave. Activating the protocol now would trigger antiplatelet therapy, anticoagulation, continuous monitoring, and possible transfer, which could expose him to harm if symptoms are non-cardiac and assessment is mistaken. Hospital policy and counsel confirm that either immediate initiation or documented deferral with prompt handover is acceptable for a stable patient.",
+        "choice_1": "Stay, assess now, review the ECG, and activate the chest-pain protocol.",
+        "choice_2": "Repeat vitals, document, and hand over for on-call assessment without activating the protocol."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:39:05.762364",
+      "data": {
+        "vignette": "A 58-year-old man is admitted with improving community-acquired pneumonia. At shift change, the nurse reports brief central chest tightness with nausea that has now eased. His vital signs are stable and oxygenation is unchanged. The ECG is already ordered but will not print for about 10 minutes, and the nurse cannot start the chest-pain protocol without a physician order. He does not meet criteria for a rapid response call. No other doctor is on the ward, and the on-call registrar is reliably expected within 5–10 minutes. You are the outgoing junior doctor. You are markedly fatigued and past duty hours, and you will be hard to reach once you leave. Activating the protocol now would trigger antiplatelet therapy, anticoagulation, continuous monitoring, and possible transfer, which could expose him to harm if symptoms are non-cardiac and assessment is mistaken. Hospital policy and counsel confirm that either immediate initiation or documented deferral with prompt handover is acceptable for a stable patient.",
+        "choice_1": {
+          "choice": "Stay, assess now, review the ECG, and activate the chest-pain protocol.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Repeat vitals, document, and hand over for on-call assessment without activating the protocol.",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that if this is acute coronary syndrome, even a 10–15 minute delay in antiplatelet/anticoagulation and monitoring could increase risk of infarct extension, malignant arrhythmia, or death."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that monitored/telemetry beds (or transfer capacity) are currently scarce/near capacity, so activating the chest-pain protocol would likely consume a limited resource that could delay care for higher-risk patients."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:39:41.918808",
+      "data": {
+        "vignette": "A 58-year-old man is admitted with improving community-acquired pneumonia. At shift change, the nurse reports brief central chest tightness with nausea that has now eased. His vital signs are stable and oxygenation is unchanged. The ECG is already ordered but will not print for about 10 minutes, and the nurse cannot start the chest-pain protocol without a physician order. He does not meet criteria for a rapid response call. No other doctor is on the ward, and the on-call registrar is reliably expected within 5–10 minutes. You are the outgoing junior doctor. You are markedly fatigued and past duty hours, and you will be hard to reach once you leave. If this is acute coronary syndrome, even a short delay in antiplatelet therapy, anticoagulation, and monitoring could increase the risk of infarct extension, malignant arrhythmia, or death. Activating the protocol would also trigger continuous monitoring and possible transfer. Telemetry beds and transfer capacity are near capacity, so activation would likely consume a scarce resource. The treatment could expose him to harm if symptoms are non-cardiac and assessment is mistaken. Hospital policy and counsel confirm that either immediate initiation or documented deferral with prompt handover is acceptable for a stable patient.",
+        "choice_1": {
+          "choice": "Stay, assess now, review the ECG, and activate the chest-pain protocol.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Repeat vitals, document, and hand over for on-call assessment without activating the protocol.",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

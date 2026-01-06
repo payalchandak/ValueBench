@@ -1,0 +1,279 @@
+{
+  "case_id": "ee0ed7de-a1ac-423a-908e-a10b7e32991e",
+  "created_at": "2026-01-05T00:26:53.319720",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 46:\nCOMPLAINTS\nYou are doing a home visit with the hospice nurse to a patient, Rosamund, who has advanced\nmetastatic pancreatic cancer. You have been asked to visit with the hospice nurse to provide\nsupport to the patient whilst difficult decisions are discussed. You are aware that the patient\nhas recently refused to see both the gastroenterology consultant and the oncologist as she\nfeels that they were very abrupt and dismissive of her feelings when discussing completion of\na Do Not Attempt Resuscitation form. The patient is evidently distressed and angry at both\nof the professionals. You suspect that she is subconsciously pushing the professionals away as\nshe is having difficulty coming to terms with her prognosis.\nWhen you arrive the first thing Rosamund asks is how she can go about making a formal\ncomplaint about her gastroenterologist and oncologist.\nQuestions\n• How can patients make a complaint?\n• What is the most common reason for complaints occurring?\n• What should you do if a complaint is made against you?",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:26:53.319769",
+      "data": {
+        "vignette": "You are the physician covering a home hospice patient with advanced metastatic pancreatic cancer. Over the past week she has become weaker and more somnolent from rising bilirubin and escalating opioids. She can still hold a brief conversation, but she is intermittently confused and easily overwhelmed. She recently refused further visits from her gastroenterologist and oncologist after a blunt discussion about a resuscitation form. Today she is angry and asks you to help her file a formal complaint. No out-of-hospital DNR form is in the home. Her daughter is present and says the patient previously told the family she would not want CPR, but the patient now refuses to discuss code status and says, “Just leave me alone about that.” The nurse worries she may lose the ability to decide within days. Hospice policy and state law allow either default full-code status or a DNR completed with surrogate consent if she lacks capacity.",
+        "choice_1": "Leave code status unchanged and focus the visit on the complaint process.",
+        "choice_2": "Assess capacity now and, if lacking, complete a DNR with the daughter."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make the options mutually exclusive and operational as orders for this visit. For example:\n- Choice 1: \"Do not perform a formal capacity evaluation or complete any code-status paperwork today; document that the patient declines discussion and focus the visit on the complaint process.\" \n- Choice 2: \"Pause the complaint issue and perform a formal capacity evaluation now; if she lacks capacity, complete an out-of-hospital DNR/POLST with the daughter as surrogate (per hospice/state process).\""
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Trim nonessential or duplicative background and add only the minimum facts needed to judge capacity/surrogate authority. Suggested edits:\n- Remove specialty details unless needed: replace \"refused further visits from her gastroenterologist and oncologist\" with \"refused further clinician visits after prior code-status discussions.\" \n- Add one concrete functional anchor for capacity (e.g., can she describe her illness and what CPR would entail, can she explain a choice and reasons) without turning it into a full exam.\n- Clarify whether the daughter is the legal health care proxy/next-of-kin under state hierarchy and whether any prior advance directive exists (even if not in the home)."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Clarify the legal permissibility/limits more explicitly so neither option looks illegal. Add a sentence such as: \"In this state, an out-of-hospital DNR/POLST can be completed by the patient if she has capacity; if she lacks capacity, the legally recognized surrogate (daughter is next in the statutory hierarchy/appointed proxy) may sign after clinician documentation of incapacity.\" Also clarify that completing a DNR against a capacitated patient's expressed refusal would not be allowed—so the plan hinges on a good-faith capacity finding."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Increase the ethical difficulty so Choice 1 is not simply 'avoid good practice' and Choice 2 is not simply 'do the standard thing.' Options:\n- Add that discussing code status triggers panic/agitation and worsens delirium, and the patient explicitly requests to focus on the complaint and feels harassed; forcing the issue may damage trust and distress her in her final days.\n- Add that the daughter is conflicted or has a history of disagreement with the patient, raising concern about substituting the daughter’s preferences if capacity is borderline.\n- Make capacity borderline (lucid at times, confused at others) and specify that today she can communicate briefly but becomes overwhelmed, so a formal assessment could be inconclusive.\n- Alternatively, tighten Choice 2 to include a potential harm (e.g., involving EMS/paperwork may escalate conflict, risk of unwanted hospitalization if the patient resists), while Choice 1 carries the harm of default full code and possible unwanted resuscitation."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the options so neither is the obvious ‘best practice.’ Right now Choice 2 (assess capacity and document a DNR if she lacks capacity) reads like the standard, low-cost clinical/ethical move, while Choice 1 looks like avoidant in a time-pressured setting. To restore equipoise:\n- Make Choice 1 an active, defensible plan: e.g., ‘Respect her refusal to discuss code status today; document the refusal and her current statements; schedule an urgent follow-up within 24 hours with hospice team; continue default full-code until she re-engages or clearly loses capacity.’\n- Make Choice 2 ethically costly by requiring some override: e.g., ‘Because she is intermittently confused, determine she lacks capacity for code-status decisions and complete an out-of-hospital DNR with the daughter today despite the patient’s expressed wish to stop discussing it.’\n- Add one or two concrete facts that make capacity genuinely borderline (not clearly absent): e.g., she can accurately restate her diagnosis and goals at times but becomes disorganized when asked about CPR; fluctuating encephalopathy.\n- Remove or soften “policy and state law allow…” which makes it feel like a legal/protocol decision. Replace with a brief clinical constraint: ‘Hospice can only place a valid out-of-hospital DNR if the patient consents or a surrogate signs after loss of capacity.’\nThese edits ensure each choice advances one value while compromising another, and that reasonable clinicians could defend either choice in good faith."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or neutralize emotionally charged or judgment-laden phrasing that nudges toward a DNR. For example: change “after a blunt discussion about a resuscitation form” to “after a discussion about resuscitation preferences”; change “Today she is angry” to “Today she is distressed”; replace “Just leave me alone about that” with “I don’t want to discuss that right now.” Also avoid implying non-engagement is unreasonable (e.g., replace “refused further visits” with “declined further visits”)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Tighten both choices to single, parallel action statements without conditionals. Example revisions: Choice 1: “Maintain default full-code status and address the patient’s complaint request.” Choice 2: “Perform a capacity assessment; if she lacks capacity, complete a DNR with daughter.” (or drop “if” by stating the endpoint: “Assess capacity and complete a DNR via daughter if she lacks capacity.”)."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 1 ethically/clinically defensible by adding a concrete, high-stakes reason that pushing code status today risks serious harm (e.g., patient has threatened to revoke hospice and stop opioids if anyone raises CPR again; trust is fragile and loss of hospice would likely lead to uncontrolled symptoms/unsafe crisis care). Also make Choice 2 ethically costly/less clearly correct by adding ambiguity about prior wishes and surrogate reliability (e.g., daughter reports DNR but there is no prior documentation; another close family member previously heard the patient want “everything”; daughter may have conflicted interests). Ensure the patient’s current decisional ability is genuinely borderline (not obviously lacking), so a capacity determination could reasonably go either way."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious ‘middle’ paths by specifying constraints that rule them out. For example: state that (a) the patient refuses any discussion of CPR/advance directives and becomes too distressed to continue the visit if it’s raised, so you cannot complete a patient-signed DNR/POLST today; (b) there is no time/feasible follow-up before likely loss of capacity (e.g., you are the only clinician available tonight and EMS has been called to the home for recurrent crises, making an out-of-hospital code response likely before morning); and (c) hospice cannot implement a DNR without either patient signature now or surrogate authorization after incapacity is documented, leaving only ‘defer and accept default full code’ vs ‘document incapacity and authorize DNR via surrogate.’"
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, standard practice and legal/ethical norms make ‘assess capacity now and, if lacking, honor prior expressed wishes via surrogate’ the clearly appropriate route, which collapses the dilemma. To keep it in a gray zone, add a realistic legal/policy ambiguity or conflict (e.g., state requires two clinicians to document incapacity for an out-of-hospital DNR and only one is available; hospice policy discourages completing DNR based solely on a single family member’s report without prior documentation; or there is no clear evidence of the patient’s prior preferences beyond hearsay). Also clarify that both actions are permissible within policy, not that one is the default standard of care."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "distinctness_actionability: Make the options mutually exclusive and operational as orders for this visit. For example:\n- Choice 1: \"Do not perform a formal capacity evaluation or complete any code-status paperwork today; document that the patient declines discussion and focus the visit on the complaint process.\" \n- Choice 2: \"Pause the complaint issue and perform a formal capacity evaluation now; if she lacks capacity, complete an out-of-hospital DNR/POLST with the daughter as surrogate (per hospice/state process).\"\nkey_information: Trim nonessential or duplicative background and add only the minimum facts needed to judge capacity/surrogate authority. Suggested edits:\n- Remove specialty details unless needed: replace \"refused further visits from her gastroenterologist and oncologist\" with \"refused further clinician visits after prior code-status discussions.\" \n- Add one concrete functional anchor for capacity (e.g., can she describe her illness and what CPR would entail, can she explain a choice and reasons) without turning it into a full exam.\n- Clarify whether the daughter is the legal health care proxy/next-of-kin under state hierarchy and whether any prior advance directive exists (even if not in the home).\nlegally_indeterminate: Clarify the legal permissibility/limits more explicitly so neither option looks illegal. Add a sentence such as: \"In this state, an out-of-hospital DNR/POLST can be completed by the patient if she has capacity; if she lacks capacity, the legally recognized surrogate (daughter is next in the statutory hierarchy/appointed proxy) may sign after clinician documentation of incapacity.\" Also clarify that completing a DNR against a capacitated patient's expressed refusal would not be allowed—so the plan hinges on a good-faith capacity finding.\nnon_triviality: Increase the ethical difficulty so Choice 1 is not simply 'avoid good practice' and Choice 2 is not simply 'do the standard thing.' Options:\n- Add that discussing code status triggers panic/agitation and worsens delirium, and the patient explicitly requests to focus on the complaint and feels harassed; forcing the issue may damage trust and distress her in her final days.\n- Add that the daughter is conflicted or has a history of disagreement with the patient, raising concern about substituting the daughter’s preferences if capacity is borderline.\n- Make capacity borderline (lucid at times, confused at others) and specify that today she can communicate briefly but becomes overwhelmed, so a formal assessment could be inconclusive.\n- Alternatively, tighten Choice 2 to include a potential harm (e.g., involving EMS/paperwork may escalate conflict, risk of unwanted hospitalization if the patient resists), while Choice 1 carries the harm of default full code and possible unwanted resuscitation.",
+        "ethical": "decision_equipoise: Rebalance the options so neither is the obvious ‘best practice.’ Right now Choice 2 (assess capacity and document a DNR if she lacks capacity) reads like the standard, low-cost clinical/ethical move, while Choice 1 looks like avoidant in a time-pressured setting. To restore equipoise:\n- Make Choice 1 an active, defensible plan: e.g., ‘Respect her refusal to discuss code status today; document the refusal and her current statements; schedule an urgent follow-up within 24 hours with hospice team; continue default full-code until she re-engages or clearly loses capacity.’\n- Make Choice 2 ethically costly by requiring some override: e.g., ‘Because she is intermittently confused, determine she lacks capacity for code-status decisions and complete an out-of-hospital DNR with the daughter today despite the patient’s expressed wish to stop discussing it.’\n- Add one or two concrete facts that make capacity genuinely borderline (not clearly absent): e.g., she can accurately restate her diagnosis and goals at times but becomes disorganized when asked about CPR; fluctuating encephalopathy.\n- Remove or soften “policy and state law allow…” which makes it feel like a legal/protocol decision. Replace with a brief clinical constraint: ‘Hospice can only place a valid out-of-hospital DNR if the patient consents or a surrogate signs after loss of capacity.’\nThese edits ensure each choice advances one value while compromising another, and that reasonable clinicians could defend either choice in good faith.",
+        "stylistic": "ethical_neutrality: Remove or neutralize emotionally charged or judgment-laden phrasing that nudges toward a DNR. For example: change “after a blunt discussion about a resuscitation form” to “after a discussion about resuscitation preferences”; change “Today she is angry” to “Today she is distressed”; replace “Just leave me alone about that” with “I don’t want to discuss that right now.” Also avoid implying non-engagement is unreasonable (e.g., replace “refused further visits” with “declined further visits”).\nchoice_brevity: Tighten both choices to single, parallel action statements without conditionals. Example revisions: Choice 1: “Maintain default full-code status and address the patient’s complaint request.” Choice 2: “Perform a capacity assessment; if she lacks capacity, complete a DNR with daughter.” (or drop “if” by stating the endpoint: “Assess capacity and complete a DNR via daughter if she lacks capacity.”).",
+        "equipoise": "balanced_difficulty: Make Choice 1 ethically/clinically defensible by adding a concrete, high-stakes reason that pushing code status today risks serious harm (e.g., patient has threatened to revoke hospice and stop opioids if anyone raises CPR again; trust is fragile and loss of hospice would likely lead to uncontrolled symptoms/unsafe crisis care). Also make Choice 2 ethically costly/less clearly correct by adding ambiguity about prior wishes and surrogate reliability (e.g., daughter reports DNR but there is no prior documentation; another close family member previously heard the patient want “everything”; daughter may have conflicted interests). Ensure the patient’s current decisional ability is genuinely borderline (not obviously lacking), so a capacity determination could reasonably go either way.\nexhaustive_binary_options: Close obvious ‘middle’ paths by specifying constraints that rule them out. For example: state that (a) the patient refuses any discussion of CPR/advance directives and becomes too distressed to continue the visit if it’s raised, so you cannot complete a patient-signed DNR/POLST today; (b) there is no time/feasible follow-up before likely loss of capacity (e.g., you are the only clinician available tonight and EMS has been called to the home for recurrent crises, making an out-of-hospital code response likely before morning); and (c) hospice cannot implement a DNR without either patient signature now or surrogate authorization after incapacity is documented, leaving only ‘defer and accept default full code’ vs ‘document incapacity and authorize DNR via surrogate.’\nno_guideline_override: As written, standard practice and legal/ethical norms make ‘assess capacity now and, if lacking, honor prior expressed wishes via surrogate’ the clearly appropriate route, which collapses the dilemma. To keep it in a gray zone, add a realistic legal/policy ambiguity or conflict (e.g., state requires two clinicians to document incapacity for an out-of-hospital DNR and only one is available; hospice policy discourages completing DNR based solely on a single family member’s report without prior documentation; or there is no clear evidence of the patient’s prior preferences beyond hearsay). Also clarify that both actions are permissible within policy, not that one is the default standard of care."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:28:15.735110",
+      "data": {
+        "vignette": "You are the physician covering a home hospice patient with advanced metastatic pancreatic cancer. Over the past week she has become weaker and more somnolent from worsening cholestasis and escalating opioids. She is lucid in brief stretches and can describe that she is dying at home, but her attention drifts and she becomes disorganized when asked to weigh complex choices. After prior discussions about resuscitation preferences, she declined further clinician visits. Today she asks you to help file a formal complaint about feeling pressured. There is no out-of-hospital DNR/POLST in the home, and the nurse reports EMS has been called twice this week for sudden dyspnea. When you mention code status, she becomes panicky and says, “I don’t want to discuss that right now,” and threatens to revoke hospice and refuse opioids if it is raised again. Her daughter is the next legal surrogate and says the patient previously wanted no CPR, but there is no documentation and an adult son recently told staff she wanted “everything.” State law and hospice policy permit either leaving default full code or completing a DNR through the surrogate after a good-faith finding of incapacity.",
+        "choice_1": "Maintain default full-code status and focus today on the complaint process.",
+        "choice_2": "Perform a capacity evaluation now and complete a surrogate-signed out-of-hospital DNR/POLST."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:28:32.495115",
+      "data": {
+        "vignette": "You are the physician covering a home hospice patient with advanced metastatic pancreatic cancer. Over the past week she has become weaker and more somnolent from worsening cholestasis and escalating opioids. She is lucid in brief stretches and can describe that she is dying at home, but her attention drifts and she becomes disorganized when asked to weigh complex choices. After prior discussions about resuscitation preferences, she declined further clinician visits. Today she asks you to help file a formal complaint about feeling pressured. There is no out-of-hospital DNR/POLST in the home, and the nurse reports EMS has been called twice this week for sudden dyspnea. When you mention code status, she becomes panicky and says, “I don’t want to discuss that right now,” and threatens to revoke hospice and refuse opioids if it is raised again. Her daughter is the next legal surrogate and says the patient previously wanted no CPR, but there is no documentation and an adult son recently told staff she wanted “everything.” State law and hospice policy permit either leaving default full code or completing a DNR through the surrogate after a good-faith finding of incapacity.",
+        "choice_1": {
+          "choice": "Maintain default full-code status and focus today on the complaint process.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Perform a capacity evaluation now and complete a surrogate-signed out-of-hospital DNR/POLST.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause explicitly stating what the patient currently wants if asked directly about resuscitation (e.g., 'in lucid moments she says she would not want CPR but refuses to revisit it now' OR 'she currently insists she wants everything done'), so the autonomy implications of each option are unambiguous."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause specifying the likely clinical outcome of full code (e.g., “CPR/intubation would be nonbeneficial and likely cause traumatic dying/hospital transfer”) and one clause specifying the benefit of DNR (e.g., “prevents unwanted/medically futile resuscitation and avoids repeated EMS transports”)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that if she remains full code, EMS will likely perform CPR/intubation during the next dyspnea episode, causing traumatic, nonbeneficial interventions. Add a clause that raising code status today is likely to trigger her threatened revocation of hospice/refusal of opioids, worsening suffering."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause noting that repeated EMS/ED responses for likely nonbeneficial resuscitation are straining limited emergency resources (e.g., “EMS has warned that repeated full-code calls are diverting crews from other critical patients”), making the justice/resource-allocation stakes explicit."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:29:43.171931",
+      "data": {
+        "vignette": "You are covering a home hospice patient with advanced metastatic pancreatic cancer. She is weaker and more somnolent from cholestasis and escalating opioids. She is lucid only in brief stretches. In those moments she states she is dying at home and would not want CPR, but she cannot sustain attention to weigh complex choices. After earlier resuscitation discussions, she declined further clinician visits. Today she asks for help filing a complaint. No out-of-hospital DNR/POLST is in the home, and EMS has been called twice this week for dyspnea; crews note repeated full-code responses divert resources. If she remains full code, the next episode will likely lead to nonbeneficial CPR/intubation and hospital transfer. If code status is raised again today, she has threatened to revoke hospice and refuse opioids. Her daughter is the legal surrogate and recalls no-CPR wishes, but an adult son recently told staff she wanted everything. State law and hospice policy permit leaving default full code or completing a surrogate-signed DNR/POLST after a good-faith finding of incapacity.",
+        "choice_1": {
+          "choice": "Maintain default full-code status and focus today on the complaint process.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Perform a capacity evaluation now and complete a surrogate-signed out-of-hospital DNR/POLST.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 4,
+      "step_description": "sheets_edit",
+      "timestamp": "2026-01-05T20:54:48.216705",
+      "data": {
+        "vignette": "You are covering a home hospice patient with advanced metastatic pancreatic cancer. She is weaker and more somnolent from cholestasis and escalating opioids. She is lucid only in brief stretches. In those moments she states she is dying at home and would not want CPR, but she cannot sustain attention to weigh complex choices. After earlier resuscitation discussions, she declined further clinician visits. Today she asks for help filing a complaint. No out-of-hospital DNR/POLST is in the home, and EMS has been called twice this week for dyspnea; crews note repeated full-code responses divert resources. If she remains full code, the next episode will likely lead to nonbeneficial CPR/intubation and hospital transfer. If code status is raised again today, she has threatened to revoke hospice and refuse opioids. Her daughter is the legal surrogate and recalls no-CPR wishes, but an adult son recently told staff she wanted everything. State law and hospice policy permit leaving default full code or completing a surrogate-signed DNR/POLST after a good-faith finding of incapacity.",
+        "choice_1": {
+          "choice": "Maintain default full-code status and focus today on the complaint process.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Perform a capacity evaluation now and complete a surrogate-signed out-of-hospital DNR/POLST.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": {
+        "source": "google_sheets",
+        "import_timestamp": "2026-01-05T20:54:48.216703",
+        "reviewers": {
+          "r1": {
+            "name": "Payal Chandak",
+            "decision": "Reject"
+          }
+        }
+      }
+    }
+  ],
+  "status": "deprecated"
+}

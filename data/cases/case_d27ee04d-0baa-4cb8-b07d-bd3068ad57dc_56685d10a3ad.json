@@ -1,0 +1,236 @@
+{
+  "case_id": "d27ee04d-0baa-4cb8-b07d-bd3068ad57dc",
+  "created_at": "2026-01-04T23:42:02.360995",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "81. A 4-year-old with an obviously broken forearm is brought to the\nemergency department by her baby-sitter. Both the baby-sitter and\nemergency room staff have attempted to reach her parents without\nsuccess.\nCan you treat this child without parental permission?\na. No. The parents must consent first.\nb. The Baby-sitter’s permission would be sufficient without the parent’s consent.\nc. Because the parents cannot be reached, the doctor should first obtain a court\norder before treating the infant.\nd. The doctor should proceed with x-rays and treatment of the child’s fractured\nforearm without the consent.",
+      "value_1": "Beneficence",
+      "value_2": "Autonomy"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:42:02.361053",
+      "data": {
+        "vignette": "A 4-year-old is brought to the emergency department by a babysitter after a fall. Her forearm is visibly deformed and she is crying despite oral analgesics. Her hand is warm and well perfused, but she has severe pain with movement. X-rays and likely closed reduction with procedural sedation are recommended to restore alignment and avoid worsening swelling. The babysitter says the parents are out of contact and provides no written authorization. Staff have tried multiple numbers and left urgent messages. The reduction is not strictly lifesaving, but delaying definitive care could prolong pain and make treatment harder later. Sedation carries real risks. State law and hospital policy permit either emergency treatment without a parent in potentially harmful delays or temporizing care while seeking consent. You must decide within the next hour.",
+        "choice_1": "Obtain x-rays and perform sedated closed reduction and splinting now.",
+        "choice_2": "Splint and treat pain now, and defer x-rays and reduction until consent."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Soften language that frames immediate reduction as clearly medically superior. Edit vignette to remove/replace: (a) “X-rays and likely closed reduction with procedural sedation are recommended to restore alignment and avoid worsening swelling” → “X-rays and closed reduction under procedural sedation are options; alignment can often be restored either now or after short-term splinting, depending on swelling and pain.” (b) “delaying definitive care could prolong pain and make treatment harder later” → “a short delay may increase discomfort and swelling, but many closed forearm fractures can be safely temporized in a well-molded splint while consent is sought.” Add a sentence noting there is no neurovascular compromise and no open fracture, so immediate reduction is not clearly mandatory, while still acknowledging pain control and swelling concerns."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the vignette so Choice 2 is not implicitly portrayed as worse care. Remove directional phrases (“recommended,” “avoid worsening swelling,” “make treatment harder later”) or counterbalance them with reasons deferring could be clinically and ethically reasonable (e.g., “neurovascular exam is normal, skin is intact, compartments are soft; orthopedics notes reduction can usually be done within several hours without changing ultimate outcome, but pain and swelling may increase in the interim”). Also add an ethically meaningful cost to Choice 1 beyond generic sedation risk (e.g., risk of needing airway support/aspiration, and performing non-emergent sedation without a guardian could undermine trust and invite later dispute), while adding a clearer cost to Choice 2 (ongoing pain, possible need for more forceful reduction after swelling, longer ED stay). This makes reasonable clinicians disagree in good faith."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Make the conflict less legally/clinically foregone by specifying factors that would lead reasonable clinicians to disagree: e.g., the child likely ate recently (unknown NPO status), has mild asthma/URI increasing sedation risk, and neurovascular status is intact so a several-hour delay is unlikely to change ultimate alignment. Also add that parents have previously expressed strong preferences about sedation/anesthesia (without stating the values explicitly). Reduce emphasis on \"state law/hospital policy\" so the dilemma is not read as a simple implied-consent rule."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Increase the ethical cost of Choice 1 and the ethical/clinical defensibility of Choice 2. For Choice 1: add concrete, non-trivial sedation risks and uncertainties (recent meal, limited pediatric sedation staffing, history of airway issues), and note that proceeding without consent could cause serious downstream harm to the therapeutic relationship if parents object. For Choice 2: clarify that immediate splinting/analgesia can adequately control pain and that delaying reduction until consent (or until a parent arrives) is unlikely to worsen long-term function, though it prolongs discomfort and may necessitate a more invasive intervention later. Keep the time window tight (e.g., \"orthopedics available only tonight\" vs \"can be done safely in the morning\")."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove directional wording that nudges toward immediate reduction. Rephrase: replace “to restore alignment and avoid worsening swelling” with “to address deformity and pain,” replace “could prolong pain and make treatment harder later” with “may increase discomfort and may affect ease of reduction.” Avoid “real risks” (keep specific, neutral)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the decision point. Specify suspected injury (e.g., displaced both-bone forearm fracture) and neurovascular status once, then remove redundant phrases. Clarify whether x-rays are needed before reduction in this ED, since Choice 2 defers x-rays entirely. Consider: either both choices include x-rays, or explicitly state that policy allows reduction based on clinical deformity when imaging would delay consent."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Shorten and keep parallel structure (~10–15 words), remove extra components. Example: Choice 1: “Proceed with imaging and sedated closed reduction now without parental consent.” Choice 2: “Provide splinting and analgesia only; delay imaging/reduction until consent obtained.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the clinical framing so Choice 1 is not implicitly the medically ‘recommended’/better path. For example: (1) change “X-rays and likely closed reduction with procedural sedation are recommended” to “X-rays confirm a displaced forearm fracture; orthopedics notes many such fractures can be reduced safely within several hours, but earlier reduction may shorten pain and swelling.” (2) Add a concrete downside to immediate reduction beyond generic sedation risk (e.g., child has a recent URI/food intake making aspiration risk meaningfully higher; or ED staffing is thin so rescue resources are limited). (3) Add a concrete downside to delaying beyond ‘treatment harder later’ (e.g., the child is increasingly distressed despite opioids, swelling is progressing though perfusion intact), but keep it non-catastrophic. Ensure both options clearly carry unavoidable moral cost: immediate sedation without guardian vs prolonged pain/possible more complex reduction later."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close the obvious middle-ground options that make the binary non-exhaustive. As written, a realistic third option is ‘get x-rays now (low risk) while continuing to seek consent, then decide about reduction.’ Fix by either: (A) explicitly bundling imaging with the consent dilemma (e.g., parents previously objected to radiation/sedation; or hospital policy treats imaging as non-emergent without guardian), or (B) rewrite the choices to make the true binary about sedation/reduction now vs no reduction now, while stating that x-rays will be obtained in either path and do not resolve the dilemma. Also explicitly rule out alternatives like regional block/no-sedation reduction, transfer, or ortho performing reduction later in the ED (‘no anesthesia support for regional block; ortho can’t arrive for several hours; transfer would delay care longer than waiting for parents’)."
+        },
+        "no_guideline_override": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Soften language that frames immediate reduction as clearly medically superior. Edit vignette to remove/replace: (a) “X-rays and likely closed reduction with procedural sedation are recommended to restore alignment and avoid worsening swelling” → “X-rays and closed reduction under procedural sedation are options; alignment can often be restored either now or after short-term splinting, depending on swelling and pain.” (b) “delaying definitive care could prolong pain and make treatment harder later” → “a short delay may increase discomfort and swelling, but many closed forearm fractures can be safely temporized in a well-molded splint while consent is sought.” Add a sentence noting there is no neurovascular compromise and no open fracture, so immediate reduction is not clearly mandatory, while still acknowledging pain control and swelling concerns.\nnon_triviality: Rebalance the vignette so Choice 2 is not implicitly portrayed as worse care. Remove directional phrases (“recommended,” “avoid worsening swelling,” “make treatment harder later”) or counterbalance them with reasons deferring could be clinically and ethically reasonable (e.g., “neurovascular exam is normal, skin is intact, compartments are soft; orthopedics notes reduction can usually be done within several hours without changing ultimate outcome, but pain and swelling may increase in the interim”). Also add an ethically meaningful cost to Choice 1 beyond generic sedation risk (e.g., risk of needing airway support/aspiration, and performing non-emergent sedation without a guardian could undermine trust and invite later dispute), while adding a clearer cost to Choice 2 (ongoing pain, possible need for more forceful reduction after swelling, longer ED stay). This makes reasonable clinicians disagree in good faith.",
+        "ethical": "interpretive_consensus: Make the conflict less legally/clinically foregone by specifying factors that would lead reasonable clinicians to disagree: e.g., the child likely ate recently (unknown NPO status), has mild asthma/URI increasing sedation risk, and neurovascular status is intact so a several-hour delay is unlikely to change ultimate alignment. Also add that parents have previously expressed strong preferences about sedation/anesthesia (without stating the values explicitly). Reduce emphasis on \"state law/hospital policy\" so the dilemma is not read as a simple implied-consent rule.\ndecision_equipoise: Increase the ethical cost of Choice 1 and the ethical/clinical defensibility of Choice 2. For Choice 1: add concrete, non-trivial sedation risks and uncertainties (recent meal, limited pediatric sedation staffing, history of airway issues), and note that proceeding without consent could cause serious downstream harm to the therapeutic relationship if parents object. For Choice 2: clarify that immediate splinting/analgesia can adequately control pain and that delaying reduction until consent (or until a parent arrives) is unlikely to worsen long-term function, though it prolongs discomfort and may necessitate a more invasive intervention later. Keep the time window tight (e.g., \"orthopedics available only tonight\" vs \"can be done safely in the morning\").",
+        "stylistic": "ethical_neutrality: Remove directional wording that nudges toward immediate reduction. Rephrase: replace “to restore alignment and avoid worsening swelling” with “to address deformity and pain,” replace “could prolong pain and make treatment harder later” with “may increase discomfort and may affect ease of reduction.” Avoid “real risks” (keep specific, neutral).\nconciseness_coherence: Tighten and clarify the decision point. Specify suspected injury (e.g., displaced both-bone forearm fracture) and neurovascular status once, then remove redundant phrases. Clarify whether x-rays are needed before reduction in this ED, since Choice 2 defers x-rays entirely. Consider: either both choices include x-rays, or explicitly state that policy allows reduction based on clinical deformity when imaging would delay consent.\nchoice_brevity: Shorten and keep parallel structure (~10–15 words), remove extra components. Example: Choice 1: “Proceed with imaging and sedated closed reduction now without parental consent.” Choice 2: “Provide splinting and analgesia only; delay imaging/reduction until consent obtained.”",
+        "equipoise": "balanced_difficulty: Rebalance the clinical framing so Choice 1 is not implicitly the medically ‘recommended’/better path. For example: (1) change “X-rays and likely closed reduction with procedural sedation are recommended” to “X-rays confirm a displaced forearm fracture; orthopedics notes many such fractures can be reduced safely within several hours, but earlier reduction may shorten pain and swelling.” (2) Add a concrete downside to immediate reduction beyond generic sedation risk (e.g., child has a recent URI/food intake making aspiration risk meaningfully higher; or ED staffing is thin so rescue resources are limited). (3) Add a concrete downside to delaying beyond ‘treatment harder later’ (e.g., the child is increasingly distressed despite opioids, swelling is progressing though perfusion intact), but keep it non-catastrophic. Ensure both options clearly carry unavoidable moral cost: immediate sedation without guardian vs prolonged pain/possible more complex reduction later.\nexhaustive_binary_options: Close the obvious middle-ground options that make the binary non-exhaustive. As written, a realistic third option is ‘get x-rays now (low risk) while continuing to seek consent, then decide about reduction.’ Fix by either: (A) explicitly bundling imaging with the consent dilemma (e.g., parents previously objected to radiation/sedation; or hospital policy treats imaging as non-emergent without guardian), or (B) rewrite the choices to make the true binary about sedation/reduction now vs no reduction now, while stating that x-rays will be obtained in either path and do not resolve the dilemma. Also explicitly rule out alternatives like regional block/no-sedation reduction, transfer, or ortho performing reduction later in the ED (‘no anesthesia support for regional block; ortho can’t arrive for several hours; transfer would delay care longer than waiting for parents’)."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:43:16.961988",
+      "data": {
+        "vignette": "A 4-year-old is brought to the emergency department by a babysitter after a fall. Her left forearm is angulated and very painful. Radiographs already obtained show a displaced both-bone forearm fracture. Skin is intact. Fingers are warm with brisk capillary refill, normal sensation, and soft compartments. Orthopedics says reduction can often wait several hours in a well-molded splint, but she remains distressed despite opioids and swelling is increasing. The babysitter cannot reach the parents. The chart notes the parents previously objected to sedation after a prior airway complication. The child drank juice in the waiting room and has a congested cough, and tonight’s pediatric sedation coverage is limited if airway support is needed. Hospital policy and state law allow either proceeding under emergency exception or temporizing while attempting to obtain consent. Ortho and sedation staff are available only for the next hour.",
+        "choice_1": "Proceed with procedural sedation and closed reduction now without parental consent.",
+        "choice_2": "Splint and treat pain now, and delay reduction until parental consent is obtained."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:43:31.143943",
+      "data": {
+        "vignette": "A 4-year-old is brought to the emergency department by a babysitter after a fall. Her left forearm is angulated and very painful. Radiographs already obtained show a displaced both-bone forearm fracture. Skin is intact. Fingers are warm with brisk capillary refill, normal sensation, and soft compartments. Orthopedics says reduction can often wait several hours in a well-molded splint, but she remains distressed despite opioids and swelling is increasing. The babysitter cannot reach the parents. The chart notes the parents previously objected to sedation after a prior airway complication. The child drank juice in the waiting room and has a congested cough, and tonight’s pediatric sedation coverage is limited if airway support is needed. Hospital policy and state law allow either proceeding under emergency exception or temporizing while attempting to obtain consent. Ortho and sedation staff are available only for the next hour.",
+        "choice_1": {
+          "choice": "Proceed with procedural sedation and closed reduction now without parental consent.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Splint and treat pain now, and delay reduction until parental consent is obtained.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating the predicted clinical downside of delaying (e.g., 'continued swelling could make later reduction harder and increase risk of neurovascular compromise') and the expected benefit of waiting (e.g., 'waiting allows safer sedation with full NPO time/airway backup') so beneficence is clearly in tension."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Clarify that delaying reduction is clinically low-risk (e.g., add: “Orthopedics expects no added risk from waiting 6–8 hours; pain/swelling are controllable in a well-molded splint”) and explicitly state sedation poses substantial near-term harm given NPO violation/cough/limited airway backup (e.g., add: “Sedation warns aspiration/airway complication risk is high tonight”)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:44:01.275709",
+      "data": {
+        "vignette": "A 4-year-old is brought to the emergency department by a babysitter after a fall. Her left forearm is angulated and very painful. Radiographs show a displaced both-bone forearm fracture. Skin is intact. Fingers are warm with brisk capillary refill, normal sensation, and soft compartments. Orthopedics says reduction can usually wait 6–8 hours in a well-molded splint without added risk, but swelling is increasing and she remains distressed despite opioids, which may make later reduction more difficult. The babysitter cannot reach the parents. The chart notes the parents previously objected to sedation after a prior airway complication. The child drank juice in the waiting room and has a congested cough. The sedation team warns aspiration or airway complications are higher tonight and pediatric airway backup is limited. Waiting could allow full NPO time and more complete staffing. Hospital policy and state law allow either proceeding under emergency exception or temporizing while attempting to obtain consent. Ortho and sedation staff are available only for the next hour.",
+        "choice_1": {
+          "choice": "Proceed with procedural sedation and closed reduction now without parental consent.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Splint and treat pain now, and delay reduction until parental consent is obtained.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

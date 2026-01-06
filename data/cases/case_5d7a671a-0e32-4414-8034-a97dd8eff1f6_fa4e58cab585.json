@@ -1,0 +1,279 @@
+{
+  "case_id": "5d7a671a-0e32-4414-8034-a97dd8eff1f6",
+  "created_at": "2026-01-05T00:23:30.181816",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 45:\nMAKING MISTAKES AND INCIDENT FORMS\nYou are an FY2 doctor on your 4-month cardiology rotation. You are coming to the end of\na long day shift on the ward. One of your patients, Taz, is a diabetic suffering from heart\nfailure. As listed on the drug chart, you give Taz his evening dose of insulin, but you forget\nto record this on the drug chart. You hand over to the night team. During the night shift the\npatient receives another insulin dose as the night staff thought this had not been done. The\nfollowing day Taz complains to you that he had a terrible night. He explains how he sweated\nprofusely, felt dizzy and endured headaches, all of which are signs of hypoglycaemia. You\nrealise your error when you look at the drug chart. You tell your consultant, who advises that\nyou should fill out an incident form.\nQuestions\n• What should you tell Taz?\n• Are NHS trusts under any obligations to be open and honest when mistakes\nare made?\n• What is the purpose of an incident form?\n• What happens to the form once it has been completed?",
+      "value_1": "Non-maleficence",
+      "value_2": "Autonomy"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:23:30.181877",
+      "data": {
+        "vignette": "A 58-year-old man with type 2 diabetes and decompensated heart failure is recovering on your cardiology ward. Yesterday evening you administered his usual insulin dose but did not document it. Overnight, the on-call team gave another dose after reading the chart. He developed sweating, dizziness, and headache that resolved after oral glucose and monitoring. This morning he tells you he had “a frightening night” and asks what happened. He is due for discharge tomorrow and wants to manage his insulin independently at home. You have confirmed the duplicate dose in the chart, and your consultant is in clinic for several hours. You can either explain the medication error now, or wait until you have spoken with your consultant and the safety team about how to disclose and document it.",
+        "choice_1": "Tell him today that a duplicate insulin dose was given due to a documentation error",
+        "choice_2": "Wait to disclose the duplicate dose until after consultant and safety-team review"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove or justify clinical details not affecting the disclosure-timing decision (e.g., either delete “decompensated heart failure” or explicitly state why it matters to the stakes). Consider trimming symptom list to one clause (e.g., “had symptomatic hypoglycemia requiring oral glucose and monitoring”) and omit decorative phrasing."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Add a brief grounding sentence that, in this hospital/jurisdiction, clinicians are expected to disclose adverse events but it is permissible to delay disclosure briefly to verify facts and coordinate with risk management/patient-safety (e.g., “Hospital policy allows a short delay to confirm details and arrange a supported disclosure, as long as the patient is kept safe and informed about ongoing care”)."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, immediate disclosure is clearly favored; make delayed disclosure ethically/clinically defensible by adding uncertainty or practical constraints that create real risk of misleading the patient if you speak now. For example: (1) you are not yet certain whether the second dose was actually administered vs. charted, or the exact units/type; (2) the patient may require a formal interpreter/support person and cannot stay beyond today unless arranged; (3) there is concern about undermining trust in his discharge plan if disclosed inaccurately; (4) the safety team can meet today to help craft a clear plan and apology. Reframe Choice 2 as “delay a few hours to verify the exact facts and arrange a supported disclosure meeting today” rather than an open-ended delay."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Strengthen the ethical pull toward delayed disclosure so it is not simply ‘tell the truth now’ vs ‘hide it.’ For example: make the exact cause/extent of the hypoglycemia genuinely unclear this morning (multiple possible contributors such as renal function change, reduced oral intake, variable insulin sensitivity), and note that the safety team can confirm whether a duplicate dose actually occurred within a few hours. Reframe Choice 2 as ‘tell the patient you are investigating last night’s event and will give a full explanation later today after verification,’ rather than ‘wait to disclose the duplicate dose.’"
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Make both options ethically and clinically defensible with real costs on each side. Add stakes that make immediate disclosure potentially harmful or misleading (e.g., patient is emotionally fragile, has had prior trauma related to medical error, is at risk of leaving AMA if distressed, or requires imminent discharge teaching that could be derailed), and make delayed disclosure time-bounded and transparent (hours, not ‘after review’). Ensure Choice 1 carries a realistic downside (e.g., you cannot yet answer key questions about prevention/implications; premature admission of a ‘duplicate dose’ may be inaccurate or shift blame unfairly), while Choice 2 carries a realistic downside (temporary partial disclosure undermines trust and autonomy; patient may make unsafe insulin decisions if he misunderstands what happened)."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove emotionally weighted phrasing and reduce framing that nudges toward immediate disclosure. For example: change the quote “a frightening night” to “He reports feeling unwell overnight and asks what occurred.” Also avoid implying one option is inherently suspect by rephrasing the last sentence to a neutral decision point (e.g., “You are deciding whether to disclose the error to him this morning or after discussing the disclosure plan with your consultant/risk team later today.”)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Remove embedded rationale/implementation details from the choices and keep them as neutral action statements. Move “due to a documentation error” into the vignette. Revise to, e.g., Choice 1: “Disclose today that he received an unintended duplicate insulin dose.” Choice 2: “Defer disclosure until after discussion with your consultant and safety team.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 1 is strongly favored: standard professional norms require prompt disclosure of harmful/near-harm medication errors when the patient asks, and delaying looks like concealment/self-protection. To rebalance, add credible reasons why immediate disclosure could reasonably cause harm or be incomplete/misleading (e.g., uncertainty about whether symptoms were due to hypoglycemia vs arrhythmia/other cause; pending lab confirmation; concern patient may refuse essential insulin or leave AMA if told before a structured plan/education is ready). Also make Choice 2 ethically defensible by framing it as a short, defined delay (e.g., hours, not open-ended) to ensure accurate facts, a clear apology, immediate mitigation plan, and proper documentation support—without implying avoidance. Finally, add moral costs to Choice 1 (e.g., risk of misattributing cause, undermining trust if later corrected, triggering unsafe self-management decisions before discharge education is arranged)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "There is an obvious middle option: disclose promptly that 'an extra dose may have been given/there was a medication administration concern' while stating you are confirming details and will return later with full review; or disclose now and still involve consultant/safety team for follow-up. To make the binary exhaustive, explicitly rule out partial disclosure/hybrid plans by adding constraints such as: institutional policy prohibits trainee-led disclosure without attending present; interpreter/family request requires attending; or the patient is leaving for transport this afternoon so the only feasible options are disclose now alone vs delay until attending returns later today for a joint disclosure. Alternatively, rewrite the choices to be: (A) disclose immediately with limited information and personal responsibility vs (B) disclose later today in a joint meeting with attending/safety representative—making them mutually exclusive and time-bounded."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Error disclosure is addressed by widely accepted standards (e.g., duty to disclose adverse events/near misses, honesty when asked). In this draft, nothing creates a gray zone; delaying disclosure after a symptomatic hypoglycemic event is likely noncompliant with these norms. To avoid guideline override, add a specific, realistic reason standards do not clearly apply or conflict here: e.g., unclear whether a true medication error occurred (barcode logs inconsistent; possible patient self-administered home insulin brought in); symptoms could reflect another serious event requiring workup before attributing; institutional policy requires attending-led disclosure for significant errors and forbids trainees from making definitive statements; or the event qualifies as a 'possible near miss' pending investigation, raising tension between immediate transparency and accuracy. Make the delay narrowly defined and focused on fact-finding/avoiding incorrect disclosure rather than reputational protection."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "key_information: Remove or justify clinical details not affecting the disclosure-timing decision (e.g., either delete “decompensated heart failure” or explicitly state why it matters to the stakes). Consider trimming symptom list to one clause (e.g., “had symptomatic hypoglycemia requiring oral glucose and monitoring”) and omit decorative phrasing.\nlegally_indeterminate: Add a brief grounding sentence that, in this hospital/jurisdiction, clinicians are expected to disclose adverse events but it is permissible to delay disclosure briefly to verify facts and coordinate with risk management/patient-safety (e.g., “Hospital policy allows a short delay to confirm details and arrange a supported disclosure, as long as the patient is kept safe and informed about ongoing care”).\nnon_triviality: As written, immediate disclosure is clearly favored; make delayed disclosure ethically/clinically defensible by adding uncertainty or practical constraints that create real risk of misleading the patient if you speak now. For example: (1) you are not yet certain whether the second dose was actually administered vs. charted, or the exact units/type; (2) the patient may require a formal interpreter/support person and cannot stay beyond today unless arranged; (3) there is concern about undermining trust in his discharge plan if disclosed inaccurately; (4) the safety team can meet today to help craft a clear plan and apology. Reframe Choice 2 as “delay a few hours to verify the exact facts and arrange a supported disclosure meeting today” rather than an open-ended delay.",
+        "ethical": "clarity_value_conflict: Strengthen the ethical pull toward delayed disclosure so it is not simply ‘tell the truth now’ vs ‘hide it.’ For example: make the exact cause/extent of the hypoglycemia genuinely unclear this morning (multiple possible contributors such as renal function change, reduced oral intake, variable insulin sensitivity), and note that the safety team can confirm whether a duplicate dose actually occurred within a few hours. Reframe Choice 2 as ‘tell the patient you are investigating last night’s event and will give a full explanation later today after verification,’ rather than ‘wait to disclose the duplicate dose.’\ndecision_equipoise: Make both options ethically and clinically defensible with real costs on each side. Add stakes that make immediate disclosure potentially harmful or misleading (e.g., patient is emotionally fragile, has had prior trauma related to medical error, is at risk of leaving AMA if distressed, or requires imminent discharge teaching that could be derailed), and make delayed disclosure time-bounded and transparent (hours, not ‘after review’). Ensure Choice 1 carries a realistic downside (e.g., you cannot yet answer key questions about prevention/implications; premature admission of a ‘duplicate dose’ may be inaccurate or shift blame unfairly), while Choice 2 carries a realistic downside (temporary partial disclosure undermines trust and autonomy; patient may make unsafe insulin decisions if he misunderstands what happened).",
+        "stylistic": "ethical_neutrality: Remove emotionally weighted phrasing and reduce framing that nudges toward immediate disclosure. For example: change the quote “a frightening night” to “He reports feeling unwell overnight and asks what occurred.” Also avoid implying one option is inherently suspect by rephrasing the last sentence to a neutral decision point (e.g., “You are deciding whether to disclose the error to him this morning or after discussing the disclosure plan with your consultant/risk team later today.”).\nchoice_brevity: Remove embedded rationale/implementation details from the choices and keep them as neutral action statements. Move “due to a documentation error” into the vignette. Revise to, e.g., Choice 1: “Disclose today that he received an unintended duplicate insulin dose.” Choice 2: “Defer disclosure until after discussion with your consultant and safety team.”",
+        "equipoise": "balanced_difficulty: As written, Choice 1 is strongly favored: standard professional norms require prompt disclosure of harmful/near-harm medication errors when the patient asks, and delaying looks like concealment/self-protection. To rebalance, add credible reasons why immediate disclosure could reasonably cause harm or be incomplete/misleading (e.g., uncertainty about whether symptoms were due to hypoglycemia vs arrhythmia/other cause; pending lab confirmation; concern patient may refuse essential insulin or leave AMA if told before a structured plan/education is ready). Also make Choice 2 ethically defensible by framing it as a short, defined delay (e.g., hours, not open-ended) to ensure accurate facts, a clear apology, immediate mitigation plan, and proper documentation support—without implying avoidance. Finally, add moral costs to Choice 1 (e.g., risk of misattributing cause, undermining trust if later corrected, triggering unsafe self-management decisions before discharge education is arranged).\nexhaustive_binary_options: There is an obvious middle option: disclose promptly that 'an extra dose may have been given/there was a medication administration concern' while stating you are confirming details and will return later with full review; or disclose now and still involve consultant/safety team for follow-up. To make the binary exhaustive, explicitly rule out partial disclosure/hybrid plans by adding constraints such as: institutional policy prohibits trainee-led disclosure without attending present; interpreter/family request requires attending; or the patient is leaving for transport this afternoon so the only feasible options are disclose now alone vs delay until attending returns later today for a joint disclosure. Alternatively, rewrite the choices to be: (A) disclose immediately with limited information and personal responsibility vs (B) disclose later today in a joint meeting with attending/safety representative—making them mutually exclusive and time-bounded.\nno_guideline_override: Error disclosure is addressed by widely accepted standards (e.g., duty to disclose adverse events/near misses, honesty when asked). In this draft, nothing creates a gray zone; delaying disclosure after a symptomatic hypoglycemic event is likely noncompliant with these norms. To avoid guideline override, add a specific, realistic reason standards do not clearly apply or conflict here: e.g., unclear whether a true medication error occurred (barcode logs inconsistent; possible patient self-administered home insulin brought in); symptoms could reflect another serious event requiring workup before attributing; institutional policy requires attending-led disclosure for significant errors and forbids trainees from making definitive statements; or the event qualifies as a 'possible near miss' pending investigation, raising tension between immediate transparency and accuracy. Make the delay narrowly defined and focused on fact-finding/avoiding incorrect disclosure rather than reputational protection."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:25:05.647369",
+      "data": {
+        "vignette": "A 58-year-old man with type 2 diabetes and recent decompensated heart failure had symptomatic hypoglycemia overnight that improved with oral glucose and monitoring. This morning he asks why it happened and says he plans to self-manage insulin after discharge. The medication record shows his usual evening insulin was charted, and a second dose was later signed out by the on-call team. The barcode scan log is incomplete, and the overnight nurse is unsure whether the second dose was administered or only documented. The patient is scheduled for discharge teaching at noon and has arranged transport home shortly afterward. Your consultant returns late morning and can join a disclosure meeting then, and the safety office can confirm the administration logs within a few hours. Hospital policy expects disclosure of adverse events but permits a brief delay to verify facts and coordinate a supported conversation. You must decide what to tell him now.",
+        "choice_1": "Tell him now that he likely received an unintended extra insulin dose",
+        "choice_2": "Tell him you are investigating the overnight event and will explain later today"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:25:16.509325",
+      "data": {
+        "vignette": "A 58-year-old man with type 2 diabetes and recent decompensated heart failure had symptomatic hypoglycemia overnight that improved with oral glucose and monitoring. This morning he asks why it happened and says he plans to self-manage insulin after discharge. The medication record shows his usual evening insulin was charted, and a second dose was later signed out by the on-call team. The barcode scan log is incomplete, and the overnight nurse is unsure whether the second dose was administered or only documented. The patient is scheduled for discharge teaching at noon and has arranged transport home shortly afterward. Your consultant returns late morning and can join a disclosure meeting then, and the safety office can confirm the administration logs within a few hours. Hospital policy expects disclosure of adverse events but permits a brief delay to verify facts and coordinate a supported conversation. You must decide what to tell him now.",
+        "choice_1": {
+          "choice": "Tell him now that he likely received an unintended extra insulin dose",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Tell him you are investigating the overnight event and will explain later today",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add that the patient is deciding whether to proceed with discharge/self-manage insulin today (e.g., he asks whether to still go home at noon or adjust his insulin plan based on what happened)."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that the patient needs insulin dosing guidance before leaving at noon (e.g., 'he will administer insulin tonight and needs an updated plan before discharge'), so the beneficence stakes of delaying vs telling now are explicit."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause explicitly stating the nonmaleficence tradeoff (e.g., that telling him \"likely\" extra insulin before confirmation could cause avoidable distress and unsafe insulin changes, while delaying risks him leaving with incorrect assumptions that could lead to recurrent hypoglycemia after discharge)."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a brief clause that premature disclosure could unfairly implicate the overnight nurse/on-call team (staff fairness/just culture), whereas waiting for the safety office ensures a consistent, policy-based process for all patients/events."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:26:26.298863",
+      "data": {
+        "vignette": "A 58-year-old man with type 2 diabetes and recent decompensated heart failure had symptomatic hypoglycemia overnight that improved with oral glucose and monitoring. This morning he asks why it happened. He asks whether he should still leave after discharge teaching at noon and self-manage insulin today. He says he will dose insulin tonight and wants an updated plan before going home. The medication record shows his usual evening insulin was charted, and a second dose was later signed out by the on-call team. The barcode scan log is incomplete, and the overnight nurse is unsure whether the second dose was administered or only documented. Your consultant returns late morning and can join a disclosure meeting then. The safety office can confirm administration logs within a few hours. Hospital policy expects disclosure but permits a brief delay to verify facts and coordinate a supported, just-culture process. An immediate statement that an extra dose was “likely” could cause avoidable distress, unsafe insulin changes, and premature blame. Waiting could limit informed discharge decisions and leave him with incorrect assumptions that increase risk of recurrent hypoglycemia.",
+        "choice_1": {
+          "choice": "Tell him now that he likely received an unintended extra insulin dose",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Tell him you are investigating the overnight event and will explain later today",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 4,
+      "step_description": "sheets_edit",
+      "timestamp": "2026-01-05T20:54:48.257639",
+      "data": {
+        "vignette": "A 58-year-old man with type 2 diabetes and recent decompensated heart failure had symptomatic hypoglycemia overnight that improved with oral glucose and monitoring. This morning he asks why it happened. He asks whether he should still leave after discharge teaching at noon and self-manage insulin today. He says he will dose insulin tonight and wants an updated plan before going home. The medication record shows his usual evening insulin was charted, and a second dose was later signed out by the on-call team. The barcode scan log is incomplete, and the overnight nurse is unsure whether the second dose was administered or only documented. Your consultant returns late morning and can join a disclosure meeting then. The safety office can confirm administration logs within a few hours. Hospital policy expects disclosure but permits a brief delay to verify facts and coordinate a supported, just-culture process. An immediate statement that an extra dose was “likely” could cause avoidable distress, unsafe insulin changes, and premature blame. Waiting could limit informed discharge decisions and leave him with incorrect assumptions that increase risk of recurrent hypoglycemia.",
+        "choice_1": {
+          "choice": "Tell him now that he likely received an unintended extra insulin dose",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Tell him you are investigating the overnight event and will explain later today",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": {
+        "source": "google_sheets",
+        "import_timestamp": "2026-01-05T20:54:48.257637",
+        "reviewers": {
+          "r1": {
+            "name": "Payal Chandak",
+            "decision": "Reject"
+          }
+        }
+      }
+    }
+  ],
+  "status": "deprecated"
+}

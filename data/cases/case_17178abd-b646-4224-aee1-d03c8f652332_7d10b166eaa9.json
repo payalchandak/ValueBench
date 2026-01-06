@@ -1,0 +1,236 @@
+{
+  "case_id": "17178abd-b646-4224-aee1-d03c8f652332",
+  "created_at": "2026-01-04T22:40:21.745501",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "A 30-year-old Polish lady is admitted in labour. This is her first pregnancy and she is full term. She is in a lot of pain, her liquor is stained with meconium and the trace of her baby’s heart is classified as pathological. Her grasp of English is limited. You have been asked to obtain her consent for a caesarean section…",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T22:40:21.745526",
+      "data": {
+        "vignette": "A 30-year-old woman in her first pregnancy is admitted in active labor at term. She is in severe pain and very anxious. The fetal heart tracing is persistently concerning and the amniotic fluid is meconium-stained. The obstetric team believes operative delivery is needed soon to reduce the chance of serious neonatal harm, but vaginal delivery is still possible if labor continues. Her English is limited and she struggles to follow the discussion. No family member is present, and an in-person interpreter will not arrive for at least an hour. A phone interpreter is available, but the patient keeps pulling off the headset and says she “just wants it to stop.” Hospital counsel has confirmed that either proceeding under urgent consent standards or waiting for full interpreted consent is legally permissible here. You must decide how to proceed now.",
+        "choice_1": "Proceed with cesarean delivery now using best-available interpreted communication",
+        "choice_2": "Continue labor management while awaiting a qualified interpreter for full consent"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Rephrase language that makes the C-section seem clearly medically superior. For example, change “operative delivery is needed soon to reduce the chance of serious neonatal harm” to “the team is concerned that delay could increase the risk of neonatal harm, though the degree of risk is uncertain and vaginal delivery may still be safe.” Remove/soften “persistently concerning” to “recurrent concerning features” and add a sentence that maternal status is stable and there is time for either approach (e.g., “maternal vitals stable; no signs of uterine rupture or cord prolapse”)."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Clarify key obstetric facts needed to make either option defensible and reduce ambiguity: include cervical dilation/station, whether membranes are ruptured, presence/absence of fever or chorioamnionitis, and whether fetal scalp stimulation/other intrauterine resuscitation has been attempted and response. Remove minor phrasing that is decorative (“very anxious”) unless tied to decision-making capacity; instead specify whether she can participate in consent despite pain and anxiety. Clarify what “best-available interpreted communication” entails (phone interpreter, simplified language, teach-back)."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 1 is framed as preventing serious harm and thus dominates. Make the ethical cost of proceeding clearer and credible: specify that she is not refusing C-section but is unable to engage due to pain/distress and repeatedly removes the headset; note risk of violating informed consent and potential trauma. Also make waiting clinically defensible: state tracing is Category II (not sustained bradycardia/Category III), variability intermittently moderate, and that continued close monitoring with readiness for emergent cesarean is reasonable. Consider adding that the OR is available now but could be occupied later, creating practical stakes without implying one option is medically ‘right.’"
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Make the forcing mechanism and ethical costs more robust by specifying what counts as “persistently concerning” (e.g., recurrent late decelerations/minimal variability) and why the team believes delay meaningfully increases risk, while also clarifying that the patient is likely to regain the ability to engage once pain/anxiety are treated. Add a brief line that adequate neuraxial analgesia or anxiolysis may be possible but could further reduce her ability to participate, sharpening the consent vs urgency tension."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce ambiguity about whether the patient is refusing vs unable to understand. Explicitly state whether she is saying ‘no’ to cesarean or is expressing distress/pain without a clear decision, and whether she demonstrates understanding when using the phone interpreter. Clarify her decision-making capacity at this moment (impaired by pain/anxiety/language barrier but not unconscious), so graders converge on autonomy vs fetal beneficence/nonmaleficence rather than debating capacity/refusal."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance to avoid Choice 1 reading as the obvious ‘prevent serious neonatal harm’ option. Add concrete moral costs to Choice 1 (e.g., higher maternal morbidity, loss of patient trust/trauma from proceeding without fully understood consent, potential conflict if she later reports she did not agree). Add meaningful costs to Choice 2 beyond generic delay (e.g., possibility that emergent crash cesarean becomes necessary with greater maternal/neonatal risk, limited ability to monitor/rapidly intervene). Remove/soften language like ‘needed soon to reduce the chance of serious neonatal harm’ and replace with more neutral phrasing (‘may reduce the risk of… but benefits are uncertain’), while keeping qualitative stakes high."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Replace value-laden phrasing that may bias toward immediate surgery (e.g., “severe pain,” “very anxious,” “just wants it to stop,” “persistently concerning,” “reduce the chance of serious neonatal harm”) with more clinically neutral descriptions: document analgesia status, anxiety level, and specify tracing category and features (e.g., recurrent late decelerations/minimal variability) without emotive language. Rephrase the quote to a neutral statement of distress (e.g., “states she cannot continue with the conversation and requests the pain to be treated”). Avoid “operative delivery is needed soon”; instead state “team recommends expedited delivery; both emergent cesarean now or continued labor with close monitoring remain options.”"
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Use standard obstetric terminology and structure: specify gestational age (e.g., 39+ weeks), cervical exam/station, tracing classification (Category II/III), resuscitative measures attempted (repositioning, IV fluids, oxygen if used, amnioinfusion), and analgesia status. Replace “urgent consent standards” with “emergency exception/urgent consent process per hospital policy.” Clarify interpreter modalities (“telephone/video remote interpreting”) and document capacity/communication barriers in clinical terms."
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Remove or streamline nonessential/decision-tilting elements: the legal counsel sentence is extraneous and may short-circuit the ethical dilemma; instead note briefly that policy allows either approach. Clarify the forcing timeline (e.g., “OB estimates decision needed within 20–30 minutes if tracing persists”). Clarify whether the patient is refusing surgery vs unable to engage due to pain/delirium. Ensure coherence by stating what continued labor entails (expectant management with close monitoring) without adding extra narrative."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reframe fetal status so neither option is clearly the medically/ethically safer default. For example: change “persistently concerning” to “intermittently concerning, Category II with periods of improvement after resuscitative measures,” and remove/soften “operative delivery is needed soon to reduce the chance of serious neonatal harm.” Add that maternal and fetal status are currently stable but could deteriorate, and that expedited vaginal delivery remains a realistic alternative if labor continues. Balance harms by specifying credible maternal risks of urgent cesarean (e.g., higher hemorrhage/infection risk, impact on future pregnancies) and credible fetal risks of waiting (e.g., possible worsening acidemia) without implying certainty."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close off obvious third paths. Explicitly state that operative vaginal delivery is not an option (e.g., cervix not fully dilated, fetal station too high, or no qualified operator available). Clarify why other interpretation options cannot solve the dilemma (e.g., no video interpreter available; phone interpreter is failing despite repeated attempts and staff assistance; sedation/analgesia would impair capacity). Also specify that a decision must be made within a defined short window (e.g., “within 20–30 minutes”) so “keep trying phone interpretation while monitoring” isn’t a viable middle ground."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, many obstetric standards treat persistent nonreassuring fetal tracing (especially if approaching Category III) as an indication for expedited delivery, making ‘wait an hour’ look noncompliant. Modify the clinical facts so guidelines do not clearly dictate immediate cesarean: describe Category II tracing with meconium but no persistent bradycardia/late decelerations, reassuring variability, and response to intrauterine resuscitation. Alternatively, explicitly note that OB/MFM consultants disagree on urgency and that institutional policy allows a short trial of continued labor in this exact pattern, making the timing/consent pathway a gray-zone judgment rather than a guideline-mandated emergency."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Rephrase language that makes the C-section seem clearly medically superior. For example, change “operative delivery is needed soon to reduce the chance of serious neonatal harm” to “the team is concerned that delay could increase the risk of neonatal harm, though the degree of risk is uncertain and vaginal delivery may still be safe.” Remove/soften “persistently concerning” to “recurrent concerning features” and add a sentence that maternal status is stable and there is time for either approach (e.g., “maternal vitals stable; no signs of uterine rupture or cord prolapse”).\nkey_information: Clarify key obstetric facts needed to make either option defensible and reduce ambiguity: include cervical dilation/station, whether membranes are ruptured, presence/absence of fever or chorioamnionitis, and whether fetal scalp stimulation/other intrauterine resuscitation has been attempted and response. Remove minor phrasing that is decorative (“very anxious”) unless tied to decision-making capacity; instead specify whether she can participate in consent despite pain and anxiety. Clarify what “best-available interpreted communication” entails (phone interpreter, simplified language, teach-back).\nnon_triviality: As written, Choice 1 is framed as preventing serious harm and thus dominates. Make the ethical cost of proceeding clearer and credible: specify that she is not refusing C-section but is unable to engage due to pain/distress and repeatedly removes the headset; note risk of violating informed consent and potential trauma. Also make waiting clinically defensible: state tracing is Category II (not sustained bradycardia/Category III), variability intermittently moderate, and that continued close monitoring with readiness for emergent cesarean is reasonable. Consider adding that the OR is available now but could be occupied later, creating practical stakes without implying one option is medically ‘right.’",
+        "ethical": "directional_stability: Make the forcing mechanism and ethical costs more robust by specifying what counts as “persistently concerning” (e.g., recurrent late decelerations/minimal variability) and why the team believes delay meaningfully increases risk, while also clarifying that the patient is likely to regain the ability to engage once pain/anxiety are treated. Add a brief line that adequate neuraxial analgesia or anxiolysis may be possible but could further reduce her ability to participate, sharpening the consent vs urgency tension.\ninterpretive_consensus: Reduce ambiguity about whether the patient is refusing vs unable to understand. Explicitly state whether she is saying ‘no’ to cesarean or is expressing distress/pain without a clear decision, and whether she demonstrates understanding when using the phone interpreter. Clarify her decision-making capacity at this moment (impaired by pain/anxiety/language barrier but not unconscious), so graders converge on autonomy vs fetal beneficence/nonmaleficence rather than debating capacity/refusal.\ndecision_equipoise: Rebalance to avoid Choice 1 reading as the obvious ‘prevent serious neonatal harm’ option. Add concrete moral costs to Choice 1 (e.g., higher maternal morbidity, loss of patient trust/trauma from proceeding without fully understood consent, potential conflict if she later reports she did not agree). Add meaningful costs to Choice 2 beyond generic delay (e.g., possibility that emergent crash cesarean becomes necessary with greater maternal/neonatal risk, limited ability to monitor/rapidly intervene). Remove/soften language like ‘needed soon to reduce the chance of serious neonatal harm’ and replace with more neutral phrasing (‘may reduce the risk of… but benefits are uncertain’), while keeping qualitative stakes high.",
+        "stylistic": "ethical_neutrality: Replace value-laden phrasing that may bias toward immediate surgery (e.g., “severe pain,” “very anxious,” “just wants it to stop,” “persistently concerning,” “reduce the chance of serious neonatal harm”) with more clinically neutral descriptions: document analgesia status, anxiety level, and specify tracing category and features (e.g., recurrent late decelerations/minimal variability) without emotive language. Rephrase the quote to a neutral statement of distress (e.g., “states she cannot continue with the conversation and requests the pain to be treated”). Avoid “operative delivery is needed soon”; instead state “team recommends expedited delivery; both emergent cesarean now or continued labor with close monitoring remain options.”\nmedical_professionalism: Use standard obstetric terminology and structure: specify gestational age (e.g., 39+ weeks), cervical exam/station, tracing classification (Category II/III), resuscitative measures attempted (repositioning, IV fluids, oxygen if used, amnioinfusion), and analgesia status. Replace “urgent consent standards” with “emergency exception/urgent consent process per hospital policy.” Clarify interpreter modalities (“telephone/video remote interpreting”) and document capacity/communication barriers in clinical terms.\nconciseness_coherence: Remove or streamline nonessential/decision-tilting elements: the legal counsel sentence is extraneous and may short-circuit the ethical dilemma; instead note briefly that policy allows either approach. Clarify the forcing timeline (e.g., “OB estimates decision needed within 20–30 minutes if tracing persists”). Clarify whether the patient is refusing surgery vs unable to engage due to pain/delirium. Ensure coherence by stating what continued labor entails (expectant management with close monitoring) without adding extra narrative.",
+        "equipoise": "balanced_difficulty: Reframe fetal status so neither option is clearly the medically/ethically safer default. For example: change “persistently concerning” to “intermittently concerning, Category II with periods of improvement after resuscitative measures,” and remove/soften “operative delivery is needed soon to reduce the chance of serious neonatal harm.” Add that maternal and fetal status are currently stable but could deteriorate, and that expedited vaginal delivery remains a realistic alternative if labor continues. Balance harms by specifying credible maternal risks of urgent cesarean (e.g., higher hemorrhage/infection risk, impact on future pregnancies) and credible fetal risks of waiting (e.g., possible worsening acidemia) without implying certainty.\nexhaustive_binary_options: Close off obvious third paths. Explicitly state that operative vaginal delivery is not an option (e.g., cervix not fully dilated, fetal station too high, or no qualified operator available). Clarify why other interpretation options cannot solve the dilemma (e.g., no video interpreter available; phone interpreter is failing despite repeated attempts and staff assistance; sedation/analgesia would impair capacity). Also specify that a decision must be made within a defined short window (e.g., “within 20–30 minutes”) so “keep trying phone interpretation while monitoring” isn’t a viable middle ground.\nno_guideline_override: As written, many obstetric standards treat persistent nonreassuring fetal tracing (especially if approaching Category III) as an indication for expedited delivery, making ‘wait an hour’ look noncompliant. Modify the clinical facts so guidelines do not clearly dictate immediate cesarean: describe Category II tracing with meconium but no persistent bradycardia/late decelerations, reassuring variability, and response to intrauterine resuscitation. Alternatively, explicitly note that OB/MFM consultants disagree on urgency and that institutional policy allows a short trial of continued labor in this exact pattern, making the timing/consent pathway a gray-zone judgment rather than a guideline-mandated emergency."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T22:41:07.199345",
+      "data": {
+        "vignette": "A 30-year-old G1P0 at 39 weeks is in active labor. Her cervix is 7 cm and the fetal head is high, so operative vaginal delivery is not an option. Membranes are ruptured with meconium-stained fluid. The fetal heart tracing is Category II with recurrent late decelerations and periods of moderate variability that improve after repositioning and IV fluids, but the pattern keeps returning. Maternal vitals are stable and she is afebrile. She is awake and answers simple questions, but without neuraxial analgesia she cannot tolerate a prolonged consent discussion. A telephone interpreter has been tried repeatedly; she removes the headset and cannot reliably repeat back key points. No video interpreter is available, and an in-person interpreter will arrive in about an hour. The team estimates you must choose a plan within 20–30 minutes. Hospital policy and state law permit either proceeding now under an urgent consent process or waiting for full interpreted consent while closely monitoring.",
+        "choice_1": "Perform cesarean delivery now using the urgent consent process and phone interpretation",
+        "choice_2": "Continue labor with continuous monitoring while awaiting an in-person interpreter for full consent"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T22:41:09.235408",
+      "data": {
+        "vignette": "A 30-year-old G1P0 at 39 weeks is in active labor. Her cervix is 7 cm and the fetal head is high, so operative vaginal delivery is not an option. Membranes are ruptured with meconium-stained fluid. The fetal heart tracing is Category II with recurrent late decelerations and periods of moderate variability that improve after repositioning and IV fluids, but the pattern keeps returning. Maternal vitals are stable and she is afebrile. She is awake and answers simple questions, but without neuraxial analgesia she cannot tolerate a prolonged consent discussion. A telephone interpreter has been tried repeatedly; she removes the headset and cannot reliably repeat back key points. No video interpreter is available, and an in-person interpreter will arrive in about an hour. The team estimates you must choose a plan within 20–30 minutes. Hospital policy and state law permit either proceeding now under an urgent consent process or waiting for full interpreted consent while closely monitoring.",
+        "choice_1": {
+          "choice": "Perform cesarean delivery now using the urgent consent process and phone interpretation",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Continue labor with continuous monitoring while awaiting an in-person interpreter for full consent",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause clarifying the patient's expressed preference about cesarean versus continuing labor (e.g., she requests to wait for an interpreter or she previously stated she wants to avoid cesarean), since currently neither option reflects her stated choice and the autonomy conflict is inferential rather than explicit."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a brief clause quantifying that delaying ~1 hour is expected to materially increase fetal risk (e.g., “OB team believes ongoing recurrent late decelerations are likely to progress to fetal acidemia/need for neonatal resuscitation if not delivered within 30 minutes”)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T22:42:01.472283",
+      "data": {
+        "vignette": "A 30-year-old G1P0 at 39 weeks is in active labor. Her cervix is 7 cm and the fetal head is high. Operative vaginal delivery is not an option. Membranes are ruptured with meconium-stained fluid. The fetal heart tracing is Category II with recurrent late decelerations. Moderate variability returns after repositioning and IV fluids, but the pattern recurs. Maternal vitals are stable and she is afebrile. Her chart notes she wants to avoid cesarean if possible and prefers decision-making with an in-person interpreter. She is awake and answers simple questions, but she cannot tolerate a prolonged consent discussion. Phone interpretation has been attempted repeatedly. She removes the headset and cannot reliably repeat back key points. No video interpreter is available, and an in-person interpreter will arrive in about an hour. The team must choose a plan within 20–30 minutes. They believe delaying an hour could increase risk of fetal acidemia and need for neonatal resuscitation. Hospital policy and state law permit proceeding now under an urgent consent process or waiting for full interpreted consent while closely monitoring.",
+        "choice_1": {
+          "choice": "Perform cesarean delivery now using the urgent consent process and phone interpretation",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Continue labor with continuous monitoring while awaiting an in-person interpreter for full consent",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

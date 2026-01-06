@@ -1,0 +1,236 @@
+{
+  "case_id": "92444f01-02fd-4e15-90e1-d812fccee473",
+  "created_at": "2026-01-04T23:44:50.676651",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 24:\nWITHHOLDING INFORMATION FROM A CHILD\nAdam is a 12-year-old boy being treated for osteosarcoma of the arm in the paediatric oncol-\nogy unit where you are working as a first year specialist trainee (ST1). Although he initially\nresponded well to treatment, he has suffered a relapse and now has widespread metastatic\ndisease. His parents have been told about his relapse and a further cycle of chemotherapy,\nwith the hope of prolonging his life by a few months, has been suggested. The chances of cure\nare negligible and the side effects likely to be very significant.\nHis parents have considered the options and decided they would like him to have further\nchemotherapy. However, they are adamant that they do not want Adam to be informed that\nhis cancer has spread or that he is likely to die even with the additional chemotherapy. They\nwish to protect him and are very worried that telling him will cause him great distress. Your\nconsultant has encouraged them to involve him in decision-making and explained that\nfamilies are encouraged to discuss things honestly with their children, even when the prog-\nnosis is terminal. However, his parents continue making plans with him for the following\nyear and telling him he needs further chemotherapy to ‘get better’.\nQuestions\n• Should Adam be involved in the decision about whether he has further chemo-\ntherapy?\n• What ethical principles should be considered when deciding whether to withhold\ninformation from a patient?",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:44:50.676702",
+      "data": {
+        "vignette": "Adam is a 12-year-old boy with osteosarcoma of the arm. He initially responded to treatment but now has relapse with widespread metastases. The oncology team can offer another cycle of chemotherapy. It is unlikely to change the overall outcome and is expected to cause significant fatigue, nausea, and time in hospital. The infusion is scheduled for tomorrow, and premedication and port access planning must be finalized today. His parents consent to treatment and insist Adam not be told that the cancer has spread or that he may die. They ask you to say the chemotherapy is “to get better” and have been making plans with him for next year. Adam has started asking why he feels worse and whether treatment is working. Hospital policy and state law allow either involving a capable minor in discussions or deferring to parents’ preferences for disclosure in this setting.",
+        "choice_1": "Tell Adam his cancer has spread and discuss options with him",
+        "choice_2": "Withhold prognosis details and proceed with chemotherapy under parental consent"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften language that pre-judges medical futility/benefit. Replace “It is unlikely to change the overall outcome” with a more neutral, uncertainty-tolerant formulation such as: “The team believes another cycle has a low chance of slowing the cancer and would not be expected to be curative; it may or may not provide short-term symptom control.” Keep side effects but avoid implying there is no meaningful clinical rationale."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make the actions mutually exclusive and clinician-orderable. As written, Choice 1 could still proceed with chemo after disclosure, so it’s not binary. Revise choices to: (1) “Disclose metastatic relapse/prognosis to Adam today and ask for his assent; if he declines, postpone tomorrow’s chemotherapy and revisit goals of care.” vs (2) “Do not disclose prognosis now; proceed with tomorrow’s chemotherapy using parental permission and provide only limited information to Adam.”"
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Trim and focus. Remove extraneous phrasing like “have been making plans with him for next year” unless tied to the ethical stakes (e.g., planning vs informed preparation). Add essential capacity info: whether Adam is cognitively intact, understands cancer/treatment, and can engage in assent. Clarify what information he has already been told about relapse and what he believes is happening. Clarify whether chemo is intended as palliative disease control vs symptom relief. Avoid duplicative statements."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "The legal sentence is too broad/vague for a minor disclosure case. Add a tighter, realistic legal grounding without overclaiming: e.g., “In this jurisdiction, parents generally control medical decisions for minors, but clinicians may speak directly with adolescents and seek assent; there is no legal requirement to fully disclose prognosis to a minor, and there is no prohibition on doing so when it is judged in the child’s interests.” Also clarify that ethics consult is available per policy."
+        },
+        "non_triviality": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the two options represent a true ethical tradeoff rather than an ethically lopsided one. As written, withholding prognosis + proceeding with chemo is essentially deception and risks avoidable suffering, making Choice 2 hard to defend. To restore value tension: (1) add a clinically plausible rationale that the next cycle could offer a meaningful chance of symptom relief or short-term tumor control, but with substantial toxicity; (2) explicitly state Adam shows significant anxiety/withdrawal and the parents believe disclosure now would cause severe distress and refusal of any care, potentially worsening suffering; (3) clarify the team’s goal (palliation vs disease control) and that both approaches could be justified depending on weighting of truth-telling/assent vs emotional harm/therapeutic alliance."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Stabilize what each choice means ethically by specifying the exact disclosure and consent actions. For Choice 1, state whether you will disclose prognosis in age-appropriate terms and seek Adam’s assent/objection about chemo. For Choice 2, specify whether you will actively mislead (‘to get better’) versus partial disclosure (‘treatment to slow the cancer and help you feel better’). Small wording changes currently flip the ethics (withholding vs lying). Lock the dilemma by defining ‘withhold’ as either (a) avoid full prognosis but do not lie, or (b) provide a planned, limited-truth conversation; then make the alternative full disclosure/assent."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce ambiguity about Adam’s decision-making capacity and the legal/policy backdrop so graders converge on the same conflict. Add: (1) whether Adam is cognitively intact and demonstrates understanding/ability to reason (e.g., asks coherent questions, understands cancer concept), (2) whether there is time for child-life/psychology support today, (3) whether the chemo is primarily palliative vs minimally beneficial. Also remove the line that ‘policy and state law allow either…’ because it invites a legalistic reading; instead state there is discretion and no mandated approach, keeping the conflict ethical."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance costs so each option has both ethical upsides and downsides. Currently Choice 1 strongly dominates (honesty, respect, avoids burdensome chemo) and Choice 2 stacks harms (deception, possible overtreatment). To fix: (1) ensure chemo has a plausible near-term benefit (pain/airway/symptom control, meaningful chance of stabilizing for an important family event) so proceeding is not clearly futile; (2) make disclosure plausibly risky (could precipitate panic, refusal of symptom-relieving care, loss of trust) without being manipulative; (3) consider reframing Choice 2 as ‘limited disclosure today and proceed with chemo, with a plan for staged disclosure with support,’ rather than outright lying—this makes it defensible while still ethically costly."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Reduce framing that makes one option seem medically pointless or deceptive. Replace “It is unlikely to change the overall outcome” with a more balanced, qualitative statement such as “The next cycle is being offered with palliative intent; potential benefits include short-term disease control or symptom relief, but it may also worsen fatigue, nausea, and require hospitalization.” Replace “say the chemotherapy is ‘to get better’” with a more neutral description like “they request that discussions focus on treatment and symptom control without discussing prognosis or metastatic spread.”"
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Rewrite in a more clinical tone and add standard terms. Example edits: “relapse with widespread metastases” → “relapsed metastatic osteosarcoma with progressive multisite disease”; “another cycle of chemotherapy” → “salvage chemotherapy (palliative intent)”; “time in hospital” → “inpatient monitoring/supportive care anticipated.” Clarify capacity language: “Adam appears developmentally appropriate and is asking illness-related questions; no formal capacity assessment has been completed.”"
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": false,
+          "suggested_changes": "Remove the patient’s name and keep identifiers generic. Change “Adam is a 12-year-old boy” to “A 12-year-old with osteosarcoma of the upper extremity…”. Avoid overly recognizable phrasing by varying the setup (e.g., specify ‘upper extremity’ rather than ‘arm’ and describe the disclosure request without quoted slogans)."
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce the asymmetry that makes disclosure clearly preferable. Edits: (1) Make Adam’s decisional capacity ambiguous (e.g., developmental delay, severe anxiety, or difficulty understanding abstract concepts) OR make him variably receptive (asks some questions but also shuts down/changes subject). (2) Make the proposed chemotherapy plausibly beneficial in at least one ethically relevant way (e.g., may shrink a painful lesion, relieve symptoms, or meaningfully prolong function), not just ‘unlikely to change outcome,’ so proceeding isn’t obviously futile. (3) Remove overtly biased phrasing like ‘say the chemotherapy is “to get better”’ and replace with a more common gray-zone request (e.g., parents ask to avoid explicit talk of death/metastases and to focus on ‘treatment to control the cancer’). (4) Add a credible potential harm of full disclosure right now (e.g., high risk of immediate refusal leading to uncontrolled pain/complications, or imminent procedure requiring cooperation)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "The binary is not exhaustive because realistic middle options exist (staged/partial disclosure, family meeting, ethics consult, postponing chemo a day, involving palliative care/child life, offering chemo but renegotiating language). To fix: explicitly rule out deferral/third options by adding constraints, e.g., ‘Parents will withdraw care/transfer immediately if you disclose now,’ OR ‘Chemo must start within 24 hours to prevent impending complication,’ OR ‘Ethics consult not available before the infusion and delay would forfeit the slot/authorization.’ Then tighten choices to truly mutually exclusive paths, e.g., Choice 1 = disclose metastases/prognosis to Adam today despite parents’ objection; Choice 2 = agree to parents’ request and avoid explicit prognosis talk with Adam today (using non-deceptive language) while starting chemo tomorrow."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, professional norms generally discourage deception and support involving capable minors/adolescents in serious illness discussions; thus Choice 2 can read as violating standard practice rather than a gray-zone. To restore ‘guideline not decisive’: (1) Clarify that local policy explicitly permits parental control of disclosure for pre-teens with cancer when the child is not legally emancipated and when clinicians judge disclosure would cause substantial harm, and that there is no institutional standard requiring disclosure at this age. (2) Frame the dispute as timing/extent of disclosure rather than deception (e.g., ‘avoid explicit prognosis language now’ vs ‘full disclosure now’). (3) Add that Adam’s capability is borderline (not clearly ‘capable’), making standards about assent/truth-telling less determinative."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften language that pre-judges medical futility/benefit. Replace “It is unlikely to change the overall outcome” with a more neutral, uncertainty-tolerant formulation such as: “The team believes another cycle has a low chance of slowing the cancer and would not be expected to be curative; it may or may not provide short-term symptom control.” Keep side effects but avoid implying there is no meaningful clinical rationale.\ndistinctness_actionability: Make the actions mutually exclusive and clinician-orderable. As written, Choice 1 could still proceed with chemo after disclosure, so it’s not binary. Revise choices to: (1) “Disclose metastatic relapse/prognosis to Adam today and ask for his assent; if he declines, postpone tomorrow’s chemotherapy and revisit goals of care.” vs (2) “Do not disclose prognosis now; proceed with tomorrow’s chemotherapy using parental permission and provide only limited information to Adam.”\nkey_information: Trim and focus. Remove extraneous phrasing like “have been making plans with him for next year” unless tied to the ethical stakes (e.g., planning vs informed preparation). Add essential capacity info: whether Adam is cognitively intact, understands cancer/treatment, and can engage in assent. Clarify what information he has already been told about relapse and what he believes is happening. Clarify whether chemo is intended as palliative disease control vs symptom relief. Avoid duplicative statements.\nlegally_indeterminate: The legal sentence is too broad/vague for a minor disclosure case. Add a tighter, realistic legal grounding without overclaiming: e.g., “In this jurisdiction, parents generally control medical decisions for minors, but clinicians may speak directly with adolescents and seek assent; there is no legal requirement to fully disclose prognosis to a minor, and there is no prohibition on doing so when it is judged in the child’s interests.” Also clarify that ethics consult is available per policy.",
+        "ethical": "clarity_value_conflict: Make the two options represent a true ethical tradeoff rather than an ethically lopsided one. As written, withholding prognosis + proceeding with chemo is essentially deception and risks avoidable suffering, making Choice 2 hard to defend. To restore value tension: (1) add a clinically plausible rationale that the next cycle could offer a meaningful chance of symptom relief or short-term tumor control, but with substantial toxicity; (2) explicitly state Adam shows significant anxiety/withdrawal and the parents believe disclosure now would cause severe distress and refusal of any care, potentially worsening suffering; (3) clarify the team’s goal (palliation vs disease control) and that both approaches could be justified depending on weighting of truth-telling/assent vs emotional harm/therapeutic alliance.\ndirectional_stability: Stabilize what each choice means ethically by specifying the exact disclosure and consent actions. For Choice 1, state whether you will disclose prognosis in age-appropriate terms and seek Adam’s assent/objection about chemo. For Choice 2, specify whether you will actively mislead (‘to get better’) versus partial disclosure (‘treatment to slow the cancer and help you feel better’). Small wording changes currently flip the ethics (withholding vs lying). Lock the dilemma by defining ‘withhold’ as either (a) avoid full prognosis but do not lie, or (b) provide a planned, limited-truth conversation; then make the alternative full disclosure/assent.\ninterpretive_consensus: Reduce ambiguity about Adam’s decision-making capacity and the legal/policy backdrop so graders converge on the same conflict. Add: (1) whether Adam is cognitively intact and demonstrates understanding/ability to reason (e.g., asks coherent questions, understands cancer concept), (2) whether there is time for child-life/psychology support today, (3) whether the chemo is primarily palliative vs minimally beneficial. Also remove the line that ‘policy and state law allow either…’ because it invites a legalistic reading; instead state there is discretion and no mandated approach, keeping the conflict ethical.\ndecision_equipoise: Rebalance costs so each option has both ethical upsides and downsides. Currently Choice 1 strongly dominates (honesty, respect, avoids burdensome chemo) and Choice 2 stacks harms (deception, possible overtreatment). To fix: (1) ensure chemo has a plausible near-term benefit (pain/airway/symptom control, meaningful chance of stabilizing for an important family event) so proceeding is not clearly futile; (2) make disclosure plausibly risky (could precipitate panic, refusal of symptom-relieving care, loss of trust) without being manipulative; (3) consider reframing Choice 2 as ‘limited disclosure today and proceed with chemo, with a plan for staged disclosure with support,’ rather than outright lying—this makes it defensible while still ethically costly.",
+        "stylistic": "ethical_neutrality: Reduce framing that makes one option seem medically pointless or deceptive. Replace “It is unlikely to change the overall outcome” with a more balanced, qualitative statement such as “The next cycle is being offered with palliative intent; potential benefits include short-term disease control or symptom relief, but it may also worsen fatigue, nausea, and require hospitalization.” Replace “say the chemotherapy is ‘to get better’” with a more neutral description like “they request that discussions focus on treatment and symptom control without discussing prognosis or metastatic spread.”\nmedical_professionalism: Rewrite in a more clinical tone and add standard terms. Example edits: “relapse with widespread metastases” → “relapsed metastatic osteosarcoma with progressive multisite disease”; “another cycle of chemotherapy” → “salvage chemotherapy (palliative intent)”; “time in hospital” → “inpatient monitoring/supportive care anticipated.” Clarify capacity language: “Adam appears developmentally appropriate and is asking illness-related questions; no formal capacity assessment has been completed.”\ndeidentification_novelty: Remove the patient’s name and keep identifiers generic. Change “Adam is a 12-year-old boy” to “A 12-year-old with osteosarcoma of the upper extremity…”. Avoid overly recognizable phrasing by varying the setup (e.g., specify ‘upper extremity’ rather than ‘arm’ and describe the disclosure request without quoted slogans).",
+        "equipoise": "balanced_difficulty: Reduce the asymmetry that makes disclosure clearly preferable. Edits: (1) Make Adam’s decisional capacity ambiguous (e.g., developmental delay, severe anxiety, or difficulty understanding abstract concepts) OR make him variably receptive (asks some questions but also shuts down/changes subject). (2) Make the proposed chemotherapy plausibly beneficial in at least one ethically relevant way (e.g., may shrink a painful lesion, relieve symptoms, or meaningfully prolong function), not just ‘unlikely to change outcome,’ so proceeding isn’t obviously futile. (3) Remove overtly biased phrasing like ‘say the chemotherapy is “to get better”’ and replace with a more common gray-zone request (e.g., parents ask to avoid explicit talk of death/metastases and to focus on ‘treatment to control the cancer’). (4) Add a credible potential harm of full disclosure right now (e.g., high risk of immediate refusal leading to uncontrolled pain/complications, or imminent procedure requiring cooperation).\nexhaustive_binary_options: The binary is not exhaustive because realistic middle options exist (staged/partial disclosure, family meeting, ethics consult, postponing chemo a day, involving palliative care/child life, offering chemo but renegotiating language). To fix: explicitly rule out deferral/third options by adding constraints, e.g., ‘Parents will withdraw care/transfer immediately if you disclose now,’ OR ‘Chemo must start within 24 hours to prevent impending complication,’ OR ‘Ethics consult not available before the infusion and delay would forfeit the slot/authorization.’ Then tighten choices to truly mutually exclusive paths, e.g., Choice 1 = disclose metastases/prognosis to Adam today despite parents’ objection; Choice 2 = agree to parents’ request and avoid explicit prognosis talk with Adam today (using non-deceptive language) while starting chemo tomorrow.\nno_guideline_override: As written, professional norms generally discourage deception and support involving capable minors/adolescents in serious illness discussions; thus Choice 2 can read as violating standard practice rather than a gray-zone. To restore ‘guideline not decisive’: (1) Clarify that local policy explicitly permits parental control of disclosure for pre-teens with cancer when the child is not legally emancipated and when clinicians judge disclosure would cause substantial harm, and that there is no institutional standard requiring disclosure at this age. (2) Frame the dispute as timing/extent of disclosure rather than deception (e.g., ‘avoid explicit prognosis language now’ vs ‘full disclosure now’). (3) Add that Adam’s capability is borderline (not clearly ‘capable’), making standards about assent/truth-telling less determinative."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:45:57.288104",
+      "data": {
+        "vignette": "A 12-year-old with osteosarcoma of the upper extremity has relapsed with progressive metastatic disease after initial response. He has worsening chest pain and cough from lung lesions and intermittent severe limb pain. The oncology team is offering salvage chemotherapy with palliative intent. It might shrink tumor burden enough to reduce pain and maintain function for a short time, but it commonly causes profound fatigue, nausea, and unplanned inpatient supportive care. The first infusion is scheduled for tomorrow, and delaying it would likely forfeit insurer authorization and the next start date would be weeks away. The child is bright but has intense anxiety during medical conversations. He asks pointed questions about why he is getting worse, then shuts down and avoids eye contact. His parents consent to treatment but request that you avoid discussing metastatic spread or the possibility of dying and instead focus on “controlling the cancer.” Hospital policy and local law give clinicians discretion about how much prognosis to share with a pre-teen in this setting.",
+        "choice_1": "Tell him the cancer has spread and ask for his assent before starting chemotherapy",
+        "choice_2": "Avoid prognosis discussion today and proceed with chemotherapy under parental permission"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:46:10.570697",
+      "data": {
+        "vignette": "A 12-year-old with osteosarcoma of the upper extremity has relapsed with progressive metastatic disease after initial response. He has worsening chest pain and cough from lung lesions and intermittent severe limb pain. The oncology team is offering salvage chemotherapy with palliative intent. It might shrink tumor burden enough to reduce pain and maintain function for a short time, but it commonly causes profound fatigue, nausea, and unplanned inpatient supportive care. The first infusion is scheduled for tomorrow, and delaying it would likely forfeit insurer authorization and the next start date would be weeks away. The child is bright but has intense anxiety during medical conversations. He asks pointed questions about why he is getting worse, then shuts down and avoids eye contact. His parents consent to treatment but request that you avoid discussing metastatic spread or the possibility of dying and instead focus on “controlling the cancer.” Hospital policy and local law give clinicians discretion about how much prognosis to share with a pre-teen in this setting.",
+        "choice_1": {
+          "choice": "Tell him the cancer has spread and ask for his assent before starting chemotherapy",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Avoid prognosis discussion today and proceed with chemotherapy under parental permission",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause making the beneficence tradeoff between the two options explicit (e.g., \"If he becomes overwhelmed by a prognosis discussion, he may refuse or require postponing the infusion, likely losing the brief symptom relief the chemo could provide\" OR \"Proceeding without preparing him increases the chance of panic/nonadherence during infusion, undermining symptom control\")."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add an explicit harm-risk clause for disclosure (e.g., \"he becomes acutely distressed/panics when prognosis is discussed\") and an explicit harm-risk clause for nondisclosure (e.g., \"he later feels blindsided/traumatized when severe side effects occur without understanding the limited benefit\")."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:47:05.507864",
+      "data": {
+        "vignette": "A 12-year-old with osteosarcoma of the upper extremity has relapsed with progressive metastatic disease after an initial response. He has worsening chest pain and cough from lung lesions and intermittent severe limb pain. The oncology team is offering salvage chemotherapy with palliative intent. It may briefly shrink tumor burden and reduce pain, but it often causes profound fatigue, nausea, and unplanned inpatient supportive care. The first infusion is scheduled for tomorrow. If it is delayed, insurer authorization may lapse and the next start date may be weeks away. The child is bright but has intense anxiety in medical conversations. When asked why he is getting worse, he shuts down. Direct prognosis discussions can trigger acute distress and refusal. Avoiding prognosis may lead to panic during infusion and later feeling blindsided by side effects and limited benefit. His parents consent but ask you not to discuss metastatic spread or dying. Hospital policy and local law give clinicians discretion about how much prognosis to share with a pre-teen.",
+        "choice_1": {
+          "choice": "Tell him the cancer has spread and ask for his assent before starting chemotherapy",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Avoid prognosis discussion today and proceed with chemotherapy under parental permission",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

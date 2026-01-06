@@ -1,0 +1,244 @@
+{
+  "case_id": "9343be8e-63a5-40ce-8ee3-b41e5ed67fcd",
+  "created_at": "2026-01-04T23:50:34.958446",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 87:\nDOCTORS AND DVLA REGULATIONS\nFabian is a 38-year-old taxi driver who is admitted to A&E following a collapse. He was at\nhome with his wife and son when he ‘fell to the floor and just started shaking’. He has no\nmemory of the event and does not recall feeling strange beforehand. A collateral history is\ntaken from his wife who describes the collapse as sudden with all of his body jerking. She\nsays it lasted about a minute ‘but felt like a lifetime’. There is no history of tongue biting or\nincontinence and he recovered spontaneously, although he felt a little drowsy afterwards.\nNothing like this has happened before and there is no history of epilepsy in the family. He\ndid, however, start taking a new drug called Pellidron for his headaches 3 days ago. Fabian\nhas a history of headaches, oesophagitis and mild depression. He does not smoke and drinks\nabout 20 units a week. He is taking omeprazole 20 mg daily and citalopram 20 mg daily, and\nhe says he takes a baby aspirin as his brother, aged 47, recently had a myocardial infarction.\nHe does not have any known allergies.\nQuestions\n• Can Fabian continue to drive because he has only had one unexplained seizure?\n• Is there a legal requirement to inform the Driver and Vehicle Licensing Agency\n(DVLA) of Fabian’s seizure?\n• Is there a legal requirement to tell his employer?",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:50:34.958475",
+      "data": {
+        "vignette": "A 38-year-old taxi driver is seen in the ED after a witnessed collapse at home. His partner describes a sudden fall with whole-body jerking for about a minute and brief confusion afterward. He remembers nothing. This is his first event. Workup is still in progress, and he started a new headache medication three days ago that could lower the seizure threshold. He is medically stable and wants to go home now. He says he must drive tomorrow to avoid losing income, and he asks that no one be told because he fears his license will be suspended. You believe he has a meaningful near-term risk of another episode. You also know he may ignore advice if it threatens his job. Hospital policy and local regulations allow either maintaining confidentiality or notifying the licensing authority when a clinician believes there is a serious driving risk.",
+        "choice_1": "Discharge him with clear driving restrictions and rely on him to self-notify authorities.",
+        "choice_2": "Notify the licensing authority of the event despite his request for confidentiality."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften language implying a medically driven ‘correct’ answer. Specifically: replace “meaningful near-term risk of another episode” with a more neutral statement like “there is a nontrivial possibility of recurrence in the short term, and guidance typically recommends no driving for a period after a first suspected seizure.” Avoid “You also know he may ignore advice” (biased) and instead state: “He states he will continue driving to avoid losing income.” Keep clinical facts (witnessed convulsive episode, medication lowering seizure threshold) but avoid any phrasing that the risk is clearly high enough to mandate reporting."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add essential missing clinical/decision-relevant details and trim extraneous ones: (1) clarify whether a head CT, labs/glucose, tox screen, ECG are pending or negative, and whether he has returned to neurologic baseline—this affects plausibility of discharge. (2) Specify whether this is being treated as a first-time seizure vs syncope with convulsive movements (brief differential statement). (3) Replace “whole-body jerking” with “generalized tonic-clonic–appearing movements” and note tongue bite/incontinence if present or absent (one clause). (4) Remove decorative occupation detail unless directly tied to the ethical stakes—keep “commercial driver” rather than “taxi driver,” and drop income detail repetition."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "As written, discharge ‘now’ while workup is still in progress is potentially implausible. Make the timeline realistic: state that initial ED evaluation is reassuring (vitals stable, glucose normal, CT head negative, no meningismus, back to baseline) and that outpatient EEG/neurology follow-up is planned. Also clarify the headache medication (e.g., bupropion, tramadol, or a stimulant) or state “a medication known to lower seizure threshold,” and note it was stopped. This makes both discharge-with-restrictions and reporting decisions occur at a realistic disposition point."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "The vignette needs a clearer legal grounding sentence to ensure both options are defensible. Replace “Hospital policy and local regulations allow either…” with something more concrete and balanced, e.g., “In this jurisdiction, clinicians are permitted—but not required—to report medically impaired drivers to the licensing authority; confidentiality is also protected when the clinician documents counseling and driving restrictions.” If in a mandatory-reporting state/country, adjust so it’s permissive or explicitly choose a jurisdiction where permissive reporting applies."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Currently Choice 2 can look obviously safer because you’ve framed risk as ‘meaningful’ and suggested he will ignore advice. To restore genuine moral cost on both sides: (1) add that reporting can trigger immediate suspension and loss of livelihood/insurance, and may deter him (and others) from seeking care or disclosing symptoms; (2) add that he appears competent, remorseful, and offers specific safeguards (e.g., agrees to stop driving, arrange alternate work/transport) but the clinician doubts enforceability; (3) soften recurrence certainty as above; (4) explicitly note that reporting is not an emergency measure and may take time, while immediate driving restriction counseling has potential to prevent harm too. This makes reasonable clinicians disagree."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce reliance on jurisdiction-specific permissive reporting as the core tension. Reframe as an ethical decision about breaching confidentiality to prevent foreseeable harm: explicitly state that reporting is discretionary (not mandated) and that the clinician can also choose to involve the patient in the report. Clarify that both options are professionally acceptable (e.g., 'some clinicians prioritize therapeutic alliance and voluntary compliance; others prioritize public safety through reporting') so graders anchor on confidentiality vs protection-from-harm rather than on legal technicalities."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Strengthen the ethical costs on both sides so neither looks like the obvious answer. For Choice 1, add concrete foreseeable harms: patient is likely to keep driving despite advice; risk of injuring others; clinician could feel complicit. For Choice 2, add concrete harms: breach could lead to loss of livelihood, loss of trust, avoidance of care, and possibly withholding information in future; reporting may not immediately prevent driving. Also remove wording that makes one choice sound clearly safer ('meaningful near-term risk') or make the risk ambiguity explicit (could be medication-related and avoidable), keeping urgency but preserving uncertainty so reasonable clinicians could defend either."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or neutralize language that biases toward reporting: change “meaningful near-term risk” to “nontrivial concern for recurrence,” and change “you also know he may ignore advice” to “you are concerned he may not adhere to driving restrictions.” Replace “must drive tomorrow” with “plans to drive tomorrow for work.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Clarify the clinical status and what is pending: specify key negative/positive elements (e.g., neuro exam, head CT/ECG pending or resulted) in 1 short clause, and remove redundant motivation statements. Also clarify whether he has decision-making capacity and whether the episode is suspected seizure vs syncope (e.g., “first suspected generalized tonic-clonic seizure” or “collapse concerning for seizure; alternate causes not excluded”)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Shorten and parallelize choices to 10–15 words and avoid extra components: \n- Choice 1: “Discharge with driving restriction counseling; maintain confidentiality and document his plan.” \n- Choice 2: “Report the event to the licensing authority despite his objection.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce framing that makes reporting obviously safer. Specifically: (1) Replace “You believe he has a meaningful near-term risk of another episode” with more equipoise: e.g., “It is unclear whether this was a provoked seizure vs syncope; recurrence risk is uncertain until workup is complete.” (2) Soften “you know he may ignore advice” to something less determinative, e.g., “he is ambivalent and may minimize restrictions because of financial pressure.” (3) Add concrete, nontrivial harms of reporting that are ethically weighty and not merely ‘inconvenience’: e.g., immediate loss of employment/ability to support dependents, risk of eviction, loss of insurance, or safety concerns if he cannot work nights without driving. (4) Avoid making Choice 1 sound naive: rephrase to “Discharge with written restrictions, arrange urgent follow-up, and ask him to self-report,” and add that he demonstrates understanding and agrees to a safety plan—so non-reporting is ethically defensible."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious ‘third options’ by adding constraints that make the decision truly binary at this moment. For example: (1) State he is leaving now (AMA) and does not meet criteria for involuntary hold; you cannot legally detain him for further testing. (2) Clarify that the reporting mechanism is time-limited—e.g., the clinician must file a report before the end of the ED visit/within 24 hours or it is not accepted. (3) Explicitly rule out intermediate actions that would dissolve the dilemma, such as contacting family/employer for alternative transport, arranging a next-day neurology evaluation before he drives, or placing him in observation. One line could do: “No observation bed is available and neurology cannot see him before morning; he refuses to let you contact anyone and insists he will drive to work tomorrow.”"
+        },
+        "no_guideline_override": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften language implying a medically driven ‘correct’ answer. Specifically: replace “meaningful near-term risk of another episode” with a more neutral statement like “there is a nontrivial possibility of recurrence in the short term, and guidance typically recommends no driving for a period after a first suspected seizure.” Avoid “You also know he may ignore advice” (biased) and instead state: “He states he will continue driving to avoid losing income.” Keep clinical facts (witnessed convulsive episode, medication lowering seizure threshold) but avoid any phrasing that the risk is clearly high enough to mandate reporting.\nkey_information: Add essential missing clinical/decision-relevant details and trim extraneous ones: (1) clarify whether a head CT, labs/glucose, tox screen, ECG are pending or negative, and whether he has returned to neurologic baseline—this affects plausibility of discharge. (2) Specify whether this is being treated as a first-time seizure vs syncope with convulsive movements (brief differential statement). (3) Replace “whole-body jerking” with “generalized tonic-clonic–appearing movements” and note tongue bite/incontinence if present or absent (one clause). (4) Remove decorative occupation detail unless directly tied to the ethical stakes—keep “commercial driver” rather than “taxi driver,” and drop income detail repetition.\nclinical_plausibility: As written, discharge ‘now’ while workup is still in progress is potentially implausible. Make the timeline realistic: state that initial ED evaluation is reassuring (vitals stable, glucose normal, CT head negative, no meningismus, back to baseline) and that outpatient EEG/neurology follow-up is planned. Also clarify the headache medication (e.g., bupropion, tramadol, or a stimulant) or state “a medication known to lower seizure threshold,” and note it was stopped. This makes both discharge-with-restrictions and reporting decisions occur at a realistic disposition point.\nlegally_indeterminate: The vignette needs a clearer legal grounding sentence to ensure both options are defensible. Replace “Hospital policy and local regulations allow either…” with something more concrete and balanced, e.g., “In this jurisdiction, clinicians are permitted—but not required—to report medically impaired drivers to the licensing authority; confidentiality is also protected when the clinician documents counseling and driving restrictions.” If in a mandatory-reporting state/country, adjust so it’s permissive or explicitly choose a jurisdiction where permissive reporting applies.\nnon_triviality: Currently Choice 2 can look obviously safer because you’ve framed risk as ‘meaningful’ and suggested he will ignore advice. To restore genuine moral cost on both sides: (1) add that reporting can trigger immediate suspension and loss of livelihood/insurance, and may deter him (and others) from seeking care or disclosing symptoms; (2) add that he appears competent, remorseful, and offers specific safeguards (e.g., agrees to stop driving, arrange alternate work/transport) but the clinician doubts enforceability; (3) soften recurrence certainty as above; (4) explicitly note that reporting is not an emergency measure and may take time, while immediate driving restriction counseling has potential to prevent harm too. This makes reasonable clinicians disagree.",
+        "ethical": "interpretive_consensus: Reduce reliance on jurisdiction-specific permissive reporting as the core tension. Reframe as an ethical decision about breaching confidentiality to prevent foreseeable harm: explicitly state that reporting is discretionary (not mandated) and that the clinician can also choose to involve the patient in the report. Clarify that both options are professionally acceptable (e.g., 'some clinicians prioritize therapeutic alliance and voluntary compliance; others prioritize public safety through reporting') so graders anchor on confidentiality vs protection-from-harm rather than on legal technicalities.\ndecision_equipoise: Strengthen the ethical costs on both sides so neither looks like the obvious answer. For Choice 1, add concrete foreseeable harms: patient is likely to keep driving despite advice; risk of injuring others; clinician could feel complicit. For Choice 2, add concrete harms: breach could lead to loss of livelihood, loss of trust, avoidance of care, and possibly withholding information in future; reporting may not immediately prevent driving. Also remove wording that makes one choice sound clearly safer ('meaningful near-term risk') or make the risk ambiguity explicit (could be medication-related and avoidable), keeping urgency but preserving uncertainty so reasonable clinicians could defend either.",
+        "stylistic": "ethical_neutrality: Remove or neutralize language that biases toward reporting: change “meaningful near-term risk” to “nontrivial concern for recurrence,” and change “you also know he may ignore advice” to “you are concerned he may not adhere to driving restrictions.” Replace “must drive tomorrow” with “plans to drive tomorrow for work.”\nconciseness_coherence: Clarify the clinical status and what is pending: specify key negative/positive elements (e.g., neuro exam, head CT/ECG pending or resulted) in 1 short clause, and remove redundant motivation statements. Also clarify whether he has decision-making capacity and whether the episode is suspected seizure vs syncope (e.g., “first suspected generalized tonic-clonic seizure” or “collapse concerning for seizure; alternate causes not excluded”).\nchoice_brevity: Shorten and parallelize choices to 10–15 words and avoid extra components: \n- Choice 1: “Discharge with driving restriction counseling; maintain confidentiality and document his plan.” \n- Choice 2: “Report the event to the licensing authority despite his objection.”",
+        "equipoise": "balanced_difficulty: Reduce framing that makes reporting obviously safer. Specifically: (1) Replace “You believe he has a meaningful near-term risk of another episode” with more equipoise: e.g., “It is unclear whether this was a provoked seizure vs syncope; recurrence risk is uncertain until workup is complete.” (2) Soften “you know he may ignore advice” to something less determinative, e.g., “he is ambivalent and may minimize restrictions because of financial pressure.” (3) Add concrete, nontrivial harms of reporting that are ethically weighty and not merely ‘inconvenience’: e.g., immediate loss of employment/ability to support dependents, risk of eviction, loss of insurance, or safety concerns if he cannot work nights without driving. (4) Avoid making Choice 1 sound naive: rephrase to “Discharge with written restrictions, arrange urgent follow-up, and ask him to self-report,” and add that he demonstrates understanding and agrees to a safety plan—so non-reporting is ethically defensible.\nexhaustive_binary_options: Close obvious ‘third options’ by adding constraints that make the decision truly binary at this moment. For example: (1) State he is leaving now (AMA) and does not meet criteria for involuntary hold; you cannot legally detain him for further testing. (2) Clarify that the reporting mechanism is time-limited—e.g., the clinician must file a report before the end of the ED visit/within 24 hours or it is not accepted. (3) Explicitly rule out intermediate actions that would dissolve the dilemma, such as contacting family/employer for alternative transport, arranging a next-day neurology evaluation before he drives, or placing him in observation. One line could do: “No observation bed is available and neurology cannot see him before morning; he refuses to let you contact anyone and insists he will drive to work tomorrow.”"
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:51:33.901557",
+      "data": {
+        "vignette": "A 38-year-old commercial driver comes to the ED after a witnessed collapse at home. His partner saw generalized tonic-clonic–appearing movements for about a minute and several minutes of confusion afterward. He is now back to baseline with a normal neurologic exam. Fingerstick glucose is normal, ECG and head CT are reassuring, and routine labs are unremarkable. An outpatient EEG and neurology follow-up are planned. He started bupropion for headaches three days ago and stopped it today, so it is unclear whether this was a provoked seizure, convulsive syncope, or another cause; short-term recurrence risk remains uncertain until the workup is complete. He has decision-making capacity and insists on leaving now; no observation bed is available, and he refuses to let you contact family or his employer. He says he will drive tomorrow for work. In this jurisdiction, clinicians may report medically unsafe drivers but are not required to. Reporting could trigger immediate license action that threatens his housing and insurance and may damage trust, but not reporting could leave others at risk if he drives.",
+        "choice_1": "Maintain confidentiality, discharge with documented driving restrictions and voluntary self-report.",
+        "choice_2": "Report the event to the licensing authority despite his objection."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:51:47.166942",
+      "data": {
+        "vignette": "A 38-year-old commercial driver comes to the ED after a witnessed collapse at home. His partner saw generalized tonic-clonic–appearing movements for about a minute and several minutes of confusion afterward. He is now back to baseline with a normal neurologic exam. Fingerstick glucose is normal, ECG and head CT are reassuring, and routine labs are unremarkable. An outpatient EEG and neurology follow-up are planned. He started bupropion for headaches three days ago and stopped it today, so it is unclear whether this was a provoked seizure, convulsive syncope, or another cause; short-term recurrence risk remains uncertain until the workup is complete. He has decision-making capacity and insists on leaving now; no observation bed is available, and he refuses to let you contact family or his employer. He says he will drive tomorrow for work. In this jurisdiction, clinicians may report medically unsafe drivers but are not required to. Reporting could trigger immediate license action that threatens his housing and insurance and may damage trust, but not reporting could leave others at risk if he drives.",
+        "choice_1": {
+          "choice": "Maintain confidentiality, discharge with documented driving restrictions and voluntary self-report.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Report the event to the licensing authority despite his objection.",
+          "autonomy": "violates",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "sheets_edit",
+      "timestamp": "2026-01-05T20:54:48.211991",
+      "data": {
+        "vignette": "A 38-year-old commercial driver comes to the ED after a witnessed collapse at home. His partner saw generalized tonic-clonic–appearing movements for about a minute and several minutes of confusion afterward. He is now back to baseline with a normal neurologic exam. Fingerstick glucose is normal, ECG and head CT are reassuring, and routine labs are unremarkable. An outpatient EEG and neurology follow-up are planned. He started bupropion for headaches three days ago and stopped it today, so it is unclear whether this was a provoked seizure, convulsive syncope, or another cause; short-term recurrence risk remains uncertain until the workup is complete. He has decision-making capacity and insists on leaving now; no observation bed is available, and he refuses to let you contact family or his employer. He says he will drive tomorrow for work. In this jurisdiction, clinicians may report medically unsafe drivers but are not required to. Reporting could trigger immediate license action that threatens his housing and insurance and may damage trust, but not reporting could leave others at risk if he drives.",
+        "choice_1": {
+          "choice": "Maintain confidentiality, discharge with documented driving restrictions and voluntary self-report.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Report the event to the licensing authority despite his objection.",
+          "autonomy": "violates",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": {
+        "source": "google_sheets",
+        "import_timestamp": "2026-01-05T20:54:48.211988",
+        "reviewers": {
+          "r1": {
+            "name": "Payal Chandak",
+            "decision": "Reject"
+          }
+        }
+      }
+    }
+  ],
+  "status": "deprecated"
+}

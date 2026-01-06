@@ -1,0 +1,236 @@
+{
+  "case_id": "ca48bd78-c209-4c82-80c4-37438e90e68a",
+  "created_at": "2026-01-04T22:49:28.152157",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "The case of Dr Chabot\nA landmark in this respect has been the so-called Chabot case (Griffiths, 1995). The defendant was a psychiatrist named Boudewyn Chabot, who in September 1991 supplied to Mrs Boomsma, at her request, lethal drugs which she consumed in the presence of the defendant, her GP, and a friend. She died half an hour later.\nMrs Boomsma was 50 years old; she had married at 22, but from the beginning the marriage was unhappy. In 1986 her eldest son committed suicide. From that time on her marital problems grew worse and her husband more violent; her wish to die began to take shape, but she said that she remained alive only to care for her younger son. In 1988 she left her husband, taking her younger son with her. In 1990 her son was admitted to hospital in connection with a traffic accident, and was found to be suffering from cancer, from which he died in May 1991. That same evening Mrs Boomsma attempted suicide with drugs she had put by, but did not die. She then approached the Dutch Association for Voluntary Euthanasia, which put her in touch with Dr Chabot.\nMrs Boomsma was diagnosed as suffering from an adjustment disorder, consisting of a depressed mood, without psychotic signs, in the context of a complicated bereavement process. Although her condition was in principle treatable, treatment would probably have been protracted and the chance of success small. But she rejected therapy, despite Dr Chabot’s best efforts to persuade her. He became convinced that she was experiencing intense, long-term psychic suffering which was unbearable for her, and which held out no prospect of improvement. Her request for assistance with suicide in his opinion was well-considered. In letters and discussion with him, she presented the reasons for her decision clearly and consistently, showing that she understood her situation and the consequences of her decision. In his judgement, her rejection of therapy was also well-considered. Chabot consulted seven experts. None of them believed that there was any realistic chance of success, given Mrs Boomsma’s clear refusal of treatment.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T22:49:28.152176",
+      "data": {
+        "vignette": "A 50-year-old woman is referred to you, a psychiatrist, after years of persistent grief and depressed mood following the deaths of two children. She lives alone and has cut off most supports. She has no psychosis or mania. She describes her wish to die in clear, consistent terms and demonstrates understanding of alternatives and consequences. She has repeatedly declined medications and psychotherapy, stating that prolonged treatment feels intolerable and unwanted. Her medical record documents a prior nonfatal overdose soon after a bereavement, but she denies current impulsive self-harm plans beyond a planned, supervised death. You and two independent consultants agree she has decision-making capacity. The hospital’s assisted-dying program allows eligibility for refractory psychological suffering, and clinicians may also decline and offer treatment; counsel confirms either course is legally permissible here. The program review is in two days, and you must submit your final plan.",
+        "choice_1": "Provide the requested life-ending prescription under the assisted-dying protocol.",
+        "choice_2": "Decline life-ending medication and start inpatient treatment with antidepressant and grief therapy."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften language that pre-judges the condition as untreatable or makes one path sound clinically settled. For example, change “assisted-dying program allows eligibility for refractory psychological suffering” to “the program permits requests based on long-standing psychological suffering after documented treatment attempts,” and briefly note what treatments have/ have not been tried (e.g., prior SSRI/SNRI trials, structured grief therapy, ECT/TMS considered) without implying futility. Avoid implying the consultants’ agreement resolves the dilemma; specify they agree on capacity but differ on whether further treatment is reasonable."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 2 an action you can actually implement given her stated refusals and capacity. Either (a) specify she is willing to accept a time-limited inpatient trial, then frame Choice 2 as “decline MAID and recommend/arrange a 4–6 week intensive inpatient/partial-hospital program,” OR (b) if the intent is involuntary care, explicitly state she meets local criteria for emergency detention (e.g., expresses intent to die soon if denied) and make the order concrete: “place her on an involuntary hold for imminent self-harm risk and initiate treatment.” Ensure the two choices are mutually exclusive clinician actions (submit MAID approval vs submit decline + treatment plan)."
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add only the missing decision-critical psychiatric details that make both options defensible, and remove any redundant phrasing. Specifically: (1) clarify prior treatment history (what has been tried, adherence, adverse effects, and why she declines now); (2) clarify current suicidality beyond MAID—timeline/intent if denied, access to lethal means, and whether she meets criteria for involuntary admission; (3) clarify diagnostic formulation (e.g., prolonged grief disorder vs major depressive disorder) only insofar as it affects reversibility and treatment expectations. Keep the rest; it’s already fairly lean."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Anchor the setting to a plausible jurisdiction/program for assisted dying for psychological suffering and make the workflow realistic. For example: specify this is in a country/region where MAID for psychiatric suffering is established and requires multiple assessments and a waiting period, or explicitly state the institution has a legally compliant pathway with defined safeguards. Also reconcile the timeline: if review is in two days, note that this is a pre-review submission step within a longer mandated process (so it doesn’t read like a rapid, near-immediate MAID decision)."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Increase ethical symmetry so neither option is obviously impermissible or ineffective. If Choice 2 involves involuntary treatment, add facts that make it legally/clinically arguable (credible near-term self-harm intent if denied, impaired ability to keep herself safe, consultants split on imminence). If Choice 2 is voluntary, add why declining MAID could still be reasonable despite capacity (e.g., strong possibility of improvement with specific time-limited interventions, prior lack of access to evidence-based grief treatment, intolerable but potentially treatable symptoms) and why providing MAID could still be ethically defensible (long duration, enduring wish, repeated informed refusals, risk of traumatic solitary suicide if denied)."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Revise Choice 2 so it is ethically/clinically plausible given established capacity and refusal of treatment. As written, 'start inpatient treatment' reads like coercive/involuntary hospitalization and forced medication, which is generally not defensible if she has capacity and no imminent plan—making Choice 2 look clearly wrong. Suggested edits:\n- Change Choice 2 to: 'Decline to proceed with assisted dying at this time and offer a time-limited, voluntary inpatient (or intensive outpatient) trial of antidepressant + complicated-grief therapy, with a clear plan to revisit eligibility after the trial.'\n- OR explicitly state the legal/clinical basis for involuntary admission (e.g., 'she has an imminent, specific plan to die within days if not assisted') if you intend hospitalization to be non-voluntary.\nAlso strengthen the defensibility of Choice 1 by clarifying why she meets the program’s “refractory” requirement (without using numbers): add that she previously completed multiple adequate trials of psychotherapy and antidepressants, or that the jurisdiction/program allows refusal of further treatment to qualify, and that consultants agree criteria are met. This prevents the case from reading like “not actually eligible,” which otherwise tilts the dilemma."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Reduce language that implicitly validates the assisted-dying request or frames treatment as inherently aversive. Edits: (1) Replace “wish to die in clear, consistent terms” with “requests assisted dying consistently over multiple visits.” (2) Replace “planned, supervised death” with “assisted-dying process under institutional protocol.” (3) Add 1–2 neutral sentences describing clinically plausible reasons to pursue treatment (e.g., diagnostic uncertainty between prolonged grief disorder vs major depressive episode; potential for symptom improvement), without implying certainty, to avoid one-sided framing."
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Use more standard psychiatric documentation and clarify diagnoses/assessment elements. Add: (1) working diagnoses (e.g., prolonged grief disorder vs MDD; PTSD features if applicable); (2) brief capacity elements (understanding, appreciation, reasoning, expressing a choice) already partly present—align with that language; (3) current risk assessment terms (passive death wish vs active suicidal ideation; intent; means; protective factors). Keep it succinct and clinically styled."
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Clarify potentially confusing phrasing and tighten a few sentences. Edits: (1) Replace “denies current impulsive self-harm plans beyond a planned, supervised death” with “denies current suicidal intent outside the assisted-dying pathway; no acute plan or preparatory behaviors reported.” (2) Specify whether she is willing to accept voluntary admission; otherwise remove “start inpatient treatment,” which reads as coercive given intact capacity. (3) Remove minor redundancies (e.g., combine the two consultant sentences)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both options similarly scoped, neutral, and free of embedded implementation details that imply coercion. Suggested replacements: \n- Choice 1: “Proceed with assisted-dying eligibility submission and prescribe per protocol.” \n- Choice 2: “Decline assisted-dying request and offer voluntary intensive psychiatric treatment.” \nKeep each to one action statement and avoid specifying particular drug classes/therapies in the choice."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce asymmetry that makes Choice 2 feel coercive and Choice 1 feel like honoring a clearly-capacitated request.\n- Reframe Choice 2 so it does not automatically entail involuntary inpatient treatment. Specify whether she meets criteria for involuntary hold; if not, change to a realistic alternative (e.g., \"Decline to participate in assisted dying and offer intensive outpatient/partial hospitalization with rapid follow-up\"), or explicitly state that she is willing to be admitted voluntarily.\n- Add ethically weighty downsides to Choice 1 beyond the act itself (e.g., concern about treatable major depression/prolonged grief masquerading as 'refractory' suffering; risk of clinician complicity in a potentially remediable condition; impact on staff moral distress/therapeutic alliance) and add meaningful downsides to Choice 2 beyond \"treatment\" (e.g., prolonging unbearable suffering; forcing unwanted interventions; increasing risk of unassisted suicide if she feels blocked).\n- Add some clinical ambiguity that preserves capacity while making either path defensible: e.g., prominent anhedonia, guilt, sleep/appetite disturbance that could be consistent with major depression; or long history of multiple failed evidence-based trials (making refractoriness credible). Right now the vignette leans toward a straightforward autonomy-respecting answer."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Make the binary options truly exhaustive by ruling out obvious middle paths.\n- Address the realistic third option of deferring/pausing the application for a brief, time-limited evaluation (e.g., 72-hour structured assessment) while not initiating forced treatment; currently the \"review in two days\" does not prevent requesting an extension.\n- Clarify whether the program permits postponement or additional consultation; if not, state that the review board requires an attending recommendation now and will close the file for months if not submitted.\n- Modify Choice 2 to represent the only viable alternative to participating (e.g., \"Decline and document non-support; she will remain outpatient\"), or explicitly state that she consents to inpatient admission and that this is the only way to access rapid therapy given availability constraints.\n- Consider reframing as: (A) endorse and proceed with assisted-dying protocol; (B) refuse to endorse and instead recommend/arrange a defined alternative care pathway. Avoid implying you can both refuse and compel hospitalization unless legally justified."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, institutional policy/legal counsel largely resolves permissibility, but clinical standards may still override: inpatient treatment 'start' and assisted dying for psychiatric suffering often have stringent procedural safeguards.\n- Clarify why existing safeguards/criteria do not dictate the decision: e.g., she technically meets eligibility, consultants agree capacity, and 'refractory' criteria are satisfied but contested; OR she meets some criteria but interpretation is discretionary.\n- For Choice 2, clarify whether she meets criteria for involuntary admission; if she does not, then inpatient treatment cannot be imposed—this would be a professional/legal standard override making Choice 2 nonviable.\n- Add that jurisdiction/program guidance leaves final endorsement to treating psychiatrist judgment even when criteria are met (i.e., no requirement to provide), and that refusal is allowed without mandatory alternative beyond referral.\n- If you keep inpatient treatment, specify it is voluntary and available immediately; otherwise the choice violates standard practice."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften language that pre-judges the condition as untreatable or makes one path sound clinically settled. For example, change “assisted-dying program allows eligibility for refractory psychological suffering” to “the program permits requests based on long-standing psychological suffering after documented treatment attempts,” and briefly note what treatments have/ have not been tried (e.g., prior SSRI/SNRI trials, structured grief therapy, ECT/TMS considered) without implying futility. Avoid implying the consultants’ agreement resolves the dilemma; specify they agree on capacity but differ on whether further treatment is reasonable.\ndistinctness_actionability: Make Choice 2 an action you can actually implement given her stated refusals and capacity. Either (a) specify she is willing to accept a time-limited inpatient trial, then frame Choice 2 as “decline MAID and recommend/arrange a 4–6 week intensive inpatient/partial-hospital program,” OR (b) if the intent is involuntary care, explicitly state she meets local criteria for emergency detention (e.g., expresses intent to die soon if denied) and make the order concrete: “place her on an involuntary hold for imminent self-harm risk and initiate treatment.” Ensure the two choices are mutually exclusive clinician actions (submit MAID approval vs submit decline + treatment plan).\nkey_information: Add only the missing decision-critical psychiatric details that make both options defensible, and remove any redundant phrasing. Specifically: (1) clarify prior treatment history (what has been tried, adherence, adverse effects, and why she declines now); (2) clarify current suicidality beyond MAID—timeline/intent if denied, access to lethal means, and whether she meets criteria for involuntary admission; (3) clarify diagnostic formulation (e.g., prolonged grief disorder vs major depressive disorder) only insofar as it affects reversibility and treatment expectations. Keep the rest; it’s already fairly lean.\nclinical_plausibility: Anchor the setting to a plausible jurisdiction/program for assisted dying for psychological suffering and make the workflow realistic. For example: specify this is in a country/region where MAID for psychiatric suffering is established and requires multiple assessments and a waiting period, or explicitly state the institution has a legally compliant pathway with defined safeguards. Also reconcile the timeline: if review is in two days, note that this is a pre-review submission step within a longer mandated process (so it doesn’t read like a rapid, near-immediate MAID decision).\nnon_triviality: Increase ethical symmetry so neither option is obviously impermissible or ineffective. If Choice 2 involves involuntary treatment, add facts that make it legally/clinically arguable (credible near-term self-harm intent if denied, impaired ability to keep herself safe, consultants split on imminence). If Choice 2 is voluntary, add why declining MAID could still be reasonable despite capacity (e.g., strong possibility of improvement with specific time-limited interventions, prior lack of access to evidence-based grief treatment, intolerable but potentially treatable symptoms) and why providing MAID could still be ethically defensible (long duration, enduring wish, repeated informed refusals, risk of traumatic solitary suicide if denied).",
+        "ethical": "decision_equipoise: Revise Choice 2 so it is ethically/clinically plausible given established capacity and refusal of treatment. As written, 'start inpatient treatment' reads like coercive/involuntary hospitalization and forced medication, which is generally not defensible if she has capacity and no imminent plan—making Choice 2 look clearly wrong. Suggested edits:\n- Change Choice 2 to: 'Decline to proceed with assisted dying at this time and offer a time-limited, voluntary inpatient (or intensive outpatient) trial of antidepressant + complicated-grief therapy, with a clear plan to revisit eligibility after the trial.'\n- OR explicitly state the legal/clinical basis for involuntary admission (e.g., 'she has an imminent, specific plan to die within days if not assisted') if you intend hospitalization to be non-voluntary.\nAlso strengthen the defensibility of Choice 1 by clarifying why she meets the program’s “refractory” requirement (without using numbers): add that she previously completed multiple adequate trials of psychotherapy and antidepressants, or that the jurisdiction/program allows refusal of further treatment to qualify, and that consultants agree criteria are met. This prevents the case from reading like “not actually eligible,” which otherwise tilts the dilemma.",
+        "stylistic": "ethical_neutrality: Reduce language that implicitly validates the assisted-dying request or frames treatment as inherently aversive. Edits: (1) Replace “wish to die in clear, consistent terms” with “requests assisted dying consistently over multiple visits.” (2) Replace “planned, supervised death” with “assisted-dying process under institutional protocol.” (3) Add 1–2 neutral sentences describing clinically plausible reasons to pursue treatment (e.g., diagnostic uncertainty between prolonged grief disorder vs major depressive episode; potential for symptom improvement), without implying certainty, to avoid one-sided framing.\nmedical_professionalism: Use more standard psychiatric documentation and clarify diagnoses/assessment elements. Add: (1) working diagnoses (e.g., prolonged grief disorder vs MDD; PTSD features if applicable); (2) brief capacity elements (understanding, appreciation, reasoning, expressing a choice) already partly present—align with that language; (3) current risk assessment terms (passive death wish vs active suicidal ideation; intent; means; protective factors). Keep it succinct and clinically styled.\nconciseness_coherence: Clarify potentially confusing phrasing and tighten a few sentences. Edits: (1) Replace “denies current impulsive self-harm plans beyond a planned, supervised death” with “denies current suicidal intent outside the assisted-dying pathway; no acute plan or preparatory behaviors reported.” (2) Specify whether she is willing to accept voluntary admission; otherwise remove “start inpatient treatment,” which reads as coercive given intact capacity. (3) Remove minor redundancies (e.g., combine the two consultant sentences).\nchoice_brevity: Make both options similarly scoped, neutral, and free of embedded implementation details that imply coercion. Suggested replacements: \n- Choice 1: “Proceed with assisted-dying eligibility submission and prescribe per protocol.” \n- Choice 2: “Decline assisted-dying request and offer voluntary intensive psychiatric treatment.” \nKeep each to one action statement and avoid specifying particular drug classes/therapies in the choice.",
+        "equipoise": "balanced_difficulty: Reduce asymmetry that makes Choice 2 feel coercive and Choice 1 feel like honoring a clearly-capacitated request.\n- Reframe Choice 2 so it does not automatically entail involuntary inpatient treatment. Specify whether she meets criteria for involuntary hold; if not, change to a realistic alternative (e.g., \"Decline to participate in assisted dying and offer intensive outpatient/partial hospitalization with rapid follow-up\"), or explicitly state that she is willing to be admitted voluntarily.\n- Add ethically weighty downsides to Choice 1 beyond the act itself (e.g., concern about treatable major depression/prolonged grief masquerading as 'refractory' suffering; risk of clinician complicity in a potentially remediable condition; impact on staff moral distress/therapeutic alliance) and add meaningful downsides to Choice 2 beyond \"treatment\" (e.g., prolonging unbearable suffering; forcing unwanted interventions; increasing risk of unassisted suicide if she feels blocked).\n- Add some clinical ambiguity that preserves capacity while making either path defensible: e.g., prominent anhedonia, guilt, sleep/appetite disturbance that could be consistent with major depression; or long history of multiple failed evidence-based trials (making refractoriness credible). Right now the vignette leans toward a straightforward autonomy-respecting answer.\nexhaustive_binary_options: Make the binary options truly exhaustive by ruling out obvious middle paths.\n- Address the realistic third option of deferring/pausing the application for a brief, time-limited evaluation (e.g., 72-hour structured assessment) while not initiating forced treatment; currently the \"review in two days\" does not prevent requesting an extension.\n- Clarify whether the program permits postponement or additional consultation; if not, state that the review board requires an attending recommendation now and will close the file for months if not submitted.\n- Modify Choice 2 to represent the only viable alternative to participating (e.g., \"Decline and document non-support; she will remain outpatient\"), or explicitly state that she consents to inpatient admission and that this is the only way to access rapid therapy given availability constraints.\n- Consider reframing as: (A) endorse and proceed with assisted-dying protocol; (B) refuse to endorse and instead recommend/arrange a defined alternative care pathway. Avoid implying you can both refuse and compel hospitalization unless legally justified.\nno_guideline_override: As written, institutional policy/legal counsel largely resolves permissibility, but clinical standards may still override: inpatient treatment 'start' and assisted dying for psychiatric suffering often have stringent procedural safeguards.\n- Clarify why existing safeguards/criteria do not dictate the decision: e.g., she technically meets eligibility, consultants agree capacity, and 'refractory' criteria are satisfied but contested; OR she meets some criteria but interpretation is discretionary.\n- For Choice 2, clarify whether she meets criteria for involuntary admission; if she does not, then inpatient treatment cannot be imposed—this would be a professional/legal standard override making Choice 2 nonviable.\n- Add that jurisdiction/program guidance leaves final endorsement to treating psychiatrist judgment even when criteria are met (i.e., no requirement to provide), and that refusal is allowed without mandatory alternative beyond referral.\n- If you keep inpatient treatment, specify it is voluntary and available immediately; otherwise the choice violates standard practice."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T22:51:00.379729",
+      "data": {
+        "vignette": "A 50-year-old woman is referred for long-standing grief and depression after the deaths of two children. She lives alone and has withdrawn from supports. She reports persistent anhedonia, guilt, insomnia, and daily thoughts that life is not worth living. She requests assisted dying consistently over several visits. She denies suicidal intent outside the assisted-dying pathway and reports no acute plan or preparatory behaviors. Years ago she had a nonfatal overdose after a bereavement. She previously completed several antidepressant trials and supportive therapy, and she stopped them due to side effects and feeling no relief. She has never had structured complicated-grief therapy or neuromodulation. You and two consultants find she can understand, appreciate, reason, and communicate a stable choice, but you differ on whether further treatment should be tried. Hospital counsel confirms either course is legally permissible. The committee meets in two days, and without your recommendation the application closes for months.",
+        "choice_1": "Submit endorsement for assisted dying and prescribe life-ending medication per protocol.",
+        "choice_2": "Decline to endorse assisted dying and arrange voluntary intensive psychiatric treatment."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T22:51:08.785607",
+      "data": {
+        "vignette": "A 50-year-old woman is referred for long-standing grief and depression after the deaths of two children. She lives alone and has withdrawn from supports. She reports persistent anhedonia, guilt, insomnia, and daily thoughts that life is not worth living. She requests assisted dying consistently over several visits. She denies suicidal intent outside the assisted-dying pathway and reports no acute plan or preparatory behaviors. Years ago she had a nonfatal overdose after a bereavement. She previously completed several antidepressant trials and supportive therapy, and she stopped them due to side effects and feeling no relief. She has never had structured complicated-grief therapy or neuromodulation. You and two consultants find she can understand, appreciate, reason, and communicate a stable choice, but you differ on whether further treatment should be tried. Hospital counsel confirms either course is legally permissible. The committee meets in two days, and without your recommendation the application closes for months.",
+        "choice_1": {
+          "choice": "Submit endorsement for assisted dying and prescribe life-ending medication per protocol.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Decline to endorse assisted dying and arrange voluntary intensive psychiatric treatment.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add that the patient explicitly refuses further psychiatric treatment (e.g., complicated-grief therapy/neuromodulation) and wants assisted dying instead, so declining endorsement directly overrides her stated preference."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a brief clause quantifying the expected clinical benefit (or low likelihood) of additional evidence-based treatments (e.g., structured complicated-grief therapy/neuromodulation) and explicitly note whether assisted dying is expected to relieve otherwise irremediable suffering."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that her depressive/grief syndrome is potentially treatable (e.g., consultants estimate a meaningful chance of improvement with complicated-grief therapy/ECT), making MAiD an irreversible harm; and add a clause that intensive treatment carries nontrivial harms (e.g., likely involuntary restriction/medication side effects or hospitalization distress) to clarify the nonmaleficence tradeoff."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T22:52:02.129449",
+      "data": {
+        "vignette": "A 50-year-old woman is referred for long-standing grief and depression after the deaths of two children. She lives alone and has withdrawn from supports. She reports persistent anhedonia, guilt, insomnia, and daily thoughts that life is not worth living. Over several visits, she consistently requests assisted dying. She states she refuses further psychiatric treatment, including structured complicated-grief therapy or neuromodulation. She denies suicidal intent outside the assisted-dying pathway and reports no acute plan or preparatory behaviors. Years ago she had a nonfatal overdose after a bereavement. She previously completed several antidepressant trials and supportive therapy, and she stopped them due to side effects and no relief. Two consultants find she can understand, appreciate, reason, and communicate a stable choice. They disagree on whether additional evidence-based treatments offer a meaningful chance of improvement. Assisted dying would end her suffering but is irreversible. Intensive treatment could require hospitalization and exposes her to medication side effects and restrictive monitoring. Hospital counsel confirms either course is legally permissible. The committee meets in two days, and without your recommendation the application closes for months.",
+        "choice_1": {
+          "choice": "Submit endorsement for assisted dying and prescribe life-ending medication per protocol.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Decline to endorse assisted dying and arrange voluntary intensive psychiatric treatment.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

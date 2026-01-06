@@ -1,0 +1,201 @@
+{
+  "case_id": "06470e3b-b403-4cd3-897c-82b13f7ef1f0",
+  "created_at": "2026-01-04T23:41:30.694513",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "Case 6-6\nIgnoring a Daughter's Do Not Resuscitate (DNR) Decision\nAn 88-year-old Hispanic man, Roberto Gonzalez, was admitted to Jefferson\nWhite Hospital Emergency Department with a diagnosis of cerebral hemor-\nrhage and coma. Before Mr. Gonzalez's daughter could get to the hospital,\nthe consultant pulmonologist, Melanie Caldarone, administered cardio-\npulmonary resuscitation (CPR) and admitted him to the intensive care unit\n(ICU). Upon Ms. Gonzalez’s arrival at the hospital, she explained that she\ndid not want CPR or other life-sustaining measures based on past commu-\nnication with her father. She showed them a letter from Mr. Gonzalez stat-\ning his concern about a friend who ended up “helpless on machines.” There\nwas no formal advance directive, however, just this one example of\nMr. Gonzalez's worry about his friend. The family physician and consultant\nneurologist had authorized extubation and removal of the respirator in the\nmedical record but did not insist on that course because of the pulmonolo-\ngist's insistence that Mr. Gonzalez was “not brain dead.” He was main-\ntained on support for three days and then expired.\nThe insurance department of the health maintenance organization\n(HMO) funding Mr. Gonzalez‘s hospitalization refused to pay for the ICU\nexpenses because of the family's decision for DNR, charging that the hos-\npital and staff had overused the facilities and nursing staff and for which\nthe HMO accepted no financial responsibility.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:41:30.694564",
+      "data": {
+        "vignette": "An 88-year-old man is brought to the ED after a large intracerebral hemorrhage. He is comatose and intubated for airway protection. He has no completed advance directive in the chart. His daughter arrives with a signed letter from him describing fear of being kept “helpless on machines” after watching a friend die that way. She says she is his closest available surrogate and asks for DNR status and removal of the ventilator today. The neurologist feels meaningful recovery is unlikely but cannot be certain this early. The ICU team notes he is stable on the ventilator and could be observed for a short period before any withdrawal decision. Hospital policy and state law allow either honoring the surrogate’s request or continuing life support pending reassessment. You must enter code status and a plan before transfer out of the ED.",
+        "choice_1": "Write DNR orders and proceed with extubation and comfort-focused care",
+        "choice_2": "Continue full life support in the ICU with reassessment before any withdrawal"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Soften prognostic language that makes withdrawal seem medically ‘correct.’ Change “meaningful recovery is unlikely” to a more value-neutral, uncertainty-forward statement such as: “Early prognosis after intracerebral hemorrhage is guarded and difficult to predict; outcomes range from death to survival with severe disability, and a small minority may regain limited communication.” Add one sentence noting that sedatives/intubation can confound early neurologic assessment, without implying a better expected outcome."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add only the missing decision-relevant facts and remove ambiguity about authority/evidence: (1) Clarify surrogate hierarchy/availability (e.g., “no spouse; other children unreachable; daughter is default surrogate under state statute”). (2) Clarify the letter’s status (signed/dated, not a formal advance directive) and whether it is the only known prior expression. (3) Briefly state baseline functional status and values if known (independent vs already dependent), because it materially affects interpretation of “helpless on machines.” (4) State whether neurosurgery/ICH-specific interventions are being offered or not (e.g., “no emergent surgical option recommended”), since that affects whether ICU time is ‘treatment’ vs ‘prolongation.’"
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Increase genuine ethical tension so neither option is an obvious best choice. Suggested edits: (1) Make the patient’s prior wishes less dispositive/clear-cut: the letter could be older/brief/ambiguous (“did not want to be kept alive indefinitely if there was no chance of waking up”) rather than a direct request for immediate extubation in any coma. (2) Add a plausible reason to consider a short, time-limited trial: e.g., neurologist notes that definitive prognostication is unreliable in the first 24–48 hours and recommends reassessment after sedation is minimized and repeat imaging. (3) Add a plausible moral cost to delaying withdrawal: continued ventilation may lead to tracheostomy/feeding tube decisions, ICU complications, or prolonged dying that may conflict with the patient’s expressed aversion. (4) Keep both choices defensible by explicitly framing Choice 2 as a defined “time-limited trial” with agreed reassessment point (e.g., “continue ventilator/ICU support for 24–48 hours, no trach/PEG decisions yet, reassess with family/neurology”), rather than open-ended full support."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Clarify the evidentiary weight and specificity of the patient’s prior wishes so graders converge on the same autonomy-related facts without turning it into a legal technicality. For example: (1) state the letter is dated, signed, and specifically mentions mechanical ventilation/feeding tubes after severe stroke, but was not notarized; (2) note whether the patient ever discussed this with his PCP or daughter; (3) confirm no other surrogates are immediately reachable and the daughter is the default surrogate under typical hierarchy. This reduces ambiguity about whether the document is a clear expression of preferences versus a vague statement."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Neutralize the framing that makes immediate withdrawal look like the obvious ‘right’ answer. Actionable edits: (1) replace “meaningful recovery is unlikely” with more balanced prognostic uncertainty (e.g., early exam is confounded by sedation; imaging suggests severe injury but prognosis is not yet reliable in the first 24–48 hours). (2) Add an ethically weighty cost to continuing life support (e.g., high likelihood of prolonged ICU course with tracheostomy/PEG discussions and prolonged unconsciousness, which may directly conflict with his expressed fears). (3) Add an ethically weighty cost to immediate extubation (e.g., he is hemodynamically stable and could survive with supportive care long enough to clarify prognosis and locate additional prior statements; extubation now would almost certainly lead to death before reassessment). (4) Consider reframing Choice 2 as a time-limited trial with predefined clinical triggers for withdrawal to make it a defensible, principled alternative rather than simple disregard of preferences."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or balance language that nudges toward withdrawal. Replace “meaningful recovery is unlikely” with a more neutral statement such as “prognosis is poor, but neurologic trajectory is uncertain in the first 24–48 hours.” Consider paraphrasing the quoted phrase to a clinically neutral summary (e.g., “he previously expressed he would not want prolonged mechanical ventilation with severe neurologic impairment”) rather than “helpless on machines.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten the policy/legal sentence and clarify the decision authority. Specify whether the daughter is the legally recognized surrogate/health care proxy under state hierarchy, and whether the signed letter is witnessed/notarized or otherwise meets criteria for an advance directive. Replace “Hospital policy and state law allow either…” with a concrete, clinically realistic framing (e.g., “In the absence of a formal advance directive, local policy permits relying on the next-of-kin surrogate or continuing life support briefly for prognostic clarification.”)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Shorten choices to ~10–15 words and remove extra qualifiers. Example: Choice 1: “Enter DNR and extubate today with comfort-focused management.” Choice 2: “Maintain full support and defer extubation pending reassessment in ICU.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce framing that favors immediate withdrawal: (1) Make the letter more ambiguous (e.g., expresses dislike of prolonged dependence but also desire to “give it a chance” if there is any meaningful recovery). (2) Balance prognostic language—replace “meaningful recovery is unlikely” with “prognosis is guarded; early exam/imaging suggest severe injury but some patients regain limited communication after days to weeks.” (3) Add ethically weighty costs to Choice 2 (e.g., risk of prolonging dying and causing treatments he may have opposed) and to Choice 1 (e.g., significant chance of surviving with moderate disability if supported for 48–72h; concern about acting too quickly without confirming wishes)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close the obvious middle-ground: explicitly state that the ICU has no beds unless a definitive plan is entered and that policy requires either (A) immediate transition to comfort care with extubation in the ED or (B) admission as full code/full support; a time-limited trial or partial measures (e.g., DNR but continue ventilation) are not permitted in this setting/policy. Alternatively, rewrite the binary to the true dilemma: ‘Immediate extubation today’ vs ‘Time-limited trial of ventilation for 48–72 hours with DNR in place,’ and explicitly rule out further deferral beyond that window."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Clarify why standards/law do not settle it: specify uncertainty about the document’s applicability (not notarized, written years ago, not explicit about acute potentially survivable neurologic catastrophe, or contested interpretation), uncertainty about surrogate authority (other adult child reachable but not yet contacted; no formal health-care proxy), and that local neurocritical-care practice varies on early withdrawal after ICH because prognostication is unreliable in the first 24–48h. Add one sentence stating that institutional ethics consult is not immediately available before the ED disposition decision."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Soften prognostic language that makes withdrawal seem medically ‘correct.’ Change “meaningful recovery is unlikely” to a more value-neutral, uncertainty-forward statement such as: “Early prognosis after intracerebral hemorrhage is guarded and difficult to predict; outcomes range from death to survival with severe disability, and a small minority may regain limited communication.” Add one sentence noting that sedatives/intubation can confound early neurologic assessment, without implying a better expected outcome.\nkey_information: Add only the missing decision-relevant facts and remove ambiguity about authority/evidence: (1) Clarify surrogate hierarchy/availability (e.g., “no spouse; other children unreachable; daughter is default surrogate under state statute”). (2) Clarify the letter’s status (signed/dated, not a formal advance directive) and whether it is the only known prior expression. (3) Briefly state baseline functional status and values if known (independent vs already dependent), because it materially affects interpretation of “helpless on machines.” (4) State whether neurosurgery/ICH-specific interventions are being offered or not (e.g., “no emergent surgical option recommended”), since that affects whether ICU time is ‘treatment’ vs ‘prolongation.’\nnon_triviality: Increase genuine ethical tension so neither option is an obvious best choice. Suggested edits: (1) Make the patient’s prior wishes less dispositive/clear-cut: the letter could be older/brief/ambiguous (“did not want to be kept alive indefinitely if there was no chance of waking up”) rather than a direct request for immediate extubation in any coma. (2) Add a plausible reason to consider a short, time-limited trial: e.g., neurologist notes that definitive prognostication is unreliable in the first 24–48 hours and recommends reassessment after sedation is minimized and repeat imaging. (3) Add a plausible moral cost to delaying withdrawal: continued ventilation may lead to tracheostomy/feeding tube decisions, ICU complications, or prolonged dying that may conflict with the patient’s expressed aversion. (4) Keep both choices defensible by explicitly framing Choice 2 as a defined “time-limited trial” with agreed reassessment point (e.g., “continue ventilator/ICU support for 24–48 hours, no trach/PEG decisions yet, reassess with family/neurology”), rather than open-ended full support.",
+        "ethical": "interpretive_consensus: Clarify the evidentiary weight and specificity of the patient’s prior wishes so graders converge on the same autonomy-related facts without turning it into a legal technicality. For example: (1) state the letter is dated, signed, and specifically mentions mechanical ventilation/feeding tubes after severe stroke, but was not notarized; (2) note whether the patient ever discussed this with his PCP or daughter; (3) confirm no other surrogates are immediately reachable and the daughter is the default surrogate under typical hierarchy. This reduces ambiguity about whether the document is a clear expression of preferences versus a vague statement.\ndecision_equipoise: Neutralize the framing that makes immediate withdrawal look like the obvious ‘right’ answer. Actionable edits: (1) replace “meaningful recovery is unlikely” with more balanced prognostic uncertainty (e.g., early exam is confounded by sedation; imaging suggests severe injury but prognosis is not yet reliable in the first 24–48 hours). (2) Add an ethically weighty cost to continuing life support (e.g., high likelihood of prolonged ICU course with tracheostomy/PEG discussions and prolonged unconsciousness, which may directly conflict with his expressed fears). (3) Add an ethically weighty cost to immediate extubation (e.g., he is hemodynamically stable and could survive with supportive care long enough to clarify prognosis and locate additional prior statements; extubation now would almost certainly lead to death before reassessment). (4) Consider reframing Choice 2 as a time-limited trial with predefined clinical triggers for withdrawal to make it a defensible, principled alternative rather than simple disregard of preferences.",
+        "stylistic": "ethical_neutrality: Remove or balance language that nudges toward withdrawal. Replace “meaningful recovery is unlikely” with a more neutral statement such as “prognosis is poor, but neurologic trajectory is uncertain in the first 24–48 hours.” Consider paraphrasing the quoted phrase to a clinically neutral summary (e.g., “he previously expressed he would not want prolonged mechanical ventilation with severe neurologic impairment”) rather than “helpless on machines.”\nconciseness_coherence: Tighten the policy/legal sentence and clarify the decision authority. Specify whether the daughter is the legally recognized surrogate/health care proxy under state hierarchy, and whether the signed letter is witnessed/notarized or otherwise meets criteria for an advance directive. Replace “Hospital policy and state law allow either…” with a concrete, clinically realistic framing (e.g., “In the absence of a formal advance directive, local policy permits relying on the next-of-kin surrogate or continuing life support briefly for prognostic clarification.”).\nchoice_brevity: Shorten choices to ~10–15 words and remove extra qualifiers. Example: Choice 1: “Enter DNR and extubate today with comfort-focused management.” Choice 2: “Maintain full support and defer extubation pending reassessment in ICU.”",
+        "equipoise": "balanced_difficulty: Reduce framing that favors immediate withdrawal: (1) Make the letter more ambiguous (e.g., expresses dislike of prolonged dependence but also desire to “give it a chance” if there is any meaningful recovery). (2) Balance prognostic language—replace “meaningful recovery is unlikely” with “prognosis is guarded; early exam/imaging suggest severe injury but some patients regain limited communication after days to weeks.” (3) Add ethically weighty costs to Choice 2 (e.g., risk of prolonging dying and causing treatments he may have opposed) and to Choice 1 (e.g., significant chance of surviving with moderate disability if supported for 48–72h; concern about acting too quickly without confirming wishes).\nexhaustive_binary_options: Close the obvious middle-ground: explicitly state that the ICU has no beds unless a definitive plan is entered and that policy requires either (A) immediate transition to comfort care with extubation in the ED or (B) admission as full code/full support; a time-limited trial or partial measures (e.g., DNR but continue ventilation) are not permitted in this setting/policy. Alternatively, rewrite the binary to the true dilemma: ‘Immediate extubation today’ vs ‘Time-limited trial of ventilation for 48–72 hours with DNR in place,’ and explicitly rule out further deferral beyond that window.\nno_guideline_override: Clarify why standards/law do not settle it: specify uncertainty about the document’s applicability (not notarized, written years ago, not explicit about acute potentially survivable neurologic catastrophe, or contested interpretation), uncertainty about surrogate authority (other adult child reachable but not yet contacted; no formal health-care proxy), and that local neurocritical-care practice varies on early withdrawal after ICH because prognostication is unreliable in the first 24–48h. Add one sentence stating that institutional ethics consult is not immediately available before the ED disposition decision."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:42:54.644421",
+      "data": {
+        "vignette": "An 88-year-old man with no prior cognitive impairment is brought to the ED after a large intracerebral hemorrhage. He is comatose and intubated. He is receiving sedatives that limit the reliability of the neurologic exam. Neurosurgery does not recommend an emergent procedure. He has no formal advance directive or named health-care proxy. He has no spouse, and his daughter is the default surrogate under state hierarchy; a son exists but cannot be reached before disposition. The daughter brings a signed, dated letter written years ago after a friend’s stroke: he did not want “weeks on a ventilator or feeding tube” if he would not wake, but he also wrote to “give me a short chance” if doctors thought he might recognize family again. Neurology says the early prognosis is guarded and often clearer after a day or two; outcomes range from death to survival with severe disability, and a small minority regain limited communication. Keeping him ventilated may lead to a prolonged ICU course and invasive decisions he may have feared. Extubating now will likely lead to death before reassessment. Hospital policy and state law permit either course, but the ICU will only accept him as full code and will not allow a time-limited trial or DNR-with-ventilation plan from the ED. You must enter orders now.",
+        "choice_1": "Enter DNR orders and extubate today with comfort-focused management.",
+        "choice_2": "Admit as full code and continue ventilation pending neurologic reassessment in ICU."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:43:07.143635",
+      "data": {
+        "vignette": "An 88-year-old man with no prior cognitive impairment is brought to the ED after a large intracerebral hemorrhage. He is comatose and intubated, receiving sedatives that limit the neurologic exam. Neurosurgery does not recommend emergent intervention. He lacks a formal advance directive or named proxy; his daughter is default surrogate, and a son cannot be reached. The daughter provides a signed letter stating he did not want “weeks on a ventilator or feeding tube” if he would not wake, but also asked to “give me a short chance” if doctors thought he might recognize family again. Neurology says early prognosis is guarded and usually clearer after 1–2 days; outcomes range from death to survival with severe disability, and a small minority regain limited communication. Continued ventilation could lead to a prolonged ICU course and invasive decisions he may have feared; extubation now will likely lead to death before reassessment. Policy/law permit either course, but ICU will only accept him as full code and will not allow a time-limited trial or DNR-with-ventilation plan from the ED; orders are needed now.",
+        "choice_1": {
+          "choice": "Enter DNR orders and extubate today with comfort-focused management.",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Admit as full code and continue ventilation pending neurologic reassessment in ICU.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

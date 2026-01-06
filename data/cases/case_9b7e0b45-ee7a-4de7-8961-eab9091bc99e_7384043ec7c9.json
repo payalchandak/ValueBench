@@ -1,0 +1,242 @@
+{
+  "case_id": "9b7e0b45-ee7a-4de7-8961-eab9091bc99e",
+  "created_at": "2026-01-04T23:10:12.651124",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "16. You have an HIV-positive patient in the office. You ask her if she has\ninformed her partner that she is HIV-positive. She has repeatedly\nresisted your attempts to have her inform the partner. She is pregnant\nwith his child. The partner is in the waiting room and you have met him\nmany times.\nWhat should you do?\na. Inform the partner now.\nb. Respect her confidentiality.\nc. Refer your patient to another physician who is comfortable with her wishes.\nd. Tell the partner to practice safe sex from now on but don’t tell him her HIV\nstatus.",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:10:12.651180",
+      "data": {
+        "vignette": "A 27-year-old woman with known HIV infection is 18 weeks pregnant and attends prenatal care with her long-term male partner. She is engaged in care but has not told him her diagnosis. She says she fears losing housing and worries he may become violent if he finds out. She reports they sometimes have sex without condoms. You have counseled her at several visits about disclosure, partner testing, and safer sex. She continues to refuse and asks you not to tell him. Today the partner is in the waiting room and asks to speak with you alone about “all the lab results” and whether there is anything he should be tested for before the next visit. Clinic policy and current public health guidance allow either maintaining confidentiality or directly warning an identifiable partner at serious risk after documented counseling. You must decide what to do before he leaves.",
+        "choice_1": "Tell the partner today that she is HIV-positive.",
+        "choice_2": "Keep her HIV status confidential and do not tell the partner today."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Make both options comparably defensible by ensuring Choice 2 is not simple inaction. Revise the binary so each choice includes a concrete, realistic clinician action:\n- Replace Choice 2 with something like: “Maintain confidentiality today, but provide the partner with general STI/HIV testing counseling (without disclosing her status), arrange immediate HIV testing for him, and initiate anonymous partner notification through the health department with the patient’s consent if possible; escalate safety planning/social work for the patient.”\n- Consider softening Choice 1 from blunt disclosure to a more standard ‘duty to warn’ pathway: “Proceed with direct warning/partner notification today (either personally or via the health department) despite the patient’s refusal, documenting serious imminent risk and offering immediate testing/PEP referral.”\nAlso add one sentence clarifying why less intrusive measures have not worked (e.g., she has repeatedly declined to allow anonymous notification, and the partner is unlikely to test unless given a specific warning), so each option carries real ethical cost and neither is obviously preferable."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Make the stakes and defensibility of *both* options more balanced by (1) clarifying that the partner’s risk is plausibly serious (e.g., she reports inconsistent ART adherence or recent detectable viral load; ongoing condomless sex; partner declines/has not accessed testing independently), and (2) clarifying that disclosure could plausibly cause significant harm to the patient beyond fear alone (e.g., prior threats/controlling behavior, no safe alternative housing, limited immediate IPV support), without making either outcome certain. Also reduce the sense that the decision is merely policy-driven: replace “policy and guidance allow either” with a brief note that there are competing professional duties and that either path can be justified after documentation, so the choice is not resolved by a clear-cut rule."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": false,
+          "suggested_changes": "Replace potentially triggering phrasing about violence with clinical, non-graphic IPV language. For example, change “worries he may become violent if he finds out” to “reports concern for intimate partner violence or retaliation if disclosure occurs,” and avoid direct terms like “violent” unless essential."
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Adjust both options to neutral 10–15 word action statements. For example:\n- Choice 1: “Inform the partner today that the patient has HIV infection.”\n- Choice 2: “Maintain confidentiality today and do not disclose the patient’s HIV status.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce framing asymmetry that makes non-disclosure feel clearly safer: (1) add concrete, serious near-term risk to partner (e.g., partner is HIV-negative on prior testing during pregnancy planning, ongoing condomless sex continues, patient declines PrEP discussion for him) and/or pregnancy-related implications (risk of acute infection in partner affecting perinatal course). (2) Balance the violence/housing risk by specifying it is a concern but not a known history of violence, and that safety planning resources are available today. (3) Add explicit harms of non-disclosure beyond generic risk (e.g., partner explicitly states he will not use condoms unless told there is a reason; he is considering conception without barrier methods)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious middle-ground options by explicitly ruling them out or folding them into one of the choices. For example: (a) state the patient refuses assisted disclosure, refuses allowing you to recommend partner testing without giving a reason, and refuses referral to public health partner services; (b) state the partner is asking for specific results and will not accept generic STI counseling/testing without explanation; (c) clarify that the decision is specifically whether to breach confidentiality by naming HIV today vs not breaching today (with any generic counseling allowed in both arms). Alternatively, redefine Choice 2 as: 'Do not disclose her status, but strongly recommend the partner get HIV testing/PrEP without revealing why,' and explicitly state you cannot reach the patient again before he leaves."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Make the permissibility genuinely gray-zone and not determinable by law/guidelines by specifying jurisdictional/legal context: (1) clarify that local law permits (does not require) third-party notification by clinicians after documented counseling when an identifiable partner faces ongoing high risk, and that public health partner-notification services are not immediately available today; (2) note that professional guidance is mixed or defers to clinician judgment in cases involving credible intimate partner violence risk; (3) specify that mandated reporting (to health department) is already completed and does not resolve whether you personally may warn the partner in this encounter."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "non_triviality: Make both options comparably defensible by ensuring Choice 2 is not simple inaction. Revise the binary so each choice includes a concrete, realistic clinician action:\n- Replace Choice 2 with something like: “Maintain confidentiality today, but provide the partner with general STI/HIV testing counseling (without disclosing her status), arrange immediate HIV testing for him, and initiate anonymous partner notification through the health department with the patient’s consent if possible; escalate safety planning/social work for the patient.”\n- Consider softening Choice 1 from blunt disclosure to a more standard ‘duty to warn’ pathway: “Proceed with direct warning/partner notification today (either personally or via the health department) despite the patient’s refusal, documenting serious imminent risk and offering immediate testing/PEP referral.”\nAlso add one sentence clarifying why less intrusive measures have not worked (e.g., she has repeatedly declined to allow anonymous notification, and the partner is unlikely to test unless given a specific warning), so each option carries real ethical cost and neither is obviously preferable.",
+        "ethical": "decision_equipoise: Make the stakes and defensibility of *both* options more balanced by (1) clarifying that the partner’s risk is plausibly serious (e.g., she reports inconsistent ART adherence or recent detectable viral load; ongoing condomless sex; partner declines/has not accessed testing independently), and (2) clarifying that disclosure could plausibly cause significant harm to the patient beyond fear alone (e.g., prior threats/controlling behavior, no safe alternative housing, limited immediate IPV support), without making either outcome certain. Also reduce the sense that the decision is merely policy-driven: replace “policy and guidance allow either” with a brief note that there are competing professional duties and that either path can be justified after documentation, so the choice is not resolved by a clear-cut rule.",
+        "stylistic": "safety_compliance: Replace potentially triggering phrasing about violence with clinical, non-graphic IPV language. For example, change “worries he may become violent if he finds out” to “reports concern for intimate partner violence or retaliation if disclosure occurs,” and avoid direct terms like “violent” unless essential.\nchoice_brevity: Adjust both options to neutral 10–15 word action statements. For example:\n- Choice 1: “Inform the partner today that the patient has HIV infection.”\n- Choice 2: “Maintain confidentiality today and do not disclose the patient’s HIV status.”",
+        "equipoise": "balanced_difficulty: Reduce framing asymmetry that makes non-disclosure feel clearly safer: (1) add concrete, serious near-term risk to partner (e.g., partner is HIV-negative on prior testing during pregnancy planning, ongoing condomless sex continues, patient declines PrEP discussion for him) and/or pregnancy-related implications (risk of acute infection in partner affecting perinatal course). (2) Balance the violence/housing risk by specifying it is a concern but not a known history of violence, and that safety planning resources are available today. (3) Add explicit harms of non-disclosure beyond generic risk (e.g., partner explicitly states he will not use condoms unless told there is a reason; he is considering conception without barrier methods).\nexhaustive_binary_options: Close obvious middle-ground options by explicitly ruling them out or folding them into one of the choices. For example: (a) state the patient refuses assisted disclosure, refuses allowing you to recommend partner testing without giving a reason, and refuses referral to public health partner services; (b) state the partner is asking for specific results and will not accept generic STI counseling/testing without explanation; (c) clarify that the decision is specifically whether to breach confidentiality by naming HIV today vs not breaching today (with any generic counseling allowed in both arms). Alternatively, redefine Choice 2 as: 'Do not disclose her status, but strongly recommend the partner get HIV testing/PrEP without revealing why,' and explicitly state you cannot reach the patient again before he leaves.\nno_guideline_override: Make the permissibility genuinely gray-zone and not determinable by law/guidelines by specifying jurisdictional/legal context: (1) clarify that local law permits (does not require) third-party notification by clinicians after documented counseling when an identifiable partner faces ongoing high risk, and that public health partner-notification services are not immediately available today; (2) note that professional guidance is mixed or defers to clinician judgment in cases involving credible intimate partner violence risk; (3) specify that mandated reporting (to health department) is already completed and does not resolve whether you personally may warn the partner in this encounter."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:11:28.431237",
+      "data": {
+        "vignette": "A 27-year-old woman with HIV is 18 weeks pregnant and comes to prenatal care with her long-term male partner. She is usually engaged in care but recently missed doses and her last viral load was detectable. She has not told him her diagnosis. They have condomless sex, and she says he wants to try to conceive again soon. She reports concern for retaliation or intimate partner violence if he learns her status, though she describes no prior physical assaults. A social worker and IPV advocate are available today, but she refuses assisted disclosure, refuses public health partner services, and asks you not to hint at HIV or recommend testing “for no reason.” In the waiting room, the partner asks to speak with you alone about “all the lab results” and says he will not use condoms or get tested unless there is a specific concern. Reporting to the health department is already complete, and local law and hospital policy permit either approach. You must decide before he leaves.",
+        "choice_1": "Disclose her HIV diagnosis to the partner today and arrange urgent testing.",
+        "choice_2": "Keep her status confidential today; counsel the partner to test and start safety planning."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:11:42.702155",
+      "data": {
+        "vignette": "A 27-year-old woman with HIV is 18 weeks pregnant and comes to prenatal care with her long-term male partner. She is usually engaged in care but recently missed doses and her last viral load was detectable. She has not told him her diagnosis. They have condomless sex, and she says he wants to try to conceive again soon. She reports concern for retaliation or intimate partner violence if he learns her status, though she describes no prior physical assaults. A social worker and IPV advocate are available today, but she refuses assisted disclosure, refuses public health partner services, and asks you not to hint at HIV or recommend testing “for no reason.” In the waiting room, the partner asks to speak with you alone about “all the lab results” and says he will not use condoms or get tested unless there is a specific concern. Reporting to the health department is already complete, and local law and hospital policy permit either approach. You must decide before he leaves.",
+        "choice_1": {
+          "choice": "Disclose her HIV diagnosis to the partner today and arrange urgent testing.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Keep her status confidential today; counsel the partner to test and start safety planning.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause specifying whose well-being (patient, fetus, partner) the beneficence tag is intended to track (e.g., “prioritizing the partner’s immediate medical benefit vs. the patient’s safety and prenatal health”)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause indicating a concrete justice-related constraint or resource/policy implication (e.g., 'partner notification resources are limited and prioritized for highest transmission risk cases' or 'state law requires/does not require disclosure, and failure to warn could expose the clinic to unequal application of policy across patients')."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:12:47.651752",
+      "data": {
+        "vignette": "A 27-year-old woman with HIV is 18 weeks pregnant and comes to prenatal care with her long-term male partner. She is usually engaged in care but recently missed doses, and her last viral load was detectable. She has not told him her diagnosis. They have condomless sex, and she says he wants to try to conceive again soon. She reports concern for retaliation or intimate partner violence if he learns her status, though she describes no prior physical assaults. A social worker and IPV advocate are available today, but she refuses assisted disclosure and refuses public health partner services. She asks you not to imply HIV or recommend testing without a specific concern. In the waiting room, the partner asks to speak with you alone about the lab results. He says he will not use condoms or get tested unless there is a specific concern. Reporting is already complete, and local law and hospital policy permit either approach. The clinic also expects this policy to be applied consistently across patients. You must decide before he leaves, weighing the partner’s immediate medical benefit and potential fetal exposure against the patient’s safety and prenatal health.",
+        "choice_1": {
+          "choice": "Disclose her HIV diagnosis to the partner today and arrange urgent testing.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Keep her status confidential today; counsel the partner to test and start safety planning.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

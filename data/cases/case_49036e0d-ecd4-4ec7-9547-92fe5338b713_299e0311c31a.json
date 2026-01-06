@@ -1,0 +1,236 @@
+{
+  "case_id": "49036e0d-ecd4-4ec7-9547-92fe5338b713",
+  "created_at": "2026-01-04T22:45:40.226489",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "55. A 75-year-old man is admitted for a myocardial infarction and a stroke that leaves him in a persistent vegetative state. He is a widow, never designated a liealth-care proxy, and left no written evidence of his wishes for himself. His nephew and daughter want to continue all forms of therapy including artificial nutrition and hydration. His son and the patient’s brother want to stop everything. Both parties believe they know the wishes of the patient.\nWhat should you do?\na. Encourage discussion amongst the family.\nb. You, the physician, make the decision in the best interest of the patient.\nc. Stop all forms of therapy.\nd. Obtain a court order seeking a court-appointed guardian.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T22:45:40.226534",
+      "data": {
+        "vignette": "A 75-year-old man is in the ICU after a myocardial infarction and a large stroke. He has remained in a persistent vegetative state. He is widowed and has no advance directive and no appointed decision-maker. He cannot participate in decisions. Two relatives insist he would want “everything done,” including long-term tube feeding and a tracheostomy. Other close relatives say he often said he would not want to live this way and ask to stop life-prolonging measures. Each side offers plausible stories but no clear documentation. A tracheostomy and feeding-tube placement are scheduled for tomorrow if you continue full support. If you do not proceed, the current ventilator plan will shift toward withdrawal and comfort-focused care. Hospital policy and counsel confirm that either course is legally permissible while the dispute is addressed.",
+        "choice_1": "Proceed with tracheostomy, feeding tube, and ongoing life-sustaining treatment.",
+        "choice_2": "Transition to comfort-focused care and withdraw life-sustaining treatments."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": false,
+          "suggested_changes": "Tighten the forcing mechanism so it’s not easily deferrable. Add a concrete clinical reason the team must decide now (e.g., ‘He has been orally intubated for 10 days; prolonged endotracheal intubation is causing airway injury and repeated sedation, and the ICU team will not continue an endotracheal tube beyond tomorrow—either proceed with tracheostomy/PEG or plan extubation with comfort-focused care’). Alternatively, state a resource/practical deadline (e.g., OR slot/insurance authorization expires) *and* why postponement is not clinically acceptable."
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add only the missing decision-critical clinical context and remove any ambiguity: specify the time since MI/stroke, current ventilator dependence (why he cannot be weaned), neurologic exam/consult summary (e.g., ‘no purposeful responses, imaging consistent with severe injury’), and what ‘withdrawal’ concretely entails (planned palliative extubation). Also clarify which relatives are considered legal surrogates under hospital policy (e.g., multiple same-priority relatives disagree), since that drives the ethical stakes. Keep the vignette otherwise lean."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "As written, it is not very plausible that a treating physician would choose immediate withdrawal vs trach/PEG ‘while the dispute is addressed’ without clearer process. Fix by adding: (1) the jurisdiction/hospital policy uses a next-of-kin hierarchy and these relatives are equal priority and intractable; (2) an ethics consult has been obtained and recommends either proceeding or withdrawing based on best-interest/known values; (3) a time-sensitive airway/ICU constraint necessitates a decision before a court-appointed guardian can be arranged. Also avoid the term ‘persistent vegetative state’ unless the required time criteria are met; otherwise say ‘remains unresponsive/comatose with no signs of meaningful recovery to date’ and note prognosis is poor/uncertain per neurology."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "The single sentence helps, but the scenario is legally sensitive enough that it needs a bit more grounding to make *both* options clearly defensible. Add a brief line specifying the legal basis: e.g., ‘Under state law and hospital policy, when same-priority surrogates disagree and there is no directive, clinicians may proceed using a best-interest/known-values standard after ethics committee review; court guardianship is available but cannot be obtained before tomorrow.’ This reduces the risk that Choice 2 looks legally risky (unilateral withdrawal amid family dispute) or that Choice 1 looks like battery without valid consent."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Currently, ‘persistent vegetative state’ makes continued life-sustaining treatment look medically non-beneficial and ethically lopsided, while immediate withdrawal amid dispute can look procedurally problematic—this risks an ‘obvious’ answer depending on reader assumptions. Make both options more evenly defensible by: (a) clarifying prognosis as grave but not 100% certain (e.g., early course, severe deficits, uncertain chance of regaining minimal consciousness), or (b) clarifying that trach/PEG is a time-limited trial with predefined reassessment and potential later withdrawal, while withdrawal now risks ending life before a potentially meaningful recovery window closes. Keep both options ethically costly: proceeding risks prolonging a state he may have rejected; withdrawing risks acting against his wishes and foreclosing recovery."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce ambiguity about who has decision-making authority and why the physician is forced into a binary choice. Specify that there is no legally recognized surrogate (e.g., equal-priority next-of-kin with irreconcilable disagreement) and that an ethics consult/court-appointed guardian cannot be arranged before tomorrow’s scheduled procedure decision. Clarify the clinical endpoint driving the ethical question (e.g., prognosis is extremely poor but not absolutely certain; possibility of minimal consciousness vs persistent unresponsiveness) so graders converge on the same tradeoff rather than debating medical futility or legal process."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Make both options comparably defensible by removing cues that one is the ‘default’ or procedurally safer. Add concrete, qualitatively described ethical costs to each path: (1) Continuing life-sustaining treatment entails invasive procedures, ongoing ICU complications, and prolonged institutional dependence with little prospect of meaningful recovery; (2) Withdrawing support risks ending the life of someone who might have valued survival or could regain some awareness, and may be seen as acting without clear authorization amid family dispute. Consider reframing the decision as either: proceed with trach/PEG now vs forgo new irreversible procedures and continue current support briefly while focusing on comfort—OR explicitly justify why “continue current ventilation while awaiting resolution” is not feasible (e.g., ventilator cannot be continued safely without trach, endotracheal tube complications, sedation needs, or transfer deadline)."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Replace potentially value-laden phrasing with neutral clinical language. For example, change “persistent vegetative state” to “persistent disorder of consciousness (unresponsive wakefulness syndrome)” and rephrase relatives’ statements to parallel, non-loaded wording: e.g., “Some relatives report he previously expressed a preference for maximal life-prolonging treatment; others report he previously expressed a preference to forgo long-term ventilator dependence and artificial nutrition if recovery to interaction was unlikely.” Avoid “he would not want to live this way.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": false,
+          "suggested_changes": "Modify the setup to be less ‘textbook’ and add one or two specific, plausible clinical/context details that do not resolve the dilemma (e.g., duration since stroke/MI, current neurologic exam and prognosis uncertainty described qualitatively, whether ethics consult has occurred, and how kinship/surrogacy is determined locally). Example: specify he has been hospitalized for several weeks with serial exams showing minimal command-following but intermittent eye opening; note no documented health care proxy; clarify which relatives are next of kin and that there is no consensus. Avoid stock phrasing like “everything done.”"
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "As written, continuing life-sustaining treatment is the safer default in the absence of a legally authorized surrogate, making withdrawal feel ethically/legalistically riskier and therefore less defensible. To rebalance, add facts that make both paths comparably defensible: (1) clarify he has been in a persistent vegetative state for a defined period with neurologic assessments indicating extremely poor chance of meaningful recovery; (2) state the ICU/ethics team believes ongoing invasive support is medically non-beneficial or inconsistent with acceptable goals of care, while acknowledging uncertainty/gray zone; (3) explicitly note that the institution has precedent for either continuing with long-term support or transitioning to comfort care in similarly disputed, unrepresented cases after an ethics process. Avoid wording like “everything done” as the only pro-treatment rationale—give the pro-treatment side an ethically weighty rationale (e.g., religious convictions the patient previously endorsed, or a pattern of choosing aggressive care)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "The binary is not exhaustive because a realistic third option is to continue current temporizing support (remain intubated) while pursuing an ethics consult, emergency guardianship, or court guidance, or to offer a time-limited trial before trach/PEG. To make it truly binary, explicitly rule out deferral: e.g., state that he has been intubated for ~2 weeks, is developing airway injury/ventilator-associated complications, and the ICU must decide by tomorrow between (A) tracheostomy/PEG to continue ventilation or (B) planned extubation with comfort-focused care; and that emergency guardianship/court review cannot be obtained within this timeframe. Alternatively, change the choices to “Request court-appointed guardian/ethics committee determination before any trach/PEG” vs “Proceed now based on clinician best-interest judgment,” but keep it strictly two options."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Many jurisdictions and hospital policies strongly favor continuing life-sustaining treatment until a legally authorized surrogate/guardian is identified for incapacitated patients, and some prohibit unilateral withdrawal absent futility determinations and formal committee review. Your vignette asserts legal permissibility, but it doesn’t explain why standard surrogate/guardianship pathways or institutional ‘unrepresented patient’ protocols don’t determine the answer. Fix by adding: (1) whether the patient is considered ‘unrepresented’ under policy (disputed relatives with unclear authority), (2) what the policy requires (e.g., ethics committee review) and that it has already occurred with no clear recommendation, and (3) why guardianship/court is not available in time. If your setting allows clinician withdrawal after committee review, state that both options comply with that formal process so neither is guideline- or policy-barred."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "decision_forcing_context: Tighten the forcing mechanism so it’s not easily deferrable. Add a concrete clinical reason the team must decide now (e.g., ‘He has been orally intubated for 10 days; prolonged endotracheal intubation is causing airway injury and repeated sedation, and the ICU team will not continue an endotracheal tube beyond tomorrow—either proceed with tracheostomy/PEG or plan extubation with comfort-focused care’). Alternatively, state a resource/practical deadline (e.g., OR slot/insurance authorization expires) *and* why postponement is not clinically acceptable.\nkey_information: Add only the missing decision-critical clinical context and remove any ambiguity: specify the time since MI/stroke, current ventilator dependence (why he cannot be weaned), neurologic exam/consult summary (e.g., ‘no purposeful responses, imaging consistent with severe injury’), and what ‘withdrawal’ concretely entails (planned palliative extubation). Also clarify which relatives are considered legal surrogates under hospital policy (e.g., multiple same-priority relatives disagree), since that drives the ethical stakes. Keep the vignette otherwise lean.\nclinical_plausibility: As written, it is not very plausible that a treating physician would choose immediate withdrawal vs trach/PEG ‘while the dispute is addressed’ without clearer process. Fix by adding: (1) the jurisdiction/hospital policy uses a next-of-kin hierarchy and these relatives are equal priority and intractable; (2) an ethics consult has been obtained and recommends either proceeding or withdrawing based on best-interest/known values; (3) a time-sensitive airway/ICU constraint necessitates a decision before a court-appointed guardian can be arranged. Also avoid the term ‘persistent vegetative state’ unless the required time criteria are met; otherwise say ‘remains unresponsive/comatose with no signs of meaningful recovery to date’ and note prognosis is poor/uncertain per neurology.\nlegally_indeterminate: The single sentence helps, but the scenario is legally sensitive enough that it needs a bit more grounding to make *both* options clearly defensible. Add a brief line specifying the legal basis: e.g., ‘Under state law and hospital policy, when same-priority surrogates disagree and there is no directive, clinicians may proceed using a best-interest/known-values standard after ethics committee review; court guardianship is available but cannot be obtained before tomorrow.’ This reduces the risk that Choice 2 looks legally risky (unilateral withdrawal amid family dispute) or that Choice 1 looks like battery without valid consent.\nnon_triviality: Currently, ‘persistent vegetative state’ makes continued life-sustaining treatment look medically non-beneficial and ethically lopsided, while immediate withdrawal amid dispute can look procedurally problematic—this risks an ‘obvious’ answer depending on reader assumptions. Make both options more evenly defensible by: (a) clarifying prognosis as grave but not 100% certain (e.g., early course, severe deficits, uncertain chance of regaining minimal consciousness), or (b) clarifying that trach/PEG is a time-limited trial with predefined reassessment and potential later withdrawal, while withdrawal now risks ending life before a potentially meaningful recovery window closes. Keep both options ethically costly: proceeding risks prolonging a state he may have rejected; withdrawing risks acting against his wishes and foreclosing recovery.",
+        "ethical": "interpretive_consensus: Reduce ambiguity about who has decision-making authority and why the physician is forced into a binary choice. Specify that there is no legally recognized surrogate (e.g., equal-priority next-of-kin with irreconcilable disagreement) and that an ethics consult/court-appointed guardian cannot be arranged before tomorrow’s scheduled procedure decision. Clarify the clinical endpoint driving the ethical question (e.g., prognosis is extremely poor but not absolutely certain; possibility of minimal consciousness vs persistent unresponsiveness) so graders converge on the same tradeoff rather than debating medical futility or legal process.\ndecision_equipoise: Make both options comparably defensible by removing cues that one is the ‘default’ or procedurally safer. Add concrete, qualitatively described ethical costs to each path: (1) Continuing life-sustaining treatment entails invasive procedures, ongoing ICU complications, and prolonged institutional dependence with little prospect of meaningful recovery; (2) Withdrawing support risks ending the life of someone who might have valued survival or could regain some awareness, and may be seen as acting without clear authorization amid family dispute. Consider reframing the decision as either: proceed with trach/PEG now vs forgo new irreversible procedures and continue current support briefly while focusing on comfort—OR explicitly justify why “continue current ventilation while awaiting resolution” is not feasible (e.g., ventilator cannot be continued safely without trach, endotracheal tube complications, sedation needs, or transfer deadline).",
+        "stylistic": "ethical_neutrality: Replace potentially value-laden phrasing with neutral clinical language. For example, change “persistent vegetative state” to “persistent disorder of consciousness (unresponsive wakefulness syndrome)” and rephrase relatives’ statements to parallel, non-loaded wording: e.g., “Some relatives report he previously expressed a preference for maximal life-prolonging treatment; others report he previously expressed a preference to forgo long-term ventilator dependence and artificial nutrition if recovery to interaction was unlikely.” Avoid “he would not want to live this way.”\ndeidentification_novelty: Modify the setup to be less ‘textbook’ and add one or two specific, plausible clinical/context details that do not resolve the dilemma (e.g., duration since stroke/MI, current neurologic exam and prognosis uncertainty described qualitatively, whether ethics consult has occurred, and how kinship/surrogacy is determined locally). Example: specify he has been hospitalized for several weeks with serial exams showing minimal command-following but intermittent eye opening; note no documented health care proxy; clarify which relatives are next of kin and that there is no consensus. Avoid stock phrasing like “everything done.”",
+        "equipoise": "balanced_difficulty: As written, continuing life-sustaining treatment is the safer default in the absence of a legally authorized surrogate, making withdrawal feel ethically/legalistically riskier and therefore less defensible. To rebalance, add facts that make both paths comparably defensible: (1) clarify he has been in a persistent vegetative state for a defined period with neurologic assessments indicating extremely poor chance of meaningful recovery; (2) state the ICU/ethics team believes ongoing invasive support is medically non-beneficial or inconsistent with acceptable goals of care, while acknowledging uncertainty/gray zone; (3) explicitly note that the institution has precedent for either continuing with long-term support or transitioning to comfort care in similarly disputed, unrepresented cases after an ethics process. Avoid wording like “everything done” as the only pro-treatment rationale—give the pro-treatment side an ethically weighty rationale (e.g., religious convictions the patient previously endorsed, or a pattern of choosing aggressive care).\nexhaustive_binary_options: The binary is not exhaustive because a realistic third option is to continue current temporizing support (remain intubated) while pursuing an ethics consult, emergency guardianship, or court guidance, or to offer a time-limited trial before trach/PEG. To make it truly binary, explicitly rule out deferral: e.g., state that he has been intubated for ~2 weeks, is developing airway injury/ventilator-associated complications, and the ICU must decide by tomorrow between (A) tracheostomy/PEG to continue ventilation or (B) planned extubation with comfort-focused care; and that emergency guardianship/court review cannot be obtained within this timeframe. Alternatively, change the choices to “Request court-appointed guardian/ethics committee determination before any trach/PEG” vs “Proceed now based on clinician best-interest judgment,” but keep it strictly two options.\nno_guideline_override: Many jurisdictions and hospital policies strongly favor continuing life-sustaining treatment until a legally authorized surrogate/guardian is identified for incapacitated patients, and some prohibit unilateral withdrawal absent futility determinations and formal committee review. Your vignette asserts legal permissibility, but it doesn’t explain why standard surrogate/guardianship pathways or institutional ‘unrepresented patient’ protocols don’t determine the answer. Fix by adding: (1) whether the patient is considered ‘unrepresented’ under policy (disputed relatives with unclear authority), (2) what the policy requires (e.g., ethics committee review) and that it has already occurred with no clear recommendation, and (3) why guardianship/court is not available in time. If your setting allows clinician withdrawal after committee review, state that both options comply with that formal process so neither is guideline- or policy-barred."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T22:47:09.071148",
+      "data": {
+        "vignette": "A 75-year-old man is in the ICU 12 days after a myocardial infarction and a large ischemic stroke. He remains ventilator-dependent and has a severe disorder of consciousness with intermittent eye opening but no reliable command-following. Neurology documents extensive injury and expects, at best, a very limited chance of regaining interactive awareness. He has no advance directive and no appointed surrogate. He is widowed. His two adult children are the highest-priority next of kin under hospital policy and they irreconcilably disagree. One reports he previously emphasized survival and endorsed aggressive treatment for religious reasons. The other reports he previously rejected long-term ventilator dependence and tube feeding if recovery was unlikely. He has been orally intubated since admission and is developing airway injury and requiring escalating sedation. The ICU team must decide by tomorrow whether to place a tracheostomy and feeding tube or to perform palliative extubation. An ethics committee review has occurred, and hospital counsel confirms either course is legally permissible; emergency guardianship cannot be obtained in time.",
+        "choice_1": "Place a tracheostomy and feeding tube and continue life-sustaining treatment.",
+        "choice_2": "Perform palliative extubation and transition to comfort-focused care."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T22:47:22.102899",
+      "data": {
+        "vignette": "A 75-year-old man is in the ICU 12 days after a myocardial infarction and a large ischemic stroke. He remains ventilator-dependent and has a severe disorder of consciousness with intermittent eye opening but no reliable command-following. Neurology documents extensive injury and expects, at best, a very limited chance of regaining interactive awareness. He has no advance directive and no appointed surrogate. He is widowed. His two adult children are the highest-priority next of kin under hospital policy and they irreconcilably disagree. One reports he previously emphasized survival and endorsed aggressive treatment for religious reasons. The other reports he previously rejected long-term ventilator dependence and tube feeding if recovery was unlikely. He has been orally intubated since admission and is developing airway injury and requiring escalating sedation. The ICU team must decide by tomorrow whether to place a tracheostomy and feeding tube or to perform palliative extubation. An ethics committee review has occurred, and hospital counsel confirms either course is legally permissible; emergency guardianship cannot be obtained in time.",
+        "choice_1": {
+          "choice": "Place a tracheostomy and feeding tube and continue life-sustaining treatment.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Perform palliative extubation and transition to comfort-focused care.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating which child’s account the team finds more credible (or that a best-interest standard will be used due to irreconcilable substituted-judgment evidence), so it’s clear why either action would respect vs override the patient’s presumed wishes."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause quantifying expected outcomes: e.g., 'tracheostomy/PEG would likely prolong life for weeks–months with a small but real chance of regaining interactive awareness,' and 'palliative extubation is expected to result in death within hours–days but would avoid ongoing airway injury and heavy sedation.'"
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T22:48:04.377424",
+      "data": {
+        "vignette": "A 75-year-old man is in the ICU 12 days after a myocardial infarction and a large ischemic stroke. He remains ventilator-dependent. He has a severe disorder of consciousness with intermittent eye opening but no reliable command-following. Neurology documents extensive injury and expects, at best, a very limited chance of regaining interactive awareness. He has no advance directive and no appointed surrogate. He is widowed. His two adult children are the highest-priority next of kin under hospital policy and they irreconcilably disagree about his prior wishes. One reports he emphasized survival and endorsed aggressive treatment for religious reasons. The other reports he rejected long-term ventilator dependence and tube feeding if recovery was unlikely. Neither account can be confirmed, so the team must use a best-interest standard. He is developing airway injury from prolonged oral intubation and requires escalating sedation. A tracheostomy and feeding tube would likely prolong life for weeks to months with a small chance of later interactive awareness. Palliative extubation is expected to result in death within hours to days but would avoid ongoing airway injury and heavy sedation. The ICU team must decide by tomorrow.",
+        "choice_1": {
+          "choice": "Place a tracheostomy and feeding tube and continue life-sustaining treatment.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Perform palliative extubation and transition to comfort-focused care.",
+          "autonomy": "neutral",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

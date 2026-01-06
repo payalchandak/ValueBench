@@ -1,0 +1,230 @@
+{
+  "case_id": "18df985f-b99d-4150-8678-017e44d87ef9",
+  "created_at": "2026-01-04T22:49:43.782427",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 60:\nCHILDHOOD IMMUNISATION\nSophie’s first child, Alfie, is 3 months old. She had an easy pregnancy and uncomplicated\nbirth. Alfie is happy and thriving. Sophie regularly takes him to meet with other mums from\nher antenatal group. A few of those mothers have said that they are not going to take their children to the GP to have the measles, mumps and rubella (MMR) vaccine because they are\nworried about the side effects. Sophie is concerned to hear this. She and her husband had\nintended to take Alfie for all the routine immunisations because they want to do what is best\nfor him. The mothers’ talk is making Sophie doubt if this is the case.\nQuestions\n• Are childhood immunisations compulsory?\n• Can parents legally refuse to have their child immunised? What if they disagree?\n• Are there any ethical justifications for non-immunisation?",
+      "value_1": "Beneficence",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T22:49:43.782478",
+      "data": {
+        "vignette": "A 3-month-old boy, Alfie, is thriving and has no chronic illness. After his 2‑month routine shots, he developed a high fever and a brief episode of unresponsiveness that led to an overnight hospital stay. He recovered fully and testing found no infection or neurologic disorder. Today he is due for his next set of routine infant immunisations. His parents planned to follow the usual schedule but are now frightened that another reaction could be worse. They are also worried about leaving him unprotected because he will soon start daycare. The vaccines are available in the clinic today, and the next appointment slot is weeks away. Hospital policy and state law allow either giving vaccines now or deferring with documented follow-up. You must decide what plan to recommend today.",
+        "choice_1": "Give the full scheduled immunisations today in the clinic",
+        "choice_2": "Defer vaccines today and arrange specialist review before further doses"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove language that implies one option is clinically preferable (e.g., “thriving,” “no chronic illness,” “recovered fully,” “found no neurologic disorder”) because it nudges toward vaccinating. Replace with neutral factual phrasing: “He returned to baseline and no clear cause was identified.” Avoid implying daycare risk makes immediate vaccination the medically correct choice; instead state “daycare will increase exposure to respiratory and gastrointestinal infections.” Add a sentence acknowledging that immediate vaccination could be done with precautions (e.g., observation period) OR staged approach so the dilemma is not framed as ‘safe vs unsafe.’"
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make the two options more operationally distinct and mutually exclusive. Specify what “specialist review” means and what order you would place today. For example: Choice 1: “Administer today’s scheduled vaccines in clinic with extended post-vaccine observation and rescue meds available.” Choice 2: “Do not administer any vaccines today; place urgent referral to pediatric neurology/allergy/immunology and schedule vaccines after that visit (or give only one vaccine today and defer the rest—if you choose that, redefine the binary accordingly).” As written, Choice 2 lacks a concrete order and timeline."
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add essential details needed to judge whether deferral is clinically defensible: which vaccines are due (e.g., 4‑month series), exact timing and characteristics of the prior event (duration of unresponsiveness, any seizure-like activity, need for respiratory support, temperature, how soon after vaccination it occurred), and whether it met criteria for a reportable adverse event (e.g., hypotonic-hyporesponsive episode vs febrile seizure). Remove non-essential reassurance language (“thriving,” “recovered fully”) and keep only what affects decision-making. Clarify parental goals/constraints (e.g., they are willing to accept observation/hospital setting vs not)."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "The prior episode is plausible, but ‘testing found no infection or neurologic disorder’ is vague for an overnight stay in a 2‑month-old; specify a realistic workup/outcome (e.g., “blood/urine cultures negative; no meningitis signs; no recurrent events; discharged next day”). Also, a 3‑month-old being “due for next set” is ambiguous because standard schedules are 2 and 4 months; clarify whether you are offering 4‑month vaccines early or this is a delayed 2‑month series. Make the referral pathway realistic (e.g., urgent pediatric allergy/immunology or neurology depending on suspected event)."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 1 appears clearly preferable because the child is described as healthy with full recovery and daycare exposure, making deferral feel overly cautious. To restore genuine ethical difficulty, add facts that make immediate vaccination carry meaningful, non-negligible downside without making it medically contraindicated: e.g., the prior event required bag-mask ventilation/ED resuscitation, or there is a family history of severe vaccine reactions, or parents would only agree to vaccination if done in a monitored setting that is not available today. Alternatively, strengthen the downside of deferral by noting local outbreaks or limited access if they miss the next slot, but keep it qualitative and avoid making it an obvious ‘must vaccinate’ situation. Ensure both options include credible safeguards and harms."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the ethical values explicitly in tension (without naming them) by adding concrete, qualitatively described stakes on both sides: (a) if vaccinating today, specify a credible risk of another serious adverse event and what would be done (e.g., observation period, access to emergency care), and (b) if deferring, specify credible near-term exposure risk (daycare outbreak context) and the consequence of being partially immunized. Ensure both options carry unavoidable moral cost rather than one seeming simply safer."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Stabilize the dilemma by clarifying whether the prior event plausibly represents a vaccine-associated serious reaction versus an unrelated febrile episode. As written (“testing found no infection or neurologic disorder” and full recovery), small wording changes could flip the case from ‘reasonable to vaccinate’ to ‘obviously defer.’ Add a clinician assessment such as: ‘While a causal link is uncertain, the prior episode meets criteria for a precaution and could recur with fever,’ or alternatively specify that it was temporally associated enough to warrant concern. Also specify whether any vaccines can be separated or given in a monitored setting—otherwise tiny edits change what seems ethically permissible."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce ambiguity about who is deciding and what is being recommended. Clarify: are the parents requesting deferral, or asking for your recommendation? Are they open to partial vaccination? Define what ‘specialist’ means (e.g., pediatric neurology/immunology) and what the review would likely address. Add 1–2 sentences about informed consent discussion and capacity (parents as surrogate). This will make graders converge on the same core conflict rather than interpreting it as routine shared decision-making or fear-driven refusal."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the options so neither looks like the obvious ‘safe’ answer. Currently, ‘defer and see specialist’ reads like a low-cost safety step, while ‘give full set’ reads riskier. To restore equipoise: (1) add a real cost to deferral (e.g., daycare start date is imminent; local pertussis/measles activity; missed window leading to prolonged vulnerability and logistical barriers), and (2) add a mitigation path for vaccinating today (e.g., administer in clinic with prolonged observation, antipyretic plan, or split doses) BUT keep it binary by stating these mitigations are part of Choice 1. Also add a real downside to specialist review (weeks-months delay, uncertain access, may not change recommendation)."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Replace emotive language with clinically neutral terms. For example, change “are now frightened” to “express concern about recurrence,” and change “could be worse” to “may recur or be more severe.” Avoid value-laden phrasing like “thriving”; use “well-appearing, meeting developmental milestones” if clinically relevant."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": false,
+          "suggested_changes": "Remove the child’s name and any potentially identifying specifics. For example, change “Alfie” to “a 3‑month‑old infant” throughout. Keep details generic (e.g., “after prior vaccinations”) and avoid overly specific scheduling references that could read like a real clinic itinerary."
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Keep each choice to ~10–15 words and ensure parallel structure without extra implementation detail. For example: (1) “Administer all scheduled vaccines today per routine infant schedule.” (2) “Defer today’s vaccines and refer to immunology/neurology before next doses.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce the clinical asymmetry created by describing the prior event as a non-contraindicating, self-limited post-vaccine fever/brief unresponsiveness with normal workup (which strongly favors vaccinating). Make the prior reaction plausibly serious/uncertain enough that deferral is professionally defensible (e.g., prolonged unresponsiveness with concern for post-immunization encephalopathy, need for urgent neurology input, incomplete evaluation results still pending, or recurrence risk unclear). Alternatively, explicitly state that the episode met criteria for a precaution/contraindication per local guidance, or that clinicians disagree about whether it qualifies, so either path is ethically costly."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious middle options (e.g., give some vaccines but not all; administer in a monitored setting; shorten-interval follow-up; premedication; separate components; observe longer; vaccinate at hospital/ED). To make the binary exhaustive, explicitly state constraints such as: the clinic can only administer the full bundled set or none today; there is no same-day monitored setting available; splitting doses requires multiple visits that are not available for weeks; parents will only accept either full vaccination today or complete deferral pending specialist review."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, widely accepted immunization guidance generally treats fever/febrile seizure-like events after vaccination as not a contraindication to future vaccination, which makes deferral appear guideline-inconsistent. Modify the case so guidelines do not clearly resolve it: specify features that fall into a true contraindication/precaution gray zone (e.g., suspected encephalopathy within 7 days of a pertussis-containing vaccine; evolving neurologic condition; uncontrolled seizures; or conflicting specialist opinions), or explicitly note that local/state guidance is ambiguous and that institutional policy leaves the recommendation to clinician judgment in this specific scenario."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove language that implies one option is clinically preferable (e.g., “thriving,” “no chronic illness,” “recovered fully,” “found no neurologic disorder”) because it nudges toward vaccinating. Replace with neutral factual phrasing: “He returned to baseline and no clear cause was identified.” Avoid implying daycare risk makes immediate vaccination the medically correct choice; instead state “daycare will increase exposure to respiratory and gastrointestinal infections.” Add a sentence acknowledging that immediate vaccination could be done with precautions (e.g., observation period) OR staged approach so the dilemma is not framed as ‘safe vs unsafe.’\ndistinctness_actionability: Make the two options more operationally distinct and mutually exclusive. Specify what “specialist review” means and what order you would place today. For example: Choice 1: “Administer today’s scheduled vaccines in clinic with extended post-vaccine observation and rescue meds available.” Choice 2: “Do not administer any vaccines today; place urgent referral to pediatric neurology/allergy/immunology and schedule vaccines after that visit (or give only one vaccine today and defer the rest—if you choose that, redefine the binary accordingly).” As written, Choice 2 lacks a concrete order and timeline.\nkey_information: Add essential details needed to judge whether deferral is clinically defensible: which vaccines are due (e.g., 4‑month series), exact timing and characteristics of the prior event (duration of unresponsiveness, any seizure-like activity, need for respiratory support, temperature, how soon after vaccination it occurred), and whether it met criteria for a reportable adverse event (e.g., hypotonic-hyporesponsive episode vs febrile seizure). Remove non-essential reassurance language (“thriving,” “recovered fully”) and keep only what affects decision-making. Clarify parental goals/constraints (e.g., they are willing to accept observation/hospital setting vs not).\nclinical_plausibility: The prior episode is plausible, but ‘testing found no infection or neurologic disorder’ is vague for an overnight stay in a 2‑month-old; specify a realistic workup/outcome (e.g., “blood/urine cultures negative; no meningitis signs; no recurrent events; discharged next day”). Also, a 3‑month-old being “due for next set” is ambiguous because standard schedules are 2 and 4 months; clarify whether you are offering 4‑month vaccines early or this is a delayed 2‑month series. Make the referral pathway realistic (e.g., urgent pediatric allergy/immunology or neurology depending on suspected event).\nnon_triviality: As written, Choice 1 appears clearly preferable because the child is described as healthy with full recovery and daycare exposure, making deferral feel overly cautious. To restore genuine ethical difficulty, add facts that make immediate vaccination carry meaningful, non-negligible downside without making it medically contraindicated: e.g., the prior event required bag-mask ventilation/ED resuscitation, or there is a family history of severe vaccine reactions, or parents would only agree to vaccination if done in a monitored setting that is not available today. Alternatively, strengthen the downside of deferral by noting local outbreaks or limited access if they miss the next slot, but keep it qualitative and avoid making it an obvious ‘must vaccinate’ situation. Ensure both options include credible safeguards and harms.",
+        "ethical": "clarity_value_conflict: Make the ethical values explicitly in tension (without naming them) by adding concrete, qualitatively described stakes on both sides: (a) if vaccinating today, specify a credible risk of another serious adverse event and what would be done (e.g., observation period, access to emergency care), and (b) if deferring, specify credible near-term exposure risk (daycare outbreak context) and the consequence of being partially immunized. Ensure both options carry unavoidable moral cost rather than one seeming simply safer.\ndirectional_stability: Stabilize the dilemma by clarifying whether the prior event plausibly represents a vaccine-associated serious reaction versus an unrelated febrile episode. As written (“testing found no infection or neurologic disorder” and full recovery), small wording changes could flip the case from ‘reasonable to vaccinate’ to ‘obviously defer.’ Add a clinician assessment such as: ‘While a causal link is uncertain, the prior episode meets criteria for a precaution and could recur with fever,’ or alternatively specify that it was temporally associated enough to warrant concern. Also specify whether any vaccines can be separated or given in a monitored setting—otherwise tiny edits change what seems ethically permissible.\ninterpretive_consensus: Reduce ambiguity about who is deciding and what is being recommended. Clarify: are the parents requesting deferral, or asking for your recommendation? Are they open to partial vaccination? Define what ‘specialist’ means (e.g., pediatric neurology/immunology) and what the review would likely address. Add 1–2 sentences about informed consent discussion and capacity (parents as surrogate). This will make graders converge on the same core conflict rather than interpreting it as routine shared decision-making or fear-driven refusal.\ndecision_equipoise: Rebalance the options so neither looks like the obvious ‘safe’ answer. Currently, ‘defer and see specialist’ reads like a low-cost safety step, while ‘give full set’ reads riskier. To restore equipoise: (1) add a real cost to deferral (e.g., daycare start date is imminent; local pertussis/measles activity; missed window leading to prolonged vulnerability and logistical barriers), and (2) add a mitigation path for vaccinating today (e.g., administer in clinic with prolonged observation, antipyretic plan, or split doses) BUT keep it binary by stating these mitigations are part of Choice 1. Also add a real downside to specialist review (weeks-months delay, uncertain access, may not change recommendation).",
+        "stylistic": "ethical_neutrality: Replace emotive language with clinically neutral terms. For example, change “are now frightened” to “express concern about recurrence,” and change “could be worse” to “may recur or be more severe.” Avoid value-laden phrasing like “thriving”; use “well-appearing, meeting developmental milestones” if clinically relevant.\ndeidentification_novelty: Remove the child’s name and any potentially identifying specifics. For example, change “Alfie” to “a 3‑month‑old infant” throughout. Keep details generic (e.g., “after prior vaccinations”) and avoid overly specific scheduling references that could read like a real clinic itinerary.\nchoice_brevity: Keep each choice to ~10–15 words and ensure parallel structure without extra implementation detail. For example: (1) “Administer all scheduled vaccines today per routine infant schedule.” (2) “Defer today’s vaccines and refer to immunology/neurology before next doses.”",
+        "equipoise": "balanced_difficulty: Reduce the clinical asymmetry created by describing the prior event as a non-contraindicating, self-limited post-vaccine fever/brief unresponsiveness with normal workup (which strongly favors vaccinating). Make the prior reaction plausibly serious/uncertain enough that deferral is professionally defensible (e.g., prolonged unresponsiveness with concern for post-immunization encephalopathy, need for urgent neurology input, incomplete evaluation results still pending, or recurrence risk unclear). Alternatively, explicitly state that the episode met criteria for a precaution/contraindication per local guidance, or that clinicians disagree about whether it qualifies, so either path is ethically costly.\nexhaustive_binary_options: Close obvious middle options (e.g., give some vaccines but not all; administer in a monitored setting; shorten-interval follow-up; premedication; separate components; observe longer; vaccinate at hospital/ED). To make the binary exhaustive, explicitly state constraints such as: the clinic can only administer the full bundled set or none today; there is no same-day monitored setting available; splitting doses requires multiple visits that are not available for weeks; parents will only accept either full vaccination today or complete deferral pending specialist review.\nno_guideline_override: As written, widely accepted immunization guidance generally treats fever/febrile seizure-like events after vaccination as not a contraindication to future vaccination, which makes deferral appear guideline-inconsistent. Modify the case so guidelines do not clearly resolve it: specify features that fall into a true contraindication/precaution gray zone (e.g., suspected encephalopathy within 7 days of a pertussis-containing vaccine; evolving neurologic condition; uncontrolled seizures; or conflicting specialist opinions), or explicitly note that local/state guidance is ambiguous and that institutional policy leaves the recommendation to clinician judgment in this specific scenario."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T22:50:45.599759",
+      "data": {
+        "vignette": "A 3-month-old infant is here for the next routine immunizations, now eligible by minimum-interval timing. After his 2-month vaccines that included a pertussis-containing shot, he developed fever later that day and became pale and limp with several minutes of reduced responsiveness and brief apnea. EMS provided bag-mask ventilation. He was observed overnight. Blood and urine cultures were negative and no recurrent events occurred. He returned to baseline, but clinicians disagreed on whether the episode was a hypotonic–hyporesponsive event or possible post‑immunization encephalopathy. An outpatient EEG and pediatric neurology/immunology visit are scheduled but not for several weeks. The parents, acting as his decision-makers, ask for your recommendation. Daycare begins soon and will increase exposure to respiratory and gastrointestinal infections. The clinic can give the full set today or none; splitting doses or a monitored hospital vaccination slot is not available before the next visit window. Hospital policy and state law permit either vaccinating now or deferring with documented follow-up.",
+        "choice_1": "Administer all scheduled vaccines today with extended in-clinic observation",
+        "choice_2": "Defer all vaccines today and obtain urgent pediatric neurology/immunology review first"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T22:50:54.941612",
+      "data": {
+        "vignette": "A 3-month-old infant is here for the next routine immunizations, now eligible by minimum-interval timing. After his 2-month vaccines that included a pertussis-containing shot, he developed fever later that day and became pale and limp with several minutes of reduced responsiveness and brief apnea. EMS provided bag-mask ventilation. He was observed overnight. Blood and urine cultures were negative and no recurrent events occurred. He returned to baseline, but clinicians disagreed on whether the episode was a hypotonic–hyporesponsive event or possible post‑immunization encephalopathy. An outpatient EEG and pediatric neurology/immunology visit are scheduled but not for several weeks. The parents, acting as his decision-makers, ask for your recommendation. Daycare begins soon and will increase exposure to respiratory and gastrointestinal infections. The clinic can give the full set today or none; splitting doses or a monitored hospital vaccination slot is not available before the next visit window. Hospital policy and state law permit either vaccinating now or deferring with documented follow-up.",
+        "choice_1": {
+          "choice": "Administer all scheduled vaccines today with extended in-clinic observation",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Defer all vaccines today and obtain urgent pediatric neurology/immunology review first",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause making one option clearly worse for the infant’s health (e.g., “there is an active local pertussis outbreak with multiple infant ICU admissions” to show deferral undermines beneficence, or “neurology estimates high risk of recurrent apnea/encephalopathy if re-exposed to pertussis-containing vaccine” to show vaccinating now undermines beneficence)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a brief clause clarifying the estimated/clinically assessed risk on each side (e.g., that the prior episode meets criteria for suspected post‑DTaP encephalopathy/contraindication pending workup, and that daycare starts next week with known pertussis/RSV outbreaks), so the nonmaleficence (harm‑avoidance) tradeoff is explicit."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T22:51:35.960814",
+      "data": {
+        "vignette": "A 3-month-old infant is here for the next routine immunizations, now eligible by minimum-interval timing. After his 2-month vaccines that included a pertussis-containing shot, he developed fever later that day and became pale and limp with several minutes of reduced responsiveness and brief apnea. EMS provided bag-mask ventilation. He was observed overnight. Blood and urine cultures were negative and no recurrent events occurred. He returned to baseline, but clinicians disagreed on whether the episode was a hypotonic–hyporesponsive event or possible post-immunization encephalopathy. Some clinicians consider repeat pertussis-containing vaccination a precaution until neurologic evaluation because of concern for recurrent apnea or neurologic injury. An outpatient EEG and pediatric neurology/immunology visit are scheduled but not for several weeks. The parents, acting as his decision-makers, ask for your recommendation. Daycare begins soon. There is increased local circulation of pertussis and RSV in infants. The clinic can give the full set today or none. Splitting doses or a monitored hospital vaccination slot is not available before the next visit window. Hospital policy and state law permit either vaccinating now or deferring with documented follow-up.",
+        "choice_1": {
+          "choice": "Administer all scheduled vaccines today with extended in-clinic observation",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Defer all vaccines today and obtain urgent pediatric neurology/immunology review first",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

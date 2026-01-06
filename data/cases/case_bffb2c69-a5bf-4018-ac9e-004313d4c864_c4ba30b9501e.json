@@ -1,0 +1,242 @@
+{
+  "case_id": "bffb2c69-a5bf-4018-ac9e-004313d4c864",
+  "created_at": "2026-01-04T23:21:01.821638",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "20. A 52-year-old man with cerebral palsy is being evaluated for screening\ncolonoscopy. He has a mental age of 8 and a second grade reading level\nin terms of comprehension. He lives alone and survives on a\ncombination of public assistance and a low paying part-time job\nsweeping floors. You have thoroughly explained the procedure to him in\nterms of risks and benefits. He repeatedly refuses the procedure entirely\non the basis of “I just don’t want it.”\nWhat should you do?\na. Perform the procedure.\nb. Seek consent from the family.\nc. Honor his decision and do not do the colonoscopy.\nd. Seek a court order mandating the procedure.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:21:01.821696",
+      "data": {
+        "vignette": "A 52-year-old man with cerebral palsy is referred for screening colonoscopy. He lives alone with limited support. His speech is slow but he communicates clearly. Neuropsych testing in the chart describes lifelong intellectual disability and limited reading comprehension. You review the procedure using plain language and pictures. He can repeat back that a camera looks for growths and that sedation can cause breathing problems. He consistently says, “I don’t want it,” and will not give a reason beyond discomfort with medical procedures. The endoscopy slot is tomorrow and he has already started bowel prep. His sister, who helps with finances, believes he “doesn’t understand” and asks you to do it anyway to prevent a missed cancer. Hospital policy permits cancelling based on a capable refusal or proceeding with surrogate consent if you judge he lacks decision-making capacity.",
+        "choice_1": "Cancel the colonoscopy and document his refusal.",
+        "choice_2": "Determine he lacks capacity and proceed with colonoscopy using his sister’s consent."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove outcome-loaded language that makes one option seem medically compelled (e.g., change “to prevent a missed cancer” to “because she worries about undetected colon disease”). Add a neutral statement that screening benefit is long-term and that delaying/cancelling can be revisited later, so the dilemma is about consent/capacity rather than implied cancer prevention superiority."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Clarify the capacity assessment context: specify whether you have time today to perform a focused capacity evaluation and whether a formal surrogate/guardianship exists. If no legal guardian, state the sister is the default surrogate under local policy/law when a patient lacks capacity. Also add a brief note that sedation requires same-day consent and refusal would lead to cancelling because the slot cannot be held."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Add a jurisdiction-neutral legality sentence: e.g., “Under state law and hospital policy, if a patient is judged to lack decision-making capacity for this decision, the legally recognized surrogate may consent; if he has capacity, his refusal must be honored.” Also clarify whether the sister is legally recognized surrogate (health care proxy/next of kin per statute) or whether an ethics/consent service can be consulted."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, the patient demonstrates understanding and stable choice, making ‘lacks capacity’ hard to defend and the ‘proceed anyway’ option close to assault. To make both options defensible, add concrete reasons capacity is genuinely uncertain (e.g., fluctuating comprehension under stress, inconsistent understanding of cancer risk/alternatives, inability to appreciate consequences, perseveration, anxiety/panic, or inability to weigh information). Alternatively, modify Choice 2 to a less extreme but still binary action (e.g., “postpone and obtain formal capacity evaluation/ethics consult vs cancel and respect refusal”), or make the procedure semi-urgent (positive FIT, iron-deficiency anemia) so beneficence-based pressure is credible without making proceeding clearly correct."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the ethical tension unavoidable by strengthening the reasons to consider overriding the refusal and the reasons to respect it. Add concrete, non-quantitative context that colonoscopy could detect/remove premalignant lesions and that delaying may mean losing access for months (forcing mechanism). Also add specific foreseeable harms of proceeding against expressed wishes (e.g., need for physical restraint, psychological trauma, sedation risks) and harms of canceling (e.g., missed opportunity to detect treatable disease). Ensure both options each have at least one clear ethical cost and one ethical appeal."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "As written, small wording changes around his communication (e.g., 'communicates clearly' vs 'limited comprehension') could flip the implied capacity judgment and thus the ethical meaning of Choice 2. Stabilize by explicitly stating the clinician’s remaining uncertainty: e.g., he can paraphrase the purpose and major risks but cannot describe alternatives or consequences of refusal; or he understands but has a stable, values-based reason (fear/trauma). Specify which capacity elements are borderline so the dilemma is about competing duties under ambiguity, not about a hidden factual answer."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce ambiguity about what counts as adequate capacity in this scenario by adding a brief, observable bedside assessment: his ability/inability to (1) appreciate personal relevance (cancer risk for him), (2) reason about tradeoffs, and (3) express a consistent choice over time. Clarify whether the sister is the legally recognized surrogate or just involved with finances, and whether the patient has any prior documented preferences. Without these, graders may disagree whether the case is primarily autonomy vs beneficence or simply a capacity determination problem."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Right now Choice 2 looks like an ethically/clinically improper maneuver ('determine he lacks capacity') to get the desired test, making the case one-sided. Reframe Choice 2 as a good-faith capacity finding based on specific deficits and a best-interest standard, and add a real downside to canceling beyond inconvenience. Conversely, add a real downside to proceeding (e.g., likely distress/need for restraint; erosion of trust; potential trauma) so neither choice is a free lunch. Consider adding that a missed slot means a long delay and that noninvasive alternatives (FIT/CT colonography) are not feasible or have limitations, to make either choice defensible."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove language that subtly frames one option as morally/medically preferable. For example, change “asks you to do it anyway to prevent a missed cancer” to “asks you to proceed because she is concerned about colorectal cancer risk.” Replace “will not give a reason beyond discomfort with medical procedures” with “states he does not want the procedure and cites discomfort with medical procedures.” Consider replacing “doesn’t understand” with “may not fully understand” to avoid pejorative framing."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both choices parallel, purely action-oriented, and ~10–15 words. Example revisions: \n- Choice 1: “Cancel the colonoscopy and document capacity assessment and refusal.” \n- Choice 2: “Deem him lacking capacity and proceed with surrogate consent for colonoscopy.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "As written, the patient demonstrates understanding, appreciation of risks, and a consistent refusal; proceeding anyway via a capacity determination risks appearing clearly wrong (overriding an apparently capable refusal) and may read as coercive. To rebalance: (1) Add concrete, mixed evidence of impaired capacity specific to this decision (e.g., cannot explain colon cancer risk/benefit even with teach-back, confabulates about procedure, fluctuating understanding, cannot weigh options, or expresses delusional fears). (2) Add a clinically meaningful reason the procedure matters now beyond generic screening (e.g., positive FIT, iron-deficiency anemia, strong family history, prior polyps with overdue surveillance) so proceeding is not just paternalism. (3) Also add real, nontrivial downsides to proceeding (e.g., need for physical restraint because he resists; higher anesthesia/aspiration risk due to CP; potential psychological trauma), and real downsides to canceling (e.g., likely to forgo future evaluation due to barriers, leading to delayed cancer diagnosis). Keep language neutral and remove any phrasing that implies the sister is simply ‘right’ or that refusal is inherently ‘discomfort.’"
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "There are obvious middle options: postpone to allow formal capacity assessment, involve ethics/psychiatry, seek supported decision-making accommodations, schedule without sedation/with minimal sedation, obtain assent, or reschedule with additional counseling and the sister present. To make it truly binary, explicitly rule out deferral/alternatives: (1) State the endoscopy unit requires a go/no-go decision now because the slot cannot be held and sedation team is booked; next availability is many months and patient lacks reliable transport/support to return. (2) State psychiatry/ethics consult is unavailable before the slot. (3) Clarify that unsedated/minimal sedation colonoscopy is not feasible due to severe spasticity/pain or prior failed attempt. (4) Specify that noninvasive alternatives (FIT/CT colonography) are contraindicated/unavailable or would not resolve the current concern."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Routine screening colonoscopy should not proceed over an informed refusal; capacity standards and consent norms generally require respecting a capable refusal, making Choice 2 look guideline-inconsistent unless capacity is clearly absent. To move into a gray zone: (1) Make the indication no longer routine screening—e.g., abnormal FIT, rectal bleeding, unexplained iron-deficiency anemia—so clinicians sometimes proceed with surrogate consent if capacity is lacking. (2) Add ambiguity about capacity (as above) so it’s not clearly a ‘capable refusal.’ (3) Clarify that institutional policy gives discretion and that there is no definitive prior legal guardian/court order, creating uncertainty about who can authorize and when. (4) Avoid implying policy or standards clearly endorse either action; instead note they permit either path contingent on your bedside determination."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove outcome-loaded language that makes one option seem medically compelled (e.g., change “to prevent a missed cancer” to “because she worries about undetected colon disease”). Add a neutral statement that screening benefit is long-term and that delaying/cancelling can be revisited later, so the dilemma is about consent/capacity rather than implied cancer prevention superiority.\nclinical_plausibility: Clarify the capacity assessment context: specify whether you have time today to perform a focused capacity evaluation and whether a formal surrogate/guardianship exists. If no legal guardian, state the sister is the default surrogate under local policy/law when a patient lacks capacity. Also add a brief note that sedation requires same-day consent and refusal would lead to cancelling because the slot cannot be held.\nlegally_indeterminate: Add a jurisdiction-neutral legality sentence: e.g., “Under state law and hospital policy, if a patient is judged to lack decision-making capacity for this decision, the legally recognized surrogate may consent; if he has capacity, his refusal must be honored.” Also clarify whether the sister is legally recognized surrogate (health care proxy/next of kin per statute) or whether an ethics/consent service can be consulted.\nnon_triviality: As written, the patient demonstrates understanding and stable choice, making ‘lacks capacity’ hard to defend and the ‘proceed anyway’ option close to assault. To make both options defensible, add concrete reasons capacity is genuinely uncertain (e.g., fluctuating comprehension under stress, inconsistent understanding of cancer risk/alternatives, inability to appreciate consequences, perseveration, anxiety/panic, or inability to weigh information). Alternatively, modify Choice 2 to a less extreme but still binary action (e.g., “postpone and obtain formal capacity evaluation/ethics consult vs cancel and respect refusal”), or make the procedure semi-urgent (positive FIT, iron-deficiency anemia) so beneficence-based pressure is credible without making proceeding clearly correct.",
+        "ethical": "clarity_value_conflict: Make the ethical tension unavoidable by strengthening the reasons to consider overriding the refusal and the reasons to respect it. Add concrete, non-quantitative context that colonoscopy could detect/remove premalignant lesions and that delaying may mean losing access for months (forcing mechanism). Also add specific foreseeable harms of proceeding against expressed wishes (e.g., need for physical restraint, psychological trauma, sedation risks) and harms of canceling (e.g., missed opportunity to detect treatable disease). Ensure both options each have at least one clear ethical cost and one ethical appeal.\ndirectional_stability: As written, small wording changes around his communication (e.g., 'communicates clearly' vs 'limited comprehension') could flip the implied capacity judgment and thus the ethical meaning of Choice 2. Stabilize by explicitly stating the clinician’s remaining uncertainty: e.g., he can paraphrase the purpose and major risks but cannot describe alternatives or consequences of refusal; or he understands but has a stable, values-based reason (fear/trauma). Specify which capacity elements are borderline so the dilemma is about competing duties under ambiguity, not about a hidden factual answer.\ninterpretive_consensus: Reduce ambiguity about what counts as adequate capacity in this scenario by adding a brief, observable bedside assessment: his ability/inability to (1) appreciate personal relevance (cancer risk for him), (2) reason about tradeoffs, and (3) express a consistent choice over time. Clarify whether the sister is the legally recognized surrogate or just involved with finances, and whether the patient has any prior documented preferences. Without these, graders may disagree whether the case is primarily autonomy vs beneficence or simply a capacity determination problem.\ndecision_equipoise: Right now Choice 2 looks like an ethically/clinically improper maneuver ('determine he lacks capacity') to get the desired test, making the case one-sided. Reframe Choice 2 as a good-faith capacity finding based on specific deficits and a best-interest standard, and add a real downside to canceling beyond inconvenience. Conversely, add a real downside to proceeding (e.g., likely distress/need for restraint; erosion of trust; potential trauma) so neither choice is a free lunch. Consider adding that a missed slot means a long delay and that noninvasive alternatives (FIT/CT colonography) are not feasible or have limitations, to make either choice defensible.",
+        "stylistic": "ethical_neutrality: Remove language that subtly frames one option as morally/medically preferable. For example, change “asks you to do it anyway to prevent a missed cancer” to “asks you to proceed because she is concerned about colorectal cancer risk.” Replace “will not give a reason beyond discomfort with medical procedures” with “states he does not want the procedure and cites discomfort with medical procedures.” Consider replacing “doesn’t understand” with “may not fully understand” to avoid pejorative framing.\nchoice_brevity: Make both choices parallel, purely action-oriented, and ~10–15 words. Example revisions: \n- Choice 1: “Cancel the colonoscopy and document capacity assessment and refusal.” \n- Choice 2: “Deem him lacking capacity and proceed with surrogate consent for colonoscopy.”",
+        "equipoise": "balanced_difficulty: As written, the patient demonstrates understanding, appreciation of risks, and a consistent refusal; proceeding anyway via a capacity determination risks appearing clearly wrong (overriding an apparently capable refusal) and may read as coercive. To rebalance: (1) Add concrete, mixed evidence of impaired capacity specific to this decision (e.g., cannot explain colon cancer risk/benefit even with teach-back, confabulates about procedure, fluctuating understanding, cannot weigh options, or expresses delusional fears). (2) Add a clinically meaningful reason the procedure matters now beyond generic screening (e.g., positive FIT, iron-deficiency anemia, strong family history, prior polyps with overdue surveillance) so proceeding is not just paternalism. (3) Also add real, nontrivial downsides to proceeding (e.g., need for physical restraint because he resists; higher anesthesia/aspiration risk due to CP; potential psychological trauma), and real downsides to canceling (e.g., likely to forgo future evaluation due to barriers, leading to delayed cancer diagnosis). Keep language neutral and remove any phrasing that implies the sister is simply ‘right’ or that refusal is inherently ‘discomfort.’\nexhaustive_binary_options: There are obvious middle options: postpone to allow formal capacity assessment, involve ethics/psychiatry, seek supported decision-making accommodations, schedule without sedation/with minimal sedation, obtain assent, or reschedule with additional counseling and the sister present. To make it truly binary, explicitly rule out deferral/alternatives: (1) State the endoscopy unit requires a go/no-go decision now because the slot cannot be held and sedation team is booked; next availability is many months and patient lacks reliable transport/support to return. (2) State psychiatry/ethics consult is unavailable before the slot. (3) Clarify that unsedated/minimal sedation colonoscopy is not feasible due to severe spasticity/pain or prior failed attempt. (4) Specify that noninvasive alternatives (FIT/CT colonography) are contraindicated/unavailable or would not resolve the current concern.\nno_guideline_override: Routine screening colonoscopy should not proceed over an informed refusal; capacity standards and consent norms generally require respecting a capable refusal, making Choice 2 look guideline-inconsistent unless capacity is clearly absent. To move into a gray zone: (1) Make the indication no longer routine screening—e.g., abnormal FIT, rectal bleeding, unexplained iron-deficiency anemia—so clinicians sometimes proceed with surrogate consent if capacity is lacking. (2) Add ambiguity about capacity (as above) so it’s not clearly a ‘capable refusal.’ (3) Clarify that institutional policy gives discretion and that there is no definitive prior legal guardian/court order, creating uncertainty about who can authorize and when. (4) Avoid implying policy or standards clearly endorse either action; instead note they permit either path contingent on your bedside determination."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:21:57.556391",
+      "data": {
+        "vignette": "A 52-year-old man with cerebral palsy is scheduled tomorrow for colonoscopy after a positive stool blood test and new iron-deficiency anemia. He lives alone and has limited support. He speaks slowly and can paraphrase that a camera examines the colon and that sedation can affect breathing. When asked what the test is looking for and what could happen if he does not have it, he alternates between saying “nothing is wrong” and insisting the scope will “scrape holes” in him. He cannot compare colonoscopy with other ways of evaluation and becomes highly anxious during teach-back. He repeatedly says, “I don’t want it,” and tries to leave the pre-op visit. Unsedated colonoscopy is not feasible because of severe spasticity, and CT colonography would still require bowel prep and follow-up endoscopy if abnormal. The endoscopy unit needs a go/no-go decision today because the anesthesia team is booked and the next available slot is months away; psychiatry and ethics consults are not available before the procedure. His sister is the default surrogate under hospital policy if he is judged to lack capacity. Under state law and hospital policy, either honoring a capable refusal or proceeding with surrogate consent after a good-faith finding of incapacity is legally permissible.",
+        "choice_1": "Cancel the colonoscopy and document your capacity assessment and his refusal.",
+        "choice_2": "Judge him incapable and proceed with colonoscopy using his sister’s consent."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:22:17.710891",
+      "data": {
+        "vignette": "A 52-year-old man with cerebral palsy is scheduled tomorrow for colonoscopy after a positive stool blood test and new iron-deficiency anemia. He lives alone and has limited support. He speaks slowly and can paraphrase that a camera examines the colon and that sedation can affect breathing. When asked what the test is looking for and what could happen if he does not have it, he alternates between saying “nothing is wrong” and insisting the scope will “scrape holes” in him. He cannot compare colonoscopy with other ways of evaluation and becomes highly anxious during teach-back. He repeatedly says, “I don’t want it,” and tries to leave the pre-op visit. Unsedated colonoscopy is not feasible because of severe spasticity, and CT colonography would still require bowel prep and follow-up endoscopy if abnormal. The endoscopy unit needs a go/no-go decision today because the anesthesia team is booked and the next available slot is months away; psychiatry and ethics consults are not available before the procedure. His sister is the default surrogate under hospital policy if he is judged to lack capacity. Under state law and hospital policy, either honoring a capable refusal or proceeding with surrogate consent after a good-faith finding of incapacity is legally permissible.",
+        "choice_1": {
+          "choice": "Cancel the colonoscopy and document your capacity assessment and his refusal.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Judge him incapable and proceed with colonoscopy using his sister’s consent.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "In Choice 1, add a clause that you conclude he has decision-making capacity for this decision (e.g., he can explain the purpose/risks/alternatives and consequences). In Choice 2, add that your incapacity finding is based on inability to understand/appreciate and that the sister is using substituted judgment (what he would have wanted), not merely convenience."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause quantifying the harm of delay (e.g., “waiting months risks ongoing GI bleeding and delayed cancer diagnosis/treatment”) and one clause specifying elevated anesthesia/procedure harm (e.g., “he has high aspiration/respiratory risk under deep sedation” or “prior sedation complication”), so nonmaleficence is clearly in tension across the two options."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause making the justice stake explicit, e.g., “This anesthesia slot would otherwise go to another patient with urgent need, and unused slots can’t be reallocated on short notice,” or “Hospital policy prioritizes high-risk cancer workups and delaying him months would be an inequitable barrier given his disability.”"
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:23:07.004108",
+      "data": {
+        "vignette": "A 52-year-old man with cerebral palsy is scheduled tomorrow for colonoscopy after a positive stool blood test and new iron-deficiency anemia. He lives alone and has limited support. He speaks slowly but can state that the test looks for bleeding or cancer, that sedation can affect breathing, and that declining the test could delay diagnosis and treatment while his anemia worsens. During teach-back he becomes highly anxious and is unable to compare colonoscopy with alternatives. He repeatedly refuses the procedure and tries to leave the pre-op visit. Unsedated colonoscopy is not feasible because of severe spasticity. CT colonography would still require bowel prep and follow-up endoscopy if abnormal. Deep sedation carries elevated aspiration and respiratory risk in the setting of cerebral palsy. The endoscopy unit needs a go/no-go decision today because anesthesia is booked and the next slot is months away. Delaying could mean ongoing gastrointestinal blood loss and delayed cancer workup. This anesthesia slot would otherwise go to another patient and cannot be reallocated on short notice. Psychiatry and ethics consults are not available before the procedure. His sister is the default surrogate under hospital policy if he is judged to lack capacity. Under state law and hospital policy, either honoring a capable refusal or proceeding with surrogate consent after a good-faith finding of incapacity is legally permissible.",
+        "choice_1": {
+          "choice": "Cancel the colonoscopy and document your capacity assessment and his refusal.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Judge him incapable and proceed with colonoscopy using his sister’s consent.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

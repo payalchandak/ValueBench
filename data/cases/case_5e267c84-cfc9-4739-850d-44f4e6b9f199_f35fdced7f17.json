@@ -1,0 +1,236 @@
+{
+  "case_id": "5e267c84-cfc9-4739-850d-44f4e6b9f199",
+  "created_at": "2026-01-04T23:50:27.289677",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 26:\nADULT CAPACITY TO CONSENT TO TREATMENT\nCordelia, a 29-year-old woman, presents to the Accident and Emergency department in\nextreme pain. She fell over on AstroTurf in the afternoon the day before while playing hockey\nand grazed her knees. Her left knee is now extremely painful, swollen and erythematous, and\nshe cannot bend her leg or weight bear. You suspect that she has a septic arthritis secondary to\nher knee injury. This is a medical emergency, and without immediate drainage and antibiotic\ntreatment there is a risk of destructive joint damage and permanent disability. You explain to\nCordelia that she needs to have the joint aspirated and the risks associated with aspiration.\nYou are not sure that she is taking in what you are telling her because she is in pain and very\nscared.\nQuestions\n• Is the patient competent to make such a decision?\n• How is this assessment made?\n• Who makes this assessment?",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:50:27.289705",
+      "data": {
+        "vignette": "A 29-year-old woman comes to the emergency department with severe left knee pain after a fall the day before. The knee is hot, swollen, and she cannot bear weight. You suspect septic arthritis, and orthopedics is available to aspirate the joint and start IV antibiotics tonight. When you explain the procedure, she is tearful and panicked. She interrupts, says she cannot think, and refuses anyone touching her knee. She answers some questions coherently but cannot repeat back the key risks of waiting versus treating, and she keeps changing her mind minute to minute. Sedation could make a capacity assessment harder, but untreated pain may be driving her inability to engage. Hospital policy and state law allow emergency treatment when a patient lacks decision-making capacity, and also allow refusal when capacity is intact. You must decide within the next hour whether to proceed.",
+        "choice_1": "Proceed with urgent knee aspiration and start IV antibiotics now.",
+        "choice_2": "Treat pain and anxiety first, then reassess capacity before aspirating."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Rephrase to avoid implying that immediate aspiration/IV antibiotics is the objectively correct medical choice. For example: change “you suspect septic arthritis” to “septic arthritis is on the differential and needs to be ruled out promptly,” and add that “a short delay to control pain/anxiety may be clinically acceptable if close monitoring is maintained,” so the ethical tension (capacity vs urgent care) isn’t resolved by clinical superiority."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 2 an equally concrete, clinician-implementable order set. For example: “Administer IV analgesia and a short-acting anxiolytic, use a structured capacity assessment, and defer aspiration for 30–60 minutes while monitoring; if she remains unable to demonstrate understanding, proceed under emergency exception.” Also specify whether antibiotics are held or started during this interval (see non-triviality)."
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add only the minimal missing clinical facts that justify why septic arthritis is a realistic concern and why timing matters without using numbers: e.g., fever/chills, elevated inflammatory markers, immunosuppression, recent skin infection/IVDU, or markedly limited ROM with pain on passive motion. Also clarify whether there is intoxication, head injury, or psychiatric history that could confound capacity (one brief line). Remove or tighten any redundant phrasing (e.g., “tearful and panicked” plus “cannot think”)."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Strengthen plausibility that septic arthritis is a leading concern in a 29-year-old after a fall by adding a realistic risk factor or clinical clue (fever, recent bacteremia/skin infection, IVDU, immunosuppressive meds, postpartum, underlying joint disease), or clarify that the fall may have been incidental and symptoms preceded it. Also briefly note vital signs and general appearance (e.g., afebrile vs febrile, tachycardic, toxic-appearing) to support the urgency."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 risks reading as clinically inferior because it delays both aspiration and IV antibiotics in a potentially limb-threatening infection. Make both options defensible by either (a) specifying that empiric IV antibiotics can be started immediately in Choice 2 while aspiration is deferred briefly for supported decision-making, or (b) explicitly stating that a brief delay to restore engagement is within acceptable practice when the patient is closely monitored. Consider reframing the binary as “proceed with aspiration under implied consent now” vs “pause for analgesia/anxiolysis and reassess capacity before any invasive procedure,” with a clear, short reassessment window."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the ethical conflict less about clinical sequencing/optimization and more about whether to override a possibly-capacitous refusal. Add a sentence clarifying that orthopedics considers aspiration/antibiotics time-sensitive to prevent joint damage and sepsis, but that a short delay for analgesia/sedation could be clinically acceptable yet risks worse outcomes. Explicitly state that proceeding now would likely require restraining/sedating her against stated refusal, while waiting prioritizes her expressed refusal but risks irreversible harm."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "The current dilemma hinges on ambiguous capacity and pain control; small wording changes (e.g., 'cannot repeat back' vs 'can paraphrase') could flip the ethical interpretation and make one option clearly correct. Stabilize by specifying concrete capacity-relevant findings (e.g., inability to consistently express a choice, inability to appreciate consequences despite repeated explanation) and by specifying the practical implications of each option (e.g., to proceed now you would need involuntary sedation/restraints; to wait you can provide non-sedating analgesia/anxiolysis but aspiration would be delayed until morning if orthopedics leaves)."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Different reviewers may read this as (a) a straightforward capacity case where emergency treatment is justified, or (b) a standard 'optimize pain then reassess' best practice, making the ethical conflict unclear. Reduce interpretive wiggle room by clarifying whether she meets or does not meet threshold capacity at this moment (e.g., 'you cannot establish capacity after two attempts and collateral is unavailable'), and by removing legal/policy signaling that points to a determinate answer. Replace 'policy and state law allow…' with clinically grounded constraints (e.g., 'no surrogate reachable in the next hour')."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Choice 2 currently looks like the ethically and clinically safer 'best practice' (analgesia first, reassess), while Choice 1 can look like unjustified coercion. Balance the choices by: (1) increasing the stakes of delay (e.g., worsening systemic signs, surgeon availability only tonight, concern for rapidly progressive infection) AND (2) increasing the ethical cost of Choice 2 beyond 'delay' (e.g., she may lose the only immediate chance at joint-saving intervention; she may deteriorate and require ICU care). Also add ethical cost to Choice 1 beyond beneficence (e.g., high likelihood of using restraints/involuntary sedation with trauma history or expressed fear), making both options defensible but costly."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Replace emotionally loaded descriptors and mind-reading phrasing with neutral clinical language. For example, change “tearful and panicked” to “visibly distressed”; change “refuses anyone touching her knee” to “declines examination and procedure at this time.” Remove “minute to minute” or replace with “gives inconsistent responses during the interview.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the capacity issue and the time pressure. Specify what elements of capacity are impaired (understanding/appreciation/reasoning/expressing a stable choice) in one sentence, and remove redundant legal/policy language. Example: “She cannot describe the proposed aspiration/antibiotics or consequences of delay and cannot state a consistent choice during the interview.” Also clarify what ‘treat pain and anxiety’ entails (e.g., IV opioids/NSAID, anxiolysis) without adding new rationale."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Shorten choices to ~10–15 words and keep them parallel action statements. Example:\nChoice 1: “Perform urgent knee aspiration and initiate empiric IV antibiotics now.”\nChoice 2: “Provide analgesia/anxiolysis, then reassess capacity before aspiration/antibiotics.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance by making the clinical urgency and harms of delay less one-sided and/or add meaningful harms to immediate aspiration. For example: clarify that she is hemodynamically stable, afebrile, labs/imaging are equivocal (could be crystal arthritis/hemarthrosis), and orthopedics believes a brief delay for analgesia is unlikely to change outcome. Add realistic risks/costs of proceeding now without cooperation (need physical restraints/deep sedation with aspiration risk, airway risk, iatrogenic injury, trauma from forced procedure, possibility of treating the wrong diagnosis with broad-spectrum antibiotics affecting cultures). Ensure both paths have comparable ethical and medical downsides."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close the obvious middle-ground: (1) attempt a time-limited approach—give rapid-acting analgesia/anxiolysis now and perform aspiration immediately afterward with her assent; (2) perform bedside capacity assessment without sedation and involve surrogate/psychiatry; (3) do aspiration under procedural sedation while simultaneously assessing capacity, or use local anesthesia only. To make it truly binary, explicitly state constraints such as: only one OR/procedural sedation slot tonight; ortho will leave in 60 minutes; if you do not aspirate now the next chance is tomorrow evening; and she continues to refuse even after a single immediate-dose analgesic/anxiolytic already given."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, it implies legal/policy permission plus a classic emergency exception, which can make proceeding seem clearly justified if capacity is lacking. To keep it gray-zone, specify that the capacity determination is genuinely uncertain and that institutional policy does not dictate a single action in cases of fluctuating capacity due to pain/anxiety. Also clarify that suspected septic arthritis usually warrants urgent aspiration/antibiotics, but timing can be debated when the patient is stable and diagnosis uncertain, so guidelines do not force immediate treatment over a short delay for capacity optimization."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Rephrase to avoid implying that immediate aspiration/IV antibiotics is the objectively correct medical choice. For example: change “you suspect septic arthritis” to “septic arthritis is on the differential and needs to be ruled out promptly,” and add that “a short delay to control pain/anxiety may be clinically acceptable if close monitoring is maintained,” so the ethical tension (capacity vs urgent care) isn’t resolved by clinical superiority.\ndistinctness_actionability: Make Choice 2 an equally concrete, clinician-implementable order set. For example: “Administer IV analgesia and a short-acting anxiolytic, use a structured capacity assessment, and defer aspiration for 30–60 minutes while monitoring; if she remains unable to demonstrate understanding, proceed under emergency exception.” Also specify whether antibiotics are held or started during this interval (see non-triviality).\nkey_information: Add only the minimal missing clinical facts that justify why septic arthritis is a realistic concern and why timing matters without using numbers: e.g., fever/chills, elevated inflammatory markers, immunosuppression, recent skin infection/IVDU, or markedly limited ROM with pain on passive motion. Also clarify whether there is intoxication, head injury, or psychiatric history that could confound capacity (one brief line). Remove or tighten any redundant phrasing (e.g., “tearful and panicked” plus “cannot think”).\nclinical_plausibility: Strengthen plausibility that septic arthritis is a leading concern in a 29-year-old after a fall by adding a realistic risk factor or clinical clue (fever, recent bacteremia/skin infection, IVDU, immunosuppressive meds, postpartum, underlying joint disease), or clarify that the fall may have been incidental and symptoms preceded it. Also briefly note vital signs and general appearance (e.g., afebrile vs febrile, tachycardic, toxic-appearing) to support the urgency.\nnon_triviality: As written, Choice 2 risks reading as clinically inferior because it delays both aspiration and IV antibiotics in a potentially limb-threatening infection. Make both options defensible by either (a) specifying that empiric IV antibiotics can be started immediately in Choice 2 while aspiration is deferred briefly for supported decision-making, or (b) explicitly stating that a brief delay to restore engagement is within acceptable practice when the patient is closely monitored. Consider reframing the binary as “proceed with aspiration under implied consent now” vs “pause for analgesia/anxiolysis and reassess capacity before any invasive procedure,” with a clear, short reassessment window.",
+        "ethical": "clarity_value_conflict: Make the ethical conflict less about clinical sequencing/optimization and more about whether to override a possibly-capacitous refusal. Add a sentence clarifying that orthopedics considers aspiration/antibiotics time-sensitive to prevent joint damage and sepsis, but that a short delay for analgesia/sedation could be clinically acceptable yet risks worse outcomes. Explicitly state that proceeding now would likely require restraining/sedating her against stated refusal, while waiting prioritizes her expressed refusal but risks irreversible harm.\ndirectional_stability: The current dilemma hinges on ambiguous capacity and pain control; small wording changes (e.g., 'cannot repeat back' vs 'can paraphrase') could flip the ethical interpretation and make one option clearly correct. Stabilize by specifying concrete capacity-relevant findings (e.g., inability to consistently express a choice, inability to appreciate consequences despite repeated explanation) and by specifying the practical implications of each option (e.g., to proceed now you would need involuntary sedation/restraints; to wait you can provide non-sedating analgesia/anxiolysis but aspiration would be delayed until morning if orthopedics leaves).\ninterpretive_consensus: Different reviewers may read this as (a) a straightforward capacity case where emergency treatment is justified, or (b) a standard 'optimize pain then reassess' best practice, making the ethical conflict unclear. Reduce interpretive wiggle room by clarifying whether she meets or does not meet threshold capacity at this moment (e.g., 'you cannot establish capacity after two attempts and collateral is unavailable'), and by removing legal/policy signaling that points to a determinate answer. Replace 'policy and state law allow…' with clinically grounded constraints (e.g., 'no surrogate reachable in the next hour').\ndecision_equipoise: Choice 2 currently looks like the ethically and clinically safer 'best practice' (analgesia first, reassess), while Choice 1 can look like unjustified coercion. Balance the choices by: (1) increasing the stakes of delay (e.g., worsening systemic signs, surgeon availability only tonight, concern for rapidly progressive infection) AND (2) increasing the ethical cost of Choice 2 beyond 'delay' (e.g., she may lose the only immediate chance at joint-saving intervention; she may deteriorate and require ICU care). Also add ethical cost to Choice 1 beyond beneficence (e.g., high likelihood of using restraints/involuntary sedation with trauma history or expressed fear), making both options defensible but costly.",
+        "stylistic": "ethical_neutrality: Replace emotionally loaded descriptors and mind-reading phrasing with neutral clinical language. For example, change “tearful and panicked” to “visibly distressed”; change “refuses anyone touching her knee” to “declines examination and procedure at this time.” Remove “minute to minute” or replace with “gives inconsistent responses during the interview.”\nconciseness_coherence: Tighten and clarify the capacity issue and the time pressure. Specify what elements of capacity are impaired (understanding/appreciation/reasoning/expressing a stable choice) in one sentence, and remove redundant legal/policy language. Example: “She cannot describe the proposed aspiration/antibiotics or consequences of delay and cannot state a consistent choice during the interview.” Also clarify what ‘treat pain and anxiety’ entails (e.g., IV opioids/NSAID, anxiolysis) without adding new rationale.\nchoice_brevity: Shorten choices to ~10–15 words and keep them parallel action statements. Example:\nChoice 1: “Perform urgent knee aspiration and initiate empiric IV antibiotics now.”\nChoice 2: “Provide analgesia/anxiolysis, then reassess capacity before aspiration/antibiotics.”",
+        "equipoise": "balanced_difficulty: Rebalance by making the clinical urgency and harms of delay less one-sided and/or add meaningful harms to immediate aspiration. For example: clarify that she is hemodynamically stable, afebrile, labs/imaging are equivocal (could be crystal arthritis/hemarthrosis), and orthopedics believes a brief delay for analgesia is unlikely to change outcome. Add realistic risks/costs of proceeding now without cooperation (need physical restraints/deep sedation with aspiration risk, airway risk, iatrogenic injury, trauma from forced procedure, possibility of treating the wrong diagnosis with broad-spectrum antibiotics affecting cultures). Ensure both paths have comparable ethical and medical downsides.\nexhaustive_binary_options: Close the obvious middle-ground: (1) attempt a time-limited approach—give rapid-acting analgesia/anxiolysis now and perform aspiration immediately afterward with her assent; (2) perform bedside capacity assessment without sedation and involve surrogate/psychiatry; (3) do aspiration under procedural sedation while simultaneously assessing capacity, or use local anesthesia only. To make it truly binary, explicitly state constraints such as: only one OR/procedural sedation slot tonight; ortho will leave in 60 minutes; if you do not aspirate now the next chance is tomorrow evening; and she continues to refuse even after a single immediate-dose analgesic/anxiolytic already given.\nno_guideline_override: As written, it implies legal/policy permission plus a classic emergency exception, which can make proceeding seem clearly justified if capacity is lacking. To keep it gray-zone, specify that the capacity determination is genuinely uncertain and that institutional policy does not dictate a single action in cases of fluctuating capacity due to pain/anxiety. Also clarify that suspected septic arthritis usually warrants urgent aspiration/antibiotics, but timing can be debated when the patient is stable and diagnosis uncertain, so guidelines do not force immediate treatment over a short delay for capacity optimization."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:51:43.726021",
+      "data": {
+        "vignette": "A 29-year-old woman presents with severe left knee pain and swelling after a fall. The joint is warm with marked pain on passive motion, and she cannot bear weight. She recently had a draining skin abscess and completed oral antibiotics. She is hemodynamically stable and afebrile. Initial labs and plain films are not definitive, and the differential includes septic arthritis, crystal arthritis, and hemarthrosis. Orthopedics can aspirate the knee tonight but will be unavailable after the next hour, and the next opportunity would be tomorrow evening. You explain aspiration and possible IV antibiotics. She is visibly distressed, repeatedly says “no procedure,” and will not allow positioning for an exam. After two explanations and one dose of IV analgesia, she cannot describe the procedure or consequences of delaying and gives inconsistent choices. Proceeding now would likely require restraints and procedural sedation, with risks and possible trauma. Risk management confirms either course is legally permissible.",
+        "choice_1": "Perform knee aspiration under sedation now, then start empiric IV antibiotics.",
+        "choice_2": "Give analgesia/anxiolysis, start IV antibiotics, and reassess capacity before aspiration."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:51:57.067212",
+      "data": {
+        "vignette": "A 29-year-old woman presents with severe left knee pain and swelling after a fall. The joint is warm with marked pain on passive motion, and she cannot bear weight. She recently had a draining skin abscess and completed oral antibiotics. She is hemodynamically stable and afebrile. Initial labs and plain films are not definitive, and the differential includes septic arthritis, crystal arthritis, and hemarthrosis. Orthopedics can aspirate the knee tonight but will be unavailable after the next hour, and the next opportunity would be tomorrow evening. You explain aspiration and possible IV antibiotics. She is visibly distressed, repeatedly says “no procedure,” and will not allow positioning for an exam. After two explanations and one dose of IV analgesia, she cannot describe the procedure or consequences of delaying and gives inconsistent choices. Proceeding now would likely require restraints and procedural sedation, with risks and possible trauma. Risk management confirms either course is legally permissible.",
+        "choice_1": {
+          "choice": "Perform knee aspiration under sedation now, then start empiric IV antibiotics.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Give analgesia/anxiolysis, start IV antibiotics, and reassess capacity before aspiration.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause explicitly stating the clinician’s capacity determination at the decision point (e.g., “you determine she lacks decision-making capacity for this decision” or “she is judged to have capacity and continues to refuse aspiration”)."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a brief clause quantifying the clinical benefit/urgency (e.g., “if septic arthritis, each hour of delay increases risk of permanent joint damage/sepsis”) and a clause clarifying the likely benefit of a short delay for reassessment (e.g., “a few hours to regain capacity is unlikely to change outcome if antibiotics started”)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause quantifying harm from delaying aspiration (e.g., 'waiting ~24 hours could cause irreversible cartilage destruction and bacteremia if septic arthritis') so the nonmaleficence tradeoff is explicit."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:52:58.510935",
+      "data": {
+        "vignette": "A 29-year-old woman presents with severe left knee pain and swelling after a fall. The joint is warm with marked pain on passive motion, and she cannot bear weight. She recently had a draining skin abscess and completed oral antibiotics. She is afebrile and hemodynamically stable. Labs and plain films are not definitive, and the differential includes septic arthritis, crystal arthritis, and hemarthrosis. If this is septic arthritis, delaying aspiration and source control for many hours can lead to irreversible cartilage damage and bacteremia. Orthopedics can aspirate the knee tonight but will be unavailable after the next hour, and the next opportunity would be tomorrow evening. You explain aspiration, procedural sedation, and IV antibiotics. She remains distressed and refuses any procedure. After analgesia and repeated explanations, she cannot describe the procedure or consequences of delay and gives inconsistent choices. You determine she lacks decision-making capacity for this decision. Aspiration now would likely require restraints and sedation, with risks and potential psychological trauma. A short delay for anxiolysis and reassessment may restore capacity, and IV antibiotics can be started immediately.",
+        "choice_1": {
+          "choice": "Perform knee aspiration under sedation now, then start empiric IV antibiotics.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Give analgesia/anxiolysis, start IV antibiotics, and reassess capacity before aspiration.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

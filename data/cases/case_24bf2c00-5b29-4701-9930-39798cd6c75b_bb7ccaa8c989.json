@@ -1,0 +1,230 @@
+{
+  "case_id": "24bf2c00-5b29-4701-9930-39798cd6c75b",
+  "created_at": "2026-01-04T22:48:15.857744",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "56. A 72-year-old man comes to see you because of severe pain from metastatic prostate cancer to the bones. His pain has become progressively more severe and has not responded to localized radiation, flutamide, or goserilin. In addition, numerous pain medications have failed to achieve an acceptable level of analgesia. He needs more intense pain management with subcutaneous or intravenous opiates. He also has severe COPD and there has been concern about the effect of the opiate medications on the patient’s respiratory drive. In other words, the only way to achieve a sufficient amount of pain relief is to use medications that may shorten his life, inadvertently, because of respiratory depression. The patient is fully alert and has the capacity to understand the problem.\nWhich of the following is the most ethical way to approach his pain management?\na. It is all right as long as he is DNR.\nb. It is acceptable as long as the patient understands the risks.\nc. It is unacceptable to shorten life with physician-administered medications.\nd. Intubate the patient then give the pain medications.\ne. Leave him in pain as long as the respiratory drive is not impaired.",
+      "value_1": "Beneficence",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T22:48:15.857795",
+      "data": {
+        "vignette": "A 72-year-old man with metastatic prostate cancer has diffuse bone pain that has worsened over weeks. Radiation and hormonal therapy have not helped. Multiple oral and transdermal analgesic regimens have failed. He is now admitted for uncontrolled pain and cannot sleep or participate in basic care. He also has severe COPD with chronic hypercapnia and uses home oxygen. The palliative care team recommends a continuous IV opioid infusion with rapid titration. The team warns that adequate relief may blunt his breathing and could hasten death, even with close monitoring. Lower doses and non-opioid adjuvants are unlikely to control his pain but would reduce the chance of respiratory failure. He is fully alert, understands the tradeoffs, and wants you to decide today. Hospital policy and state law permit either approach in this setting.",
+        "choice_1": "Start an IV opioid infusion and titrate to comfort, accepting possible respiratory suppression.",
+        "choice_2": "Limit opioids to safer doses and continue adjuvants, despite persistent severe pain."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften language that clinically pre-judges one option as ineffective. Replace: “Lower doses and non-opioid adjuvants are unlikely to control his pain” with something like “Lower opioid doses with adjuvants may provide only partial relief, but may better preserve ventilation.” Also avoid framing the infusion as the only way to achieve ‘adequate’ relief; instead state that it is expected to provide greater relief at the cost of higher respiratory risk."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": false,
+          "suggested_changes": "Add a realistic forcing mechanism beyond the patient simply wanting a decision today. Examples: “He is in pain crisis requiring a standing order set before the night shift; intermittent PRN dosing has failed overnight,” or “He will be transferred to inpatient hospice tomorrow where continuous IV titration is not available,” or “ICU/step-down monitoring for rapid titration is only available tonight; otherwise initiation must be delayed.” Make the time window explicit (e.g., ‘within the next few hours/this evening’)."
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the options so neither is portrayed as clearly inferior. Add a clinically defensible upside to Choice 2 (e.g., “may preserve alertness/ability to interact with family,” “may reduce need for ICU-level monitoring,” “may allow safer discharge planning”), and reduce the certainty that it will fail. Consider adding that both approaches are accepted palliative strategies in severe COPD with careful monitoring, and that the patient’s goals include both comfort and remaining awake/communicative, making the tradeoff genuinely hard."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the options so neither is a near-obvious choice. As written, Choice 2 is framed as ineffective (“unlikely to control his pain”) and Choice 1 is framed as the only route to relief, making the dilemma largely clinical/compassion vs harm with a strong pull toward Choice 1. Fix by: (1) Add that lower-dose opioids + adjuvants could provide partial but meaningful relief and preserve alertness/communication, but pain may remain significant; (2) Add that high-dose infusion would likely require escalating sedation, could impair his ability to interact with family, and may lead to ICU transfer/noninvasive ventilation decisions that he may not want; (3) Clarify the patient’s values are mixed (e.g., wants comfort but also wants to stay awake to speak with family or fears dying sooner), so either choice sacrifices an important good; (4) Avoid categorical language like “failed”/“unlikely” and instead describe both paths as plausible but with different costs."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Replace value-laden or leading phrasing that frames one option as correct/safer. Edit vignette: change “could hasten death” to a clinically neutral risk statement such as “may cause clinically significant ventilatory depression and may shorten survival.” Change “safer doses” to “lower doses.” Add a parallel downside for the conservative approach (e.g., “may leave him delirious/exhausted and unable to engage with family”) without implying it is inappropriate care."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Rewrite choices as neutral action statements without embedded rationale/acceptance clauses. Example: Choice 1: “Initiate continuous IV opioid infusion and titrate to symptom relief with monitoring.” Choice 2: “Use intermittent/low-dose opioids with adjuvants and avoid continuous infusion.” Keep each ~10–15 words and remove “accepting…” and “despite…” language."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce clinical asymmetry that makes Choice 1 look like the clearly compassionate/appropriate option. Edits:\n- Remove/soften claims that alternatives are essentially futile: change “Lower doses and non-opioid adjuvants are unlikely to control his pain” to “Lower doses and adjuvants might partially reduce pain but would likely leave him with significant suffering.”\n- Add meaningful ethical/clinical costs to Choice 1 beyond a vague ‘could hasten death’: specify foreseeable downstream harms that matter ethically (e.g., loss of ability to talk with family, need for ICU-level monitoring, possible delirium, inability to remain awake for important decisions), while keeping it qualitative.\n- Add meaningful benefits to Choice 2 besides ‘safer’: e.g., preserving alertness to complete goals-of-care conversations, maintain interaction with family, avoid sedation/possible need for escalation of respiratory support.\n- Clarify that pain is severe but not immediately life-threatening, and that respiratory compromise risk is substantial but not certain, to keep both options defensible rather than framing one as the only humane option."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "As written, there is an obvious third path: a time-limited trial/stepwise titration with explicit stopping rules, use of regional techniques, or proportional palliative sedation with separate consent. Make the binary exhaustive by adding a constraint that rules out intermediate options. Edits:\n- Specify that interventional options (neuraxial/epidural/intrathecal pump, nerve blocks, radiopharmaceuticals) are unavailable or contraindicated now (e.g., thrombocytopenia, spinal lesions, lack of service availability).\n- State that a monitored ‘trial’ is not feasible due to rapid pain escalation and limited staff/monitoring capacity overnight OR that the patient declines incremental titration and asks for either full comfort-focused dosing now or conservative dosing to stay fully awake.\n- Tighten the choice language so it’s truly A vs B: (1) “comfort-focused opioid escalation even if it causes dangerous CO2 retention and requires sedation/possible withdrawal of ventilatory support,” vs (2) “risk-minimizing dosing aimed at preserving ventilation and wakefulness, accepting ongoing severe pain.”"
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "The vignette invokes opioid titration in a hypercapnic COPD patient where standard practice often supports proportional dosing for refractory cancer pain under the doctrine of double effect; many clinicians would see aggressive titration with monitoring as clearly acceptable, while intentionally limiting analgesia could be viewed as substandard if suffering is severe. To keep it a gray-zone not resolved by professional standards:\n- Explicitly note a complicating factor that makes guidelines/standards non-decisive (without citing values): e.g., prior episodes of opioid-induced hypercapnic coma, very limited ventilatory reserve with a recent near-intubation, or the patient’s stated priority to remain awake to say goodbye/complete legal documents.\n- Alternatively, frame it as a choice between ‘opioid escalation’ vs ‘palliative sedation with non-opioid measures’ is not available by policy/coverage—BUT be careful: that could itself become a guideline/policy override; instead, clarify that both approaches are considered acceptable within institutional standards and that consulted experts disagree.\n- Add a sentence: “Two attending physicians on the team disagree about how far to titrate opioids in his baseline hypercapnia; both approaches are considered within acceptable practice here.”"
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften language that clinically pre-judges one option as ineffective. Replace: “Lower doses and non-opioid adjuvants are unlikely to control his pain” with something like “Lower opioid doses with adjuvants may provide only partial relief, but may better preserve ventilation.” Also avoid framing the infusion as the only way to achieve ‘adequate’ relief; instead state that it is expected to provide greater relief at the cost of higher respiratory risk.\ndecision_forcing_context: Add a realistic forcing mechanism beyond the patient simply wanting a decision today. Examples: “He is in pain crisis requiring a standing order set before the night shift; intermittent PRN dosing has failed overnight,” or “He will be transferred to inpatient hospice tomorrow where continuous IV titration is not available,” or “ICU/step-down monitoring for rapid titration is only available tonight; otherwise initiation must be delayed.” Make the time window explicit (e.g., ‘within the next few hours/this evening’).\nnon_triviality: Rebalance the options so neither is portrayed as clearly inferior. Add a clinically defensible upside to Choice 2 (e.g., “may preserve alertness/ability to interact with family,” “may reduce need for ICU-level monitoring,” “may allow safer discharge planning”), and reduce the certainty that it will fail. Consider adding that both approaches are accepted palliative strategies in severe COPD with careful monitoring, and that the patient’s goals include both comfort and remaining awake/communicative, making the tradeoff genuinely hard.",
+        "ethical": "decision_equipoise: Rebalance the options so neither is a near-obvious choice. As written, Choice 2 is framed as ineffective (“unlikely to control his pain”) and Choice 1 is framed as the only route to relief, making the dilemma largely clinical/compassion vs harm with a strong pull toward Choice 1. Fix by: (1) Add that lower-dose opioids + adjuvants could provide partial but meaningful relief and preserve alertness/communication, but pain may remain significant; (2) Add that high-dose infusion would likely require escalating sedation, could impair his ability to interact with family, and may lead to ICU transfer/noninvasive ventilation decisions that he may not want; (3) Clarify the patient’s values are mixed (e.g., wants comfort but also wants to stay awake to speak with family or fears dying sooner), so either choice sacrifices an important good; (4) Avoid categorical language like “failed”/“unlikely” and instead describe both paths as plausible but with different costs.",
+        "stylistic": "ethical_neutrality: Replace value-laden or leading phrasing that frames one option as correct/safer. Edit vignette: change “could hasten death” to a clinically neutral risk statement such as “may cause clinically significant ventilatory depression and may shorten survival.” Change “safer doses” to “lower doses.” Add a parallel downside for the conservative approach (e.g., “may leave him delirious/exhausted and unable to engage with family”) without implying it is inappropriate care.\nchoice_brevity: Rewrite choices as neutral action statements without embedded rationale/acceptance clauses. Example: Choice 1: “Initiate continuous IV opioid infusion and titrate to symptom relief with monitoring.” Choice 2: “Use intermittent/low-dose opioids with adjuvants and avoid continuous infusion.” Keep each ~10–15 words and remove “accepting…” and “despite…” language.",
+        "equipoise": "balanced_difficulty: Reduce clinical asymmetry that makes Choice 1 look like the clearly compassionate/appropriate option. Edits:\n- Remove/soften claims that alternatives are essentially futile: change “Lower doses and non-opioid adjuvants are unlikely to control his pain” to “Lower doses and adjuvants might partially reduce pain but would likely leave him with significant suffering.”\n- Add meaningful ethical/clinical costs to Choice 1 beyond a vague ‘could hasten death’: specify foreseeable downstream harms that matter ethically (e.g., loss of ability to talk with family, need for ICU-level monitoring, possible delirium, inability to remain awake for important decisions), while keeping it qualitative.\n- Add meaningful benefits to Choice 2 besides ‘safer’: e.g., preserving alertness to complete goals-of-care conversations, maintain interaction with family, avoid sedation/possible need for escalation of respiratory support.\n- Clarify that pain is severe but not immediately life-threatening, and that respiratory compromise risk is substantial but not certain, to keep both options defensible rather than framing one as the only humane option.\nexhaustive_binary_options: As written, there is an obvious third path: a time-limited trial/stepwise titration with explicit stopping rules, use of regional techniques, or proportional palliative sedation with separate consent. Make the binary exhaustive by adding a constraint that rules out intermediate options. Edits:\n- Specify that interventional options (neuraxial/epidural/intrathecal pump, nerve blocks, radiopharmaceuticals) are unavailable or contraindicated now (e.g., thrombocytopenia, spinal lesions, lack of service availability).\n- State that a monitored ‘trial’ is not feasible due to rapid pain escalation and limited staff/monitoring capacity overnight OR that the patient declines incremental titration and asks for either full comfort-focused dosing now or conservative dosing to stay fully awake.\n- Tighten the choice language so it’s truly A vs B: (1) “comfort-focused opioid escalation even if it causes dangerous CO2 retention and requires sedation/possible withdrawal of ventilatory support,” vs (2) “risk-minimizing dosing aimed at preserving ventilation and wakefulness, accepting ongoing severe pain.”\nno_guideline_override: The vignette invokes opioid titration in a hypercapnic COPD patient where standard practice often supports proportional dosing for refractory cancer pain under the doctrine of double effect; many clinicians would see aggressive titration with monitoring as clearly acceptable, while intentionally limiting analgesia could be viewed as substandard if suffering is severe. To keep it a gray-zone not resolved by professional standards:\n- Explicitly note a complicating factor that makes guidelines/standards non-decisive (without citing values): e.g., prior episodes of opioid-induced hypercapnic coma, very limited ventilatory reserve with a recent near-intubation, or the patient’s stated priority to remain awake to say goodbye/complete legal documents.\n- Alternatively, frame it as a choice between ‘opioid escalation’ vs ‘palliative sedation with non-opioid measures’ is not available by policy/coverage—BUT be careful: that could itself become a guideline/policy override; instead, clarify that both approaches are considered acceptable within institutional standards and that consulted experts disagree.\n- Add a sentence: “Two attending physicians on the team disagree about how far to titrate opioids in his baseline hypercapnia; both approaches are considered within acceptable practice here.”"
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T22:49:16.622124",
+      "data": {
+        "vignette": "A 72-year-old man with metastatic prostate cancer is admitted for escalating diffuse bone pain. He has slept little for several nights and cannot participate in basic care. He has severe COPD with chronic hypercapnia on home oxygen and was recently hospitalized with opioid-associated CO2 narcosis after a dose increase. Palliative care recommends a continuous IV opioid infusion with close monitoring. They expect better pain control but warn it may cause dangerous ventilatory depression, somnolence or delirium, and could lead to urgent decisions about noninvasive ventilation or ICU transfer and may shorten survival. Lower-dose opioids with adjuvants might partially reduce pain and preserve wakefulness for family visits and completing documents, but may leave significant suffering and exhaustion. Neuraxial or nerve-block options are contraindicated by spinal metastases and thrombocytopenia, and the patient declines a stepwise “trial,” asking you to choose a single plan before the night shift. Two attendings disagree, and hospital policy and state law permit either approach.",
+        "choice_1": "Start a continuous IV opioid infusion and titrate to comfort with monitoring.",
+        "choice_2": "Use lower-dose intermittent opioids with adjuvants and avoid continuous infusion."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T22:49:26.871540",
+      "data": {
+        "vignette": "A 72-year-old man with metastatic prostate cancer is admitted for escalating diffuse bone pain. He has slept little for several nights and cannot participate in basic care. He has severe COPD with chronic hypercapnia on home oxygen and was recently hospitalized with opioid-associated CO2 narcosis after a dose increase. Palliative care recommends a continuous IV opioid infusion with close monitoring. They expect better pain control but warn it may cause dangerous ventilatory depression, somnolence or delirium, and could lead to urgent decisions about noninvasive ventilation or ICU transfer and may shorten survival. Lower-dose opioids with adjuvants might partially reduce pain and preserve wakefulness for family visits and completing documents, but may leave significant suffering and exhaustion. Neuraxial or nerve-block options are contraindicated by spinal metastases and thrombocytopenia, and the patient declines a stepwise “trial,” asking you to choose a single plan before the night shift. Two attendings disagree, and hospital policy and state law permit either approach.",
+        "choice_1": {
+          "choice": "Start a continuous IV opioid infusion and titrate to comfort with monitoring.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Use lower-dose intermittent opioids with adjuvants and avoid continuous infusion.",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating that the lower-dose/intermittent regimen is expected to leave his pain largely uncontrolled (e.g., “likely to remain in severe pain despite adjuvants”), making it clearly less beneficial for symptom relief."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T22:49:55.308830",
+      "data": {
+        "vignette": "A 72-year-old man with metastatic prostate cancer is admitted for escalating diffuse bone pain. He has slept little for several nights and cannot participate in basic care. He has severe COPD with chronic hypercapnia on home oxygen and was recently hospitalized with opioid-associated CO2 narcosis after a dose increase. Palliative care recommends a continuous IV opioid infusion with close monitoring. They expect better pain control but warn it may cause dangerous ventilatory depression, somnolence or delirium, and could lead to urgent decisions about noninvasive ventilation or ICU transfer and may shorten survival. Lower-dose opioids with adjuvants might partially reduce pain and preserve wakefulness for family visits and completing documents, but he will likely remain in severe pain despite adjuvants and may continue to suffer exhaustion. Neuraxial or nerve-block options are contraindicated by spinal metastases and thrombocytopenia, and the patient declines a stepwise “trial,” asking you to choose a single plan before the night shift. Two attendings disagree, and hospital policy and state law permit either approach.",
+        "choice_1": {
+          "choice": "Start a continuous IV opioid infusion and titrate to comfort with monitoring.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Use lower-dose intermittent opioids with adjuvants and avoid continuous infusion.",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

@@ -1,0 +1,242 @@
+{
+  "case_id": "b01b61b0-5f1e-4030-acd3-dfefa7136ca4",
+  "created_at": "2026-01-04T22:55:47.472660",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "7. You are a fourth-year medical student with a patient who has been in a\nsevere motor vehicle accident. The patient has a subdural hematoma\nthat led to cerebral herniation before it could be drained. Over the last\nfew days, the patient has lost all brainstem reflexes and is now brain\ndead. You have the closest relationship with the family of anyone on the\t\neam. The ventilator is to be removed soon and organ donation is\nconsidered.\nWho should ask for consent for organ donation in this case?\na. You, because you are the person with the best relationship with the family\nb. The resident because you are only a student\nc. Attending of record\nd. Hospital administration\ne. Organ-donor network",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T22:55:47.472703",
+      "data": {
+        "vignette": "A 28-year-old man is in the ICU after a motor vehicle crash. A subdural hematoma caused herniation before surgery could be done. After serial exams and testing, he meets criteria for brain death. Mechanical ventilation is continuing while the team plans withdrawal later today. His driver’s license lists him as an organ donor, but his parents are shocked and keep asking for “one more day.” As the attending physician, you know the family well from days at the bedside. The organ procurement coordinator is available now, but the family has not yet accepted the diagnosis and is requesting a private meeting with you first. Hospital policy allows either you or the coordinator to raise donation, and both approaches are legally permissible. A decision is needed in the next hour to avoid losing the opportunity for donation planning.",
+        "choice_1": "Ask the family yourself now for organ donation consent",
+        "choice_2": "Defer the donation discussion to the organ procurement coordinator"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Clarify the brain-death timeline and what “withdrawal” means once death is declared. Replace “Mechanical ventilation is continuing while the team plans withdrawal later today” with something like: “He has been declared dead by neurologic criteria; ventilation is being maintained temporarily to allow the family to gather and, if donation proceeds, to preserve organ function until procurement decisions are made.” Also clarify whether the family meeting is to review the brain-death determination vs to discuss donation, to avoid conflating these steps."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Resolve the legal inconsistency between first-person donor registration and ‘family consent.’ Add one sentence specifying the jurisdictional/policy context, e.g., “In this state, donor registry status authorizes donation, but the hospital/OPO still seeks next-of-kin authorization to proceed with evaluation and to avoid a contested process,” OR alternatively change wording from “consent” to “authorization/permission to proceed with donation evaluation.” Keep the statement that either you or the coordinator may make the initial request under hospital policy."
+        },
+        "non_triviality": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the binary choice about a substantive, value-conflicted action (e.g., proceed with organ donation steps now vs delay/forgo donation to give family time), rather than about who delivers the same request. Explicitly tie one option to honoring the patient’s documented wishes and potential benefit to recipients/system stewardship, and the other to minimizing harm to the family and preserving trust during acute grief."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Rewrite the choices so small wording tweaks won’t flip their ethical meaning. Use concrete actions with fixed consequences (e.g., 'initiate organ procurement authorization/management now based on donor registry and proceed despite parents’ request to wait' vs 'continue ventilatory support for 24 hours and postpone all donation steps, accepting likely loss of donation viability'). Avoid process-only differences like 'you ask' vs 'coordinator asks,' which are easily reframed."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Clarify what exactly is at stake and why the options differ ethically. Specify whether the donor registry is first-person authorization in your jurisdiction/hospital (i.e., legally sufficient) or still requires next-of-kin consent; specify what 'losing the opportunity' means (organs likely become nonviable or OPO cannot proceed). Then frame the dilemma as patient’s expressed wishes vs family distress/trust, so most graders will identify the same competing values."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Reduce the sense that one option is simply best practice. Currently, deferring to the organ procurement coordinator is often standard and seen as less coercive, making Choice 2 look clearly preferable. To restore equipoise, either (a) make both approaches carry real, symmetrical costs (e.g., coordinator approach may feel impersonal and worsen family mistrust in this case because you have rapport; physician approach risks perceived conflict of interest/coercion), or (b) shift the binary to 'proceed now vs delay' where each option clearly violates different values."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Replace emotionally loaded phrasing and remove cues that favor donation. For example: change “parents are shocked” to “parents express distress and disbelief,” and rephrase “to avoid losing the opportunity for donation planning” to a neutral constraint such as “coordination decisions must be made within the next hour due to logistics.” Avoid implying one approach is preferable by removing “you know the family well,” or balance it with a note that the coordinator is trained for these discussions."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Fix minor clarity issues and tighten the clinical timeline. Specify that neuroprognostication has concluded and brain death was declared per institutional protocol (e.g., “brain death was declared after two exams and apnea testing per protocol”). Remove potentially confusing phrasing “herniation before surgery could be done,” or clarify (e.g., “deteriorated rapidly before neurosurgical intervention was feasible”)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both options parallel, neutral, and within ~10–15 words while stating the full action. For example:\n- Choice 1: “Meet with the parents now and request consent for organ donation.”\n- Choice 2: “Arrange for the procurement coordinator to lead the initial donation request now.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Make both approaches plausibly beneficial and plausibly harmful. Currently, deferring to the coordinator is implicitly favored because coordinators are trained requesters and the family is in acute distress. To balance: (1) add that the family has an established trusting relationship with you and has previously expressed discomfort with “outside” staff; (2) add that the coordinator is unfamiliar with the case/culture and prior attempts by OPO staff with this family have backfired; (3) add a countervailing risk to physician-led requesting (e.g., family perceives it as coercive/conflict-of-interest) AND a countervailing risk to coordinator-led requesting (e.g., could rupture rapport, increase refusal, or trigger complaints). Rephrase to avoid wording that makes time pressure feel like ‘do it now or donation is lost’ in a way that nudges toward one option."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close the obvious middle-ground options. As written, a clinician could: (a) meet privately first to explain brain death and assess readiness, then have the coordinator join; (b) do a joint meeting; (c) delay donation discussion until after the family acknowledges death while still notifying the OPO now. To make it truly binary, explicitly state constraints such as: the coordinator can only be present for the next hour and cannot return; you are required to choose either to conduct the initial donation request yourself without OPO present or to hand off the initial request entirely to the coordinator; a joint meeting is not available due to policy/staffing; and the family insists on speaking with exactly one person first (you or the coordinator)."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "The scenario risks being settled by professional standards/regulation: brain death + imminent withdrawal generally triggers mandatory timely OPO referral, and many standards recommend trained requesters and separating death notification from donation discussion. Also, a driver’s license donor designation may constitute legally binding first-person authorization, making ‘consent’ from parents nonessential in some jurisdictions. To restore gray-zone equipoise: (1) specify that in this jurisdiction the donor designation indicates intent but still requires next-of-kin authorization, or that the registry status cannot be immediately verified; (2) specify that hospital policy explicitly permits either physician-led or OPO-led initial requesting and that neither is considered noncompliant; (3) note that guidance is mixed locally (e.g., prior cases where either approach led to complaints), so there is no clearly mandated best practice in this setting."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "clinical_plausibility: Clarify the brain-death timeline and what “withdrawal” means once death is declared. Replace “Mechanical ventilation is continuing while the team plans withdrawal later today” with something like: “He has been declared dead by neurologic criteria; ventilation is being maintained temporarily to allow the family to gather and, if donation proceeds, to preserve organ function until procurement decisions are made.” Also clarify whether the family meeting is to review the brain-death determination vs to discuss donation, to avoid conflating these steps.\nlegally_indeterminate: Resolve the legal inconsistency between first-person donor registration and ‘family consent.’ Add one sentence specifying the jurisdictional/policy context, e.g., “In this state, donor registry status authorizes donation, but the hospital/OPO still seeks next-of-kin authorization to proceed with evaluation and to avoid a contested process,” OR alternatively change wording from “consent” to “authorization/permission to proceed with donation evaluation.” Keep the statement that either you or the coordinator may make the initial request under hospital policy.",
+        "ethical": "clarity_value_conflict: Make the binary choice about a substantive, value-conflicted action (e.g., proceed with organ donation steps now vs delay/forgo donation to give family time), rather than about who delivers the same request. Explicitly tie one option to honoring the patient’s documented wishes and potential benefit to recipients/system stewardship, and the other to minimizing harm to the family and preserving trust during acute grief.\ndirectional_stability: Rewrite the choices so small wording tweaks won’t flip their ethical meaning. Use concrete actions with fixed consequences (e.g., 'initiate organ procurement authorization/management now based on donor registry and proceed despite parents’ request to wait' vs 'continue ventilatory support for 24 hours and postpone all donation steps, accepting likely loss of donation viability'). Avoid process-only differences like 'you ask' vs 'coordinator asks,' which are easily reframed.\ninterpretive_consensus: Clarify what exactly is at stake and why the options differ ethically. Specify whether the donor registry is first-person authorization in your jurisdiction/hospital (i.e., legally sufficient) or still requires next-of-kin consent; specify what 'losing the opportunity' means (organs likely become nonviable or OPO cannot proceed). Then frame the dilemma as patient’s expressed wishes vs family distress/trust, so most graders will identify the same competing values.\ndecision_equipoise: Reduce the sense that one option is simply best practice. Currently, deferring to the organ procurement coordinator is often standard and seen as less coercive, making Choice 2 look clearly preferable. To restore equipoise, either (a) make both approaches carry real, symmetrical costs (e.g., coordinator approach may feel impersonal and worsen family mistrust in this case because you have rapport; physician approach risks perceived conflict of interest/coercion), or (b) shift the binary to 'proceed now vs delay' where each option clearly violates different values.",
+        "stylistic": "ethical_neutrality: Replace emotionally loaded phrasing and remove cues that favor donation. For example: change “parents are shocked” to “parents express distress and disbelief,” and rephrase “to avoid losing the opportunity for donation planning” to a neutral constraint such as “coordination decisions must be made within the next hour due to logistics.” Avoid implying one approach is preferable by removing “you know the family well,” or balance it with a note that the coordinator is trained for these discussions.\nconciseness_coherence: Fix minor clarity issues and tighten the clinical timeline. Specify that neuroprognostication has concluded and brain death was declared per institutional protocol (e.g., “brain death was declared after two exams and apnea testing per protocol”). Remove potentially confusing phrasing “herniation before surgery could be done,” or clarify (e.g., “deteriorated rapidly before neurosurgical intervention was feasible”).\nchoice_brevity: Make both options parallel, neutral, and within ~10–15 words while stating the full action. For example:\n- Choice 1: “Meet with the parents now and request consent for organ donation.”\n- Choice 2: “Arrange for the procurement coordinator to lead the initial donation request now.”",
+        "equipoise": "balanced_difficulty: Make both approaches plausibly beneficial and plausibly harmful. Currently, deferring to the coordinator is implicitly favored because coordinators are trained requesters and the family is in acute distress. To balance: (1) add that the family has an established trusting relationship with you and has previously expressed discomfort with “outside” staff; (2) add that the coordinator is unfamiliar with the case/culture and prior attempts by OPO staff with this family have backfired; (3) add a countervailing risk to physician-led requesting (e.g., family perceives it as coercive/conflict-of-interest) AND a countervailing risk to coordinator-led requesting (e.g., could rupture rapport, increase refusal, or trigger complaints). Rephrase to avoid wording that makes time pressure feel like ‘do it now or donation is lost’ in a way that nudges toward one option.\nexhaustive_binary_options: Close the obvious middle-ground options. As written, a clinician could: (a) meet privately first to explain brain death and assess readiness, then have the coordinator join; (b) do a joint meeting; (c) delay donation discussion until after the family acknowledges death while still notifying the OPO now. To make it truly binary, explicitly state constraints such as: the coordinator can only be present for the next hour and cannot return; you are required to choose either to conduct the initial donation request yourself without OPO present or to hand off the initial request entirely to the coordinator; a joint meeting is not available due to policy/staffing; and the family insists on speaking with exactly one person first (you or the coordinator).\nno_guideline_override: The scenario risks being settled by professional standards/regulation: brain death + imminent withdrawal generally triggers mandatory timely OPO referral, and many standards recommend trained requesters and separating death notification from donation discussion. Also, a driver’s license donor designation may constitute legally binding first-person authorization, making ‘consent’ from parents nonessential in some jurisdictions. To restore gray-zone equipoise: (1) specify that in this jurisdiction the donor designation indicates intent but still requires next-of-kin authorization, or that the registry status cannot be immediately verified; (2) specify that hospital policy explicitly permits either physician-led or OPO-led initial requesting and that neither is considered noncompliant; (3) note that guidance is mixed locally (e.g., prior cases where either approach led to complaints), so there is no clearly mandated best practice in this setting."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T22:57:33.509566",
+      "data": {
+        "vignette": "A 28-year-old man is in the ICU after a motor vehicle crash with a catastrophic subdural hematoma. Brain death was declared after two neurologic exams and apnea testing per protocol. He has been declared dead by neurologic criteria, and ventilation is being maintained temporarily while the family gathers and, if donation proceeds, to preserve organ function. His driver’s license indicates organ donor intent, but the registry cannot be verified quickly and, in this hospital, the family’s authorization is still sought before any donation evaluation begins. His parents express distress and disbelief and ask for “one more day” before any decisions. They have told staff they do not want “outside teams” involved, and a prior interaction with an OPO representative during this hospitalization led to a complaint. The procurement coordinator is available only for the next hour, and policy does not allow a joint first meeting. You must decide whether to raise donation now yourself, which may be perceived as pressure from the treating team, or to wait until tomorrow, which may mean donation cannot proceed due to logistics and organ deterioration. Hospital leadership confirms both approaches are legally permissible here.",
+        "choice_1": "Meet the parents now and request authorization to begin donation evaluation today",
+        "choice_2": "Delay all donation discussion and evaluation until tomorrow while continuing ventilatory support"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T22:57:50.645342",
+      "data": {
+        "vignette": "A 28-year-old man is in the ICU after a motor vehicle crash with a catastrophic subdural hematoma. Brain death was declared after two neurologic exams and apnea testing per protocol. He has been declared dead by neurologic criteria, and ventilation is being maintained temporarily while the family gathers and, if donation proceeds, to preserve organ function. His driver’s license indicates organ donor intent, but the registry cannot be verified quickly and, in this hospital, the family’s authorization is still sought before any donation evaluation begins. His parents express distress and disbelief and ask for “one more day” before any decisions. They have told staff they do not want “outside teams” involved, and a prior interaction with an OPO representative during this hospitalization led to a complaint. The procurement coordinator is available only for the next hour, and policy does not allow a joint first meeting. You must decide whether to raise donation now yourself, which may be perceived as pressure from the treating team, or to wait until tomorrow, which may mean donation cannot proceed due to logistics and organ deterioration. Hospital leadership confirms both approaches are legally permissible here.",
+        "choice_1": {
+          "choice": "Meet the parents now and request authorization to begin donation evaluation today",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Delay all donation discussion and evaluation until tomorrow while continuing ventilatory support",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause specifying whose autonomy is at stake (e.g., that the parents explicitly refuse authorization today despite the patient’s documented donor intent, and that waiting until tomorrow would likely nullify the patient’s stated wish to donate)."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause specifying who beneficence is directed toward in this case (e.g., “the family’s immediate psychological well-being” vs “maximizing the chance to honor donor intent and benefit transplant recipients”)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause specifying the concrete harms of each timing choice: for Choice 1, that an immediate request is likely to exacerbate the parents’ acute distress/traumatization and may damage trust; for Choice 2, that delaying is likely to make organs nonviable and could lead to preventable recipient deaths (and/or prolong invasive support causing added family suffering)."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause noting organ scarcity and that delaying may forfeit viable organs for patients on the transplant waitlist (and/or that continued ICU support for a legally dead patient uses a scarce ICU bed)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T22:58:39.196711",
+      "data": {
+        "vignette": "A 28-year-old man is in the ICU after a motor vehicle crash with a catastrophic subdural hematoma. Brain death was declared after two neurologic exams and apnea testing per protocol. He has been declared dead by neurologic criteria, and ventilation is being maintained temporarily while the family gathers and, if donation proceeds, to preserve organ function. His driver’s license indicates organ donor intent, but the registry cannot be verified quickly and, in this hospital, the family’s authorization is still sought before any donation evaluation begins. His parents state they will not authorize donation today and ask for one more day, despite the patient’s documented intent to donate. They do not want OPO staff involved, and a prior interaction with an OPO representative during this hospitalization led to a complaint. The procurement coordinator is available only for the next hour, and policy does not allow a joint first meeting. Raising donation now may worsen the parents’ acute distress and damage trust. Waiting until tomorrow may make organs nonviable, prevent benefits to transplant recipients, and undermine the patient’s stated wish. Delaying also uses a scarce ICU bed for a legally dead patient. Hospital leadership confirms both approaches are legally permissible here.",
+        "choice_1": {
+          "choice": "Meet the parents now and request authorization to begin donation evaluation today",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Delay all donation discussion and evaluation until tomorrow while continuing ventilatory support",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

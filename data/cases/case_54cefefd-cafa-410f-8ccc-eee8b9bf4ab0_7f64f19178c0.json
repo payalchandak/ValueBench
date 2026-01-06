@@ -1,0 +1,242 @@
+{
+  "case_id": "54cefefd-cafa-410f-8ccc-eee8b9bf4ab0",
+  "created_at": "2026-01-04T22:50:14.691971",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "58. An 84-year-old woman is admitted with abdominal pain. On the second hospital day she becomes febrile, severely hypotensive, and tachycardic from an intestinal perforation. The patient is disoriented with no capacity to understand her medical problems. There is no response to antibiotics, fluids, and dopamine over the next 48 hours and there are signs of significant anoxic encephalopathy. Although there is no health-care proxy, the family is in uniform agreement on what the patient would have wanted for herself had she been able to speak for herself. Which of the following cannot be stopped at the direction of the family? a. Ventilator b. Blood tests c. Dopamine d. Fluid and nutrition e. Nothing.",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T22:50:14.692017",
+      "data": {
+        "vignette": "An 84-year-old woman is admitted with worsening abdominal pain and develops septic shock from a presumed bowel perforation. She is intubated, on vasopressors, and in the ICU. After two days of maximal antibiotics and fluids, she remains profoundly hypotensive and now has signs of significant hypoxic brain injury. She is disoriented and cannot understand information or participate in decisions. No written advance directive or appointed proxy is available. Her adult children are all present and in full agreement that she repeatedly said she would not want to be kept alive on machines if she could not wake up and interact. The ICU team believes survival would likely require ongoing life support with invasive monitoring and repeated blood draws, with an uncertain neurologic outcome and the possibility of prolonged dying. Hospital policy and state law allow either continued life-sustaining treatment or withdrawal based on consistent family testimony. A decision is needed before the next planned escalation of support.",
+        "choice_1": "Withdraw life-sustaining treatment and transition to comfort-focused care.",
+        "choice_2": "Continue full intensive care, including ventilator, vasopressors, and ongoing testing."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften language that makes ongoing ICU care seem futile or clearly inferior (e.g., replace “signs of significant hypoxic brain injury” with “concern for hypoxic brain injury; neurologic prognosis is unclear,” and replace “possibility of prolonged dying” with “possibility of prolonged critical illness”). Avoid framing escalation as inherently burdensome by listing only harms—add a balanced statement that continued support could allow time to assess neurologic recovery and treat the source (e.g., “continued support may allow stabilization and reassessment over the next 24–48 hours”)."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Trim extraneous or leading detail and clarify the specific escalation requiring a decision. For example: remove “repeated blood draws” (decorative) and replace with a concrete imminent decision such as “whether to proceed with emergent surgery for suspected perforation, place a central line/arterial line, start renal replacement therapy, or increase vasopressor targets.” Keep only details that affect prognosis/values: septic shock, ventilation/vasopressors, lack of capacity, no AD/proxy, consistent family testimony, and policy/legal permissibility."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Clarify key clinical elements that make the scenario coherent: (1) whether perforation is confirmed and whether source control (surgery or interventional drainage) is feasible/being considered; (2) why surgery is not already emergently pursued if perforation is presumed; (3) what “maximal antibiotics and fluids” means in ICU terms (e.g., broad-spectrum antibiotics, adequate resuscitation). Also, hypoxic brain injury after septic shock should be linked to an event (prolonged hypotension/hypoxemia/cardiac arrest) or described more cautiously as encephalopathy with uncertain reversibility."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, the case strongly points toward withdrawal because she is “profoundly hypotensive” after 2 days and has “significant hypoxic brain injury,” making continued ICU care look nonbeneficial. To make both options defensible, add uncertainty and a plausible path to recovery: e.g., “vasopressor needs are high but stable,” “lactate is improving,” “no cardiac arrest; CT suggests a contained perforation with potential for operative repair,” and “neurology notes prognosis is uncertain this early and recommends reassessment after sedation is lightened.” This preserves a genuine ethical dilemma between honoring prior wishes vs giving time for potentially meaningful recovery."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Strengthen the core value tension so that *each* option clearly advances a different ethical commitment. For example: (1) Make the neurologic prognosis genuinely indeterminate rather than strongly pessimistic (replace “significant hypoxic brain injury” with “prolonged coma with uncertain cause; early imaging is inconclusive; sedation/confounding metabolic issues may be contributing”), and (2) introduce a credible clinical rationale for continued ICU care (e.g., surgeons believe source control may still be possible and she could regain interaction if she survives the next 24–48 hours). Alternatively, keep the poor prognosis but weaken substituted-judgment certainty (e.g., children report mixed/ambiguous prior statements, or statements were conditional and not clearly applicable), so autonomy does not overwhelmingly dictate withdrawal."
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Remove language that makes one option look medically/ethically dominant. Edit phrases like “maximal antibiotics,” “remains profoundly hypotensive,” and “significant hypoxic brain injury” to avoid near-futility framing. Add an ethically costly downside to withdrawal beyond ‘letting her die’ (e.g., a plausible chance of meaningful recovery if infection is controlled; withdrawal would foreclose that). Add an ethically defensible upside to continued ICU care (e.g., time-limited trial to clarify neurologic prognosis; respecting possible chance she would accept short-term machines for a meaningful recovery). Also add a cost to continued ICU care beyond ‘invasive monitoring’—e.g., high likelihood of prolonged dependence with burdensome interventions—so both choices carry unavoidable moral costs."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Reduce language that implies futility or steers toward withdrawal. Edit phrases like “maximal antibiotics,” “profoundly hypotensive,” and “significant hypoxic brain injury” to more neutral, time-bounded descriptors (e.g., “despite broad-spectrum antibiotics and resuscitation, remains on high-dose vasopressors; neuro exam concerning for anoxic injury”). Replace “possibility of prolonged dying” with neutral outcome language (e.g., “may require prolonged ICU-level support with uncertain likelihood of meaningful neurologic recovery”)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the clinical trajectory and decision trigger. For example: (1) specify what “signs of hypoxic brain injury” are (exam/imaging/EEG) in one clause; (2) remove duplicated intensity words; (3) clarify what the “next planned escalation” is (e.g., renal replacement therapy, second vasopressor, surgical exploration) so the forcing mechanism is concrete."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both choices parallel, 10–15 words, and avoid embedded implementation details. Revise to: Choice 1: “Withdraw life-sustaining treatments and initiate comfort-focused care.” Choice 2: “Continue life-sustaining treatments and pursue ongoing ICU-level support.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce the prognostic/clinical asymmetry that makes withdrawal feel clearly preferable. Edit phrases like “significant hypoxic brain injury,” “remains profoundly hypotensive,” and “possibility of prolonged dying” to a more uncertain picture (e.g., intermittent responsiveness, unclear extent of anoxic injury, some hemodynamic improvement but still critically ill). Add a credible ethical pull toward continuing care (e.g., a potentially reversible source control option, a short window where recovery is possible, or meaningful uncertainty about neurologic prognosis). Alternatively, weaken the decisiveness of the substituted-judgment evidence: make the patient’s prior statements less specific/applicable or include details that could be interpreted differently, so continuing ICU support is not framed as mere suffering prolongation."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "The vignette leaves an obvious third path: a time-limited trial / ‘do not escalate further’ plan with reassessment, or proceeding with a single discrete escalation (e.g., CRRT, emergent surgery) before deciding. To make the binary exhaustive, explicitly rule out intermediate options (e.g., “The next step is initiation of CRRT and a second vasopressor; the ICU cannot offer a time-limited trial because the patient will require deep sedation and paralysis for ventilator synchrony, eliminating meaningful neurologic reassessment,” or “Surgery is not an option and all reversible causes have been addressed; the only remaining choices are to continue current full support indefinitely vs withdraw now”). Alternatively, redefine the choices as: (A) initiate a predefined 48–72h trial of full ICU support with explicit stopping criteria vs (B) withdraw now—then ensure no other plausible compromise remains."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, widely accepted ethical standards (substituted judgment via next-of-kin testimony) and your own statement that policy/state law allow withdrawal based on consistent family testimony make Choice 1 feel guideline-endorsed rather than a gray zone. To restore ambiguity, revise the legal/policy context: e.g., hospital policy requires ‘clear and convincing’ evidence or an ethics committee review when no appointed proxy exists; state law is ambiguous about whether adult children collectively can authorize withdrawal; or there is concern that the patient’s prior statements were generalized and not specific to this circumstance. Add a realistic institutional constraint (risk management hesitation, documentation requirements, or disagreement about whether family are legal surrogates) so neither option is clearly dictated by standards."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften language that makes ongoing ICU care seem futile or clearly inferior (e.g., replace “signs of significant hypoxic brain injury” with “concern for hypoxic brain injury; neurologic prognosis is unclear,” and replace “possibility of prolonged dying” with “possibility of prolonged critical illness”). Avoid framing escalation as inherently burdensome by listing only harms—add a balanced statement that continued support could allow time to assess neurologic recovery and treat the source (e.g., “continued support may allow stabilization and reassessment over the next 24–48 hours”).\nkey_information: Trim extraneous or leading detail and clarify the specific escalation requiring a decision. For example: remove “repeated blood draws” (decorative) and replace with a concrete imminent decision such as “whether to proceed with emergent surgery for suspected perforation, place a central line/arterial line, start renal replacement therapy, or increase vasopressor targets.” Keep only details that affect prognosis/values: septic shock, ventilation/vasopressors, lack of capacity, no AD/proxy, consistent family testimony, and policy/legal permissibility.\nclinical_plausibility: Clarify key clinical elements that make the scenario coherent: (1) whether perforation is confirmed and whether source control (surgery or interventional drainage) is feasible/being considered; (2) why surgery is not already emergently pursued if perforation is presumed; (3) what “maximal antibiotics and fluids” means in ICU terms (e.g., broad-spectrum antibiotics, adequate resuscitation). Also, hypoxic brain injury after septic shock should be linked to an event (prolonged hypotension/hypoxemia/cardiac arrest) or described more cautiously as encephalopathy with uncertain reversibility.\nnon_triviality: As written, the case strongly points toward withdrawal because she is “profoundly hypotensive” after 2 days and has “significant hypoxic brain injury,” making continued ICU care look nonbeneficial. To make both options defensible, add uncertainty and a plausible path to recovery: e.g., “vasopressor needs are high but stable,” “lactate is improving,” “no cardiac arrest; CT suggests a contained perforation with potential for operative repair,” and “neurology notes prognosis is uncertain this early and recommends reassessment after sedation is lightened.” This preserves a genuine ethical dilemma between honoring prior wishes vs giving time for potentially meaningful recovery.",
+        "ethical": "clarity_value_conflict: Strengthen the core value tension so that *each* option clearly advances a different ethical commitment. For example: (1) Make the neurologic prognosis genuinely indeterminate rather than strongly pessimistic (replace “significant hypoxic brain injury” with “prolonged coma with uncertain cause; early imaging is inconclusive; sedation/confounding metabolic issues may be contributing”), and (2) introduce a credible clinical rationale for continued ICU care (e.g., surgeons believe source control may still be possible and she could regain interaction if she survives the next 24–48 hours). Alternatively, keep the poor prognosis but weaken substituted-judgment certainty (e.g., children report mixed/ambiguous prior statements, or statements were conditional and not clearly applicable), so autonomy does not overwhelmingly dictate withdrawal.\ndecision_equipoise: Remove language that makes one option look medically/ethically dominant. Edit phrases like “maximal antibiotics,” “remains profoundly hypotensive,” and “significant hypoxic brain injury” to avoid near-futility framing. Add an ethically costly downside to withdrawal beyond ‘letting her die’ (e.g., a plausible chance of meaningful recovery if infection is controlled; withdrawal would foreclose that). Add an ethically defensible upside to continued ICU care (e.g., time-limited trial to clarify neurologic prognosis; respecting possible chance she would accept short-term machines for a meaningful recovery). Also add a cost to continued ICU care beyond ‘invasive monitoring’—e.g., high likelihood of prolonged dependence with burdensome interventions—so both choices carry unavoidable moral costs.",
+        "stylistic": "ethical_neutrality: Reduce language that implies futility or steers toward withdrawal. Edit phrases like “maximal antibiotics,” “profoundly hypotensive,” and “significant hypoxic brain injury” to more neutral, time-bounded descriptors (e.g., “despite broad-spectrum antibiotics and resuscitation, remains on high-dose vasopressors; neuro exam concerning for anoxic injury”). Replace “possibility of prolonged dying” with neutral outcome language (e.g., “may require prolonged ICU-level support with uncertain likelihood of meaningful neurologic recovery”).\nconciseness_coherence: Tighten and clarify the clinical trajectory and decision trigger. For example: (1) specify what “signs of hypoxic brain injury” are (exam/imaging/EEG) in one clause; (2) remove duplicated intensity words; (3) clarify what the “next planned escalation” is (e.g., renal replacement therapy, second vasopressor, surgical exploration) so the forcing mechanism is concrete.\nchoice_brevity: Make both choices parallel, 10–15 words, and avoid embedded implementation details. Revise to: Choice 1: “Withdraw life-sustaining treatments and initiate comfort-focused care.” Choice 2: “Continue life-sustaining treatments and pursue ongoing ICU-level support.”",
+        "equipoise": "balanced_difficulty: Reduce the prognostic/clinical asymmetry that makes withdrawal feel clearly preferable. Edit phrases like “significant hypoxic brain injury,” “remains profoundly hypotensive,” and “possibility of prolonged dying” to a more uncertain picture (e.g., intermittent responsiveness, unclear extent of anoxic injury, some hemodynamic improvement but still critically ill). Add a credible ethical pull toward continuing care (e.g., a potentially reversible source control option, a short window where recovery is possible, or meaningful uncertainty about neurologic prognosis). Alternatively, weaken the decisiveness of the substituted-judgment evidence: make the patient’s prior statements less specific/applicable or include details that could be interpreted differently, so continuing ICU support is not framed as mere suffering prolongation.\nexhaustive_binary_options: The vignette leaves an obvious third path: a time-limited trial / ‘do not escalate further’ plan with reassessment, or proceeding with a single discrete escalation (e.g., CRRT, emergent surgery) before deciding. To make the binary exhaustive, explicitly rule out intermediate options (e.g., “The next step is initiation of CRRT and a second vasopressor; the ICU cannot offer a time-limited trial because the patient will require deep sedation and paralysis for ventilator synchrony, eliminating meaningful neurologic reassessment,” or “Surgery is not an option and all reversible causes have been addressed; the only remaining choices are to continue current full support indefinitely vs withdraw now”). Alternatively, redefine the choices as: (A) initiate a predefined 48–72h trial of full ICU support with explicit stopping criteria vs (B) withdraw now—then ensure no other plausible compromise remains.\nno_guideline_override: As written, widely accepted ethical standards (substituted judgment via next-of-kin testimony) and your own statement that policy/state law allow withdrawal based on consistent family testimony make Choice 1 feel guideline-endorsed rather than a gray zone. To restore ambiguity, revise the legal/policy context: e.g., hospital policy requires ‘clear and convincing’ evidence or an ethics committee review when no appointed proxy exists; state law is ambiguous about whether adult children collectively can authorize withdrawal; or there is concern that the patient’s prior statements were generalized and not specific to this circumstance. Add a realistic institutional constraint (risk management hesitation, documentation requirements, or disagreement about whether family are legal surrogates) so neither option is clearly dictated by standards."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T22:51:28.555337",
+      "data": {
+        "vignette": "An 84-year-old woman is in the ICU with septic shock from suspected bowel perforation. She is intubated and on vasopressors. After two days of broad-spectrum antibiotics and resuscitation, her lactate is improving but she still needs pressor support and has worsening kidney failure. She opens her eyes to pain but does not follow commands. CT suggests a contained perforation that might be operable, but she would need deep sedation and likely dialysis afterward, with an uncertain chance of returning to interactive function. She lacks decision-making capacity. There is no written advance directive or appointed proxy. Her adult children agree she often said she would not want to “live on machines,” but she never discussed a short-term ICU course for a potentially reversible illness. Hospital policy requires ethics review in this situation, and the committee confirms either course is legally permissible. The surgeon can take her to the OR now, or the team will shift to comfort care instead of escalating support.",
+        "choice_1": "Withdraw ventilator and vasopressors and provide comfort-focused care.",
+        "choice_2": "Proceed with emergent surgery and continue full ICU life support."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T22:51:42.959282",
+      "data": {
+        "vignette": "An 84-year-old woman is in the ICU with septic shock from suspected bowel perforation. She is intubated and on vasopressors. After two days of broad-spectrum antibiotics and resuscitation, her lactate is improving but she still needs pressor support and has worsening kidney failure. She opens her eyes to pain but does not follow commands. CT suggests a contained perforation that might be operable, but she would need deep sedation and likely dialysis afterward, with an uncertain chance of returning to interactive function. She lacks decision-making capacity. There is no written advance directive or appointed proxy. Her adult children agree she often said she would not want to “live on machines,” but she never discussed a short-term ICU course for a potentially reversible illness. Hospital policy requires ethics review in this situation, and the committee confirms either course is legally permissible. The surgeon can take her to the OR now, or the team will shift to comfort care instead of escalating support.",
+        "choice_1": {
+          "choice": "Withdraw ventilator and vasopressors and provide comfort-focused care.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Proceed with emergent surgery and continue full ICU life support.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating what the patient most recently said when asked about surgery/temporary life support (e.g., she previously accepted or refused a time-limited trial for reversible illness), or explicitly state that her prior statements were limited to permanent dependence and did not clearly cover emergent, potentially curative surgery."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause quantifying expected clinical benefit of surgery (e.g., “surgeon estimates ~50% chance of surviving to discharge with return to interactive function”) and a clause that comfort care will lead to near-certain death within hours–days, so the beneficence tradeoff is explicit."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause quantifying the operative downside (e.g., “predicted perioperative mortality >50% with high likelihood of prolonged ventilator/dialysis dependence and significant suffering”) and a clause clarifying the comfort-care course (e.g., “she would likely die within 24–48 hours, with medications to prevent air hunger and distress”)."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a brief clause making resource stewardship/fair allocation explicit (e.g., “the ICU is at capacity with multiple patients awaiting beds” and/or “dialysis capacity is limited”), so that continuing full life support vs transitioning to comfort care clearly impacts other patients’ access to scarce resources."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T22:52:24.879043",
+      "data": {
+        "vignette": "An 84-year-old woman is in the ICU with septic shock from suspected bowel perforation. She is intubated and on vasopressors. After two days of broad-spectrum antibiotics and resuscitation, her lactate is improving but she still needs pressor support and has worsening kidney failure. She opens her eyes to pain but does not follow commands. CT shows a contained perforation that might be operable. The surgeon thinks surgery could control the source, but the risks include perioperative death and prolonged ventilator and dialysis dependence, with an uncertain chance of returning to interactive function. She lacks decision-making capacity. There is no written advance directive or appointed proxy. Her adult children report she opposed long-term dependence on machines, but they cannot relate those statements to a time-limited trial for a potentially reversible illness. If support is withdrawn, she is expected to die in the near term with medications to prevent distress. The ICU and dialysis services are at capacity. Ethics review confirms either course is legally permissible. The team must choose between emergent surgery with full ICU support or comfort-focused withdrawal.",
+        "choice_1": {
+          "choice": "Withdraw ventilator and vasopressors and provide comfort-focused care.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Proceed with emergent surgery and continue full ICU life support.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

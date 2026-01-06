@@ -1,0 +1,236 @@
+{
+  "case_id": "bdedebf8-c652-43ea-ba97-68108e9a97e0",
+  "created_at": "2026-01-04T23:34:20.577058",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 20:\nASSESSING COMPETENCE IN CHILDREN\nThe asthma nurse at your surgery has asked you to come and review a 15-year-old girl,\nShania, who has booked in to discuss her medication. She was diagnosed with asthma at the\nage of 6 and has had several admissions to hospital with severe asthma attacks. She is now\nat boarding school and feels that over the past few months her asthma has not been as well\ncontrolled as before, despite taking her inhalers regularly. On closer questioning you discover\nthat she is only really symptomatic during extreme exertion, but Shania feels that she would\nlike to try stronger treatment as her breathing is affecting her during running and she wants\nto compete at county level at the upcoming cross-country sports events.\nQuestions\n• When is a young person considered competent to make healthcare decisions?\n• Are there any limitations on what treatments a young person can consent to?\n• What is the role of parents of a competent child in healthcare decision making?",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:34:20.577097",
+      "data": {
+        "vignette": "A 15-year-old girl with childhood asthma comes to clinic from boarding school. She has had past hospital admissions for severe attacks. She now reports tightness and wheeze only with intense running. She wants “stronger” daily medication so she can compete in an upcoming county cross-country meet next week. Her current exam is normal, and she has no recent night symptoms or urgent visits. She asks you not to contact her parents. She says they “overreact” and might pull her from sports. You think a step-up controller regimen could reduce exercise symptoms, but it also adds monitoring needs and potential adverse effects, and you are not fully confident she will follow up once she returns to school. The school nurse can supervise inhaler use but cannot consent. Under local policy, a capable adolescent may consent to asthma treatment, and involving parents is also permitted. You must decide today how to proceed.",
+        "choice_1": "Prescribe a step-up asthma regimen today and keep the visit confidential.",
+        "choice_2": "Decline to change medications today and contact her parents to plan next steps."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften language implying step-up is clinically preferable for performance (\"could reduce exercise symptoms\") without balancing uncertainty similarly for both options. Reframe as: both options have plausible clinical rationales—step-up may help exercise symptoms but increases side-effect/monitoring burden; holding steady avoids overtreatment but may leave symptoms limiting and risk an attack with exertion. Avoid 'not fully confident she will follow up' as it clinically biases toward not prescribing; instead state follow-up is uncertain either way and is important if stepping up."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make both choices concrete medical orders. Specify what 'step-up' entails (e.g., start low-dose inhaled corticosteroid daily or add ICS-formoterol as needed; provide written asthma action plan; arrange follow-up in 2–4 weeks). Specify what 'decline to change' entails (continue current meds, optimize pre-exercise SABA, provide action plan, schedule follow-up). Also separate confidentiality from prescribing: currently each choice bundles multiple actions (med change + confidentiality vs no change + breach confidentiality). Consider keeping medication decision the same across options and vary confidentiality, or keep confidentiality the same and vary medication, to make a clean binary."
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove extraneous background that doesn't change the ethical stakes (e.g., 'childhood asthma' if already implied; 'county cross-country meet' could be simplified to 'competition next week'). Add essential clinical details needed to justify either pathway: current regimen and adherence, recent spirometry/peak flow if available, history of severe exacerbation triggers, current rescue inhaler use frequency, any controller side effects history. Clarify whether she has capacity and understands risks/benefits and confidentiality limits."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Clarify asthma severity and current therapy: a patient with prior severe admissions but now only exercise symptoms could be plausible, but you need to specify if she is currently on SABA-only, on ICS with poor adherence, or on maintenance therapy. Ensure the proposed 'step-up' matches guidelines for exercise-induced symptoms. Explain realistically how follow-up would occur given boarding school (telehealth, school nurse vitals, local clinician) and how monitoring for adverse effects would be handled."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 combines denying symptom relief with breaching confidentiality, making it feel punitive and ethically lopsided. Make both options plausibly beneficial and costly: Option A—treat now confidentially but accept risk of inadequate monitoring/parental noninvolvement; Option B—treat now but involve parents despite her wishes to improve safety and follow-up, or postpone step-up pending shared plan while ensuring interim safety measures. Ensure each option has a clear patient-centered benefit, not only harms."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the ethical conflict unavoidable by ensuring BOTH options are medically reasonable and the decision is not solvable by straightforward guideline-based asthma management.\n- Adjust clinical facts so a step-up controller is plausibly indicated (e.g., frequent exercise symptoms despite correct pre-exercise bronchodilator use, needing rescue inhaler most practices, or recent near-miss during training) while also making added therapy meaningfully burdensome/risky (e.g., prior steroid side effects, need for lab/peak-flow monitoring, adherence concerns).\n- Alternatively, if symptoms are truly only with intense running and otherwise controlled, change Choice 1 away from ‘step-up daily medication’ to a medically standard option that still carries ethical cost (e.g., providing a new rescue/pretreatment plan, sports clearance note, or short-term trial) so the dilemma remains about confidentiality vs safety/support, not overtreatment.\n- Clarify what ‘step-up’ means (e.g., add inhaled corticosteroid or ICS-formoterol) and what monitoring/adverse effects are relevant, in qualitative terms."
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce ambiguity about whether confidentiality may be ethically overridden.\n- Specify the seriousness/immediacy of harm if parents are not involved (e.g., history of sudden severe exacerbations with exercise, limited access to emergency care at school events, coach pressures to ‘push through’ symptoms) so reasonable reviewers could see a genuine safety concern.\n- Also specify why involving parents predictably undermines care (e.g., credible risk they will restrict access to inhalers/sports participation leading to disengagement, or she will avoid future care if confidentiality is breached).\n- Rephrase the decision to focus on an ethically contested point (confidentiality/parental involvement) rather than a potentially straightforward medical one (whether to intensify therapy)."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the options so neither is a ‘free lunch’ and each has both ethical benefits and costs.\n- Avoid bundling two ethically costly actions into Choice 2 (‘decline meds’ + ‘breach confidentiality’). Make each option confer a plausible benefit.\n  Example revision:\n  • Choice 1: Start step-up therapy confidentially + rely on school nurse for administration, with a safety plan, accepting limited oversight and potential nonadherence/side effects.\n  • Choice 2: Start (or defer) therapy but require involving parents/guardian for monitoring and emergency planning, accepting likely loss of trust/engagement and potential restriction from sport.\n- Alternatively, make the binary about confidentiality: (A) keep confidential and manage within school supports vs (B) involve parents for safety planning; in both, keep the clinical plan comparable.\n- Add a forcing mechanism that makes either choice costly (e.g., meet is next week; she will leave clinic today; limited ability to reassess before travel; school environment limits emergency response), while keeping both choices clinically defensible."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or neutralize loaded phrases that steer the reader. For example: change “They ‘overreact’” to “She reports her parents become very concerned and have previously restricted activities,” and change “might pull her from sports” to “may limit her participation in athletics.” Also avoid implying either plan is preferred by rebalancing wording: pair the potential benefit of stepping up with equally concrete risks of not stepping up (e.g., symptom limitation or exacerbation during competition) without implying certainty."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make each option a complete, parallel action plan without extra framing, and keep to ~10–15 words. Revise to include essential next steps omitted in Choice 2 and to avoid absolute language in Choice 1. Example:\n- Choice 1: “Step up controller therapy today; maintain confidentiality; schedule close follow-up.”\n- Choice 2: “Defer controller escalation; involve parents today; arrange prompt reassessment.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 2 clinically and ethically defensible without seeming punitive or neglectful: (1) Add a concrete safety concern that creates a genuine rationale to involve parents (e.g., recent near-fatal exacerbation, poor inhaler technique/adherence, uncertainty about triggers at boarding school, or that any step-up requires baseline spirometry/peak-flow plan and follow-up within days). (2) Reframe Choice 2 so you still treat symptoms today (e.g., provide an exercise pre-treatment plan/updated action plan and short refill of current meds) while deferring controller escalation until a supervised follow-up with parent involvement; avoid wording that implies simply withholding care. (3) Balance the harms of Choice 1 by specifying a nontrivial monitoring burden/adverse effect risk that is realistic for the proposed step-up (e.g., starting daily ICS/LABA or higher-dose ICS in a teen with prior growth concerns, need to verify diagnosis vs vocal cord dysfunction, or risk of masking poor control before a competitive event)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious middle-ground options by either incorporating them explicitly into one of the two choices or stating why they are not available. Examples: (1) Add a third-path blocker: ‘No spirometry/peak-flow available today; next clinic slot is after the meet; telehealth follow-up cannot be arranged through the boarding school.’ (2) Clarify that a limited step-up or trial prescription with mandated follow-up is not feasible (or make it part of Choice 1). (3) Clarify why contacting the school nurse/athletic trainer for monitoring without parents is insufficient or not permitted. (4) If the true dilemma is confidentiality vs safety, make both choices involve active treatment; keep the binary as ‘treat and keep confidential’ vs ‘treat but breach confidentiality to involve parents,’ rather than ‘treat’ vs ‘don’t treat.’"
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, asthma guidelines and adolescent consent norms may overly determine the ‘right’ path. Add information to place it in a gray zone: (1) Specify that her symptom pattern is ambiguous (could be exercise-induced bronchoconstriction vs dysfunctional breathing), so guideline-concordant step-up is not clearly indicated without testing. (2) Note that local policy allows adolescent consent but also includes exceptions for significant risk—clarify that her history (prior severe admissions) and upcoming strenuous event plausibly meets/doesn’t clearly meet that threshold. (3) State that recommended guideline steps (objective assessment, inhaler-technique check, trial of pre-exercise SABA, follow-up within 1–2 weeks) cannot be completed before the meet, making either decision a deviation with tradeoffs."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften language implying step-up is clinically preferable for performance (\"could reduce exercise symptoms\") without balancing uncertainty similarly for both options. Reframe as: both options have plausible clinical rationales—step-up may help exercise symptoms but increases side-effect/monitoring burden; holding steady avoids overtreatment but may leave symptoms limiting and risk an attack with exertion. Avoid 'not fully confident she will follow up' as it clinically biases toward not prescribing; instead state follow-up is uncertain either way and is important if stepping up.\ndistinctness_actionability: Make both choices concrete medical orders. Specify what 'step-up' entails (e.g., start low-dose inhaled corticosteroid daily or add ICS-formoterol as needed; provide written asthma action plan; arrange follow-up in 2–4 weeks). Specify what 'decline to change' entails (continue current meds, optimize pre-exercise SABA, provide action plan, schedule follow-up). Also separate confidentiality from prescribing: currently each choice bundles multiple actions (med change + confidentiality vs no change + breach confidentiality). Consider keeping medication decision the same across options and vary confidentiality, or keep confidentiality the same and vary medication, to make a clean binary.\nkey_information: Remove extraneous background that doesn't change the ethical stakes (e.g., 'childhood asthma' if already implied; 'county cross-country meet' could be simplified to 'competition next week'). Add essential clinical details needed to justify either pathway: current regimen and adherence, recent spirometry/peak flow if available, history of severe exacerbation triggers, current rescue inhaler use frequency, any controller side effects history. Clarify whether she has capacity and understands risks/benefits and confidentiality limits.\nclinical_plausibility: Clarify asthma severity and current therapy: a patient with prior severe admissions but now only exercise symptoms could be plausible, but you need to specify if she is currently on SABA-only, on ICS with poor adherence, or on maintenance therapy. Ensure the proposed 'step-up' matches guidelines for exercise-induced symptoms. Explain realistically how follow-up would occur given boarding school (telehealth, school nurse vitals, local clinician) and how monitoring for adverse effects would be handled.\nnon_triviality: As written, Choice 2 combines denying symptom relief with breaching confidentiality, making it feel punitive and ethically lopsided. Make both options plausibly beneficial and costly: Option A—treat now confidentially but accept risk of inadequate monitoring/parental noninvolvement; Option B—treat now but involve parents despite her wishes to improve safety and follow-up, or postpone step-up pending shared plan while ensuring interim safety measures. Ensure each option has a clear patient-centered benefit, not only harms.",
+        "ethical": "clarity_value_conflict: Make the ethical conflict unavoidable by ensuring BOTH options are medically reasonable and the decision is not solvable by straightforward guideline-based asthma management.\n- Adjust clinical facts so a step-up controller is plausibly indicated (e.g., frequent exercise symptoms despite correct pre-exercise bronchodilator use, needing rescue inhaler most practices, or recent near-miss during training) while also making added therapy meaningfully burdensome/risky (e.g., prior steroid side effects, need for lab/peak-flow monitoring, adherence concerns).\n- Alternatively, if symptoms are truly only with intense running and otherwise controlled, change Choice 1 away from ‘step-up daily medication’ to a medically standard option that still carries ethical cost (e.g., providing a new rescue/pretreatment plan, sports clearance note, or short-term trial) so the dilemma remains about confidentiality vs safety/support, not overtreatment.\n- Clarify what ‘step-up’ means (e.g., add inhaled corticosteroid or ICS-formoterol) and what monitoring/adverse effects are relevant, in qualitative terms.\ninterpretive_consensus: Reduce ambiguity about whether confidentiality may be ethically overridden.\n- Specify the seriousness/immediacy of harm if parents are not involved (e.g., history of sudden severe exacerbations with exercise, limited access to emergency care at school events, coach pressures to ‘push through’ symptoms) so reasonable reviewers could see a genuine safety concern.\n- Also specify why involving parents predictably undermines care (e.g., credible risk they will restrict access to inhalers/sports participation leading to disengagement, or she will avoid future care if confidentiality is breached).\n- Rephrase the decision to focus on an ethically contested point (confidentiality/parental involvement) rather than a potentially straightforward medical one (whether to intensify therapy).\ndecision_equipoise: Rebalance the options so neither is a ‘free lunch’ and each has both ethical benefits and costs.\n- Avoid bundling two ethically costly actions into Choice 2 (‘decline meds’ + ‘breach confidentiality’). Make each option confer a plausible benefit.\n  Example revision:\n  • Choice 1: Start step-up therapy confidentially + rely on school nurse for administration, with a safety plan, accepting limited oversight and potential nonadherence/side effects.\n  • Choice 2: Start (or defer) therapy but require involving parents/guardian for monitoring and emergency planning, accepting likely loss of trust/engagement and potential restriction from sport.\n- Alternatively, make the binary about confidentiality: (A) keep confidential and manage within school supports vs (B) involve parents for safety planning; in both, keep the clinical plan comparable.\n- Add a forcing mechanism that makes either choice costly (e.g., meet is next week; she will leave clinic today; limited ability to reassess before travel; school environment limits emergency response), while keeping both choices clinically defensible.",
+        "stylistic": "ethical_neutrality: Remove or neutralize loaded phrases that steer the reader. For example: change “They ‘overreact’” to “She reports her parents become very concerned and have previously restricted activities,” and change “might pull her from sports” to “may limit her participation in athletics.” Also avoid implying either plan is preferred by rebalancing wording: pair the potential benefit of stepping up with equally concrete risks of not stepping up (e.g., symptom limitation or exacerbation during competition) without implying certainty.\nchoice_brevity: Make each option a complete, parallel action plan without extra framing, and keep to ~10–15 words. Revise to include essential next steps omitted in Choice 2 and to avoid absolute language in Choice 1. Example:\n- Choice 1: “Step up controller therapy today; maintain confidentiality; schedule close follow-up.”\n- Choice 2: “Defer controller escalation; involve parents today; arrange prompt reassessment.”",
+        "equipoise": "balanced_difficulty: Make Choice 2 clinically and ethically defensible without seeming punitive or neglectful: (1) Add a concrete safety concern that creates a genuine rationale to involve parents (e.g., recent near-fatal exacerbation, poor inhaler technique/adherence, uncertainty about triggers at boarding school, or that any step-up requires baseline spirometry/peak-flow plan and follow-up within days). (2) Reframe Choice 2 so you still treat symptoms today (e.g., provide an exercise pre-treatment plan/updated action plan and short refill of current meds) while deferring controller escalation until a supervised follow-up with parent involvement; avoid wording that implies simply withholding care. (3) Balance the harms of Choice 1 by specifying a nontrivial monitoring burden/adverse effect risk that is realistic for the proposed step-up (e.g., starting daily ICS/LABA or higher-dose ICS in a teen with prior growth concerns, need to verify diagnosis vs vocal cord dysfunction, or risk of masking poor control before a competitive event).\nexhaustive_binary_options: Close obvious middle-ground options by either incorporating them explicitly into one of the two choices or stating why they are not available. Examples: (1) Add a third-path blocker: ‘No spirometry/peak-flow available today; next clinic slot is after the meet; telehealth follow-up cannot be arranged through the boarding school.’ (2) Clarify that a limited step-up or trial prescription with mandated follow-up is not feasible (or make it part of Choice 1). (3) Clarify why contacting the school nurse/athletic trainer for monitoring without parents is insufficient or not permitted. (4) If the true dilemma is confidentiality vs safety, make both choices involve active treatment; keep the binary as ‘treat and keep confidential’ vs ‘treat but breach confidentiality to involve parents,’ rather than ‘treat’ vs ‘don’t treat.’\nno_guideline_override: As written, asthma guidelines and adolescent consent norms may overly determine the ‘right’ path. Add information to place it in a gray zone: (1) Specify that her symptom pattern is ambiguous (could be exercise-induced bronchoconstriction vs dysfunctional breathing), so guideline-concordant step-up is not clearly indicated without testing. (2) Note that local policy allows adolescent consent but also includes exceptions for significant risk—clarify that her history (prior severe admissions) and upcoming strenuous event plausibly meets/doesn’t clearly meet that threshold. (3) State that recommended guideline steps (objective assessment, inhaler-technique check, trial of pre-exercise SABA, follow-up within 1–2 weeks) cannot be completed before the meet, making either decision a deviation with tradeoffs."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:36:02.638748",
+      "data": {
+        "vignette": "A 15-year-old girl with asthma is seen in clinic while home from boarding school. Last year she was admitted to the ICU for a sudden severe exacerbation during sports. She now has chest tightness and wheeze only with intense running. She uses albuterol before practices but still sometimes has to stop. She is not on a daily controller. Her exam is normal today. Spirometry and exercise testing are not available at this visit, and the next appointment is after a major competition next week, when she will be back at school. She asks that you not contact her parents. She says they become very anxious and may limit her athletics, and she worries she will avoid follow-up if you tell them. Starting an inhaled corticosteroid now could reduce symptoms but adds the need for monitoring and reassessment for side effects and effectiveness. School staff can remind her to use inhalers but cannot coordinate emergency planning. Local policy permits either confidential adolescent consent or parent notification when safety is at stake. You must decide today.",
+        "choice_1": "Start daily inhaled corticosteroid with an action plan, keeping the visit confidential.",
+        "choice_2": "Continue current regimen with an action plan and notify her parents today."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:36:25.586653",
+      "data": {
+        "vignette": "A 15-year-old girl with asthma is seen in clinic while home from boarding school. Last year she was admitted to the ICU for a sudden severe exacerbation during sports. She now has chest tightness and wheeze only with intense running. She uses albuterol before practices but still sometimes has to stop. She is not on a daily controller. Her exam is normal today. Spirometry and exercise testing are not available at this visit, and the next appointment is after a major competition next week, when she will be back at school. She asks that you not contact her parents. She says they become very anxious and may limit her athletics, and she worries she will avoid follow-up if you tell them. Starting an inhaled corticosteroid now could reduce symptoms but adds the need for monitoring and reassessment for side effects and effectiveness. School staff can remind her to use inhalers but cannot coordinate emergency planning. Local policy permits either confidential adolescent consent or parent notification when safety is at stake. You must decide today.",
+        "choice_1": {
+          "choice": "Start daily inhaled corticosteroid with an action plan, keeping the visit confidential.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Continue current regimen with an action plan and notify her parents today.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Clarify why notifying parents/continuing albuterol-only is *clinically worse* for her health by adding a clause such as: “Without starting a controller now, she is at high risk of another severe exacerbation at next week’s competition,” and/or “If her parents are notified, they will refuse/stop controller therapy and she will avoid follow‑up.”"
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause quantifying near-term harm risk (e.g., “given last year’s ICU admission, another exercise-induced attack during next week’s competition could be life-threatening without step-up therapy”) and one clause making the harm of confidential ICS initiation concrete (e.g., “she previously had significant steroid side effects/poor adherence and without parental involvement there is no way to monitor or respond to complications before she returns to school”)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:37:31.559658",
+      "data": {
+        "vignette": "A 15-year-old girl with asthma is seen in clinic while home from boarding school. Last year she was admitted to the ICU for a sudden severe exacerbation during sports. She now has chest tightness and wheeze only with intense running. She uses albuterol before practices but still sometimes has to stop. She is not on a daily controller. Her exam is normal today. Spirometry and exercise testing are not available at this visit, and her next appointment is after a major competition next week, when she will be back at school. Given her prior ICU admission, another exercise-induced attack during next week’s competition could be life-threatening without step-up therapy and a clear emergency plan. She asks that you not contact her parents. She says they become very anxious and may limit her athletics, and she worries she will avoid follow-up and continue relying on albuterol alone if you tell them. Starting an inhaled corticosteroid now could reduce symptoms but adds the need for monitoring and reassessment for side effects and effectiveness, and this would be difficult to arrange before she returns to school if her parents are not involved. School staff can remind her to use inhalers but cannot coordinate emergency planning. Local policy permits either confidential adolescent consent or parent notification when safety is at stake. You must decide today.",
+        "choice_1": {
+          "choice": "Start daily inhaled corticosteroid with an action plan, keeping the visit confidential.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Continue current regimen with an action plan and notify her parents today.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

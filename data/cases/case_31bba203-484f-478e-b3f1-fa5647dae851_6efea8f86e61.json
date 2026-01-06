@@ -1,0 +1,242 @@
+{
+  "case_id": "31bba203-484f-478e-b3f1-fa5647dae851",
+  "created_at": "2026-01-04T22:45:56.856539",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "Case 2-]\nExercise, Diet, or Drugs to Control Cholesterol\nJake Mendiola knew he had a problem. He was 37 years old. At 5/10” and\n230 pounds, he was heavier than his doctor liked. His sedentary lifestyle, as\nan information technology specialist at a major accounting firm, meant he\ndid not get the exercise that his wife and his physician thought he should.\nHis physical exams over the past several years showed a nagging increase\nin total cholesterol levels (237 mg/dl); the low-density lipoprotein (LDL; “bad”)\nwas too high, and the good high-density lipoprotein (HDL) was too low. His\nphysician had twice recommended exercise at least three days a week and\nsome dietary modification to get the cholesterol lower. Mr. Mendiola went\npart way. He cut down on eggs for breakfast. He intentionally signed up for\nthe cheaper parking lot at work so he would be forced to walk about three\nblocks to his office. He knew, however, that this was not exactly what his\nphysician had in mind.\nNow at a routine trip to his HMO (health maintenance organization), his\ndoctor nagged him again about diet and exercise. The physician continued\nto worry about the cholesterol, pointing out that the treatment protocol at the\nHMO indicated that diet and exercise should bring the cholesterol into line.\nIf not, Mr. Mendiola was going to have to go on one of the new cholesterol-\nlowering medications called “statins.”\nThe effect on Mr. Mendiola was not what ibe physician had oepeced.\nA question occurred to Mr. Mendiola. He said to himself, “Do you mean I could\nget the same cholesterol reduction by simply taking the pill and still eat\nwhat I have been eating and not sign up for the plan at the local gym?”\nMr. Mendiola considered his options: (1) ask the doctor to put him on a statin\ndrug right now, (2) intentionally avoid the diet and exercise regimen until his\nnext physical exam when the physician would discover that his cholesterol\nwas still too high and, on his own, write the prescription for the statin drug, or\n(3) attempt to follow more faithfully the physician's recommendation about\ndiet and exercise to see if the cholesterol problem will be taken care of. Of\ncourse, there was a fourth option—take his chances and continue with a high-\ncholesterol level, unmedicated and uncontrolled by either diet or exercise.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T22:45:56.856586",
+      "data": {
+        "vignette": "A 37-year-old man with obesity has had steadily rising LDL cholesterol on several annual exams. He has no cardiovascular symptoms. His father had an early heart attack. You have repeatedly advised a structured diet and exercise program. He made small changes but has not followed through and says he does not plan to. Today he asks for a statin prescription so he can “stop worrying about it” without changing his routine. He understands that medication can cause side effects and will require long-term monitoring, and he also understands that lifestyle change could improve his overall health beyond cholesterol. Your HMO guideline expects a documented lifestyle trial before starting a statin, but it allows clinicians to start medication earlier when they judge it appropriate. He wants an answer before leaving the clinic.",
+        "choice_1": "Start a statin now and continue lifestyle counseling.",
+        "choice_2": "Decline a statin now and require a structured lifestyle trial first."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Make the LDL severity explicitly *borderline/moderate* so the vignette doesn’t hinge on whether a statin is medically indicated. E.g., replace “steadily rising LDL cholesterol” with “persistently moderately elevated LDL (not in the range that mandates medication or strongly suggests familial hypercholesterolemia).” Add a line such as “There is no single clearly correct medical choice; either approach is within common primary-care practice.” Remove/soften phrasing that implies one path is objectively better, e.g., change “lifestyle change could improve his overall health beyond cholesterol” to “lifestyle change could also improve weight, blood pressure, and overall cardiovascular risk, but he is not ready to pursue it.”"
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add only the minimal missing cardiovascular risk context needed to make both options clinically defensible without turning it into a guideline question: smoking status, blood pressure/HTN, diabetes status, and whether there are secondary causes ruled out. Provide a qualitative descriptor of LDL level (e.g., “moderately elevated” vs “severely elevated”) rather than numbers. Clarify whether there are any red flags for familial hypercholesterolemia (xanthomas, extremely high LDL in relatives); if none, say so. Consider removing “several annual exams” if not needed and state “over the past few years” once."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "As written, the clinical indication for a statin in a 37-year-old is ambiguous and could be implausible depending on how high the LDL is. Fix by explicitly stating the LDL is *not* in a range that automatically warrants a statin and that he has no diabetes or established ASCVD, making either early statin or a lifestyle-first approach realistic. Alternatively, if you intend higher-risk primary prevention, add a plausible qualifier (e.g., suspected familial hypercholesterolemia or multiple major risk factors) but then adjust the vignette so declining a statin remains defensible."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Right now the case risks collapsing into a clinical-guideline optimization problem (i.e., whether he ‘meets criteria’). To make it a genuinely difficult ethical choice, explicitly set the scenario where both choices are reasonable: (1) LDL/risk is elevated enough that medication now is a common, defensible option, but (2) not so elevated that delaying for a structured lifestyle trial is clearly unsafe. Add the ethical cost on each side: for Choice 1, note concerns about medicalizing, adherence/monitoring burden, and undermining efforts at durable behavior change; for Choice 2, note the potential for preventable long-term harm and worsening patient trust/engagement if he feels judged or denied care."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Add clinically relevant context to prevent the case from collapsing into a straightforward guideline/medical-indication question. For example: specify that his LDL is persistently moderately elevated but he does not clearly meet standard statin-start criteria for his age (no diabetes, normotensive, nonsmoker), making the benefit plausible but not obligatory; or explicitly state that reasonable clinicians differ on whether to start pharmacotherapy this early given long-term exposure and uncertain incremental benefit. Clarify whether the HMO ‘expects’ documentation mainly for cost/stewardship/audit reasons rather than strict medical necessity."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Strengthen the ethical costs and defensible rationale on BOTH sides so neither option is a ‘free lunch.’ For Choice 1 (start statin): add a concrete downside beyond vague ‘side effects,’ e.g., committing a young patient to decades of medication/monitoring, potential adverse effects or drug interactions over time, and concern about reinforcing avoidance of broader health changes; also note possible policy/audit/coverage friction (e.g., early prescribing may trigger denial of coverage for labs/meds or require extra documentation), raising stewardship/institutional-integrity stakes. For Choice 2 (require lifestyle trial): make it more than punitive gatekeeping by clarifying that a structured, supported program is available and could plausibly obviate lifelong medication, but add the real cost: delayed risk reduction during the trial and the likelihood he will not engage, plus increased anxiety/erosion of trust. Consider explicitly stating the time window (e.g., decision today because he is leaving for months / next visit not soon) and what ‘structured trial’ entails and how long, in qualitative terms, without numbers."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Replace value-laden or potentially judgmental phrasing: change “has not followed through and says he does not plan to” to a more neutral description such as “reports difficulty sustaining lifestyle changes and is not currently planning additional changes.” Change “so he can ‘stop worrying about it’” to “to reduce his concern about cardiovascular risk.” Avoid implying the patient is seeking an easy way out."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Add the minimum missing clinical anchors needed for coherence of the decision without turning it into a guideline quiz: include whether he has diabetes, hypertension, smoking status, and at least a qualitative LDL level (e.g., “persistently markedly elevated”). Clarify whether prior lifestyle counseling was informal vs a documented structured program, since the policy hinges on documentation. Remove repetitive counseling history (e.g., “repeatedly advised” + “small changes but has not followed through”) by consolidating into one sentence."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Increase true equipoise by adding morally significant downsides to starting a statin now (e.g., patient has prior myalgias on a statin, works as a pilot/heavy-equipment operator and fears impaired performance; he is strongly medication-averse but wants it for anxiety; early medicalization may reduce engagement with broader health changes) and to refusing now (e.g., LDL is persistently in a borderline-high range plus strong family history, patient has escalating anxiety affecting sleep/work, and refusal may damage therapeutic alliance and lead to disengagement from follow-up). Rephrase to avoid implying the lifestyle-trial requirement is merely bureaucratic or that the patient is simply noncompliant; instead clarify he has competing caregiving/work constraints and has tried but cannot meet program demands."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious third-paths by explicitly ruling out deferral/compromise options: state that he is moving out of state tomorrow or will lose coverage next week, so you must either submit a statin prescription today or document a formal lifestyle-program trial per HMO process. Also clarify that additional risk-stratification (repeat fasting lipids, ApoB, Lp(a), coronary calcium scoring, dietitian referral) cannot be arranged before the coverage/visit deadline, and that a ‘conditional prescription’ (e.g., prescribe but advise waiting) would not satisfy the HMO documentation requirement."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Provide clinical specifics to ensure guidelines don’t dictate a single answer: include his approximate LDL range and other risk factors in a way that keeps him below clear-cut thresholds (e.g., LDL persistently ~160–180 mg/dL, normotensive, normoglycemic, nonsmoker) and explicitly note there is no diagnosis of familial hypercholesterolemia and LDL is not ≥190 mg/dL (which would make statin clearly indicated). Alternatively, if you want FH/LDL ≥190, then reframe the ethical dilemma away from ‘lifestyle-first’ and toward a true gray-zone issue (e.g., patient refuses labs/monitoring required for safe prescribing, or requests high-dose therapy despite minimal risk), because current standard prevention guidelines would otherwise push strongly toward treatment."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Make the LDL severity explicitly *borderline/moderate* so the vignette doesn’t hinge on whether a statin is medically indicated. E.g., replace “steadily rising LDL cholesterol” with “persistently moderately elevated LDL (not in the range that mandates medication or strongly suggests familial hypercholesterolemia).” Add a line such as “There is no single clearly correct medical choice; either approach is within common primary-care practice.” Remove/soften phrasing that implies one path is objectively better, e.g., change “lifestyle change could improve his overall health beyond cholesterol” to “lifestyle change could also improve weight, blood pressure, and overall cardiovascular risk, but he is not ready to pursue it.”\nkey_information: Add only the minimal missing cardiovascular risk context needed to make both options clinically defensible without turning it into a guideline question: smoking status, blood pressure/HTN, diabetes status, and whether there are secondary causes ruled out. Provide a qualitative descriptor of LDL level (e.g., “moderately elevated” vs “severely elevated”) rather than numbers. Clarify whether there are any red flags for familial hypercholesterolemia (xanthomas, extremely high LDL in relatives); if none, say so. Consider removing “several annual exams” if not needed and state “over the past few years” once.\nclinical_plausibility: As written, the clinical indication for a statin in a 37-year-old is ambiguous and could be implausible depending on how high the LDL is. Fix by explicitly stating the LDL is *not* in a range that automatically warrants a statin and that he has no diabetes or established ASCVD, making either early statin or a lifestyle-first approach realistic. Alternatively, if you intend higher-risk primary prevention, add a plausible qualifier (e.g., suspected familial hypercholesterolemia or multiple major risk factors) but then adjust the vignette so declining a statin remains defensible.\nnon_triviality: Right now the case risks collapsing into a clinical-guideline optimization problem (i.e., whether he ‘meets criteria’). To make it a genuinely difficult ethical choice, explicitly set the scenario where both choices are reasonable: (1) LDL/risk is elevated enough that medication now is a common, defensible option, but (2) not so elevated that delaying for a structured lifestyle trial is clearly unsafe. Add the ethical cost on each side: for Choice 1, note concerns about medicalizing, adherence/monitoring burden, and undermining efforts at durable behavior change; for Choice 2, note the potential for preventable long-term harm and worsening patient trust/engagement if he feels judged or denied care.",
+        "ethical": "interpretive_consensus: Add clinically relevant context to prevent the case from collapsing into a straightforward guideline/medical-indication question. For example: specify that his LDL is persistently moderately elevated but he does not clearly meet standard statin-start criteria for his age (no diabetes, normotensive, nonsmoker), making the benefit plausible but not obligatory; or explicitly state that reasonable clinicians differ on whether to start pharmacotherapy this early given long-term exposure and uncertain incremental benefit. Clarify whether the HMO ‘expects’ documentation mainly for cost/stewardship/audit reasons rather than strict medical necessity.\ndecision_equipoise: Strengthen the ethical costs and defensible rationale on BOTH sides so neither option is a ‘free lunch.’ For Choice 1 (start statin): add a concrete downside beyond vague ‘side effects,’ e.g., committing a young patient to decades of medication/monitoring, potential adverse effects or drug interactions over time, and concern about reinforcing avoidance of broader health changes; also note possible policy/audit/coverage friction (e.g., early prescribing may trigger denial of coverage for labs/meds or require extra documentation), raising stewardship/institutional-integrity stakes. For Choice 2 (require lifestyle trial): make it more than punitive gatekeeping by clarifying that a structured, supported program is available and could plausibly obviate lifelong medication, but add the real cost: delayed risk reduction during the trial and the likelihood he will not engage, plus increased anxiety/erosion of trust. Consider explicitly stating the time window (e.g., decision today because he is leaving for months / next visit not soon) and what ‘structured trial’ entails and how long, in qualitative terms, without numbers.",
+        "stylistic": "ethical_neutrality: Replace value-laden or potentially judgmental phrasing: change “has not followed through and says he does not plan to” to a more neutral description such as “reports difficulty sustaining lifestyle changes and is not currently planning additional changes.” Change “so he can ‘stop worrying about it’” to “to reduce his concern about cardiovascular risk.” Avoid implying the patient is seeking an easy way out.\nconciseness_coherence: Add the minimum missing clinical anchors needed for coherence of the decision without turning it into a guideline quiz: include whether he has diabetes, hypertension, smoking status, and at least a qualitative LDL level (e.g., “persistently markedly elevated”). Clarify whether prior lifestyle counseling was informal vs a documented structured program, since the policy hinges on documentation. Remove repetitive counseling history (e.g., “repeatedly advised” + “small changes but has not followed through”) by consolidating into one sentence.",
+        "equipoise": "balanced_difficulty: Increase true equipoise by adding morally significant downsides to starting a statin now (e.g., patient has prior myalgias on a statin, works as a pilot/heavy-equipment operator and fears impaired performance; he is strongly medication-averse but wants it for anxiety; early medicalization may reduce engagement with broader health changes) and to refusing now (e.g., LDL is persistently in a borderline-high range plus strong family history, patient has escalating anxiety affecting sleep/work, and refusal may damage therapeutic alliance and lead to disengagement from follow-up). Rephrase to avoid implying the lifestyle-trial requirement is merely bureaucratic or that the patient is simply noncompliant; instead clarify he has competing caregiving/work constraints and has tried but cannot meet program demands.\nexhaustive_binary_options: Close obvious third-paths by explicitly ruling out deferral/compromise options: state that he is moving out of state tomorrow or will lose coverage next week, so you must either submit a statin prescription today or document a formal lifestyle-program trial per HMO process. Also clarify that additional risk-stratification (repeat fasting lipids, ApoB, Lp(a), coronary calcium scoring, dietitian referral) cannot be arranged before the coverage/visit deadline, and that a ‘conditional prescription’ (e.g., prescribe but advise waiting) would not satisfy the HMO documentation requirement.\nno_guideline_override: Provide clinical specifics to ensure guidelines don’t dictate a single answer: include his approximate LDL range and other risk factors in a way that keeps him below clear-cut thresholds (e.g., LDL persistently ~160–180 mg/dL, normotensive, normoglycemic, nonsmoker) and explicitly note there is no diagnosis of familial hypercholesterolemia and LDL is not ≥190 mg/dL (which would make statin clearly indicated). Alternatively, if you want FH/LDL ≥190, then reframe the ethical dilemma away from ‘lifestyle-first’ and toward a true gray-zone issue (e.g., patient refuses labs/monitoring required for safe prescribing, or requests high-dose therapy despite minimal risk), because current standard prevention guidelines would otherwise push strongly toward treatment."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T22:47:18.374191",
+      "data": {
+        "vignette": "A 37-year-old man with obesity has had persistently moderately elevated LDL cholesterol over the past few years. He is a nonsmoker and has normal blood pressure and glucose. He has no cardiovascular symptoms and no findings suggesting familial hypercholesterolemia. His father had a heart attack at a young age. He has tried brief diet and activity changes, but reports that rotating shift work and caregiving duties make a structured program hard to sustain right now. He asks for a statin to reduce his worry, but he also reports prior muscle aches on a statin and operates heavy equipment at work. Your HMO expects a documented trial in its lifestyle program before covering long-term statin therapy, though it allows clinicians to start earlier with additional documentation. He is moving out of state tomorrow and his coverage ends soon, so you must either prescribe today or start the formal lifestyle-trial pathway. Additional testing or specialty referral cannot be arranged before he leaves, and a “conditional” prescription would not satisfy the HMO process. Either approach is within common primary-care practice.",
+        "choice_1": "Start a statin today with required monitoring and documentation.",
+        "choice_2": "Defer a statin and initiate the HMO-structured lifestyle trial first."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T22:47:30.920112",
+      "data": {
+        "vignette": "A 37-year-old man with obesity has had persistently moderately elevated LDL cholesterol over the past few years. He is a nonsmoker and has normal blood pressure and glucose. He has no cardiovascular symptoms and no findings suggesting familial hypercholesterolemia. His father had a heart attack at a young age. He has tried brief diet and activity changes, but reports that rotating shift work and caregiving duties make a structured program hard to sustain right now. He asks for a statin to reduce his worry, but he also reports prior muscle aches on a statin and operates heavy equipment at work. Your HMO expects a documented trial in its lifestyle program before covering long-term statin therapy, though it allows clinicians to start earlier with additional documentation. He is moving out of state tomorrow and his coverage ends soon, so you must either prescribe today or start the formal lifestyle-trial pathway. Additional testing or specialty referral cannot be arranged before he leaves, and a “conditional” prescription would not satisfy the HMO process. Either approach is within common primary-care practice.",
+        "choice_1": {
+          "choice": "Start a statin today with required monitoring and documentation.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Defer a statin and initiate the HMO-structured lifestyle trial first.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add that the patient explicitly declines delaying for the HMO lifestyle-trial pathway (e.g., 'he says he cannot complete the program after moving and still wants to start a statin today despite prior muscle aches')."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that his ASCVD risk/LDL level makes statin clearly indicated now (e.g., LDL ≥190 or calculated 10-year risk high) and that the HMO lifestyle pathway would delay statin initiation for months, increasing near-term risk/anxiety."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that the HMO lifestyle program is a limited-capacity/cost-containment requirement meant to ensure equitable access and avoid paying for long-term statins without the standardized trial, so bypassing it would be unfair to other members."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T22:48:16.087033",
+      "data": {
+        "vignette": "A 37-year-old man with obesity has had persistently moderately elevated LDL cholesterol for years. He is a nonsmoker and has normal blood pressure and glucose. He has no cardiovascular symptoms and no findings suggesting familial hypercholesterolemia. His father had a heart attack at a young age. His overall ASCVD risk is not clearly low, and his family history is a risk-enhancing factor. He has tried brief diet and activity changes, but rotating shift work and caregiving duties make a structured program hard to sustain. He requests a statin today and says he cannot complete the HMO lifestyle program after moving out of state tomorrow. He reports prior muscle aches on a statin and operates heavy equipment at work. Your HMO requires a documented, limited-capacity lifestyle program trial before covering long-term statin therapy, though it allows earlier starts with additional documentation. The lifestyle pathway would delay statin initiation for months and could affect coverage decisions for other members. Either approach is within common primary-care practice.",
+        "choice_1": {
+          "choice": "Start a statin today with required monitoring and documentation.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Defer a statin and initiate the HMO-structured lifestyle trial first.",
+          "autonomy": "violates",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

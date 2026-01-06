@@ -1,0 +1,236 @@
+{
+  "case_id": "029c78f6-6222-4cbc-a361-0e353d74c345",
+  "created_at": "2026-01-05T00:29:59.075193",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "The case of Mr P\nMr P, who is 64 years old, has pre-senile dementia of the Alzheimer s type. His condition is deteriorating rapidly, and for the past four months he has lived in a nursing home. Now he is con ned to a wheelchair and cannot feed himself. His wife Susan comes to visit him every day, bringing a home-cooked evening meal. The nursing home s guidelines for good practice encourage relatives involvement, and Mr P does seem pleased to see Susan when she rst arrives. But although Mr P has a hot meal at lunch time in the nursing home, Susan thinks he also needs a proper meal in the evening, rather than the sandwiches and cakes provided at the home. Mr P appears to resist Susan s attempts to feed him, tossing and turning in his wheelchair. She in turn has taken to playing a little game : holding his nose, so that when he opens his mouth for air, she can spoon-feed him. This seems to make Mr P very agitated, and he is often hard to calm after Susan s visits. The nursing home sta have asked Susan not to feed Mr P, but this has led to worsening relations. They feel that Mr P is clearly indicating that he does not want to be forcibly fed. Susan, very hurt by this comment, insists that she is handling Mr P in a playful but caring fashion, and that she has to do something about Mr P s weight loss, which she blames on inadequate nutrition in the home. 'If you can t even feed him properly, what else are you doing wrong? He s not getting any better, you know.' The nursing sta themselves are divided, some feeling that Susan is trying to help, and others that she is in denial about her husband s impending death. The doctors at the nursing home, however, are unanimous. They see no reason to allow Susan to continue feeding Mr P, as it is contrary to his medical best interests and indeed risks asphyxiation. The manager of the home agrees with the doctors: this unnecessary trouble is upsetting the smooth running of the home, and should be stopped.",
+      "value_1": "Beneficence",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:29:59.075248",
+      "data": {
+        "vignette": "A 64-year-old man with rapidly progressive Alzheimer-type dementia lives in a nursing facility. He is wheelchair-bound, needs total help to eat, and has been losing weight. A recent bedside swallow screen suggests dysphagia, and he coughs with thin liquids. His wife visits daily and brings a hot evening meal. He smiles when she arrives, but during feeding he turns his head away, pushes at the spoon, and becomes visibly agitated. She sometimes pinches his nose to make him open his mouth, and staff then struggle to calm him after the visit. Several nurses think her involvement helps him take more food. Others worry the feeding method is causing distress and could lead to choking or aspiration. The physician must set a plan today because the wife has said she will continue feeding at tonight’s visit, and facility policy allows either supervised family feeding or restricting it when safety is at stake.",
+        "choice_1": "Permit the wife to feed him under staff supervision with a structured safety plan",
+        "choice_2": "Prohibit the wife from feeding him and restrict feeding to trained staff only"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften language that makes one option seem medically wrong or coercive. Specifically: (1) Replace “pinches his nose to make him open his mouth” with a more neutral description such as “uses prompting and physical cues that sometimes appear forceful to staff,” and add that she stops when redirected. (2) Avoid implying clear clinical superiority of restriction by rephrasing “could lead to choking or aspiration” to “may increase aspiration risk, though risk is difficult to quantify at bedside,” and add that staff feeding also carries aspiration risk in advanced dementia. (3) Add that dysphagia assessment is preliminary and a formal SLP evaluation is pending, so the case is not a straightforward ‘unsafe feeding’ scenario."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make the orders more concrete and mutually exclusive. For Choice 1, specify: supervised hand-feeding only during scheduled window; upright positioning; thickened liquids if ordered; stop-feeding criteria (coughing, head-turning, distress); staff authority to pause/terminate; documentation; spouse training. For Choice 2, specify: written restriction order barring family hand-feeding/PO trials; wife may be present for comfort only; staff provide comfort feeding per protocol; explain whether wife may bring food to be administered by staff. Clarify who enforces and how breaches are handled."
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Trim/clarify and add missing decision-relevant facts. Add: current code status/goals-of-care (comfort-focused vs life-prolonging), any prior advance directive about feeding/hand-feeding vs tube feeding, whether he can communicate preferences beyond behaviors, and whether weight loss is due to poor intake vs disease progression. Remove less relevant detail like “hot evening meal” unless it matters (e.g., cultural/ritual importance). Clarify the facility’s specific policy threshold for restricting family feeding (e.g., repeated distress/aspiration events) so the physician’s authority/trigger is clear."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Add a brief sentence establishing legal permissibility and decision authority: e.g., “In this jurisdiction, the wife is the legally recognized surrogate, but the facility may limit non-clinician feeding when it poses a safety risk; both supervised family feeding and restricting feeding to staff are permitted under facility policy and state regulations.” Without this, prohibiting the surrogate’s involvement may read as legally contentious."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, the wife’s ‘pinching his nose’ and the patient’s agitation makes prohibiting her feeding seem obviously preferable. Balance defensibility by adding countervailing costs and benefits for each option: (1) For Choice 1, note that he accepts more intake and seems calmer/engaged with his wife at times, aligning with comfort/meaningful interaction; staff shortages make prolonged hand-feeding difficult. (2) For Choice 2, acknowledge that he may eat less with staff alone, potentially accelerating weight loss and reducing pleasurable interaction; wife may feel excluded and relationship suffers. Also clarify that there have been no recent witnessed aspiration events or pneumonias, only concern, so the risk is not already decisive."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Tighten the dilemma so it is unavoidably about competing values rather than ambiguous safety/skill. As written, the wife’s “pinching his nose” and resulting agitation make restricting her feeding look straightforwardly safer. Revise to make both options ethically costly: (a) remove coercive details (no nose-pinching) and instead show gentle cueing with mixed signals (accepts some bites, refuses others), (b) specify that staff-led feeding is often rushed/less individualized and he eats markedly less (qualitatively) with staff, worsening weight loss/dehydration risk, and (c) clarify that supervised family feeding meaningfully improves comfort/recognition/engagement but modestly increases aspiration risk despite precautions. Also add whether he has prior stated preferences/advance directive about hand-feeding vs restraints/tube feeding to anchor autonomy/substituted judgment."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Reduce framing that makes Choice 2 the obvious ‘safety’ answer. Small wording changes (e.g., removing “pinches his nose” or “staff then struggle to calm him”) would flip the perceived ethics. Make the tradeoff stable by explicitly stating fixed features that persist regardless of phrasing: he intermittently refuses all feeders; he eats more with wife; aspiration risk persists with any oral feeding due to dysphagia; staff time constraints limit 1:1 slow feeding; and the facility can only offer either supervised family feeding with limits or a blanket restriction. Include the same baseline harms in both options so neither depends on a single provocative detail."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Clarify decision-making authority and the ethical question being asked. Right now graders could read this as: managing an abusive caregiver, enforcing policy, or a purely clinical aspiration-prevention decision. Specify: the wife is the legal surrogate, is acting out of perceived benefit, and is willing to follow guidance; the physician is deciding whether to restrict surrogate involvement in routine care based on patient distress and safety. Add a brief statement about the patient’s capacity (lacks it) and whether there is any prior expressed value (e.g., prioritizing comfort/normal meals vs avoiding medical risks). This will align graders on autonomy/substituted judgment vs nonmaleficence/beneficence."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance so each option has both a defensible rationale and a real moral cost. Currently, Choice 1 appears to tolerate coercion and distress, while Choice 2 prevents harm—an asymmetry. To restore equipoise: (1) Make supervised wife-feeding plausibly safer (training, thickened liquids, small boluses, stop rules) but still not risk-free; emphasize the relational/comfort benefit and better intake. (2) Make staff-only feeding ethically costly by stating it predictably leads to poorer intake/weight loss, more use of supplements or consideration of feeding tube, and loss of a valued relational ritual, even if safer. (3) Add that prohibiting the wife may damage trust and lead to conflict/withdrawal of involvement, affecting overall care. Ensure neither option is portrayed as guideline-mandated or clearly medically superior."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Rephrase language that implicitly blames the wife and heightens emotional valence. For example, replace “She sometimes pinches his nose to make him open his mouth” with a neutral description such as “She sometimes uses physical prompts to encourage him to open his mouth.” Replace “staff then struggle to calm him” with “he remains agitated after the visit, requiring staff support.” Keep both pro- and con- observations balanced (e.g., add a sentence that staff have also observed him accept some bites from her, or that trained staff also sometimes achieve adequate intake)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Shorten choices to neutral action statements without embedded implementation language. For example:\n- Choice 1: “Allow supervised family feeding during visits.”\n- Choice 2: “Restrict all feeding to trained facility staff.”\nIf supervision or restrictions are essential, keep them but remove “structured safety plan,” which adds vague implementation detail."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce cues that Choice 2 is obviously safer/more ethical by removing or softening the coercive detail (e.g., replace “pinches his nose to make him open his mouth” with “uses prompting that staff feel may be too insistent at times”). Add offsetting harms of prohibiting family feeding (e.g., staff report he eats markedly less with them; he becomes calmer/engaged when his wife feeds; weight loss may worsen; wife is primary source of comfort/connection). Add offsetting risks/costs of permitting feeding beyond aspiration (e.g., staff time diverted to supervise; concern about setting precedent; potential moral distress if patient appears to resist). Ensure both options have credible benefits and credible harms."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Eliminate obvious middle-ground options by explicitly stating they have already been tried or are unavailable today. For example: (1) Wife has been offered training and still uses the same approach; (2) Speech-language pathology evaluation and instrumental swallow study are unavailable for several weeks; (3) A compromise plan (wife present but not feeding, or only comfort sips) has been proposed and refused by wife or deemed unworkable by policy; (4) Patient refuses staff feeding unless wife is the feeder. Then tighten the choices to reflect truly mutually exclusive paths (permit wife to feed under supervision vs revoke family-feeding privileges entirely)."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Add context showing that neither option is dictated by clear policy/legal duty or standard guidelines. Clarify that this does not clearly meet reportable elder abuse criteria (or that facts are ambiguous), that the patient’s prior preferences about being fed by family vs staff are unknown or conflicting, and that facility policy grants physician discretion rather than mandating restriction once aspiration risk is suspected. Alternatively, if there is a safety policy, specify it is permissive (‘may restrict’) rather than mandatory (‘must restrict’) and that staff and risk management interpret it differently."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften language that makes one option seem medically wrong or coercive. Specifically: (1) Replace “pinches his nose to make him open his mouth” with a more neutral description such as “uses prompting and physical cues that sometimes appear forceful to staff,” and add that she stops when redirected. (2) Avoid implying clear clinical superiority of restriction by rephrasing “could lead to choking or aspiration” to “may increase aspiration risk, though risk is difficult to quantify at bedside,” and add that staff feeding also carries aspiration risk in advanced dementia. (3) Add that dysphagia assessment is preliminary and a formal SLP evaluation is pending, so the case is not a straightforward ‘unsafe feeding’ scenario.\ndistinctness_actionability: Make the orders more concrete and mutually exclusive. For Choice 1, specify: supervised hand-feeding only during scheduled window; upright positioning; thickened liquids if ordered; stop-feeding criteria (coughing, head-turning, distress); staff authority to pause/terminate; documentation; spouse training. For Choice 2, specify: written restriction order barring family hand-feeding/PO trials; wife may be present for comfort only; staff provide comfort feeding per protocol; explain whether wife may bring food to be administered by staff. Clarify who enforces and how breaches are handled.\nkey_information: Trim/clarify and add missing decision-relevant facts. Add: current code status/goals-of-care (comfort-focused vs life-prolonging), any prior advance directive about feeding/hand-feeding vs tube feeding, whether he can communicate preferences beyond behaviors, and whether weight loss is due to poor intake vs disease progression. Remove less relevant detail like “hot evening meal” unless it matters (e.g., cultural/ritual importance). Clarify the facility’s specific policy threshold for restricting family feeding (e.g., repeated distress/aspiration events) so the physician’s authority/trigger is clear.\nlegally_indeterminate: Add a brief sentence establishing legal permissibility and decision authority: e.g., “In this jurisdiction, the wife is the legally recognized surrogate, but the facility may limit non-clinician feeding when it poses a safety risk; both supervised family feeding and restricting feeding to staff are permitted under facility policy and state regulations.” Without this, prohibiting the surrogate’s involvement may read as legally contentious.\nnon_triviality: As written, the wife’s ‘pinching his nose’ and the patient’s agitation makes prohibiting her feeding seem obviously preferable. Balance defensibility by adding countervailing costs and benefits for each option: (1) For Choice 1, note that he accepts more intake and seems calmer/engaged with his wife at times, aligning with comfort/meaningful interaction; staff shortages make prolonged hand-feeding difficult. (2) For Choice 2, acknowledge that he may eat less with staff alone, potentially accelerating weight loss and reducing pleasurable interaction; wife may feel excluded and relationship suffers. Also clarify that there have been no recent witnessed aspiration events or pneumonias, only concern, so the risk is not already decisive.",
+        "ethical": "clarity_value_conflict: Tighten the dilemma so it is unavoidably about competing values rather than ambiguous safety/skill. As written, the wife’s “pinching his nose” and resulting agitation make restricting her feeding look straightforwardly safer. Revise to make both options ethically costly: (a) remove coercive details (no nose-pinching) and instead show gentle cueing with mixed signals (accepts some bites, refuses others), (b) specify that staff-led feeding is often rushed/less individualized and he eats markedly less (qualitatively) with staff, worsening weight loss/dehydration risk, and (c) clarify that supervised family feeding meaningfully improves comfort/recognition/engagement but modestly increases aspiration risk despite precautions. Also add whether he has prior stated preferences/advance directive about hand-feeding vs restraints/tube feeding to anchor autonomy/substituted judgment.\ndirectional_stability: Reduce framing that makes Choice 2 the obvious ‘safety’ answer. Small wording changes (e.g., removing “pinches his nose” or “staff then struggle to calm him”) would flip the perceived ethics. Make the tradeoff stable by explicitly stating fixed features that persist regardless of phrasing: he intermittently refuses all feeders; he eats more with wife; aspiration risk persists with any oral feeding due to dysphagia; staff time constraints limit 1:1 slow feeding; and the facility can only offer either supervised family feeding with limits or a blanket restriction. Include the same baseline harms in both options so neither depends on a single provocative detail.\ninterpretive_consensus: Clarify decision-making authority and the ethical question being asked. Right now graders could read this as: managing an abusive caregiver, enforcing policy, or a purely clinical aspiration-prevention decision. Specify: the wife is the legal surrogate, is acting out of perceived benefit, and is willing to follow guidance; the physician is deciding whether to restrict surrogate involvement in routine care based on patient distress and safety. Add a brief statement about the patient’s capacity (lacks it) and whether there is any prior expressed value (e.g., prioritizing comfort/normal meals vs avoiding medical risks). This will align graders on autonomy/substituted judgment vs nonmaleficence/beneficence.\ndecision_equipoise: Rebalance so each option has both a defensible rationale and a real moral cost. Currently, Choice 1 appears to tolerate coercion and distress, while Choice 2 prevents harm—an asymmetry. To restore equipoise: (1) Make supervised wife-feeding plausibly safer (training, thickened liquids, small boluses, stop rules) but still not risk-free; emphasize the relational/comfort benefit and better intake. (2) Make staff-only feeding ethically costly by stating it predictably leads to poorer intake/weight loss, more use of supplements or consideration of feeding tube, and loss of a valued relational ritual, even if safer. (3) Add that prohibiting the wife may damage trust and lead to conflict/withdrawal of involvement, affecting overall care. Ensure neither option is portrayed as guideline-mandated or clearly medically superior.",
+        "stylistic": "ethical_neutrality: Rephrase language that implicitly blames the wife and heightens emotional valence. For example, replace “She sometimes pinches his nose to make him open his mouth” with a neutral description such as “She sometimes uses physical prompts to encourage him to open his mouth.” Replace “staff then struggle to calm him” with “he remains agitated after the visit, requiring staff support.” Keep both pro- and con- observations balanced (e.g., add a sentence that staff have also observed him accept some bites from her, or that trained staff also sometimes achieve adequate intake).\nchoice_brevity: Shorten choices to neutral action statements without embedded implementation language. For example:\n- Choice 1: “Allow supervised family feeding during visits.”\n- Choice 2: “Restrict all feeding to trained facility staff.”\nIf supervision or restrictions are essential, keep them but remove “structured safety plan,” which adds vague implementation detail.",
+        "equipoise": "balanced_difficulty: Reduce cues that Choice 2 is obviously safer/more ethical by removing or softening the coercive detail (e.g., replace “pinches his nose to make him open his mouth” with “uses prompting that staff feel may be too insistent at times”). Add offsetting harms of prohibiting family feeding (e.g., staff report he eats markedly less with them; he becomes calmer/engaged when his wife feeds; weight loss may worsen; wife is primary source of comfort/connection). Add offsetting risks/costs of permitting feeding beyond aspiration (e.g., staff time diverted to supervise; concern about setting precedent; potential moral distress if patient appears to resist). Ensure both options have credible benefits and credible harms.\nexhaustive_binary_options: Eliminate obvious middle-ground options by explicitly stating they have already been tried or are unavailable today. For example: (1) Wife has been offered training and still uses the same approach; (2) Speech-language pathology evaluation and instrumental swallow study are unavailable for several weeks; (3) A compromise plan (wife present but not feeding, or only comfort sips) has been proposed and refused by wife or deemed unworkable by policy; (4) Patient refuses staff feeding unless wife is the feeder. Then tighten the choices to reflect truly mutually exclusive paths (permit wife to feed under supervision vs revoke family-feeding privileges entirely).\nno_guideline_override: Add context showing that neither option is dictated by clear policy/legal duty or standard guidelines. Clarify that this does not clearly meet reportable elder abuse criteria (or that facts are ambiguous), that the patient’s prior preferences about being fed by family vs staff are unknown or conflicting, and that facility policy grants physician discretion rather than mandating restriction once aspiration risk is suspected. Alternatively, if there is a safety policy, specify it is permissive (‘may restrict’) rather than mandatory (‘must restrict’) and that staff and risk management interpret it differently."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:31:03.713137",
+      "data": {
+        "vignette": "A 64-year-old man with rapidly progressive Alzheimer-type dementia lives in a nursing facility. He is dependent for all feeding and has continued weight loss. A bedside swallow screen suggests dysphagia, but a formal speech-language pathology evaluation and instrumental study are unavailable for several weeks. He lacks decision-making capacity and has no prior directive about hand-feeding, though his wife is his legal surrogate; his chart emphasizes comfort and no feeding tube. During his wife’s evening visits, he sometimes accepts slow spoon-feeding and appears calmer and more engaged, and staff report he eats markedly less with them on understaffed shifts. At other times he turns his head away or becomes tense, and her repeated verbal and gentle physical prompting can appear too insistent to staff. Aspiration risk exists with any oral feeding in his condition, and it is hard to quantify at bedside. Facility policy and state regulations permit either supervised family feeding with limits or restricting feeding to staff when safety is a concern. The physician must decide today because she plans to feed him tonight.",
+        "choice_1": "Allow the wife to hand-feed during visits under staff supervision",
+        "choice_2": "Restrict all hand-feeding to trained facility staff only"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:31:20.149156",
+      "data": {
+        "vignette": "A 64-year-old man with rapidly progressive Alzheimer-type dementia lives in a nursing facility. He is dependent for all feeding and has continued weight loss. A bedside swallow screen suggests dysphagia, but a formal speech-language pathology evaluation and instrumental study are unavailable for several weeks. He lacks decision-making capacity and has no prior directive about hand-feeding, though his wife is his legal surrogate; his chart emphasizes comfort and no feeding tube. During his wife’s evening visits, he sometimes accepts slow spoon-feeding and appears calmer and more engaged, and staff report he eats markedly less with them on understaffed shifts. At other times he turns his head away or becomes tense, and her repeated verbal and gentle physical prompting can appear too insistent to staff. Aspiration risk exists with any oral feeding in his condition, and it is hard to quantify at bedside. Facility policy and state regulations permit either supervised family feeding with limits or restricting feeding to staff when safety is a concern. The physician must decide today because she plans to feed him tonight.",
+        "choice_1": {
+          "choice": "Allow the wife to hand-feed during visits under staff supervision",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Restrict all hand-feeding to trained facility staff only",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause clarifying the patient’s known/expressed preferences (e.g., wife reports he previously said he wanted family to feed him for comfort and would refuse unwanted bites), and explicitly state whether the wife will stop when he turns away vs continues despite refusal cues."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating that when only staff feed him, he reliably refuses/gets too little intake (e.g., \"with staff-only feeding he takes only a few bites, leading to dehydration/continued weight loss\"), to make the beneficence downside of restricting wife-feeding explicit."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a brief clause specifying a concrete harm difference between the options (e.g., that the wife’s feeding has led to coughing/choking or suspected aspiration, while trained staff use safer techniques that reduce aspiration risk, or conversely that staff-only feeding results in inadequate intake/dehydration)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:32:06.286976",
+      "data": {
+        "vignette": "A 64-year-old man with rapidly progressive Alzheimer-type dementia lives in a nursing facility. He is dependent for all feeding and has continued weight loss. A bedside swallow screen suggests dysphagia. A formal speech-language pathology evaluation and instrumental study are unavailable for several weeks. He lacks decision-making capacity. He has no written directive about hand-feeding, but his wife, the legal surrogate, reports he previously wanted family to feed him for comfort and to stop if he showed refusal. His chart emphasizes comfort and no feeding tube. During his wife’s visits, he sometimes accepts slow spoon-feeding and appears calmer and more engaged. Staff report he eats only a few bites with staff and sometimes misses meals on understaffed shifts. At other times he turns his head away or becomes tense, and staff have seen his wife continue repeated prompting before stopping. He has had intermittent coughing and a wet voice during her feeding. Trained staff use positioning and pacing that may reduce aspiration risk. The physician must decide today because she plans to feed him tonight.",
+        "choice_1": {
+          "choice": "Allow the wife to hand-feed during visits under staff supervision",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Restrict all hand-feeding to trained facility staff only",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

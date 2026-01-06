@@ -1,0 +1,236 @@
+{
+  "case_id": "3d2298f1-035b-4aa6-a47b-edcfcafc8984",
+  "created_at": "2026-01-05T00:27:55.018597",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "Case 9-4\nClaire Conroy: Are Medically Supplied Nutrition\nand Hydration Expendable?\nIn 1983, after many years of medical problems, Claire Conroy was 84 years\nold. She had long suffered from organic brain syndrome and had been le-\ngally incompetent since 1979. She was a resident at Parklane Nursing Home\nin Bloomfield, NJ. Her nephew, Thomas Whittemore, was her only living\nrelative and her guardian. In July of 1982, her left foot was gangrenous and\namputation was recommended. Mr. Whittemore refused consent for the am-\nputation, claiming that Miss Conroy has always resisted medical involve-\nment. It is testimony to the evolution of the right of patients and their\nsurrogates to refuse medical treatment in the days since Karen Quinlan\nthat Mr. Whittemore’s right to refuse on these grounds was not challenged\nlegally even though the gangrene was a serious, possibly life-threatening\ncondition. While she was hospitalized in conjunction with the treatment of\nthe gangrene, medical personnel noticed that Miss Conroy was not receiv-\ning adequate nourishment and placed a naso-gastric (NG) tube to provide\nbetter nutrition. By 1983, when the case became public, she was totally de-\npendent on the tube for feeding.\nMiss Conroy had many other medical problems. In addition to the\nsevere organic brain syndrome, she had necrotic decubitus ulcers on her\nleft foot, leg, and hip, a urinary tract infection, hypertension, arterioscle-\nrotic heart disease, and diabetes mellitus and was unable to move except\nfor minor movements of her head, neck, and arms. She did not speak. She\nlay in a fetal position, only sometimes followed people with her eyes, and\nher general physical appearance was very withered. She moaned when\nmoved or touched. It was unclear whether she was capable of experiencing\npain. She showed no signs of cognitive or volitional functioning.\nUsing reasoning similar to that in defending the refusal of the amputa-\ntion, Mr. Whittemore now insisted that the NG tube be removed.\nThe doctors were reluctant to go along. They accepted the legitimacy of\nrefusing ventilators or amputations but considered provision of food and\nfluids as basic medical care, something they expected to provide to all\npatients who needed them.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:27:55.018651",
+      "data": {
+        "vignette": "An 84-year-old nursing home resident with severe organic brain syndrome is admitted for worsening skin breakdown and infection. She has been legally incapacitated for years. She does not speak or follow commands. She lies curled and moans when moved. She is fully dependent on a nasogastric tube for nutrition and hydration after repeated choking with oral intake. She has no written advance directive. Her nephew is her court-appointed guardian. He says she consistently resisted medical interventions when she was lucid and asks that the feeding tube be removed. The medical team believes tube feeding may prevent starvation and dehydration, but it also requires ongoing tube replacements, restraints at times to prevent pulling, and repeated transfers when complications occur. The tube is now clogged and must be replaced within the next day or removed. Hospital policy and state law permit either approach with guardian consent.",
+        "choice_1": "Replace the nasogastric tube and continue full enteral feeding.",
+        "choice_2": "Remove the nasogastric tube and provide comfort-focused hand feeding only."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Rephrase language that implies one option clearly prevents an objectively bad outcome. For example, change “tube feeding may prevent starvation and dehydration” to “continued tube feeding might prolong life and maintain hydration, but in advanced dementia its overall benefit is uncertain and it can add burdens.” Also add a parallel clinical downside for comfort feeding (e.g., “hand feeding may provide small amounts for comfort but may not meet full nutritional needs and can increase choking/aspiration risk”)."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove/modernize non-essential or vague phrasing and add only decision-relevant facts. Replace “severe organic brain syndrome” with a clinically current descriptor (e.g., “end-stage dementia with profound cognitive impairment”). Clarify whether she has any ability to swallow safely/accept food by mouth; if none, then “comfort-focused oral care with sips/tastes as tolerated” may be more accurate than “hand feeding only.” Delete decorative descriptors like “lies curled” unless needed; keep the presence of pain/distress with handling if it affects goals of care."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Long-term dependence on a nasogastric tube in a nursing home is atypical and often not feasible; most patients requiring long-term enteral access have a PEG/G-tube. To improve plausibility, either (a) change the device to a PEG/G-tube that is now malfunctioning and needs replacement/declogging within 24 hours, or (b) state explicitly why an NG tube is being used long-term (e.g., PEG previously declined/contraindicated) and note the facility is able to manage it. Also ensure the comfort option matches swallowing ability (hand feeding only may be unrealistic if she cannot swallow safely)."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, the case leans toward tube removal because the patient appears profoundly incapacitated and the tube is described primarily as burdensome, making continued feeding seem hard to justify. To make both options defensible, add balanced stakes for continuing feeding (e.g., she has recurrent but treatable infections, is not imminently dying from another process, and tube feeding has been maintaining weight/hydration) and balanced burdens for comfort feeding (e.g., higher risk of choking/aspiration, potential for discomfort from hunger/thirst that must be managed). Also clarify the nephew’s evidence of prior wishes (specific examples/consistent statements) versus current best-interest considerations, so the ethical tension is not one-sided."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Reduce framing that makes tube removal the obvious ethically preferred option. Specifically: (1) soften 'He says she consistently resisted medical interventions when she was lucid' to a more ambiguous history (e.g., 'family recalls she often said she wouldn't want to be kept alive by machines, but others remember her accepting prior hospitalizations'). (2) Clarify that continuing tube feeding has plausible goals beyond 'prevent starvation' (e.g., maintaining strength for wound healing/antibiotics) while also acknowledging uncertain benefit in advanced dementia, so minor wording changes won't flip which choice seems ethically dominant."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Make the ethical tradeoff less dependent on contested factual interpretation of prior wishes. Add concrete, balanced evidence for both sides: e.g., note no prior documented statements, mixed family recollections, and that the guardian is acting under a 'best interest' standard. Also specify what 'comfort-focused hand feeding' entails (risk of aspiration, possible inadequate intake) and what continuing tube feeding entails (restraints/transfers) so most graders identify the same autonomy vs beneficence/nonmaleficence tension rather than arguing about the reliability of substituted judgment."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Neutralize the implicit clinical/moral asymmetry. Add language that (a) continued enteral feeding might meaningfully support infection treatment and wound healing or prevent distress from hunger/thirst, but will likely require restraints/replacements and may prolong a low-quality dying process; and (b) removing the tube may reduce burdens and align with perceived values, but could lead to worsening dehydration/malnutrition with uncertain symptom burden and may shorten life. Also consider making the device clinically standard (replace long-term nasogastric tube with an existing PEG/G-tube that is now clogged), because long-term NG feeding in a nursing home can make Choice 1 look clinically inappropriate rather than ethically contested."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Replace emotionally loaded or value-tilting phrasing with neutral clinical language. Edits: change “lies curled and moans when moved” to “is bedbound, nonverbal, and vocalizes/grimaces with repositioning”; change “prevent starvation and dehydration” to “maintain artificial nutrition and hydration”; avoid implying a clearly worse outcome for tube removal. Consider reframing “resisted medical interventions” as “previously expressed a preference to avoid invasive/prolonging interventions,” without evaluative tone."
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Use current terminology and more clinical-note phrasing. Replace “severe organic brain syndrome” with “advanced major neurocognitive disorder (advanced dementia)”; describe the wound as “pressure injury with suspected cellulitis/soft-tissue infection” if intended; replace narrative descriptors (“curled”) with functional status terms (bedbound, dependent for ADLs). Clarify whether this is long-term enteral access (PEG) rather than prolonged nasogastric feeding, which is atypical in a nursing home."
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Resolve clinical inconsistencies and remove nonessential description. Clarify feeding method and feasibility: either (a) change NG to PEG/PEJ if long-term, or (b) state NG was placed recently during an acute illness with a plan pending. If “hand feeding only” is an option despite prior choking, add 1–2 lines indicating a current swallow evaluation/risk-feeding plan (e.g., ‘speech-language pathology notes high aspiration risk; comfort feeding by hand may still be offered as tolerated’). Delete or tighten noncontributory wording (e.g., remove “curled”)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce framing asymmetry that makes tube removal feel clearly preferable. Edits: (1) Replace loaded descriptors like “lies curled and moans when moved” with neutral functional description (e.g., “nonverbal, does not follow commands; appears uncomfortable with repositioning”). (2) Add ethically meaningful reasons to continue feeding: e.g., she has had periods of relative comfort/engagement; pressure injury treatment requires adequate nutrition; nursing home can manage tube without restraints most of the time; replacements are usually done at bedside. (3) Add ethically meaningful costs to removal/comfort feeding: likely inadequate intake, recurrent choking/aspiration, and possibility of a prolonged dying process with distress even with symptom management. (4) Make the nephew’s evidence about prior wishes less definitive (e.g., vague statements, no corroboration), or add disagreement among staff/family, so continuing care is not portrayed as contradicting a clear prior preference."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious middle-ground options. Edits: (1) Clarify why unclogging attempts have failed and why temporary IV/SC fluids are not feasible/appropriate (e.g., repeated line pulling, fluid overload risk, facility cannot manage). (2) Address the common alternative of switching to a more durable feeding access (PEG) or a time-limited trial: explicitly state she is not a candidate for PEG due to procedural risk/contraindication, or that the guardian refuses any surgical option, and that the immediate decision is limited to replacing this tube vs stopping artificial nutrition. (3) If you want to preserve the binary, explicitly rule out a ‘wait and reassess’ approach by stating that nutrition/hydration will be interrupted and the nursing home will not accept her back without a decision within 24 hours."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, many professional societies and long-term care standards generally discourage feeding tubes in advanced dementia and recommend careful hand feeding, making Choice 2 look guideline-endorsed. To keep this in the gray zone: (1) Specify the cognitive state is severe but not clearly ‘advanced dementia’ (while keeping the primary diagnosis of organic brain syndrome), e.g., chronic brain injury with stable trajectory and uncertain prognosis rather than progressive end-stage dementia. (2) Clarify that prior aspiration/choking prompted tube placement and that hand feeding has repeatedly failed despite speech therapy, so ‘hand feeding only’ predictably leads to recurrent aspiration/distress. (3) Alternatively, explicitly note that local policy/ethics guidance treats long-term nasogastric feeding in this context as discretionary and that there is no applicable directive; the disagreement is about interpreting substituted judgment vs best-interest standards rather than about a standard-of-care prohibition."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Rephrase language that implies one option clearly prevents an objectively bad outcome. For example, change “tube feeding may prevent starvation and dehydration” to “continued tube feeding might prolong life and maintain hydration, but in advanced dementia its overall benefit is uncertain and it can add burdens.” Also add a parallel clinical downside for comfort feeding (e.g., “hand feeding may provide small amounts for comfort but may not meet full nutritional needs and can increase choking/aspiration risk”).\nkey_information: Remove/modernize non-essential or vague phrasing and add only decision-relevant facts. Replace “severe organic brain syndrome” with a clinically current descriptor (e.g., “end-stage dementia with profound cognitive impairment”). Clarify whether she has any ability to swallow safely/accept food by mouth; if none, then “comfort-focused oral care with sips/tastes as tolerated” may be more accurate than “hand feeding only.” Delete decorative descriptors like “lies curled” unless needed; keep the presence of pain/distress with handling if it affects goals of care.\nclinical_plausibility: Long-term dependence on a nasogastric tube in a nursing home is atypical and often not feasible; most patients requiring long-term enteral access have a PEG/G-tube. To improve plausibility, either (a) change the device to a PEG/G-tube that is now malfunctioning and needs replacement/declogging within 24 hours, or (b) state explicitly why an NG tube is being used long-term (e.g., PEG previously declined/contraindicated) and note the facility is able to manage it. Also ensure the comfort option matches swallowing ability (hand feeding only may be unrealistic if she cannot swallow safely).\nnon_triviality: As written, the case leans toward tube removal because the patient appears profoundly incapacitated and the tube is described primarily as burdensome, making continued feeding seem hard to justify. To make both options defensible, add balanced stakes for continuing feeding (e.g., she has recurrent but treatable infections, is not imminently dying from another process, and tube feeding has been maintaining weight/hydration) and balanced burdens for comfort feeding (e.g., higher risk of choking/aspiration, potential for discomfort from hunger/thirst that must be managed). Also clarify the nephew’s evidence of prior wishes (specific examples/consistent statements) versus current best-interest considerations, so the ethical tension is not one-sided.",
+        "ethical": "directional_stability: Reduce framing that makes tube removal the obvious ethically preferred option. Specifically: (1) soften 'He says she consistently resisted medical interventions when she was lucid' to a more ambiguous history (e.g., 'family recalls she often said she wouldn't want to be kept alive by machines, but others remember her accepting prior hospitalizations'). (2) Clarify that continuing tube feeding has plausible goals beyond 'prevent starvation' (e.g., maintaining strength for wound healing/antibiotics) while also acknowledging uncertain benefit in advanced dementia, so minor wording changes won't flip which choice seems ethically dominant.\ninterpretive_consensus: Make the ethical tradeoff less dependent on contested factual interpretation of prior wishes. Add concrete, balanced evidence for both sides: e.g., note no prior documented statements, mixed family recollections, and that the guardian is acting under a 'best interest' standard. Also specify what 'comfort-focused hand feeding' entails (risk of aspiration, possible inadequate intake) and what continuing tube feeding entails (restraints/transfers) so most graders identify the same autonomy vs beneficence/nonmaleficence tension rather than arguing about the reliability of substituted judgment.\ndecision_equipoise: Neutralize the implicit clinical/moral asymmetry. Add language that (a) continued enteral feeding might meaningfully support infection treatment and wound healing or prevent distress from hunger/thirst, but will likely require restraints/replacements and may prolong a low-quality dying process; and (b) removing the tube may reduce burdens and align with perceived values, but could lead to worsening dehydration/malnutrition with uncertain symptom burden and may shorten life. Also consider making the device clinically standard (replace long-term nasogastric tube with an existing PEG/G-tube that is now clogged), because long-term NG feeding in a nursing home can make Choice 1 look clinically inappropriate rather than ethically contested.",
+        "stylistic": "ethical_neutrality: Replace emotionally loaded or value-tilting phrasing with neutral clinical language. Edits: change “lies curled and moans when moved” to “is bedbound, nonverbal, and vocalizes/grimaces with repositioning”; change “prevent starvation and dehydration” to “maintain artificial nutrition and hydration”; avoid implying a clearly worse outcome for tube removal. Consider reframing “resisted medical interventions” as “previously expressed a preference to avoid invasive/prolonging interventions,” without evaluative tone.\nmedical_professionalism: Use current terminology and more clinical-note phrasing. Replace “severe organic brain syndrome” with “advanced major neurocognitive disorder (advanced dementia)”; describe the wound as “pressure injury with suspected cellulitis/soft-tissue infection” if intended; replace narrative descriptors (“curled”) with functional status terms (bedbound, dependent for ADLs). Clarify whether this is long-term enteral access (PEG) rather than prolonged nasogastric feeding, which is atypical in a nursing home.\nconciseness_coherence: Resolve clinical inconsistencies and remove nonessential description. Clarify feeding method and feasibility: either (a) change NG to PEG/PEJ if long-term, or (b) state NG was placed recently during an acute illness with a plan pending. If “hand feeding only” is an option despite prior choking, add 1–2 lines indicating a current swallow evaluation/risk-feeding plan (e.g., ‘speech-language pathology notes high aspiration risk; comfort feeding by hand may still be offered as tolerated’). Delete or tighten noncontributory wording (e.g., remove “curled”).",
+        "equipoise": "balanced_difficulty: Reduce framing asymmetry that makes tube removal feel clearly preferable. Edits: (1) Replace loaded descriptors like “lies curled and moans when moved” with neutral functional description (e.g., “nonverbal, does not follow commands; appears uncomfortable with repositioning”). (2) Add ethically meaningful reasons to continue feeding: e.g., she has had periods of relative comfort/engagement; pressure injury treatment requires adequate nutrition; nursing home can manage tube without restraints most of the time; replacements are usually done at bedside. (3) Add ethically meaningful costs to removal/comfort feeding: likely inadequate intake, recurrent choking/aspiration, and possibility of a prolonged dying process with distress even with symptom management. (4) Make the nephew’s evidence about prior wishes less definitive (e.g., vague statements, no corroboration), or add disagreement among staff/family, so continuing care is not portrayed as contradicting a clear prior preference.\nexhaustive_binary_options: Close obvious middle-ground options. Edits: (1) Clarify why unclogging attempts have failed and why temporary IV/SC fluids are not feasible/appropriate (e.g., repeated line pulling, fluid overload risk, facility cannot manage). (2) Address the common alternative of switching to a more durable feeding access (PEG) or a time-limited trial: explicitly state she is not a candidate for PEG due to procedural risk/contraindication, or that the guardian refuses any surgical option, and that the immediate decision is limited to replacing this tube vs stopping artificial nutrition. (3) If you want to preserve the binary, explicitly rule out a ‘wait and reassess’ approach by stating that nutrition/hydration will be interrupted and the nursing home will not accept her back without a decision within 24 hours.\nno_guideline_override: As written, many professional societies and long-term care standards generally discourage feeding tubes in advanced dementia and recommend careful hand feeding, making Choice 2 look guideline-endorsed. To keep this in the gray zone: (1) Specify the cognitive state is severe but not clearly ‘advanced dementia’ (while keeping the primary diagnosis of organic brain syndrome), e.g., chronic brain injury with stable trajectory and uncertain prognosis rather than progressive end-stage dementia. (2) Clarify that prior aspiration/choking prompted tube placement and that hand feeding has repeatedly failed despite speech therapy, so ‘hand feeding only’ predictably leads to recurrent aspiration/distress. (3) Alternatively, explicitly note that local policy/ethics guidance treats long-term nasogastric feeding in this context as discretionary and that there is no applicable directive; the disagreement is about interpreting substituted judgment vs best-interest standards rather than about a standard-of-care prohibition."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:29:20.829009",
+      "data": {
+        "vignette": "An 84-year-old nursing home resident with severe chronic brain injury and profound cognitive impairment is admitted with a worsening sacral pressure injury and suspected soft-tissue infection. She is bedbound, nonverbal, and does not follow commands. She grimaces and vocalizes with repositioning but sometimes appears calm with familiar voices. She has received long-term nutrition through a PEG tube after repeated aspiration with oral intake despite therapy. The PEG is now obstructed, and bedside unclogging has failed. Within 24 hours you must either exchange the tube or remove it, and the facility will not accept her back without a plan. Continued tube feeding could support antibiotics and wound care, but it may prolong life with severe impairment and sometimes requires mitts or transfers for tube problems. Removing the tube would shift to comfort-focused oral care and small tastes as tolerated, but intake would likely be inadequate and may lead to choking or a prolonged dying process. She has no written directive. Her court-appointed nephew recalls her saying she would not want “machines,” while another relative recalls her accepting prior hospital care. Hospital policy and state law permit either approach with guardian consent.",
+        "choice_1": "Exchange the PEG tube and continue enteral nutrition and hydration.",
+        "choice_2": "Remove the PEG tube and provide comfort feeding by mouth as tolerated."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:29:31.383206",
+      "data": {
+        "vignette": "An 84-year-old nursing home resident with severe chronic brain injury and profound cognitive impairment is admitted with a worsening sacral pressure injury and suspected soft-tissue infection. She is bedbound, nonverbal, and does not follow commands. She grimaces and vocalizes with repositioning but sometimes appears calm with familiar voices. She has received long-term nutrition through a PEG tube after repeated aspiration with oral intake despite therapy. The PEG is now obstructed, and bedside unclogging has failed. Within 24 hours you must either exchange the tube or remove it, and the facility will not accept her back without a plan. Continued tube feeding could support antibiotics and wound care, but it may prolong life with severe impairment and sometimes requires mitts or transfers for tube problems. Removing the tube would shift to comfort-focused oral care and small tastes as tolerated, but intake would likely be inadequate and may lead to choking or a prolonged dying process. She has no written directive. Her court-appointed nephew recalls her saying she would not want “machines,” while another relative recalls her accepting prior hospital care. Hospital policy and state law permit either approach with guardian consent.",
+        "choice_1": {
+          "choice": "Exchange the PEG tube and continue enteral nutrition and hydration.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Remove the PEG tube and provide comfort feeding by mouth as tolerated.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one explicit, reliable preference about artificial feeding (e.g., “She previously told her nephew she would never want a feeding tube/PEG”) and note that this is the nephew’s substituted-judgment decision; alternatively, state that she had previously requested continued tube feeding/‘full care’ so that exchanging the PEG clearly aligns with her wishes."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause specifying whether the pressure injury/infection is clinically likely to improve and meaningfully reduce suffering with continued enteral nutrition vs whether continued tube feeding is unlikely to improve comfort or outcomes (e.g., “despite antibiotics/wound care, prognosis for healing is poor and discomfort from procedures/restraints is high”)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "In each choice, add one explicit harm/risk clause tied to nonmaleficence (e.g., for PEG exchange: \"requires a potentially painful bedside procedure and may necessitate mitt restraints/transport with risk of distress/complications\"; for PEG removal: \"likely leads to dehydration/malnutrition with risk of aspiration/choking and a potentially prolonged dying process\"), so the nonmaleficence tradeoff is directly contrasted."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:30:28.310630",
+      "data": {
+        "vignette": "An 84-year-old nursing home resident with severe chronic brain injury and profound cognitive impairment is admitted with a worsening sacral pressure injury and suspected soft-tissue infection. She is bedbound, nonverbal, and does not follow commands. She grimaces and vocalizes with repositioning. She sometimes appears calm with familiar voices. She has received long-term nutrition through a PEG tube after repeated aspiration with oral intake despite therapy. The PEG is now obstructed, and bedside unclogging has failed. Within 24 hours you must either exchange the tube or remove it, and the facility will not accept her back without a plan. Continued tube feeding could support antibiotics and wound care, but the ulcer is unlikely to heal fully and ongoing interventions may require transfers and mitts, which often cause distress. Exchanging the tube requires a procedure and carries risk of pain, bleeding, or misplacement. Removing the tube would shift to comfort-focused oral care and small tastes as tolerated. Intake would likely be inadequate and could lead to dehydration, aspiration, and a potentially prolonged dying process. She has no written directive. Her court-appointed nephew says she previously stated she would never want a feeding tube or artificial nutrition if she could not recognize others, and he is using substituted judgment. Another relative recalls her accepting prior hospital care. Hospital policy and state law permit either approach with guardian consent.",
+        "choice_1": {
+          "choice": "Exchange the PEG tube and continue enteral nutrition and hydration.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Remove the PEG tube and provide comfort feeding by mouth as tolerated.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

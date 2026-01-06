@@ -1,0 +1,242 @@
+{
+  "case_id": "d4bee8a5-2a43-4277-9818-9e0a13d03648",
+  "created_at": "2026-01-05T00:41:56.297236",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 53:\nSELF-HARM\nWhile you are working in Accident and Emergency (A&E) on a Sunday afternoon you are\nasked to see Naomi, a 15-year-old ‘regular attendee’. No one else wants to see her. Naomi\nis very subdued and has a deep cut along the top of her thigh. Her legs and arms are criss-\ncrossed with scars. She asks you to just hurry up and ‘practise your suturing’ so that she\ncan get home in time for a family roast. You are concerned about her blasé attitude to her\ninjuries. Looking through the notes you discover this is her 18th attendance to A&E in the\npast 6 months for similar treatment. You try to talk to Naomi about why she self-harms.\nNaomi is surprised, as no one has asked her this before.\nQuestions\n• How should patients who self-harm be managed?\n• What can be done to prevent a ‘revolving door’ system of hospital admissions?",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:41:56.297286",
+      "data": {
+        "vignette": "A 15-year-old girl comes to the emergency department on a Sunday afternoon with a deep laceration across the top of her thigh that needs suturing. Her arms and legs show many older scars. The chart shows many similar visits in recent months, with increasing injury severity. She is calm, not intoxicated, and says she is not trying to die. She asks you to “just stitch it” and leave quickly for a family meal. She refuses to speak with the on-call mental health clinician and insists you not call her parent, saying it will “make everything worse.” You worry that sending her home repeats a pattern and misses a chance to address serious distress, but holding her or involving family against her wishes could feel coercive and damage trust. Hospital policy and state law permit either confidential discharge or an emergency psychiatric evaluation for a minor in this situation. You need to decide before the department gets busier and sedation is started for wound repair.",
+        "choice_1": "Suture the wound and discharge her with a same-week mental health referral.",
+        "choice_2": "Suture the wound and keep her for psychiatric assessment despite her refusal."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften language implying one option is clinically/ethically superior (e.g., “repeats a pattern and misses a chance to address serious distress”). Rephrase to present uncertainty: “You are concerned she may be at risk of escalating self-harm, but she denies suicidal intent and appears stable.” Avoid framing discharge as clearly negligent. Keep clinical facts but avoid ‘missed chance’ wording."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make the orders mutually exclusive and operational. Specify what ‘keep her’ entails (e.g., place on an emergency hold, institute 1:1 observation, restrict elopement, obtain on-call psychiatry evaluation now) and what discharge entails (e.g., safety plan, lethal-means counseling, written crisis resources, confirm parent pickup vs allow discharge alone). As written, both choices include suturing; the binary should be about disposition/hold vs discharge with concrete steps."
+        },
+        "decision_forcing_context": {
+          "outcome": false,
+          "suggested_changes": "Clarify the forcing mechanism. ‘Before the department gets busier’ is weak and ‘sedation is started’ is unclear/clinically odd for a thigh laceration. Replace with a realistic time pressure: “Local anesthesia and repair will take ~30–45 minutes; once analgesia/sedation is given she may be temporarily unable to participate in assessment, and she may leave immediately afterward if not placed on hold. Psychiatry is available only until X pm.” Or state imminent risk of elopement/AMA requiring decision now."
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add key risk-assessment anchors that determine plausibility of either option without turning it into a clinical superiority debate: current suicidal ideation/plan/means (even if denied), recent overdose/strangulation, access to lethal means at home, presence/absence of supportive adult, school counselor involvement, whether the parent is in ED, vitals/mental status, and whether injuries appear self-inflicted vs accidental. Remove non-essential detail like “Sunday afternoon” and “family meal” unless it directly raises elopement pressure; otherwise simplify."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Sedation for suturing a thigh laceration is not typical; revise to local anesthetic +/- minimal anxiolysis and explain if sedation is needed (e.g., severe pain, agitation, extensive wound). Also clarify legal/policy realism: in many jurisdictions, a minor’s refusal and request to not involve a parent may not permit ‘confidential discharge’ without guardian involvement unless specific mature minor/emancipation or sensitive services criteria apply. Ground with a generic but plausible statement: “Under state law, clinicians may initiate an emergency psychiatric evaluation for minors when there is concern for imminent self-harm; confidentiality is limited, but discharge without notifying a guardian is permitted for certain mental health services.”"
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "The line “policy and state law permit either confidential discharge or an emergency psychiatric evaluation for a minor in this situation” is too conclusory and likely inaccurate without conditions. Add a brief, jurisdiction-agnostic but defensible qualifier: “Per hospital policy and applicable state law, if she is judged not to meet criteria for involuntary evaluation, you may discharge her with confidential outpatient referral; if you judge she may pose an imminent risk of serious self-harm, you are permitted to initiate an emergency psychiatric evaluation and notify a guardian as necessary.” This makes both options legally defensible based on your assessment."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, repeated escalating self-injury and multiple recent ED visits makes ‘psychiatric assessment now’ look clearly favored, undermining genuine equipoise. To restore non-triviality, add facts supporting discharge as reasonable: she has an established outpatient therapist with an appointment in 2 days, denies SI/plan, no recent high-lethality behaviors, expresses future orientation, has a safe place to go with a trusted adult, and agrees to a safety plan—while still requesting no parent contact. Alternatively, add costs/downsides to involuntary assessment (e.g., prior traumatic restraint/hospitalization, risk of escalation if held, limited psych bed leading to prolonged ED boarding) without making it about system rationing."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce ambiguity about the core ethical axis by clarifying what is and is not known about risk (e.g., explicitly state she denies suicidal intent but acknowledges escalating self-injury; brief screening finds no psychosis/intoxication; you cannot confirm home supervision today). Remove the sentence 'Hospital policy and state law permit either...' (or replace with a neutral line like 'You have discretion to pursue either path under current rules') so graders focus on values rather than legal framing. Add one concrete reason psychiatric assessment could be harmful (e.g., prior traumatic involuntary hold, fear of parent retaliation, loss of confidentiality) so the tradeoff is more consistently interpreted."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "As written, repeated escalating self-harm in a minor makes 'keep for psych assessment' feel like the default safety choice, undermining balance. To restore equipoise: (1) Add mitigating factors supporting discharge (e.g., she has a credible safety plan, agrees to return if urges worsen, has a trusted adult available though not a parent, and can secure rapid outpatient follow-up). (2) Add realistic harms/costs of holding her (e.g., prior involuntary evaluation worsened engagement; involving family may increase danger at home; admission would likely be prolonged due to bed scarcity; could jeopardize school/custody). (3) Strengthen Choice 1 so it is not 'do nothing'—include immediate bedside safety planning, lethal-means counseling, crisis line, and a scheduled appointment within days rather than a vague referral."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or neutralize language that implies one option is the better moral/clinical choice. For example, change “sending her home repeats a pattern and misses a chance to address serious distress” to “discharging her may not address ongoing psychosocial risk,” and change “could feel coercive and damage trust” to “could be experienced as coercive and affect engagement.” Avoid quoting “make everything worse”; use “concerned about parental involvement” instead."
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Use standard clinical terminology and documentation style. Replace “deep laceration across the top of her thigh” with “full-thickness thigh laceration requiring repair.” Replace “says she is not trying to die” with “denies suicidal intent.” Replace “just stitch it” with “requests wound repair only.” Specify “on-call psychiatry/social work” rather than “mental health clinician.”"
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten to essential decision-driving facts and clarify capacity/safety elements. Remove nonessential details like “Sunday afternoon” and “family meal” unless needed for time pressure; keep a single forcing mechanism (e.g., ‘procedural sedation planned shortly’). Add one sentence on key safety assessment already done/available (e.g., denies SI/HI, no psychosis, no intoxication, but recurrent presentations and escalating severity) to avoid ambiguity about why either option is reasonable."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": false,
+          "suggested_changes": "Reduce potentially triggering, visually specific injury/scar descriptions while keeping clinical relevance. For example, replace “many older scars” with “evidence of prior healed injuries,” and “deep laceration across the top of her thigh” with “thigh laceration requiring suturing.” Keep descriptions clinical and avoid evocative phrasing."
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both choices parallel, complete, and similarly scoped without extra implementation detail. For example: (1) “Repair the wound and discharge with expedited outpatient mental health follow-up.” (2) “Repair the wound and initiate emergency psychiatric evaluation despite refusal.” Keep each to ~10–15 words and avoid timeline specifics like “same-week” unless essential."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 1 more ethically/clinically defensible and Choice 2 more ethically costly so neither feels like the obvious ‘standard of care.’ For example: (1) add that she denies suicidal thoughts, has a plausible non-suicidal self-injury history, is future-oriented about school/home, has no acute intoxication/psychosis, has a safe adult she agrees you may contact (coach/aunt), and you can complete a brief safety plan and confirm a rapid follow-up appointment is actually booked (not just a referral). (2) clarify the harms of forcing assessment: would require an involuntary hold with security, could trigger escalation/self-harm in the ED, may lead to mandated reporting/parent notification, and risks her avoiding future care. Also avoid wording that implies discharge ‘repeats a pattern’ unless you equally note the pattern may also reflect help-seeking and that coercion may worsen engagement."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious middle-ground options or incorporate them into one of the two choices. Right now a clinician could: do a brief suicide/self-harm risk assessment without a formal psych consult; negotiate a limited consult; involve a trusted adult without ‘parent’; offer observation without formal evaluation; or delay disposition until after wound repair. To enforce a true binary, add constraints such as: the on-call mental health clinician will only see her if she is placed on an emergency hold; if discharged today, the earliest outpatient slot is weeks away; she refuses any safety planning or release-of-information to contact any adult; and the ED cannot keep her for ‘observation’ without initiating the formal psych pathway. Then phrase the decision as ‘discharge today with only outpatient follow-up’ vs ‘initiate emergency psych pathway/hold today.’"
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, recurrent self-inflicted injury in a minor strongly triggers widely accepted expectations for a same-visit mental health evaluation before discharge, making Choice 1 look guideline-deviant. To restore a gray zone, explicitly state why existing guidance does not clearly apply or is conflicted here (without citing percentages): e.g., the injury may be accidental/ambiguous in intent; she has repeatedly engaged with care and has established outpatient therapy but missed one visit; she has a documented prior comprehensive risk assessment with a current safety plan; she is assessed as low acute suicide risk yet high chronic risk; or local policy allows clinician discretion when acute suicide intent is denied and a rapid follow-up is secured. Alternatively, revise the dilemma away from ‘psych eval yes/no’ to a more guideline-ambiguous fork (e.g., whether to breach confidentiality by notifying parents/guardians vs maintain confidentiality while arranging supports)."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften language implying one option is clinically/ethically superior (e.g., “repeats a pattern and misses a chance to address serious distress”). Rephrase to present uncertainty: “You are concerned she may be at risk of escalating self-harm, but she denies suicidal intent and appears stable.” Avoid framing discharge as clearly negligent. Keep clinical facts but avoid ‘missed chance’ wording.\ndistinctness_actionability: Make the orders mutually exclusive and operational. Specify what ‘keep her’ entails (e.g., place on an emergency hold, institute 1:1 observation, restrict elopement, obtain on-call psychiatry evaluation now) and what discharge entails (e.g., safety plan, lethal-means counseling, written crisis resources, confirm parent pickup vs allow discharge alone). As written, both choices include suturing; the binary should be about disposition/hold vs discharge with concrete steps.\ndecision_forcing_context: Clarify the forcing mechanism. ‘Before the department gets busier’ is weak and ‘sedation is started’ is unclear/clinically odd for a thigh laceration. Replace with a realistic time pressure: “Local anesthesia and repair will take ~30–45 minutes; once analgesia/sedation is given she may be temporarily unable to participate in assessment, and she may leave immediately afterward if not placed on hold. Psychiatry is available only until X pm.” Or state imminent risk of elopement/AMA requiring decision now.\nkey_information: Add key risk-assessment anchors that determine plausibility of either option without turning it into a clinical superiority debate: current suicidal ideation/plan/means (even if denied), recent overdose/strangulation, access to lethal means at home, presence/absence of supportive adult, school counselor involvement, whether the parent is in ED, vitals/mental status, and whether injuries appear self-inflicted vs accidental. Remove non-essential detail like “Sunday afternoon” and “family meal” unless it directly raises elopement pressure; otherwise simplify.\nclinical_plausibility: Sedation for suturing a thigh laceration is not typical; revise to local anesthetic +/- minimal anxiolysis and explain if sedation is needed (e.g., severe pain, agitation, extensive wound). Also clarify legal/policy realism: in many jurisdictions, a minor’s refusal and request to not involve a parent may not permit ‘confidential discharge’ without guardian involvement unless specific mature minor/emancipation or sensitive services criteria apply. Ground with a generic but plausible statement: “Under state law, clinicians may initiate an emergency psychiatric evaluation for minors when there is concern for imminent self-harm; confidentiality is limited, but discharge without notifying a guardian is permitted for certain mental health services.”\nlegally_indeterminate: The line “policy and state law permit either confidential discharge or an emergency psychiatric evaluation for a minor in this situation” is too conclusory and likely inaccurate without conditions. Add a brief, jurisdiction-agnostic but defensible qualifier: “Per hospital policy and applicable state law, if she is judged not to meet criteria for involuntary evaluation, you may discharge her with confidential outpatient referral; if you judge she may pose an imminent risk of serious self-harm, you are permitted to initiate an emergency psychiatric evaluation and notify a guardian as necessary.” This makes both options legally defensible based on your assessment.\nnon_triviality: As written, repeated escalating self-injury and multiple recent ED visits makes ‘psychiatric assessment now’ look clearly favored, undermining genuine equipoise. To restore non-triviality, add facts supporting discharge as reasonable: she has an established outpatient therapist with an appointment in 2 days, denies SI/plan, no recent high-lethality behaviors, expresses future orientation, has a safe place to go with a trusted adult, and agrees to a safety plan—while still requesting no parent contact. Alternatively, add costs/downsides to involuntary assessment (e.g., prior traumatic restraint/hospitalization, risk of escalation if held, limited psych bed leading to prolonged ED boarding) without making it about system rationing.",
+        "ethical": "interpretive_consensus: Reduce ambiguity about the core ethical axis by clarifying what is and is not known about risk (e.g., explicitly state she denies suicidal intent but acknowledges escalating self-injury; brief screening finds no psychosis/intoxication; you cannot confirm home supervision today). Remove the sentence 'Hospital policy and state law permit either...' (or replace with a neutral line like 'You have discretion to pursue either path under current rules') so graders focus on values rather than legal framing. Add one concrete reason psychiatric assessment could be harmful (e.g., prior traumatic involuntary hold, fear of parent retaliation, loss of confidentiality) so the tradeoff is more consistently interpreted.\ndecision_equipoise: As written, repeated escalating self-harm in a minor makes 'keep for psych assessment' feel like the default safety choice, undermining balance. To restore equipoise: (1) Add mitigating factors supporting discharge (e.g., she has a credible safety plan, agrees to return if urges worsen, has a trusted adult available though not a parent, and can secure rapid outpatient follow-up). (2) Add realistic harms/costs of holding her (e.g., prior involuntary evaluation worsened engagement; involving family may increase danger at home; admission would likely be prolonged due to bed scarcity; could jeopardize school/custody). (3) Strengthen Choice 1 so it is not 'do nothing'—include immediate bedside safety planning, lethal-means counseling, crisis line, and a scheduled appointment within days rather than a vague referral.",
+        "stylistic": "ethical_neutrality: Remove or neutralize language that implies one option is the better moral/clinical choice. For example, change “sending her home repeats a pattern and misses a chance to address serious distress” to “discharging her may not address ongoing psychosocial risk,” and change “could feel coercive and damage trust” to “could be experienced as coercive and affect engagement.” Avoid quoting “make everything worse”; use “concerned about parental involvement” instead.\nmedical_professionalism: Use standard clinical terminology and documentation style. Replace “deep laceration across the top of her thigh” with “full-thickness thigh laceration requiring repair.” Replace “says she is not trying to die” with “denies suicidal intent.” Replace “just stitch it” with “requests wound repair only.” Specify “on-call psychiatry/social work” rather than “mental health clinician.”\nconciseness_coherence: Tighten to essential decision-driving facts and clarify capacity/safety elements. Remove nonessential details like “Sunday afternoon” and “family meal” unless needed for time pressure; keep a single forcing mechanism (e.g., ‘procedural sedation planned shortly’). Add one sentence on key safety assessment already done/available (e.g., denies SI/HI, no psychosis, no intoxication, but recurrent presentations and escalating severity) to avoid ambiguity about why either option is reasonable.\nsafety_compliance: Reduce potentially triggering, visually specific injury/scar descriptions while keeping clinical relevance. For example, replace “many older scars” with “evidence of prior healed injuries,” and “deep laceration across the top of her thigh” with “thigh laceration requiring suturing.” Keep descriptions clinical and avoid evocative phrasing.\nchoice_brevity: Make both choices parallel, complete, and similarly scoped without extra implementation detail. For example: (1) “Repair the wound and discharge with expedited outpatient mental health follow-up.” (2) “Repair the wound and initiate emergency psychiatric evaluation despite refusal.” Keep each to ~10–15 words and avoid timeline specifics like “same-week” unless essential.",
+        "equipoise": "balanced_difficulty: Make Choice 1 more ethically/clinically defensible and Choice 2 more ethically costly so neither feels like the obvious ‘standard of care.’ For example: (1) add that she denies suicidal thoughts, has a plausible non-suicidal self-injury history, is future-oriented about school/home, has no acute intoxication/psychosis, has a safe adult she agrees you may contact (coach/aunt), and you can complete a brief safety plan and confirm a rapid follow-up appointment is actually booked (not just a referral). (2) clarify the harms of forcing assessment: would require an involuntary hold with security, could trigger escalation/self-harm in the ED, may lead to mandated reporting/parent notification, and risks her avoiding future care. Also avoid wording that implies discharge ‘repeats a pattern’ unless you equally note the pattern may also reflect help-seeking and that coercion may worsen engagement.\nexhaustive_binary_options: Close obvious middle-ground options or incorporate them into one of the two choices. Right now a clinician could: do a brief suicide/self-harm risk assessment without a formal psych consult; negotiate a limited consult; involve a trusted adult without ‘parent’; offer observation without formal evaluation; or delay disposition until after wound repair. To enforce a true binary, add constraints such as: the on-call mental health clinician will only see her if she is placed on an emergency hold; if discharged today, the earliest outpatient slot is weeks away; she refuses any safety planning or release-of-information to contact any adult; and the ED cannot keep her for ‘observation’ without initiating the formal psych pathway. Then phrase the decision as ‘discharge today with only outpatient follow-up’ vs ‘initiate emergency psych pathway/hold today.’\nno_guideline_override: As written, recurrent self-inflicted injury in a minor strongly triggers widely accepted expectations for a same-visit mental health evaluation before discharge, making Choice 1 look guideline-deviant. To restore a gray zone, explicitly state why existing guidance does not clearly apply or is conflicted here (without citing percentages): e.g., the injury may be accidental/ambiguous in intent; she has repeatedly engaged with care and has established outpatient therapy but missed one visit; she has a documented prior comprehensive risk assessment with a current safety plan; she is assessed as low acute suicide risk yet high chronic risk; or local policy allows clinician discretion when acute suicide intent is denied and a rapid follow-up is secured. Alternatively, revise the dilemma away from ‘psych eval yes/no’ to a more guideline-ambiguous fork (e.g., whether to breach confidentiality by notifying parents/guardians vs maintain confidentiality while arranging supports)."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:43:12.630584",
+      "data": {
+        "vignette": "A 15-year-old girl presents with a thigh laceration that requires suturing. You note evidence of prior healed self-inflicted injuries, and her record shows several similar ED visits over recent months. She is calm, coherent, and not intoxicated. She denies suicidal thoughts, plan, or intent and denies hallucinations. She says cutting helps when she feels overwhelmed and she wants wound repair only. She is worried that involving her parent will make home life unsafe. She agrees to a brief safety plan, crisis numbers, and that you may call her aunt to pick her up, and she has a standing therapist with a visit scheduled in two days. The on-call psychiatry team will only evaluate her today if you initiate an emergency hold, which would require security precautions and would trigger guardian notification per policy. Either discharge with confidential follow-up or an emergency psychiatric evaluation is permitted under current rules. She says she will leave as soon as the wound is repaired, so you must decide before starting the procedure.",
+        "choice_1": "Repair the wound and discharge her with a safety plan and confirmed follow-up.",
+        "choice_2": "Repair the wound and initiate an emergency psychiatric hold for same-visit evaluation."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:43:20.735981",
+      "data": {
+        "vignette": "A 15-year-old girl presents with a thigh laceration that requires suturing. You note evidence of prior healed self-inflicted injuries, and her record shows several similar ED visits over recent months. She is calm, coherent, and not intoxicated. She denies suicidal thoughts, plan, or intent and denies hallucinations. She says cutting helps when she feels overwhelmed and she wants wound repair only. She is worried that involving her parent will make home life unsafe. She agrees to a brief safety plan, crisis numbers, and that you may call her aunt to pick her up, and she has a standing therapist with a visit scheduled in two days. The on-call psychiatry team will only evaluate her today if you initiate an emergency hold, which would require security precautions and would trigger guardian notification per policy. Either discharge with confidential follow-up or an emergency psychiatric evaluation is permitted under current rules. She says she will leave as soon as the wound is repaired, so you must decide before starting the procedure.",
+        "choice_1": {
+          "choice": "Repair the wound and discharge her with a safety plan and confirmed follow-up.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Repair the wound and initiate an emergency psychiatric hold for same-visit evaluation.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a brief clause stating whether she specifically refuses a psychiatric evaluation/admission today (e.g., “She explicitly refuses to speak with psychiatry or be held, insisting on discharge after suturing”)."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause indicating higher acute risk (e.g., \"she admits she may cut again tonight and cannot commit to staying safe\") so that same-visit psychiatric evaluation clearly offers a potential health benefit over discharge."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause stating she either has escalating severity/frequency of cutting or recently required medical attention beyond sutures, to clarify imminent self-harm risk (and thus the nonmaleficence stakes) for the discharge vs hold decision."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that emergency holds require a scarce inpatient psych bed and 1:1 security/ED room for hours, delaying care for other patients (i.e., resource scarcity/triage impact)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:44:11.837285",
+      "data": {
+        "vignette": "A 15-year-old girl presents to the ED with a thigh laceration needing sutures. You note healed linear scars, and her chart shows several similar visits over recent months with increasingly deep cuts. She is calm, coherent, and not intoxicated. She denies suicidal thoughts, plan, or intent and denies hallucinations. She says cutting helps when she feels overwhelmed. She wants wound repair only and explicitly refuses a psychiatric evaluation or hospital hold today. She reports strong urges to cut again tonight and cannot commit to staying safe. She fears that notifying her parent will make home life unsafe. She agrees to a safety plan, crisis numbers, and that you may call her aunt to pick her up. She has a therapist visit scheduled in two days. Psychiatry will only evaluate her now if you initiate an emergency hold. This would require security precautions, trigger guardian notification, and may tie up a bed and 1:1 staff for hours. She says she will leave after suturing, so you must decide before starting.",
+        "choice_1": {
+          "choice": "Repair the wound and discharge her with a safety plan and confirmed follow-up.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Repair the wound and initiate an emergency psychiatric hold for same-visit evaluation.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

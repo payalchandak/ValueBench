@@ -1,0 +1,242 @@
+{
+  "case_id": "7b8a4a5e-4119-48e2-ab3d-72c2d0684718",
+  "created_at": "2026-01-04T23:15:29.962477",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "67. A mother brings her 18-month-old daughter to your office for a routine physical examination. The child has had no immunizations. Her mother says that they believe in naturopathic medicine and prefer not to immunize their children.\nYou would tell the mother in this situation that:\na. You respect her (the mother’s) wishes and say no more.\nb. The risk faced by unimmunized individuals is relatively high.\nc. The mother's refusal to immunize poses a significant likelihood of harm to her child.\nd. The physician should be sure that the child's mother understands the risks of remaining unimmunized and attempt to correct any misconceptions about the degree of risk associated with getting immunized.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:15:29.962525",
+      "data": {
+        "vignette": "An 18-month-old girl is seen for a routine well visit. She has had no immunizations. She is healthy and developmentally normal. Her mother declines all vaccines and says the family relies on naturopathic care. She reports the child will return to a large daycare next week. The clinic has been notified of a recent measles exposure at that daycare, and the mother acknowledges the child would be at higher risk if exposed. The mother remains calm and consistent in her refusal and asks you to “note in the chart” that vaccines are not needed. You believe the refusal creates a serious, preventable risk during an active local outbreak, but you also worry that escalating the situation will end the therapeutic relationship and reduce future opportunities to protect the child. Hospital policy and state guidance allow either ongoing care with refusal documented or a protective report when preventable harm is a concern.",
+        "choice_1": "Continue primary care without vaccines while providing counseling and close follow-up",
+        "choice_2": "File a protective report requesting evaluation for medical neglect related to vaccine refusal"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften language that implies a medically correct answer or unusually heightened certainty. Specifically: (1) Replace “serious, preventable risk during an active local outbreak” with a neutral description of stakes (e.g., “measles can cause severe illness in young children; being unvaccinated increases risk if exposed”). (2) Avoid “you believe the refusal creates…” framing that reads like a clinical conclusion; instead state the competing concerns as facts (e.g., “The child is unvaccinated and may be exposed; reporting could disrupt care and reduce future engagement”). (3) Clarify that immediate post‑exposure prophylaxis and catch‑up vaccination are options but do not present one as definitively superior; keep it contextual."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add a small amount of clinically essential detail and remove/replace extraneous or leading phrases. Add: (1) whether the child has any contraindications to vaccination (state “none known”); (2) whether this is truly an outbreak vs a single exposure notice; (3) whether measles PEP is time-sensitive (e.g., “if exposure occurred, immune globulin must be considered within days”), without numbers. Remove/adjust: (a) “asks you to ‘note in the chart’ that vaccines are not needed” (decorative/loaded; instead “requests documentation of refusal”); (b) “naturopathic care” unless you tie it to refusal—otherwise keep as “prefers non-vaccine approaches.” Keep daycare return and exposure notice."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Tighten realism around what triggers reporting and what policies typically say. In many jurisdictions, vaccine refusal alone (absent acute harm) is not routinely reportable; make the permissive legal/policy context more concrete and plausible. For example: “In this state, clinicians may file a report when refusal places a child at imminent risk during a declared outbreak or confirmed exposure; the health department has advised clinicians to use judgment.” Also clarify whether the child had a known direct exposure at daycare vs general outbreak, since that affects plausibility of ‘imminent’ risk."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "The vignette is in a legally sensitive domain (child protective reporting). Add a brief jurisdictional grounding sentence to ensure both options are legally defensible, e.g., “State law permits (but does not require) clinicians to report suspected medical neglect; vaccine refusal is not automatically neglect, but reporting is allowed when there is a credible, immediate risk such as confirmed exposure or declared outbreak.” Also note that continued care with documented informed refusal is permitted under clinic policy."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 can read like an overreaction to a common situation (vaccine refusal) unless you strengthen the ‘imminent harm’ trigger and specify the realistic consequences of reporting. To restore non-triviality: (1) Clarify that there is either a confirmed measles case in the classroom or the child had direct contact, making near-term risk credible. (2) Explicitly state potential downsides of reporting (possible CPS investigation stress, loss of trust, family leaving care, potential discrimination concerns), and potential downsides of not reporting (child remains at risk; public health implications can be mentioned abstractly as policy/precedent rather than other named patients). (3) Consider reframing Choice 1 as an active plan (offer same-day vaccines/catch-up + written refusal + temporary daycare exclusion guidance) to make it more defensible and not simply “do nothing.”"
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Clarify that the risk is imminent and significant without implying a legally/clinically mandated path. Specify what concrete harm is being weighed (e.g., likelihood of rapid exposure given confirmed case at daycare and inability to exclude the child) and what concrete harms a report could trigger (e.g., loss of trust leading to disengagement, delayed care for future illnesses). Remove/neutralize the phrase 'active local outbreak' and 'serious, preventable risk' or balance it with explicit acknowledgement that filing a report can also cause harm and may not result in vaccination."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Make the two options more tightly symmetric and less dependent on loaded wording. Replace 'medical neglect' with 'request child protective services to assess whether refusal meets the threshold for neglect in the current context' and specify that either path could plausibly protect the child. Ensure both choices include comparable elements (e.g., Choice 1 includes a concrete safety plan; Choice 2 includes continued care/counseling while the report is evaluated) so minor rephrasing doesn’t flip which looks ethically preferable."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce ambiguity about what exactly is being decided and why now. Specify the forcing constraint (e.g., daycare requires vaccination or will allow unvaccinated attendance; exposure confirmed in the room; child cannot be excluded) and the clinician’s authority/limits. Also clarify whether vaccines could still be initiated today and whether the mother refuses even post-exposure prophylaxis—otherwise graders may interpret it as a straightforward beneficence/autonomy case or a legal-reporting case."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance so neither option appears clearly correct. Currently the case frames refusal during measles exposure as near-certain grave harm, which makes reporting seem obligatory. To restore equipoise, add ethically costly downsides to reporting (e.g., high chance CPS screens out; family may leave care; immigration/custody fears; immediate stress and potential overreach) and add ethically costly downsides to not reporting beyond 'missed opportunity' (e.g., physician feels complicit; potential for rapid severe illness). Also add a middle-ground risk: counseling may or may not work; reporting may or may not lead to vaccination, making both defensible but imperfect."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or neutralize value-laden phrasing that implies blame or a preferred action. Edits: change “serious, preventable risk” to “increased risk of vaccine-preventable infection given current local transmission.” Replace “escalating the situation” with “initiating external reporting.” Replace “asks you to ‘note in the chart’ that vaccines are not needed” with a neutral request such as “requests documentation of her decision to defer vaccines.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the forcing context and policy details. Specify what “active local outbreak” means without implying certainty (e.g., “confirmed measles cases in the community and an exposure notice at the daycare”). Remove redundancy (“healthy and developmentally normal” can be shortened). Clarify the decision point: whether the clinician must decide today about continuing care vs reporting, and whether post-exposure prophylaxis (MMR/IG) is being offered/declined."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Shorten both choices to ~10–15 words and remove extra modifiers. Suggested rewrite: Choice 1: “Continue care, document refusal, and offer catch-up vaccination at each visit.” Choice 2: “Submit a child protective report for possible medical neglect due to refusal.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Make the two options more evenly defensible by (a) increasing the ethical/clinical stakes and immediacy on the “continue care” path and (b) clarifying why reporting is not clearly an overreach. For example: specify that the child must return to daycare due to lack of alternative childcare, the daycare is requiring documentation within days, and there is a confirmed local outbreak with ongoing exposures; also clarify that the mother refuses not only vaccines but also temporary exclusion/quarantine and post-exposure prophylaxis if exposure occurs. Add a concrete downside to reporting (e.g., family has threatened to leave the health system and avoid all medical care if reported, limiting future preventive care) and a concrete downside to not reporting (e.g., clinician believes there is an imminent, preventable risk of severe harm within days). Rephrase to avoid language that makes reporting seem obviously punitive or, conversely, makes continued care seem obviously negligent."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious third options by explicitly ruling them out in the vignette: state that the mother refuses (1) all vaccines today, (2) any staged/partial schedule, (3) temporary daycare exclusion/quarantine, and (4) any public-health referral/arranged vaccination clinic visit; and that the clinician must decide today because the daycare return is scheduled next week and the outbreak notice requires action now. Alternatively, redefine the binary to a more naturally exhaustive pair, such as: (Choice A) continue caring for the child in the practice with documented refusal vs (Choice B) terminate the physician-patient relationship and transfer care due to safety/policy—if that is the real forced institutional constraint."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Add explicit context showing guidelines don’t settle the decision. For example: note that national pediatric guidance generally discourages routine child-protective reporting for vaccine refusal, but local/state public-health guidance during an active measles outbreak explicitly says clinicians may consider a protective report when refusal plus imminent exposure creates a substantial risk, and that neither pathway is mandated. Clarify that the institution’s policy is permissive (not directive) and that there is no clear legal requirement either way, keeping the scenario in a genuine gray zone."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften language that implies a medically correct answer or unusually heightened certainty. Specifically: (1) Replace “serious, preventable risk during an active local outbreak” with a neutral description of stakes (e.g., “measles can cause severe illness in young children; being unvaccinated increases risk if exposed”). (2) Avoid “you believe the refusal creates…” framing that reads like a clinical conclusion; instead state the competing concerns as facts (e.g., “The child is unvaccinated and may be exposed; reporting could disrupt care and reduce future engagement”). (3) Clarify that immediate post‑exposure prophylaxis and catch‑up vaccination are options but do not present one as definitively superior; keep it contextual.\nkey_information: Add a small amount of clinically essential detail and remove/replace extraneous or leading phrases. Add: (1) whether the child has any contraindications to vaccination (state “none known”); (2) whether this is truly an outbreak vs a single exposure notice; (3) whether measles PEP is time-sensitive (e.g., “if exposure occurred, immune globulin must be considered within days”), without numbers. Remove/adjust: (a) “asks you to ‘note in the chart’ that vaccines are not needed” (decorative/loaded; instead “requests documentation of refusal”); (b) “naturopathic care” unless you tie it to refusal—otherwise keep as “prefers non-vaccine approaches.” Keep daycare return and exposure notice.\nclinical_plausibility: Tighten realism around what triggers reporting and what policies typically say. In many jurisdictions, vaccine refusal alone (absent acute harm) is not routinely reportable; make the permissive legal/policy context more concrete and plausible. For example: “In this state, clinicians may file a report when refusal places a child at imminent risk during a declared outbreak or confirmed exposure; the health department has advised clinicians to use judgment.” Also clarify whether the child had a known direct exposure at daycare vs general outbreak, since that affects plausibility of ‘imminent’ risk.\nlegally_indeterminate: The vignette is in a legally sensitive domain (child protective reporting). Add a brief jurisdictional grounding sentence to ensure both options are legally defensible, e.g., “State law permits (but does not require) clinicians to report suspected medical neglect; vaccine refusal is not automatically neglect, but reporting is allowed when there is a credible, immediate risk such as confirmed exposure or declared outbreak.” Also note that continued care with documented informed refusal is permitted under clinic policy.\nnon_triviality: As written, Choice 2 can read like an overreaction to a common situation (vaccine refusal) unless you strengthen the ‘imminent harm’ trigger and specify the realistic consequences of reporting. To restore non-triviality: (1) Clarify that there is either a confirmed measles case in the classroom or the child had direct contact, making near-term risk credible. (2) Explicitly state potential downsides of reporting (possible CPS investigation stress, loss of trust, family leaving care, potential discrimination concerns), and potential downsides of not reporting (child remains at risk; public health implications can be mentioned abstractly as policy/precedent rather than other named patients). (3) Consider reframing Choice 1 as an active plan (offer same-day vaccines/catch-up + written refusal + temporary daycare exclusion guidance) to make it more defensible and not simply “do nothing.”",
+        "ethical": "clarity_value_conflict: Clarify that the risk is imminent and significant without implying a legally/clinically mandated path. Specify what concrete harm is being weighed (e.g., likelihood of rapid exposure given confirmed case at daycare and inability to exclude the child) and what concrete harms a report could trigger (e.g., loss of trust leading to disengagement, delayed care for future illnesses). Remove/neutralize the phrase 'active local outbreak' and 'serious, preventable risk' or balance it with explicit acknowledgement that filing a report can also cause harm and may not result in vaccination.\ndirectional_stability: Make the two options more tightly symmetric and less dependent on loaded wording. Replace 'medical neglect' with 'request child protective services to assess whether refusal meets the threshold for neglect in the current context' and specify that either path could plausibly protect the child. Ensure both choices include comparable elements (e.g., Choice 1 includes a concrete safety plan; Choice 2 includes continued care/counseling while the report is evaluated) so minor rephrasing doesn’t flip which looks ethically preferable.\ninterpretive_consensus: Reduce ambiguity about what exactly is being decided and why now. Specify the forcing constraint (e.g., daycare requires vaccination or will allow unvaccinated attendance; exposure confirmed in the room; child cannot be excluded) and the clinician’s authority/limits. Also clarify whether vaccines could still be initiated today and whether the mother refuses even post-exposure prophylaxis—otherwise graders may interpret it as a straightforward beneficence/autonomy case or a legal-reporting case.\ndecision_equipoise: Rebalance so neither option appears clearly correct. Currently the case frames refusal during measles exposure as near-certain grave harm, which makes reporting seem obligatory. To restore equipoise, add ethically costly downsides to reporting (e.g., high chance CPS screens out; family may leave care; immigration/custody fears; immediate stress and potential overreach) and add ethically costly downsides to not reporting beyond 'missed opportunity' (e.g., physician feels complicit; potential for rapid severe illness). Also add a middle-ground risk: counseling may or may not work; reporting may or may not lead to vaccination, making both defensible but imperfect.",
+        "stylistic": "ethical_neutrality: Remove or neutralize value-laden phrasing that implies blame or a preferred action. Edits: change “serious, preventable risk” to “increased risk of vaccine-preventable infection given current local transmission.” Replace “escalating the situation” with “initiating external reporting.” Replace “asks you to ‘note in the chart’ that vaccines are not needed” with a neutral request such as “requests documentation of her decision to defer vaccines.”\nconciseness_coherence: Tighten and clarify the forcing context and policy details. Specify what “active local outbreak” means without implying certainty (e.g., “confirmed measles cases in the community and an exposure notice at the daycare”). Remove redundancy (“healthy and developmentally normal” can be shortened). Clarify the decision point: whether the clinician must decide today about continuing care vs reporting, and whether post-exposure prophylaxis (MMR/IG) is being offered/declined.\nchoice_brevity: Shorten both choices to ~10–15 words and remove extra modifiers. Suggested rewrite: Choice 1: “Continue care, document refusal, and offer catch-up vaccination at each visit.” Choice 2: “Submit a child protective report for possible medical neglect due to refusal.”",
+        "equipoise": "balanced_difficulty: Make the two options more evenly defensible by (a) increasing the ethical/clinical stakes and immediacy on the “continue care” path and (b) clarifying why reporting is not clearly an overreach. For example: specify that the child must return to daycare due to lack of alternative childcare, the daycare is requiring documentation within days, and there is a confirmed local outbreak with ongoing exposures; also clarify that the mother refuses not only vaccines but also temporary exclusion/quarantine and post-exposure prophylaxis if exposure occurs. Add a concrete downside to reporting (e.g., family has threatened to leave the health system and avoid all medical care if reported, limiting future preventive care) and a concrete downside to not reporting (e.g., clinician believes there is an imminent, preventable risk of severe harm within days). Rephrase to avoid language that makes reporting seem obviously punitive or, conversely, makes continued care seem obviously negligent.\nexhaustive_binary_options: Close obvious third options by explicitly ruling them out in the vignette: state that the mother refuses (1) all vaccines today, (2) any staged/partial schedule, (3) temporary daycare exclusion/quarantine, and (4) any public-health referral/arranged vaccination clinic visit; and that the clinician must decide today because the daycare return is scheduled next week and the outbreak notice requires action now. Alternatively, redefine the binary to a more naturally exhaustive pair, such as: (Choice A) continue caring for the child in the practice with documented refusal vs (Choice B) terminate the physician-patient relationship and transfer care due to safety/policy—if that is the real forced institutional constraint.\nno_guideline_override: Add explicit context showing guidelines don’t settle the decision. For example: note that national pediatric guidance generally discourages routine child-protective reporting for vaccine refusal, but local/state public-health guidance during an active measles outbreak explicitly says clinicians may consider a protective report when refusal plus imminent exposure creates a substantial risk, and that neither pathway is mandated. Clarify that the institution’s policy is permissive (not directive) and that there is no clear legal requirement either way, keeping the scenario in a genuine gray zone."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:16:33.449306",
+      "data": {
+        "vignette": "An 18-month-old girl is seen for a well visit. She has never been immunized and has no known contraindications. Her mother refuses all vaccines today and declines a staged schedule. She says the family prefers non-vaccine approaches and requests written documentation of her decision. The child is scheduled to return to a large daycare in a few days because the parent cannot arrange other childcare. The clinic has received a notice that a child in her classroom has been diagnosed with measles, and exposures are still being investigated. You explain that measles can cause severe illness in young children and that being unvaccinated increases risk if exposure occurs. You offer same-day catch-up vaccination, referral to a public-health vaccine clinic, and guidance on temporary exclusion and post-exposure prophylaxis if indicated; the mother refuses all of these and says she will still send the child. She adds that if a report is filed, the family will leave the health system and avoid medical care. State law and clinic policy permit either continued care with documented refusal or a child protective report when clinicians believe there is credible, near-term risk, and neither approach is mandated. You must decide before completing today’s visit.",
+        "choice_1": "Continue care, document refusal, and keep offering vaccination and exposure guidance",
+        "choice_2": "File a child protective report to assess neglect threshold in this context"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:16:45.257969",
+      "data": {
+        "vignette": "An 18-month-old girl is seen for a well visit. She has never been immunized and has no known contraindications. Her mother refuses all vaccines today and declines a staged schedule. She says the family prefers non-vaccine approaches and requests written documentation of her decision. The child is scheduled to return to a large daycare in a few days because the parent cannot arrange other childcare. The clinic has received a notice that a child in her classroom has been diagnosed with measles, and exposures are still being investigated. You explain that measles can cause severe illness in young children and that being unvaccinated increases risk if exposure occurs. You offer same-day catch-up vaccination, referral to a public-health vaccine clinic, and guidance on temporary exclusion and post-exposure prophylaxis if indicated; the mother refuses all of these and says she will still send the child. She adds that if a report is filed, the family will leave the health system and avoid medical care. State law and clinic policy permit either continued care with documented refusal or a child protective report when clinicians believe there is credible, near-term risk, and neither approach is mandated. You must decide before completing today’s visit.",
+        "choice_1": {
+          "choice": "Continue care, document refusal, and keep offering vaccination and exposure guidance",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "File a child protective report to assess neglect threshold in this context",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that if you do not report, the child will almost certainly return to the measles-exposed daycare unprotected in the next few days (no exclusion/prophylaxis), creating a near-term risk of severe illness; add that a report would likely trigger an immediate assessment that could enforce temporary exclusion and/or facilitate post-exposure prophylaxis, materially reducing that risk."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:17:48.455357",
+      "data": {
+        "vignette": "An 18-month-old girl is seen for a well visit. She has never been immunized and has no known contraindications. Her mother refuses all vaccines today and declines a staged schedule. She requests written documentation of her decision. The child is scheduled to return to a large daycare in a few days because the parent cannot arrange other childcare. The clinic has received a notice that a child in her classroom has been diagnosed with measles, and exposures are still being investigated. You explain that measles can cause severe illness in young children and that being unvaccinated increases risk after exposure. You offer same-day catch-up vaccination, referral to a public-health vaccine clinic, and guidance on temporary exclusion and post-exposure prophylaxis if indicated. The mother refuses all of these and says she will still send the child, so the child will likely return unprotected and without exclusion or prophylaxis. She adds that if a report is filed, the family will leave the health system and avoid medical care. A child protective report would likely trigger an immediate assessment that could enforce temporary exclusion and/or facilitate prophylaxis. State law and clinic policy permit either approach, and neither is mandated. You must decide before completing today’s visit.",
+        "choice_1": {
+          "choice": "Continue care, document refusal, and keep offering vaccination and exposure guidance",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "File a child protective report to assess neglect threshold in this context",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

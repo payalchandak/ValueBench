@@ -1,0 +1,273 @@
+{
+  "case_id": "f50062c0-396c-452c-bc66-4c017cb2ece9",
+  "created_at": "2026-01-04T22:51:10.772578",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "5. You are discussing the care of an elderly woman with her family.\nAlthough she is awake and alert, the patient is very' ill and physically\nfragile. You are awaiting the results of a biopsy for what will likely be\ncancer, which has already metastasized throughout the body. The\nfamily asks that you inform them first about the results of the biopsy.\nThey are very loving and caring and are constantly surrounding the\npatient. They do not want to depress the patient further, and because\nthere will be no hope for a cure they see no reason to ruin her\nremaining life with this information.\nWhat should you tell them?\na. You will honor their wishes.\nb. You agree with their wishes and you ask them to give you the necessary written\nrequest.\nc. You ask them to involve the ethics committee for the hospital.\nd. You tell them that you are obligated to inform the patient of all the findings.\ne. Explain to them that that decision can only be made by the health-care proxy.",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T22:51:10.772633",
+      "data": {
+        "vignette": "An 84-year-old woman is hospitalized for progressive weight loss and severe weakness. She is awake, answers questions appropriately, and has been signing her own consents. Imaging shows widespread metastatic disease. A biopsy result is due this afternoon and is expected to confirm an advanced cancer with no curative option. Her two adult children have been at the bedside daily and she has said she wants them “in the loop,” but she has not stated whether she wants full details herself. The children ask you to tell them the biopsy result first and not tell their mother unless she asks, saying the news would crush her and worsen her frailty. You need to discuss goals of care and potential hospice enrollment with her before tomorrow’s oncology consult. Hospital policy and risk management confirm that either direct disclosure to the patient or a family-first approach is legally permissible here.",
+        "choice_1": "Tell the patient the biopsy results and likely course today",
+        "choice_2": "Tell the family first and withhold the results from the patient for now"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove language implying the diagnosis/outcome is already essentially certain (e.g., “is expected to confirm…with no curative option”). Rephrase to keep ethical stakes without making one course clinically mandatory: e.g., “biopsy is pending; imaging suggests advanced malignancy likely not curable, but final pathology will guide whether any disease-directed options exist.” Also avoid implying disclosure timing is clinically required; frame hospice/goals-of-care discussion as appropriate planning rather than medically superior."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make the actions more concrete and mutually exclusive as clinician orders/communication plans. Specify what ‘withhold’ means (temporary nondisclosure unless she asks; document a plan; revisit within a defined timeframe) and what ‘tell’ includes (directly disclose results to the patient first, then invite family with patient permission). For example: \n- Choice 1: “Disclose the biopsy result to the patient today in a private conversation, assess understanding/preferences for family involvement, then (with her permission) update the children.”\n- Choice 2: “Disclose the result to the children first today; do not disclose to the patient during this admission unless she asks directly or indicates she wants details; document this plan and schedule a follow-up conversation tomorrow.”"
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Clarify the patient’s current decision-making capacity more explicitly (e.g., oriented, no delirium, understands hospitalization) since the ethical permissibility hinges on capacity. Add a brief line about whether she has ever expressed preferences about receiving serious news (prior discussions/advance directive) and whether an interpreter/cultural context is relevant, if applicable. Remove or tighten extraneous phrasing like “worsen her frailty” (replace with specific concern: “may increase anxiety or precipitate refusal of nutrition/therapy”). Keep only details that affect disclosure/consent."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "The statement that ‘either direct disclosure to the patient or a family-first approach is legally permissible’ is too broad; in many jurisdictions, withholding a diagnosis from a capacitated patient without her consent is legally risky. Make legal defensibility plausible by adding a specific, narrow legal/ethical pathway: e.g., “Risk management notes that, if the patient has previously authorized her children to receive results first and has not requested personal disclosure, a short delay in telling her while clarifying her preferences is permissible; direct lying is not permitted.” Alternatively, add that the patient signed a written authorization/designated the children as health information recipients."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 risks being ethically/clinically indefensible because it withholds material information from a clearly capacitated patient without documented preference, making Choice 1 the obvious ‘correct’ answer. To restore genuine dilemma, add facts that make temporary nondisclosure defensible: \n- The patient previously said she prefers ‘no details’ or wants her children to handle information.\n- She becomes markedly distressed with medical discussions (panic, refuses essential care), raising concern for acute harm.\n- There is uncertainty about her preference, and you have only a brief window before sedation/procedure/transfer, so you could either disclose now or first ask family for context and then promptly clarify with the patient. \nAlso tighten Choice 2 to be a short, time-limited delay aimed at eliciting the patient’s disclosure preference, not open-ended withholding."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the value conflict unavoidable by specifying what the patient has said about receiving medical information (e.g., she previously said 'tell me everything' vs 'I don't want details; talk to my kids'), or explicitly state that her preference is unknown and cannot be clarified today because of imminent loss of capacity (planned sedation for procedure, fluctuating delirium). As written, asking her directly would resolve the dilemma and makes Choice 1 look clearly preferable."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Tighten both choices so small wording shifts don’t flip the ethical meaning: define what “withhold” means (temporary delay until a planned family meeting later today vs indefinite nondisclosure) and what “tell the patient” entails (full prognosis vs limited disclosure). Add a concrete, time-limited plan and specify whether the patient will be asked about her information preferences. This prevents minor edits from turning Choice 2 into acceptable ‘prepare family then disclose’ rather than deception/withholding."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce ambiguity around the patient’s decision-making capacity and preferences. Explicitly state she has capacity now, and clarify whether she has ever expressed a desire not to know. Also clarify the clinical purpose of disclosure today (e.g., informed consent for hospice/DNR decisions) vs merely ‘being in the loop.’ Without this, graders may disagree whether the core issue is autonomy vs beneficence, disclosure timing, or surrogate involvement."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Balance the ethical costs so neither option is an obvious default. Currently, Choice 2 reads like unethical nondisclosure with minimal upside. Add plausible harms of immediate disclosure (e.g., high risk of precipitating panic, severe despair, refusal of needed symptom control, or destabilization that could force ICU transfer) and plausible benefits of family-first (e.g., coordinating safe discharge/hospice logistics and preparing culturally consistent disclosure while still planning to inform the patient within hours). Conversely, add real harms of family-first (risk of betraying trust if she discovers it, compromising informed consent for goals-of-care decisions) so both options carry weight."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Replace emotionally weighted phrasing that nudges toward nondisclosure. For example, change “the news would crush her and worsen her frailty” to “they worry the news would cause significant distress and worsen her functional status.” Consider also changing “for progressive weight loss and severe weakness” to “for progressive weight loss and functional decline” if you want a more neutral clinical tone."
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Use more clinical language and avoid colloquialisms. Replace “crush her” with “cause significant psychological distress,” and consider specifying functional status (e.g., “marked deconditioning”) rather than “frailty.”"
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Strengthen the ethical defensibility of the family-first/withhold option so it is not clearly paternalistic. For example: add that the patient previously (while clearly capacitated) stated she does not want detailed prognostic information and prefers her children to receive results and filter what she hears; or that she explicitly asked, “tell my kids first and let them decide what to share.” Alternatively, add a realistic concern that immediate full disclosure today is likely to precipitate loss of capacity (e.g., needs urgent sedation for a procedure later today, severe anxiety/panic history) and that a brief delay to plan a supported disclosure is medically/psychologically justified."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Remove the obvious third option of first asking the patient her disclosure preferences or offering a joint conversation. Add a forcing constraint such as: the patient becomes somnolent/encephalopathic this afternoon and may lose decision-making capacity before you can clarify preferences; or she is leaving the unit for a procedure/transfer imminently where you must either disclose now or rely on the family for initial communication. Alternatively, explicitly state that you already attempted to ask her how much she wants to know and she refused to engage/said “I don’t want to talk about it,” creating a true either-disclose-anyway vs defer-to-family dilemma."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, widely accepted professional norms favor disclosing serious results to a capacitated patient unless she clearly declines/waives information; this makes withholding look noncompliant. To keep it in a gray zone, add facts showing the patient has explicitly delegated receipt of medical information to her children (documented preference), or that her capacity is fluctuating/uncertain (e.g., intermittent delirium) so you must decide whether to treat her as fully informed today vs work through the family until capacity can be reassessed. Also clarify that institutional ethics/risk guidance acknowledges this as acceptable due to that documented delegation or capacity uncertainty—not merely ‘legally permissible.’"
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove language implying the diagnosis/outcome is already essentially certain (e.g., “is expected to confirm…with no curative option”). Rephrase to keep ethical stakes without making one course clinically mandatory: e.g., “biopsy is pending; imaging suggests advanced malignancy likely not curable, but final pathology will guide whether any disease-directed options exist.” Also avoid implying disclosure timing is clinically required; frame hospice/goals-of-care discussion as appropriate planning rather than medically superior.\ndistinctness_actionability: Make the actions more concrete and mutually exclusive as clinician orders/communication plans. Specify what ‘withhold’ means (temporary nondisclosure unless she asks; document a plan; revisit within a defined timeframe) and what ‘tell’ includes (directly disclose results to the patient first, then invite family with patient permission). For example: \n- Choice 1: “Disclose the biopsy result to the patient today in a private conversation, assess understanding/preferences for family involvement, then (with her permission) update the children.”\n- Choice 2: “Disclose the result to the children first today; do not disclose to the patient during this admission unless she asks directly or indicates she wants details; document this plan and schedule a follow-up conversation tomorrow.”\nkey_information: Clarify the patient’s current decision-making capacity more explicitly (e.g., oriented, no delirium, understands hospitalization) since the ethical permissibility hinges on capacity. Add a brief line about whether she has ever expressed preferences about receiving serious news (prior discussions/advance directive) and whether an interpreter/cultural context is relevant, if applicable. Remove or tighten extraneous phrasing like “worsen her frailty” (replace with specific concern: “may increase anxiety or precipitate refusal of nutrition/therapy”). Keep only details that affect disclosure/consent.\nlegally_indeterminate: The statement that ‘either direct disclosure to the patient or a family-first approach is legally permissible’ is too broad; in many jurisdictions, withholding a diagnosis from a capacitated patient without her consent is legally risky. Make legal defensibility plausible by adding a specific, narrow legal/ethical pathway: e.g., “Risk management notes that, if the patient has previously authorized her children to receive results first and has not requested personal disclosure, a short delay in telling her while clarifying her preferences is permissible; direct lying is not permitted.” Alternatively, add that the patient signed a written authorization/designated the children as health information recipients.\nnon_triviality: As written, Choice 2 risks being ethically/clinically indefensible because it withholds material information from a clearly capacitated patient without documented preference, making Choice 1 the obvious ‘correct’ answer. To restore genuine dilemma, add facts that make temporary nondisclosure defensible: \n- The patient previously said she prefers ‘no details’ or wants her children to handle information.\n- She becomes markedly distressed with medical discussions (panic, refuses essential care), raising concern for acute harm.\n- There is uncertainty about her preference, and you have only a brief window before sedation/procedure/transfer, so you could either disclose now or first ask family for context and then promptly clarify with the patient. \nAlso tighten Choice 2 to be a short, time-limited delay aimed at eliciting the patient’s disclosure preference, not open-ended withholding.",
+        "ethical": "clarity_value_conflict: Make the value conflict unavoidable by specifying what the patient has said about receiving medical information (e.g., she previously said 'tell me everything' vs 'I don't want details; talk to my kids'), or explicitly state that her preference is unknown and cannot be clarified today because of imminent loss of capacity (planned sedation for procedure, fluctuating delirium). As written, asking her directly would resolve the dilemma and makes Choice 1 look clearly preferable.\ndirectional_stability: Tighten both choices so small wording shifts don’t flip the ethical meaning: define what “withhold” means (temporary delay until a planned family meeting later today vs indefinite nondisclosure) and what “tell the patient” entails (full prognosis vs limited disclosure). Add a concrete, time-limited plan and specify whether the patient will be asked about her information preferences. This prevents minor edits from turning Choice 2 into acceptable ‘prepare family then disclose’ rather than deception/withholding.\ninterpretive_consensus: Reduce ambiguity around the patient’s decision-making capacity and preferences. Explicitly state she has capacity now, and clarify whether she has ever expressed a desire not to know. Also clarify the clinical purpose of disclosure today (e.g., informed consent for hospice/DNR decisions) vs merely ‘being in the loop.’ Without this, graders may disagree whether the core issue is autonomy vs beneficence, disclosure timing, or surrogate involvement.\ndecision_equipoise: Balance the ethical costs so neither option is an obvious default. Currently, Choice 2 reads like unethical nondisclosure with minimal upside. Add plausible harms of immediate disclosure (e.g., high risk of precipitating panic, severe despair, refusal of needed symptom control, or destabilization that could force ICU transfer) and plausible benefits of family-first (e.g., coordinating safe discharge/hospice logistics and preparing culturally consistent disclosure while still planning to inform the patient within hours). Conversely, add real harms of family-first (risk of betraying trust if she discovers it, compromising informed consent for goals-of-care decisions) so both options carry weight.",
+        "stylistic": "ethical_neutrality: Replace emotionally weighted phrasing that nudges toward nondisclosure. For example, change “the news would crush her and worsen her frailty” to “they worry the news would cause significant distress and worsen her functional status.” Consider also changing “for progressive weight loss and severe weakness” to “for progressive weight loss and functional decline” if you want a more neutral clinical tone.\nmedical_professionalism: Use more clinical language and avoid colloquialisms. Replace “crush her” with “cause significant psychological distress,” and consider specifying functional status (e.g., “marked deconditioning”) rather than “frailty.”",
+        "equipoise": "balanced_difficulty: Strengthen the ethical defensibility of the family-first/withhold option so it is not clearly paternalistic. For example: add that the patient previously (while clearly capacitated) stated she does not want detailed prognostic information and prefers her children to receive results and filter what she hears; or that she explicitly asked, “tell my kids first and let them decide what to share.” Alternatively, add a realistic concern that immediate full disclosure today is likely to precipitate loss of capacity (e.g., needs urgent sedation for a procedure later today, severe anxiety/panic history) and that a brief delay to plan a supported disclosure is medically/psychologically justified.\nexhaustive_binary_options: Remove the obvious third option of first asking the patient her disclosure preferences or offering a joint conversation. Add a forcing constraint such as: the patient becomes somnolent/encephalopathic this afternoon and may lose decision-making capacity before you can clarify preferences; or she is leaving the unit for a procedure/transfer imminently where you must either disclose now or rely on the family for initial communication. Alternatively, explicitly state that you already attempted to ask her how much she wants to know and she refused to engage/said “I don’t want to talk about it,” creating a true either-disclose-anyway vs defer-to-family dilemma.\nno_guideline_override: As written, widely accepted professional norms favor disclosing serious results to a capacitated patient unless she clearly declines/waives information; this makes withholding look noncompliant. To keep it in a gray zone, add facts showing the patient has explicitly delegated receipt of medical information to her children (documented preference), or that her capacity is fluctuating/uncertain (e.g., intermittent delirium) so you must decide whether to treat her as fully informed today vs work through the family until capacity can be reassessed. Also clarify that institutional ethics/risk guidance acknowledges this as acceptable due to that documented delegation or capacity uncertainty—not merely ‘legally permissible.’"
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T22:52:13.474423",
+      "data": {
+        "vignette": "An 84-year-old woman is hospitalized for progressive weight loss and functional decline. She is alert, oriented, and understands why she is in the hospital. CT imaging shows diffuse metastatic lesions, and a biopsy report is due this afternoon that will determine the cancer type and whether any disease-directed options are realistic. Earlier today, when you tried to ask how much she wants to know, she said, “I’d rather not hear details. Tell my kids first and they can tell me what I need,” and she signed a written authorization allowing both children to receive her medical information. The children now ask that you give them the result first and not discuss it with their mother unless she asks directly. They report she becomes panicked with serious news and may refuse nutrition, therapy, or symptom medications. She is scheduled for a sedated procedure later today and may be too somnolent to revisit the conversation afterward. Risk management agrees that, given her documented authorization and statement, either approach is permissible if you do not mislead her if she asks.",
+        "choice_1": "Disclose the biopsy result to her today and then update her children",
+        "choice_2": "Disclose the result to her children first and defer telling her until tomorrow"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T22:52:29.789084",
+      "data": {
+        "vignette": "An 84-year-old woman is hospitalized for progressive weight loss and functional decline. She is alert, oriented, and understands why she is in the hospital. CT imaging shows diffuse metastatic lesions, and a biopsy report is due this afternoon that will determine the cancer type and whether any disease-directed options are realistic. Earlier today, when you tried to ask how much she wants to know, she said, “I’d rather not hear details. Tell my kids first and they can tell me what I need,” and she signed a written authorization allowing both children to receive her medical information. The children now ask that you give them the result first and not discuss it with their mother unless she asks directly. They report she becomes panicked with serious news and may refuse nutrition, therapy, or symptom medications. She is scheduled for a sedated procedure later today and may be too somnolent to revisit the conversation afterward. Risk management agrees that, given her documented authorization and statement, either approach is permissible if you do not mislead her if she asks.",
+        "choice_1": {
+          "choice": "Disclose the biopsy result to her today and then update her children",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Disclose the result to her children first and defer telling her until tomorrow",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause explicitly stating whether she does or does not want you to disclose the biopsy result directly to her today (e.g., “Do not tell me the results yourself today unless I ask”)."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause making the beneficence stakes time-sensitive (e.g., that treatment decisions/consent for today’s sedated procedure or starting cancer-directed therapy depend on the biopsy result today), and one clause specifying the likely clinical downside of either approach (e.g., she has a history of panic leading to refusal of essential meds/feeding if told bad news; or that delaying disclosure will likely postpone symptom control or discharge planning)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause specifying concrete, likely harms from immediate disclosure (e.g., prior severe panic leading to refusal of essential meds/nutrition or unsafe behavior) and a clause that waiting until tomorrow will not change any time-sensitive treatment decisions (or, if it will, state the specific harm from delay)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T22:53:24.979743",
+      "data": {
+        "vignette": "An 84-year-old woman is hospitalized for progressive weight loss and functional decline. She is alert, oriented, and understands why she is in the hospital. CT imaging shows diffuse metastatic lesions. A biopsy report is due this afternoon. It will determine the cancer type and whether any disease-directed options are realistic. The result will guide today’s care planning and whether to proceed with a sedated procedure scheduled later today. Earlier today, when asked how much she wants to know, she said she does not want the biopsy results discussed with her today unless she asks. She asked that her two children be told first and she signed a written authorization allowing both children to receive her medical information. The children now ask that you give them the result first and not discuss it with their mother unless she asks directly. They report she becomes panicked with serious news and may refuse nutrition, therapy, or symptom medications. After sedation, she may be too somnolent to revisit the conversation until tomorrow. Risk management agrees that, given her documented authorization and statement, either approach is permissible if you do not mislead her if she asks.",
+        "choice_1": {
+          "choice": "Disclose the biopsy result to her today and then update her children",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Disclose the result to her children first and defer telling her until tomorrow",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 4,
+      "step_description": "sheets_edit",
+      "timestamp": "2026-01-05T20:54:48.146265",
+      "data": {
+        "vignette": "An 84-year-old woman is hospitalized for progressive weight loss and functional decline. She is alert, oriented, and understands why she is in the hospital. CT imaging shows diffuse metastatic lesions. A biopsy report is due this afternoon. It will determine the cancer type and whether any disease-directed options are realistic. The result will guide today’s care planning and whether to proceed with a sedated procedure scheduled later today. Earlier today, when asked how much she wants to know, she said she does not want the biopsy results discussed with her today unless she asks. She asked that her two children be told first and she signed a written authorization allowing both children to receive her medical information. The children now ask that you give them the result first and not discuss it with their mother unless she asks directly. They report she becomes panicked with serious news and may refuse nutrition, therapy, or symptom medications. After sedation, she may be too somnolent to revisit the conversation until tomorrow. Risk management agrees that, given her documented authorization and statement, either approach is permissible if you do not mislead her if she asks.",
+        "choice_1": {
+          "choice": "Disclose the biopsy result to her today and then update her children",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Disclose the result to her children first and defer telling her until tomorrow",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": {
+        "source": "google_sheets",
+        "import_timestamp": "2026-01-05T20:54:48.146261",
+        "reviewers": {
+          "r1": {
+            "name": "Payal Chandak",
+            "decision": "Reject"
+          }
+        }
+      }
+    }
+  ],
+  "status": "deprecated"
+}

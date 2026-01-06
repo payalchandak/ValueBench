@@ -1,0 +1,236 @@
+{
+  "case_id": "c931ff15-21f1-49d5-b208-44471ea3dbf1",
+  "created_at": "2026-01-04T23:18:16.597106",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "19. A 67-year-old woman is diagnosed with breast cancer. She is fully alert\nand very specifically both verbally and in writing tells you that she does\nnot want to have surgery on her breast to remove the tumor. She fully\nunderstands her condition and treatment options. This is a decision her\nhusband and son both disagree with. Over the next several weeks the\npatient becomes confused and loses the capacity to understand the\ndetails of her medical care. The husband and son now approach you to\nperform the surgery.\nWhich of the following is most appropriate?\na. Refuse to do surgery and follow the original advance directive.\nb. Perform the surgery only if the request is in writing.\nc. Honor the family’s request and perform the surgery.\nd. Consult the ethics committee.\ne. Perform the surgery only if you really believe that it will benefit the patient in the\nlong term.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:18:16.597156",
+      "data": {
+        "vignette": "A 67-year-old woman is diagnosed with operable breast cancer. At diagnosis she is fully alert and demonstrates clear understanding of the disease, the recommended surgery, and alternatives. She states repeatedly that she does not want breast surgery under any circumstances and signs a refusal that is scanned into the chart. Her husband and adult son strongly disagree and ask you to “do what’s best” if she changes. Several weeks later she develops worsening confusion from an unrelated medical illness and now cannot explain her condition or weigh options. The tumor board slot for surgery is available next week, and delaying longer may narrow treatment options. Her husband and son, as her default surrogates, request that you proceed with surgery now. Hospital policy and state law permit either honoring a prior documented refusal or following a surrogate’s current consent when capacity is lost.",
+        "choice_1": "Decline surgery and continue non-surgical cancer management",
+        "choice_2": "Schedule breast surgery based on the husband and son’s consent"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove language implying surgery is the medically correct/best option or that delay is clinically determinative. Replace “delaying longer may narrow treatment options” with a neutral, non-directive statement such as “timing may affect which treatment pathways remain feasible, and the surgical team needs an answer this week to hold the slot.” Avoid “do what’s best” unless clearly attributed as family’s view; add a brief note that non-surgical options exist but have different tradeoffs without implying inferiority."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make the orders more concrete and mutually exclusive. For Choice 1, specify an actionable plan (e.g., “Do not schedule surgery; document a do-not-operate order; pursue endocrine therapy and/or palliative/supportive care per oncology, with reassessment if she regains capacity”). For Choice 2, specify the exact action (e.g., “Book lumpectomy/mastectomy with sentinel node procedure next week under surrogate consent; proceed with standard perioperative evaluation”). Ensure the choices are framed as ‘proceed with surgery now’ vs ‘do not proceed with surgery now’ rather than vague “continue non-surgical management.”"
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add essential clinical specifics needed to understand the stakes while removing/streamlining extraneous framing: specify type/stage broadly (e.g., “early-stage, hormone-receptor–positive, clinically node-negative”) and what surgery entails (lumpectomy vs mastectomy, anesthesia), and include whether she had been offered/started neoadjuvant endocrine therapy as an alternative. Clarify the current incapacity prognosis (expected to improve vs likely prolonged) because it affects ethical weight. Remove “tumor board slot” wording if it’s decorative; instead state concretely that the OR/surgeon availability requires a decision this week."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Fix workflow realism: tumor boards typically recommend treatment rather than ‘provide a slot for surgery.’ Replace with: “the breast surgeon has an OR date available next week; if it’s missed, the next opening is weeks away.” Clarify how long after diagnosis (“several weeks”) and whether the cancer is stable enough that waiting is plausible. Also specify that her confusion is from a medical illness (e.g., delirium from infection/metabolic derangement) and that she currently lacks decision-making capacity per assessment."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "The statement “policy and state law permit either…” is too strong and jurisdiction-dependent. Make it legally grounded but not absolute: add a sentence like “In this jurisdiction, advance refusals and surrogate consent can both carry legal weight in some circumstances, and hospital counsel says either approach could be legally supportable if well documented.” Also clarify whether the signed refusal meets requirements of an advance directive or is a contemporaneous informed refusal, since that affects legal defensibility."
+        },
+        "non_triviality": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "As written, the ethically dominant move is to honor the patient’s prior capacitated refusal; the surrogate request to override a clearly documented refusal is hard to defend in good faith, making the dilemma one‑sided. To restore equipoise, revise the facts so the prior refusal is ethically meaningful but not clearly dispositive. For example: (1) make the refusal ambiguous or conditional (e.g., she refused “right now” due to fear, or refused mastectomy but would consider lumpectomy, or said she’d want family to decide if she later couldn’t); (2) document that her understanding at the time may have been incomplete or influenced by transient distress (without turning it into a competence dispute); (3) add that current clinical circumstances materially changed (e.g., interval growth making surgery more extensive, or new contraindication to chemo/radiation) so beneficence/nonmaleficence strongly shift; and/or (4) specify that surrogates report consistent prior statements supporting life‑prolonging treatment despite her earlier signed refusal. Also replace the legalistic ‘policy and state law permit either’ with a neutral statement that both options are institutionally permissible and ethically contested in practice."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or neutralize language that implicitly favors surgery. For example, change “delaying longer may narrow treatment options” to “the surgical team has an operating slot next week; if not used, the next available date is uncertain.” Also replace the family quote “do what’s best” with a neutral request such as “they ask you to proceed with treatment if she cannot decide later.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Clarify the clinical pathway and timeline without extra framing. Specify what “non-surgical cancer management” means in this context (e.g., endocrine therapy, neoadjuvant systemic therapy, or palliation) and whether the patient had any documented advance directive or designated health care proxy beyond ‘default surrogates.’ Also tighten the policy sentence: state that both approaches are legally permissible at your institution without implying endorsement."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both choices parallel, complete action statements of ~10–15 words, without vague placeholders. For example: \n- Choice 1: “Do not schedule surgery; initiate agreed nonsurgical therapy and reassess goals with surrogates.” \n- Choice 2: “Proceed with surgical booking and pre-op evaluation using surrogate consent.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 2 (proceed with surgery) more ethically/clinically defensible by adding credible evidence that the patient’s prior refusal may not represent her settled wishes or may be unreliable. For example: (1) clarify the refusal was made during an acutely emotional visit, with documented ambivalence (“I can’t imagine surgery”) rather than “under any circumstances”; (2) add that in subsequent visits she told staff/family she was reconsidering but never completed updated documentation; or (3) introduce reasonable doubt about decisional capacity at the time of refusal (early cognitive impairment, severe depression, sedating meds), without making it a slam-dunk incapacity. Also add meaningful countervailing harms of surgery (frailty/comorbidities, high risk of postoperative delirium, loss of independence) so Choice 1 is not framed as merely ‘letting cancer progress.’"
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close the obvious ‘third option’ of deferring until capacity returns or using temporizing therapy. Add a forcing constraint such as: her delirium is expected to persist for months or she is deteriorating and will likely require long-term placement; the surgical team can only offer an oncologic slot within a short window before the tumor becomes inoperable by local standards; and neoadjuvant endocrine/chemo to bridge is contraindicated or unavailable (e.g., tumor biology makes it ineffective or she cannot tolerate it). Explicitly state that waiting for recovery or bridging therapy is not a viable path in this setting, leaving only surgery now vs no surgery."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, widely accepted ethics practice (surrogates should follow previously expressed competent wishes; refusal of a specific procedure is typically honored) makes Choice 2 look clearly wrong even if ‘permitted.’ To restore a genuine gray zone, revise so guidelines/law do not clearly privilege one path: e.g., the refusal document is not legally valid/clear (not specific to this surgery, unsigned/witness issues, or phrased as a preference rather than refusal); or there is substantive disagreement about whether it was an informed refusal (key risks/benefits not discussed) or whether she had capacity then. Alternatively, specify that state case law treats prior informal refusals as one factor among others rather than controlling, and the hospital policy is intentionally permissive because clinicians face conflicting standards in similar cases."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove language implying surgery is the medically correct/best option or that delay is clinically determinative. Replace “delaying longer may narrow treatment options” with a neutral, non-directive statement such as “timing may affect which treatment pathways remain feasible, and the surgical team needs an answer this week to hold the slot.” Avoid “do what’s best” unless clearly attributed as family’s view; add a brief note that non-surgical options exist but have different tradeoffs without implying inferiority.\ndistinctness_actionability: Make the orders more concrete and mutually exclusive. For Choice 1, specify an actionable plan (e.g., “Do not schedule surgery; document a do-not-operate order; pursue endocrine therapy and/or palliative/supportive care per oncology, with reassessment if she regains capacity”). For Choice 2, specify the exact action (e.g., “Book lumpectomy/mastectomy with sentinel node procedure next week under surrogate consent; proceed with standard perioperative evaluation”). Ensure the choices are framed as ‘proceed with surgery now’ vs ‘do not proceed with surgery now’ rather than vague “continue non-surgical management.”\nkey_information: Add essential clinical specifics needed to understand the stakes while removing/streamlining extraneous framing: specify type/stage broadly (e.g., “early-stage, hormone-receptor–positive, clinically node-negative”) and what surgery entails (lumpectomy vs mastectomy, anesthesia), and include whether she had been offered/started neoadjuvant endocrine therapy as an alternative. Clarify the current incapacity prognosis (expected to improve vs likely prolonged) because it affects ethical weight. Remove “tumor board slot” wording if it’s decorative; instead state concretely that the OR/surgeon availability requires a decision this week.\nclinical_plausibility: Fix workflow realism: tumor boards typically recommend treatment rather than ‘provide a slot for surgery.’ Replace with: “the breast surgeon has an OR date available next week; if it’s missed, the next opening is weeks away.” Clarify how long after diagnosis (“several weeks”) and whether the cancer is stable enough that waiting is plausible. Also specify that her confusion is from a medical illness (e.g., delirium from infection/metabolic derangement) and that she currently lacks decision-making capacity per assessment.\nlegally_indeterminate: The statement “policy and state law permit either…” is too strong and jurisdiction-dependent. Make it legally grounded but not absolute: add a sentence like “In this jurisdiction, advance refusals and surrogate consent can both carry legal weight in some circumstances, and hospital counsel says either approach could be legally supportable if well documented.” Also clarify whether the signed refusal meets requirements of an advance directive or is a contemporaneous informed refusal, since that affects legal defensibility.",
+        "ethical": "decision_equipoise: As written, the ethically dominant move is to honor the patient’s prior capacitated refusal; the surrogate request to override a clearly documented refusal is hard to defend in good faith, making the dilemma one‑sided. To restore equipoise, revise the facts so the prior refusal is ethically meaningful but not clearly dispositive. For example: (1) make the refusal ambiguous or conditional (e.g., she refused “right now” due to fear, or refused mastectomy but would consider lumpectomy, or said she’d want family to decide if she later couldn’t); (2) document that her understanding at the time may have been incomplete or influenced by transient distress (without turning it into a competence dispute); (3) add that current clinical circumstances materially changed (e.g., interval growth making surgery more extensive, or new contraindication to chemo/radiation) so beneficence/nonmaleficence strongly shift; and/or (4) specify that surrogates report consistent prior statements supporting life‑prolonging treatment despite her earlier signed refusal. Also replace the legalistic ‘policy and state law permit either’ with a neutral statement that both options are institutionally permissible and ethically contested in practice.",
+        "stylistic": "ethical_neutrality: Remove or neutralize language that implicitly favors surgery. For example, change “delaying longer may narrow treatment options” to “the surgical team has an operating slot next week; if not used, the next available date is uncertain.” Also replace the family quote “do what’s best” with a neutral request such as “they ask you to proceed with treatment if she cannot decide later.”\nconciseness_coherence: Clarify the clinical pathway and timeline without extra framing. Specify what “non-surgical cancer management” means in this context (e.g., endocrine therapy, neoadjuvant systemic therapy, or palliation) and whether the patient had any documented advance directive or designated health care proxy beyond ‘default surrogates.’ Also tighten the policy sentence: state that both approaches are legally permissible at your institution without implying endorsement.\nchoice_brevity: Make both choices parallel, complete action statements of ~10–15 words, without vague placeholders. For example: \n- Choice 1: “Do not schedule surgery; initiate agreed nonsurgical therapy and reassess goals with surrogates.” \n- Choice 2: “Proceed with surgical booking and pre-op evaluation using surrogate consent.”",
+        "equipoise": "balanced_difficulty: Make Choice 2 (proceed with surgery) more ethically/clinically defensible by adding credible evidence that the patient’s prior refusal may not represent her settled wishes or may be unreliable. For example: (1) clarify the refusal was made during an acutely emotional visit, with documented ambivalence (“I can’t imagine surgery”) rather than “under any circumstances”; (2) add that in subsequent visits she told staff/family she was reconsidering but never completed updated documentation; or (3) introduce reasonable doubt about decisional capacity at the time of refusal (early cognitive impairment, severe depression, sedating meds), without making it a slam-dunk incapacity. Also add meaningful countervailing harms of surgery (frailty/comorbidities, high risk of postoperative delirium, loss of independence) so Choice 1 is not framed as merely ‘letting cancer progress.’\nexhaustive_binary_options: Close the obvious ‘third option’ of deferring until capacity returns or using temporizing therapy. Add a forcing constraint such as: her delirium is expected to persist for months or she is deteriorating and will likely require long-term placement; the surgical team can only offer an oncologic slot within a short window before the tumor becomes inoperable by local standards; and neoadjuvant endocrine/chemo to bridge is contraindicated or unavailable (e.g., tumor biology makes it ineffective or she cannot tolerate it). Explicitly state that waiting for recovery or bridging therapy is not a viable path in this setting, leaving only surgery now vs no surgery.\nno_guideline_override: As written, widely accepted ethics practice (surrogates should follow previously expressed competent wishes; refusal of a specific procedure is typically honored) makes Choice 2 look clearly wrong even if ‘permitted.’ To restore a genuine gray zone, revise so guidelines/law do not clearly privilege one path: e.g., the refusal document is not legally valid/clear (not specific to this surgery, unsigned/witness issues, or phrased as a preference rather than refusal); or there is substantive disagreement about whether it was an informed refusal (key risks/benefits not discussed) or whether she had capacity then. Alternatively, specify that state case law treats prior informal refusals as one factor among others rather than controlling, and the hospital policy is intentionally permissive because clinicians face conflicting standards in similar cases."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:19:52.385057",
+      "data": {
+        "vignette": "A 67-year-old woman has newly diagnosed, operable breast cancer that is clinically node-negative. At the initial surgical consult she was tearful and repeatedly said she “can’t imagine surgery right now.” The note documents that she understood the basics but wanted time. She signed a scanned form that states she “prefers to avoid breast surgery,” but it is not a formal advance directive and it does not specify lumpectomy versus mastectomy. At a follow-up call a week later she told a nurse she might consider a limited operation if her family could be present, but no updated documentation was completed. She now has persistent delirium after sepsis and metabolic derangements and lacks decision-making capacity on exam. Recovery is expected to be prolonged. She is frail and at high risk for postoperative delirium and loss of independence. The breast surgeon has an operating date next week; if it is missed, the next date is uncertain and bridging systemic therapy is not feasible given her current organ dysfunction. Hospital counsel advises that either honoring the earlier refusal or accepting surrogate consent can be legally supportable if well documented.",
+        "choice_1": "Do not schedule breast surgery; document a do-not-operate order and use nonsurgical oncology care.",
+        "choice_2": "Proceed with breast surgery next week with sentinel node biopsy under surrogate consent."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:20:02.866710",
+      "data": {
+        "vignette": "A 67-year-old woman has newly diagnosed, operable breast cancer that is clinically node-negative. At the initial surgical consult she was tearful and repeatedly said she “can’t imagine surgery right now.” The note documents that she understood the basics but wanted time. She signed a scanned form that states she “prefers to avoid breast surgery,” but it is not a formal advance directive and it does not specify lumpectomy versus mastectomy. At a follow-up call a week later she told a nurse she might consider a limited operation if her family could be present, but no updated documentation was completed. She now has persistent delirium after sepsis and metabolic derangements and lacks decision-making capacity on exam. Recovery is expected to be prolonged. She is frail and at high risk for postoperative delirium and loss of independence. The breast surgeon has an operating date next week; if it is missed, the next date is uncertain and bridging systemic therapy is not feasible given her current organ dysfunction. Hospital counsel advises that either honoring the earlier refusal or accepting surrogate consent can be legally supportable if well documented.",
+        "choice_1": {
+          "choice": "Do not schedule breast surgery; document a do-not-operate order and use nonsurgical oncology care.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Proceed with breast surgery next week with sentinel node biopsy under surrogate consent.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause clarifying the patient’s last capacitated, specific preference (e.g., “she explicitly refused any breast surgery even if cancer worsened” OR “she later clearly agreed to lumpectomy if family present and named her daughter to decide”), so it’s unambiguous whether honoring refusal or using surrogate consent aligns with her autonomous wishes."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause quantifying expected oncologic benefit of timely surgery (e.g., “delay beyond 4–6 weeks is expected to worsen cure rates”) and a clause specifying the magnitude of perioperative/functional risk in her current state (e.g., “very high likelihood of prolonged institutionalization/loss of independence after surgery”)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:20:50.325853",
+      "data": {
+        "vignette": "A 67-year-old woman has newly diagnosed, operable breast cancer that is clinically node-negative. At her initial surgical consult she was tearful and said she could not imagine surgery right now. The note documents that she understood the basics and wanted time. She signed a scanned form stating that she prefers to avoid breast surgery, but it is not a formal advance directive and it does not specify lumpectomy versus mastectomy. At a follow-up call a week later she told a nurse she would consider a limited operation if her family could be present, but no revised preference was documented. She now has persistent delirium after sepsis and metabolic derangements and lacks decision-making capacity on exam. Recovery is expected to be prolonged. She is frail and at high risk for postoperative delirium, loss of independence, and need for institutional care. The breast surgeon has an operating date next week; if it is missed, definitive treatment may be delayed for several weeks and oncologic outcomes may worsen. Bridging systemic therapy is not feasible given her current organ dysfunction. Hospital counsel advises that either honoring the earlier refusal or accepting surrogate consent can be legally supportable if well documented.",
+        "choice_1": {
+          "choice": "Do not schedule breast surgery; document a do-not-operate order and use nonsurgical oncology care.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Proceed with breast surgery next week with sentinel node biopsy under surrogate consent.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

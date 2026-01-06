@@ -1,0 +1,242 @@
+{
+  "case_id": "8f0629a1-10cf-48be-9294-88227943064e",
+  "created_at": "2026-01-04T23:42:25.035361",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 83:\nDISCHARGE AGAINST MEDICAL ADVICE\nNora, a frail 82 year old lady with advanced lung cancer, is brought to A&E late at night by\nambulance. Her husband, her main carer, was admitted yesterday with pneumonia. He men-\ntioned to staff that his wife was at home alone and was concerned she might not be managing\nwithout him.\nAfter she failed to answer the staff’s phone calls, an ambulance was dispatched, and she was\nfound in her chair, dehydrated and unable to mobilise. Since her husband’s admission she\nhad been too weak and breathless to get up, and had been unable to get herself anything to\neat or drink.\nFortunately her test results are normal and the A&E doctor suggests she stays overnight\nso a carer can be arranged the following morning. The doctor explains to Nora they are\nconcerned that if she goes home she may become dehydrated or have a fall. Nora is adamant\nshe wants to go home, stating that she is fine, would rather sleep in her own bed, and will take\na sandwich from A&E for supper. She starts getting up and making her way towards the door.\nShe has no history of mental health problems.\nQuestions\n• How should doctors approach patients who make decisions they consider unwise?\n• What issues arise from the complex interplay between health and social care,\nparticularly during out of hours?",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:42:25.035416",
+      "data": {
+        "vignette": "An 82-year-old woman with advanced lung cancer is brought to the ED late at night. Her husband, her main caregiver, was admitted yesterday with pneumonia. Paramedics found her alone at home, weak, breathless, and unable to get up to drink or use the toilet. In the ED she is alert and conversant, but intermittently dozes off and struggles to explain how she will manage at home tonight. Basic labs and imaging show no new acute problem, and she improves after fluids and oxygen. She insists on going home now, saying she needs her own bed and will “be fine until morning.” Overnight community support cannot be arranged until daytime services open. Hospital policy permits a short medical observation period when decision-making capacity is uncertain, and it also permits discharge if capacity is judged intact.",
+        "choice_1": "Discharge her home tonight with safety-net instructions and a morning welfare check.",
+        "choice_2": "Keep her overnight for observation, hydration, and daytime care planning."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Reduce language that makes discharge seem medically straightforward (e.g., replace “no new acute problem”/“she improves after fluids and oxygen” with “no clear reversible acute trigger is found; after fluids and oxygen she is somewhat better but remains frail and intermittently somnolent, and symptoms may recur overnight”). Add countervailing clinical downsides of hospitalization (e.g., delirium, fall risk on an unfamiliar unit, nosocomial infection) so the dilemma is not decided by implied medical superiority."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add missing decision-critical facts: her baseline functional status (independent vs needs help with toileting/ADLs), baseline cognition and any prior delirium, current goals of care/hospice enrollment and code status, what supports exist at home (neighbor/family access, ability to use phone, home oxygen, mobility aids), and whether she has a way to obtain food/fluids/meds overnight. Remove or tighten any nonessential phrasing, but prioritize including these essentials because they determine capacity assessment and the real-world safety of discharge vs observation."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Clarify the legal basis for Choice 2. As written, keeping her overnight against her stated wish could be unlawful if she has capacity. Add a sentence such as: “Under local law and hospital policy, when capacity is uncertain and there is concern for immediate serious harm, clinicians may place a time-limited observation hold to complete a capacity assessment; if she is found to have capacity, she can leave.” Alternatively, specify that she may agree to stay after counseling (making Choice 2 ‘strongly recommend and obtain consent for overnight observation’) so both choices remain legally defensible."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Make both options ethically and clinically defensible by balancing the risks on each side. Currently her inability to toilet/get fluids and lack of overnight support makes discharge look clearly unsafe. To restore equipoise, add facts that support a plausible safe discharge plan (e.g., she has baseline home hospice with an emergency on-call line, a neighbor with a key who can check within an hour, a bedside commode and walker, access to fluids/meds) while also emphasizing meaningful harms of admission/observation for her (e.g., high risk of hospital delirium, strong preference to be at home at end of life, prior traumatic hospitalization). Keep the capacity question genuinely uncertain rather than implying she is clearly incapable."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the ethical conflict explicit by sharpening the competing stakes: (a) clarify what harms are credibly likely if she is discharged (e.g., inability to safely toilet, risk of falls, inability to access meds/oxygen, no food/water) and (b) clarify what concrete harms come from holding her (e.g., she experiences hospital-associated delirium, loss of dignity/privacy, distress from being kept against her will, possible need for restraints/sedating meds if she tries to leave). Also specify that discharge now vs holding her requires overriding/limiting her stated preference in the setting of borderline capacity—not merely choosing a more convenient plan."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Stabilize the ethics by reducing ambiguity about capacity and the physician’s authority. Add a brief, specific capacity assessment signal (e.g., she can/cannot consistently describe risks/alternatives and a plan for toileting/meds). State that she is refusing admission and wants to leave now, so keeping her would be an involuntary hold under the observation policy. Without these details, small wording changes (e.g., 'intermittently dozes' vs 'tired') could flip the case from an autonomy conflict to simple discharge planning."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Increase objectivity by specifying the key contested facts graders would anchor on: whether she can demonstrate a workable overnight plan and understanding of consequences, and whether observation is primarily for medical monitoring vs social placement. Add one or two concrete patient statements/behaviors showing inconsistency/confusion (or, alternatively, clear understanding) so the disagreement is about values (respecting her wish vs preventing foreseeable harm) rather than about whether she has capacity at all."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the options so neither is a 'free lunch.' As written, keeping her overnight appears clearly safer and policy-sanctioned, while discharge seems negligent given she was found unable to get up or drink. To restore equipoise, either: (1) strengthen the discharge option by adding a credible, immediate safety plan (e.g., neighbor can stay, arranged taxi with EMS re-check, confirmed access to phone/food/commode, home oxygen in place) while keeping some remaining risk; and/or (2) strengthen the ethical costs of observation (e.g., very high delirium risk, prior traumatic hospitalization, she becomes agitated and will require security/restraints to prevent elopement, her goals emphasize home at end of life). Ensure both choices have meaningful moral costs and remain clinically defensible."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Reduce potentially biasing/emotive phrasing and balance framing of both options. Suggested edits: change “found her alone at home, weak, breathless, and unable to get up to drink or use the toilet” to “found her without another adult present, reporting dyspnea and requiring assistance with transfers/toileting and oral intake.” Change “She insists on going home now” to “She requests discharge tonight.” Add one sentence acknowledging burdens of hospitalization (e.g., delirium risk, discomfort, patient goal of being at home) so the narrative does not implicitly favor observation."
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Use more clinician-facing language and include a brief, standard capacity-oriented assessment. Suggested edits: replace lay phrasing (“get up to drink,” “use the toilet,” “needs her own bed”) with functional terms (ADLs, transfers, toileting, oral intake). Add a brief mental status/capacity descriptor (orientation, ability to explain plan, appreciation of risks/alternatives) and pertinent exam/vitals summary. Example: “A&O x3 but intermittently somnolent; can state preference but has difficulty outlining a safe overnight plan or identifying supports.”"
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce framing that implies she lacks capacity or is unsafe to discharge. For example, replace 'intermittently dozes off and struggles to explain how she will manage' with a more mixed picture: she can consistently state her diagnosis, the risks of going home, and a concrete plan (e.g., phone within reach, neighbor key, bedside commode), but she appears fatigued and occasionally falls asleep during conversation. Add a meaningful cost to keeping her: prior bad hospital experiences (delirium, distress), strong goal to avoid hospital, and realistic inpatient harms (overnight delirium risk, iatrogenic complications, loss of dignity), so observation is not an obvious “safer” choice."
+        },
+        "exhaustive_binary_options": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Clarify why standard capacity/safe-discharge norms do not clearly dictate the answer. Make capacity explicitly borderline (not clearly intact or clearly absent) and note that both actions are institutionally permitted under policy after bedside capacity assessment. Add that no surrogate is reachable overnight and no formal capacity/psychiatry consult is available, leaving only the treating physician’s judgment. Avoid language implying that inability to articulate a plan automatically equals incapacity; instead show partial understanding with some inconsistencies."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Reduce language that makes discharge seem medically straightforward (e.g., replace “no new acute problem”/“she improves after fluids and oxygen” with “no clear reversible acute trigger is found; after fluids and oxygen she is somewhat better but remains frail and intermittently somnolent, and symptoms may recur overnight”). Add countervailing clinical downsides of hospitalization (e.g., delirium, fall risk on an unfamiliar unit, nosocomial infection) so the dilemma is not decided by implied medical superiority.\nkey_information: Add missing decision-critical facts: her baseline functional status (independent vs needs help with toileting/ADLs), baseline cognition and any prior delirium, current goals of care/hospice enrollment and code status, what supports exist at home (neighbor/family access, ability to use phone, home oxygen, mobility aids), and whether she has a way to obtain food/fluids/meds overnight. Remove or tighten any nonessential phrasing, but prioritize including these essentials because they determine capacity assessment and the real-world safety of discharge vs observation.\nlegally_indeterminate: Clarify the legal basis for Choice 2. As written, keeping her overnight against her stated wish could be unlawful if she has capacity. Add a sentence such as: “Under local law and hospital policy, when capacity is uncertain and there is concern for immediate serious harm, clinicians may place a time-limited observation hold to complete a capacity assessment; if she is found to have capacity, she can leave.” Alternatively, specify that she may agree to stay after counseling (making Choice 2 ‘strongly recommend and obtain consent for overnight observation’) so both choices remain legally defensible.\nnon_triviality: Make both options ethically and clinically defensible by balancing the risks on each side. Currently her inability to toilet/get fluids and lack of overnight support makes discharge look clearly unsafe. To restore equipoise, add facts that support a plausible safe discharge plan (e.g., she has baseline home hospice with an emergency on-call line, a neighbor with a key who can check within an hour, a bedside commode and walker, access to fluids/meds) while also emphasizing meaningful harms of admission/observation for her (e.g., high risk of hospital delirium, strong preference to be at home at end of life, prior traumatic hospitalization). Keep the capacity question genuinely uncertain rather than implying she is clearly incapable.",
+        "ethical": "clarity_value_conflict: Make the ethical conflict explicit by sharpening the competing stakes: (a) clarify what harms are credibly likely if she is discharged (e.g., inability to safely toilet, risk of falls, inability to access meds/oxygen, no food/water) and (b) clarify what concrete harms come from holding her (e.g., she experiences hospital-associated delirium, loss of dignity/privacy, distress from being kept against her will, possible need for restraints/sedating meds if she tries to leave). Also specify that discharge now vs holding her requires overriding/limiting her stated preference in the setting of borderline capacity—not merely choosing a more convenient plan.\ndirectional_stability: Stabilize the ethics by reducing ambiguity about capacity and the physician’s authority. Add a brief, specific capacity assessment signal (e.g., she can/cannot consistently describe risks/alternatives and a plan for toileting/meds). State that she is refusing admission and wants to leave now, so keeping her would be an involuntary hold under the observation policy. Without these details, small wording changes (e.g., 'intermittently dozes' vs 'tired') could flip the case from an autonomy conflict to simple discharge planning.\ninterpretive_consensus: Increase objectivity by specifying the key contested facts graders would anchor on: whether she can demonstrate a workable overnight plan and understanding of consequences, and whether observation is primarily for medical monitoring vs social placement. Add one or two concrete patient statements/behaviors showing inconsistency/confusion (or, alternatively, clear understanding) so the disagreement is about values (respecting her wish vs preventing foreseeable harm) rather than about whether she has capacity at all.\ndecision_equipoise: Rebalance the options so neither is a 'free lunch.' As written, keeping her overnight appears clearly safer and policy-sanctioned, while discharge seems negligent given she was found unable to get up or drink. To restore equipoise, either: (1) strengthen the discharge option by adding a credible, immediate safety plan (e.g., neighbor can stay, arranged taxi with EMS re-check, confirmed access to phone/food/commode, home oxygen in place) while keeping some remaining risk; and/or (2) strengthen the ethical costs of observation (e.g., very high delirium risk, prior traumatic hospitalization, she becomes agitated and will require security/restraints to prevent elopement, her goals emphasize home at end of life). Ensure both choices have meaningful moral costs and remain clinically defensible.",
+        "stylistic": "ethical_neutrality: Reduce potentially biasing/emotive phrasing and balance framing of both options. Suggested edits: change “found her alone at home, weak, breathless, and unable to get up to drink or use the toilet” to “found her without another adult present, reporting dyspnea and requiring assistance with transfers/toileting and oral intake.” Change “She insists on going home now” to “She requests discharge tonight.” Add one sentence acknowledging burdens of hospitalization (e.g., delirium risk, discomfort, patient goal of being at home) so the narrative does not implicitly favor observation.\nmedical_professionalism: Use more clinician-facing language and include a brief, standard capacity-oriented assessment. Suggested edits: replace lay phrasing (“get up to drink,” “use the toilet,” “needs her own bed”) with functional terms (ADLs, transfers, toileting, oral intake). Add a brief mental status/capacity descriptor (orientation, ability to explain plan, appreciation of risks/alternatives) and pertinent exam/vitals summary. Example: “A&O x3 but intermittently somnolent; can state preference but has difficulty outlining a safe overnight plan or identifying supports.”",
+        "equipoise": "balanced_difficulty: Reduce framing that implies she lacks capacity or is unsafe to discharge. For example, replace 'intermittently dozes off and struggles to explain how she will manage' with a more mixed picture: she can consistently state her diagnosis, the risks of going home, and a concrete plan (e.g., phone within reach, neighbor key, bedside commode), but she appears fatigued and occasionally falls asleep during conversation. Add a meaningful cost to keeping her: prior bad hospital experiences (delirium, distress), strong goal to avoid hospital, and realistic inpatient harms (overnight delirium risk, iatrogenic complications, loss of dignity), so observation is not an obvious “safer” choice.\nno_guideline_override: Clarify why standard capacity/safe-discharge norms do not clearly dictate the answer. Make capacity explicitly borderline (not clearly intact or clearly absent) and note that both actions are institutionally permitted under policy after bedside capacity assessment. Add that no surrogate is reachable overnight and no formal capacity/psychiatry consult is available, leaving only the treating physician’s judgment. Avoid language implying that inability to articulate a plan automatically equals incapacity; instead show partial understanding with some inconsistencies."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:43:53.959380",
+      "data": {
+        "vignette": "An 82-year-old woman with advanced lung cancer on home hospice comes to the ED late at night for worsening dyspnea and profound fatigue. Her husband, her usual caregiver, was admitted yesterday with pneumonia. EMS found her without another adult present. She needed assistance with transfers, toileting, and oral intake. After oxygen and fluids she is somewhat better, but remains frail and intermittently somnolent. She is oriented and can describe her cancer, her DNR/DNI status, and the risks of going home, including falls, dehydration, and being unable to reach her medications or oxygen if she worsens. She requests discharge tonight. She describes a plan using her walker and bedside commode, keeping her phone within reach, and having a neighbor with a key check on her soon after arrival and again in the morning. At other moments she dozes and gives inconsistent answers about who will be with her overnight. No surrogate is reachable and no formal capacity consult is available overnight. Hospital policy and local law permit either discharge after bedside capacity assessment or a time-limited observation hold when capacity is uncertain and immediate harm is a concern.",
+        "choice_1": "Discharge her home tonight with hospice and neighbor check-in arranged.",
+        "choice_2": "Place her on a time-limited observation hold overnight for reassessment and planning."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:44:00.004468",
+      "data": {
+        "vignette": "An 82-year-old woman with advanced lung cancer on home hospice comes to the ED late at night for worsening dyspnea and profound fatigue. Her husband, her usual caregiver, was admitted yesterday with pneumonia. EMS found her without another adult present. She needed assistance with transfers, toileting, and oral intake. After oxygen and fluids she is somewhat better, but remains frail and intermittently somnolent. She is oriented and can describe her cancer, her DNR/DNI status, and the risks of going home, including falls, dehydration, and being unable to reach her medications or oxygen if she worsens. She requests discharge tonight. She describes a plan using her walker and bedside commode, keeping her phone within reach, and having a neighbor with a key check on her soon after arrival and again in the morning. At other moments she dozes and gives inconsistent answers about who will be with her overnight. No surrogate is reachable and no formal capacity consult is available overnight. Hospital policy and local law permit either discharge after bedside capacity assessment or a time-limited observation hold when capacity is uncertain and immediate harm is a concern.",
+        "choice_1": {
+          "choice": "Discharge her home tonight with hospice and neighbor check-in arranged.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Place her on a time-limited observation hold overnight for reassessment and planning.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause explicitly stating the bedside clinician judges she has (or lacks) decision-making capacity at the moment of the discharge request (e.g., “On exam, she consistently explains risks/alternatives and is deemed to have capacity,” or “she cannot consistently demonstrate understanding and capacity is judged uncertain”), and add that the observation hold is being done despite her stated wish to go home."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause specifying the likely clinical benefit of staying overnight (e.g., access to continuous oxygen/nebulizers, IV diuresis/opioid titration, and hospice/social work planning) versus the likely clinical benefit of going home (comfort/preferred environment and symptom relief with home hospice meds)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause noting foreseeable harms of an overnight observation hold (e.g., iatrogenic delirium, falls, pressure injury, restraint use, or distress from being separated from home hospice) to make the nonmaleficence tradeoff explicit."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause making a system-level scarcity/fairness issue explicit (e.g., 'the ED/observation unit is at capacity and keeping her overnight would displace another acutely ill patient' or 'discharging would shift unsafe care burdens onto limited community/hospice resources')."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:44:51.692709",
+      "data": {
+        "vignette": "An 82-year-old woman with advanced lung cancer on home hospice comes to the ED late at night for worsening dyspnea and profound fatigue. Her husband, her usual caregiver, was admitted yesterday with pneumonia. EMS found her alone and needing help with transfers, toileting, and oral intake. After oxygen and fluids she improves but remains frail and intermittently somnolent. When requesting discharge, she can explain her cancer, her DNR/DNI status, and the risks of going home, but she cannot do so consistently, so the bedside clinician judges her decision-making capacity uncertain. She still asks to go home tonight to be in her preferred setting and use her hospice medications. Staying overnight would allow continuous oxygen and symptom titration and time for hospice or social work planning. A hold could also cause delirium, falls, pressure injury, or distress. The ED and observation unit are at capacity, and keeping her overnight may displace another acutely ill patient. Hospital policy and local law permit discharge after bedside assessment or a time-limited observation hold when capacity is uncertain and immediate harm is a concern.",
+        "choice_1": {
+          "choice": "Discharge her home tonight with hospice and neighbor check-in arranged.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Place her on a time-limited observation hold overnight for reassessment and planning.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

@@ -1,0 +1,242 @@
+{
+  "case_id": "52b48f44-187e-4afd-bac2-0851b167c702",
+  "created_at": "2026-01-05T00:04:20.337901",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "The case of Sue Axon\nSue Axon is the mother of five children, including two teenage daughters. She objected to guidance, issued in 2004 by the Department of Health in England, which permitted doctors to provide abortion advice or contraception to young people under 16 without the knowledge of their parents. The guidelines, she argued, served to ‘undermine the role of parents’. Ms Axon’s claim was reminiscent of a well-known earlier case, which had led to a ruling in the highest English court, the House of Lords (Gillick v West Norfolk and Wisbech AHA [1985]). In that case, Victoria Gillick unsuccessfully argued that parents should have to provide consent before a young person could be prescribed the contraceptive pill. Ms Axon’s claim was different: she was not arguing for the right to consent but, instead, the right to know if her child was seeking such advice or treatment. She claimed that she was owed an obligation under ‘article 8 of the Human Rights Act 1998 (which",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:04:20.337956",
+      "data": {
+        "vignette": "A 15-year-old comes to an adolescent medicine clinic requesting contraception and STI testing. She says she is sexually active with an older boyfriend and does not want her mother told. She fears being thrown out of the home if her mother finds out, but she denies current physical abuse and has no safe alternative housing. Her exam is unremarkable. She understands the options and can explain risks, benefits, and follow-up. Her mother calls the clinic during the visit and demands to know why her daughter is there, saying she has a right to be informed about any sexual health care. The patient becomes tearful and says she will leave and never return if her mother is contacted. Clinic policy and state law allow confidential contraceptive care for minors, and also allow clinicians to require parental involvement when they judge it necessary for the patient’s welfare. You must decide before the visit ends because the patient says she will not come back.",
+        "choice_1": "Provide contraception and STI care without informing the mother",
+        "choice_2": "Contact the mother and require her involvement before prescribing contraception"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Tighten to only decision-relevant facts and remove/condense extraneous elements. Suggested edits: (1) Delete “Her exam is unremarkable” unless you need it to rule out pregnancy/acute STI symptoms; instead include only essential negatives like “She is not pregnant on point-of-care test and has no symptoms of coercion or assault” if relevant. (2) Replace “older boyfriend” with a specific, clinically relevant descriptor that affects the ethical stakes (e.g., “19-year-old boyfriend”) OR remove it; as written it raises safeguarding questions without clarifying whether mandatory reporting applies. (3) Clarify the minimum needed about safety planning: keep “fears being kicked out; no alternate housing,” but remove extra emotional phrasing unless it changes the stakes. (4) Consider adding one sentence on capacity/consent standard being met (already present) and remove repetition (“understands options and can explain risks, benefits, follow-up” could be shortened to “demonstrates understanding and capacity for informed consent”)."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Address adolescent safeguarding and mandatory reporting plausibility around an “older boyfriend.” As written, a 15-year-old with an undefined ‘older’ partner may trigger statutory rape/mandatory reporting or abuse/trafficking screening depending on jurisdiction, which would override the stated confidentiality discretion. Fix by: (1) Specify the boyfriend’s age and explicitly state that, in this jurisdiction and based on screening, the relationship does not trigger mandatory reporting (e.g., consensual, no coercion, age difference within exceptions), OR (2) Remove the “older” detail entirely and keep the conflict on confidentiality vs parental involvement. Also consider adding that you performed brief screening for coercion/abuse and it was negative, to make the clinical workflow realistic."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "The legal framing is too broad/vague and risks implying an illegal breach of minor confidentiality. Make legal defensibility explicit for BOTH options without naming statutes: add 1–2 sentences such as: “In this state, minors may consent to contraception and STI testing confidentially. Clinicians may encourage—but cannot require—parental involvement unless there is concern for abuse, coercion, or imminent serious harm.” OR, if you want ‘require involvement’ to remain legally defensible, explicitly state the state permits conditioning non-emergency contraception prescribing on parental involvement even when minor-consent is allowed, and that this is within clinic policy. As written, many jurisdictions would not allow ‘require’ absent safety concerns."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 is framed as ‘require parental involvement’ without a concrete welfare-based trigger, making it look like a policy/paternalism move that predictably deters care—borderline indefensible and thus too easy. To make both options genuinely defensible: (1) Add a plausible welfare concern that could justify involving a parent/guardian (e.g., significant risk of homelessness without support, worsening mental health, or concern about coercion despite denial; or inability to safely store/adhere to contraception without home support). (2) Reframe Choice 2 to a more defensible, implementable action: ‘Explain limits of confidentiality and recommend parental involvement; offer to facilitate a joint conversation today; if patient refuses, defer prescribing longer-acting contraception and provide interim STI testing/condoms with close follow-up’—or similar. Alternatively, if you keep “require,” add explicit justification threshold (e.g., ‘because you judge she cannot safely manage the consequences without adult support and faces imminent housing instability’). Ensure Choice 1 also carries moral costs (e.g., clinician worries about safety/housing) so it’s not pure-upside."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Tighten the ethical signals so graders converge on the same tradeoff. Specify why parental involvement might meaningfully improve welfare (e.g., patient has a complex medical history/contraindications that require monitoring, needs help with follow-up testing/treatment, or has escalating risk indicators like inconsistent statements about the boyfriend’s age/coercion). Also specify what makes confidentiality ethically weighty beyond preference (e.g., credible risk of being forced to stop school/lose housing if disclosed). Avoid leaning on “policy and state law” as the main rationale; reframe as clinical/ethical reasons for and against involving the parent."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the options so neither is a near-obvious choice. Currently, the patient’s explicit ultimatum (“I will leave and never return if my mother is contacted”) makes contacting the mother predictably harmful and undermines equipoise. Either (a) soften/complicate this (e.g., she might still accept care if a facilitated disclosure plan is offered, or she is ambivalent), or (b) strengthen the ethical/clinical downside of confidential care (e.g., signs of grooming/coercion, significant mental health concerns, inability to ensure safe follow-up, need for medication monitoring). Make sure Choice 2 has a plausible benefit (safety planning, support, protection from exploitation) and Choice 1 has a plausible moral cost (missed safeguarding, enabling coercive relationship, inadequate support for adherence/follow-up)."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove emotionally weighted language and absolute statements that bias toward confidentiality. For example: change “older boyfriend” to “partner who is older than she is” or specify age difference clinically if relevant; replace “becomes tearful” with “becomes visibly distressed”; replace “will leave and never return” with “states she will leave and is unlikely to return for follow-up if confidentiality cannot be maintained.” Avoid framing the mother as entitled; change “demands” to “requests” or “insists.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the forcing constraint and welfare concern. Remove redundant statements (e.g., combine comprehension sentence with capacity). Clarify why parental involvement might be judged necessary (e.g., concern about coercion, age disparity, safety planning) without implying abuse. Consider adding a single line about mandatory reporting thresholds for age-disparate relationships in the jurisdiction if relevant, or explicitly state it is not reportable to avoid a hidden third option. Keep the policy/law sentence but shorten: “State law permits confidential contraceptive care for minors but allows clinician-directed parental involvement when judged necessary for welfare.”"
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make each choice 10–15 words and parallel, without extra qualifiers. Example: Choice 1: “Provide contraception and STI testing confidentially; do not disclose to mother.” Choice 2: “Disclose visit purpose to mother and require her participation before prescribing.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the ethical pull so Choice 2 is not clearly nonstandard: (1) Clarify that the older boyfriend is near-age (e.g., 18) OR, if you keep a larger age gap, explicitly state how mandatory reporting is/ isn’t triggered in this jurisdiction so the reader isn’t pushed toward disclosure for legal reasons. (2) Add concrete welfare concerns that make parental involvement plausibly beneficial (e.g., patient has uncontrolled depression, medication interactions, complex medical history affecting contraceptive choice, or repeated missed follow-up suggesting high risk if care proceeds without support), while also keeping real harms of disclosure (credible risk of homelessness/violence, loss of care). (3) Remove/soften language that makes confidentiality the obvious ‘right’ answer (e.g., replace ‘fears being thrown out’ with ‘fearful but uncertain how mother will respond,’ or add that mother is generally supportive but strongly opposed to sexual activity)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious third options by explicitly ruling them out in the vignette. As written, realistic middle paths exist (motivational counseling to involve a trusted adult; limited disclosure; providing STI testing now but deferring contraception; involving social work/child protection; arranging rapid follow-up; giving emergency contraception only). To make it truly binary, add constraints such as: (1) patient refuses any involvement of any adult/support person and will leave immediately unless one of the two actions occurs now; (2) clinic policy requires either full confidentiality OR documented parental involvement for prescribing contraception to minors (no partial measures); (3) social work is unavailable today and follow-up cannot be arranged within a clinically acceptable window."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Address how professional standards/legal requirements fail to settle the decision. Currently, mainstream adolescent medicine/ACOG/AAP guidance strongly favors confidential contraceptive care when the minor has capacity, making Choice 2 look like a guideline violation. To fix: (1) Specify a jurisdictional/legal wrinkle that creates genuine discretion (e.g., minor-consent statute permits contraception but explicitly allows clinician to require parental involvement when ‘medically necessary’ without defining it; or clinic is in a system with a standing parental-notification policy that is legally permissible but ethically contested). (2) Add a clinically relevant factor that could plausibly make confidentiality exceptions defensible under guidance (e.g., serious risk of self-harm if pregnancy occurs, suspected coercion/trafficking requiring adult involvement, inability to ensure safe follow-up for LARC placement). Ensure neither option is clearly unlawful or clearly against standard professional policy as written."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "key_information: Tighten to only decision-relevant facts and remove/condense extraneous elements. Suggested edits: (1) Delete “Her exam is unremarkable” unless you need it to rule out pregnancy/acute STI symptoms; instead include only essential negatives like “She is not pregnant on point-of-care test and has no symptoms of coercion or assault” if relevant. (2) Replace “older boyfriend” with a specific, clinically relevant descriptor that affects the ethical stakes (e.g., “19-year-old boyfriend”) OR remove it; as written it raises safeguarding questions without clarifying whether mandatory reporting applies. (3) Clarify the minimum needed about safety planning: keep “fears being kicked out; no alternate housing,” but remove extra emotional phrasing unless it changes the stakes. (4) Consider adding one sentence on capacity/consent standard being met (already present) and remove repetition (“understands options and can explain risks, benefits, follow-up” could be shortened to “demonstrates understanding and capacity for informed consent”).\nclinical_plausibility: Address adolescent safeguarding and mandatory reporting plausibility around an “older boyfriend.” As written, a 15-year-old with an undefined ‘older’ partner may trigger statutory rape/mandatory reporting or abuse/trafficking screening depending on jurisdiction, which would override the stated confidentiality discretion. Fix by: (1) Specify the boyfriend’s age and explicitly state that, in this jurisdiction and based on screening, the relationship does not trigger mandatory reporting (e.g., consensual, no coercion, age difference within exceptions), OR (2) Remove the “older” detail entirely and keep the conflict on confidentiality vs parental involvement. Also consider adding that you performed brief screening for coercion/abuse and it was negative, to make the clinical workflow realistic.\nlegally_indeterminate: The legal framing is too broad/vague and risks implying an illegal breach of minor confidentiality. Make legal defensibility explicit for BOTH options without naming statutes: add 1–2 sentences such as: “In this state, minors may consent to contraception and STI testing confidentially. Clinicians may encourage—but cannot require—parental involvement unless there is concern for abuse, coercion, or imminent serious harm.” OR, if you want ‘require involvement’ to remain legally defensible, explicitly state the state permits conditioning non-emergency contraception prescribing on parental involvement even when minor-consent is allowed, and that this is within clinic policy. As written, many jurisdictions would not allow ‘require’ absent safety concerns.\nnon_triviality: As written, Choice 2 is framed as ‘require parental involvement’ without a concrete welfare-based trigger, making it look like a policy/paternalism move that predictably deters care—borderline indefensible and thus too easy. To make both options genuinely defensible: (1) Add a plausible welfare concern that could justify involving a parent/guardian (e.g., significant risk of homelessness without support, worsening mental health, or concern about coercion despite denial; or inability to safely store/adhere to contraception without home support). (2) Reframe Choice 2 to a more defensible, implementable action: ‘Explain limits of confidentiality and recommend parental involvement; offer to facilitate a joint conversation today; if patient refuses, defer prescribing longer-acting contraception and provide interim STI testing/condoms with close follow-up’—or similar. Alternatively, if you keep “require,” add explicit justification threshold (e.g., ‘because you judge she cannot safely manage the consequences without adult support and faces imminent housing instability’). Ensure Choice 1 also carries moral costs (e.g., clinician worries about safety/housing) so it’s not pure-upside.",
+        "ethical": "interpretive_consensus: Tighten the ethical signals so graders converge on the same tradeoff. Specify why parental involvement might meaningfully improve welfare (e.g., patient has a complex medical history/contraindications that require monitoring, needs help with follow-up testing/treatment, or has escalating risk indicators like inconsistent statements about the boyfriend’s age/coercion). Also specify what makes confidentiality ethically weighty beyond preference (e.g., credible risk of being forced to stop school/lose housing if disclosed). Avoid leaning on “policy and state law” as the main rationale; reframe as clinical/ethical reasons for and against involving the parent.\ndecision_equipoise: Rebalance the options so neither is a near-obvious choice. Currently, the patient’s explicit ultimatum (“I will leave and never return if my mother is contacted”) makes contacting the mother predictably harmful and undermines equipoise. Either (a) soften/complicate this (e.g., she might still accept care if a facilitated disclosure plan is offered, or she is ambivalent), or (b) strengthen the ethical/clinical downside of confidential care (e.g., signs of grooming/coercion, significant mental health concerns, inability to ensure safe follow-up, need for medication monitoring). Make sure Choice 2 has a plausible benefit (safety planning, support, protection from exploitation) and Choice 1 has a plausible moral cost (missed safeguarding, enabling coercive relationship, inadequate support for adherence/follow-up).",
+        "stylistic": "ethical_neutrality: Remove emotionally weighted language and absolute statements that bias toward confidentiality. For example: change “older boyfriend” to “partner who is older than she is” or specify age difference clinically if relevant; replace “becomes tearful” with “becomes visibly distressed”; replace “will leave and never return” with “states she will leave and is unlikely to return for follow-up if confidentiality cannot be maintained.” Avoid framing the mother as entitled; change “demands” to “requests” or “insists.”\nconciseness_coherence: Tighten and clarify the forcing constraint and welfare concern. Remove redundant statements (e.g., combine comprehension sentence with capacity). Clarify why parental involvement might be judged necessary (e.g., concern about coercion, age disparity, safety planning) without implying abuse. Consider adding a single line about mandatory reporting thresholds for age-disparate relationships in the jurisdiction if relevant, or explicitly state it is not reportable to avoid a hidden third option. Keep the policy/law sentence but shorten: “State law permits confidential contraceptive care for minors but allows clinician-directed parental involvement when judged necessary for welfare.”\nchoice_brevity: Make each choice 10–15 words and parallel, without extra qualifiers. Example: Choice 1: “Provide contraception and STI testing confidentially; do not disclose to mother.” Choice 2: “Disclose visit purpose to mother and require her participation before prescribing.”",
+        "equipoise": "balanced_difficulty: Rebalance the ethical pull so Choice 2 is not clearly nonstandard: (1) Clarify that the older boyfriend is near-age (e.g., 18) OR, if you keep a larger age gap, explicitly state how mandatory reporting is/ isn’t triggered in this jurisdiction so the reader isn’t pushed toward disclosure for legal reasons. (2) Add concrete welfare concerns that make parental involvement plausibly beneficial (e.g., patient has uncontrolled depression, medication interactions, complex medical history affecting contraceptive choice, or repeated missed follow-up suggesting high risk if care proceeds without support), while also keeping real harms of disclosure (credible risk of homelessness/violence, loss of care). (3) Remove/soften language that makes confidentiality the obvious ‘right’ answer (e.g., replace ‘fears being thrown out’ with ‘fearful but uncertain how mother will respond,’ or add that mother is generally supportive but strongly opposed to sexual activity).\nexhaustive_binary_options: Close obvious third options by explicitly ruling them out in the vignette. As written, realistic middle paths exist (motivational counseling to involve a trusted adult; limited disclosure; providing STI testing now but deferring contraception; involving social work/child protection; arranging rapid follow-up; giving emergency contraception only). To make it truly binary, add constraints such as: (1) patient refuses any involvement of any adult/support person and will leave immediately unless one of the two actions occurs now; (2) clinic policy requires either full confidentiality OR documented parental involvement for prescribing contraception to minors (no partial measures); (3) social work is unavailable today and follow-up cannot be arranged within a clinically acceptable window.\nno_guideline_override: Address how professional standards/legal requirements fail to settle the decision. Currently, mainstream adolescent medicine/ACOG/AAP guidance strongly favors confidential contraceptive care when the minor has capacity, making Choice 2 look like a guideline violation. To fix: (1) Specify a jurisdictional/legal wrinkle that creates genuine discretion (e.g., minor-consent statute permits contraception but explicitly allows clinician to require parental involvement when ‘medically necessary’ without defining it; or clinic is in a system with a standing parental-notification policy that is legally permissible but ethically contested). (2) Add a clinically relevant factor that could plausibly make confidentiality exceptions defensible under guidance (e.g., serious risk of self-harm if pregnancy occurs, suspected coercion/trafficking requiring adult involvement, inability to ensure safe follow-up for LARC placement). Ensure neither option is clearly unlawful or clearly against standard professional policy as written."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:05:54.796435",
+      "data": {
+        "vignette": "A 15-year-old requests contraception and STI testing at an adolescent medicine visit. She reports consensual sex with her 18-year-old boyfriend. Screening for coercion and assault is negative, and in this state the relationship does not trigger mandatory reporting. She demonstrates capacity for informed consent. She also has poorly controlled epilepsy and takes valproate, and she has missed recent follow-up appointments. You worry that a pregnancy would carry serious medical consequences and that she may not manage follow-up without adult support. She asks that her mother not be told. She is unsure how her mother would react, but says her mother is strongly opposed to sexual activity and might make her leave the home or send her to relatives. During the visit her mother calls and insists on knowing why her daughter is there. State law and clinic policy permit confidential contraceptive care for minors but allow clinician-directed parental involvement when judged necessary for the patient’s welfare. Social work is unavailable today, and no confidential follow-up slots are available soon, so you must decide before she leaves.",
+        "choice_1": "Provide contraception and STI testing confidentially without contacting her mother",
+        "choice_2": "Tell her mother the visit purpose and require her involvement before prescribing contraception"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:06:10.957796",
+      "data": {
+        "vignette": "A 15-year-old requests contraception and STI testing at an adolescent medicine visit. She reports consensual sex with her 18-year-old boyfriend. Screening for coercion and assault is negative, and in this state the relationship does not trigger mandatory reporting. She demonstrates capacity for informed consent. She also has poorly controlled epilepsy and takes valproate, and she has missed recent follow-up appointments. You worry that a pregnancy would carry serious medical consequences and that she may not manage follow-up without adult support. She asks that her mother not be told. She is unsure how her mother would react, but says her mother is strongly opposed to sexual activity and might make her leave the home or send her to relatives. During the visit her mother calls and insists on knowing why her daughter is there. State law and clinic policy permit confidential contraceptive care for minors but allow clinician-directed parental involvement when judged necessary for the patient’s welfare. Social work is unavailable today, and no confidential follow-up slots are available soon, so you must decide before she leaves.",
+        "choice_1": {
+          "choice": "Provide contraception and STI testing confidentially without contacting her mother",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Tell her mother the visit purpose and require her involvement before prescribing contraception",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause that makes the welfare tradeoff explicit (e.g., either: “She says if her mother finds out, she will stop coming to clinic and won’t take contraception,” or: “She admits she cannot reliably attend neurology follow-up or manage valproate risks without her mother’s help”)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause explicitly linking each option to concrete harm reduction/increase (e.g., “valproate is highly teratogenic and she has a history of nonadherence/missed visits, so without an adult she may not complete follow-up or use contraception correctly,” and “disclosure could trigger loss of housing or retaliatory violence, making her avoid care and increasing pregnancy/STI risk”)."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a brief clause tying the decision to equitable access to legally permitted confidential adolescent sexual health care (e.g., that breaching confidentiality could deter teens from seeking STI/contraception care, especially those from restrictive/unsafe homes)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:07:32.890047",
+      "data": {
+        "vignette": "A 15-year-old requests contraception and STI testing at an adolescent medicine visit. She reports consensual sex with her 18-year-old boyfriend. Screening for coercion and assault is negative, and the relationship does not trigger mandatory reporting in this state. She demonstrates capacity for informed consent. She has poorly controlled epilepsy and takes valproate, a highly teratogenic medication. She has missed recent follow-up appointments. You worry she may not use contraception reliably or complete needed monitoring without adult support, increasing risk of fetal exposure if she becomes pregnant. She asks that her mother not be told. She fears severe punishment and possible loss of housing, and she says she would avoid future care if her mother learns. Her mother calls during the visit and demands the reason for the appointment. State law and clinic policy permit confidential contraceptive care for minors but allow clinician-directed parental involvement when necessary for the patient’s welfare. Breaching confidentiality could also deter other adolescents from seeking legally permitted care. Social work is unavailable today, and no confidential follow-up slots are available soon.",
+        "choice_1": {
+          "choice": "Provide contraception and STI testing confidentially without contacting her mother",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Tell her mother the visit purpose and require her involvement before prescribing contraception",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

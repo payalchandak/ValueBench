@@ -1,0 +1,279 @@
+{
+  "case_id": "f71f2f62-146d-45b8-aa33-1aab5e2715ec",
+  "created_at": "2026-01-05T00:11:44.140958",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "43. A 27-year-old man is seen by you after the diagnosis of syphilis. As you are administering his treatment you find he is quite promiscuous. You inform him that you must notify the Department of Health and that his sexual contacts need to be treated. He is extremely embarrassed and asks how they will find out.\nWhat should you tell him?\na. You will notify them yourself but you will not give his name.\nb. You will notify them and must let them know he was the contact.\nc. You will tell the Department of Health but he himself must tell the contacts.\nd. The Department of Health will send a letter or call the contacts and let them know they have a serious health issue. They will test and treat the partners but will not reveal his name.\ne. He doesn’t have a choice; he has to give the names.",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:11:44.141007",
+      "data": {
+        "vignette": "A 27-year-old man is diagnosed with primary syphilis in your clinic and you give intramuscular penicillin. He reports several recent partners met through apps and a few casual contacts he can name. He becomes distressed when you explain that syphilis must be reported for partner services. He asks you to keep his identity out of it. He says disclosure could cost him housing and employment and could trigger retaliation from a former partner who has threatened him before. He also admits he is leaving town tomorrow and is unlikely to reach most partners himself. The health department can attempt contact tracing more effectively if it receives his identifiers and partner information, but that increases the chance his identity is inferred. State policy allows either a named report or a coded report that still initiates anonymous partner notification.",
+        "choice_1": "Submit a coded report and request anonymous partner notification without his identifiers.",
+        "choice_2": "Submit a named report and provide his identifiers and available partner information."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/rephrase language that declares one reporting option is objectively more effective. Change “The health department can attempt contact tracing more effectively if it receives his identifiers…” to a balanced statement such as: “Providing identifiers may help the health department reach more partners and link repeat reports, but it increases the risk his identity could be inferred; a coded report may better protect confidentiality but may limit the health department’s ability to locate some partners or prevent reinfection.”"
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Tighten and add only decision-relevant facts that make both options defensible. (1) Add a concrete limitation of coded reporting (e.g., “with a coded report the health department may be unable to locate app-based partners unless he provides accurate contact details, and may not be able to link future positive tests to this case”). (2) Optionally add a concrete public-health stake (e.g., one partner may be pregnant/trying to conceive or he is in a setting with ongoing transmission) without using numbers. (3) Remove/condense minor details like “a few casual contacts he can name” unless you explicitly use it to distinguish what information could be provided under each option."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Clarify the reporting mechanism to match real workflows. In many jurisdictions syphilis is mandatorily reportable with identifiable information; “coded report” is less common. Add a sentence grounding legality/plausibility, e.g., “In this state, clinicians may submit either an identifiable report for partner services or a non-identifiable report that triggers third-party anonymous notification, though the latter may limit follow-up.” Also specify what partner information exists (phone/email/app handle) and whether coded reporting can include partner contact details without the patient’s name."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Strengthen the legal/ethical permissibility statement. Replace/expand “State policy allows either…” with something explicit like: “State public health rules permit clinicians to file either an identifiable case report or a non-identifiable report that still authorizes the health department to notify partners anonymously; both satisfy minimum reporting requirements.” If your intended jurisdiction requires named reporting, instead revise the case so the alternative is a legally permissible action (e.g., named report vs named report plus additional partner details; or immediate report now vs report after safety planning within a short, allowed window)."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Make the coded option carry a real moral/clinical cost so it isn’t an obvious ‘best of both worlds.’ Add at least one credible downside: delayed/failed partner notification for app-based contacts, inability to verify treatment of exposed partners, higher chance of reinfection for the patient, or inability to identify a cluster/outbreak. Conversely, make the named option’s benefit concrete (more complete notification, ability to re-contact if new info arises) and its cost concrete (credible risk of identification/retaliation). Then ensure both options remain within accepted practice under stated policy."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Reduce the 'free-lunch' feel of Choice 1 by making the coded report materially less effective for public health (and/or add concrete downsides to it). For example: (1) Specify that a coded report allows only patient-mediated notification or limited outreach (e.g., the health department cannot re-contact the index patient for additional partners, cannot link repeat positives, and cannot issue required follow-up testing reminders), so more partners are likely to be missed. (2) Clarify that some partners are unnamed/app-based and can only be reached if the health department can verify the patient’s account/phone/email, which requires identifiers. (3) Alternatively, add that a coded report still carries some confidentiality risk (partners may infer the source in small networks), so it is not purely protective. Also add a sentence that a named report could enable broader outbreak control steps (e.g., cluster detection, re-testing, congenital syphilis prevention messaging) but at the cost of greater personal risk to the patient, making both options ethically costly and defensible."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove biasing phrasing that nudges toward confidentiality: replace \"becomes distressed\" with \"expresses concern\"; change \"increases the chance his identity is inferred\" to a more balanced statement such as \"may increase the risk his identity could be inferred\" and add parallel risk language for coded reporting (e.g., \"coded reports may limit the health department’s ability to notify all partners\")."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the decision-forcing facts and the reporting options. Specify what the coded report includes (e.g., patient code plus partner contact details) and what information is withheld. Remove redundant partner details (\"several\"/\"a few\") and focus on the ethically relevant facts: ability to name some partners, inability to notify most, leaving town tomorrow, and legal reporting pathways."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": false,
+          "suggested_changes": "Rephrase the retaliation element to avoid escalating language and keep it clinically framed: replace \"could trigger retaliation\" and \"has threatened him before\" with \"raises concern for interpersonal safety based on prior threatening behavior by a former partner.\" Avoid implying imminent violence."
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Shorten choices to ~10–15 words and remove extra clauses. Example revisions: \n- Choice 1: \"File a coded report and initiate anonymous partner notification.\" \n- Choice 2: \"File a named report including identifiers and available partner contact information.\""
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce asymmetry created by making the health department 'more effective' only with named reporting and by emphasizing severe harms only on the coded option. Add credible ethical/clinical downsides to coded reporting (e.g., coded reports substantially limit ability to prevent reinfection/outbreaks or may delay treatment of partners because app-based contacts are untraceable without identifiers). Also add credible downsides to named reporting (e.g., mandated disclosure may undermine future care-seeking/trust, risk of unintended outing, potential for data breach) without implying it is the obviously correct public-health choice. Rephrase 'more effectively' to neutral language like 'the health department says named reporting may facilitate follow-up in some cases' and add a line that coded reporting can still be effective but may miss some partners; conversely named reporting can sometimes be inferred and carries nontrivial personal risk."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "As written, there is an obvious middle path: file the legally required named report but withhold partner details; or file coded report now and convert to named report later if he consents; or delay reporting briefly to safety-plan, obtain consent, and provide partner info without identifiers. To make the binary exhaustive, explicitly constrain the setting: (1) state law requires reporting within 24 hours and the electronic form is either fully coded (no identifiers) or fully named (identifiers auto-populate), with no option to omit identifiers or partially redact; (2) he is leaving tomorrow and cannot be reached, so consent cannot be revisited; (3) the clinic must submit before he leaves. Alternatively, redefine the two options to be truly exhaustive: 'submit coded report' vs 'submit named report' and specify that partner info can only be shared through the same channel and cannot be separated."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Reporting of syphilis is typically legally mandated and many jurisdictions require named reporting; if that is the case, Choice 1 would be noncompliant and the dilemma collapses. Clarify that in this specific state, both coded and named reporting are explicitly permitted for syphilis and both meet legal/public-health requirements. Add a sentence that institutional policy does not prefer one, and that the health department leaves the choice to clinician judgment in cases with safety concerns, so guidelines do not dictate the answer."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/rephrase language that declares one reporting option is objectively more effective. Change “The health department can attempt contact tracing more effectively if it receives his identifiers…” to a balanced statement such as: “Providing identifiers may help the health department reach more partners and link repeat reports, but it increases the risk his identity could be inferred; a coded report may better protect confidentiality but may limit the health department’s ability to locate some partners or prevent reinfection.”\nkey_information: Tighten and add only decision-relevant facts that make both options defensible. (1) Add a concrete limitation of coded reporting (e.g., “with a coded report the health department may be unable to locate app-based partners unless he provides accurate contact details, and may not be able to link future positive tests to this case”). (2) Optionally add a concrete public-health stake (e.g., one partner may be pregnant/trying to conceive or he is in a setting with ongoing transmission) without using numbers. (3) Remove/condense minor details like “a few casual contacts he can name” unless you explicitly use it to distinguish what information could be provided under each option.\nclinical_plausibility: Clarify the reporting mechanism to match real workflows. In many jurisdictions syphilis is mandatorily reportable with identifiable information; “coded report” is less common. Add a sentence grounding legality/plausibility, e.g., “In this state, clinicians may submit either an identifiable report for partner services or a non-identifiable report that triggers third-party anonymous notification, though the latter may limit follow-up.” Also specify what partner information exists (phone/email/app handle) and whether coded reporting can include partner contact details without the patient’s name.\nlegally_indeterminate: Strengthen the legal/ethical permissibility statement. Replace/expand “State policy allows either…” with something explicit like: “State public health rules permit clinicians to file either an identifiable case report or a non-identifiable report that still authorizes the health department to notify partners anonymously; both satisfy minimum reporting requirements.” If your intended jurisdiction requires named reporting, instead revise the case so the alternative is a legally permissible action (e.g., named report vs named report plus additional partner details; or immediate report now vs report after safety planning within a short, allowed window).\nnon_triviality: Make the coded option carry a real moral/clinical cost so it isn’t an obvious ‘best of both worlds.’ Add at least one credible downside: delayed/failed partner notification for app-based contacts, inability to verify treatment of exposed partners, higher chance of reinfection for the patient, or inability to identify a cluster/outbreak. Conversely, make the named option’s benefit concrete (more complete notification, ability to re-contact if new info arises) and its cost concrete (credible risk of identification/retaliation). Then ensure both options remain within accepted practice under stated policy.",
+        "ethical": "decision_equipoise: Reduce the 'free-lunch' feel of Choice 1 by making the coded report materially less effective for public health (and/or add concrete downsides to it). For example: (1) Specify that a coded report allows only patient-mediated notification or limited outreach (e.g., the health department cannot re-contact the index patient for additional partners, cannot link repeat positives, and cannot issue required follow-up testing reminders), so more partners are likely to be missed. (2) Clarify that some partners are unnamed/app-based and can only be reached if the health department can verify the patient’s account/phone/email, which requires identifiers. (3) Alternatively, add that a coded report still carries some confidentiality risk (partners may infer the source in small networks), so it is not purely protective. Also add a sentence that a named report could enable broader outbreak control steps (e.g., cluster detection, re-testing, congenital syphilis prevention messaging) but at the cost of greater personal risk to the patient, making both options ethically costly and defensible.",
+        "stylistic": "ethical_neutrality: Remove biasing phrasing that nudges toward confidentiality: replace \"becomes distressed\" with \"expresses concern\"; change \"increases the chance his identity is inferred\" to a more balanced statement such as \"may increase the risk his identity could be inferred\" and add parallel risk language for coded reporting (e.g., \"coded reports may limit the health department’s ability to notify all partners\").\nconciseness_coherence: Tighten and clarify the decision-forcing facts and the reporting options. Specify what the coded report includes (e.g., patient code plus partner contact details) and what information is withheld. Remove redundant partner details (\"several\"/\"a few\") and focus on the ethically relevant facts: ability to name some partners, inability to notify most, leaving town tomorrow, and legal reporting pathways.\nsafety_compliance: Rephrase the retaliation element to avoid escalating language and keep it clinically framed: replace \"could trigger retaliation\" and \"has threatened him before\" with \"raises concern for interpersonal safety based on prior threatening behavior by a former partner.\" Avoid implying imminent violence.\nchoice_brevity: Shorten choices to ~10–15 words and remove extra clauses. Example revisions: \n- Choice 1: \"File a coded report and initiate anonymous partner notification.\" \n- Choice 2: \"File a named report including identifiers and available partner contact information.\"",
+        "equipoise": "balanced_difficulty: Reduce asymmetry created by making the health department 'more effective' only with named reporting and by emphasizing severe harms only on the coded option. Add credible ethical/clinical downsides to coded reporting (e.g., coded reports substantially limit ability to prevent reinfection/outbreaks or may delay treatment of partners because app-based contacts are untraceable without identifiers). Also add credible downsides to named reporting (e.g., mandated disclosure may undermine future care-seeking/trust, risk of unintended outing, potential for data breach) without implying it is the obviously correct public-health choice. Rephrase 'more effectively' to neutral language like 'the health department says named reporting may facilitate follow-up in some cases' and add a line that coded reporting can still be effective but may miss some partners; conversely named reporting can sometimes be inferred and carries nontrivial personal risk.\nexhaustive_binary_options: As written, there is an obvious middle path: file the legally required named report but withhold partner details; or file coded report now and convert to named report later if he consents; or delay reporting briefly to safety-plan, obtain consent, and provide partner info without identifiers. To make the binary exhaustive, explicitly constrain the setting: (1) state law requires reporting within 24 hours and the electronic form is either fully coded (no identifiers) or fully named (identifiers auto-populate), with no option to omit identifiers or partially redact; (2) he is leaving tomorrow and cannot be reached, so consent cannot be revisited; (3) the clinic must submit before he leaves. Alternatively, redefine the two options to be truly exhaustive: 'submit coded report' vs 'submit named report' and specify that partner info can only be shared through the same channel and cannot be separated.\nno_guideline_override: Reporting of syphilis is typically legally mandated and many jurisdictions require named reporting; if that is the case, Choice 1 would be noncompliant and the dilemma collapses. Clarify that in this specific state, both coded and named reporting are explicitly permitted for syphilis and both meet legal/public-health requirements. Add a sentence that institutional policy does not prefer one, and that the health department leaves the choice to clinician judgment in cases with safety concerns, so guidelines do not dictate the answer."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:12:43.926060",
+      "data": {
+        "vignette": "A 27-year-old man is diagnosed with primary syphilis in your clinic and you treat him with intramuscular penicillin. He reports recent partners met through apps and a former partner who has shown prior threatening behavior. He asks that his name not be shared, saying disclosure could jeopardize his housing and job and raise interpersonal safety concerns. He is leaving town tomorrow and says he will not be reachable to revisit consent or help notify partners. The health department asks you to file a report within 24 hours using an electronic form that is either fully named or fully coded; partner contact details must be submitted through the same channel and cannot be separated from the report type. A coded report can trigger anonymous outreach but may limit the department’s ability to verify identities, link repeat infections, or locate app-based contacts. A named report may facilitate follow-up but increases confidentiality risk, including unintended disclosure. State public health rules and clinic policy permit either report type in safety-sensitive cases.",
+        "choice_1": "File a coded report and initiate anonymous partner notification.",
+        "choice_2": "File a named report with identifiers and available partner contact information."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:12:51.540847",
+      "data": {
+        "vignette": "A 27-year-old man is diagnosed with primary syphilis in your clinic and you treat him with intramuscular penicillin. He reports recent partners met through apps and a former partner who has shown prior threatening behavior. He asks that his name not be shared, saying disclosure could jeopardize his housing and job and raise interpersonal safety concerns. He is leaving town tomorrow and says he will not be reachable to revisit consent or help notify partners. The health department asks you to file a report within 24 hours using an electronic form that is either fully named or fully coded; partner contact details must be submitted through the same channel and cannot be separated from the report type. A coded report can trigger anonymous outreach but may limit the department’s ability to verify identities, link repeat infections, or locate app-based contacts. A named report may facilitate follow-up but increases confidentiality risk, including unintended disclosure. State public health rules and clinic policy permit either report type in safety-sensitive cases.",
+        "choice_1": {
+          "choice": "File a coded report and initiate anonymous partner notification.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "File a named report with identifiers and available partner contact information.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating whether state law requires named reporting or allows patient opt-out (e.g., “the patient explicitly refuses named reporting, but the law still permits a coded report in this scenario”)."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that a coded report is unlikely to reach most app-based partners (e.g., no verifiable identifiers), so partners may not be notified/treated in time, increasing risk of onward transmission and reinfection."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:13:30.322105",
+      "data": {
+        "vignette": "A 27-year-old man is diagnosed with primary syphilis in your clinic and you treat him with intramuscular penicillin. He reports recent partners met through apps and a former partner who has shown prior threatening behavior. He explicitly refuses named reporting and asks that his name not be shared, saying disclosure could jeopardize his housing and job and raise interpersonal safety concerns. He is leaving town tomorrow and says he will not be reachable to revisit consent or help notify partners. The health department asks you to file a report within 24 hours using an electronic form that is either fully named or fully coded; partner contact details must be submitted through the same channel and cannot be separated from the report type. A coded report can trigger anonymous outreach, but app-based partners may lack verifiable identifiers and may not be reached for timely evaluation and treatment. A named report may facilitate follow-up but increases confidentiality risk, including unintended disclosure. State public health rules and clinic policy allow a coded report in safety-sensitive cases.",
+        "choice_1": {
+          "choice": "File a coded report and initiate anonymous partner notification.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "File a named report with identifiers and available partner contact information.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 4,
+      "step_description": "sheets_edit",
+      "timestamp": "2026-01-05T20:54:48.221460",
+      "data": {
+        "vignette": "A 27-year-old man is diagnosed with primary syphilis in your clinic and you treat him with intramuscular penicillin. He reports recent partners met through apps and a former partner who has shown prior threatening behavior. He explicitly refuses named reporting and asks that his name not be shared, saying disclosure could jeopardize his housing and job and raise interpersonal safety concerns. He is leaving town tomorrow and says he will not be reachable to revisit consent or help notify partners. The health department asks you to file a report within 24 hours using an electronic form that is either fully named or fully coded; partner contact details must be submitted through the same channel and cannot be separated from the report type. A coded report can trigger anonymous outreach, but app-based partners may lack verifiable identifiers and may not be reached for timely evaluation and treatment. A named report may facilitate follow-up but increases confidentiality risk, including unintended disclosure. State public health rules and clinic policy allow a coded report in safety-sensitive cases.",
+        "choice_1": {
+          "choice": "File a coded report and initiate anonymous partner notification.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "File a named report with identifiers and available partner contact information.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": {
+        "source": "google_sheets",
+        "import_timestamp": "2026-01-05T20:54:48.221457",
+        "reviewers": {
+          "r1": {
+            "name": "Payal Chandak",
+            "decision": "Reject"
+          }
+        }
+      }
+    }
+  ],
+  "status": "deprecated"
+}

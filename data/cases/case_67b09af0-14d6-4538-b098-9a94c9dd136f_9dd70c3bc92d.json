@@ -1,0 +1,230 @@
+{
+  "case_id": "67b09af0-14d6-4538-b098-9a94c9dd136f",
+  "created_at": "2026-01-04T23:52:09.930234",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 88:\nTHE ROLE OF CLINICAL AND RESEARCH\nETHICS COMMITTEES\nScenario 1\nYou are an FY1 doctor on your general practice rotation. At medical school you were inter-\nested in the law on advance decisions and you now wish to do a research study to look at the\nprevalence of advance decisions in general practice. You have drafted up a questionnaire\nwhich you want to send out to all general practices in the Clinical Commissioning Group.\nScenario 2\nYou are an FY2 doctor on an intensive care rotation. A patient with multiple sclerosis is\nadmitted to the unit and treated for pneumonia. The patient was adamant that she did not\nwant to receive intravenous antibiotics but no specific reasons were given. The patient’s con-\ndition deteriorated rapidly and she became unconscious. It was considered clinically neces-\nsary to give intravenous antibiotics since they were more likely to be effective against her\nsepsis, and she was no longer able to swallow oral medication. You think that the patient’s\nprior refusal of intravenous antibiotics should be taken into account, and you would like an\nopportunity to discuss the ethical issues.\nQuestions\n• In what circumstances is research ethics approval required?\n• What does a clinical ethics committee do?",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:52:09.930259",
+      "data": {
+        "vignette": "A 48-year-old woman with advanced multiple sclerosis is admitted with pneumonia. On arrival she is alert and oriented. She repeatedly refuses intravenous antibiotics after the risks and benefits are explained, but she will not discuss her reasons. She accepts oxygen and comfort-focused measures and agrees to try oral antibiotics. Over the next hours she becomes hypotensive and increasingly confused, then loses consciousness. She can no longer swallow safely. The ICU team believes intravenous antibiotics are the only realistic way to treat her suspected sepsis in time. No written advance directive is available, and her family is unreachable. Hospital policy and state law allow treatment in an incapacitated patient when prior refusals are unclear, and also allow honoring a prior refusal judged applicable. You must decide what to do before the next medication round.",
+        "choice_1": "Start intravenous antibiotics now",
+        "choice_2": "Withhold intravenous antibiotics and continue comfort-focused care"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften language that makes IV antibiotics sound uniquely correct: change “the ICU team believes intravenous antibiotics are the only realistic way to treat her suspected sepsis in time” to “the ICU team believes IV antibiotics offer the best chance of reversing the infection, but they would require IV access and could prolong the dying process if she would not have wanted escalation.” Avoid framing as effectiveness certainty; keep it qualitative. Also consider adding that oral therapy is unlikely to be sufficient *given inability to swallow* (a fact) rather than asserting ‘only realistic way’ (a conclusion)."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Clarify decisional capacity at time of refusal (e.g., brief bedside capacity assessment findings) and what exactly she refused (single dose vs all IV antibiotics; refusal of IV line vs the medication). Add whether she understood consequences and could communicate a consistent choice. Remove or tighten extraneous framing (“advanced multiple sclerosis” unless it affects baseline cognition/communication; if relevant, specify baseline function and how MS impacts communication/swallow). Specify current goals-of-care status/code status if known. These details are necessary to judge applicability of the prior refusal versus emergency treatment."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Replace the broad/possibly inaccurate legal claim with a neutral, jurisdiction-agnostic statement: e.g., “Per hospital policy and local law, in emergencies clinicians may provide life-sustaining treatment to an incapacitated patient when prior wishes are not clearly applicable; clinicians may also honor a prior informed refusal if it was made with capacity and applies to the current situation.” This anchors legal permissibility for both options without asserting specifics."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Reduce asymmetry that makes ‘start IV antibiotics’ feel obviously correct by strengthening the ethical cost of escalation and the credibility of refusal: state that earlier she clearly refused ‘any IV antibiotics/IV line’ after demonstrating understanding, and that she expressed a preference for comfort-only if she worsened (even if she wouldn’t elaborate why). Alternatively, if you want ambiguity, add reasons why withholding is clinically/ethically defensible (e.g., frailty/end-stage MS with recurrent infections, high burden of ICU-level interventions, likely need for restraints/central line, risk of prolonged suffering). Ensure both paths carry real, defensible stakes rather than “treat sepsis” vs “let die.”"
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce ambiguity about whether the earlier refusal was an informed, applicable refusal vs a transient preference: (1) explicitly state she had decision-making capacity at the time (or specify what made the team confident), and what she was told (e.g., that declining IV antibiotics could lead to death). (2) Clarify whether her refusal was specific to IV access/needles vs a broader refusal of life-prolonging treatment. Add one or two concrete statements she made (e.g., 'No IVs even if I die' or 'I don’t want ICU-level care') to anchor applicability. Remove or greatly shorten the policy/state-law sentence, which shifts the dilemma toward legal interpretation rather than ethical judgment."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Neutralize the clinical framing that makes one option look medically mandatory: replace 'the only realistic way' with language that acknowledges uncertainty and burdens (e.g., 'the most effective option, but would likely require ICU escalation'). Add ethically weighty downsides to starting IV antibiotics (e.g., likely need for restraints/central line, risk of intubation/vasopressors, prolonged suffering or a survival to a state she previously found unacceptable). Also add a credible moral cost to withholding beyond 'letting her die' (e.g., pneumonia/sepsis may be reversible with treatment and she might regain capacity soon, making non-treatment feel like abandoning potentially recoverable patient). This makes both choices defensible and comparably costly."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove wording that implies one option is medically correct (e.g., change “only realistic way” to “most likely to achieve source control in time, though prognosis remains poor”). Replace “will not discuss her reasons” with neutral phrasing such as “declines to elaborate.” Ensure the policy sentence is neutral and does not steer toward overriding refusal (e.g., “Policy permits either emergency treatment or honoring prior refusals when clearly applicable”)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Clarify whether the earlier refusal was specific to IV antibiotics for this pneumonia/sepsis episode or a broader standing refusal (e.g., fear of IVs vs goal-of-care choice). Add one sentence on her baseline MS status/function and prognosis relevance only if it affects capacity/values. Tighten the legal/policy line and specify the exact uncertainty: applicability of prior refusal now that she lacks capacity. Avoid redundancy (“repeatedly refuses” + “after risks and benefits explained” can be condensed)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make choices parallel and include the key paired action elements without extra detail, each ~10–15 words: (1) “Administer IV broad-spectrum antibiotics and supportive care under emergency treatment exception.” (2) “Do not administer IV antibiotics; continue comfort-focused measures and oral meds if tolerated.” Alternatively remove oral meds from choice 2 if not feasible once NPO."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce the asymmetry created by her repeated, capacitated refusal of IV antibiotics (which makes honoring it look clearly more ethically/legally correct). Edits that would restore equipoise:\n- Add explicit doubt about decisional capacity at the time of refusal (e.g., early hypoxia/delirium, fluctuating attention, inability to paraphrase risks/benefits) OR document that clinicians disagreed about capacity.\n- Make the refusal less unequivocal/applicable (e.g., she refused ‘for now’ due to needle phobia or past line complications; or said she would accept IV antibiotics only if her breathing worsened; or she refused a central line but not a peripheral IV).\n- Add a credible reason that starting IV antibiotics could itself conflict with her known values (e.g., severe prior trauma with restraints/lines; history of line-associated thrombosis/skin breakdown in advanced MS), so Choice 1 is not framed as straightforward rescue.\n- Balance Choice 2 by clarifying that oral/comfort-only care is likely to result in death soon, but also that survival may leave her with outcomes she previously stated she would find unacceptable (without turning it into a purely prognostic argument)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "As written, a realistic ‘middle’ path exists (temporize while clarifying wishes), which breaks the forced binary. Make the binary exhaustive by explicitly foreclosing alternatives:\n- State that she is already on maximal oxygen/noninvasive support and cannot take enteral meds; IM/SC/NG options are not feasible or are clinically inappropriate in this setting.\n- Add that an urgent ethics consult/supervising physician review was attempted but cannot occur before the next antibiotic window.\n- Specify that repeated attempts to reach family/surrogates have failed and no other contacts are available (e.g., no listed health care proxy, phone disconnected).\n- Clarify that the decision is specifically whether to initiate IV antibiotics under emergency exception now versus transition to comfort-only orders now (not ‘wait and see’)."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Current facts imply a competent patient made a clear, treatment-specific refusal minutes/hours earlier, which many legal/ethical standards treat as binding once incapacitated; that risks making Choice 1 clearly noncompliant. To avoid a guideline/legal override, revise to make standards genuinely ambiguous:\n- Make the earlier refusal plausibly non-applicable to the current situation (e.g., she refused ‘IV antibiotics for pneumonia’ but now has suspected sepsis with impending shock; or she refused a particular antibiotic/class, not all IV antibiotics).\n- Alternatively, document uncertainty about informed refusal (e.g., she would not engage enough to demonstrate understanding; she could not repeat back information; staff disagreement about capacity).\n- If you keep her as fully oriented with clear understanding, then add a hospital/state policy element that explicitly treats contemporaneous verbal refusals without documentation as nonbinding in emergencies (and explain why), otherwise the case will look settled by standard practice.\n- Consider adding that she has a longstanding pattern of refusing invasive care when anxious but later consenting when stabilized, creating reasonable doubt about how to interpret her earlier refusal."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften language that makes IV antibiotics sound uniquely correct: change “the ICU team believes intravenous antibiotics are the only realistic way to treat her suspected sepsis in time” to “the ICU team believes IV antibiotics offer the best chance of reversing the infection, but they would require IV access and could prolong the dying process if she would not have wanted escalation.” Avoid framing as effectiveness certainty; keep it qualitative. Also consider adding that oral therapy is unlikely to be sufficient *given inability to swallow* (a fact) rather than asserting ‘only realistic way’ (a conclusion).\nkey_information: Clarify decisional capacity at time of refusal (e.g., brief bedside capacity assessment findings) and what exactly she refused (single dose vs all IV antibiotics; refusal of IV line vs the medication). Add whether she understood consequences and could communicate a consistent choice. Remove or tighten extraneous framing (“advanced multiple sclerosis” unless it affects baseline cognition/communication; if relevant, specify baseline function and how MS impacts communication/swallow). Specify current goals-of-care status/code status if known. These details are necessary to judge applicability of the prior refusal versus emergency treatment.\nlegally_indeterminate: Replace the broad/possibly inaccurate legal claim with a neutral, jurisdiction-agnostic statement: e.g., “Per hospital policy and local law, in emergencies clinicians may provide life-sustaining treatment to an incapacitated patient when prior wishes are not clearly applicable; clinicians may also honor a prior informed refusal if it was made with capacity and applies to the current situation.” This anchors legal permissibility for both options without asserting specifics.\nnon_triviality: Reduce asymmetry that makes ‘start IV antibiotics’ feel obviously correct by strengthening the ethical cost of escalation and the credibility of refusal: state that earlier she clearly refused ‘any IV antibiotics/IV line’ after demonstrating understanding, and that she expressed a preference for comfort-only if she worsened (even if she wouldn’t elaborate why). Alternatively, if you want ambiguity, add reasons why withholding is clinically/ethically defensible (e.g., frailty/end-stage MS with recurrent infections, high burden of ICU-level interventions, likely need for restraints/central line, risk of prolonged suffering). Ensure both paths carry real, defensible stakes rather than “treat sepsis” vs “let die.”",
+        "ethical": "interpretive_consensus: Reduce ambiguity about whether the earlier refusal was an informed, applicable refusal vs a transient preference: (1) explicitly state she had decision-making capacity at the time (or specify what made the team confident), and what she was told (e.g., that declining IV antibiotics could lead to death). (2) Clarify whether her refusal was specific to IV access/needles vs a broader refusal of life-prolonging treatment. Add one or two concrete statements she made (e.g., 'No IVs even if I die' or 'I don’t want ICU-level care') to anchor applicability. Remove or greatly shorten the policy/state-law sentence, which shifts the dilemma toward legal interpretation rather than ethical judgment.\ndecision_equipoise: Neutralize the clinical framing that makes one option look medically mandatory: replace 'the only realistic way' with language that acknowledges uncertainty and burdens (e.g., 'the most effective option, but would likely require ICU escalation'). Add ethically weighty downsides to starting IV antibiotics (e.g., likely need for restraints/central line, risk of intubation/vasopressors, prolonged suffering or a survival to a state she previously found unacceptable). Also add a credible moral cost to withholding beyond 'letting her die' (e.g., pneumonia/sepsis may be reversible with treatment and she might regain capacity soon, making non-treatment feel like abandoning potentially recoverable patient). This makes both choices defensible and comparably costly.",
+        "stylistic": "ethical_neutrality: Remove wording that implies one option is medically correct (e.g., change “only realistic way” to “most likely to achieve source control in time, though prognosis remains poor”). Replace “will not discuss her reasons” with neutral phrasing such as “declines to elaborate.” Ensure the policy sentence is neutral and does not steer toward overriding refusal (e.g., “Policy permits either emergency treatment or honoring prior refusals when clearly applicable”).\nconciseness_coherence: Clarify whether the earlier refusal was specific to IV antibiotics for this pneumonia/sepsis episode or a broader standing refusal (e.g., fear of IVs vs goal-of-care choice). Add one sentence on her baseline MS status/function and prognosis relevance only if it affects capacity/values. Tighten the legal/policy line and specify the exact uncertainty: applicability of prior refusal now that she lacks capacity. Avoid redundancy (“repeatedly refuses” + “after risks and benefits explained” can be condensed).\nchoice_brevity: Make choices parallel and include the key paired action elements without extra detail, each ~10–15 words: (1) “Administer IV broad-spectrum antibiotics and supportive care under emergency treatment exception.” (2) “Do not administer IV antibiotics; continue comfort-focused measures and oral meds if tolerated.” Alternatively remove oral meds from choice 2 if not feasible once NPO.",
+        "equipoise": "balanced_difficulty: Reduce the asymmetry created by her repeated, capacitated refusal of IV antibiotics (which makes honoring it look clearly more ethically/legally correct). Edits that would restore equipoise:\n- Add explicit doubt about decisional capacity at the time of refusal (e.g., early hypoxia/delirium, fluctuating attention, inability to paraphrase risks/benefits) OR document that clinicians disagreed about capacity.\n- Make the refusal less unequivocal/applicable (e.g., she refused ‘for now’ due to needle phobia or past line complications; or said she would accept IV antibiotics only if her breathing worsened; or she refused a central line but not a peripheral IV).\n- Add a credible reason that starting IV antibiotics could itself conflict with her known values (e.g., severe prior trauma with restraints/lines; history of line-associated thrombosis/skin breakdown in advanced MS), so Choice 1 is not framed as straightforward rescue.\n- Balance Choice 2 by clarifying that oral/comfort-only care is likely to result in death soon, but also that survival may leave her with outcomes she previously stated she would find unacceptable (without turning it into a purely prognostic argument).\nexhaustive_binary_options: As written, a realistic ‘middle’ path exists (temporize while clarifying wishes), which breaks the forced binary. Make the binary exhaustive by explicitly foreclosing alternatives:\n- State that she is already on maximal oxygen/noninvasive support and cannot take enteral meds; IM/SC/NG options are not feasible or are clinically inappropriate in this setting.\n- Add that an urgent ethics consult/supervising physician review was attempted but cannot occur before the next antibiotic window.\n- Specify that repeated attempts to reach family/surrogates have failed and no other contacts are available (e.g., no listed health care proxy, phone disconnected).\n- Clarify that the decision is specifically whether to initiate IV antibiotics under emergency exception now versus transition to comfort-only orders now (not ‘wait and see’).\nno_guideline_override: Current facts imply a competent patient made a clear, treatment-specific refusal minutes/hours earlier, which many legal/ethical standards treat as binding once incapacitated; that risks making Choice 1 clearly noncompliant. To avoid a guideline/legal override, revise to make standards genuinely ambiguous:\n- Make the earlier refusal plausibly non-applicable to the current situation (e.g., she refused ‘IV antibiotics for pneumonia’ but now has suspected sepsis with impending shock; or she refused a particular antibiotic/class, not all IV antibiotics).\n- Alternatively, document uncertainty about informed refusal (e.g., she would not engage enough to demonstrate understanding; she could not repeat back information; staff disagreement about capacity).\n- If you keep her as fully oriented with clear understanding, then add a hospital/state policy element that explicitly treats contemporaneous verbal refusals without documentation as nonbinding in emergencies (and explain why), otherwise the case will look settled by standard practice.\n- Consider adding that she has a longstanding pattern of refusing invasive care when anxious but later consenting when stabilized, creating reasonable doubt about how to interpret her earlier refusal."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:53:22.128441",
+      "data": {
+        "vignette": "A 48-year-old woman with advanced multiple sclerosis is admitted with pneumonia. At baseline she is bedbound with chronic dysphagia but communicates clearly. In the ED she is tachypneic and mildly hypoxic. When IV antibiotics are discussed, she says, “No IVs right now,” and asks to try pills first. She can state that infection can be fatal, but her attention drifts and the team disagrees whether she fully understood. She adds, “If I get worse, don’t tie me down for tubes.” Her chart notes prior severe distress with IV lines and a past line-associated thrombosis. Over the next hours she becomes hypotensive and obtunded. She is NPO for unsafe swallow, and IM or NG options are not appropriate. IV antibiotics could reverse the infection but would require IV access and likely ICU escalation, possibly restraints. Her family and any surrogate cannot be reached, and an ethics consult cannot occur before the next antibiotic window. Hospital policy and local law permit either emergency treatment when prior wishes are unclear or honoring a prior refusal judged applicable.",
+        "choice_1": "Initiate IV antibiotics and ICU-level supportive care now",
+        "choice_2": "Withhold IV antibiotics and implement comfort-only orders now"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:53:32.746302",
+      "data": {
+        "vignette": "A 48-year-old woman with advanced multiple sclerosis is admitted with pneumonia. At baseline she is bedbound with chronic dysphagia but communicates clearly. In the ED she is tachypneic and mildly hypoxic. When IV antibiotics are discussed, she says, “No IVs right now,” and asks to try pills first. She can state that infection can be fatal, but her attention drifts and the team disagrees whether she fully understood. She adds, “If I get worse, don’t tie me down for tubes.” Her chart notes prior severe distress with IV lines and a past line-associated thrombosis. Over the next hours she becomes hypotensive and obtunded. She is NPO for unsafe swallow, and IM or NG options are not appropriate. IV antibiotics could reverse the infection but would require IV access and likely ICU escalation, possibly restraints. Her family and any surrogate cannot be reached, and an ethics consult cannot occur before the next antibiotic window. Hospital policy and local law permit either emergency treatment when prior wishes are unclear or honoring a prior refusal judged applicable.",
+        "choice_1": {
+          "choice": "Initiate IV antibiotics and ICU-level supportive care now",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Withhold IV antibiotics and implement comfort-only orders now",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause establishing whether she has an advance directive/POLST (e.g., “no written directive is found in the chart”)."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Clarify that comfort-only will likely result in a preventable death despite high likelihood of returning to baseline with IV antibiotics, and that she has not expressed a desire for comfort-only/end-of-life care (only a conditional refusal of IVs and tubes)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:53:59.187074",
+      "data": {
+        "vignette": "A 48-year-old woman with advanced multiple sclerosis is admitted with pneumonia. At baseline she is bedbound with chronic dysphagia but communicates clearly. In the ED she is tachypneic and mildly hypoxic. When IV antibiotics are proposed, she refuses IV access and requests oral antibiotics instead. She can state that untreated infection can be fatal, but her attention fluctuates and the team disagrees about her decisional capacity. She also states she does not want escalation to intubation, and her chart notes prior severe distress with IV lines and a past line-associated thrombosis. No advance directive or POLST is found in the chart. Over the next hours she becomes hypotensive and obtunded. She is NPO for unsafe swallow, and IM or NG options are not appropriate. IV antibiotics could likely reverse this infection and allow return to baseline, but would require IV access and likely ICU escalation, possibly restraints. Her family and any surrogate cannot be reached, and an ethics consult cannot occur before the next antibiotic window. Comfort-only care would likely result in a preventable death, and she has not expressed a desire for end-of-life care beyond this conditional refusal.",
+        "choice_1": {
+          "choice": "Initiate IV antibiotics and ICU-level supportive care now",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Withhold IV antibiotics and implement comfort-only orders now",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

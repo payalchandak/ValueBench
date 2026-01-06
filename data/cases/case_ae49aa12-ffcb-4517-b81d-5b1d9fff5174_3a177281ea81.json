@@ -1,0 +1,279 @@
+{
+  "case_id": "ae49aa12-ffcb-4517-b81d-5b1d9fff5174",
+  "created_at": "2026-01-04T23:04:32.615207",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "14. You have a patient in your clinic who is an elderly woman with multiple\nmedical problems. Her family is extremely grateful for your care and\nthey bring you a meal they cooked at home, a cake, and a scarf.\nWhat should you do?\na. Accept the gift but report it.\nb. Accept the gift.\nc. Offer payment for the food.\nd. Refuse the gift.\ne. It is ethical to accept the gift if you share the food with the rest of the house staff.",
+      "value_1": "Non-maleficence",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:04:32.615264",
+      "data": {
+        "vignette": "An 82-year-old woman with heart failure, diabetes, and chronic kidney disease is seen frequently in your clinic. Her daughter translates and manages her medications. At today’s visit, after you adjust diuretics and discuss possible hospice referral, the family presents a home-cooked meal, a decorated cake, and a handmade scarf. They say refusing would be deeply disrespectful and that they brought the items for you personally. The patient depends on this clinic and is anxious about losing care. You worry that accepting could blur boundaries, create expectations for special access, and complicate future difficult conversations. You also worry that refusing could damage trust and make the family less willing to follow the care plan or return for needed follow-up. Clinic leadership confirms that either accepting a modest gift with documentation or declining it is permitted under policy.",
+        "choice_1": "Accept the gifts and document the gift in the medical record",
+        "choice_2": "Decline the gifts and ask the family to take them home"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove clinical details that do not affect the ethical dilemma about gifts and boundaries. Specifically delete or substantially shorten: \"with heart failure, diabetes, and chronic kidney disease\" and \"after you adjust diuretics and discuss possible hospice referral.\" Replace with a minimal anchor such as: \"An 82-year-old woman with advanced chronic illness who relies on your clinic for ongoing care.\" Keep only details that affect the power dynamic (dependence on clinic), communication (daughter interprets), and stakes (fear of losing care)."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the ethical costs so neither option is the obvious ‘safer’ choice. (1) Make the gift clearly modest and culturally customary (e.g., a small homemade food item or inexpensive scarf) and remove/soften cues of patient vulnerability/coercion that make acceptance look exploitative (e.g., revise ‘depends on this clinic and is anxious about losing care’ to ‘values the relationship and worries about being misunderstood’). (2) Strengthen the downside of declining by specifying a realistic, time-sensitive care need that could be jeopardized if trust ruptures (e.g., imminent medication changes requiring close follow-up, discussion of goals of care next week). (3) Strengthen the downside of accepting by specifying a plausible future boundary conflict (e.g., family has previously requested after-hours calls or expedited appointments) without making it rule-violating, and keep policy neutrality (avoid implying documentation makes it ethically ‘cleared’)."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Replace emotionally loaded or coercive phrasing with neutral descriptions. For example, change “refusing would be deeply disrespectful” to “the family explains that, in their cultural context, declining a gift is considered impolite.” Change “the patient depends on this clinic and is anxious about losing care” to “the patient expresses worry that the relationship with the clinic could be affected.” Remove or balance wording that implies either option will predictably improve adherence/trust; instead state uncertainty (e.g., “you are concerned it could affect rapport”)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both options short action statements without embedded implementation details. For example: Choice 1: “Accept the gifts as a modest token and continue standard scheduling.” Choice 2: “Decline the gifts and reinforce standard boundaries for the clinician–patient relationship.” If documentation is important, move it into the vignette as a standard step rather than part of the choice."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce framing that makes declining seem like jeopardizing the patient’s care and therefore morally worse. For example, remove/soften “The patient depends on this clinic and is anxious about losing care,” or explicitly state you reassure them care will not be affected regardless. Also make the gift magnitude clearly modest and ambiguous (e.g., choose either a small handmade scarf OR a small homemade food item, not multiple items plus a decorated cake) so accepting is not obviously boundary-crossing. Finally, avoid making Choice 1 look more ‘policy-compliant’ by specifying documentation should go in a compliance/gift log (or that documentation is required for either choice), not the medical record."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious middle-ground options (accepting on behalf of the clinic, sharing with staff, returning part of the gift, suggesting a donation, setting a boundary such as ‘no gifts but a card is ok,’ or deferring the decision). Add constraints such as: (1) clinic policy prohibits communal food/left-behind items due to infection control; (2) leadership says gifts must be either accepted personally (with a gift log entry) or refused—no third pathway; (3) family explicitly insists the items are for you personally and would view donation/redistribution as insulting; (4) they are leaving immediately and demand an answer today."
+        },
+        "no_guideline_override": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "key_information: Remove clinical details that do not affect the ethical dilemma about gifts and boundaries. Specifically delete or substantially shorten: \"with heart failure, diabetes, and chronic kidney disease\" and \"after you adjust diuretics and discuss possible hospice referral.\" Replace with a minimal anchor such as: \"An 82-year-old woman with advanced chronic illness who relies on your clinic for ongoing care.\" Keep only details that affect the power dynamic (dependence on clinic), communication (daughter interprets), and stakes (fear of losing care).",
+        "ethical": "decision_equipoise: Rebalance the ethical costs so neither option is the obvious ‘safer’ choice. (1) Make the gift clearly modest and culturally customary (e.g., a small homemade food item or inexpensive scarf) and remove/soften cues of patient vulnerability/coercion that make acceptance look exploitative (e.g., revise ‘depends on this clinic and is anxious about losing care’ to ‘values the relationship and worries about being misunderstood’). (2) Strengthen the downside of declining by specifying a realistic, time-sensitive care need that could be jeopardized if trust ruptures (e.g., imminent medication changes requiring close follow-up, discussion of goals of care next week). (3) Strengthen the downside of accepting by specifying a plausible future boundary conflict (e.g., family has previously requested after-hours calls or expedited appointments) without making it rule-violating, and keep policy neutrality (avoid implying documentation makes it ethically ‘cleared’).",
+        "stylistic": "ethical_neutrality: Replace emotionally loaded or coercive phrasing with neutral descriptions. For example, change “refusing would be deeply disrespectful” to “the family explains that, in their cultural context, declining a gift is considered impolite.” Change “the patient depends on this clinic and is anxious about losing care” to “the patient expresses worry that the relationship with the clinic could be affected.” Remove or balance wording that implies either option will predictably improve adherence/trust; instead state uncertainty (e.g., “you are concerned it could affect rapport”).\nchoice_brevity: Make both options short action statements without embedded implementation details. For example: Choice 1: “Accept the gifts as a modest token and continue standard scheduling.” Choice 2: “Decline the gifts and reinforce standard boundaries for the clinician–patient relationship.” If documentation is important, move it into the vignette as a standard step rather than part of the choice.",
+        "equipoise": "balanced_difficulty: Reduce framing that makes declining seem like jeopardizing the patient’s care and therefore morally worse. For example, remove/soften “The patient depends on this clinic and is anxious about losing care,” or explicitly state you reassure them care will not be affected regardless. Also make the gift magnitude clearly modest and ambiguous (e.g., choose either a small handmade scarf OR a small homemade food item, not multiple items plus a decorated cake) so accepting is not obviously boundary-crossing. Finally, avoid making Choice 1 look more ‘policy-compliant’ by specifying documentation should go in a compliance/gift log (or that documentation is required for either choice), not the medical record.\nexhaustive_binary_options: Close obvious middle-ground options (accepting on behalf of the clinic, sharing with staff, returning part of the gift, suggesting a donation, setting a boundary such as ‘no gifts but a card is ok,’ or deferring the decision). Add constraints such as: (1) clinic policy prohibits communal food/left-behind items due to infection control; (2) leadership says gifts must be either accepted personally (with a gift log entry) or refused—no third pathway; (3) family explicitly insists the items are for you personally and would view donation/redistribution as insulting; (4) they are leaving immediately and demand an answer today."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:05:46.366643",
+      "data": {
+        "vignette": "An 82-year-old woman with advanced chronic illness is followed closely in your clinic. Her adult daughter interprets and helps coordinate appointments. At the end of today’s visit, the daughter offers you a small handmade scarf and says that, in their cultural context, turning down a personal gift is considered impolite. The family adds that the scarf is meant for you specifically and would feel insulting if it were donated, shared, or left for staff. Infection-control rules also prohibit leaving homemade items in common areas. Clinic leadership confirms that you must either accept the gift personally or refuse it, and that either decision is permitted as long as it is noted in the clinic gift log today. You have a sensitive goals-of-care visit scheduled next week and a recent medication change that requires close follow-up. The family has previously asked for after-hours calls and expedited scheduling, and you worry your response could shape future expectations. They are leaving now and want an answer before they go.",
+        "choice_1": "Accept the scarf as a personal gift",
+        "choice_2": "Decline the scarf and return it to the family"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:06:01.809499",
+      "data": {
+        "vignette": "An 82-year-old woman with advanced chronic illness is followed closely in your clinic. Her adult daughter interprets and helps coordinate appointments. At the end of today’s visit, the daughter offers you a small handmade scarf and says that, in their cultural context, turning down a personal gift is considered impolite. The family adds that the scarf is meant for you specifically and would feel insulting if it were donated, shared, or left for staff. Infection-control rules also prohibit leaving homemade items in common areas. Clinic leadership confirms that you must either accept the gift personally or refuse it, and that either decision is permitted as long as it is noted in the clinic gift log today. You have a sensitive goals-of-care visit scheduled next week and a recent medication change that requires close follow-up. The family has previously asked for after-hours calls and expedited scheduling, and you worry your response could shape future expectations. They are leaving now and want an answer before they go.",
+        "choice_1": {
+          "choice": "Accept the scarf as a personal gift",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Decline the scarf and return it to the family",
+          "autonomy": "violates",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that the patient explicitly asks you to accept the scarf as part of her care relationship (and says refusal would make her feel unable/unwilling to participate in next week’s goals-of-care discussion), or alternatively that accepting would make her feel obligated to agree with your medical recommendations."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause making the clinical welfare stakes explicit (e.g., “the daughter says if you refuse the scarf, her mother may not return next week for the goals-of-care visit and medication monitoring,” or conversely that accepting may undermine objective counseling/trust)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause making the potential harms explicit on both sides (e.g., accepting could compromise professional boundaries or lead to pressured preferential access; refusing could damage trust and reduce adherence/attendance for next week’s goals-of-care visit)."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause making the fairness/precedent concern explicit (e.g., \"Accepting personal gifts can create pressure to offer this family preferential scheduling or access compared with other patients\")."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:06:53.876400",
+      "data": {
+        "vignette": "An 82-year-old woman with advanced chronic illness is followed closely in your clinic. Her adult daughter interprets and helps coordinate appointments. At the end of today’s visit, the daughter offers you a small handmade scarf. She says the patient wants you to accept it as part of their care relationship and that refusal would feel disrespectful. She adds that her mother may be less willing to return next week for a sensitive goals-of-care visit and medication monitoring if the gift is declined. The family says the scarf is meant for you specifically and would feel insulting if it were donated, shared, or left for staff. Infection-control rules also prohibit leaving homemade items in common areas. Clinic leadership confirms that you must either accept the gift personally or refuse it. Either decision is permitted if noted in the clinic gift log today. You also worry that accepting could blur professional boundaries and increase pressure for after-hours calls or expedited scheduling compared with other patients. They are leaving now and want an answer before they go.",
+        "choice_1": {
+          "choice": "Accept the scarf as a personal gift",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Decline the scarf and return it to the family",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 4,
+      "step_description": "sheets_edit",
+      "timestamp": "2026-01-05T20:54:48.135777",
+      "data": {
+        "vignette": "An 82-year-old woman with advanced chronic illness is followed closely in your clinic. Her adult daughter interprets and helps coordinate appointments. At the end of today’s visit, the daughter offers you a small handmade scarf. She says the patient wants you to accept it as part of their care relationship and that refusal would feel disrespectful. She adds that her mother may be less willing to return next week for a sensitive goals-of-care visit and medication monitoring if the gift is declined. The family says the scarf is meant for you specifically and would feel insulting if it were donated, shared, or left for staff. Infection-control rules also prohibit leaving homemade items in common areas. Clinic leadership confirms that you must either accept the gift personally or refuse it. Either decision is permitted if noted in the clinic gift log today. You also worry that accepting could blur professional boundaries and increase pressure for after-hours calls or expedited scheduling compared with other patients. They are leaving now and want an answer before they go.",
+        "choice_1": {
+          "choice": "Accept the scarf as a personal gift",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Decline the scarf and return it to the family",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": {
+        "source": "google_sheets",
+        "import_timestamp": "2026-01-05T20:54:48.135775",
+        "reviewers": {
+          "r1": {
+            "name": "Payal Chandak",
+            "decision": "Reject"
+          }
+        }
+      }
+    }
+  ],
+  "status": "deprecated"
+}

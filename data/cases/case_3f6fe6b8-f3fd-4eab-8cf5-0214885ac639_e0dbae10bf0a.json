@@ -1,0 +1,242 @@
+{
+  "case_id": "3f6fe6b8-f3fd-4eab-8cf5-0214885ac639",
+  "created_at": "2026-01-05T00:13:45.698838",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "44. A 16-year-old female is in your office because she has just found out she is pregnant. She discusses her options and asks you to refer her for an abortion. She states that her parents do not know she is pregnant and she does not want them to know.\nWhat should you do?\na. Refer her for the abortion without parental notification.\nb. Make a “reasonable effort” to contact the parents, but still refer for the abortion if you cannot contact them.\nc. Do not refer for abortion without parental consent.\nd. Seek a court order declaring her emancipated.\ne. Strongly encourage her to discuss the issue with her parents.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:13:45.698890",
+      "data": {
+        "vignette": "A 16-year-old presents alone after a positive pregnancy test. Ultrasound in your office suggests an early first-trimester pregnancy, and the nearest clinic can see her within the next week if you refer today. She asks for an abortion referral and insists you not tell her parents. She appears calm and understands the procedure, alternatives, and follow-up. She says her parents are strict and that disclosure could lead to being forced to leave home, but she has no other adult she trusts. You are also concerned about her safety during recovery and whether she is being pressured by a partner. State law and hospital policy allow minors to obtain confidential abortion care, and they also permit clinicians to request parental involvement when they judge it necessary for the patient’s welfare. You must decide now how to proceed with the referral.",
+        "choice_1": "Refer her for abortion care without contacting her parents.",
+        "choice_2": "Insist on parental involvement before making the abortion referral."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften language that implies one option is clinically/ethically safer by default. Specifically: (1) Rephrase “She appears calm and understands the procedure, alternatives, and follow-up” to a neutral capacity statement tied to your assessment (e.g., “On brief assessment, she can describe the procedure, alternatives, and follow-up, but you have limited time to assess coercion and support”). (2) Balance the clinical stakes by adding concrete risks/costs to Choice 2 beyond a vague welfare rationale (e.g., “involving parents may lead to delay, loss of confidentiality, or avoidance of care” without quantifying). (3) Avoid wording that suggests your concern about coercion/safety makes parental involvement medically indicated; instead present it as an unresolved concern that could be addressed either by confidential safeguards or by involvement of a guardian."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make both options concrete, mutually exclusive, and implementable as clinical orders. Currently “Insist on parental involvement before making the abortion referral” is vague and may be legally/clinically non-actionable. Revise choices to specify what you do today: e.g., Choice 1: “Place referral today for confidential abortion care; provide safety planning, IPV/coercion screening, and arrange follow-up within 48–72 hours; do not contact parents.” Choice 2: “Decline to place referral today unless a parent/guardian is involved; offer prenatal care referral and schedule a return visit with parent/guardian; document rationale.” This clarifies the immediate action and the alternative care pathway."
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add essential clinical/contextual elements that are standard and materially affect the ethical stakes, and remove/streamline what’s not needed. Add: (1) gestational age estimate in qualitative terms (e.g., “very early first trimester”) is fine, but include why timing matters (e.g., “medication abortion option depends on early gestation” without numbers); (2) a brief HEADSSS-style safety check: whether she feels safe at home, any history of violence, and whether there is immediate risk if parents learn; (3) whether she has capacity per local standard for minor consent and whether you can involve a confidential advocate (social work) today. Streamline: “Ultrasound in your office” can be simplified to “dating ultrasound confirms early pregnancy” unless ultrasound availability is ethically relevant."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Clarify the clinical workflow and realism: (1) In many settings, primary care/ED clinicians don’t directly ‘refer’ for abortion but provide information and coordinate with a clinic; specify setting (primary care clinic, school-based clinic, ED) and that you can place a referral/appointment. (2) Add that you will perform coercion/IPV screening and offer social work—these are plausible alternatives to parental involvement. (3) Ensure the policy statement is coherent: separate what is legally permitted (minor consent to abortion) from what is optional (encouraging/asking for parental involvement) and avoid implying a clinician can require it if the minor has legal capacity."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 may be legally non-defensible if the minor is legally entitled to confidential abortion and you ‘insist’ as a condition for referral. To make both options legally defensible, add a jurisdiction-neutral sentence such as: “Under state law, she can consent to abortion without parental notification, but clinicians may (a) encourage parental involvement, and (b) delay referral briefly to complete safety/coercion assessment or to involve a guardian if they document a serious, specific concern for immediate harm.” Then revise Choice 2 to avoid an illegal barrier: e.g., “Delay referral today and involve social work; strongly encourage parental involvement and ask her to return with a parent/guardian if she agrees,” rather than making parental involvement mandatory."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Currently Choice 1 is strongly supported by the vignette (capacity, calm, legal confidentiality) while Choice 2 is framed as paternalistic and potentially illegal—making it too easy. To make the dilemma genuinely hard, add specific, credible red flags that create real concern without resolving it clinically, e.g., “She hesitates when asked about the partner; you notice controlling text messages; she lacks a safe place to recover; or she is at risk of self-harm if homeless.” Also add meaningful ethical costs to Choice 1 (risk of missing coercion/unsafe recovery) and to Choice 2 (risk of harm from disclosure, delay, or driving her away from care). Ensure both paths include reasonable safeguards (social work, confidential hotline, follow-up) so neither is obviously inferior."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the case so both options have credible ethical costs and benefits. As written, Choice 2 looks like an unnecessary, paternalistic confidentiality breach based on speculative concerns, making Choice 1 the obvious answer.\n\nActionable edits:\n- Add concrete, non-determinative safety/coercion indicators (e.g., partner insists on being present/answers for her; she has unexplained bruising; inconsistent story; severe anxiety when asked about partner; no safe ride/home support after the procedure; history of running away; no reliable phone).\n- Add a realistic practical constraint that makes confidential referral potentially risky (e.g., the abortion clinic requires an adult escort for sedation or mandates a post-procedure contact person; she has no safe place to recover).\n- Make parental involvement potentially beneficial but genuinely risky: specify parents have previously provided medical care and might support her, yet she has credible fear of being kicked out or punished; or they may be controlling but not overtly violent.\n- Modify Choice 2 to be clinically/ethically defensible without becoming a protocol violation: e.g., \"Delay the referral until you involve a parent/guardian or another responsible adult/support person (with her knowledge) because you judge she cannot safely undergo and recover from the procedure without support.\" Keep it binary but grounded in a serious, clearly described welfare concern rather than a general worry."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove language that implicitly validates one option (e.g., “appears calm and understands…” can read as endorsing capacity). Rephrase to neutral clinical observations: “She is oriented, able to summarize the procedure, alternatives, and follow-up in her own words.” Also balance the framing by adding a neutral rationale for considering parental involvement (e.g., need for peri-procedural support/transport, assessment of coercion) without implying it is required."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the forcing constraint and welfare concerns. Specify what “safety during recovery” means (e.g., transportation, safe place to stay, ability to access urgent care) and what triggers concern for coercion (e.g., limited ability to speak privately, inconsistent timeline), or remove if not supported. Avoid stacking concerns without details. Consider explicitly stating gestational age estimate and that there are no acute medical complications today."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Shorten and neutralize to ~10–15 words and avoid “insist,” which is value-laden. Example:\n- Choice 1: “Provide confidential referral for abortion care and schedule follow-up support.”\n- Choice 2: “Seek parental involvement before issuing the abortion referral.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce the asymmetry that makes Choice 1 seem clearly preferable (law permits confidentiality; patient appears competent; parental disclosure risks harm). Add ethically weighty downsides to confidential referral (e.g., credible signs of coercion/abuse or inability to ensure safe post-procedure care) and/or add ethically weighty downsides to parental involvement (e.g., clear risk of violence, not just eviction). Reframe Choice 2 so it is not a blanket ‘insist’ but a defensible welfare-based condition (e.g., ‘require involvement of a safe adult support person, with parents as default unless another adult is identified’—or explicitly rule out alternatives if you keep parents-only). Also balance narrative language: avoid ‘insists’/‘strict parents’ without parallel concerns about medical safety, and add uncertainty about home safety and follow-up logistics for both paths."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "As written, there is an obvious third option: involve another trusted adult (social worker, counselor, aunt), offer confidential referral while strongly encouraging voluntary parental involvement, schedule a follow-up visit before referral, perform mandated screening for coercion/abuse, or refer while arranging safety planning. To make it truly binary, explicitly close off middle-ground options (e.g., no available social work today; minor refuses any other adult; clinic requires a referral form today; mandatory abuse screen already completed and negative/indeterminate; follow-up capacity limited). Alternatively, change Choice 2 to ‘involve a safe adult support person (not necessarily parents)’ vs ‘maintain confidentiality and refer today’ so the binary covers the real decision space."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "This scenario is likely governed by clear legal/clinical standards: assess decisional capacity, comply with state minor-consent/confidentiality laws, and follow mandated reporting/safeguarding protocols if abuse/coercion is suspected. Choice 2 (‘insist on parental involvement’) may conflict with law/policy if the minor is capable and no overriding safety exception is met. To place it in a gray zone, specify that: (1) she meets criteria for confidential consent, but (2) you have ambiguous, non-reportable concerns about coercion/safety that don’t meet mandatory reporting thresholds, and (3) policy grants clinician discretion without clear criteria. Clarify that both actions are permitted under current law/policy given the facts, and that there is no mandatory parental notification/judicial bypass requirement in this state."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften language that implies one option is clinically/ethically safer by default. Specifically: (1) Rephrase “She appears calm and understands the procedure, alternatives, and follow-up” to a neutral capacity statement tied to your assessment (e.g., “On brief assessment, she can describe the procedure, alternatives, and follow-up, but you have limited time to assess coercion and support”). (2) Balance the clinical stakes by adding concrete risks/costs to Choice 2 beyond a vague welfare rationale (e.g., “involving parents may lead to delay, loss of confidentiality, or avoidance of care” without quantifying). (3) Avoid wording that suggests your concern about coercion/safety makes parental involvement medically indicated; instead present it as an unresolved concern that could be addressed either by confidential safeguards or by involvement of a guardian.\ndistinctness_actionability: Make both options concrete, mutually exclusive, and implementable as clinical orders. Currently “Insist on parental involvement before making the abortion referral” is vague and may be legally/clinically non-actionable. Revise choices to specify what you do today: e.g., Choice 1: “Place referral today for confidential abortion care; provide safety planning, IPV/coercion screening, and arrange follow-up within 48–72 hours; do not contact parents.” Choice 2: “Decline to place referral today unless a parent/guardian is involved; offer prenatal care referral and schedule a return visit with parent/guardian; document rationale.” This clarifies the immediate action and the alternative care pathway.\nkey_information: Add essential clinical/contextual elements that are standard and materially affect the ethical stakes, and remove/streamline what’s not needed. Add: (1) gestational age estimate in qualitative terms (e.g., “very early first trimester”) is fine, but include why timing matters (e.g., “medication abortion option depends on early gestation” without numbers); (2) a brief HEADSSS-style safety check: whether she feels safe at home, any history of violence, and whether there is immediate risk if parents learn; (3) whether she has capacity per local standard for minor consent and whether you can involve a confidential advocate (social work) today. Streamline: “Ultrasound in your office” can be simplified to “dating ultrasound confirms early pregnancy” unless ultrasound availability is ethically relevant.\nclinical_plausibility: Clarify the clinical workflow and realism: (1) In many settings, primary care/ED clinicians don’t directly ‘refer’ for abortion but provide information and coordinate with a clinic; specify setting (primary care clinic, school-based clinic, ED) and that you can place a referral/appointment. (2) Add that you will perform coercion/IPV screening and offer social work—these are plausible alternatives to parental involvement. (3) Ensure the policy statement is coherent: separate what is legally permitted (minor consent to abortion) from what is optional (encouraging/asking for parental involvement) and avoid implying a clinician can require it if the minor has legal capacity.\nlegally_indeterminate: As written, Choice 2 may be legally non-defensible if the minor is legally entitled to confidential abortion and you ‘insist’ as a condition for referral. To make both options legally defensible, add a jurisdiction-neutral sentence such as: “Under state law, she can consent to abortion without parental notification, but clinicians may (a) encourage parental involvement, and (b) delay referral briefly to complete safety/coercion assessment or to involve a guardian if they document a serious, specific concern for immediate harm.” Then revise Choice 2 to avoid an illegal barrier: e.g., “Delay referral today and involve social work; strongly encourage parental involvement and ask her to return with a parent/guardian if she agrees,” rather than making parental involvement mandatory.\nnon_triviality: Currently Choice 1 is strongly supported by the vignette (capacity, calm, legal confidentiality) while Choice 2 is framed as paternalistic and potentially illegal—making it too easy. To make the dilemma genuinely hard, add specific, credible red flags that create real concern without resolving it clinically, e.g., “She hesitates when asked about the partner; you notice controlling text messages; she lacks a safe place to recover; or she is at risk of self-harm if homeless.” Also add meaningful ethical costs to Choice 1 (risk of missing coercion/unsafe recovery) and to Choice 2 (risk of harm from disclosure, delay, or driving her away from care). Ensure both paths include reasonable safeguards (social work, confidential hotline, follow-up) so neither is obviously inferior.",
+        "ethical": "decision_equipoise: Rebalance the case so both options have credible ethical costs and benefits. As written, Choice 2 looks like an unnecessary, paternalistic confidentiality breach based on speculative concerns, making Choice 1 the obvious answer.\n\nActionable edits:\n- Add concrete, non-determinative safety/coercion indicators (e.g., partner insists on being present/answers for her; she has unexplained bruising; inconsistent story; severe anxiety when asked about partner; no safe ride/home support after the procedure; history of running away; no reliable phone).\n- Add a realistic practical constraint that makes confidential referral potentially risky (e.g., the abortion clinic requires an adult escort for sedation or mandates a post-procedure contact person; she has no safe place to recover).\n- Make parental involvement potentially beneficial but genuinely risky: specify parents have previously provided medical care and might support her, yet she has credible fear of being kicked out or punished; or they may be controlling but not overtly violent.\n- Modify Choice 2 to be clinically/ethically defensible without becoming a protocol violation: e.g., \"Delay the referral until you involve a parent/guardian or another responsible adult/support person (with her knowledge) because you judge she cannot safely undergo and recover from the procedure without support.\" Keep it binary but grounded in a serious, clearly described welfare concern rather than a general worry.",
+        "stylistic": "ethical_neutrality: Remove language that implicitly validates one option (e.g., “appears calm and understands…” can read as endorsing capacity). Rephrase to neutral clinical observations: “She is oriented, able to summarize the procedure, alternatives, and follow-up in her own words.” Also balance the framing by adding a neutral rationale for considering parental involvement (e.g., need for peri-procedural support/transport, assessment of coercion) without implying it is required.\nconciseness_coherence: Tighten and clarify the forcing constraint and welfare concerns. Specify what “safety during recovery” means (e.g., transportation, safe place to stay, ability to access urgent care) and what triggers concern for coercion (e.g., limited ability to speak privately, inconsistent timeline), or remove if not supported. Avoid stacking concerns without details. Consider explicitly stating gestational age estimate and that there are no acute medical complications today.\nchoice_brevity: Shorten and neutralize to ~10–15 words and avoid “insist,” which is value-laden. Example:\n- Choice 1: “Provide confidential referral for abortion care and schedule follow-up support.”\n- Choice 2: “Seek parental involvement before issuing the abortion referral.”",
+        "equipoise": "balanced_difficulty: Reduce the asymmetry that makes Choice 1 seem clearly preferable (law permits confidentiality; patient appears competent; parental disclosure risks harm). Add ethically weighty downsides to confidential referral (e.g., credible signs of coercion/abuse or inability to ensure safe post-procedure care) and/or add ethically weighty downsides to parental involvement (e.g., clear risk of violence, not just eviction). Reframe Choice 2 so it is not a blanket ‘insist’ but a defensible welfare-based condition (e.g., ‘require involvement of a safe adult support person, with parents as default unless another adult is identified’—or explicitly rule out alternatives if you keep parents-only). Also balance narrative language: avoid ‘insists’/‘strict parents’ without parallel concerns about medical safety, and add uncertainty about home safety and follow-up logistics for both paths.\nexhaustive_binary_options: As written, there is an obvious third option: involve another trusted adult (social worker, counselor, aunt), offer confidential referral while strongly encouraging voluntary parental involvement, schedule a follow-up visit before referral, perform mandated screening for coercion/abuse, or refer while arranging safety planning. To make it truly binary, explicitly close off middle-ground options (e.g., no available social work today; minor refuses any other adult; clinic requires a referral form today; mandatory abuse screen already completed and negative/indeterminate; follow-up capacity limited). Alternatively, change Choice 2 to ‘involve a safe adult support person (not necessarily parents)’ vs ‘maintain confidentiality and refer today’ so the binary covers the real decision space.\nno_guideline_override: This scenario is likely governed by clear legal/clinical standards: assess decisional capacity, comply with state minor-consent/confidentiality laws, and follow mandated reporting/safeguarding protocols if abuse/coercion is suspected. Choice 2 (‘insist on parental involvement’) may conflict with law/policy if the minor is capable and no overriding safety exception is met. To place it in a gray zone, specify that: (1) she meets criteria for confidential consent, but (2) you have ambiguous, non-reportable concerns about coercion/safety that don’t meet mandatory reporting thresholds, and (3) policy grants clinician discretion without clear criteria. Clarify that both actions are permitted under current law/policy given the facts, and that there is no mandatory parental notification/judicial bypass requirement in this state."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:15:04.848836",
+      "data": {
+        "vignette": "A 16-year-old comes to your school-based clinic alone after a positive pregnancy test. A dating ultrasound confirms a very early first-trimester pregnancy. She requests an abortion referral and asks that her parents not be told. On brief assessment she is oriented and can describe the procedure, alternatives, and follow-up in her own words. When asked about support, she says she cannot name any adult who could drive her, stay with her afterward, or be a reliable same-day contact. She shows you repeated texts from a boyfriend telling her what to say, and she becomes guarded when you ask about him. She says her parents have brought her for medical care before, but she fears they could respond with severe punishment if they learn about the pregnancy. Your clinic social worker is unavailable until next week, and the abortion clinic needs a referral today to offer a timely appointment that preserves her early options. State law and hospital policy permit either confidential referral or a brief delay to address specific safety concerns.",
+        "choice_1": "Place a confidential abortion referral today and arrange a rapid follow-up visit.",
+        "choice_2": "Delay the referral and request a return visit with a parent or guardian."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:15:17.976510",
+      "data": {
+        "vignette": "A 16-year-old comes to your school-based clinic alone after a positive pregnancy test. A dating ultrasound confirms a very early first-trimester pregnancy. She requests an abortion referral and asks that her parents not be told. On brief assessment she is oriented and can describe the procedure, alternatives, and follow-up in her own words. When asked about support, she says she cannot name any adult who could drive her, stay with her afterward, or be a reliable same-day contact. She shows you repeated texts from a boyfriend telling her what to say, and she becomes guarded when you ask about him. She says her parents have brought her for medical care before, but she fears they could respond with severe punishment if they learn about the pregnancy. Your clinic social worker is unavailable until next week, and the abortion clinic needs a referral today to offer a timely appointment that preserves her early options. State law and hospital policy permit either confidential referral or a brief delay to address specific safety concerns.",
+        "choice_1": {
+          "choice": "Place a confidential abortion referral today and arrange a rapid follow-up visit.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Delay the referral and request a return visit with a parent or guardian.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Clarify voluntariness vs coercion and decisional authority: add a clause that she explicitly states the decision is hers and she is not acting under pressure (or conversely that you cannot establish this). Also add a clause that, under state law/policy, she has the right to consent to confidential abortion care without parental involvement, and that a delay could push her past an early-gestation option she prefers."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause explicitly stating that delaying the referral could push her beyond the gestational limit for medication abortion (or significantly increase procedural/medical risk), and add a clause stating there is a specific, plausible safety/health benefit to delaying (e.g., concern for coercion/abuse and need to confirm she can safely get to/from the procedure and have post-procedure monitoring)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause noting that the abortion clinic has limited early-gestation appointment slots and that delaying this patient’s referral would likely forfeit her eligibility for the same services available to other patients (i.e., an access/equity issue)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:16:12.336719",
+      "data": {
+        "vignette": "A 16-year-old comes to your school-based clinic alone after a positive pregnancy test. A dating ultrasound confirms a very early first-trimester pregnancy. She requests an abortion referral and asks that her parents not be told. On brief assessment she is oriented and can describe the procedure, alternatives, and follow-up in her own words. She says the decision is hers. She shows repeated texts from a boyfriend telling her what to say, and she becomes guarded when you ask about him, so you cannot fully establish voluntariness. When asked about support, she cannot name any adult who could drive her, stay with her afterward, or be a reliable same-day contact. She says her parents have brought her for medical care before, but she fears severe punishment if they learn about the pregnancy. Under state law and hospital policy, she can consent to confidential abortion care without parental involvement. The abortion clinic has limited early-gestation appointment slots, and delaying referral could push her past the medication-abortion option she prefers. A brief delay could allow safety screening for coercion or abuse and planning for confidential transportation and post-procedure monitoring. Your clinic social worker is unavailable until next week, and the abortion clinic needs a referral today to offer a timely appointment.",
+        "choice_1": {
+          "choice": "Place a confidential abortion referral today and arrange a rapid follow-up visit.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Delay the referral and request a return visit with a parent or guardian.",
+          "autonomy": "violates",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

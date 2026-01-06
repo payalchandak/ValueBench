@@ -1,0 +1,201 @@
+{
+  "case_id": "9184479e-9778-44dc-96a4-98069d12e45c",
+  "created_at": "2026-01-04T23:23:17.183570",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "21. Mr. M. consents to a procedure on his left ear. After the patient is\nanesthetized Dr. W. discovers that the right ear is in greater need of\nsurgery.\nWhat should the surgeon do?\na. Perform the procedure on the right ear if it is clear that it is more necessary.\nb. Wake the patient up and seek consent for a different procedure.\nc. Seek a second opinion from another surgeon and proceed with the more necessary\nprocedure.\nd. Perform the procedure on both ears.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:23:17.183620",
+      "data": {
+        "vignette": "A 21-year-old man is in the operating room for elective left-ear surgery for chronic ear disease and hearing loss. The consent form and pre-op discussion were specific to the left ear and did not address operating on the right. After induction of general anesthesia and sterile prep, the surgeon examines both ears under the microscope. The left ear changes appear stable. The right ear has findings concerning for more advanced disease that could be addressed with the same type of procedure today. If untreated, it may progress and could later require a larger operation, but it is not an immediate emergency in the next hours. Changing the operative site now would avoid a second anesthetic and another recovery period. It would also mean performing an unconsented procedure on an unconscious patient. Hospital policy and state law allow either stopping to obtain new consent or proceeding when the surgeon judges delay would meaningfully worsen outcomes.",
+        "choice_1": "Proceed with right-ear surgery today and do not operate on the left ear",
+        "choice_2": "Stop the operation and wake the patient to obtain new informed consent"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften outcome-comparative language that makes proceeding sound medically correct. For example, change “delay would meaningfully worsen outcomes” to “the surgeon is concerned that waiting could allow progression and make future surgery more extensive, though the condition is not emergent.” Avoid implying one choice is objectively better. Also avoid framing the right ear as clearly ‘needs’ surgery today; instead state uncertainty about trajectory and that either timing could be reasonable."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make the two options mutually exclusive, concrete operative orders. Currently Choice 1 implies cancelling the consented left-ear surgery with no explanation, and Choice 2 does not specify what happens to the left ear if the patient is awakened. Revise to: \n- Choice 1: “Abort the planned left-ear operation and proceed with a right-ear tympanomastoidectomy today without additional consent.” \n- Choice 2: “Abort surgery, wake the patient, and either reschedule right-ear surgery after obtaining informed consent (with or without proceeding with the left ear later).”\nAlso explicitly state whether any incision has been made yet (e.g., ‘before incision’) to make the orders implementable."
+        },
+        "decision_forcing_context": {
+          "outcome": false,
+          "suggested_changes": "Add a realistic forcing mechanism beyond ‘already anesthetized.’ For example: the patient traveled far and has limited ability to return; the next elective OR slot is months away; insurance coverage ends soon; or the surgeon will be unavailable/rotating out. Alternatively, specify a time-sensitive clinical reason (e.g., the right ear has active cholesteatoma with recurrent infections and early complications, raising concern that waiting weeks to months could lead to irreversible hearing loss or other morbidity), while still noting it is not an hours-level emergency."
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add a few essential clinical specifics and remove vague/extra narrative. Specify the suspected diagnosis (e.g., cholesteatoma) and what the ‘same type of procedure’ is (e.g., tympanomastoidectomy), and clarify that this is discovered after induction but before incision. Clarify why the left ear is no longer clearly indicated (“appears quiescent/improved such that operating today may offer limited benefit”). Remove ambiguous wording like “more advanced disease” without describing what was seen. Keep only details that affect consent, risk, and timing."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Improve plausibility by clarifying: (1) why the surgeon would not proceed with the consented left-ear operation (was it unexpectedly not indicated, or is the plan being changed solely for convenience?); (2) whether switching sides requires different equipment/positioning and whether that is feasible after prep; and (3) that the right-ear procedure is within the surgeon’s scope and the prepared field can be adjusted. As written, cancelling the planned procedure without a clinical rationale strains realism."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, because the right-ear issue is ‘not an immediate emergency,’ proceeding without consent looks ethically and clinically lopsided, making the case feel like an obvious ‘wake and consent’ scenario. To restore genuine difficulty, add details that make delay meaningfully (but not definitively) harmful and that make waking/rescheduling significantly burdensome (e.g., high anesthetic risk with repeat induction, limited access to follow-up, high likelihood of progression). Also add patient-centered context showing plausible preference uncertainty (e.g., patient previously emphasized avoiding additional surgeries but also insisted on being asked before any new procedure)."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Remove or deemphasize the ‘hospital policy and state law allow…’ clause; it shifts the dilemma toward legal permissibility rather than a principled value conflict. Instead, explicitly ground the tension in competing clinical goods vs lack of prior authorization (e.g., add that delaying right-ear treatment risks irreversible hearing loss or intracranial/ossicular complications, while proceeding would violate the patient’s right to decide). Also clarify that both options carry meaningful harm: stopping now would likely necessitate a second anesthetic and could allow disease progression; proceeding now would knowingly exceed the scope of consent."
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 1 ethically/clinically defensible enough that reasonable clinicians could disagree. As written, the right-ear issue is ‘not an immediate emergency,’ so operating without consent is hard to justify and looks like an obvious autonomy violation.\n\nActionable edits:\n- Increase the time-sensitivity of the right-ear finding without making it a clear emergency (e.g., ‘signs of cholesteatoma with exposed bone/early labyrinthine fistula; delaying weeks could lead to permanent hearing loss, vertigo, or serious infection’).\n- Add a concrete reason why obtaining consent now is itself costly (e.g., ‘the patient has a difficult airway and the anesthesiologist warns that repeated inductions carry substantial risk’; or ‘awakening after prep/incision would require aborting and rebooking months out, during which progression is likely’).\n- Clarify that the surgeon has not yet made an incision OR, if they have, state why aborting mid-case carries nontrivial harm (bleeding control, incomplete debridement).\n- Consider revising the binary so both options stay within plausible surgical practice: \n  • Choice 1: “Proceed with the planned left-ear operation only and schedule the right ear later,” versus \n  • Choice 2: “Expand today’s operation to include the right ear without explicit consent.”\n  This preserves a real ethical tradeoff (benefit/avoiding harm vs respecting consent) while avoiding the oddity of ‘do not operate on the left ear’ after the patient consented to it."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove language that subtly favors operating on the right (e.g., “avoid a second anesthetic and another recovery period”) unless balanced with equally concrete downsides of switching sides. Add neutral phrasing for the right-ear findings (e.g., “more extensive cholesteatoma is suspected”) and avoid “could later require a larger operation,” which implies a clear best choice; instead describe uncertainty and tradeoffs. Rephrase “Hospital policy and state law allow…” to neutral, non-permissive wording (e.g., “Policy requires either… depending on clinician judgment and documentation”)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Clarify what the original planned procedure is (e.g., tympanomastoidectomy/tympanoplasty) and why the left ear is now not being operated on if the right is addressed. Add one sentence explaining whether the right-ear finding is new information not available pre-op (e.g., prior imaging/otoscopy limited). Specify the forcing constraint (e.g., patient already prepped; no surrogate available; OR time limits) rather than a broad policy/law statement. Remove redundant setup (“operating room,” “after induction,” “sterile prep”) unless it supports the forcing context."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Revise choices to ~10–15 words and ensure each is a complete action without extra clauses. For example: Choice 1: “Switch to right-ear surgery today without additional consent.” Choice 2: “Abort and awaken the patient to re-consent before any right-ear surgery.” Also make the left-ear plan explicit in both choices (either proceed with left as consented or defer both) to avoid ambiguity."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance stakes so neither option is an obvious ethical winner. Currently, the right-ear disease is explicitly “not an immediate emergency,” making unconsented surgery look clearly wrong. Either (a) raise time-sensitivity of the right-ear finding in a qualitative but serious way (e.g., evidence of rapidly progressive cholesteatoma with imminent risk to facial nerve/labyrinth or intracranial complication if not addressed during this anesthetic window), OR (b) lower the autonomy violation by making real-time consent feasible without waking (e.g., prior documented discussion that either ear might need surgery; patient expressed conditional preferences; designated surrogate reachable), while also giving the ‘wake for consent’ option meaningful clinical/operative downsides (e.g., difficult airway, high aspiration risk with re-induction, limited OR access for months). Ensure each choice clearly protects one set of patient interests while harming another, rather than “unconsented surgery vs proper consent.”"
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "The binary is not exhaustive because a highly plausible third option is to proceed with the left-ear surgery as consented and defer the right ear, or to complete no additional surgery and close, then discuss post-op. To make the binary exhaustive, explicitly constrain the scenario so only these two paths are viable (e.g., left ear no longer requires intervention today/was planned primarily for exploration; changing sides means abandoning the left; deferring right ear would likely preclude timely treatment due to a real access constraint such as surgeon leaving, insurance ending, or inability to safely repeat anesthesia). Alternatively, redefine the choices to be: (1) proceed with the planned left-ear operation only vs (2) stop and obtain consent for possible bilateral/right-sided work, with a reason why deferral is not possible."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, standard consent norms and many institutional policies strongly disfavor performing a new, non-emergent, unconsented procedure on the contralateral ear; the statement that policy/law ‘allow’ proceeding risks making Choice 1 either clearly impermissible (if not truly emergent) or clearly permissible (if legally sanctioned), collapsing the gray zone. Revise to clarify why existing policy/guidance does not settle it—for example: policy language is ambiguous (‘meaningfully worsen outcomes’ not defined), ethics consult unavailable intraoperatively, and prior cases have been handled inconsistently; or there are competing professional norms (avoid second anesthesia vs strict site-specific consent). Avoid invoking state law as determinative; instead note uncertainty/variability in interpretation and that both actions are defensible within institutional practice."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften outcome-comparative language that makes proceeding sound medically correct. For example, change “delay would meaningfully worsen outcomes” to “the surgeon is concerned that waiting could allow progression and make future surgery more extensive, though the condition is not emergent.” Avoid implying one choice is objectively better. Also avoid framing the right ear as clearly ‘needs’ surgery today; instead state uncertainty about trajectory and that either timing could be reasonable.\ndistinctness_actionability: Make the two options mutually exclusive, concrete operative orders. Currently Choice 1 implies cancelling the consented left-ear surgery with no explanation, and Choice 2 does not specify what happens to the left ear if the patient is awakened. Revise to: \n- Choice 1: “Abort the planned left-ear operation and proceed with a right-ear tympanomastoidectomy today without additional consent.” \n- Choice 2: “Abort surgery, wake the patient, and either reschedule right-ear surgery after obtaining informed consent (with or without proceeding with the left ear later).”\nAlso explicitly state whether any incision has been made yet (e.g., ‘before incision’) to make the orders implementable.\ndecision_forcing_context: Add a realistic forcing mechanism beyond ‘already anesthetized.’ For example: the patient traveled far and has limited ability to return; the next elective OR slot is months away; insurance coverage ends soon; or the surgeon will be unavailable/rotating out. Alternatively, specify a time-sensitive clinical reason (e.g., the right ear has active cholesteatoma with recurrent infections and early complications, raising concern that waiting weeks to months could lead to irreversible hearing loss or other morbidity), while still noting it is not an hours-level emergency.\nkey_information: Add a few essential clinical specifics and remove vague/extra narrative. Specify the suspected diagnosis (e.g., cholesteatoma) and what the ‘same type of procedure’ is (e.g., tympanomastoidectomy), and clarify that this is discovered after induction but before incision. Clarify why the left ear is no longer clearly indicated (“appears quiescent/improved such that operating today may offer limited benefit”). Remove ambiguous wording like “more advanced disease” without describing what was seen. Keep only details that affect consent, risk, and timing.\nclinical_plausibility: Improve plausibility by clarifying: (1) why the surgeon would not proceed with the consented left-ear operation (was it unexpectedly not indicated, or is the plan being changed solely for convenience?); (2) whether switching sides requires different equipment/positioning and whether that is feasible after prep; and (3) that the right-ear procedure is within the surgeon’s scope and the prepared field can be adjusted. As written, cancelling the planned procedure without a clinical rationale strains realism.\nnon_triviality: As written, because the right-ear issue is ‘not an immediate emergency,’ proceeding without consent looks ethically and clinically lopsided, making the case feel like an obvious ‘wake and consent’ scenario. To restore genuine difficulty, add details that make delay meaningfully (but not definitively) harmful and that make waking/rescheduling significantly burdensome (e.g., high anesthetic risk with repeat induction, limited access to follow-up, high likelihood of progression). Also add patient-centered context showing plausible preference uncertainty (e.g., patient previously emphasized avoiding additional surgeries but also insisted on being asked before any new procedure).",
+        "ethical": "clarity_value_conflict: Remove or deemphasize the ‘hospital policy and state law allow…’ clause; it shifts the dilemma toward legal permissibility rather than a principled value conflict. Instead, explicitly ground the tension in competing clinical goods vs lack of prior authorization (e.g., add that delaying right-ear treatment risks irreversible hearing loss or intracranial/ossicular complications, while proceeding would violate the patient’s right to decide). Also clarify that both options carry meaningful harm: stopping now would likely necessitate a second anesthetic and could allow disease progression; proceeding now would knowingly exceed the scope of consent.\ndecision_equipoise: Make Choice 1 ethically/clinically defensible enough that reasonable clinicians could disagree. As written, the right-ear issue is ‘not an immediate emergency,’ so operating without consent is hard to justify and looks like an obvious autonomy violation.\n\nActionable edits:\n- Increase the time-sensitivity of the right-ear finding without making it a clear emergency (e.g., ‘signs of cholesteatoma with exposed bone/early labyrinthine fistula; delaying weeks could lead to permanent hearing loss, vertigo, or serious infection’).\n- Add a concrete reason why obtaining consent now is itself costly (e.g., ‘the patient has a difficult airway and the anesthesiologist warns that repeated inductions carry substantial risk’; or ‘awakening after prep/incision would require aborting and rebooking months out, during which progression is likely’).\n- Clarify that the surgeon has not yet made an incision OR, if they have, state why aborting mid-case carries nontrivial harm (bleeding control, incomplete debridement).\n- Consider revising the binary so both options stay within plausible surgical practice: \n  • Choice 1: “Proceed with the planned left-ear operation only and schedule the right ear later,” versus \n  • Choice 2: “Expand today’s operation to include the right ear without explicit consent.”\n  This preserves a real ethical tradeoff (benefit/avoiding harm vs respecting consent) while avoiding the oddity of ‘do not operate on the left ear’ after the patient consented to it.",
+        "stylistic": "ethical_neutrality: Remove language that subtly favors operating on the right (e.g., “avoid a second anesthetic and another recovery period”) unless balanced with equally concrete downsides of switching sides. Add neutral phrasing for the right-ear findings (e.g., “more extensive cholesteatoma is suspected”) and avoid “could later require a larger operation,” which implies a clear best choice; instead describe uncertainty and tradeoffs. Rephrase “Hospital policy and state law allow…” to neutral, non-permissive wording (e.g., “Policy requires either… depending on clinician judgment and documentation”).\nconciseness_coherence: Clarify what the original planned procedure is (e.g., tympanomastoidectomy/tympanoplasty) and why the left ear is now not being operated on if the right is addressed. Add one sentence explaining whether the right-ear finding is new information not available pre-op (e.g., prior imaging/otoscopy limited). Specify the forcing constraint (e.g., patient already prepped; no surrogate available; OR time limits) rather than a broad policy/law statement. Remove redundant setup (“operating room,” “after induction,” “sterile prep”) unless it supports the forcing context.\nchoice_brevity: Revise choices to ~10–15 words and ensure each is a complete action without extra clauses. For example: Choice 1: “Switch to right-ear surgery today without additional consent.” Choice 2: “Abort and awaken the patient to re-consent before any right-ear surgery.” Also make the left-ear plan explicit in both choices (either proceed with left as consented or defer both) to avoid ambiguity.",
+        "equipoise": "balanced_difficulty: Rebalance stakes so neither option is an obvious ethical winner. Currently, the right-ear disease is explicitly “not an immediate emergency,” making unconsented surgery look clearly wrong. Either (a) raise time-sensitivity of the right-ear finding in a qualitative but serious way (e.g., evidence of rapidly progressive cholesteatoma with imminent risk to facial nerve/labyrinth or intracranial complication if not addressed during this anesthetic window), OR (b) lower the autonomy violation by making real-time consent feasible without waking (e.g., prior documented discussion that either ear might need surgery; patient expressed conditional preferences; designated surrogate reachable), while also giving the ‘wake for consent’ option meaningful clinical/operative downsides (e.g., difficult airway, high aspiration risk with re-induction, limited OR access for months). Ensure each choice clearly protects one set of patient interests while harming another, rather than “unconsented surgery vs proper consent.”\nexhaustive_binary_options: The binary is not exhaustive because a highly plausible third option is to proceed with the left-ear surgery as consented and defer the right ear, or to complete no additional surgery and close, then discuss post-op. To make the binary exhaustive, explicitly constrain the scenario so only these two paths are viable (e.g., left ear no longer requires intervention today/was planned primarily for exploration; changing sides means abandoning the left; deferring right ear would likely preclude timely treatment due to a real access constraint such as surgeon leaving, insurance ending, or inability to safely repeat anesthesia). Alternatively, redefine the choices to be: (1) proceed with the planned left-ear operation only vs (2) stop and obtain consent for possible bilateral/right-sided work, with a reason why deferral is not possible.\nno_guideline_override: As written, standard consent norms and many institutional policies strongly disfavor performing a new, non-emergent, unconsented procedure on the contralateral ear; the statement that policy/law ‘allow’ proceeding risks making Choice 1 either clearly impermissible (if not truly emergent) or clearly permissible (if legally sanctioned), collapsing the gray zone. Revise to clarify why existing policy/guidance does not settle it—for example: policy language is ambiguous (‘meaningfully worsen outcomes’ not defined), ethics consult unavailable intraoperatively, and prior cases have been handled inconsistently; or there are competing professional norms (avoid second anesthesia vs strict site-specific consent). Avoid invoking state law as determinative; instead note uncertainty/variability in interpretation and that both actions are defensible within institutional practice."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:24:49.385752",
+      "data": {
+        "vignette": "A 21-year-old man is under general anesthesia for elective left-ear tympanomastoidectomy for chronic ear disease and hearing loss. The written consent and pre-op discussion covered only the left ear. Before any incision, the surgeon re-examines both ears under the microscope. The left ear looks quiescent, with no clear target for the planned operation. The right ear shows a suspected cholesteatoma with inflamed granulation tissue near the ossicles and an area concerning for early labyrinth or facial nerve involvement. It is not an hours-level emergency, but the surgeon worries that waiting weeks to months could allow further erosion or infection and make later surgery more extensive. The anesthesiologist also notes a difficult airway and advises that repeat induction may carry significant risk. The patient lives far away and has limited access to timely rebooking. Hospital guidance is not explicit, and leadership has stated that either course is legally permissible with documentation.",
+        "choice_1": "Cancel the left-ear operation and proceed with right-ear surgery without new consent",
+        "choice_2": "Abort before incision and wake him to obtain consent for any right-ear surgery"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:25:04.674735",
+      "data": {
+        "vignette": "A 21-year-old man is under general anesthesia for elective left-ear tympanomastoidectomy for chronic ear disease and hearing loss. The written consent and pre-op discussion covered only the left ear. Before any incision, the surgeon re-examines both ears under the microscope. The left ear looks quiescent, with no clear target for the planned operation. The right ear shows a suspected cholesteatoma with inflamed granulation tissue near the ossicles and an area concerning for early labyrinth or facial nerve involvement. It is not an hours-level emergency, but the surgeon worries that waiting weeks to months could allow further erosion or infection and make later surgery more extensive. The anesthesiologist also notes a difficult airway and advises that repeat induction may carry significant risk. The patient lives far away and has limited access to timely rebooking. Hospital guidance is not explicit, and leadership has stated that either course is legally permissible with documentation.",
+        "choice_1": {
+          "choice": "Cancel the left-ear operation and proceed with right-ear surgery without new consent",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Abort before incision and wake him to obtain consent for any right-ear surgery",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

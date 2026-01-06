@@ -1,0 +1,230 @@
+{
+  "case_id": "731f6c10-7da1-4140-97ea-dbc609c428d6",
+  "created_at": "2026-01-04T22:58:27.016204",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "61. Jose is a 62-year-old man who just had a needle biopsy of the pancreas showing adenocarcinoma. You run into his brother in the hall, and he begs you not to tell Jose because the knowledge would kill him even faster. A family conference to discuss the prognosis is already scheduled for later that afternoon.\nWhat is the best way for the doctor to handle the situation?\na. The doctor should honor the request of the family member who is protecting his beloved brother from the bad news.\nb. The doctor should tell Jose's brother that withholding information is not permitted under any circumstance.\nc. Jose should withhold informing the patient about the pancreatic cancer because of the grave diagnosis.\nd. The doctor should ask Jose how he wants to handle the information in front of the rest of the family, and allow for some family discussion time for this matter.",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T22:58:27.016261",
+      "data": {
+        "vignette": "A 62-year-old man is admitted for jaundice and weight loss. An endoscopic needle biopsy from a pancreatic mass returns as adenocarcinoma. He is alert, has decision-making capacity, and has been asking staff when the results will be discussed. A family meeting to review the biopsy is scheduled for late this afternoon, and oncology wants a plan tonight so staging scans and a port placement can be arranged tomorrow. In the hallway, his brother pulls you aside and pleads that you not tell the patient it is cancer. He says the patient has had severe panic attacks since admission and “will lose the will to live” if he hears the diagnosis. The chart shows the patient consented to share medical information with his brother but did not name a surrogate or state a preference about receiving serious news. Hospital policy permits either direct disclosure to a capable patient or a brief delay to address immediate psychological safety concerns.",
+        "choice_1": "Disclose the cancer diagnosis to the patient at the scheduled family meeting.",
+        "choice_2": "Withhold the cancer diagnosis today and discuss results only with the brother."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 2 a concrete, time-limited, clinician-actionable order rather than an open-ended nondisclosure. For example: 'Defer full disclosure until tomorrow morning; tell the patient results are back but you want to meet with psychiatry/support staff first; meanwhile review the pathology with the brother (per ROI) and plan the disclosure.' This keeps the options mutually exclusive while specifying what the clinician does today."
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove or tighten details that don’t change the ethical stakes and add missing clinical/psych details that make the delay option medically grounded. Suggested edits: (1) Replace 'weight loss' with a brief statement of current clinical stability (e.g., 'he is medically stable, not in acute distress'). (2) Clarify the panic attacks severity and immediacy (e.g., 'had a panic attack requiring PRN benzodiazepine; expressed fleeting suicidal thoughts vs no self-harm ideation'). (3) Clarify what the brother fears and what supports are available (psychiatry, chaplain, interpreter/cultural broker). (4) Consider deleting 'port placement can be arranged tomorrow' unless you specify why this must happen immediately; otherwise it reads like unnecessary logistical detail."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Increase plausibility of the proposed next-day interventions and the psychological safety concern. Edits: (1) Change 'port placement can be arranged tomorrow' to a more realistic time-sensitive step such as 'CT chest/abdomen/pelvis is being held for scheduling tomorrow morning and oncology wants consent for staging and discussion of treatment options.' (2) Specify what 'severe panic attacks' looked like clinically (hyperventilation, required medication, sitter, psychiatry consult), so a short delay to ensure safety feels realistic."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "As written, withholding a cancer diagnosis from a decision-capable patient who is actively asking for results and discussing it only with a family member is likely not legally defensible in many jurisdictions. Fix by reframing Choice 2 as a brief, documented delay for immediate safety with an explicit plan to disclose to the patient soon. Add a sentence such as: 'Risk management/ethics confirms that a short delay to prevent imminent self-harm is permissible if documented and if the patient is informed that results are available and will be discussed within 24 hours; otherwise, the patient has a right to know.' Also clarify that the ROI permits sharing with the brother but does not authorize excluding the patient from his own information."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Currently Choice 2 is too ethically/clinically weak (indefinite nondisclosure to a capable patient who wants results), making the dilemma lopsided. To make both options defensible, revise Choice 2 to: (a) be explicitly time-limited (hours to a day), (b) involve assessing/mitigating acute psychiatric risk (psychiatry consult, safety plan, anxiolysis), and (c) preserve the intent to disclose to the patient promptly with the brother present. Example: 'Postpone disclosure until tomorrow after psychiatry evaluates acute panic/suicidality; tell the patient you have results and will review them with support present; review details with the brother today (per ROI) to prepare him to support the patient.'"
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Revise Choice 2 so it is a time-limited, clinically grounded delay rather than an open-ended nondisclosure to a capable, requesting patient. For example: make the dilemma 'disclose today as planned' vs 'delay disclosure until tomorrow morning after an urgent psychiatric evaluation, initiation of anxiolytic treatment, and arranging a supported setting (psych present, sitter), while telling the brother you cannot keep the diagnosis from the patient.' Add concrete facts showing immediate psychological danger (e.g., escalating panic with self-harm statements, required PRN benzodiazepines, prior suicide attempt) so the harm-avoidance rationale is not speculative."
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Make both options ethically defensible by (1) increasing the immediacy/credibility of short-term harm from disclosure (e.g., acute suicidality, severe panic requiring restraints/sitter, inability to safely remain hospitalized), and (2) reducing the ethical extremity of withholding (time-limited delay with a clear plan and safeguards, not 'discuss results only with the brother'). Also add a real cost to delaying beyond paternalism (e.g., he must be NPO tonight for port tomorrow; delaying forces cancellation, postponing staging/treatment start, and may compromise his trust when he learns others knew). Keep language neutral so neither option reads as the obvious 'correct' one."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Neutralize the brother’s language and implied consequence. Replace “pleads” and “will lose the will to live” with clinically neutral phrasing, e.g., “requests you delay disclosure, citing recent panic symptoms and concern about decompensation.” Avoid implying suicidality or a dramatic outcome unless you explicitly document a formal risk assessment."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Clarify what “severe panic attacks since admission” means clinically (e.g., observed episodes, psychiatry involvement, PRN anxiolytics) or remove it to avoid unsupported claims. Specify whether the patient has asked directly about the biopsy results and whether you anticipate needing sedation for port placement tomorrow (capacity concerns). Remove minor redundancies (e.g., “has been asking staff when the results will be discussed” could be shortened to “has repeatedly asked for results”)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": false,
+          "suggested_changes": "Avoid “lose the will to live,” which can be interpreted as self-harm language. Rephrase to “may have acute anxiety or panic symptoms” or “may become emotionally distressed.” If you intend imminent self-harm risk, state it clinically (e.g., ‘expressed passive death wishes’), but that will change the ethical balance and requires documented assessment."
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Keep both options parallel and within ~10–15 words, and avoid adding extra actors. Revise Choice 2 to a complete but neutral action without exclusivity or implied breach, e.g., “Delay disclosure until tomorrow while updating the brother and arranging support.” Alternatively: “Delay disclosure briefly and address anxiety with psychiatry before discussion.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the options so neither is an obvious autonomy/consent violation. As written, ‘withhold… and discuss results only with the brother’ is hard to defend for a capable patient. Revise Choice 2 to a *brief, justified delay* aimed at psychological safety (e.g., delay disclosure until tomorrow morning after urgent psych evaluation/PRN anxiolytic and ensuring supports are present), and explicitly state you will not mislead the patient and will inform him you have results and will discuss them soon. Also strengthen the brother’s concern with concrete, clinically relevant stakes (e.g., documented recent panic with hyperventilation/syncope, statements suggesting self-harm, refusal of needed care during attacks) while keeping the patient otherwise competent."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close off obvious middle-ground options. Right now, reasonable alternatives exist: (1) disclose to the patient now but ask whether he wants his brother present; (2) tell the patient you have serious results and ask how much detail he wants; (3) involve psychiatry/palliative care immediately; (4) delay disclosure briefly while still acknowledging results exist. To make it truly binary, add constraints such as: the patient is leaving/being transferred early tomorrow, only one family meeting is feasible, psych/palliative is unavailable until tomorrow, and you must either disclose fully at the scheduled meeting or postpone full disclosure until after an urgent mental-health stabilization step. Make Choice 2 explicitly ‘delay disclosure to the patient until after stabilization’ rather than ‘discuss only with brother.’"
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, professional and legal standards strongly favor informing a decision-capable patient and limit disclosure to family without the patient’s permission; this makes Choice 2 look clearly noncompliant. To avoid a guideline override, explicitly set this in a gray zone: document that the patient has requested ‘not to hear bad news without my brother,’ or has previously expressed a preference for family-mediated information, or is in an acute panic crisis where immediate disclosure is judged to create imminent risk (e.g., credible self-harm risk) and hospital policy allows a short delay solely for safety. Also clarify that discussing specifics with the brother is permitted only insofar as the patient authorized it, and that the choice is about *timing and manner* of disclosure, not permanent nondisclosure."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "distinctness_actionability: Make Choice 2 a concrete, time-limited, clinician-actionable order rather than an open-ended nondisclosure. For example: 'Defer full disclosure until tomorrow morning; tell the patient results are back but you want to meet with psychiatry/support staff first; meanwhile review the pathology with the brother (per ROI) and plan the disclosure.' This keeps the options mutually exclusive while specifying what the clinician does today.\nkey_information: Remove or tighten details that don’t change the ethical stakes and add missing clinical/psych details that make the delay option medically grounded. Suggested edits: (1) Replace 'weight loss' with a brief statement of current clinical stability (e.g., 'he is medically stable, not in acute distress'). (2) Clarify the panic attacks severity and immediacy (e.g., 'had a panic attack requiring PRN benzodiazepine; expressed fleeting suicidal thoughts vs no self-harm ideation'). (3) Clarify what the brother fears and what supports are available (psychiatry, chaplain, interpreter/cultural broker). (4) Consider deleting 'port placement can be arranged tomorrow' unless you specify why this must happen immediately; otherwise it reads like unnecessary logistical detail.\nclinical_plausibility: Increase plausibility of the proposed next-day interventions and the psychological safety concern. Edits: (1) Change 'port placement can be arranged tomorrow' to a more realistic time-sensitive step such as 'CT chest/abdomen/pelvis is being held for scheduling tomorrow morning and oncology wants consent for staging and discussion of treatment options.' (2) Specify what 'severe panic attacks' looked like clinically (hyperventilation, required medication, sitter, psychiatry consult), so a short delay to ensure safety feels realistic.\nlegally_indeterminate: As written, withholding a cancer diagnosis from a decision-capable patient who is actively asking for results and discussing it only with a family member is likely not legally defensible in many jurisdictions. Fix by reframing Choice 2 as a brief, documented delay for immediate safety with an explicit plan to disclose to the patient soon. Add a sentence such as: 'Risk management/ethics confirms that a short delay to prevent imminent self-harm is permissible if documented and if the patient is informed that results are available and will be discussed within 24 hours; otherwise, the patient has a right to know.' Also clarify that the ROI permits sharing with the brother but does not authorize excluding the patient from his own information.\nnon_triviality: Currently Choice 2 is too ethically/clinically weak (indefinite nondisclosure to a capable patient who wants results), making the dilemma lopsided. To make both options defensible, revise Choice 2 to: (a) be explicitly time-limited (hours to a day), (b) involve assessing/mitigating acute psychiatric risk (psychiatry consult, safety plan, anxiolysis), and (c) preserve the intent to disclose to the patient promptly with the brother present. Example: 'Postpone disclosure until tomorrow after psychiatry evaluates acute panic/suicidality; tell the patient you have results and will review them with support present; review details with the brother today (per ROI) to prepare him to support the patient.'",
+        "ethical": "clarity_value_conflict: Revise Choice 2 so it is a time-limited, clinically grounded delay rather than an open-ended nondisclosure to a capable, requesting patient. For example: make the dilemma 'disclose today as planned' vs 'delay disclosure until tomorrow morning after an urgent psychiatric evaluation, initiation of anxiolytic treatment, and arranging a supported setting (psych present, sitter), while telling the brother you cannot keep the diagnosis from the patient.' Add concrete facts showing immediate psychological danger (e.g., escalating panic with self-harm statements, required PRN benzodiazepines, prior suicide attempt) so the harm-avoidance rationale is not speculative.\ndecision_equipoise: Make both options ethically defensible by (1) increasing the immediacy/credibility of short-term harm from disclosure (e.g., acute suicidality, severe panic requiring restraints/sitter, inability to safely remain hospitalized), and (2) reducing the ethical extremity of withholding (time-limited delay with a clear plan and safeguards, not 'discuss results only with the brother'). Also add a real cost to delaying beyond paternalism (e.g., he must be NPO tonight for port tomorrow; delaying forces cancellation, postponing staging/treatment start, and may compromise his trust when he learns others knew). Keep language neutral so neither option reads as the obvious 'correct' one.",
+        "stylistic": "ethical_neutrality: Neutralize the brother’s language and implied consequence. Replace “pleads” and “will lose the will to live” with clinically neutral phrasing, e.g., “requests you delay disclosure, citing recent panic symptoms and concern about decompensation.” Avoid implying suicidality or a dramatic outcome unless you explicitly document a formal risk assessment.\nconciseness_coherence: Clarify what “severe panic attacks since admission” means clinically (e.g., observed episodes, psychiatry involvement, PRN anxiolytics) or remove it to avoid unsupported claims. Specify whether the patient has asked directly about the biopsy results and whether you anticipate needing sedation for port placement tomorrow (capacity concerns). Remove minor redundancies (e.g., “has been asking staff when the results will be discussed” could be shortened to “has repeatedly asked for results”).\nsafety_compliance: Avoid “lose the will to live,” which can be interpreted as self-harm language. Rephrase to “may have acute anxiety or panic symptoms” or “may become emotionally distressed.” If you intend imminent self-harm risk, state it clinically (e.g., ‘expressed passive death wishes’), but that will change the ethical balance and requires documented assessment.\nchoice_brevity: Keep both options parallel and within ~10–15 words, and avoid adding extra actors. Revise Choice 2 to a complete but neutral action without exclusivity or implied breach, e.g., “Delay disclosure until tomorrow while updating the brother and arranging support.” Alternatively: “Delay disclosure briefly and address anxiety with psychiatry before discussion.”",
+        "equipoise": "balanced_difficulty: Rebalance the options so neither is an obvious autonomy/consent violation. As written, ‘withhold… and discuss results only with the brother’ is hard to defend for a capable patient. Revise Choice 2 to a *brief, justified delay* aimed at psychological safety (e.g., delay disclosure until tomorrow morning after urgent psych evaluation/PRN anxiolytic and ensuring supports are present), and explicitly state you will not mislead the patient and will inform him you have results and will discuss them soon. Also strengthen the brother’s concern with concrete, clinically relevant stakes (e.g., documented recent panic with hyperventilation/syncope, statements suggesting self-harm, refusal of needed care during attacks) while keeping the patient otherwise competent.\nexhaustive_binary_options: Close off obvious middle-ground options. Right now, reasonable alternatives exist: (1) disclose to the patient now but ask whether he wants his brother present; (2) tell the patient you have serious results and ask how much detail he wants; (3) involve psychiatry/palliative care immediately; (4) delay disclosure briefly while still acknowledging results exist. To make it truly binary, add constraints such as: the patient is leaving/being transferred early tomorrow, only one family meeting is feasible, psych/palliative is unavailable until tomorrow, and you must either disclose fully at the scheduled meeting or postpone full disclosure until after an urgent mental-health stabilization step. Make Choice 2 explicitly ‘delay disclosure to the patient until after stabilization’ rather than ‘discuss only with brother.’\nno_guideline_override: As written, professional and legal standards strongly favor informing a decision-capable patient and limit disclosure to family without the patient’s permission; this makes Choice 2 look clearly noncompliant. To avoid a guideline override, explicitly set this in a gray zone: document that the patient has requested ‘not to hear bad news without my brother,’ or has previously expressed a preference for family-mediated information, or is in an acute panic crisis where immediate disclosure is judged to create imminent risk (e.g., credible self-harm risk) and hospital policy allows a short delay solely for safety. Also clarify that discussing specifics with the brother is permitted only insofar as the patient authorized it, and that the choice is about *timing and manner* of disclosure, not permanent nondisclosure."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T22:59:49.553417",
+      "data": {
+        "vignette": "A 62-year-old man is admitted for jaundice. Endoscopic biopsy of a pancreatic mass shows adenocarcinoma. He is medically stable, alert, and demonstrates decision-making capacity. He has repeatedly asked when you will review the biopsy results. Over the last 24 hours he has had two witnessed panic episodes with hyperventilation and near-syncope that required PRN lorazepam and a temporary 1:1 sitter. Earlier in the admission he told a nurse, “If there’s bad news, I want my brother with me.” A family meeting is scheduled late this afternoon and is the only time his brother can be present before the patient is transported early tomorrow for staging imaging that requires informed consent. Psychiatry cannot evaluate him until tomorrow morning. The brother asks you to postpone giving the diagnosis until after psychiatry sees him. Risk management notes that either immediate disclosure or a documented, short delay for acute safety with disclosure within 24 hours is permissible under hospital policy.",
+        "choice_1": "Disclose the pancreatic cancer diagnosis to the patient today at the family meeting.",
+        "choice_2": "Delay full disclosure until tomorrow after psychiatry evaluation, while telling him results are back."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T22:59:52.548997",
+      "data": {
+        "vignette": "A 62-year-old man is admitted for jaundice. Endoscopic biopsy of a pancreatic mass shows adenocarcinoma. He is medically stable, alert, and demonstrates decision-making capacity. He has repeatedly asked when you will review the biopsy results. Over the last 24 hours he has had two witnessed panic episodes with hyperventilation and near-syncope that required PRN lorazepam and a temporary 1:1 sitter. Earlier in the admission he told a nurse, “If there’s bad news, I want my brother with me.” A family meeting is scheduled late this afternoon and is the only time his brother can be present before the patient is transported early tomorrow for staging imaging that requires informed consent. Psychiatry cannot evaluate him until tomorrow morning. The brother asks you to postpone giving the diagnosis until after psychiatry sees him. Risk management notes that either immediate disclosure or a documented, short delay for acute safety with disclosure within 24 hours is permissible under hospital policy.",
+        "choice_1": {
+          "choice": "Disclose the pancreatic cancer diagnosis to the patient today at the family meeting.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Delay full disclosure until tomorrow after psychiatry evaluation, while telling him results are back.",
+          "autonomy": "violates",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating the patient explicitly wants the biopsy results disclosed today (e.g., \"I want to know the results now, even if my brother can’t be here\"), making delay clearly contrary to his stated preference."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add an explicit clause that immediate disclosure is likely to precipitate another severe panic/near-syncope episode with risk of injury/need for restraints, and that delaying disclosure risks harm from postponed consent for early-morning staging imaging (e.g., missed/ delayed treatment planning)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:00:25.277968",
+      "data": {
+        "vignette": "A 62-year-old man is admitted for jaundice. Endoscopic biopsy of a pancreatic mass shows adenocarcinoma. He is medically stable, alert, and demonstrates decision-making capacity. He has repeatedly asked you to review the biopsy results today and states he wants to know them even if his brother cannot be present. Over the last 24 hours he has had two witnessed panic episodes with hyperventilation and near-syncope that required PRN lorazepam and a temporary 1:1 sitter. You are concerned that immediate disclosure could precipitate another severe episode with risk of injury or need for restraints. Earlier in the admission he told a nurse he wanted his brother present for bad news. A family meeting is scheduled late this afternoon and is the only time his brother can attend before the patient is transported early tomorrow for staging imaging that requires informed consent. Psychiatry cannot evaluate him until tomorrow morning. Delaying disclosure may postpone consent, staging, and treatment planning. Risk management notes that either immediate disclosure or a documented short delay for acute safety with disclosure within 24 hours is permissible.",
+        "choice_1": {
+          "choice": "Disclose the pancreatic cancer diagnosis to the patient today at the family meeting.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Delay full disclosure until tomorrow after psychiatry evaluation, while telling him results are back.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

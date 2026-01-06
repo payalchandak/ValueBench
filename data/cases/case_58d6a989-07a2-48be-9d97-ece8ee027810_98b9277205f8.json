@@ -1,0 +1,236 @@
+{
+  "case_id": "58d6a989-07a2-48be-9d97-ece8ee027810",
+  "created_at": "2026-01-05T00:30:58.680004",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "50. An elderly patient with multiple medical problems has been admitted to your care in the intensive-care unit. The patient is in a persistent vegetative state secondary to anoxic encephalopathy and has now developed sepsis, hypotension, gastrointestinal bleeding, and respiratory failure requiring intubation. There is no improvement expected in the underlying severe brain damage. Renal failure develops to the point of needing dialysis but you feel the dialysis would be completely futile.\nWhich of the following is the most appropriate step in management?\na. Hemodialysis\nb. Peritoneal dialysis\nc. Renal transplantation\nd. Give albumin\ne. Recommend that dialysis not be performed",
+      "value_1": "Non-maleficence",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:30:58.680055",
+      "data": {
+        "vignette": "An 82-year-old man is in the ICU in a persistent vegetative state after an anoxic brain injury. He is intubated for respiratory failure and is on vasopressors for septic shock. He has ongoing gastrointestinal bleeding that requires transfusions. His kidneys have now failed, and he is developing worsening fluid overload and electrolyte abnormalities. Neurology and critical care agree there is no meaningful chance of neurologic recovery. His daughter is the legal surrogate and asks you to “do everything,” including dialysis, hoping to keep him alive for a distant relative to arrive. Starting dialysis would require a dialysis catheter and ongoing anticoagulation in the setting of active bleeding and profound instability. Not starting dialysis would likely lead to death within a short time despite continued ICU care. Hospital policy and state law permit either initiating or forgoing dialysis in this circumstance.",
+        "choice_1": "Place a dialysis catheter and start renal replacement therapy",
+        "choice_2": "Do not initiate dialysis and continue comfort-focused ICU care"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove clinically conclusory language that makes the ‘no dialysis’ option seem objectively correct. Specifically: (1) Replace “Neurology and critical care agree there is no meaningful chance of neurologic recovery” with a less definitive, value-neutral formulation such as “Neurology and critical care assess the likelihood of meaningful neurologic recovery as extremely low, though exact prognosis is uncertain.” (2) Avoid framing death as certain/near-certain from one choice: change “would likely lead to death within a short time” to “may lead to death soon.” (3) Add balancing clinical downsides to dialysis beyond bleeding (e.g., discomfort, need for restraints/sedation, line infection) and acknowledge potential limited physiologic benefit (e.g., temporary control of electrolytes/volume) so the vignette doesn’t read as a clinical futility determination."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify to only what drives the ethical decision. Suggested edits: (1) Specify the decision time window explicitly (e.g., “ICU team needs a decision in the next few hours because potassium/acid-base status is worsening and ventilator pressures are rising from fluid overload”). (2) Remove redundancy: you can drop either “persistent vegetative state” or restate as “prolonged unresponsive wakefulness” once; avoid multiple labels. (3) Clarify what “comfort-focused ICU care” means operationally (e.g., no dialysis, no escalation of vasopressors, focus on analgesia/sedation, possible compassionate extubation vs continued ventilation) so Choice 2 is concrete rather than a vague bundle."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Dialysis details are internally inconsistent: ongoing systemic anticoagulation is not always required for ICU renal replacement therapy, and in active GI bleed clinicians often use regional citrate anticoagulation or no anticoagulation with shorter filter life. Suggested edits: (1) Replace “ongoing anticoagulation” with “would likely require some form of anticoagulation or frequent circuit changes, increasing bleeding risk and procedural burden.” (2) Specify modality (e.g., continuous renal replacement therapy) and why it is being considered (hemodynamic instability). (3) Ensure the neurologic diagnosis is plausible: if ‘persistent vegetative state’ is used, note the timeframe (e.g., “3 weeks after anoxic injury”) or use “severe hypoxic-ischemic encephalopathy with no signs of purposeful response” to avoid premature labeling."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, the case is framed as medical futility with strong clinician consensus and high procedural risk, making non-initiation the obvious answer. To restore genuine ethical difficulty: (1) Add a prior expressed value or ambiguous advance directive (e.g., “He previously said he would want aggressive care for a time-limited trial if there was any chance of recovery” or conversely “he valued being alive for family milestones,” without making it determinative). (2) Make the ‘time-limited goal’ more concrete and near-term (e.g., relative arriving tomorrow or within 48 hours), and note that dialysis could plausibly bridge that period. (3) Reduce one-sidedness: include that dialysis might stabilize electrolytes/volume and allow a short trial, but carries burdens/complications; and that comfort-focused care avoids invasive procedures but may conflict with surrogate’s understanding of his wishes."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the case so dialysis is not framed as clearly futile/harmful. Edits: (1) Replace “no meaningful chance of neurologic recovery” with a less absolute statement (e.g., prognosis is extremely poor but not certain, or there is disagreement between consultants). (2) Add a defensible patient-centered rationale for dialysis beyond ‘do everything’—e.g., a time-limited trial to treat potentially reversible uremic complications or to achieve a concrete, near-term goal (allowing brief family visitation) with a defined stopping rule. (3) Temper language that makes Choice 2 the obvious ‘right’ option; specify that comfort-focused care would likely shorten life and may conflict with known/likely patient values, while dialysis carries significant procedural/bleeding risks and may prolong dying without recovery. (4) Consider reframing Choice 2 as “forgo dialysis while continuing current ICU supports” vs “initiate a time-limited trial of dialysis,” keeping both ethically costly."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Reduce language that frames one option as futile or the surrogate as unreasonable. For example, change “no meaningful chance of neurologic recovery” to “prognosis for neurologic recovery is extremely poor per neurology and critical care,” and change “distant relative to arrive” to “a relative traveling to the hospital.” Consider adding a brief sentence acknowledging the daughter understands the risks but prioritizes time, to avoid portraying her request as irrational."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten redundant ICU details and clarify the goal-of-care pathway implied by Choice 2. For example, combine the renal failure/fluid/electrolyte sentence into one, and specify whether other life-sustaining therapies (ventilation/vasopressors/transfusions) would be continued or whether the plan is to shift to comfort measures only. Remove the “policy and state law permit either…” line unless it is necessary to explain a real constraint."
+        },
+        "deidentification_novelty": {
+          "outcome": false,
+          "suggested_changes": "Add one or two concrete, case-specific but non-identifying details to avoid a stock ‘ICU futility/dialysis’ template (e.g., duration since arrest, current sedation status, documented prior values/advance directive ambiguity, baseline functional status, or prior discussions about acceptable outcomes). Avoid canonical phrasing like “persistent vegetative state” if not strictly required; consider “prolonged disorder of consciousness with exam consistent with vegetative state.”"
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make the choices more parallel and remove mixed framing (“comfort-focused ICU care” can read as internally inconsistent). Revise to: \n- Choice 1: “Insert a dialysis catheter and initiate continuous renal replacement therapy.” \n- Choice 2: “Forego renal replacement therapy and transition care to comfort measures only.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance clinical/ethical plausibility so neither option reads as clearly inappropriate. As written, “persistent vegetative state,” “no meaningful chance of neurologic recovery,” septic shock on vasopressors, active GI bleed requiring transfusions, and the need for anticoagulation make dialysis look medically futile and disproportionately harmful. Edits: (1) soften prognosis language to maintain uncertainty (e.g., change to “severe hypoxic-ischemic encephalopathy; exam and imaging suggest a very poor prognosis, but prognostication is uncertain this early” and specify a time frame such as day 3–5 post-injury); OR (2) keep poor neuro prognosis but reduce other stacked contraindications (e.g., bleeding has stabilized / no mandatory systemic anticoagulation because regional citrate or heparin-free CRRT is feasible). (3) Add ethically weighty reasons for dialysis beyond “distant relative arriving,” such as credible prior statements valuing maximal life-prolongation until family can gather, religious beliefs, or unfinished decision-making; and add ethically weighty costs to forgoing dialysis (e.g., family distress, concern about violating patient’s known wishes)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "The binary is not exhaustive because a realistic third path is a time-limited trial of renal replacement therapy (e.g., 24–48 hours) with pre-specified stopping criteria, or initiating dialysis without systemic anticoagulation, or delaying briefly while holding goals-of-care/ethics consult. To make it truly binary, explicitly rule out compromise options: state that the ICU team must decide now because the patient will require emergent dialysis within hours for refractory hyperkalemia/acidosis/volume overload, and that (a) the facility cannot offer heparin-free/regional anticoagulation options, and (b) a time-limited trial has been proposed and refused by the surrogate (or is not operationally possible due to staffing/transfer constraints). Alternatively, rewrite the choices to be ‘time-limited trial vs no dialysis’ so the binary matches actual practice."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Given the described persistent vegetative state with consensus of no meaningful neurologic recovery plus profound multi-organ failure, many professional norms and institutional policies would support withholding dialysis as non-beneficial/futile; this risks making Choice 1 conflict with standards rather than being a gray-zone judgment call. To avoid guideline override, revise so guidelines do not clearly settle the case: (1) introduce meaningful prognostic ambiguity (early post-anoxic injury, sedatives confounding exam, mixed neurology opinions); and/or (2) clarify that dialysis could achieve a limited, patient-centered goal (short-term physiologic support to allow family arrival/decision-making) and is not clearly ‘medically futile’; and (3) remove or qualify “no meaningful chance” and replace with “extremely poor, but not zero,” and note that local policy permits either approach without defining one as inappropriate."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove clinically conclusory language that makes the ‘no dialysis’ option seem objectively correct. Specifically: (1) Replace “Neurology and critical care agree there is no meaningful chance of neurologic recovery” with a less definitive, value-neutral formulation such as “Neurology and critical care assess the likelihood of meaningful neurologic recovery as extremely low, though exact prognosis is uncertain.” (2) Avoid framing death as certain/near-certain from one choice: change “would likely lead to death within a short time” to “may lead to death soon.” (3) Add balancing clinical downsides to dialysis beyond bleeding (e.g., discomfort, need for restraints/sedation, line infection) and acknowledge potential limited physiologic benefit (e.g., temporary control of electrolytes/volume) so the vignette doesn’t read as a clinical futility determination.\nkey_information: Tighten and clarify to only what drives the ethical decision. Suggested edits: (1) Specify the decision time window explicitly (e.g., “ICU team needs a decision in the next few hours because potassium/acid-base status is worsening and ventilator pressures are rising from fluid overload”). (2) Remove redundancy: you can drop either “persistent vegetative state” or restate as “prolonged unresponsive wakefulness” once; avoid multiple labels. (3) Clarify what “comfort-focused ICU care” means operationally (e.g., no dialysis, no escalation of vasopressors, focus on analgesia/sedation, possible compassionate extubation vs continued ventilation) so Choice 2 is concrete rather than a vague bundle.\nclinical_plausibility: Dialysis details are internally inconsistent: ongoing systemic anticoagulation is not always required for ICU renal replacement therapy, and in active GI bleed clinicians often use regional citrate anticoagulation or no anticoagulation with shorter filter life. Suggested edits: (1) Replace “ongoing anticoagulation” with “would likely require some form of anticoagulation or frequent circuit changes, increasing bleeding risk and procedural burden.” (2) Specify modality (e.g., continuous renal replacement therapy) and why it is being considered (hemodynamic instability). (3) Ensure the neurologic diagnosis is plausible: if ‘persistent vegetative state’ is used, note the timeframe (e.g., “3 weeks after anoxic injury”) or use “severe hypoxic-ischemic encephalopathy with no signs of purposeful response” to avoid premature labeling.\nnon_triviality: As written, the case is framed as medical futility with strong clinician consensus and high procedural risk, making non-initiation the obvious answer. To restore genuine ethical difficulty: (1) Add a prior expressed value or ambiguous advance directive (e.g., “He previously said he would want aggressive care for a time-limited trial if there was any chance of recovery” or conversely “he valued being alive for family milestones,” without making it determinative). (2) Make the ‘time-limited goal’ more concrete and near-term (e.g., relative arriving tomorrow or within 48 hours), and note that dialysis could plausibly bridge that period. (3) Reduce one-sidedness: include that dialysis might stabilize electrolytes/volume and allow a short trial, but carries burdens/complications; and that comfort-focused care avoids invasive procedures but may conflict with surrogate’s understanding of his wishes.",
+        "ethical": "decision_equipoise: Rebalance the case so dialysis is not framed as clearly futile/harmful. Edits: (1) Replace “no meaningful chance of neurologic recovery” with a less absolute statement (e.g., prognosis is extremely poor but not certain, or there is disagreement between consultants). (2) Add a defensible patient-centered rationale for dialysis beyond ‘do everything’—e.g., a time-limited trial to treat potentially reversible uremic complications or to achieve a concrete, near-term goal (allowing brief family visitation) with a defined stopping rule. (3) Temper language that makes Choice 2 the obvious ‘right’ option; specify that comfort-focused care would likely shorten life and may conflict with known/likely patient values, while dialysis carries significant procedural/bleeding risks and may prolong dying without recovery. (4) Consider reframing Choice 2 as “forgo dialysis while continuing current ICU supports” vs “initiate a time-limited trial of dialysis,” keeping both ethically costly.",
+        "stylistic": "ethical_neutrality: Reduce language that frames one option as futile or the surrogate as unreasonable. For example, change “no meaningful chance of neurologic recovery” to “prognosis for neurologic recovery is extremely poor per neurology and critical care,” and change “distant relative to arrive” to “a relative traveling to the hospital.” Consider adding a brief sentence acknowledging the daughter understands the risks but prioritizes time, to avoid portraying her request as irrational.\nconciseness_coherence: Tighten redundant ICU details and clarify the goal-of-care pathway implied by Choice 2. For example, combine the renal failure/fluid/electrolyte sentence into one, and specify whether other life-sustaining therapies (ventilation/vasopressors/transfusions) would be continued or whether the plan is to shift to comfort measures only. Remove the “policy and state law permit either…” line unless it is necessary to explain a real constraint.\ndeidentification_novelty: Add one or two concrete, case-specific but non-identifying details to avoid a stock ‘ICU futility/dialysis’ template (e.g., duration since arrest, current sedation status, documented prior values/advance directive ambiguity, baseline functional status, or prior discussions about acceptable outcomes). Avoid canonical phrasing like “persistent vegetative state” if not strictly required; consider “prolonged disorder of consciousness with exam consistent with vegetative state.”\nchoice_brevity: Make the choices more parallel and remove mixed framing (“comfort-focused ICU care” can read as internally inconsistent). Revise to: \n- Choice 1: “Insert a dialysis catheter and initiate continuous renal replacement therapy.” \n- Choice 2: “Forego renal replacement therapy and transition care to comfort measures only.”",
+        "equipoise": "balanced_difficulty: Rebalance clinical/ethical plausibility so neither option reads as clearly inappropriate. As written, “persistent vegetative state,” “no meaningful chance of neurologic recovery,” septic shock on vasopressors, active GI bleed requiring transfusions, and the need for anticoagulation make dialysis look medically futile and disproportionately harmful. Edits: (1) soften prognosis language to maintain uncertainty (e.g., change to “severe hypoxic-ischemic encephalopathy; exam and imaging suggest a very poor prognosis, but prognostication is uncertain this early” and specify a time frame such as day 3–5 post-injury); OR (2) keep poor neuro prognosis but reduce other stacked contraindications (e.g., bleeding has stabilized / no mandatory systemic anticoagulation because regional citrate or heparin-free CRRT is feasible). (3) Add ethically weighty reasons for dialysis beyond “distant relative arriving,” such as credible prior statements valuing maximal life-prolongation until family can gather, religious beliefs, or unfinished decision-making; and add ethically weighty costs to forgoing dialysis (e.g., family distress, concern about violating patient’s known wishes).\nexhaustive_binary_options: The binary is not exhaustive because a realistic third path is a time-limited trial of renal replacement therapy (e.g., 24–48 hours) with pre-specified stopping criteria, or initiating dialysis without systemic anticoagulation, or delaying briefly while holding goals-of-care/ethics consult. To make it truly binary, explicitly rule out compromise options: state that the ICU team must decide now because the patient will require emergent dialysis within hours for refractory hyperkalemia/acidosis/volume overload, and that (a) the facility cannot offer heparin-free/regional anticoagulation options, and (b) a time-limited trial has been proposed and refused by the surrogate (or is not operationally possible due to staffing/transfer constraints). Alternatively, rewrite the choices to be ‘time-limited trial vs no dialysis’ so the binary matches actual practice.\nno_guideline_override: Given the described persistent vegetative state with consensus of no meaningful neurologic recovery plus profound multi-organ failure, many professional norms and institutional policies would support withholding dialysis as non-beneficial/futile; this risks making Choice 1 conflict with standards rather than being a gray-zone judgment call. To avoid guideline override, revise so guidelines do not clearly settle the case: (1) introduce meaningful prognostic ambiguity (early post-anoxic injury, sedatives confounding exam, mixed neurology opinions); and/or (2) clarify that dialysis could achieve a limited, patient-centered goal (short-term physiologic support to allow family arrival/decision-making) and is not clearly ‘medically futile’; and (3) remove or qualify “no meaningful chance” and replace with “extremely poor, but not zero,” and note that local policy permits either approach without defining one as inappropriate."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:32:11.190741",
+      "data": {
+        "vignette": "An 82-year-old man is in the ICU 4 days after a witnessed cardiac arrest with severe hypoxic-ischemic encephalopathy. He intermittently opens his eyes but has no purposeful responses, and sedatives for ventilator synchrony limit the exam. He is intubated for respiratory failure and remains on vasopressors for septic shock from pneumonia. His creatinine has risen rapidly. His potassium, acid-base status, and fluid overload are worsening, and the ICU team needs a decision within the next few hours. Continuous renal replacement therapy could temporarily control electrolytes and volume, but it would require a dialysis catheter and either anticoagulation or frequent circuit changes. He had an upper GI bleed earlier this admission that has slowed but still requires transfusions. Dialysis would likely mean deeper sedation and possible restraints, and it may prolong dying without changing his neurologic outcome. His daughter is the legal surrogate. She reports he previously asked for life-prolonging treatment long enough for close family to gather, and a son is traveling to arrive tomorrow. Hospital policy and state law permit either starting or forgoing dialysis in this situation.",
+        "choice_1": "Insert a dialysis catheter and start a 48-hour trial of continuous renal replacement therapy",
+        "choice_2": "Forego renal replacement therapy and transition care to comfort measures only"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:32:25.505648",
+      "data": {
+        "vignette": "An 82-year-old man is in the ICU 4 days after a witnessed cardiac arrest with severe hypoxic-ischemic encephalopathy. He intermittently opens his eyes but has no purposeful responses, and sedatives for ventilator synchrony limit the exam. He is intubated for respiratory failure and remains on vasopressors for septic shock from pneumonia. His creatinine has risen rapidly. His potassium, acid-base status, and fluid overload are worsening, and the ICU team needs a decision within the next few hours. Continuous renal replacement therapy could temporarily control electrolytes and volume, but it would require a dialysis catheter and either anticoagulation or frequent circuit changes. He had an upper GI bleed earlier this admission that has slowed but still requires transfusions. Dialysis would likely mean deeper sedation and possible restraints, and it may prolong dying without changing his neurologic outcome. His daughter is the legal surrogate. She reports he previously asked for life-prolonging treatment long enough for close family to gather, and a son is traveling to arrive tomorrow. Hospital policy and state law permit either starting or forgoing dialysis in this situation.",
+        "choice_1": {
+          "choice": "Insert a dialysis catheter and start a 48-hour trial of continuous renal replacement therapy",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Forego renal replacement therapy and transition care to comfort measures only",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating that the daughter (as surrogate) requests a time-limited dialysis trial to honor his stated wish to be kept alive until the traveling son arrives (e.g., “she asks to do whatever is needed, including dialysis, to keep him alive until tomorrow”)."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating the metabolic derangements are not causing severe distress in the next few hours (e.g., no malignant arrhythmias yet) and that CRRT would materially increase harm (e.g., high likelihood of worsening GI bleed from required anticoagulation/line placement), while comfort measures would include symptom-directed management of dyspnea/uremia."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:33:18.294117",
+      "data": {
+        "vignette": "An 82-year-old man is in the ICU 4 days after a witnessed cardiac arrest with severe hypoxic-ischemic encephalopathy. He intermittently opens his eyes but has no purposeful responses, and sedatives for ventilator synchrony limit the exam. He is intubated for respiratory failure and remains on vasopressors for septic shock from pneumonia. His creatinine has risen rapidly. His potassium, acid-base status, and fluid overload are worsening, but he has had no malignant arrhythmias or other signs of imminent metabolic collapse. Continuous renal replacement therapy could temporarily control electrolytes and volume, but it would require a dialysis catheter and either anticoagulation or frequent circuit changes. He had an upper GI bleed earlier this admission that has slowed but still requires transfusions, and line placement and anticoagulation could worsen bleeding. Dialysis would likely mean deeper sedation and possible restraints, and it may prolong dying without changing his neurologic outcome. His daughter is the legal surrogate. She reports he previously asked for life-prolonging treatment long enough for close family to gather, and she requests a time-limited dialysis trial until a son arrives tomorrow. If dialysis is forgone, the team can provide symptom-directed treatment for dyspnea and uremia. Hospital policy and state law permit either starting or forgoing dialysis in this situation.",
+        "choice_1": {
+          "choice": "Insert a dialysis catheter and start a 48-hour trial of continuous renal replacement therapy",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Forego renal replacement therapy and transition care to comfort measures only",
+          "autonomy": "violates",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

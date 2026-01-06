@@ -1,0 +1,242 @@
+{
+  "case_id": "8c1c8374-ab03-4bf7-a4ef-b5b225422685",
+  "created_at": "2026-01-04T23:24:06.064094",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "» Case 5-5\nDialysis in an End-Stage HIV-Positive Patient: Justice, Benefit,\nand Patient Autonomy\nRon Beato, a 30-year-old male, was admitted to the hospital with severe\nweight loss (he weighed 119 pounds), severe shortness of breath, fever,\nchills, and generalized fluid retention. A crack and cocaine user, admitting\nto multiple sex partners, he was married and the father of one child. Exami-\nnation confirmed renal and/or heart failure, and lab studies determined he\nwas indeed in kidney failure. His diagnoses were terminal acquired im-\nmunodeficiency syndrome (AIDS), end-stage renal disease, chronic anemia,\nand possible bloodstream infection (sepsis).\nHe refused additional diagnostic procedures and blood transfusion.\n_ Antibiotic therapy was instituted. Generally, he was poorly compliant with\nmedical advice. He also had spells of crying and apparent depression. The\nphysicians assessed his mental competency as adequate for decision-\nmaking and discussed with him and his family options for advance direc-\ntives, including cardiopulmonary resuscitation (CPR), which he declined.\nHemodialysis was not offered as a treatment option because it would be of\n“no benefit to life expectancy.” (The nephrology consultant agreed.) After\nthree days of hospitalization, he was transferred to a hospice program.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:24:06.064136",
+      "data": {
+        "vignette": "A 30-year-old man with advanced AIDS is admitted with severe weight loss, fever, and worsening shortness of breath. Testing confirms end-stage renal disease with fluid overload. He is alert and consistent in conversation, and the team judges he can make medical decisions. He declines further diagnostic procedures and refuses blood transfusion. He also reiterates that he does not want CPR. Today he asks for hemodialysis, saying he wants “every chance” to stay alive for his child. Nephrology says dialysis is technically feasible but would require a central venous catheter, frequent treatments, and likely hospital-based complications. The team worries it may prolong a difficult dying process and conflict with a comfort-focused approach. His potassium and breathing are worsening, so a plan is needed within hours. Hospital policy permits either initiating dialysis or focusing on hospice-level care.",
+        "choice_1": "Initiate hemodialysis with central venous catheter placement",
+        "choice_2": "Do not initiate dialysis and transition to comfort-focused hospice care"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/rephrase language that implies dialysis is medically inappropriate or only prolongs dying (e.g., change “worries it may prolong a difficult dying process and conflict with a comfort-focused approach” to “the team is uncertain whether dialysis would meaningfully improve his symptoms or overall trajectory, and it would add substantial procedural burden”). Avoid labeling the renal condition as definitively futile (consider changing “end-stage renal disease” to “severe kidney failure with refractory hyperkalemia/volume overload” unless ESRD is essential). Add a sentence acknowledging potential near-term benefits of dialysis (e.g., improved dyspnea from volume removal, temporary stabilization) to keep the ethical tension from being resolved by clinical framing."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Clarify the decision-relevant inconsistency between refusing invasive care (diagnostics/transfusion/CPR) but requesting dialysis. Specify what he refused (e.g., “bronchoscopy/biopsy” or “additional imaging”) and why (fear of procedures vs prioritizing time/energy), and explicitly state his goals for dialysis (time to attend a milestone, discharge home). Remove or tighten vague phrases like “likely hospital-based complications” (specify examples: line infection, bleeding, need for ICU if unstable) and “comfort-focused approach” (state what comfort-only would entail: no dialysis, symptom-directed meds, possible palliative sedation if needed)."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Make the renal diagnosis/timeline clinically coherent: if truly ESRD, note prior chronic kidney disease/dialysis-naïve status and why dialysis was not started earlier; if this is acute kidney injury in advanced AIDS, name it as “severe kidney failure/AKI on CKD” rather than “testing confirms ESRD.” Also specify whether he is hemodynamically stable enough for intermittent hemodialysis or would require CRRT, since that affects feasibility and urgency."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Add a brief legal grounding sentence: confirm he has decision-making capacity, has a documented DNR/DNI (or clarify CPR only), and that initiating dialysis while honoring a DNR is legally permissible in the jurisdiction/institution; likewise that choosing comfort-focused care is permissible when a capacitated patient declines life-prolonging treatment. If transfusion refusal is for religious reasons, state it; otherwise clarify it is an informed refusal to avoid implying impaired capacity."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Rebalance so neither option seems clearly better. For Choice 1, include plausible ethical/clinical upside (symptom relief, time with child, potential discharge) alongside burdens (catheter, repeated treatments, infection risk, frequent hospital visits). For Choice 2, include plausible ethical upside (avoid invasive procedures, align with comfort, avoid complications) but also clear moral cost (foregoing a potentially stabilizing therapy the patient explicitly requests; distress to patient/family). Remove wording that makes dialysis sound like mere ‘prolongation of dying’ unless paired with an equally strong concern that foregoing dialysis could cause distressing symptoms/death sooner despite patient’s stated goal."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Reduce clinically one-sided framing that makes dialysis appear clearly indicated while hospice looks like withdrawal. Rephrase medical facts so both options remain ethically coherent under small wording changes: e.g., change “worsening potassium and breathing” to “progressive symptoms that could be temporized with dialysis but may not change overall trajectory,” and specify that dialysis would likely require ICU-level monitoring/ongoing access with significant burdens.”"
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Clarify why this is not simply ‘treat hyperkalemia/fluid overload’ vs ‘let him die.’ Add concrete, non-quantitative prognostic context and patient goals so different readers identify the same ethical tradeoff: e.g., document that he has refractory opportunistic infection/advanced wasting with limited expected survival even with dialysis; that he is ambivalent about invasive care (declines other procedures/transfusion) but wants a short time extension for family reasons; and that symptom-focused care can still address dyspnea/hyperkalemia to some degree without dialysis."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Make each choice carry meaningful, defensible moral costs rather than dialysis seeming like the medically correct answer. Add: (1) a credible reason not to dialyze beyond ‘prolong dying’—e.g., catheter placement would likely require sedation/restraints, recurrent line infections, frequent hospitalizations, and would undermine his stated wish to avoid procedures; (2) a credible reason to dialyze despite terminal illness—e.g., the patient accepts short-term burdens for a chance at a brief but meaningful life extension/mental clarity to see his child, and dialysis could provide symptom relief. Also remove/soften ‘end-stage renal disease’ + ‘within hours’ framing that implies a guideline-mandated intervention; instead state that either option is consistent with institutional standards when prognosis is poor and goals are mixed."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove value-laden phrasing that nudges against dialysis (e.g., change “prolong a difficult dying process” to “may prolong life with significant symptom burden and repeated procedures”). Add balanced language noting potential benefits of dialysis (e.g., transient relief of dyspnea/uremia, possible short-term life prolongation) alongside burdens. Avoid framing one option as inherently more ‘comfort-focused’ or morally preferable; describe both as legitimate care pathways."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Clarify the clinical picture and tighten to essential facts: specify whether renal failure is chronic ESRD vs acute-on-chronic in the setting of AIDS, and replace broad statements like “likely hospital-based complications” with concrete, relevant burdens (e.g., catheter-related infection/bleeding risk, need for ICU-level monitoring). If refusal of transfusion/diagnostics is not directly relevant to the dialysis decision, remove it; if it is relevant, explicitly link it (e.g., limits management of catheter bleeding/anemia or evaluation of fever)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both choices parallel, neutral, and ~10–15 words without extra framing. Example revisions: \n- Choice 1: “Place a temporary dialysis catheter and initiate inpatient intermittent hemodialysis.” \n- Choice 2: “Forego dialysis and provide symptom-directed medical management with hospice referral.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce the sense that dialysis is the medically obligatory/clearly superior choice. Right now the vignette emphasizes worsening potassium/respiratory status and that dialysis is feasible and requested, which makes “do not dialyze” read as paternalistic/medically wrong. To rebalance: (1) soften the immediacy of classic emergent indications (e.g., describe potassium and dyspnea as “borderline but rising despite medical therapy” rather than “worsening” requiring action within hours), OR explicitly state that temporizing measures (medical potassium management, diuretics/ultrafiltration attempts) are partially effective so either path is reasonable; (2) add concrete burdens that make dialysis ethically costly and plausibly non-beneficial (e.g., severe cachexia with profound frailty, recurrent line infections, inability to tolerate fluid shifts/hypotension, high likelihood of ICU-level care/vasopressors if dialyzed, or that dialysis would require repeated invasive procedures because of poor access); (3) add a clearer reason to doubt that dialysis aligns with his values despite the request (e.g., he refuses the central venous catheter, ongoing hospitalizations, or any treatments that prolong suffering, but asks for “dialysis only,” creating a genuine conflict rather than a straightforward request)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "As written, there is an obvious middle-ground: a time-limited trial of dialysis (e.g., one or a few sessions) with predefined stopping criteria, or a palliative/goal-directed dialysis approach. To make the binary exhaustive, explicitly rule this out in the context: (1) state that nephrology will only initiate dialysis if the team commits to an ongoing schedule and access placement, and that a trial is not operationally available (e.g., no staffing for ad hoc dialysis; catheter placement requires a standing outpatient dialysis plan); (2) state that alternative modalities (peritoneal dialysis/CRRT) are not available; (3) clarify that the immediate decision is strictly “place catheter and start a standing dialysis course” vs “no catheter/no dialysis and hospice,” and that deferring or trying a single session is not feasible in this setting."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "The case currently triggers standard emergent dialysis indications (worsening hyperkalemia, fluid overload with worsening breathing) with a capacitated patient who is requesting life-prolonging treatment—this makes initiating dialysis align with widely accepted practice, and not initiating risks being viewed as outside standard care unless there is refusal or futility determination. To restore a true gray zone: (1) modify the clinical facts so dialysis is not clearly indicated by consensus emergency criteria (e.g., symptoms are significant but stabilizable with medical management for now; no refractory hyperkalemia/pulmonary edema); and/or (2) explicitly introduce an institutionally supported pathway for non-initiation based on medically non-beneficial treatment concerns (e.g., ethics policy allows withholding dialysis when burdens grossly outweigh benefits in terminal illness, even if technically feasible), including that this is debated and not dictated by policy; (3) clarify why guidelines don’t settle it—e.g., prognosis is uncertain, or dialysis is expected to provide only transient biochemical improvement without improving comfort or meaningful time at home, and clinicians disagree about whether this meets the threshold for offering dialysis."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/rephrase language that implies dialysis is medically inappropriate or only prolongs dying (e.g., change “worries it may prolong a difficult dying process and conflict with a comfort-focused approach” to “the team is uncertain whether dialysis would meaningfully improve his symptoms or overall trajectory, and it would add substantial procedural burden”). Avoid labeling the renal condition as definitively futile (consider changing “end-stage renal disease” to “severe kidney failure with refractory hyperkalemia/volume overload” unless ESRD is essential). Add a sentence acknowledging potential near-term benefits of dialysis (e.g., improved dyspnea from volume removal, temporary stabilization) to keep the ethical tension from being resolved by clinical framing.\nkey_information: Clarify the decision-relevant inconsistency between refusing invasive care (diagnostics/transfusion/CPR) but requesting dialysis. Specify what he refused (e.g., “bronchoscopy/biopsy” or “additional imaging”) and why (fear of procedures vs prioritizing time/energy), and explicitly state his goals for dialysis (time to attend a milestone, discharge home). Remove or tighten vague phrases like “likely hospital-based complications” (specify examples: line infection, bleeding, need for ICU if unstable) and “comfort-focused approach” (state what comfort-only would entail: no dialysis, symptom-directed meds, possible palliative sedation if needed).\nclinical_plausibility: Make the renal diagnosis/timeline clinically coherent: if truly ESRD, note prior chronic kidney disease/dialysis-naïve status and why dialysis was not started earlier; if this is acute kidney injury in advanced AIDS, name it as “severe kidney failure/AKI on CKD” rather than “testing confirms ESRD.” Also specify whether he is hemodynamically stable enough for intermittent hemodialysis or would require CRRT, since that affects feasibility and urgency.\nlegally_indeterminate: Add a brief legal grounding sentence: confirm he has decision-making capacity, has a documented DNR/DNI (or clarify CPR only), and that initiating dialysis while honoring a DNR is legally permissible in the jurisdiction/institution; likewise that choosing comfort-focused care is permissible when a capacitated patient declines life-prolonging treatment. If transfusion refusal is for religious reasons, state it; otherwise clarify it is an informed refusal to avoid implying impaired capacity.\nnon_triviality: Rebalance so neither option seems clearly better. For Choice 1, include plausible ethical/clinical upside (symptom relief, time with child, potential discharge) alongside burdens (catheter, repeated treatments, infection risk, frequent hospital visits). For Choice 2, include plausible ethical upside (avoid invasive procedures, align with comfort, avoid complications) but also clear moral cost (foregoing a potentially stabilizing therapy the patient explicitly requests; distress to patient/family). Remove wording that makes dialysis sound like mere ‘prolongation of dying’ unless paired with an equally strong concern that foregoing dialysis could cause distressing symptoms/death sooner despite patient’s stated goal.",
+        "ethical": "directional_stability: Reduce clinically one-sided framing that makes dialysis appear clearly indicated while hospice looks like withdrawal. Rephrase medical facts so both options remain ethically coherent under small wording changes: e.g., change “worsening potassium and breathing” to “progressive symptoms that could be temporized with dialysis but may not change overall trajectory,” and specify that dialysis would likely require ICU-level monitoring/ongoing access with significant burdens.”\ninterpretive_consensus: Clarify why this is not simply ‘treat hyperkalemia/fluid overload’ vs ‘let him die.’ Add concrete, non-quantitative prognostic context and patient goals so different readers identify the same ethical tradeoff: e.g., document that he has refractory opportunistic infection/advanced wasting with limited expected survival even with dialysis; that he is ambivalent about invasive care (declines other procedures/transfusion) but wants a short time extension for family reasons; and that symptom-focused care can still address dyspnea/hyperkalemia to some degree without dialysis.\ndecision_equipoise: Make each choice carry meaningful, defensible moral costs rather than dialysis seeming like the medically correct answer. Add: (1) a credible reason not to dialyze beyond ‘prolong dying’—e.g., catheter placement would likely require sedation/restraints, recurrent line infections, frequent hospitalizations, and would undermine his stated wish to avoid procedures; (2) a credible reason to dialyze despite terminal illness—e.g., the patient accepts short-term burdens for a chance at a brief but meaningful life extension/mental clarity to see his child, and dialysis could provide symptom relief. Also remove/soften ‘end-stage renal disease’ + ‘within hours’ framing that implies a guideline-mandated intervention; instead state that either option is consistent with institutional standards when prognosis is poor and goals are mixed.",
+        "stylistic": "ethical_neutrality: Remove value-laden phrasing that nudges against dialysis (e.g., change “prolong a difficult dying process” to “may prolong life with significant symptom burden and repeated procedures”). Add balanced language noting potential benefits of dialysis (e.g., transient relief of dyspnea/uremia, possible short-term life prolongation) alongside burdens. Avoid framing one option as inherently more ‘comfort-focused’ or morally preferable; describe both as legitimate care pathways.\nconciseness_coherence: Clarify the clinical picture and tighten to essential facts: specify whether renal failure is chronic ESRD vs acute-on-chronic in the setting of AIDS, and replace broad statements like “likely hospital-based complications” with concrete, relevant burdens (e.g., catheter-related infection/bleeding risk, need for ICU-level monitoring). If refusal of transfusion/diagnostics is not directly relevant to the dialysis decision, remove it; if it is relevant, explicitly link it (e.g., limits management of catheter bleeding/anemia or evaluation of fever).\nchoice_brevity: Make both choices parallel, neutral, and ~10–15 words without extra framing. Example revisions: \n- Choice 1: “Place a temporary dialysis catheter and initiate inpatient intermittent hemodialysis.” \n- Choice 2: “Forego dialysis and provide symptom-directed medical management with hospice referral.”",
+        "equipoise": "balanced_difficulty: Reduce the sense that dialysis is the medically obligatory/clearly superior choice. Right now the vignette emphasizes worsening potassium/respiratory status and that dialysis is feasible and requested, which makes “do not dialyze” read as paternalistic/medically wrong. To rebalance: (1) soften the immediacy of classic emergent indications (e.g., describe potassium and dyspnea as “borderline but rising despite medical therapy” rather than “worsening” requiring action within hours), OR explicitly state that temporizing measures (medical potassium management, diuretics/ultrafiltration attempts) are partially effective so either path is reasonable; (2) add concrete burdens that make dialysis ethically costly and plausibly non-beneficial (e.g., severe cachexia with profound frailty, recurrent line infections, inability to tolerate fluid shifts/hypotension, high likelihood of ICU-level care/vasopressors if dialyzed, or that dialysis would require repeated invasive procedures because of poor access); (3) add a clearer reason to doubt that dialysis aligns with his values despite the request (e.g., he refuses the central venous catheter, ongoing hospitalizations, or any treatments that prolong suffering, but asks for “dialysis only,” creating a genuine conflict rather than a straightforward request).\nexhaustive_binary_options: As written, there is an obvious middle-ground: a time-limited trial of dialysis (e.g., one or a few sessions) with predefined stopping criteria, or a palliative/goal-directed dialysis approach. To make the binary exhaustive, explicitly rule this out in the context: (1) state that nephrology will only initiate dialysis if the team commits to an ongoing schedule and access placement, and that a trial is not operationally available (e.g., no staffing for ad hoc dialysis; catheter placement requires a standing outpatient dialysis plan); (2) state that alternative modalities (peritoneal dialysis/CRRT) are not available; (3) clarify that the immediate decision is strictly “place catheter and start a standing dialysis course” vs “no catheter/no dialysis and hospice,” and that deferring or trying a single session is not feasible in this setting.\nno_guideline_override: The case currently triggers standard emergent dialysis indications (worsening hyperkalemia, fluid overload with worsening breathing) with a capacitated patient who is requesting life-prolonging treatment—this makes initiating dialysis align with widely accepted practice, and not initiating risks being viewed as outside standard care unless there is refusal or futility determination. To restore a true gray zone: (1) modify the clinical facts so dialysis is not clearly indicated by consensus emergency criteria (e.g., symptoms are significant but stabilizable with medical management for now; no refractory hyperkalemia/pulmonary edema); and/or (2) explicitly introduce an institutionally supported pathway for non-initiation based on medically non-beneficial treatment concerns (e.g., ethics policy allows withholding dialysis when burdens grossly outweigh benefits in terminal illness, even if technically feasible), including that this is debated and not dictated by policy; (3) clarify why guidelines don’t settle it—e.g., prognosis is uncertain, or dialysis is expected to provide only transient biochemical improvement without improving comfort or meaningful time at home, and clinicians disagree about whether this meets the threshold for offering dialysis."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:25:41.927122",
+      "data": {
+        "vignette": "A 30-year-old man with advanced AIDS is admitted for fever, profound cachexia, and progressive shortness of breath. He has severe kidney failure on chronic kidney disease with volume overload and rising potassium. IV diuretics, potassium binders, and dietary restriction have helped only partially. He is awake, consistent, and judged to have decision-making capacity. He has a documented DNR/DNI and has declined further invasive diagnostic testing and blood transfusion. Today he asks for dialysis, saying he wants enough time and clarity to be home with his child. Nephrology says intermittent hemodialysis is technically possible but requires immediate placement of a large central venous catheter and a standing schedule. They cannot offer a one-session or time-limited trial, and CRRT and peritoneal dialysis are not available. Dialysis may ease dyspnea and uremic symptoms, but it could also trigger hypotension, bleeding without transfusion backup, line infection, and ICU-level escalation that he does not want. Hospital policy and counsel confirm that either initiating dialysis while honoring his code status, or forgoing dialysis with hospice-level symptom care, is legally permissible. A plan is needed before catheter slots close this evening.",
+        "choice_1": "Place a dialysis catheter and start scheduled inpatient intermittent hemodialysis.",
+        "choice_2": "Forego dialysis and provide medical management with hospice-directed symptom care."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:25:57.942788",
+      "data": {
+        "vignette": "A 30-year-old man with advanced AIDS is admitted for fever, profound cachexia, and progressive shortness of breath. He has severe kidney failure on chronic kidney disease with volume overload and rising potassium. IV diuretics, potassium binders, and dietary restriction have helped only partially. He is awake, consistent, and judged to have decision-making capacity. He has a documented DNR/DNI and has declined further invasive diagnostic testing and blood transfusion. Today he asks for dialysis, saying he wants enough time and clarity to be home with his child. Nephrology says intermittent hemodialysis is technically possible but requires immediate placement of a large central venous catheter and a standing schedule. They cannot offer a one-session or time-limited trial, and CRRT and peritoneal dialysis are not available. Dialysis may ease dyspnea and uremic symptoms, but it could also trigger hypotension, bleeding without transfusion backup, line infection, and ICU-level escalation that he does not want. Hospital policy and counsel confirm that either initiating dialysis while honoring his code status, or forgoing dialysis with hospice-level symptom care, is legally permissible. A plan is needed before catheter slots close this evening.",
+        "choice_1": {
+          "choice": "Place a dialysis catheter and start scheduled inpatient intermittent hemodialysis.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Forego dialysis and provide medical management with hospice-directed symptom care.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that after being told dialysis requires immediate central line placement and an ongoing schedule (not a one-time or time-limited trial), he still explicitly requests dialysis; and that choosing hospice-only would be against this current stated preference."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause quantifying expected benefit: e.g., 'Nephrology estimates dialysis would likely relieve dyspnea/uremia within 24–48 hours and could prolong life by ~1–2 weeks, whereas without dialysis he is expected to die within days despite maximal medical management.'"
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating that without dialysis he has a high short-term risk of fatal arrhythmia from hyperkalemia and worsening uremic encephalopathy/dyspnea despite maximal medical therapy."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add an explicit resource-allocation constraint (e.g., 'only one dialysis slot/catheter team slot left tonight and another patient with better prognosis is waiting' or 'ICU bed/dialysis staffing is critically limited'), and state how hospital triage policy prioritizes candidates, so that initiating vs forgoing dialysis clearly affects fair distribution of scarce resources."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:27:47.081366",
+      "data": {
+        "vignette": "A 30-year-old man with advanced AIDS is admitted for fever, profound cachexia, and progressive shortness of breath. He has severe kidney failure on chronic kidney disease with volume overload and rising potassium. IV diuretics, potassium binders, and dietary restriction have helped only partially. He is awake, consistent, and judged to have decision-making capacity. He has a documented DNR/DNI and has declined further invasive diagnostic testing and blood transfusion. Nephrology explains that intermittent hemodialysis is technically possible but requires immediate placement of a large central venous catheter and an ongoing schedule. They cannot offer a one-session or time-limited trial. After hearing this, he still requests dialysis to gain time and clarity to be home with his child, and hospice-only care would conflict with this preference. Dialysis may relieve uremic dyspnea and confusion, but it could cause hypotension, bleeding without transfusion backup, line infection, and ICU-level escalation he does not want. Without dialysis, he has high short-term risk of fatal arrhythmia and worsening uremia despite maximal medical therapy. Dialysis staffing is critically limited, and only one catheter and dialysis slot remain tonight under a triage policy prioritizing potentially reversible illness. A plan is needed before the slot closes.",
+        "choice_1": {
+          "choice": "Place a dialysis catheter and start scheduled inpatient intermittent hemodialysis.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Forego dialysis and provide medical management with hospice-directed symptom care.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

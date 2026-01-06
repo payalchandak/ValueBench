@@ -1,0 +1,274 @@
+{
+  "case_id": "2c0921e4-9ef7-4c16-a5fb-fb6b89fb5872",
+  "created_at": "2026-01-04T22:53:41.358058",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "6. Your patient has just recently been diagnosed with familial\nadenomatous polyposis (FAP). This disorder is chronic, progressive,\nand fatal. There is a genetic test that can tell whether children of\nparents with the disease will develop it. The test is very accurate. The\npatient has become divorced and refuses to give you his consent to\ninform his ex-wife who now has custody of their three children. He\nthreatens to sue you if you reveal elements of his medical care to his ex-\nwife.\nWhat should you do?\na. Respect the patient’s right to confidentiality.\nb. Transfer the patient’s care to another physician as long as the patient agrees.\nc. Ask the health department to inform the patient’s ex-wife about the disease risk.\nd. Seek a court order to inform the patient’s ex-wife.\ne. Inform the patient’s ex-wife of the risk to the children.",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T22:53:41.358110",
+      "data": {
+        "vignette": "A 38-year-old man is newly diagnosed with familial adenomatous polyposis after colonoscopy and genetic testing. He is divorced and has three children, ages 8, 10, and 12, who live with his ex-wife. He asks you not to contact her or disclose anything about his diagnosis. He says the divorce was hostile and he fears losing contact with the children. He has decision-making capacity and threatens to sue if you share any medical information. You know the children may need genetic counseling and early surveillance if they inherited the condition. His ex-wife calls your office the same day asking whether there is “anything hereditary” she should tell their pediatrician before an upcoming visit. Hospital policy and counsel confirm that either maintaining confidentiality or making a limited warning disclosure is legally permissible in this circumstance. You must decide what to do now.",
+        "choice_1": "Maintain confidentiality and decline to share any information with the ex-wife.",
+        "choice_2": "Inform the ex-wife of the hereditary risk and recommend genetic counseling for the children."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Increase the ethical/clinical defensibility of *both* options so neither feels like the obvious choice to ‘warn’.\n\nConcrete edits:\n- Add a sentence that the patient is already arranging genetic counseling for the children through a family mediator/attorney, or plans to disclose himself at a near-term custody visit, but fears immediate disclosure will trigger retaliation.\n- Add a specific, credible potential harm from disclosure (e.g., history of domestic violence, restraining order, active custody litigation where medical information has been weaponized), making breach of confidentiality foreseeably harmful.\n- Add a specific, credible potential harm from *not* disclosing now (e.g., one child has rectal bleeding/anemia or is scheduled for a procedure where relevant family history matters), so withholding has tangible downside.\n- Tighten Choice 2 to a ‘limited warning disclosure’ (e.g., “Tell the ex-wife that a first-degree relative has a hereditary colorectal cancer syndrome and the children should get genetic counseling; do not disclose the patient’s diagnosis or other details”) so it is ethically defensible without being a full breach."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Re-balance the tradeoff so Choice 2 is not an apparent ‘free-lunch.’ Add concrete, ethically weighty downsides to disclosure beyond vague fear of a lawsuit (e.g., patient states he will stop care, refuse prophylactic surgery, or disappear if confidentiality is breached; credible risk of intimate-partner retaliation or escalation of custody conflict that could harm the children/patient). Also reduce the sense of immediate medical necessity for the children (e.g., clarify they are asymptomatic and surveillance can reasonably start after a planned family meeting in the next few weeks), or add a plausible confidentiality-preserving alternative that still partially protects the children but is not clearly superior (e.g., offer to help the patient notify them or send an anonymized ‘family risk’ letter through a genetic counselor). Keep the binary framing but make each option involve a distinct, unavoidable moral cost."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or neutralize legally/psychologically loaded phrasing that biases toward nondisclosure (e.g., change “hostile” to “contentious,” replace “fears losing contact with the children” with “is concerned about family repercussions,” and rephrase “threatens to sue” to “states he will pursue legal action if information is disclosed”). Add a neutral sentence acknowledging potential harms of both options (e.g., distress/relationship impact from disclosure vs delayed surveillance if nondisclosure)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten social background to what is essential for the confidentiality risk (e.g., omit exact children’s ages unless needed; combine divorce details into one clause). Clarify what “limited warning disclosure” would contain (risk information without naming the patient/diagnosis vs explicitly stating FAP) so the dilemma is not ambiguous about the actual action under consideration."
+        },
+        "deidentification_novelty": {
+          "outcome": false,
+          "suggested_changes": "Add a few de-identifying, case-specific clinical details that make it less like a stock textbook prompt without adding identifiers (e.g., whether he has classic vs attenuated FAP, whether colectomy planning is underway, and how the children’s pediatric care is organized). Avoid overly generic phrasing like “hospital policy and counsel confirm…” by specifying “risk management notes both approaches are legally permissible under state law,” without naming jurisdictions or institutions."
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Shorten and balance the choices to 10–15 words and ensure they specify the same level of disclosure detail. Example revisions: (1) “Do not disclose; advise the ex-wife to discuss general family history with pediatrics.” (2) “Disclose limited hereditary risk information and advise genetic counseling/surveillance for the children.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce framing that makes disclosure feel clearly morally required. Add ethically weighty downsides to disclosure beyond a lawsuit (e.g., realistic risk of domestic violence/harassment, court-ordered restrictions, loss of insurance/employment if information spreads, or direct harm to the patient–child relationship). Also add ethically weighty downsides to non-disclosure beyond ‘kids might need counseling’ (e.g., the pediatric visit is for GI symptoms/anemia and missing the information could plausibly delay urgent evaluation). Ensure both options carry comparable moral cost and that neither is portrayed as the ‘responsible’ default."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close the obvious middle options. Explicitly state that you already (1) strongly urged the patient to disclose, offered to facilitate a joint call/letter, and he refused; (2) offered to disclose anonymized/general information without confirming his diagnosis, but the ex-wife is specifically asking about his results and you cannot answer without effectively confirming; (3) cannot delay because the pediatric appointment is tomorrow/this week and you will be unavailable/reassigned after today so there will be no timely follow-up. Alternatively, rewrite the choices to be truly binary: (A) say nothing beyond ‘I can’t discuss his care,’ vs (B) make a limited disclosure now."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, prevailing ethics guidance usually expects exhausting confidentiality-preserving steps before breaching (persuasion, offering mediated disclosure, minimal necessary info) and breach is typically reserved for high likelihood of serious preventable harm. To keep this in a gray zone, add that you have already taken those steps, document patient’s persistent refusal, and clarify why the children face a time-sensitive, preventable harm (e.g., symptomatic child needing immediate evaluation where the hereditary diagnosis would change urgent workup) yet the harm is not so imminent/certain that guidelines clearly mandate disclosure. Also note that institutional policy explicitly leaves the decision to clinician judgment after these steps, rather than endorsing one path."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "non_triviality: Increase the ethical/clinical defensibility of *both* options so neither feels like the obvious choice to ‘warn’.\n\nConcrete edits:\n- Add a sentence that the patient is already arranging genetic counseling for the children through a family mediator/attorney, or plans to disclose himself at a near-term custody visit, but fears immediate disclosure will trigger retaliation.\n- Add a specific, credible potential harm from disclosure (e.g., history of domestic violence, restraining order, active custody litigation where medical information has been weaponized), making breach of confidentiality foreseeably harmful.\n- Add a specific, credible potential harm from *not* disclosing now (e.g., one child has rectal bleeding/anemia or is scheduled for a procedure where relevant family history matters), so withholding has tangible downside.\n- Tighten Choice 2 to a ‘limited warning disclosure’ (e.g., “Tell the ex-wife that a first-degree relative has a hereditary colorectal cancer syndrome and the children should get genetic counseling; do not disclose the patient’s diagnosis or other details”) so it is ethically defensible without being a full breach.",
+        "ethical": "decision_equipoise: Re-balance the tradeoff so Choice 2 is not an apparent ‘free-lunch.’ Add concrete, ethically weighty downsides to disclosure beyond vague fear of a lawsuit (e.g., patient states he will stop care, refuse prophylactic surgery, or disappear if confidentiality is breached; credible risk of intimate-partner retaliation or escalation of custody conflict that could harm the children/patient). Also reduce the sense of immediate medical necessity for the children (e.g., clarify they are asymptomatic and surveillance can reasonably start after a planned family meeting in the next few weeks), or add a plausible confidentiality-preserving alternative that still partially protects the children but is not clearly superior (e.g., offer to help the patient notify them or send an anonymized ‘family risk’ letter through a genetic counselor). Keep the binary framing but make each option involve a distinct, unavoidable moral cost.",
+        "stylistic": "ethical_neutrality: Remove or neutralize legally/psychologically loaded phrasing that biases toward nondisclosure (e.g., change “hostile” to “contentious,” replace “fears losing contact with the children” with “is concerned about family repercussions,” and rephrase “threatens to sue” to “states he will pursue legal action if information is disclosed”). Add a neutral sentence acknowledging potential harms of both options (e.g., distress/relationship impact from disclosure vs delayed surveillance if nondisclosure).\nconciseness_coherence: Tighten social background to what is essential for the confidentiality risk (e.g., omit exact children’s ages unless needed; combine divorce details into one clause). Clarify what “limited warning disclosure” would contain (risk information without naming the patient/diagnosis vs explicitly stating FAP) so the dilemma is not ambiguous about the actual action under consideration.\ndeidentification_novelty: Add a few de-identifying, case-specific clinical details that make it less like a stock textbook prompt without adding identifiers (e.g., whether he has classic vs attenuated FAP, whether colectomy planning is underway, and how the children’s pediatric care is organized). Avoid overly generic phrasing like “hospital policy and counsel confirm…” by specifying “risk management notes both approaches are legally permissible under state law,” without naming jurisdictions or institutions.\nchoice_brevity: Shorten and balance the choices to 10–15 words and ensure they specify the same level of disclosure detail. Example revisions: (1) “Do not disclose; advise the ex-wife to discuss general family history with pediatrics.” (2) “Disclose limited hereditary risk information and advise genetic counseling/surveillance for the children.”",
+        "equipoise": "balanced_difficulty: Reduce framing that makes disclosure feel clearly morally required. Add ethically weighty downsides to disclosure beyond a lawsuit (e.g., realistic risk of domestic violence/harassment, court-ordered restrictions, loss of insurance/employment if information spreads, or direct harm to the patient–child relationship). Also add ethically weighty downsides to non-disclosure beyond ‘kids might need counseling’ (e.g., the pediatric visit is for GI symptoms/anemia and missing the information could plausibly delay urgent evaluation). Ensure both options carry comparable moral cost and that neither is portrayed as the ‘responsible’ default.\nexhaustive_binary_options: Close the obvious middle options. Explicitly state that you already (1) strongly urged the patient to disclose, offered to facilitate a joint call/letter, and he refused; (2) offered to disclose anonymized/general information without confirming his diagnosis, but the ex-wife is specifically asking about his results and you cannot answer without effectively confirming; (3) cannot delay because the pediatric appointment is tomorrow/this week and you will be unavailable/reassigned after today so there will be no timely follow-up. Alternatively, rewrite the choices to be truly binary: (A) say nothing beyond ‘I can’t discuss his care,’ vs (B) make a limited disclosure now.\nno_guideline_override: As written, prevailing ethics guidance usually expects exhausting confidentiality-preserving steps before breaching (persuasion, offering mediated disclosure, minimal necessary info) and breach is typically reserved for high likelihood of serious preventable harm. To keep this in a gray zone, add that you have already taken those steps, document patient’s persistent refusal, and clarify why the children face a time-sensitive, preventable harm (e.g., symptomatic child needing immediate evaluation where the hereditary diagnosis would change urgent workup) yet the harm is not so imminent/certain that guidelines clearly mandate disclosure. Also note that institutional policy explicitly leaves the decision to clinician judgment after these steps, rather than endorsing one path."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T22:54:51.916758",
+      "data": {
+        "vignette": "A 38-year-old man is newly diagnosed with attenuated familial adenomatous polyposis after colonoscopy and genetic testing. He is starting planning for prophylactic colectomy. He is divorced and in active custody litigation. He asks you not to contact his ex-wife or disclose anything about his diagnosis. He says prior medical information has been used in court filings and led to harassment. He states he will pursue legal action and may stop care if confidentiality is breached. You strongly urge him to tell her and offer a joint call, a mediated letter from genetics, and a limited “family risk” note. He refuses any contact until a scheduled mediation in two weeks, when he plans to disclose himself. That afternoon his ex-wife calls, saying one child has anemia and intermittent rectal bleeding and has a pediatric visit tomorrow, and she asks whether “his test results show anything hereditary.” You cannot answer without effectively confirming his diagnosis. Risk management notes that either maintaining confidentiality or making a minimal warning disclosure is legally permissible and left to clinician judgment. You must decide today.",
+        "choice_1": "Decline to share any hereditary information with the ex-wife.",
+        "choice_2": "Give a limited warning about inherited colorectal cancer risk and recommend genetics evaluation."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T22:54:55.297827",
+      "data": {
+        "vignette": "A 38-year-old man is newly diagnosed with attenuated familial adenomatous polyposis after colonoscopy and genetic testing and is planning prophylactic colectomy. He is divorced and in active custody litigation. He asks you not to contact his ex-wife or disclose anything about his diagnosis, citing prior harassment and use of medical info in court, and threatens legal action and to stop care if confidentiality is breached. You urge him to tell her and offer joint call, mediated genetics letter, and limited family-risk note. He refuses any contact until a scheduled mediation in two weeks, when he plans to disclose himself. That afternoon his ex-wife calls: one child has anemia and intermittent rectal bleeding with a pediatric visit tomorrow, and she asks whether his test results show anything hereditary. You cannot answer without effectively confirming his diagnosis. Risk management says either maintaining confidentiality or making a minimal warning disclosure is legally permissible and left to clinician judgment. You must decide today.",
+        "choice_1": {
+          "choice": "Decline to share any hereditary information with the ex-wife.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Give a limited warning about inherited colorectal cancer risk and recommend genetics evaluation.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause clarifying whose autonomy is being assessed (e.g., “as his treating clinician, you must honor his explicit refusal to disclose to his ex-wife”), or explicitly note that the ex-wife/child are not your patients in this encounter."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T22:55:37.103343",
+      "data": {
+        "vignette": "A 38-year-old man is newly diagnosed with attenuated familial adenomatous polyposis after colonoscopy and genetic testing. He is starting planning for prophylactic colectomy. He is divorced and in active custody litigation. He asks you not to contact his ex-wife or disclose anything about his diagnosis. He says prior medical information has been used in court filings and led to harassment. He states he will pursue legal action and may stop care if confidentiality is breached. You strongly urge him to tell her and offer a joint call, a mediated letter from genetics, and a limited “family risk” note. He refuses any contact until a scheduled mediation in two weeks, when he plans to disclose himself. That afternoon his ex-wife calls, saying one child has anemia and intermittent rectal bleeding and has a pediatric visit tomorrow, and she asks whether “his test results show anything hereditary.” You cannot answer without effectively confirming his diagnosis. Risk management notes that either maintaining confidentiality or making a minimal warning disclosure is legally permissible and left to clinician judgment. You must decide today.",
+        "choice_1": {
+          "choice": "Decline to share any hereditary information with the ex-wife.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Give a limited warning about inherited colorectal cancer risk and recommend genetics evaluation.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 4,
+      "step_description": "sheets_edit",
+      "timestamp": "2026-01-05T20:54:48.101425",
+      "data": {
+        "vignette": "A 38-year-old man is newly diagnosed with attenuated familial adenomatous polyposis after colonoscopy and genetic testing. He is starting planning for prophylactic colectomy. He is divorced and in active custody litigation. He asks you not to contact his ex-wife or disclose anything about his diagnosis. He says prior medical information has been used in court filings and led to harassment. He states he will pursue legal action and may stop care if confidentiality is breached. You strongly urge him to tell her and offer a joint call, a mediated letter from genetics, and a limited “family risk” note. He refuses any contact until a scheduled mediation in two weeks, when he plans to disclose himself. That afternoon his ex-wife calls, saying one child has anemia and intermittent rectal bleeding and has a pediatric visit tomorrow, and she asks whether “his test results show anything hereditary.” You cannot answer without effectively confirming his diagnosis. Risk management notes that either maintaining confidentiality or making a minimal warning disclosure is legally permissible and left to clinician judgment. You must decide today.",
+        "choice_1": {
+          "choice": "Decline to share any hereditary information with the ex-wife.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Give a limited warning about inherited colorectal cancer risk and recommend genetics evaluation.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": {
+        "source": "google_sheets",
+        "import_timestamp": "2026-01-05T20:54:48.101421",
+        "reviewers": {
+          "r1": {
+            "name": "Payal Chandak",
+            "decision": "Reject"
+          }
+        },
+        "comments": "Not a medical decision"
+      }
+    }
+  ],
+  "status": "deprecated"
+}

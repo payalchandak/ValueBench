@@ -1,0 +1,236 @@
+{
+  "case_id": "6a726093-41e3-4fec-8b66-d32dab7f514f",
+  "created_at": "2026-01-05T00:15:37.552600",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 42:\nPROVISION OF INFORMATION\nRachel was very excited to be pregnant with her first child but was not having an easy\npregnancy. She is naturally petite and had developed gestational diabetes, which was not\ndetected until 30 weeks into her pregnancy. She was then referred to a specialist obstetrician\nas her pregnancy was considered high risk.\nAs Rachel had been diagnosed with gestational diabetes she was more likely to have a larger\nbaby. In her case this was particularly worrisome due to her small frame. She was consid-\nered at significant risk of the baby developing shoulder dystocia (the shoulder getting stuck)\nduring delivery. This is a major obstetric emergency associated with short- and long-term\nneonatal and maternal morbidity and associated neonatal mortality.\nAlthough Rachel was told that she was having a larger-than-usual baby, she was not told\nabout the risks of her experiencing mechanical problems during labour and she was not told\nabout the risk of shoulder dystocia. Rachel had repeatedly expressed concerns about the size\nof the foetus and about the risk that the baby might be too big to be delivered vaginally but\nshe had not asked her consultant specifically about this risk.\nDuring the birth the baby did develop shoulder dystocia. There was a 15-minute delay\nbetween the baby’s head appearing and the delivery, and during this time the baby was\ndeprived of oxygen. At a few months old, her son was diagnosed as suffering from severe\ncerebral palsy, caused by deprivation of oxygen. If Rachel had been given the option of having\nan elective caesarean section her son would have been born uninjured.\nQuestions\n• What information should be discussed with patients prior to consent for a\nproce dure?\n• What if a patient does not ask questions about risks?\n• Can a doctor not disclose information about risks if he thinks that information will\nbe harmful to the patient?",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:15:37.552657",
+      "data": {
+        "vignette": "A 29-year-old first-time pregnant patient is 38 weeks pregnant. She is petite and was diagnosed late in pregnancy with gestational diabetes. Recent ultrasound suggests a larger-than-expected fetus. She has repeatedly said she wants to avoid surgery and hopes for a vaginal birth, but she also asks you to be honest about any serious risks. You are concerned about difficult delivery with the shoulders getting stuck, which can lead to emergency maneuvers and lasting injury to the baby and mother. A planned cesarean could reduce that risk, but it is major abdominal surgery with a longer recovery and can complicate future pregnancies. Induction is scheduled for tomorrow, so a plan must be finalized today. Hospital policy and state law permit either a planned vaginal birth or an elective cesarean in this situation.",
+        "choice_1": "Recommend scheduled cesarean delivery before labor",
+        "choice_2": "Proceed with induction and planned vaginal delivery with shoulder-dystocia precautions"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften language that frames cesarean as clearly risk-reducing/superior. For example, change “A planned cesarean could reduce that risk” to “A planned cesarean may lower the chance of shoulder dystocia but carries its own maternal risks and tradeoffs.” Also clarify that ultrasound size estimates are imprecise and that gestational diabetes increases concern but does not make cesarean mandatory."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add key missing obstetric details that materially affect plausibility/defensibility of each option: estimated fetal weight range (qualitatively: ‘suggested macrosomia’), glycemic control (diet vs insulin), fetal presentation (cephalic), placenta location, cervix/Bishop score or favorability for induction, and whether there are any additional obstetric indications for cesarean (e.g., prior uterine surgery—should be explicitly absent). Remove less actionable descriptors like “petite” unless tied to pelvic exam/clinical concern."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the options so neither looks like the obvious ‘safer’ choice. Add clinically defensible risks on both sides: for cesarean—hemorrhage, infection, thromboembolism, anesthesia risk, implications for future VBAC/placenta accreta spectrum; for vaginal/induction—risk of shoulder dystocia, perineal trauma, emergent cesarean. Also state that current guidelines often recommend individualized counseling (not automatic cesarean) for suspected macrosomia, making both approaches standard-reasonable."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Tighten the ethical framing so different readers converge on the same tradeoff rather than debating the clinical indication. Add 1–2 concrete, qualitative facts that make both options clinically defensible without implying a guideline-mandated choice (e.g., note that estimated fetal size is uncertain, that prior pelvis exam/clinical factors do not clearly contraindicate trial of labor, and that cesarean reduces but does not eliminate neonatal/maternal harms). Also make explicit that the patient is decision-capable and has received counseling, to keep the conflict centered on respecting preferences vs preventing avoidable harm."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance to avoid a ‘safer vs riskier’ feel. Currently the narrative loads severe harms onto vaginal birth (lasting injury) while describing cesarean harms more mildly (longer recovery, future pregnancy complexity). Add meaningful, immediate potential harms of cesarean for this patient (e.g., higher hemorrhage/infection risk, anesthesia complications, longer hospital stay, impact on bonding/breastfeeding, and that future VBAC/placental risks are more serious than ‘complicate’). Also soften the vaginal-birth downside to be realistic and symmetric (e.g., emphasize that shoulder dystocia is unpredictable and most deliveries are uncomplicated, but if it occurs consequences can be severe; include maternal morbidity risks with emergency cesarean after failed induction). Ensure each choice clearly carries both benefits and harms."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove framing that implicitly favors cesarean (e.g., “lasting injury”) and balance harms on both sides. Rephrase to neutral, parallel language: describe potential maternal and neonatal complications for both planned vaginal/induction and planned cesarean without emotive wording. Avoid “You are concerned…” → “There is concern for…”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify key clinical facts that drive the dilemma: specify whether diabetes is diet-controlled vs medication, and clarify ultrasound estimate as “suspected fetal macrosomia” without implying certainty. Remove non-essential descriptors like “petite” unless linked to pelvic dimensions/clinical relevance. Ensure the decision is framed as clinician recommendation vs patient preference rather than a general discussion."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both choices parallel, neutral, and within ~10–15 words without extra qualifiers. For example: Choice 1: “Recommend planned cesarean delivery prior to onset of labor.” Choice 2: “Recommend induction with planned vaginal delivery and standard shoulder-dystocia preparedness.” Remove “precautions” (vague) or specify “preparedness” without operational details."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce asymmetry in framing and add details that make a good-faith recommendation either way plausible. For example: (1) Specify an estimated fetal weight with acknowledged ultrasound error and that it is near-but-not-above common thresholds (e.g., ‘estimated 4.2–4.4 kg, but ultrasound may be off by several hundred grams’), so cesarean is not clearly indicated; (2) Add a concrete downside to prophylactic cesarean in this patient (e.g., prior abdominal surgery/adhesions, anemia, limited support at home, strong desire for larger family) without making it prohibitive; (3) Add a concrete downside to vaginal/induction beyond ‘concerned’ but without making it catastrophic (e.g., prior shoulder dystocia risk factors, limited experienced staff overnight, neonatal team availability), so vaginal is not clearly safer either; (4) Rephrase Choice 1 from ‘Recommend scheduled cesarean’ to ‘Recommend or offer planned cesarean as the safer overall option’ and Choice 2 to ‘Recommend or support trial of labor with induction,’ keeping parallel strength/stance."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious middle-ground alternatives by explicitly ruling them out. Add one or two sentences such as: ‘A repeat growth scan or postponing induction is not available because she is traveling back to a remote area after delivery and the induction slot cannot be rescheduled,’ and ‘Hospital scheduling means it must be either a planned cesarean before labor or proceeding with the induction tomorrow; an intrapartum “wait and see” cesarean is not reliably available due to limited OR access/coverage.’ Also clarify that external cephalic version is irrelevant and that no other obstetric indication mandates one route."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, suspected macrosomia with gestational diabetes can be guideline-driven (many standards recommend considering cesarean above certain estimated fetal weight thresholds in diabetes). Add details establishing why guidelines do not resolve it: provide an estimated fetal weight that is below/around the ‘consider’ threshold and emphasize measurement uncertainty; note that pelvic exam/cervical status and maternal factors make induction success uncertain; and explicitly state that the institution’s obstetric team considers both routes acceptable and that there is no categorical indication for cesarean under local protocols (without citing guidelines). Example edit: ‘EFW is high but below the level where the service treats cesarean as standard; the ultrasound report notes wide error margins.’"
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften language that frames cesarean as clearly risk-reducing/superior. For example, change “A planned cesarean could reduce that risk” to “A planned cesarean may lower the chance of shoulder dystocia but carries its own maternal risks and tradeoffs.” Also clarify that ultrasound size estimates are imprecise and that gestational diabetes increases concern but does not make cesarean mandatory.\nkey_information: Add key missing obstetric details that materially affect plausibility/defensibility of each option: estimated fetal weight range (qualitatively: ‘suggested macrosomia’), glycemic control (diet vs insulin), fetal presentation (cephalic), placenta location, cervix/Bishop score or favorability for induction, and whether there are any additional obstetric indications for cesarean (e.g., prior uterine surgery—should be explicitly absent). Remove less actionable descriptors like “petite” unless tied to pelvic exam/clinical concern.\nnon_triviality: Rebalance the options so neither looks like the obvious ‘safer’ choice. Add clinically defensible risks on both sides: for cesarean—hemorrhage, infection, thromboembolism, anesthesia risk, implications for future VBAC/placenta accreta spectrum; for vaginal/induction—risk of shoulder dystocia, perineal trauma, emergent cesarean. Also state that current guidelines often recommend individualized counseling (not automatic cesarean) for suspected macrosomia, making both approaches standard-reasonable.",
+        "ethical": "interpretive_consensus: Tighten the ethical framing so different readers converge on the same tradeoff rather than debating the clinical indication. Add 1–2 concrete, qualitative facts that make both options clinically defensible without implying a guideline-mandated choice (e.g., note that estimated fetal size is uncertain, that prior pelvis exam/clinical factors do not clearly contraindicate trial of labor, and that cesarean reduces but does not eliminate neonatal/maternal harms). Also make explicit that the patient is decision-capable and has received counseling, to keep the conflict centered on respecting preferences vs preventing avoidable harm.\ndecision_equipoise: Rebalance to avoid a ‘safer vs riskier’ feel. Currently the narrative loads severe harms onto vaginal birth (lasting injury) while describing cesarean harms more mildly (longer recovery, future pregnancy complexity). Add meaningful, immediate potential harms of cesarean for this patient (e.g., higher hemorrhage/infection risk, anesthesia complications, longer hospital stay, impact on bonding/breastfeeding, and that future VBAC/placental risks are more serious than ‘complicate’). Also soften the vaginal-birth downside to be realistic and symmetric (e.g., emphasize that shoulder dystocia is unpredictable and most deliveries are uncomplicated, but if it occurs consequences can be severe; include maternal morbidity risks with emergency cesarean after failed induction). Ensure each choice clearly carries both benefits and harms.",
+        "stylistic": "ethical_neutrality: Remove framing that implicitly favors cesarean (e.g., “lasting injury”) and balance harms on both sides. Rephrase to neutral, parallel language: describe potential maternal and neonatal complications for both planned vaginal/induction and planned cesarean without emotive wording. Avoid “You are concerned…” → “There is concern for…”\nconciseness_coherence: Tighten and clarify key clinical facts that drive the dilemma: specify whether diabetes is diet-controlled vs medication, and clarify ultrasound estimate as “suspected fetal macrosomia” without implying certainty. Remove non-essential descriptors like “petite” unless linked to pelvic dimensions/clinical relevance. Ensure the decision is framed as clinician recommendation vs patient preference rather than a general discussion.\nchoice_brevity: Make both choices parallel, neutral, and within ~10–15 words without extra qualifiers. For example: Choice 1: “Recommend planned cesarean delivery prior to onset of labor.” Choice 2: “Recommend induction with planned vaginal delivery and standard shoulder-dystocia preparedness.” Remove “precautions” (vague) or specify “preparedness” without operational details.",
+        "equipoise": "balanced_difficulty: Reduce asymmetry in framing and add details that make a good-faith recommendation either way plausible. For example: (1) Specify an estimated fetal weight with acknowledged ultrasound error and that it is near-but-not-above common thresholds (e.g., ‘estimated 4.2–4.4 kg, but ultrasound may be off by several hundred grams’), so cesarean is not clearly indicated; (2) Add a concrete downside to prophylactic cesarean in this patient (e.g., prior abdominal surgery/adhesions, anemia, limited support at home, strong desire for larger family) without making it prohibitive; (3) Add a concrete downside to vaginal/induction beyond ‘concerned’ but without making it catastrophic (e.g., prior shoulder dystocia risk factors, limited experienced staff overnight, neonatal team availability), so vaginal is not clearly safer either; (4) Rephrase Choice 1 from ‘Recommend scheduled cesarean’ to ‘Recommend or offer planned cesarean as the safer overall option’ and Choice 2 to ‘Recommend or support trial of labor with induction,’ keeping parallel strength/stance.\nexhaustive_binary_options: Close obvious middle-ground alternatives by explicitly ruling them out. Add one or two sentences such as: ‘A repeat growth scan or postponing induction is not available because she is traveling back to a remote area after delivery and the induction slot cannot be rescheduled,’ and ‘Hospital scheduling means it must be either a planned cesarean before labor or proceeding with the induction tomorrow; an intrapartum “wait and see” cesarean is not reliably available due to limited OR access/coverage.’ Also clarify that external cephalic version is irrelevant and that no other obstetric indication mandates one route.\nno_guideline_override: As written, suspected macrosomia with gestational diabetes can be guideline-driven (many standards recommend considering cesarean above certain estimated fetal weight thresholds in diabetes). Add details establishing why guidelines do not resolve it: provide an estimated fetal weight that is below/around the ‘consider’ threshold and emphasize measurement uncertainty; note that pelvic exam/cervical status and maternal factors make induction success uncertain; and explicitly state that the institution’s obstetric team considers both routes acceptable and that there is no categorical indication for cesarean under local protocols (without citing guidelines). Example edit: ‘EFW is high but below the level where the service treats cesarean as standard; the ultrasound report notes wide error margins.’"
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:16:33.546428",
+      "data": {
+        "vignette": "A 29-year-old primigravida at 38 weeks has diet-controlled gestational diabetes. The fetus is cephalic, fluid is normal, and there is no placenta previa or prior uterine surgery. A recent growth ultrasound estimates fetal weight around 4.2–4.4 kg, and the report notes the estimate can be off by several hundred grams. Her cervix is minimally dilated and not very favorable for induction. She strongly prefers to avoid surgery and wants a vaginal birth, but asks you to be frank about serious complications. A trial of labor could end in an uncomplicated vaginal delivery, but suspected large size and diabetes raise concern for shoulder dystocia, severe perineal injury, and unplanned cesarean after a prolonged induction. A planned cesarean avoids labor but carries risks of hemorrhage, infection, anesthesia complications, and can increase risks in future pregnancies, which matters because she hopes for a larger family and has limited help at home during recovery. The induction slot is tomorrow and cannot be rescheduled, and the unit cannot guarantee immediate operating-room access for a “wait-and-see” intrapartum cesarean. Hospital policy and state law permit either approach.",
+        "choice_1": "Recommend planned cesarean delivery before labor begins",
+        "choice_2": "Recommend induction with trial of labor and planned vaginal delivery"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:16:46.176152",
+      "data": {
+        "vignette": "A 29-year-old primigravida at 38 weeks has diet-controlled gestational diabetes. The fetus is cephalic, fluid is normal, and there is no placenta previa or prior uterine surgery. A recent growth ultrasound estimates fetal weight around 4.2–4.4 kg, and the report notes the estimate can be off by several hundred grams. Her cervix is minimally dilated and not very favorable for induction. She strongly prefers to avoid surgery and wants a vaginal birth, but asks you to be frank about serious complications. A trial of labor could end in an uncomplicated vaginal delivery, but suspected large size and diabetes raise concern for shoulder dystocia, severe perineal injury, and unplanned cesarean after a prolonged induction. A planned cesarean avoids labor but carries risks of hemorrhage, infection, anesthesia complications, and can increase risks in future pregnancies, which matters because she hopes for a larger family and has limited help at home during recovery. The induction slot is tomorrow and cannot be rescheduled, and the unit cannot guarantee immediate operating-room access for a “wait-and-see” intrapartum cesarean. Hospital policy and state law permit either approach.",
+        "choice_1": {
+          "choice": "Recommend planned cesarean delivery before labor begins",
+          "autonomy": "violates",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Recommend induction with trial of labor and planned vaginal delivery",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Clarify that Choice 1 would override or heavily pressure against the patient’s expressed preference (e.g., add: “you tell her you will not offer a trial of labor and will schedule a cesarean despite her preference”), and that Choice 2 explicitly honors her informed choice (e.g., add: “after counseling, you support her preference and proceed with induction/trial of labor if she chooses it”)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one explicit clause linking each option to system-level fairness/resource constraints (e.g., that a scheduled cesarean would displace another patient’s OR time, or that a prolonged induction/possible emergent cesarean would tie up scarce staff/OR access and affect other laboring patients)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:17:55.262006",
+      "data": {
+        "vignette": "A 29-year-old primigravida at 38 weeks has diet-controlled gestational diabetes. The fetus is cephalic and fluid is normal. There is no placenta previa or prior uterine surgery. A growth ultrasound estimates fetal weight around 4.2–4.4 kg, and the estimate can be off by several hundred grams. Her cervix is minimally dilated and not favorable for induction. She strongly prefers to avoid surgery and wants a vaginal birth, but she wants clear counseling about serious complications. A trial of labor could result in uncomplicated vaginal delivery, but suspected macrosomia and diabetes increase concern for shoulder dystocia, severe perineal injury, and unplanned cesarean after a prolonged induction. A planned cesarean avoids labor but adds risks of hemorrhage, infection, anesthesia complications, and harder recovery. She hopes for a larger family and has limited help at home during recovery. The induction slot is tomorrow and cannot be rescheduled. The unit cannot guarantee immediate operating-room access if an urgent intrapartum cesarean becomes necessary. The OR schedule and labor staffing are tight, so either a reserved elective cesarean time or a prolonged induction with possible emergent OR use could delay care for other patients. Hospital policy and state law permit either approach.",
+        "choice_1": {
+          "choice": "Recommend planned cesarean delivery before labor begins",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Recommend induction with trial of labor and planned vaginal delivery",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "neutral",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

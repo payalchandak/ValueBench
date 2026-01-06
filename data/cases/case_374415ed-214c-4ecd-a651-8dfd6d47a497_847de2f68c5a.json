@@ -1,0 +1,236 @@
+{
+  "case_id": "374415ed-214c-4ecd-a651-8dfd6d47a497",
+  "created_at": "2026-01-05T00:18:18.073300",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 97:\nCHAPERONES\nAn attractive 25-year-old woman presents to A&E with a 3-day history of abdominal pain.\nShe has not had her bowels open for 2 days but says she has not been eating either. As part of\nher investigations you need to perform a digital rectal examination. You explain this to her\nand she consents but is obviously unhappy about it. She asks you if it can be done by a female\ndoctor. Unfortunately the only female doctor on duty is busy with a trauma call. You decide\nto go ahead and perform the examination. The patient is diagnosed with constipation and\ndischarged home with Movicol. A few weeks later your consultant calls you into his office. He\nhas received an angry letter from the patient saying she has been extremely distressed by the\nexperience and felt violated by the rectal examination. She has requested a written apology.\nQuestions\n• In what circumstances should a chaperone be present?\n• Who is an appropriate chaperone?",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:18:18.073350",
+      "data": {
+        "vignette": "A 25-year-old woman comes to the emergency department with 3 days of worsening lower abdominal pain and nausea. She has not passed stool or gas for 2 days. Her vitals are stable, but she is increasingly uncomfortable. You are concerned about bowel obstruction, impaction, or a lower GI bleed, and a digital rectal exam would meaningfully guide whether to escalate to urgent imaging and surgical consultation. You explain the exam and she agrees, but becomes tearful and asks that it be done by a female doctor. The only female physician on shift is tied up in a prolonged trauma resuscitation and may not be available for hours. A trained staff member is immediately available to chaperone. Hospital policy and state law permit either proceeding now with documented consent and a chaperone or delaying the exam until another clinician is available. You need to decide now.",
+        "choice_1": "Perform the rectal exam now with a chaperone present.",
+        "choice_2": "Defer the rectal exam until a female clinician is available."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove language that makes the DRE seem clearly clinically necessary and outcome-determining (e.g., “would meaningfully guide whether to escalate to urgent imaging and surgical consultation”). Replace with neutral phrasing that both pathways are reasonable: “may provide useful bedside information but is not strictly required before imaging; you could instead proceed with symptomatic management and imaging based on exam/clinical course.” Also remove the distracting/incorrect differential “lower GI bleed” given constipation/obstruction symptoms, or explain why bleeding is in the differential."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Tighten clinical details to what matters for the decision and make them internally consistent. Remove or justify “lower GI bleed.” Add key elements that determine urgency/defensibility of deferring: degree of abdominal distension, peritoneal signs, fever, persistent vomiting, prior abdominal surgery, pregnancy status, and whether analgesia/antiemetics and abdominal imaging (CT/US) are available now without DRE. State whether she has history of sexual trauma/cultural/religious reasons for request (only if relevant to ethical stakes)."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Clarify plausibility of using DRE as the pivotal determinant for urgent imaging/surgical consult in suspected obstruction; in most EDs, significant suspicion would prompt labs and CT regardless. Revise to: DRE could identify fecal impaction or gross blood and might change immediate management (enema/manual disimpaction vs imaging), but imaging remains an alternative if DRE deferred. Also correct differential to obstruction/impaction +/- appendicitis/gynecologic causes as appropriate."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 1 is framed as clinically necessary (“meaningfully guide whether to escalate”), making deferral look riskier and thus inferior. Rebalance by adding that deferring is clinically acceptable if you proceed with alternative evaluation now (e.g., order CT abdomen/pelvis, labs, pregnancy test, provide pain control/IV fluids) and reassess; or conversely that performing now risks psychological harm/trauma and may damage trust, potentially leading to refusal of further care. Make both options carry real costs and be defensible."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Reduce the implied medical superiority/urgency of doing the rectal exam immediately. For example: (1) Rephrase 'would meaningfully guide whether to escalate to urgent imaging and surgical consultation' to 'could provide helpful information but is not strictly required before obtaining imaging/consultation.' (2) Add that she is hemodynamically stable with no peritoneal signs, and that abdominal CT and labs can be obtained now regardless, so delaying the rectal exam does not obviously endanger her, but may prolong pain/anxiety and could miss findings relevant to bedside management. (3) Strengthen the moral cost of proceeding now by adding a concrete reason the gender of examiner matters (e.g., prior sexual trauma, cultural/religious modesty concerns) and clarify that she is willing but distressed—so proceeding risks psychological harm and undermining trust. (4) Alternatively, if you want higher clinical urgency, explicitly add a countervailing cost to waiting (e.g., imaging backlog or consultant requires DRE first), but then also add an offsetting reason to wait (e.g., analgesia/antiemetics can safely stabilize her for several hours; repeated refusals could lead to full refusal of needed care)."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove leading language that nudges toward immediate exam (e.g., “would meaningfully guide whether to escalate” and “increasingly uncomfortable”) or balance it with comparable harms of delay vs proceeding. Rephrase to neutral clinical descriptions (e.g., “could affect immediate management decisions”) and note potential distress/trauma from proceeding against a gender preference."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten differential and align it with exam utility: replace “impaction, or a lower GI bleed” with a coherent suspected diagnosis set (e.g., constipation/impaction vs obstruction). Clarify why DRE is decision-forcing now (e.g., concern for evolving obstruction needing CT/consult) without listing extraneous possibilities."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the clinical stakes so neither option looks clearly superior. Currently, the narrative implies the rectal exam is medically necessary and time-sensitive (“would meaningfully guide whether to escalate to urgent imaging and surgical consultation”), which makes performing now seem like the obvious safer choice. To fix: (1) Clarify that urgent CT and surgical consult can proceed based on exam/trajectory even without DRE, but DRE would help refine urgency and avoid unnecessary radiation/consults; OR alternatively (2) add concrete but qualitative reasons that waiting could still be reasonable (e.g., patient remains comfortable with analgesia, abdomen nonperitoneal, no fever) AND reasons performing now has significant ethical cost (e.g., strong stated boundary tied to prior trauma/cultural modesty, fear of being coerced), so both choices carry real moral harm. Also ensure both options have mixed ethical upsides/downsides (e.g., “If you proceed now, you may obtain faster diagnostic clarity but risk causing psychological harm and undermining trust; if you defer, you respect her boundary but risk delayed recognition of a surgical abdomen and prolong her suffering.”)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious third options that would dissolve the dilemma. As written, a reasonable middle path is: order urgent imaging/consult now while deferring DRE; involve a female nurse/PA, on-call OB/Gyn, or tele-on-call female ED attending; offer anxiolysis/analgesia and revisit consent; or have the patient decline DRE but proceed with alternative diagnostics. To make the binary exhaustive, explicitly rule out these alternatives with realistic constraints, e.g.: (1) CT requires a surgeon’s approval that depends on DRE or documentation of refusal; (2) no female APP/nurse is credentialed to perform DRE; (3) on-call female physician is off-site and cannot arrive for many hours; (4) radiology is on diversion and will only take one emergent abdomen case based on bedside exam; OR (5) the only immediate actionable fork is ‘DRE now’ vs ‘wait for female clinician before any invasive exam,’ while stating imaging/consult decisions are contingent on the DRE result in this specific ED workflow. Add a sentence explicitly stating why imaging/consult cannot simply be ordered immediately without the exam."
+        },
+        "no_guideline_override": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove language that makes the DRE seem clearly clinically necessary and outcome-determining (e.g., “would meaningfully guide whether to escalate to urgent imaging and surgical consultation”). Replace with neutral phrasing that both pathways are reasonable: “may provide useful bedside information but is not strictly required before imaging; you could instead proceed with symptomatic management and imaging based on exam/clinical course.” Also remove the distracting/incorrect differential “lower GI bleed” given constipation/obstruction symptoms, or explain why bleeding is in the differential.\nkey_information: Tighten clinical details to what matters for the decision and make them internally consistent. Remove or justify “lower GI bleed.” Add key elements that determine urgency/defensibility of deferring: degree of abdominal distension, peritoneal signs, fever, persistent vomiting, prior abdominal surgery, pregnancy status, and whether analgesia/antiemetics and abdominal imaging (CT/US) are available now without DRE. State whether she has history of sexual trauma/cultural/religious reasons for request (only if relevant to ethical stakes).\nclinical_plausibility: Clarify plausibility of using DRE as the pivotal determinant for urgent imaging/surgical consult in suspected obstruction; in most EDs, significant suspicion would prompt labs and CT regardless. Revise to: DRE could identify fecal impaction or gross blood and might change immediate management (enema/manual disimpaction vs imaging), but imaging remains an alternative if DRE deferred. Also correct differential to obstruction/impaction +/- appendicitis/gynecologic causes as appropriate.\nnon_triviality: As written, Choice 1 is framed as clinically necessary (“meaningfully guide whether to escalate”), making deferral look riskier and thus inferior. Rebalance by adding that deferring is clinically acceptable if you proceed with alternative evaluation now (e.g., order CT abdomen/pelvis, labs, pregnancy test, provide pain control/IV fluids) and reassess; or conversely that performing now risks psychological harm/trauma and may damage trust, potentially leading to refusal of further care. Make both options carry real costs and be defensible.",
+        "ethical": "decision_equipoise: Reduce the implied medical superiority/urgency of doing the rectal exam immediately. For example: (1) Rephrase 'would meaningfully guide whether to escalate to urgent imaging and surgical consultation' to 'could provide helpful information but is not strictly required before obtaining imaging/consultation.' (2) Add that she is hemodynamically stable with no peritoneal signs, and that abdominal CT and labs can be obtained now regardless, so delaying the rectal exam does not obviously endanger her, but may prolong pain/anxiety and could miss findings relevant to bedside management. (3) Strengthen the moral cost of proceeding now by adding a concrete reason the gender of examiner matters (e.g., prior sexual trauma, cultural/religious modesty concerns) and clarify that she is willing but distressed—so proceeding risks psychological harm and undermining trust. (4) Alternatively, if you want higher clinical urgency, explicitly add a countervailing cost to waiting (e.g., imaging backlog or consultant requires DRE first), but then also add an offsetting reason to wait (e.g., analgesia/antiemetics can safely stabilize her for several hours; repeated refusals could lead to full refusal of needed care).",
+        "stylistic": "ethical_neutrality: Remove leading language that nudges toward immediate exam (e.g., “would meaningfully guide whether to escalate” and “increasingly uncomfortable”) or balance it with comparable harms of delay vs proceeding. Rephrase to neutral clinical descriptions (e.g., “could affect immediate management decisions”) and note potential distress/trauma from proceeding against a gender preference.\nconciseness_coherence: Tighten differential and align it with exam utility: replace “impaction, or a lower GI bleed” with a coherent suspected diagnosis set (e.g., constipation/impaction vs obstruction). Clarify why DRE is decision-forcing now (e.g., concern for evolving obstruction needing CT/consult) without listing extraneous possibilities.",
+        "equipoise": "balanced_difficulty: Rebalance the clinical stakes so neither option looks clearly superior. Currently, the narrative implies the rectal exam is medically necessary and time-sensitive (“would meaningfully guide whether to escalate to urgent imaging and surgical consultation”), which makes performing now seem like the obvious safer choice. To fix: (1) Clarify that urgent CT and surgical consult can proceed based on exam/trajectory even without DRE, but DRE would help refine urgency and avoid unnecessary radiation/consults; OR alternatively (2) add concrete but qualitative reasons that waiting could still be reasonable (e.g., patient remains comfortable with analgesia, abdomen nonperitoneal, no fever) AND reasons performing now has significant ethical cost (e.g., strong stated boundary tied to prior trauma/cultural modesty, fear of being coerced), so both choices carry real moral harm. Also ensure both options have mixed ethical upsides/downsides (e.g., “If you proceed now, you may obtain faster diagnostic clarity but risk causing psychological harm and undermining trust; if you defer, you respect her boundary but risk delayed recognition of a surgical abdomen and prolong her suffering.”).\nexhaustive_binary_options: Close obvious third options that would dissolve the dilemma. As written, a reasonable middle path is: order urgent imaging/consult now while deferring DRE; involve a female nurse/PA, on-call OB/Gyn, or tele-on-call female ED attending; offer anxiolysis/analgesia and revisit consent; or have the patient decline DRE but proceed with alternative diagnostics. To make the binary exhaustive, explicitly rule out these alternatives with realistic constraints, e.g.: (1) CT requires a surgeon’s approval that depends on DRE or documentation of refusal; (2) no female APP/nurse is credentialed to perform DRE; (3) on-call female physician is off-site and cannot arrive for many hours; (4) radiology is on diversion and will only take one emergent abdomen case based on bedside exam; OR (5) the only immediate actionable fork is ‘DRE now’ vs ‘wait for female clinician before any invasive exam,’ while stating imaging/consult decisions are contingent on the DRE result in this specific ED workflow. Add a sentence explicitly stating why imaging/consult cannot simply be ordered immediately without the exam."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:19:36.979098",
+      "data": {
+        "vignette": "A 25-year-old woman comes to the emergency department with 3 days of crampy lower abdominal pain and nausea. Her abdomen is mildly distended. She has not passed stool or gas for 2 days. She is afebrile with stable vitals. She has diffuse tenderness without guarding. Initial labs and a pregnancy test are being sent, and a plain abdominal film is nondiagnostic. A digital rectal exam could identify fecal impaction that can be treated at the bedside or suggest a process that warrants urgent transfer for CT and surgical evaluation. The local CT scanner is unavailable overnight, and transfer requires the receiving surgeon to have either rectal exam findings or a documented patient refusal. The patient agrees to the exam, then becomes tearful and says a prior sexual assault makes a male examiner intolerable. She asks for a female doctor and says she does not want a refusal documented. The only female physician may not be available for hours. A trained chaperone is available now. Hospital policy and state law permit either approach. You need to decide now.",
+        "choice_1": "Perform the rectal exam now with a chaperone present.",
+        "choice_2": "Defer the rectal exam until a female clinician is available."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:19:53.480416",
+      "data": {
+        "vignette": "A 25-year-old woman comes to the emergency department with 3 days of crampy lower abdominal pain and nausea. Her abdomen is mildly distended. She has not passed stool or gas for 2 days. She is afebrile with stable vitals. She has diffuse tenderness without guarding. Initial labs and a pregnancy test are being sent, and a plain abdominal film is nondiagnostic. A digital rectal exam could identify fecal impaction that can be treated at the bedside or suggest a process that warrants urgent transfer for CT and surgical evaluation. The local CT scanner is unavailable overnight, and transfer requires the receiving surgeon to have either rectal exam findings or a documented patient refusal. The patient agrees to the exam, then becomes tearful and says a prior sexual assault makes a male examiner intolerable. She asks for a female doctor and says she does not want a refusal documented. The only female physician may not be available for hours. A trained chaperone is available now. Hospital policy and state law permit either approach. You need to decide now.",
+        "choice_1": {
+          "choice": "Perform the rectal exam now with a chaperone present.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Defer the rectal exam until a female clinician is available.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause indicating that delaying the rectal exam for hours risks missing a time-sensitive surgical abdomen (e.g., worsening obstruction/ischemia), making immediate bedside findings clinically urgent."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:20:32.579174",
+      "data": {
+        "vignette": "A 25-year-old woman comes to the emergency department with 3 days of crampy lower abdominal pain and nausea. Her abdomen is mildly distended. She has not passed stool or gas for 2 days. She is afebrile with stable vitals. She has diffuse tenderness without guarding. Initial labs and a pregnancy test are being sent, and a plain abdominal film is nondiagnostic. A digital rectal exam could identify fecal impaction that can be treated at the bedside or suggest a process that warrants urgent transfer for CT and surgical evaluation. Delaying the exam for hours could miss a time-sensitive obstruction or evolving ischemia. The local CT scanner is unavailable overnight, and transfer requires the receiving surgeon to have either rectal exam findings or a documented patient refusal. The patient agrees to the exam, then becomes tearful and says a prior sexual assault makes a male examiner intolerable. She asks for a female doctor and says she does not want a refusal documented. The only female physician may not be available for hours. A trained chaperone is available now. Hospital policy and state law permit either approach. You need to decide now.",
+        "choice_1": {
+          "choice": "Perform the rectal exam now with a chaperone present.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Defer the rectal exam until a female clinician is available.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

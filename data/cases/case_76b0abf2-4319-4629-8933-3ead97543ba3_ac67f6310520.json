@@ -1,0 +1,242 @@
+{
+  "case_id": "76b0abf2-4319-4629-8933-3ead97543ba3",
+  "created_at": "2026-01-04T23:40:03.574178",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "Case 14-4\nTreating Donors to Optimize Organ Quality\nPeter Hendershott was transported to Provincial Hospital in a large Canadian\ncity following a serious auto accident in which he suffered massive head\ninjury. Soon it became clear that he would not recover and, in fact, was\nprogressing toward brain death.\nIn his possession at the time of the accident was an organ donor card\nindicating he would want to be a donor in the event of such an accident.\nHis family had been with him for three days and was now resigned to the\nfact that he would not recover. They initiated a conversation with the per-\nsonnel in the intensive care unit (ICU) that they knew he was an organ\ndonor. They stated clearly that they wanted something good to come from\nthis tragedy.\nThe patient had been tested for brain function. He presently did not meet\nbrain criteria for pronouncing death. The ICU attending physician explained\nthe options. They could maintain maximal life support (but acknowledged\nthat he would never recover consciousness). They could withdraw all life\nsupport and allow him to die. They expected that withdrawal of a ventilator\nwould probably result in death based on stoppage of heart function over the\ncourse of the next day or so.\nWhen the family again raised the question of organ donation, the ICU\nteam indicated that might be possible but were concerned that prolonged\ndeterioration would make donation after circulatory death (DCD) unlikely\nand that waiting for brain death criteria to be met might take so long that\nhis organs would no longer be usable.\nThe attending physician was aware of another possibility. They could\nmedicate him using vasopressor and heparin, not for Mr. Hendershott’s\nbenefit, but in order to preserve the organs for transplant. Their concern,\nhowever, was that these drugs could pose a slight risk of hastening the\ndeath. This might happen, for example, if Mr. Hendershott had a slow in-\nternal bleed that would be made worse by the heparin. They also expressed\nconcern of another kind. Maintaining Mr. Hendershott on a ventilator\ncould pose the possibility that he would stabilize and never progress to\nbrain death. He could remain in a coma and not die even if the ventilator\nwere disconnected. Since the physicians and family were in agreement\nthat it was not serving Mr. Hendershott's interest to preserve his life any\nlonger, the physician believed that stabilizing him in a coma that could\nlast for months or even years would actually be a bad outcome for him.\nSince the attending physician in the ICU believed his sole duty was to\nwork for Mr. Hendershott's interest and not to promote the agenda of the\ntransplant team, he felt that he could, in good conscience, neither admin-\nister vasopressors and heparin, which could count as actively killing the\npatient, nor maintain the ventilator, which could inappropriately preserve\nhis life.\nThe family still insisted that Mr. Hendershott would want everything\ndone to make his organs transplantable, especially since he would not\nsuffer in any way from the drugs or the ventilator.",
+      "value_1": "Non-maleficence",
+      "value_2": "Autonomy"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:40:03.574241",
+      "data": {
+        "vignette": "A man is in the ICU after a high-speed collision with a devastating traumatic brain injury. Serial exams show no meaningful chance of regaining consciousness, but he does not yet meet criteria for brain death. He carries a signed organ donor registration, and his family says he repeatedly wanted donation if this ever happened. The organ procurement team explains that organ quality may decline if his blood pressure worsens or if he dies slowly after withdrawal of ventilation. You consider starting vasopressors and giving heparin to preserve organ perfusion while continuing ventilatory support until donation is possible. These drugs are not expected to improve his neurologic outcome and could worsen an unrecognized internal bleed. The family asks you to “do whatever helps donation.” A decision is needed today because procurement plans must be finalized within hours, and hospital policy permits either approach.",
+        "choice_1": "Begin vasopressors and heparin while continuing ventilation to optimize organ donation.",
+        "choice_2": "Stop organ-preserving medications and withdraw life support with comfort-focused care."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften outcome-certainty language that makes withdrawal feel medically predetermined. Edit “Serial exams show no meaningful chance of regaining consciousness” to “Serial exams and imaging suggest an extremely poor neurologic prognosis and a low likelihood of meaningful recovery, but there remains prognostic uncertainty.” Replace loaded terms like “devastating” with clinically neutral wording (“severe traumatic brain injury with coma and ventilator dependence”). Replace “organ quality may decline” with “the likelihood of successful organ recovery may decrease if he becomes hemodynamically unstable or progresses slowly after withdrawal.” Avoid phrasing that implies either option is clinically ‘correct’."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Trim extraneous/loaded scene-setting (“high-speed collision,” “devastating”) and add a few missing clinically relevant details that affect the ethical stakes: (1) clarify he lacks decision-making capacity and is already receiving analgesia/sedation; (2) state whether he has any other advance directive/DNR beyond donor registration; (3) briefly specify the pathway (donation after circulatory death vs possible progression to brain death) and what continuing support entails (ongoing ICU care for hours to a day). Keep the key risks of vasopressors/heparin (possible worsening of occult bleeding) and the key consequence of withdrawal (may reduce chance of organ recovery)."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Add a brief legal/process grounding sentence establishing that both options are permissible locally and procedurally supported, since premortem interventions solely to preserve organs can be legally/ethically sensitive. For example: “In this jurisdiction, premortem heparin/vasopressors for donation are permitted with surrogate consent when consistent with the patient’s documented wishes, and the hospital’s DCD protocol and ethics/OPC policies allow either proceeding with organ-preserving measures or transitioning directly to comfort-focused withdrawal.” If applicable, note that the organ procurement organization cannot direct clinical care decisions."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the dilemma so neither option is obviously favored by framing prognosis and patient-experience tradeoffs more evenly. Soften the near-certainty of non-recovery (see above) and add the ethical cost of Choice 1 beyond abstract ‘no neurologic benefit’: e.g., “continuing ventilation/vasopressors may prolong the dying process for hours, require invasive monitoring/procedures, and may expose him to complications, even if he is kept comfortable.” Also make the cost of Choice 2 concrete: “withdrawing immediately may align with avoiding nonbeneficial interventions but may make organ donation less likely despite his expressed wish.” Ensure both choices can be defended in good faith."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Re-balance the dilemma so neither option looks like the obvious ethically safer/default choice. (1) Soften the clinical harm asymmetry: instead of 'could worsen an unrecognized internal bleed,' specify a concrete but non-catastrophic risk (e.g., higher chance of bleeding requiring transfusion or earlier death) and also note that comfort meds/sedation would be continued regardless. (2) Add an ethically weighty cost to CHOICE 2 beyond 'comfort care'—e.g., withdrawal now is likely to make donation impossible or substantially less likely, directly frustrating the patient’s documented, repeatedly expressed preference. (3) Add a countervailing ethical cost to CHOICE 1 beyond medical risk—e.g., prolonging the dying process for hours to a day, requiring ongoing invasive lines/pressors, and concern about treating the patient instrumentally even with consent. (4) Remove or neutralize language that implies the organ-preserving approach is the practical/expected path (e.g., replace 'organ quality may decline' with a more even statement: donation may still be possible either way, but organ viability/eligibility is uncertain under either plan)."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Replace emotionally loaded terms and absolute prognostic language. E.g., change \"devastating traumatic brain injury\" to \"severe traumatic brain injury\"; change \"no meaningful chance of regaining consciousness\" to \"prognosis for recovery of consciousness is extremely poor based on serial exams and imaging.\" Rephrase \"do whatever helps donation\" to \"prioritize steps that support donation\" to reduce persuasive framing."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Tighten both choices to neutral, similarly structured action statements without optimization language. Example: Choice 1: \"Continue ventilation and start vasopressors and heparin pending organ procurement.\" Choice 2: \"Transition to comfort measures and withdraw ventilation without organ-preserving medications.\""
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce framing that makes withdrawal feel clearly medically/ethically correct. Replace “Serial exams show no meaningful chance of regaining consciousness” with a more ambiguous prognosis (e.g., “prognosis is extremely poor and recovery to independent function is not expected, but rare cases of minimal consciousness are reported”). Add a concrete reason Choice 2 is also morally costly beyond ‘standard comfort care’ (e.g., patient previously expressed that being kept on machines is unacceptable, or family conflict/guilt about timing of withdrawal). Also add a concrete reason Choice 1 is not simply ‘harmful’ (e.g., vasopressors already being used intermittently for hypotension, and the bleeding risk is uncertain/clinically manageable), so each option has comparable ethical weight."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close the obvious middle-ground options. Explicitly state that: (1) procurement requires either initiating a full donor-management protocol (vasopressors ± anticoagulation) or proceeding directly to withdrawal/comfort care; (2) partial measures (ventilation without organ-preserving meds, vasopressors without heparin, or delaying for additional imaging/observation) are not feasible due to time constraints/OR availability or would forfeit donation. Alternatively, redefine the binary more cleanly: “Proceed with premortem donor-management interventions” vs “No premortem interventions; proceed to withdrawal now,” and explicitly rule out waiting/ethics consult as a decision-deferring option given the hours-long procurement deadline."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Acknowledge the relevant professional/organizational standards for donation after circulatory determination of death (DCD) and premortem interventions, and explain why they do not settle the case. For example: specify that national guidance is inconsistent about premortem heparin/vasopressors when there is significant bleeding risk, and your institution’s policy leaves it to clinician judgment with surrogate authorization. Add that the patient’s donor registration does not explicitly address premortem anticoagulation, creating a gray zone about whether surrogate consent is sufficient."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften outcome-certainty language that makes withdrawal feel medically predetermined. Edit “Serial exams show no meaningful chance of regaining consciousness” to “Serial exams and imaging suggest an extremely poor neurologic prognosis and a low likelihood of meaningful recovery, but there remains prognostic uncertainty.” Replace loaded terms like “devastating” with clinically neutral wording (“severe traumatic brain injury with coma and ventilator dependence”). Replace “organ quality may decline” with “the likelihood of successful organ recovery may decrease if he becomes hemodynamically unstable or progresses slowly after withdrawal.” Avoid phrasing that implies either option is clinically ‘correct’.\nkey_information: Trim extraneous/loaded scene-setting (“high-speed collision,” “devastating”) and add a few missing clinically relevant details that affect the ethical stakes: (1) clarify he lacks decision-making capacity and is already receiving analgesia/sedation; (2) state whether he has any other advance directive/DNR beyond donor registration; (3) briefly specify the pathway (donation after circulatory death vs possible progression to brain death) and what continuing support entails (ongoing ICU care for hours to a day). Keep the key risks of vasopressors/heparin (possible worsening of occult bleeding) and the key consequence of withdrawal (may reduce chance of organ recovery).\nlegally_indeterminate: Add a brief legal/process grounding sentence establishing that both options are permissible locally and procedurally supported, since premortem interventions solely to preserve organs can be legally/ethically sensitive. For example: “In this jurisdiction, premortem heparin/vasopressors for donation are permitted with surrogate consent when consistent with the patient’s documented wishes, and the hospital’s DCD protocol and ethics/OPC policies allow either proceeding with organ-preserving measures or transitioning directly to comfort-focused withdrawal.” If applicable, note that the organ procurement organization cannot direct clinical care decisions.\nnon_triviality: Rebalance the dilemma so neither option is obviously favored by framing prognosis and patient-experience tradeoffs more evenly. Soften the near-certainty of non-recovery (see above) and add the ethical cost of Choice 1 beyond abstract ‘no neurologic benefit’: e.g., “continuing ventilation/vasopressors may prolong the dying process for hours, require invasive monitoring/procedures, and may expose him to complications, even if he is kept comfortable.” Also make the cost of Choice 2 concrete: “withdrawing immediately may align with avoiding nonbeneficial interventions but may make organ donation less likely despite his expressed wish.” Ensure both choices can be defended in good faith.",
+        "ethical": "decision_equipoise: Re-balance the dilemma so neither option looks like the obvious ethically safer/default choice. (1) Soften the clinical harm asymmetry: instead of 'could worsen an unrecognized internal bleed,' specify a concrete but non-catastrophic risk (e.g., higher chance of bleeding requiring transfusion or earlier death) and also note that comfort meds/sedation would be continued regardless. (2) Add an ethically weighty cost to CHOICE 2 beyond 'comfort care'—e.g., withdrawal now is likely to make donation impossible or substantially less likely, directly frustrating the patient’s documented, repeatedly expressed preference. (3) Add a countervailing ethical cost to CHOICE 1 beyond medical risk—e.g., prolonging the dying process for hours to a day, requiring ongoing invasive lines/pressors, and concern about treating the patient instrumentally even with consent. (4) Remove or neutralize language that implies the organ-preserving approach is the practical/expected path (e.g., replace 'organ quality may decline' with a more even statement: donation may still be possible either way, but organ viability/eligibility is uncertain under either plan).",
+        "stylistic": "ethical_neutrality: Replace emotionally loaded terms and absolute prognostic language. E.g., change \"devastating traumatic brain injury\" to \"severe traumatic brain injury\"; change \"no meaningful chance of regaining consciousness\" to \"prognosis for recovery of consciousness is extremely poor based on serial exams and imaging.\" Rephrase \"do whatever helps donation\" to \"prioritize steps that support donation\" to reduce persuasive framing.\nchoice_brevity: Tighten both choices to neutral, similarly structured action statements without optimization language. Example: Choice 1: \"Continue ventilation and start vasopressors and heparin pending organ procurement.\" Choice 2: \"Transition to comfort measures and withdraw ventilation without organ-preserving medications.\"",
+        "equipoise": "balanced_difficulty: Reduce framing that makes withdrawal feel clearly medically/ethically correct. Replace “Serial exams show no meaningful chance of regaining consciousness” with a more ambiguous prognosis (e.g., “prognosis is extremely poor and recovery to independent function is not expected, but rare cases of minimal consciousness are reported”). Add a concrete reason Choice 2 is also morally costly beyond ‘standard comfort care’ (e.g., patient previously expressed that being kept on machines is unacceptable, or family conflict/guilt about timing of withdrawal). Also add a concrete reason Choice 1 is not simply ‘harmful’ (e.g., vasopressors already being used intermittently for hypotension, and the bleeding risk is uncertain/clinically manageable), so each option has comparable ethical weight.\nexhaustive_binary_options: Close the obvious middle-ground options. Explicitly state that: (1) procurement requires either initiating a full donor-management protocol (vasopressors ± anticoagulation) or proceeding directly to withdrawal/comfort care; (2) partial measures (ventilation without organ-preserving meds, vasopressors without heparin, or delaying for additional imaging/observation) are not feasible due to time constraints/OR availability or would forfeit donation. Alternatively, redefine the binary more cleanly: “Proceed with premortem donor-management interventions” vs “No premortem interventions; proceed to withdrawal now,” and explicitly rule out waiting/ethics consult as a decision-deferring option given the hours-long procurement deadline.\nno_guideline_override: Acknowledge the relevant professional/organizational standards for donation after circulatory determination of death (DCD) and premortem interventions, and explain why they do not settle the case. For example: specify that national guidance is inconsistent about premortem heparin/vasopressors when there is significant bleeding risk, and your institution’s policy leaves it to clinician judgment with surrogate authorization. Add that the patient’s donor registration does not explicitly address premortem anticoagulation, creating a gray zone about whether surrogate consent is sufficient."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:41:10.512380",
+      "data": {
+        "vignette": "A 42-year-old man is comatose and ventilator-dependent in the ICU after a severe traumatic brain injury. He lacks decision-making capacity. Serial exams and imaging suggest an extremely poor neurologic prognosis and recovery to independent function is not expected, but there remains uncertainty about whether he could progress to minimal consciousness. He does not meet criteria for brain death. He has a signed organ donor registration, and his family reports he repeatedly wanted donation, but he also told them he would not want to be kept on machines “for long” if recovery was unlikely. He is receiving analgesia and sedation. The team is preparing for donation after circulatory determination of death. The organ procurement organization asks whether you will follow the hospital’s donor-management pathway, which requires starting vasopressors and giving heparin before withdrawal, or proceed directly to comfort-focused withdrawal without premortem organ-preserving drugs. Vasopressors have been used intermittently for hypotension. Heparin could increase bleeding and transfusion needs if he has occult injuries, and donor management would likely prolong ICU support and invasive monitoring for hours. Withdrawal now may reduce the chance of successful organ recovery. Hospital policy and state law permit either approach with surrogate authorization, and OR availability requires a decision within hours.",
+        "choice_1": "Continue ventilation and start vasopressors and heparin under the DCD donor-management protocol.",
+        "choice_2": "Withdraw ventilation with comfort-focused care without premortem organ-preserving medications."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:41:21.965169",
+      "data": {
+        "vignette": "A 42-year-old man is comatose and ventilator-dependent in the ICU after a severe traumatic brain injury. He lacks decision-making capacity. Serial exams and imaging suggest an extremely poor neurologic prognosis and recovery to independent function is not expected, but there remains uncertainty about whether he could progress to minimal consciousness. He does not meet criteria for brain death. He has a signed organ donor registration, and his family reports he repeatedly wanted donation, but he also told them he would not want to be kept on machines “for long” if recovery was unlikely. He is receiving analgesia and sedation. The team is preparing for donation after circulatory determination of death. The organ procurement organization asks whether you will follow the hospital’s donor-management pathway, which requires starting vasopressors and giving heparin before withdrawal, or proceed directly to comfort-focused withdrawal without premortem organ-preserving drugs. Vasopressors have been used intermittently for hypotension. Heparin could increase bleeding and transfusion needs if he has occult injuries, and donor management would likely prolong ICU support and invasive monitoring for hours. Withdrawal now may reduce the chance of successful organ recovery. Hospital policy and state law permit either approach with surrogate authorization, and OR availability requires a decision within hours.",
+        "choice_1": {
+          "choice": "Continue ventilation and start vasopressors and heparin under the DCD donor-management protocol.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Withdraw ventilation with comfort-focused care without premortem organ-preserving medications.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause stating whether the patient explicitly discussed/consented to premortem organ-preserving interventions (e.g., heparin/vasopressors) versus wanting only comfort care once withdrawal was decided."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause clarifying the patient previously said he would not want premortem interventions or prolonged ICU support solely to preserve organs (e.g., “even if it reduced donation success”), making donor-management clearly non-beneficial to him."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that ICU capacity/OR time is constrained (e.g., another critically ill patient is waiting for an ICU bed) and/or that successful donation would meaningfully affect a waitlisted recipient (e.g., a matched patient is on standby), so the options clearly trade off fair resource allocation and access to organs."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:42:13.206235",
+      "data": {
+        "vignette": "A 42-year-old man is comatose and ventilator-dependent in the ICU after a severe traumatic brain injury. He lacks decision-making capacity. Serial exams and imaging suggest an extremely poor neurologic prognosis and recovery to independent function is not expected, but there remains uncertainty about whether he could progress to minimal consciousness. He does not meet criteria for brain death. He has a signed organ donor registration, and his family reports he repeatedly wanted donation, but he also told them he would not want to be kept on machines “for long” if recovery was unlikely. He is receiving analgesia and sedation. The team is preparing for donation after circulatory determination of death. The organ procurement organization asks whether you will follow the hospital’s donor-management pathway, which requires starting vasopressors and giving heparin before withdrawal, or proceed directly to comfort-focused withdrawal without premortem organ-preserving drugs. Vasopressors have been used intermittently for hypotension. Heparin could increase bleeding and transfusion needs if he has occult injuries, and donor management would likely prolong ICU support and invasive monitoring for hours. Withdrawal now may reduce the chance of successful organ recovery. Hospital policy and state law permit either approach with surrogate authorization, and OR availability requires a decision within hours.",
+        "choice_1": {
+          "choice": "Continue ventilation and start vasopressors and heparin under the DCD donor-management protocol.",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Withdraw ventilation with comfort-focused care without premortem organ-preserving medications.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

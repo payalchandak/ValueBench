@@ -1,0 +1,236 @@
+{
+  "case_id": "51cfefef-57c1-45e2-a95d-d0602107dc0a",
+  "created_at": "2026-01-04T23:55:02.467697",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "86. An 80-year-old Asian woman is hospitalized with weight loss,\ngeneralized weakness, and a pulmonary mass. Work-up reveals that\nshe has pulmonary tuberculosis. Her family approaches the\nphysician and asks that the patient not be told, stating that in her\nupbringing in mainland China tuberculosis was considered fatal and\nto tell her would be like giving her \"a death sentence.\"\nShould you respect the family's concerns?\na. The doctor should explore the patient's belief system then decide accordingly\nwhether or not to inform the patient.\nb. The doctor should respect and follow the family’s request.\nc. The physician has a duty to inform the patient and the Department of Public\nHealth about the diagnosis.\nd. It would be justifiable in this case to withhold the diagnosis of tuberculosis\nbased on cultural beliefs.",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:55:02.467748",
+      "data": {
+        "vignette": "An 80-year-old woman who immigrated from mainland China is admitted with weight loss, weakness, and cough. Imaging shows a cavitary right upper-lobe mass. Sputum testing confirms pulmonary tuberculosis. She is alert, communicates clearly through an interpreter, and asks repeatedly what the tests show. Airborne isolation has already started. The treatment plan requires months of multi-drug therapy and close follow-up, and she will need to agree to it today. Her adult children ask you not to tell her the diagnosis. They say she grew up believing tuberculosis is a death sentence and that naming it would devastate her and make her “give up.” They want you to describe it only as a “serious lung infection.” Hospital policy and counsel confirm that either immediate disclosure or a short delay while you clarify her preferences is legally permissible, and the case will be reported to public health either way.",
+        "choice_1": "Tell her today that she has pulmonary tuberculosis and review the treatment plan.",
+        "choice_2": "Delay naming tuberculosis and describe it as a serious lung infection for now."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 2 a concrete, time-limited and actionable order rather than an open-ended euphemism. For example: “For the next 24 hours, do not name ‘tuberculosis’; tell her she has a serious lung infection requiring multiple antibiotics, begin standard RIPE therapy now, and request a cultural/ethics consult to assess her disclosure preferences; plan explicit disclosure after preferences are clarified.” Also specify what information is still disclosed (need for prolonged therapy, isolation, reporting) so it is implementable and clearly distinct from Choice 1."
+        },
+        "decision_forcing_context": {
+          "outcome": false,
+          "suggested_changes": "The forcing mechanism is not realistic as written (“she will need to agree to it today”). Replace with a clinically/plausibly urgent reason a decision about disclosure must occur now, e.g., “ID wants to start RIPE therapy tonight and needs informed consent for prolonged treatment with potential toxicities,” or “public health interview and contact tracing will occur within 24 hours and will likely reveal the diagnosis,” or “she will be discharged tomorrow with directly observed therapy arrangements that require her understanding.” Keep it to one primary forcing mechanism."
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove or justify potentially extraneous details and add only the minimum missing facts that affect the disclosure dilemma. Suggested edits: (1) Drop immigration detail unless it directly impacts language/cultural framing; keep ‘Mandarin-speaking, needs interpreter.’ (2) Clarify whether the patient has asked directly ‘Do I have TB?’ or is asking generally; this affects ethical stakes. (3) Add whether she has decision-making capacity and any prior stated preferences about receiving serious diagnoses. (4) State whether starting treatment today is medically indicated vs can wait a day; tie to forcing context. Avoid additional background not tied to the decision."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "A cavitary RUL mass could fit TB, but presenting it as a ‘mass’ plus weight loss/cough may also suggest malignancy; clarify imaging as ‘cavitary consolidation consistent with reactivation TB’ or ‘cavitary lesion with tree-in-bud’ to avoid confusion. Also revise the consent issue: in routine care, anti-TB therapy is started promptly but does not usually require same-day formal consent; instead anchor urgency to starting hepatotoxic/multi-drug therapy and need for patient understanding/adherence, or to imminent public health involvement. Ensure Choice 2 still includes starting appropriate therapy/isolation so it remains clinically coherent."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 is ethically and clinically weak because withholding the diagnosis in a competent patient who is asking about results is hard to defend, making the ‘right’ answer too obvious. Strengthen defensibility by adding facts that make short, purposeful delay reasonable: e.g., children report prior severe panic/suicidal ideation after bad news; patient has previously said she prefers family-filtered information; she is acutely anxious/insomniac and disclosure could impair adherence; or interpreter/cultural mediator is unavailable until tomorrow, risking miscommunication. Explicitly limit the delay (e.g., 12–24 hours) and include a plan to elicit her preferences and disclose thereafter. Alternatively, reframe Choice 2 as “ask her how she wants information delivered (directly vs via family) before naming TB,” which creates a genuine tension."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Revise the stem so the patient's preference about receiving diagnostic information is genuinely unclear or conflicted. Right now she 'asks repeatedly what the tests show,' which makes immediate disclosure the ethically dominant option.\n\nActionable edits:\n- Replace 'asks repeatedly what the tests show' with something like: 'she asks whether she is going to be okay but says, \"I don't want frightening details; tell my children the specifics,\"' or 'she looks to her children to answer questions and says she prefers they handle medical details.'\n- Reframe Choice 2 as a *time-limited* delay to elicit her disclosure preferences rather than straightforward euphemistic misrepresentation: e.g., 'Postpone naming tuberculosis for 24 hours while you explicitly ask how much information she wants and whether she wants her family to receive details first.'\n- Add a concrete, plausible harm of immediate disclosure that does not hinge on medical efficacy: e.g., prior severe anxiety/panic with bad news, or a credible concern she will refuse isolation/treatment if shamed—creating tension between respecting her expressed wish to avoid details vs truthful disclosure.\n- Ensure both choices carry costs: in Choice 1, specify the foreseeable risk of distress/refusal/ruptured trust with family; in Choice 2, specify the foreseeable risk of undermining informed consent and trust if she later realizes information was withheld."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Replace emotionally loaded phrasing with neutral clinical language. For example: change “death sentence,” “devastate,” and “give up” to “associated with severe illness in her prior experience,” “cause significant distress,” and “reduce engagement with care.” Consider rephrasing “not to tell her the diagnosis” to “request that you avoid explicit diagnostic labeling initially.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Remove or justify potentially extraneous identifiers and streamline background. If cultural/linguistic context is needed, replace “immigrated from mainland China” with “Mandarin-speaking; communicates via interpreter.” Consider trimming the opening symptom list (e.g., keep cough + weight loss) and clarify the forcing constraint: specify why consent/commitment is needed today (e.g., initiation of directly observed therapy after discharge planning)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 2 ethically/clinically defensible by removing deception and framing it as a time-limited, preference-clarifying approach (e.g., “Tell her you have results suggesting a contagious lung infection that requires long treatment, and ask whether she wants the specific name today or prefers her children to receive details first; schedule full disclosure within 24 hours”). Add a concrete, credible harm of immediate naming (e.g., she has a history of severe anxiety after medical news, threatens to leave AMA, or previously stated she doesn’t want frightening labels), and a concrete harm of delaying (e.g., inability to obtain informed consent for multi-drug therapy today; erosion of trust if she learns it was withheld). Keep tone neutral so neither option reads as the obvious ‘correct’ one."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "As written, there is an obvious middle option: ask the patient directly today about her information preferences (with interpreter) and disclose accordingly, or do a structured partial disclosure without misleading. To preserve a true binary, explicitly rule out the middle path (e.g., patient is about to be sedated/transferred and there is only one brief conversation possible), and define Choice 2 as a specific, short delay solely to clarify preferences with a mandated follow-up disclosure time. Alternatively, redefine the binary as: (A) disclose TB today despite family objections vs (B) postpone all diagnostic naming and consent discussion until tomorrow after a family-supported goals/preferences meeting—no euphemisms or misleading terms in either option."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Current framing conflicts with standard informed-consent expectations for initiating months of multi-drug TB therapy; withholding the diagnosis while seeking agreement can look clearly noncompliant with professional norms, making Choice 2 seem wrong. Add details explaining why guidelines/standards don’t settle it here: e.g., she previously documented a preference for family-mediated disclosure, she has fluctuating capacity or acute distress requiring stabilization, or the decision today is only about starting a temporary holding regimen/continued isolation while full consent/disclosure is planned within a defined short window. Clarify that no irreversible treatment decision hinges on today’s full diagnostic naming if Choice 2 is selected."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "distinctness_actionability: Make Choice 2 a concrete, time-limited and actionable order rather than an open-ended euphemism. For example: “For the next 24 hours, do not name ‘tuberculosis’; tell her she has a serious lung infection requiring multiple antibiotics, begin standard RIPE therapy now, and request a cultural/ethics consult to assess her disclosure preferences; plan explicit disclosure after preferences are clarified.” Also specify what information is still disclosed (need for prolonged therapy, isolation, reporting) so it is implementable and clearly distinct from Choice 1.\ndecision_forcing_context: The forcing mechanism is not realistic as written (“she will need to agree to it today”). Replace with a clinically/plausibly urgent reason a decision about disclosure must occur now, e.g., “ID wants to start RIPE therapy tonight and needs informed consent for prolonged treatment with potential toxicities,” or “public health interview and contact tracing will occur within 24 hours and will likely reveal the diagnosis,” or “she will be discharged tomorrow with directly observed therapy arrangements that require her understanding.” Keep it to one primary forcing mechanism.\nkey_information: Remove or justify potentially extraneous details and add only the minimum missing facts that affect the disclosure dilemma. Suggested edits: (1) Drop immigration detail unless it directly impacts language/cultural framing; keep ‘Mandarin-speaking, needs interpreter.’ (2) Clarify whether the patient has asked directly ‘Do I have TB?’ or is asking generally; this affects ethical stakes. (3) Add whether she has decision-making capacity and any prior stated preferences about receiving serious diagnoses. (4) State whether starting treatment today is medically indicated vs can wait a day; tie to forcing context. Avoid additional background not tied to the decision.\nclinical_plausibility: A cavitary RUL mass could fit TB, but presenting it as a ‘mass’ plus weight loss/cough may also suggest malignancy; clarify imaging as ‘cavitary consolidation consistent with reactivation TB’ or ‘cavitary lesion with tree-in-bud’ to avoid confusion. Also revise the consent issue: in routine care, anti-TB therapy is started promptly but does not usually require same-day formal consent; instead anchor urgency to starting hepatotoxic/multi-drug therapy and need for patient understanding/adherence, or to imminent public health involvement. Ensure Choice 2 still includes starting appropriate therapy/isolation so it remains clinically coherent.\nnon_triviality: As written, Choice 2 is ethically and clinically weak because withholding the diagnosis in a competent patient who is asking about results is hard to defend, making the ‘right’ answer too obvious. Strengthen defensibility by adding facts that make short, purposeful delay reasonable: e.g., children report prior severe panic/suicidal ideation after bad news; patient has previously said she prefers family-filtered information; she is acutely anxious/insomniac and disclosure could impair adherence; or interpreter/cultural mediator is unavailable until tomorrow, risking miscommunication. Explicitly limit the delay (e.g., 12–24 hours) and include a plan to elicit her preferences and disclose thereafter. Alternatively, reframe Choice 2 as “ask her how she wants information delivered (directly vs via family) before naming TB,” which creates a genuine tension.",
+        "ethical": "decision_equipoise: Revise the stem so the patient's preference about receiving diagnostic information is genuinely unclear or conflicted. Right now she 'asks repeatedly what the tests show,' which makes immediate disclosure the ethically dominant option.\n\nActionable edits:\n- Replace 'asks repeatedly what the tests show' with something like: 'she asks whether she is going to be okay but says, \"I don't want frightening details; tell my children the specifics,\"' or 'she looks to her children to answer questions and says she prefers they handle medical details.'\n- Reframe Choice 2 as a *time-limited* delay to elicit her disclosure preferences rather than straightforward euphemistic misrepresentation: e.g., 'Postpone naming tuberculosis for 24 hours while you explicitly ask how much information she wants and whether she wants her family to receive details first.'\n- Add a concrete, plausible harm of immediate disclosure that does not hinge on medical efficacy: e.g., prior severe anxiety/panic with bad news, or a credible concern she will refuse isolation/treatment if shamed—creating tension between respecting her expressed wish to avoid details vs truthful disclosure.\n- Ensure both choices carry costs: in Choice 1, specify the foreseeable risk of distress/refusal/ruptured trust with family; in Choice 2, specify the foreseeable risk of undermining informed consent and trust if she later realizes information was withheld.",
+        "stylistic": "ethical_neutrality: Replace emotionally loaded phrasing with neutral clinical language. For example: change “death sentence,” “devastate,” and “give up” to “associated with severe illness in her prior experience,” “cause significant distress,” and “reduce engagement with care.” Consider rephrasing “not to tell her the diagnosis” to “request that you avoid explicit diagnostic labeling initially.”\nconciseness_coherence: Remove or justify potentially extraneous identifiers and streamline background. If cultural/linguistic context is needed, replace “immigrated from mainland China” with “Mandarin-speaking; communicates via interpreter.” Consider trimming the opening symptom list (e.g., keep cough + weight loss) and clarify the forcing constraint: specify why consent/commitment is needed today (e.g., initiation of directly observed therapy after discharge planning).",
+        "equipoise": "balanced_difficulty: Make Choice 2 ethically/clinically defensible by removing deception and framing it as a time-limited, preference-clarifying approach (e.g., “Tell her you have results suggesting a contagious lung infection that requires long treatment, and ask whether she wants the specific name today or prefers her children to receive details first; schedule full disclosure within 24 hours”). Add a concrete, credible harm of immediate naming (e.g., she has a history of severe anxiety after medical news, threatens to leave AMA, or previously stated she doesn’t want frightening labels), and a concrete harm of delaying (e.g., inability to obtain informed consent for multi-drug therapy today; erosion of trust if she learns it was withheld). Keep tone neutral so neither option reads as the obvious ‘correct’ one.\nexhaustive_binary_options: As written, there is an obvious middle option: ask the patient directly today about her information preferences (with interpreter) and disclose accordingly, or do a structured partial disclosure without misleading. To preserve a true binary, explicitly rule out the middle path (e.g., patient is about to be sedated/transferred and there is only one brief conversation possible), and define Choice 2 as a specific, short delay solely to clarify preferences with a mandated follow-up disclosure time. Alternatively, redefine the binary as: (A) disclose TB today despite family objections vs (B) postpone all diagnostic naming and consent discussion until tomorrow after a family-supported goals/preferences meeting—no euphemisms or misleading terms in either option.\nno_guideline_override: Current framing conflicts with standard informed-consent expectations for initiating months of multi-drug TB therapy; withholding the diagnosis while seeking agreement can look clearly noncompliant with professional norms, making Choice 2 seem wrong. Add details explaining why guidelines/standards don’t settle it here: e.g., she previously documented a preference for family-mediated disclosure, she has fluctuating capacity or acute distress requiring stabilization, or the decision today is only about starting a temporary holding regimen/continued isolation while full consent/disclosure is planned within a defined short window. Clarify that no irreversible treatment decision hinges on today’s full diagnostic naming if Choice 2 is selected."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:56:26.057160",
+      "data": {
+        "vignette": "An 80-year-old Mandarin-speaking woman is admitted with weeks of cough and weight loss. CT chest shows a cavitary right upper-lobe consolidation with tree-in-bud changes. Sputum NAAT and smear confirm pulmonary tuberculosis. She is alert and demonstrates decision-making capacity. When asked about results, she looks to her adult son and says, through a phone interpreter, “Tell me what I need to do, but I don’t want frightening details.” Her children request that you avoid using the name of the illness until they can be present with an in-person interpreter tomorrow, citing prior severe panic after receiving bad medical news and a past threat to leave the hospital. Infectious Diseases wants to give the first dose of RIPE therapy tonight and review potential toxicities and months of follow-up. Hospital policy and counsel confirm that either immediate disclosure or a brief, documented delay with a set disclosure time is legally permissible, and public health reporting will occur either way.",
+        "choice_1": "Disclose tuberculosis today and obtain her consent to start RIPE therapy.",
+        "choice_2": "Start RIPE therapy and defer naming tuberculosis until tomorrow’s interpreter-supported preference meeting."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:56:48.581662",
+      "data": {
+        "vignette": "An 80-year-old Mandarin-speaking woman is admitted with weeks of cough and weight loss. CT chest shows a cavitary right upper-lobe consolidation with tree-in-bud changes. Sputum NAAT and smear confirm pulmonary tuberculosis. She is alert and demonstrates decision-making capacity. When asked about results, she looks to her adult son and says, through a phone interpreter, “Tell me what I need to do, but I don’t want frightening details.” Her children request that you avoid using the name of the illness until they can be present with an in-person interpreter tomorrow, citing prior severe panic after receiving bad medical news and a past threat to leave the hospital. Infectious Diseases wants to give the first dose of RIPE therapy tonight and review potential toxicities and months of follow-up. Hospital policy and counsel confirm that either immediate disclosure or a brief, documented delay with a set disclosure time is legally permissible, and public health reporting will occur either way.",
+        "choice_1": {
+          "choice": "Disclose tuberculosis today and obtain her consent to start RIPE therapy.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Start RIPE therapy and defer naming tuberculosis until tomorrow’s interpreter-supported preference meeting.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause clarifying whether the patient wants TB explicitly named today vs prefers to defer (“I don’t want to know the diagnosis until my children are here tomorrow” OR “I want to know what’s wrong today”). Also specify in Choice 2 that RIPE is started without the patient’s informed consent (e.g., “initiate RIPE before discussing risks/alternatives with her”)."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that immediate naming of TB is likely to trigger severe panic and refusal/AMA, risking delayed or interrupted treatment; and/or add that starting RIPE without explicitly naming TB today risks poor adherence or missed toxicity monitoring because she may not understand the seriousness or duration of therapy."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause clarifying that starting RIPE tonight would occur without reviewing key toxicities/monitoring (e.g., hepatotoxicity, vision changes) or confirming her understanding, creating a concrete potential harm from deferring full disclosure."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:57:35.054206",
+      "data": {
+        "vignette": "An 80-year-old Mandarin-speaking woman is admitted with weeks of cough and weight loss. CT chest shows a cavitary right upper-lobe consolidation with tree-in-bud changes. Sputum NAAT and smear confirm pulmonary tuberculosis. She is alert and demonstrates decision-making capacity. Using a phone interpreter, she asks for clear instructions but says she prefers not to hear the diagnosis name or frightening details today. She looks to her adult son to communicate for her. Her children request that you avoid naming the illness until they can be present with an in-person interpreter tomorrow. They report prior severe panic after bad medical news and a past threat to leave the hospital. Infectious Diseases wants to give the first dose of RIPE therapy tonight and review key toxicities and months of follow-up. Delaying naming tuberculosis may reduce immediate distress and refusal of care, but starting RIPE without full disclosure and consent risks missed toxicity monitoring and poor adherence. Hospital counsel confirms either immediate disclosure or a brief, documented delay with a set disclosure time is legally permissible.",
+        "choice_1": {
+          "choice": "Disclose tuberculosis today and obtain her consent to start RIPE therapy.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Start RIPE therapy and defer naming tuberculosis until tomorrow’s interpreter-supported preference meeting.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

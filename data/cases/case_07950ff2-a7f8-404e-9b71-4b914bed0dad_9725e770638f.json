@@ -1,0 +1,236 @@
+{
+  "case_id": "07950ff2-a7f8-404e-9b71-4b914bed0dad",
+  "created_at": "2026-01-04T23:12:45.148702",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "66. A 60-year-old man has a heart attack and is admitted to the medical floor with a very poor prognosis. He asks that you not share any of his medical information with his wife as he does not think she will be able to take it. His wife catches you in the hall and asks about her husband's prognosis.\nWhat are you required to do legally?\na. The doctor should inform the wife about her husband’s poor prognosis.\nb. The doctor is should not divulge the prognosis to the wife, but he should ask the nurse to let the wife know about her husband’s condition.\nc. The wife is certainly affected by her husband's health and prognosis and every effort should be made to encourage an open dialogue between them.\nd. The doctor should not encourage the patient to talk to his wife about his condition.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:12:45.148755",
+      "data": {
+        "vignette": "A 60-year-old man is admitted after a large heart attack. He is awake and coherent on arrival. He says he does not want his wife told any details about his condition or prognosis. He agrees to let staff tell her only that he is hospitalized. Overnight he develops worsening heart failure and is moved to the ICU. He is now on high-dose sedatives and cannot participate in decisions. An older advance directive in the chart names his wife as his health care proxy. She stops you in the hallway and asks whether he is likely to survive and what decisions she should prepare for. Risk management confirms that either disclosing information needed for proxy decision-making or waiting to recheck the patient’s wishes if he wakes would be legally permissible here. You need to decide what to do before the next family meeting.",
+        "choice_1": "Disclose the prognosis and likely decisions to his wife as proxy",
+        "choice_2": "Withhold prognosis details from his wife until he can be asked again"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": false,
+          "suggested_changes": "Make the time pressure clinically concrete. Add an explicit imminent decision point (e.g., “The ICU team plans to discuss intubation/vasopressors/dialysis and code status within the next few hours,” or “a procedure requiring consent is scheduled this afternoon”). Specify that the family meeting is in X hours/today and that major decisions may need to be made before the patient is likely to wake."
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Tighten to key facts that change the ethical stakes and remove minor scene-setting. For example, delete “She stops you in the hallway” and replace with “His wife requests prognosis information to make decisions as the named proxy.” Add 1–2 clinically relevant specifics that determine what decisions are pending (ventilation, mechanical circulatory support, DNR) and the expected timeframe for regaining capacity (e.g., sedation needed for respiratory failure, uncertain wake-up)."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, disclosure to the legally designated proxy is likely to feel like the default, making the dilemma too one-sided. Strengthen the countervailing reasons for withholding by adding: (1) that the patient’s refusal was explicit, repeated, and tied to specific concerns (e.g., estrangement, fear spouse will override his preferences); (2) that the proxy appointment is old and his relationship status is unclear; and/or (3) that the proxy decisions are not strictly required yet because care is guideline-based and he may regain capacity soon. Ensure each option carries an ethical cost: disclosing risks breaching confidentiality and undermining trust; withholding risks leaving the proxy unable to prepare/make timely decisions and increasing distress."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the ethical tension unavoidable by clarifying why proxy decision-making is imminent (e.g., need for intubation/pressors/DNR decision within hours) and what information is strictly required for those decisions. Also clarify whether the patient’s earlier nondisclosure request was explicit and informed (did he understand severity/prognosis?) to sharpen autonomy vs surrogate decision-making obligations."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Stabilize the meaning of each option by specifying the scope of disclosure/withholding. For Choice 1, define that you would share prognosis and decision points necessary for surrogate consent (not all details). For Choice 2, specify what you will still do (e.g., obtain urgent consent via ethics consult or emergent-treatment exception) and what exactly will be withheld. This prevents small wording changes from flipping the ethical valence."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce ambiguity about surrogate authority and the patient’s intent. Add a brief note about whether the patient previously discussed his wishes with his wife, whether he gave a reason for secrecy (e.g., estrangement, fear), and whether there is evidence the advance directive is outdated but still valid. This will help graders converge on the same autonomy/confidentiality vs beneficence/surrogate decision-making conflict."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Currently Choice 1 looks like the practical/standard path because the wife is the named proxy and decisions are pending; Choice 2 risks leaving the team without a surrogate and delaying care. Add meaningful ethical costs to Choice 1 (e.g., strong reason to think disclosure violates a deeply held preference and would cause serious relational harm) and meaningful defensible benefits to Choice 2 (e.g., short, realistic window where he may regain capacity; a way to proceed with time-sensitive care without full disclosure). Ensure both choices carry comparable moral risk."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove phrasing that subtly favors disclosure and avoid legal/administrative cues that normalize one option. For example, replace “Risk management confirms that either… would be legally permissible” with a neutral line such as “Hospital policy allows proxy access to information needed for substituted decision-making, but the patient previously requested limited disclosure.” Also avoid “stops you in the hallway” (implies urgency/pressure); change to “requests an update.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the decision-forcing moment and proxy status. Specify whether the advance directive is valid and activated when he lacks capacity, and whether the wife knows about the nondisclosure request. Remove redundant/administrative detail: drop “on arrival” and streamline ICU course. Example: “He subsequently requires deep sedation for respiratory failure and lacks decision-making capacity.” Clarify what is meant by “what decisions she should prepare for” (e.g., goals of care, mechanical support, resuscitation)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make each option 10–15 words, parallel, and complete action statements without extra qualifiers. Example: Choice 1: “Update wife, as designated proxy, on prognosis and imminent goals-of-care decisions.” Choice 2: “Maintain prior confidentiality request; give no prognosis until patient regains capacity.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the ethical pull so neither option reads as clearly correct. Right now, an advance directive naming the wife as proxy plus an impending family meeting makes disclosure feel like the default, while the patient’s explicit refusal makes withholding feel like the default—yet the case implicitly privileges the proxy role. To restore equipoise: (1) Clarify the advance directive is old/boilerplate and the patient recently reiterated (with reasons) that he does not want his wife involved in prognostic/decision details; (2) also clarify that imminent ICU decisions (e.g., intubation, dialysis, code status) may be needed and the team typically relies on the proxy, so withholding could plausibly lead to non-consensual or value-misaligned care; (3) avoid wording that suggests the wife is automatically entitled to all details—state she is asking for specifics to make decisions, but disclosure may irreversibly violate his expressed privacy wishes if he recovers."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "As written, there are obvious middle-ground options (partial/need-to-know disclosure; disclose that he previously asked for privacy without giving prognosis; delay the family meeting; ask another surrogate; seek an ethics consult). To make it truly binary, explicitly rule out hybrids/deferral, e.g.: (1) The family meeting is scheduled in 1 hour and will include a decision about intubation/CRRT; the ICU requires a documented surrogate decision that must be made at that meeting; (2) Hospital policy only permits either treating the proxy as fully informed (prognosis + options) or not engaging her in decisions at all; (3) No other legally recognized surrogate is reachable and ethics consult will not be available in time."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "This scenario risks being answered by standard practice: once a spouse is the legally appointed health care proxy, clinicians generally disclose enough information for informed surrogate decision-making; withholding prognosis may be viewed as incompatible with surrogate consent. To keep it in the gray zone, add facts that make guidance genuinely indeterminate: (1) Specify the patient’s refusal was explicit, recent, and clearly encompassed prognosis/ICU decisions, and he stated he would rather clinicians make time-limited decisions than involve his wife; (2) Note the advance directive is outdated and does not address confidentiality, and state law/policy is ambiguous about whether a prior verbal confidentiality instruction limits a proxy’s access when the patient loses capacity; (3) Remove any implication that disclosure is the institutional norm—state that institutional policy permits either approach and offers no hierarchy between the two directives in this circumstance."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "decision_forcing_context: Make the time pressure clinically concrete. Add an explicit imminent decision point (e.g., “The ICU team plans to discuss intubation/vasopressors/dialysis and code status within the next few hours,” or “a procedure requiring consent is scheduled this afternoon”). Specify that the family meeting is in X hours/today and that major decisions may need to be made before the patient is likely to wake.\nkey_information: Tighten to key facts that change the ethical stakes and remove minor scene-setting. For example, delete “She stops you in the hallway” and replace with “His wife requests prognosis information to make decisions as the named proxy.” Add 1–2 clinically relevant specifics that determine what decisions are pending (ventilation, mechanical circulatory support, DNR) and the expected timeframe for regaining capacity (e.g., sedation needed for respiratory failure, uncertain wake-up).\nnon_triviality: As written, disclosure to the legally designated proxy is likely to feel like the default, making the dilemma too one-sided. Strengthen the countervailing reasons for withholding by adding: (1) that the patient’s refusal was explicit, repeated, and tied to specific concerns (e.g., estrangement, fear spouse will override his preferences); (2) that the proxy appointment is old and his relationship status is unclear; and/or (3) that the proxy decisions are not strictly required yet because care is guideline-based and he may regain capacity soon. Ensure each option carries an ethical cost: disclosing risks breaching confidentiality and undermining trust; withholding risks leaving the proxy unable to prepare/make timely decisions and increasing distress.",
+        "ethical": "clarity_value_conflict: Make the ethical tension unavoidable by clarifying why proxy decision-making is imminent (e.g., need for intubation/pressors/DNR decision within hours) and what information is strictly required for those decisions. Also clarify whether the patient’s earlier nondisclosure request was explicit and informed (did he understand severity/prognosis?) to sharpen autonomy vs surrogate decision-making obligations.\ndirectional_stability: Stabilize the meaning of each option by specifying the scope of disclosure/withholding. For Choice 1, define that you would share prognosis and decision points necessary for surrogate consent (not all details). For Choice 2, specify what you will still do (e.g., obtain urgent consent via ethics consult or emergent-treatment exception) and what exactly will be withheld. This prevents small wording changes from flipping the ethical valence.\ninterpretive_consensus: Reduce ambiguity about surrogate authority and the patient’s intent. Add a brief note about whether the patient previously discussed his wishes with his wife, whether he gave a reason for secrecy (e.g., estrangement, fear), and whether there is evidence the advance directive is outdated but still valid. This will help graders converge on the same autonomy/confidentiality vs beneficence/surrogate decision-making conflict.\ndecision_equipoise: Currently Choice 1 looks like the practical/standard path because the wife is the named proxy and decisions are pending; Choice 2 risks leaving the team without a surrogate and delaying care. Add meaningful ethical costs to Choice 1 (e.g., strong reason to think disclosure violates a deeply held preference and would cause serious relational harm) and meaningful defensible benefits to Choice 2 (e.g., short, realistic window where he may regain capacity; a way to proceed with time-sensitive care without full disclosure). Ensure both choices carry comparable moral risk.",
+        "stylistic": "ethical_neutrality: Remove phrasing that subtly favors disclosure and avoid legal/administrative cues that normalize one option. For example, replace “Risk management confirms that either… would be legally permissible” with a neutral line such as “Hospital policy allows proxy access to information needed for substituted decision-making, but the patient previously requested limited disclosure.” Also avoid “stops you in the hallway” (implies urgency/pressure); change to “requests an update.”\nconciseness_coherence: Tighten and clarify the decision-forcing moment and proxy status. Specify whether the advance directive is valid and activated when he lacks capacity, and whether the wife knows about the nondisclosure request. Remove redundant/administrative detail: drop “on arrival” and streamline ICU course. Example: “He subsequently requires deep sedation for respiratory failure and lacks decision-making capacity.” Clarify what is meant by “what decisions she should prepare for” (e.g., goals of care, mechanical support, resuscitation).\nchoice_brevity: Make each option 10–15 words, parallel, and complete action statements without extra qualifiers. Example: Choice 1: “Update wife, as designated proxy, on prognosis and imminent goals-of-care decisions.” Choice 2: “Maintain prior confidentiality request; give no prognosis until patient regains capacity.”",
+        "equipoise": "balanced_difficulty: Rebalance the ethical pull so neither option reads as clearly correct. Right now, an advance directive naming the wife as proxy plus an impending family meeting makes disclosure feel like the default, while the patient’s explicit refusal makes withholding feel like the default—yet the case implicitly privileges the proxy role. To restore equipoise: (1) Clarify the advance directive is old/boilerplate and the patient recently reiterated (with reasons) that he does not want his wife involved in prognostic/decision details; (2) also clarify that imminent ICU decisions (e.g., intubation, dialysis, code status) may be needed and the team typically relies on the proxy, so withholding could plausibly lead to non-consensual or value-misaligned care; (3) avoid wording that suggests the wife is automatically entitled to all details—state she is asking for specifics to make decisions, but disclosure may irreversibly violate his expressed privacy wishes if he recovers.\nexhaustive_binary_options: As written, there are obvious middle-ground options (partial/need-to-know disclosure; disclose that he previously asked for privacy without giving prognosis; delay the family meeting; ask another surrogate; seek an ethics consult). To make it truly binary, explicitly rule out hybrids/deferral, e.g.: (1) The family meeting is scheduled in 1 hour and will include a decision about intubation/CRRT; the ICU requires a documented surrogate decision that must be made at that meeting; (2) Hospital policy only permits either treating the proxy as fully informed (prognosis + options) or not engaging her in decisions at all; (3) No other legally recognized surrogate is reachable and ethics consult will not be available in time.\nno_guideline_override: This scenario risks being answered by standard practice: once a spouse is the legally appointed health care proxy, clinicians generally disclose enough information for informed surrogate decision-making; withholding prognosis may be viewed as incompatible with surrogate consent. To keep it in the gray zone, add facts that make guidance genuinely indeterminate: (1) Specify the patient’s refusal was explicit, recent, and clearly encompassed prognosis/ICU decisions, and he stated he would rather clinicians make time-limited decisions than involve his wife; (2) Note the advance directive is outdated and does not address confidentiality, and state law/policy is ambiguous about whether a prior verbal confidentiality instruction limits a proxy’s access when the patient loses capacity; (3) Remove any implication that disclosure is the institutional norm—state that institutional policy permits either approach and offers no hierarchy between the two directives in this circumstance."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:13:57.568607",
+      "data": {
+        "vignette": "A 60-year-old man is admitted after a large myocardial infarction. He is initially awake and understands he may worsen. He repeatedly asks that his wife not be told his prognosis or involved in ICU decisions, saying they are estranged and he fears she would override what he wants. He agrees that staff may only tell her he is hospitalized. Overnight he develops cardiogenic shock with respiratory failure and requires deep sedation. He lacks decision-making capacity and may not wake for a day or longer. A boilerplate advance directive signed years ago names his wife as health care proxy but does not address confidentiality. The ICU team has a family meeting in 1 hour to decide about intubation, possible dialysis, and code status. No other surrogate can be reached and an ethics consult is not available before the meeting. Hospital counsel states that either approach below is legally permissible in this situation.",
+        "choice_1": "Inform his wife of prognosis and imminent ICU decisions as his proxy",
+        "choice_2": "Withhold prognosis from his wife and make time-limited ICU decisions without her"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:14:09.133516",
+      "data": {
+        "vignette": "A 60-year-old man is admitted after a large myocardial infarction. He is initially awake and understands he may worsen. He repeatedly asks that his wife not be told his prognosis or involved in ICU decisions, saying they are estranged and he fears she would override what he wants. He agrees that staff may only tell her he is hospitalized. Overnight he develops cardiogenic shock with respiratory failure and requires deep sedation. He lacks decision-making capacity and may not wake for a day or longer. A boilerplate advance directive signed years ago names his wife as health care proxy but does not address confidentiality. The ICU team has a family meeting in 1 hour to decide about intubation, possible dialysis, and code status. No other surrogate can be reached and an ethics consult is not available before the meeting. Hospital counsel states that either approach below is legally permissible in this situation.",
+        "choice_1": {
+          "choice": "Inform his wife of prognosis and imminent ICU decisions as his proxy",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Withhold prognosis from his wife and make time-limited ICU decisions without her",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause clarifying whether he is revoking his wife’s proxy role (e.g., “he explicitly says he no longer wants her to serve as his health care proxy despite the old directive”)."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause clarifying the likely clinical benefit of rapid proxy input (e.g., that she knows his treatment preferences and can authorize/decline high-burden life support), and one clause clarifying the likely downside of proceeding without her (e.g., defaulting to full-code invasive support with low chance of meaningful recovery)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause specifying the concrete harm risk that motivates the nonmaleficence tags (e.g., 'Without a surrogate, the team will default to full-code and likely proceed with intubation/dialysis with high likelihood of prolonged suffering and low chance of meaningful recovery,' or conversely 'His wife knows he would refuse invasive life support and would prevent nonbeneficial, harmful interventions')."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:15:03.614367",
+      "data": {
+        "vignette": "A 60-year-old man is admitted after a large myocardial infarction. He is awake and understands he may worsen. He repeatedly asks that his wife not be told his prognosis or involved in ICU decisions. He says they are estranged and he does not want her to serve as his health care proxy despite an old directive. He permits staff to tell her only that he is hospitalized. Overnight he develops cardiogenic shock with respiratory failure. He requires deep sedation and lacks decision-making capacity. He may not awaken for a day or longer. A boilerplate advance directive signed years ago names his wife as health care proxy and does not address confidentiality. The ICU team must decide within 1 hour about intubation, possible dialysis, and code status. Rapid proxy input could clarify his treatment preferences and allow consent to or refusal of high-burden life support. Without a surrogate, the team will likely default to full-code invasive support that may prolong suffering with limited chance of meaningful recovery. No other surrogate can be reached and ethics is unavailable. Hospital counsel states either approach is legally permissible.",
+        "choice_1": {
+          "choice": "Inform his wife of prognosis and imminent ICU decisions as his proxy",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Withhold prognosis from his wife and make time-limited ICU decisions without her",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

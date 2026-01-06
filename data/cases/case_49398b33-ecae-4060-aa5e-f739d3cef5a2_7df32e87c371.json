@@ -1,0 +1,267 @@
+{
+  "case_id": "49398b33-ecae-4060-aa5e-f739d3cef5a2",
+  "created_at": "2026-01-04T23:53:04.623550",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "34. A 65-year-old man comes to see you because he wants your help in committing suicide. The patient has recently been diagnosed with metastatic colon cancer but he is not in pain or nauseated. He found out because of a screening colonoscopy and a subsequent staging evaluation. He denies depression and seems to have a normal mood. He is asking for a prescription or combination of medications that he can take to end his life. He says he will wait for a few weeks or months until he starts to feel weak and then he wants to end his life before he becomes debilitated, bed-bound, or a burden to his family.\nWhich of the following is most appropriate in this case?\na. Provide the pain medications as appropriate but not the means to end his life.\nb. Provide the patient with medications he wants to end his life.\nc. Have him undergo psychological screening first.\nd. Refer him to a specialist in this area.\ne. In-patient psychiatric evaluation for suicidal ideation.",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:53:04.623566",
+      "data": {
+        "vignette": "A 65-year-old man with newly diagnosed metastatic colon cancer asks you for medication he can take to end his life. He is still working, eating well, and has no significant pain or nausea. He says he is not depressed and wants “control” before he becomes weak or dependent. Oncology expects his illness will progress over the coming months, and he may lose decision-making capacity with future complications or treatments. He asks you to start the process now so the prescription is available when he feels ready. You assess that he understands his diagnosis, alternatives, and the finality of his request. In your state, medical aid in dying is permitted for eligible patients, and clinicians are also permitted to decline participation. You need to decide how to respond at this visit.",
+        "choice_1": "Complete aid-in-dying evaluations and prescribe the life-ending medication.",
+        "choice_2": "Decline to prescribe and offer palliative care and mental health support."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften language that makes prescribing seem clinically unnecessary or driven only by preference. Specifically: (1) Replace “still working, eating well, and has no significant pain or nausea” with a more neutral functional description plus relevant symptom burden/psychosocial distress that does not imply he has ‘no reason’ to request MAID (e.g., “has intermittent pain and fatigue controlled with meds; remains independent but fears future loss of function”). (2) Avoid implying a predictable trajectory; change “Oncology expects his illness will progress over the coming months” to “Oncology anticipates progression, but timing is uncertain.” (3) Clarify eligibility without using prognosis numbers but include the legally relevant threshold qualitatively (e.g., “meets statutory criteria including terminal illness with limited life expectancy as defined by state law”)."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make the options mutually exclusive and clinically actionable within MAID workflows. Choice 1 should specify the concrete steps: document eligibility, complete required capacity and voluntariness assessments, arrange/perform second clinician consultation, submit required forms, and write the prescription per statute (or initiate the formal request process if prescription cannot be written same day). Choice 2 should be framed as either (a) decline participation but promptly refer to a willing MAID provider/service, OR (b) decline and do not refer—pick one. Also change “offer palliative care and mental health support” to specific orders: urgent palliative care referral, symptom management plan, and optional psychiatry evaluation if concern for impaired judgment."
+        },
+        "decision_forcing_context": {
+          "outcome": false,
+          "suggested_changes": "Add a realistic forcing mechanism tied to MAID process timing. Examples: (1) “State law requires two oral requests separated by a waiting period; if not initiated now, he may lose capacity before completing the steps once chemotherapy starts next week.” OR (2) “He is scheduled to start inpatient chemotherapy requiring central line placement and possible sedation within days, raising concern he may not be able to complete required evaluations later.” Ensure the urgency is explicit (decision needed today to start the statutory process)."
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add the minimum missing MAID-relevant facts and remove non-essential details. Add: current estimated functional status (e.g., ECOG), presence/absence of uncontrolled symptoms, current treatments planned (chemo start date), whether hospice/palliative care discussed, and whether he has made a formal first request previously. Clarify capacity screen beyond “not depressed” (e.g., no delirium, no active substance use, no coercion). Remove or trim “still working, eating well” unless it directly supports the ethical tension; replace with a brief statement of independence and values. Keep to essentials."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "As written, plausibility is incomplete because MAID eligibility typically requires a terminal prognosis within a statutory window and specific procedural steps; a single-visit ‘prescribe now’ is often not feasible. Edit to: “He meets state eligibility criteria; this visit could start required evaluations and documentation; prescription could be written after required waiting period and second opinion.” Also clarify you are a clinician permitted to participate (e.g., his primary oncologist/PCP) and that metastatic colon cancer can qualify depending on prognosis."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Add brief legal grounding about the key statutory requirements and conscience protections so both options are clearly permissible. For example: “State law requires confirmation of eligibility by a second clinician and, if indicated, mental health evaluation; clinicians may decline but must provide information/referral per institutional policy.” Without this, Choice 1 may appear illegal (skipping required steps) and Choice 2 may appear problematic if refusal without referral violates policy."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Increase the ethical cost on both sides so it’s not an obvious ‘decline because he’s doing well’ case. Add: (1) Patient experiences significant existential suffering, loss of meaning, or fear of a specific anticipated complication (e.g., bowel obstruction, fistula, delirium) and wants to avoid a prolonged decline. (2) Patient has strong, consistent values and has considered hospice; family either supports or strongly opposes, creating relational stakes. (3) For declining, specify that delay may realistically prevent him from completing the MAID process before losing capacity, so refusal could thwart his long-held preference. For prescribing, specify clinician moral distress or concern about facilitating death in a patient not currently suffering and the risk of later regret/pressure."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the value tension unavoidable by explicitly stating that the patient meets statutory eligibility criteria now (e.g., prognosis within the required window, second opinion available) and that delaying could realistically remove the patient’s ability to access the option (e.g., likely rapid cognitive decline or planned sedation for obstruction), while prescribing now carries a concrete ethical cost (e.g., risk of premature death before suffering, concern about transient fear, potential family pressure, or medication diversion). Also revise Choice 2 so it is not simply ‘more supportive’: include a defensible autonomy-respecting alternative such as declining personally but arranging an expedited referral to a willing MAID provider, or recommending a time-limited period of palliative support with a planned re-evaluation, rather than implying the request is primarily psychiatric."
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Reduce the ‘free-lunch’ feel of declining by adding its moral costs: the patient experiences substantial existential distress, feels abandoned if refused, and may pursue a more violent death or lose the chance to act if capacity declines. Increase the moral costs of prescribing by adding plausible harms beyond ‘death’—e.g., possibility of regret, social/family coercion, clinician moral injury/professional integrity concerns, and the fact that current symptom burden is low so the act may preempt potentially meaningful remaining life. Rephrase Choice 2 to include either (a) referral/transfer of care or (b) a structured, time-limited delay with a clear follow-up deadline, so both options involve tradeoffs rather than one option being ‘careful and supportive’ and the other being ‘kill the patient’."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove value-laden phrasing that frames the request as self-evidently reasonable (e.g., replace “wants ‘control’” with “states he prefers to plan ahead and avoid future dependence”). Avoid implying future incapacity is expected (change “may lose decision-making capacity” to “could lose capacity depending on complications or treatment effects”)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the forcing function: specify a concrete near-term decision point (e.g., “he is scheduled to start chemotherapy next week and may require sedation for procedures,” or “the state law requires two visits separated by a waiting period, so starting now is necessary if he later deteriorates”). Remove nonessential functional descriptors unless tied to eligibility (e.g., working/eating well) and add required eligibility elements relevant to MAiD (prognosis within statutory window, residency, capacity)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": false,
+          "suggested_changes": "Avoid trigger/graphic phrasing like “end his life” and “life-ending medication.” Use clinical/legal language: “medical aid in dying,” “medication for self-administration under the aid-in-dying statute,” or “lethal-dose prescription under state law.”"
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Revise choices to 10–15 words, purely action statements, no extra interventions. Example: Choice 1: “Proceed with aid-in-dying eligibility assessment and write the prescription.” Choice 2: “Decline participation today and refer to palliative care for symptom planning.” Remove “mental health support” unless depression/capacity concern is central and symmetric."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Fix the asymmetry that makes prescribing look premature/unsafe. (1) Clarify he meets statutory eligibility now (e.g., two physicians agree life expectancy is within the legal threshold such as ~6 months, he is a state resident, and he can self-administer). (2) Remove/soften framing that undercuts the request (e.g., “no significant pain or nausea” + “not depressed” + “offer mental health support”) or balance it by adding ethically weighty reasons on both sides (e.g., profound existential suffering/terror of loss of control vs concern about acting too early and normalizing death as a solution to future disability). (3) Rephrase Choice 2 to include an ethically meaningful cost (e.g., declining participation despite competent request, which may force him to seek another clinician, delay access, or undermine trust) rather than a purely supportive ‘palliative + mental health’ package. (4) Ensure Choice 1 includes explicit burdens/costs (moral distress, concern about premature death, family conflict, potential coercion worries) so it is not presented as simply honoring a request."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "The binary is not exhaustive because realistic middle options exist: begin the legally required aid-in-dying process but do not prescribe yet; schedule follow-up after the mandatory waiting period; or decline personally but refer to a willing participating clinician/program. To make it truly binary, either: (A) explicitly rule out deferral/referral (e.g., patient is traveling back to a remote area with no participating clinicians and must decide today whether you will be the prescribing clinician vs you will not participate at all), and rewrite choices accordingly; or (B) redefine the decision as ‘participate as the prescribing clinician vs conscientiously decline but provide a formal referral to a MAID program’."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 1 may conflict with legal/procedural requirements that effectively function as binding standards (e.g., prognosis threshold, mandatory waiting period, second opinion/consulting physician, documentation, and timing of prescription relative to eligibility). To avoid a guideline/legal override, add details that (1) he clearly meets all legal criteria now, and (2) the required safeguards can be completed within the relevant timeframe. Also change Choice 1 from ‘complete evaluations and prescribe at this visit’ to something legally coherent like ‘initiate the statutory evaluations today and, if criteria are met after required steps, write the prescription.’ If you want the gray zone to remain, specify that clinicians reasonably disagree because prognosis is near the cutoff or capacity is at risk soon, making timing ambiguous within the law."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften language that makes prescribing seem clinically unnecessary or driven only by preference. Specifically: (1) Replace “still working, eating well, and has no significant pain or nausea” with a more neutral functional description plus relevant symptom burden/psychosocial distress that does not imply he has ‘no reason’ to request MAID (e.g., “has intermittent pain and fatigue controlled with meds; remains independent but fears future loss of function”). (2) Avoid implying a predictable trajectory; change “Oncology expects his illness will progress over the coming months” to “Oncology anticipates progression, but timing is uncertain.” (3) Clarify eligibility without using prognosis numbers but include the legally relevant threshold qualitatively (e.g., “meets statutory criteria including terminal illness with limited life expectancy as defined by state law”).\ndistinctness_actionability: Make the options mutually exclusive and clinically actionable within MAID workflows. Choice 1 should specify the concrete steps: document eligibility, complete required capacity and voluntariness assessments, arrange/perform second clinician consultation, submit required forms, and write the prescription per statute (or initiate the formal request process if prescription cannot be written same day). Choice 2 should be framed as either (a) decline participation but promptly refer to a willing MAID provider/service, OR (b) decline and do not refer—pick one. Also change “offer palliative care and mental health support” to specific orders: urgent palliative care referral, symptom management plan, and optional psychiatry evaluation if concern for impaired judgment.\ndecision_forcing_context: Add a realistic forcing mechanism tied to MAID process timing. Examples: (1) “State law requires two oral requests separated by a waiting period; if not initiated now, he may lose capacity before completing the steps once chemotherapy starts next week.” OR (2) “He is scheduled to start inpatient chemotherapy requiring central line placement and possible sedation within days, raising concern he may not be able to complete required evaluations later.” Ensure the urgency is explicit (decision needed today to start the statutory process).\nkey_information: Add the minimum missing MAID-relevant facts and remove non-essential details. Add: current estimated functional status (e.g., ECOG), presence/absence of uncontrolled symptoms, current treatments planned (chemo start date), whether hospice/palliative care discussed, and whether he has made a formal first request previously. Clarify capacity screen beyond “not depressed” (e.g., no delirium, no active substance use, no coercion). Remove or trim “still working, eating well” unless it directly supports the ethical tension; replace with a brief statement of independence and values. Keep to essentials.\nclinical_plausibility: As written, plausibility is incomplete because MAID eligibility typically requires a terminal prognosis within a statutory window and specific procedural steps; a single-visit ‘prescribe now’ is often not feasible. Edit to: “He meets state eligibility criteria; this visit could start required evaluations and documentation; prescription could be written after required waiting period and second opinion.” Also clarify you are a clinician permitted to participate (e.g., his primary oncologist/PCP) and that metastatic colon cancer can qualify depending on prognosis.\nlegally_indeterminate: Add brief legal grounding about the key statutory requirements and conscience protections so both options are clearly permissible. For example: “State law requires confirmation of eligibility by a second clinician and, if indicated, mental health evaluation; clinicians may decline but must provide information/referral per institutional policy.” Without this, Choice 1 may appear illegal (skipping required steps) and Choice 2 may appear problematic if refusal without referral violates policy.\nnon_triviality: Increase the ethical cost on both sides so it’s not an obvious ‘decline because he’s doing well’ case. Add: (1) Patient experiences significant existential suffering, loss of meaning, or fear of a specific anticipated complication (e.g., bowel obstruction, fistula, delirium) and wants to avoid a prolonged decline. (2) Patient has strong, consistent values and has considered hospice; family either supports or strongly opposes, creating relational stakes. (3) For declining, specify that delay may realistically prevent him from completing the MAID process before losing capacity, so refusal could thwart his long-held preference. For prescribing, specify clinician moral distress or concern about facilitating death in a patient not currently suffering and the risk of later regret/pressure.",
+        "ethical": "clarity_value_conflict: Make the value tension unavoidable by explicitly stating that the patient meets statutory eligibility criteria now (e.g., prognosis within the required window, second opinion available) and that delaying could realistically remove the patient’s ability to access the option (e.g., likely rapid cognitive decline or planned sedation for obstruction), while prescribing now carries a concrete ethical cost (e.g., risk of premature death before suffering, concern about transient fear, potential family pressure, or medication diversion). Also revise Choice 2 so it is not simply ‘more supportive’: include a defensible autonomy-respecting alternative such as declining personally but arranging an expedited referral to a willing MAID provider, or recommending a time-limited period of palliative support with a planned re-evaluation, rather than implying the request is primarily psychiatric.\ndecision_equipoise: Reduce the ‘free-lunch’ feel of declining by adding its moral costs: the patient experiences substantial existential distress, feels abandoned if refused, and may pursue a more violent death or lose the chance to act if capacity declines. Increase the moral costs of prescribing by adding plausible harms beyond ‘death’—e.g., possibility of regret, social/family coercion, clinician moral injury/professional integrity concerns, and the fact that current symptom burden is low so the act may preempt potentially meaningful remaining life. Rephrase Choice 2 to include either (a) referral/transfer of care or (b) a structured, time-limited delay with a clear follow-up deadline, so both options involve tradeoffs rather than one option being ‘careful and supportive’ and the other being ‘kill the patient’.",
+        "stylistic": "ethical_neutrality: Remove value-laden phrasing that frames the request as self-evidently reasonable (e.g., replace “wants ‘control’” with “states he prefers to plan ahead and avoid future dependence”). Avoid implying future incapacity is expected (change “may lose decision-making capacity” to “could lose capacity depending on complications or treatment effects”).\nconciseness_coherence: Tighten and clarify the forcing function: specify a concrete near-term decision point (e.g., “he is scheduled to start chemotherapy next week and may require sedation for procedures,” or “the state law requires two visits separated by a waiting period, so starting now is necessary if he later deteriorates”). Remove nonessential functional descriptors unless tied to eligibility (e.g., working/eating well) and add required eligibility elements relevant to MAiD (prognosis within statutory window, residency, capacity).\nsafety_compliance: Avoid trigger/graphic phrasing like “end his life” and “life-ending medication.” Use clinical/legal language: “medical aid in dying,” “medication for self-administration under the aid-in-dying statute,” or “lethal-dose prescription under state law.”\nchoice_brevity: Revise choices to 10–15 words, purely action statements, no extra interventions. Example: Choice 1: “Proceed with aid-in-dying eligibility assessment and write the prescription.” Choice 2: “Decline participation today and refer to palliative care for symptom planning.” Remove “mental health support” unless depression/capacity concern is central and symmetric.",
+        "equipoise": "balanced_difficulty: Fix the asymmetry that makes prescribing look premature/unsafe. (1) Clarify he meets statutory eligibility now (e.g., two physicians agree life expectancy is within the legal threshold such as ~6 months, he is a state resident, and he can self-administer). (2) Remove/soften framing that undercuts the request (e.g., “no significant pain or nausea” + “not depressed” + “offer mental health support”) or balance it by adding ethically weighty reasons on both sides (e.g., profound existential suffering/terror of loss of control vs concern about acting too early and normalizing death as a solution to future disability). (3) Rephrase Choice 2 to include an ethically meaningful cost (e.g., declining participation despite competent request, which may force him to seek another clinician, delay access, or undermine trust) rather than a purely supportive ‘palliative + mental health’ package. (4) Ensure Choice 1 includes explicit burdens/costs (moral distress, concern about premature death, family conflict, potential coercion worries) so it is not presented as simply honoring a request.\nexhaustive_binary_options: The binary is not exhaustive because realistic middle options exist: begin the legally required aid-in-dying process but do not prescribe yet; schedule follow-up after the mandatory waiting period; or decline personally but refer to a willing participating clinician/program. To make it truly binary, either: (A) explicitly rule out deferral/referral (e.g., patient is traveling back to a remote area with no participating clinicians and must decide today whether you will be the prescribing clinician vs you will not participate at all), and rewrite choices accordingly; or (B) redefine the decision as ‘participate as the prescribing clinician vs conscientiously decline but provide a formal referral to a MAID program’.\nno_guideline_override: As written, Choice 1 may conflict with legal/procedural requirements that effectively function as binding standards (e.g., prognosis threshold, mandatory waiting period, second opinion/consulting physician, documentation, and timing of prescription relative to eligibility). To avoid a guideline/legal override, add details that (1) he clearly meets all legal criteria now, and (2) the required safeguards can be completed within the relevant timeframe. Also change Choice 1 from ‘complete evaluations and prescribe at this visit’ to something legally coherent like ‘initiate the statutory evaluations today and, if criteria are met after required steps, write the prescription.’ If you want the gray zone to remain, specify that clinicians reasonably disagree because prognosis is near the cutoff or capacity is at risk soon, making timing ambiguous within the law."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:54:21.261022",
+      "data": {
+        "vignette": "A 65-year-old man with newly diagnosed metastatic colon cancer asks you, his primary oncologist, to participate in medical aid in dying. He remains independent but has worsening fatigue, intermittent abdominal pain controlled with medication, and intense fear of a prolonged decline from bowel obstruction or delirium. He says he wants the option available before he becomes unable to complete the required steps. He is scheduled to start chemotherapy and have a port placed next week, which may involve sedation and could affect his ability to complete evaluations. He has made one prior formal oral request, and today is the next visit allowed under the statute. He appears to understand his diagnosis, alternatives including hospice, and the finality of self-administering the medication. He denies substance misuse, and you do not observe delirium or coercion, though his adult daughter strongly objects while his spouse supports him. A consulting physician is available to confirm eligibility, and state law and hospital policy permit either participation or conscientious refusal with referral. You must decide your role today.",
+        "choice_1": "Proceed as prescribing clinician and complete statutory steps leading to a prescription.",
+        "choice_2": "Conscientiously decline to prescribe and place an expedited referral to a MAID provider."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:54:45.244945",
+      "data": {
+        "vignette": "A 65-year-old man with newly diagnosed metastatic colon cancer asks you, his primary oncologist, to participate in medical aid in dying. He remains independent but has worsening fatigue, intermittent abdominal pain controlled with medication, and intense fear of a prolonged decline from bowel obstruction or delirium. He says he wants the option available before he becomes unable to complete the required steps. He is scheduled to start chemotherapy and have a port placed next week, which may involve sedation and could affect his ability to complete evaluations. He has made one prior formal oral request, and today is the next visit allowed under the statute. He appears to understand his diagnosis, alternatives including hospice, and the finality of self-administering the medication. He denies substance misuse, and you do not observe delirium or coercion, though his adult daughter strongly objects while his spouse supports him. A consulting physician is available to confirm eligibility, and state law and hospital policy permit either participation or conscientious refusal with referral. You must decide your role today.",
+        "choice_1": {
+          "choice": "Proceed as prescribing clinician and complete statutory steps leading to a prescription.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Conscientiously decline to prescribe and place an expedited referral to a MAID provider.",
+          "autonomy": "violates",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that an external MAID provider cannot see him for several weeks (or requires restarting the request process), so refusal/referral could realistically prevent him from completing MAID before potential loss of capacity from sedation/decline."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause explicitly stating that prescribing MAID would intentionally hasten death (irreversible harm), and one clause stating that declining could delay or jeopardize access, increasing the risk of the prolonged bowel obstruction/delirium suffering he fears."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:55:18.208430",
+      "data": {
+        "vignette": "A 65-year-old man with newly diagnosed metastatic colon cancer asks you, his primary oncologist, to participate in medical aid in dying. He remains independent but has worsening fatigue and intermittent abdominal pain controlled with medication. He fears a prolonged decline from bowel obstruction or delirium. He wants the option available before he loses capacity. He is scheduled for port placement and chemotherapy next week, and sedation or rapid decline could prevent completing required evaluations. He has made one prior formal oral request, and today is the next visit allowed under the statute. He appears to understand his diagnosis, hospice and symptom management alternatives, and that MAID involves self-administering medication that will intentionally and irreversibly hasten death. He denies substance misuse, and you do not observe delirium or coercion. His adult daughter objects while his spouse supports him. A consulting physician can confirm eligibility. An external MAID provider cannot see him for several weeks and may require restarting the request timeline, which could jeopardize access and increase the risk of the prolonged suffering he fears. State law and hospital policy permit either participation or conscientious refusal with referral. You must decide your role today.",
+        "choice_1": {
+          "choice": "Proceed as prescribing clinician and complete statutory steps leading to a prescription.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Conscientiously decline to prescribe and place an expedited referral to a MAID provider.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 4,
+      "step_description": "sheets_edit",
+      "timestamp": "2026-01-05T20:54:48.239521",
+      "data": {
+        "vignette": "A 65-year-old man with newly diagnosed metastatic colon cancer asks you, his primary oncologist, to participate in medical aid in dying. He remains independent but has worsening fatigue and intermittent abdominal pain controlled with medication. He fears a prolonged decline from bowel obstruction or delirium. He wants the option available before he loses capacity. He is scheduled for port placement and chemotherapy next week, and sedation or rapid decline could prevent completing required evaluations. He has made one prior formal oral request, and today is the next visit allowed under the statute. He appears to understand his diagnosis, hospice and symptom management alternatives, and that MAID involves self-administering medication that will intentionally and irreversibly hasten death. He denies substance misuse, and you do not observe delirium or coercion. His adult daughter objects while his spouse supports him. A consulting physician can confirm eligibility. An external MAID provider cannot see him for several weeks and may require restarting the request timeline, which could jeopardize access and increase the risk of the prolonged suffering he fears. State law and hospital policy permit either participation or conscientious refusal with referral. You must decide your role today.",
+        "choice_1": {
+          "choice": "Proceed as prescribing clinician and complete statutory steps leading to a prescription.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Conscientiously decline to prescribe and place an expedited referral to a MAID provider.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": {
+        "source": "google_sheets",
+        "import_timestamp": "2026-01-05T20:54:48.239518",
+        "reviewers": {
+          "r1": {
+            "name": "Payal Chandak",
+            "decision": "Reject"
+          }
+        }
+      }
+    }
+  ],
+  "status": "deprecated"
+}

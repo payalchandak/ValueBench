@@ -1,0 +1,242 @@
+{
+  "case_id": "f184f7c6-1a27-4ba7-a02a-74f3eeeb558b",
+  "created_at": "2026-01-04T23:02:19.165663",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 66:\nPOSTHUMOUS ORGAN DONATION\nMike is a 36-year-old banker with a passion for motorbikes. One winter evening when he\nis travelling back from a conference down the M1, his bike skids on a patch of black ice.\nHe was driving at 90 mph. He hits the windscreen of an oncoming car and his helmet\nsplits in half. An ambulance arrives at the scene within minutes and Mike is intubated and\nrushed to hospital. He has sustained severe injuries – he has fractured his pelvis and several\nvertebrae. At h ospital he is assessed on the intensive care unit. Attempts to resuscitate him\nare u nsuccessful, and when he is weaned off the ventilator he does not make any respiratory\neffort. Tests performed by two different consultants confirm that he has had massive brain-\nstem injuries, and he is declared brainstem dead despite the ventilator continuing to keep his\nheart and lungs working and consequently the rest of his organs perfused. Mike is registered\non the national organ donation database and was carrying an organ donor card on him. It is\ndecided to keep him ventilated until his next of kin are traced and contacted, so that Mike’s\nwish to donate his organs can be discussed with them.\nQuestions\n• How can someone donate his or her organs after death?\n• Can the next of kin prevent organ donation?",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:02:19.165717",
+      "data": {
+        "vignette": "A 36-year-old man is brought to the ICU after a high-speed motorcycle crash. He is intubated and on vasopressors. Imaging and exam show catastrophic brain injury. Two consultants complete the required testing and declare death by neurologic criteria. His driver’s license and the national registry document that he authorized organ donation, and a donor card is found in his wallet. His parents arrive within hours. They are distraught and say he once told them he “never wanted to be cut up.” They insist that donation not proceed and ask that the ventilator be turned off so they can “let him go.” The organ procurement team says timing is tight if donation is to remain possible. Hospital policy and state law permit proceeding on documented first-person authorization, and also permit deferring donation when family conflict is severe.",
+        "choice_1": "Proceed with organ procurement based on his documented donor authorization",
+        "choice_2": "Do not procure organs and withdraw ventilatory support after family bedside time"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make each option a single, concrete, implementable order set rather than bundling actions. For example:\n- Choice 1: “Maintain physiologic support and initiate organ procurement per first-person authorization.”\n- Choice 2: “Decline organ procurement; continue ventilatory support for a defined short period for family bedside time, then perform terminal extubation/withdraw life-sustaining measures.”\nAlso clarify whether comfort measures will be provided in Choice 2, even though the patient is dead by neurologic criteria, to make the bedside plan operational."
+        },
+        "decision_forcing_context": {
+          "outcome": false,
+          "suggested_changes": "Replace the vague phrase “timing is tight” with a realistic, explicit time window tied to organ viability/logistics (e.g., “procurement would need to begin within the next few hours to remain feasible because the OR and procurement team are only available overnight, and prolonged vasopressor-dependent instability may compromise organ viability”)."
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Trim or generalize nonessential trauma details while preserving what drives the ethical conflict. For example, replace “high-speed motorcycle crash” with “severe traumatic brain injury.” Keep: declaration of death by neurologic criteria, documented first-person authorization, parents’ objection and quoted statement, and the hospital policy/law permissibility. Remove any ICU management details (e.g., vasopressors) unless you explicitly link them to the time pressure for procurement."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Make the two options more evenly defensible by reducing the ‘free-lunch’ feel of following the registry and increasing the ethical costs of both paths.\n\nConcrete edits:\n- Strengthen the parents’ claim that he reversed his decision (not just a vague remark). E.g., add that he signed up as a donor years ago, but after a friend’s traumatic ICU death he told them he had removed himself from the registry/“tore up the donor card,” and they can produce contemporaneous texts or a recorded voicemail expressing that change.\n- Add a plausible reason the registry entry might be outdated or erroneous (name mismatch, old state registry not synced, or he recently renewed his license but the donor status auto-carried forward without explicit re-affirmation), without making it a pure factual/IT problem—keep it as ‘credible uncertainty about current wishes.’\n- Increase the moral costs of proceeding despite family objection beyond ‘they’re upset’: describe foreseeable harms such as escalating conflict at the bedside, need for security/restraints, risk of a public complaint that could erode community trust in donation, or staff moral distress—while still keeping procurement clinically feasible.\n- Increase the moral costs of not procuring: specify that donation is only possible within hours because he is on escalating vasopressor support and organ viability will likely be lost if delayed; missing the window would nullify his documented intent.\n- Keep withdrawal of ventilatory support separate from the donation decision (since he is already dead by neurologic criteria). Rephrase Choice 2 to: ‘Honor the family’s request to forgo procurement and discontinue organ-supportive measures after bedside time,’ so the ethical tradeoff is about donation vs family accommodation, not about end-of-life care."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or neutralize emotionally loaded phrasing and quotation marks that bias toward the family’s view: change “cut up” to a clinically neutral description (e.g., “he previously expressed discomfort with organ donation to them”). Replace “let him go” with “withdraw life-sustaining therapy for a bedside farewell.” Remove “catastrophic” and use “severe, non-survivable traumatic brain injury” or “injury consistent with death by neurologic criteria.” Ensure both sides’ positions are framed symmetrically (e.g., note the patient’s documented authorization vs family’s report of prior statements without implying either is more credible)."
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Use standard terminology and clarify key clinical/legal steps: specify “death was determined by neurologic criteria (DNC) per institutional protocol, including apnea testing and prerequisite conditions.” Replace “declare death” with “determined death.” Replace “organ procurement team” with “organ procurement organization (OPO) coordinator/team.” Clarify that withdrawal of ventilatory support after DNC is discontinuation of organ support, not end-of-life decision-making. Use ICU-style phrasing and avoid colloquialisms (e.g., “cut up,” “let him go”)."
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and remove potentially confusing elements: after DNC, “withdraw ventilatory support” can read as if the patient is still alive; rephrase to “discontinue mechanical ventilation/organ support.” Clarify the forcing constraint succinctly (e.g., “OPO notes procurement window is hours”). Consider whether vasopressors are necessary detail; if kept, link to donation viability. Ensure the timeline is coherent (testing completed before parents arrive) and state that he remains on mechanical ventilation solely for organ support post-DNC."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": false,
+          "suggested_changes": "The phrase “cut up” is graphic/trigger-adjacent. Replace with non-graphic clinical language (e.g., “surgical organ recovery”). Avoid vivid crash descriptors like “high-speed” unless clinically necessary; “motorcycle crash” suffices. Keep discussion focused on DNC and donation without graphic injury description."
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both choices parallel, action-focused, and similar length without extra clauses: \n- Choice 1: “Proceed with surgical organ recovery based on first-person donor authorization.” \n- Choice 2: “Defer organ recovery and discontinue organ support after family bedside time.” \nAvoid mixing donation decision with unrelated actions; if discontinuation is essential, align both choices around the donation decision plus immediate next step."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Make both choices ethically and practically defensible by adding credible ambiguity about the patient’s wishes and/or real harms of proceeding over family objection. For example: (1) change the registry evidence to be less definitive (e.g., “an old registry entry from >10 years ago with possible mis-match / duplicated name; donor card is unsigned or dated,” or “he recently told his parents he revoked consent but never updated the registry”), and (2) add concrete downstream consequences of overriding the family (risk of an injunction, violent disruption at the bedside, staff safety concerns, reputational harm that could undermine future donation). Also avoid language that makes procurement the obvious ‘right’ answer (e.g., soften “documented first-person authorization” to “records suggest authorization but are not fully verified yet”)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Remove obvious middle options (delay, ethics consult, rapid verification, limited procurement steps) by explicitly foreclosing them. Add a forcing constraint such as: “The OPO must begin the OR process within the next 1–2 hours or donation becomes impossible, and the parents refuse any further discussion or verification steps.” Clarify that either (A) proceed now despite objection, or (B) stand down and extubate after bedside time—no time remains for court review/ethics mediation/continued support while negotiating."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, policy/state law strongly favors honoring first-person authorization, making the ‘proceed’ option effectively mandated in many jurisdictions and thus not a gray-zone dilemma. To avoid a guideline/legal override, revise the legal/policy backdrop so it is genuinely permissive/ambiguous or conflicting—e.g., “state law is unsettled and hospitals vary; policy allows family veto when the decedent’s intent is disputed,” or “the registry entry cannot be verified to the patient’s identity in time,” or “the patient is a resident of another state with different rules and no clear reciprocity.” Alternatively, keep first-person authorization but add a credible, case-specific reason it may not apply (possible fraud/identity error, documented revocation in the chart, or contemporaneous statements inconsistent with donation)."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "distinctness_actionability: Make each option a single, concrete, implementable order set rather than bundling actions. For example:\n- Choice 1: “Maintain physiologic support and initiate organ procurement per first-person authorization.”\n- Choice 2: “Decline organ procurement; continue ventilatory support for a defined short period for family bedside time, then perform terminal extubation/withdraw life-sustaining measures.”\nAlso clarify whether comfort measures will be provided in Choice 2, even though the patient is dead by neurologic criteria, to make the bedside plan operational.\ndecision_forcing_context: Replace the vague phrase “timing is tight” with a realistic, explicit time window tied to organ viability/logistics (e.g., “procurement would need to begin within the next few hours to remain feasible because the OR and procurement team are only available overnight, and prolonged vasopressor-dependent instability may compromise organ viability”).\nkey_information: Trim or generalize nonessential trauma details while preserving what drives the ethical conflict. For example, replace “high-speed motorcycle crash” with “severe traumatic brain injury.” Keep: declaration of death by neurologic criteria, documented first-person authorization, parents’ objection and quoted statement, and the hospital policy/law permissibility. Remove any ICU management details (e.g., vasopressors) unless you explicitly link them to the time pressure for procurement.",
+        "ethical": "decision_equipoise: Make the two options more evenly defensible by reducing the ‘free-lunch’ feel of following the registry and increasing the ethical costs of both paths.\n\nConcrete edits:\n- Strengthen the parents’ claim that he reversed his decision (not just a vague remark). E.g., add that he signed up as a donor years ago, but after a friend’s traumatic ICU death he told them he had removed himself from the registry/“tore up the donor card,” and they can produce contemporaneous texts or a recorded voicemail expressing that change.\n- Add a plausible reason the registry entry might be outdated or erroneous (name mismatch, old state registry not synced, or he recently renewed his license but the donor status auto-carried forward without explicit re-affirmation), without making it a pure factual/IT problem—keep it as ‘credible uncertainty about current wishes.’\n- Increase the moral costs of proceeding despite family objection beyond ‘they’re upset’: describe foreseeable harms such as escalating conflict at the bedside, need for security/restraints, risk of a public complaint that could erode community trust in donation, or staff moral distress—while still keeping procurement clinically feasible.\n- Increase the moral costs of not procuring: specify that donation is only possible within hours because he is on escalating vasopressor support and organ viability will likely be lost if delayed; missing the window would nullify his documented intent.\n- Keep withdrawal of ventilatory support separate from the donation decision (since he is already dead by neurologic criteria). Rephrase Choice 2 to: ‘Honor the family’s request to forgo procurement and discontinue organ-supportive measures after bedside time,’ so the ethical tradeoff is about donation vs family accommodation, not about end-of-life care.",
+        "stylistic": "ethical_neutrality: Remove or neutralize emotionally loaded phrasing and quotation marks that bias toward the family’s view: change “cut up” to a clinically neutral description (e.g., “he previously expressed discomfort with organ donation to them”). Replace “let him go” with “withdraw life-sustaining therapy for a bedside farewell.” Remove “catastrophic” and use “severe, non-survivable traumatic brain injury” or “injury consistent with death by neurologic criteria.” Ensure both sides’ positions are framed symmetrically (e.g., note the patient’s documented authorization vs family’s report of prior statements without implying either is more credible).\nmedical_professionalism: Use standard terminology and clarify key clinical/legal steps: specify “death was determined by neurologic criteria (DNC) per institutional protocol, including apnea testing and prerequisite conditions.” Replace “declare death” with “determined death.” Replace “organ procurement team” with “organ procurement organization (OPO) coordinator/team.” Clarify that withdrawal of ventilatory support after DNC is discontinuation of organ support, not end-of-life decision-making. Use ICU-style phrasing and avoid colloquialisms (e.g., “cut up,” “let him go”).\nconciseness_coherence: Tighten and remove potentially confusing elements: after DNC, “withdraw ventilatory support” can read as if the patient is still alive; rephrase to “discontinue mechanical ventilation/organ support.” Clarify the forcing constraint succinctly (e.g., “OPO notes procurement window is hours”). Consider whether vasopressors are necessary detail; if kept, link to donation viability. Ensure the timeline is coherent (testing completed before parents arrive) and state that he remains on mechanical ventilation solely for organ support post-DNC.\nsafety_compliance: The phrase “cut up” is graphic/trigger-adjacent. Replace with non-graphic clinical language (e.g., “surgical organ recovery”). Avoid vivid crash descriptors like “high-speed” unless clinically necessary; “motorcycle crash” suffices. Keep discussion focused on DNC and donation without graphic injury description.\nchoice_brevity: Make both choices parallel, action-focused, and similar length without extra clauses: \n- Choice 1: “Proceed with surgical organ recovery based on first-person donor authorization.” \n- Choice 2: “Defer organ recovery and discontinue organ support after family bedside time.” \nAvoid mixing donation decision with unrelated actions; if discontinuation is essential, align both choices around the donation decision plus immediate next step.",
+        "equipoise": "balanced_difficulty: Make both choices ethically and practically defensible by adding credible ambiguity about the patient’s wishes and/or real harms of proceeding over family objection. For example: (1) change the registry evidence to be less definitive (e.g., “an old registry entry from >10 years ago with possible mis-match / duplicated name; donor card is unsigned or dated,” or “he recently told his parents he revoked consent but never updated the registry”), and (2) add concrete downstream consequences of overriding the family (risk of an injunction, violent disruption at the bedside, staff safety concerns, reputational harm that could undermine future donation). Also avoid language that makes procurement the obvious ‘right’ answer (e.g., soften “documented first-person authorization” to “records suggest authorization but are not fully verified yet”).\nexhaustive_binary_options: Remove obvious middle options (delay, ethics consult, rapid verification, limited procurement steps) by explicitly foreclosing them. Add a forcing constraint such as: “The OPO must begin the OR process within the next 1–2 hours or donation becomes impossible, and the parents refuse any further discussion or verification steps.” Clarify that either (A) proceed now despite objection, or (B) stand down and extubate after bedside time—no time remains for court review/ethics mediation/continued support while negotiating.\nno_guideline_override: As written, policy/state law strongly favors honoring first-person authorization, making the ‘proceed’ option effectively mandated in many jurisdictions and thus not a gray-zone dilemma. To avoid a guideline/legal override, revise the legal/policy backdrop so it is genuinely permissive/ambiguous or conflicting—e.g., “state law is unsettled and hospitals vary; policy allows family veto when the decedent’s intent is disputed,” or “the registry entry cannot be verified to the patient’s identity in time,” or “the patient is a resident of another state with different rules and no clear reciprocity.” Alternatively, keep first-person authorization but add a credible, case-specific reason it may not apply (possible fraud/identity error, documented revocation in the chart, or contemporaneous statements inconsistent with donation)."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:03:46.432400",
+      "data": {
+        "vignette": "A 36-year-old man is in the ICU after a motorcycle crash. He has a non-survivable traumatic brain injury. Death is determined by neurologic criteria per protocol, including apnea testing. He remains on the ventilator only for organ support. The organ procurement organization reports he is listed as a donor in an out-of-state registry entered when he first got a driver’s license over a decade ago, but the registry cannot be fully verified to his identity before the operating room cutoff. A donor card in his wallet is undated and unsigned. His parents arrive and state he later told them he had removed himself from the registry after a friend’s ICU death. They show recent text messages consistent with that claim. They refuse further discussion and threaten to physically block transport if recovery proceeds. Security and nursing leaders anticipate a disruptive confrontation. The OPO says recovery must start within two hours because he is becoming unstable and the procurement team is only available overnight. Hospital counsel confirms that either proceeding or standing down is legally permissible here.",
+        "choice_1": "Maintain organ support and initiate surgical organ recovery tonight",
+        "choice_2": "Stand down from recovery; discontinue organ support after one hour of bedside time"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:04:04.202061",
+      "data": {
+        "vignette": "A 36-year-old man is in the ICU after a motorcycle crash. He has a non-survivable traumatic brain injury. Death is determined by neurologic criteria per protocol, including apnea testing. He remains on the ventilator only for organ support. The organ procurement organization reports he is listed as a donor in an out-of-state registry entered when he first got a driver’s license over a decade ago, but the registry cannot be fully verified to his identity before the operating room cutoff. A donor card in his wallet is undated and unsigned. His parents arrive and state he later told them he had removed himself from the registry after a friend’s ICU death. They show recent text messages consistent with that claim. They refuse further discussion and threaten to physically block transport if recovery proceeds. Security and nursing leaders anticipate a disruptive confrontation. The OPO says recovery must start within two hours because he is becoming unstable and the procurement team is only available overnight. Hospital counsel confirms that either proceeding or standing down is legally permissible here.",
+        "choice_1": {
+          "choice": "Maintain organ support and initiate surgical organ recovery tonight",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Stand down from recovery; discontinue organ support after one hour of bedside time",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one explicit clause making the patient’s most recent, verifiable preference clear (e.g., “the texts explicitly state, ‘I removed myself from the donor registry last year,’” or alternatively “OPO confirms the registry entry is definitively matched to him with full identifiers and there is no record of removal”)."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that recovery tonight would likely allow transplantation to several critically ill recipients (life-saving benefit), and that standing down will forgo those potential recipient benefits (e.g., organs will become nonviable)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause explicitly stating the anticipated harms of proceeding (e.g., “security believes there is a credible risk of physical injury to staff/family during transport or in the OR”) and clarify the harm of standing down (e.g., “the team warns that if recovery is delayed, multiple listed recipients are likely to die waiting for organs”)."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause noting that multiple candidates are actively waiting for these organs tonight (e.g., a status-1 liver recipient), and that missing this recovery wastes a scarce OR/procurement slot and affects equitable organ allocation."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:05:07.570061",
+      "data": {
+        "vignette": "A 36-year-old man is in the ICU after a motorcycle crash. He has a non-survivable traumatic brain injury. Death is determined by neurologic criteria per protocol, including apnea testing. He remains on the ventilator only for organ support. The organ procurement organization reports he is listed as a donor in an out-of-state registry entered over a decade ago. The registry cannot be definitively matched to his identifiers before the operating room cutoff, and any removal record cannot be checked tonight. A donor card in his wallet is undated and unsigned. His parents state he later opted out after a friend’s ICU death. They show recent text messages that explicitly state he removed himself from the donor registry last year. They refuse further discussion and threaten to physically block transport. Security anticipates a credible risk of injury to staff or family if recovery proceeds. The OPO says recovery must start within two hours. Several candidates are actively waiting tonight, including a status-1 liver recipient. If recovery is delayed, organs will become nonviable and recipients may die waiting. Hospital counsel confirms that either proceeding or standing down is legally permissible here.",
+        "choice_1": {
+          "choice": "Maintain organ support and initiate surgical organ recovery tonight",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Stand down from recovery; discontinue organ support after one hour of bedside time",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

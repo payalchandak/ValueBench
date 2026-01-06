@@ -1,0 +1,236 @@
+{
+  "case_id": "b8146269-c56c-44c1-b7ec-62e69d89566f",
+  "created_at": "2026-01-04T23:57:56.363872",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "Case 7-6 :\nDisclosing Cancer to a Mentally Compromised Patient\nA 64-year-old man, David Younis, was brought to the emergency room (ER)\nafter his wife found him suddenly disoriented and incoherent. Mr. Younis\nwas known at the hospital for alcohol dependence, with cirrhosis of the\nliver. Examination revealed liver enlargement including a mass that was\nconfirmed with a computed tomography (CT) scan. He was admitted to the\nhospital, and a biopsy of the mass was scheduled. Mr. Younis’s mental\nstatus improved; his wife requested that he not be told if the diagnosis was\nmalignant. Mrs. Younis said that if he learns he has cancer, he will kill\nhimself. Dr. Andre Caldarone, the hepatologist (liver specialist), then can-\nceled the biopsy procedure.",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:57:56.363888",
+      "data": {
+        "vignette": "A 64-year-old man with alcohol use disorder and cirrhosis is admitted after acute confusion. Imaging shows a new liver mass concerning for cancer. His thinking clears over two days. He is now calm, oriented, and asking what the scan showed. A biopsy is scheduled for tomorrow and requires his consent. His wife asks you not to mention cancer. She says he has previously threatened suicide during periods of sobriety and told her he would “end it” if he ever had cancer. You have not observed suicidal statements in the hospital, but he has been intermittently tearful and sleep-deprived. Delaying the biopsy could postpone treatment planning and worsen his prognosis if the mass is malignant. Disclosing the full concern could trigger panic, refusal of care, or self-harm. Hospital policy permits either full disclosure now or a brief delay to assess imminent self-harm risk.",
+        "choice_1": "Tell him cancer is suspected and obtain his consent for biopsy",
+        "choice_2": "Postpone biopsy and withhold malignancy discussion pending psychiatric safety assessment"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften language that makes delay sound medically inferior or outcome-determinative. For example, change “Delaying the biopsy could postpone treatment planning and worsen his prognosis if the mass is malignant” to “Delaying the biopsy could delay diagnostic clarification and treatment planning if the mass is malignant.” Avoid implying one choice is medically ‘correct’ based on prognosis."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Add a brief sentence grounding legal permissibility of *both* options for informed consent and temporary nondisclosure. E.g., “In this jurisdiction, clinicians may briefly delay disclosure and defer elective procedures when there is a credible concern for imminent self-harm, but otherwise must disclose material information to obtain valid consent.” Also clarify what consent would look like in Choice 2 (e.g., explicitly cancel/reschedule biopsy rather than proceed without disclosure)."
+        },
+        "non_triviality": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the vignette so neither option reads as the medically/ethically obvious choice. Specifically: (1) Remove or soften the line that delaying biopsy could 'worsen his prognosis' and instead state that a short delay is unlikely to change resectability/next-step options but could delay staging/eligibility for time-limited therapies; (2) Add a concrete reason immediate disclosure may plausibly precipitate imminent self-harm (e.g., recent sober period with documented suicide attempt after prior bad news, access to means at home, escalating agitation/insomnia), OR conversely add a concrete reason delaying risks meaningful harm (e.g., narrow window to biopsy before coagulopathy worsens or before discharge/transfer, limited interventional radiology slot); (3) Clarify that the patient’s current decision-making capacity is intact, but his suicidality risk is uncertain and cannot be resolved before the biopsy slot without a psychiatry evaluation, making both paths defensible; (4) Consider reframing Choice 2 as a time-limited, transparent approach (postpone and tell him there is a 'serious finding' requiring further discussion after a same-day safety evaluation) to avoid it reading as simple deception."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften outcome-weighting and emotionally loaded phrasing. For example: replace “worsen his prognosis” with “delay diagnostic clarification and treatment planning”; replace “trigger panic” with “worsen acute distress.” Remove the quoted phrase “end it” and state neutrally that collateral history includes prior statements of intent to harm himself if diagnosed with cancer."
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Use more clinical phrasing and add a brief capacity statement. For example: replace “His thinking clears” with “His encephalopathy resolves”; add “He demonstrates decision-making capacity for informed consent.” Replace “threatened suicide” with “expressed suicidal ideation/intent” and avoid direct quotes."
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": false,
+          "suggested_changes": "Avoid explicit self-harm trigger wording and direct quotes. Replace “suicide”/“end it” with “self-harm risk” or “suicidal ideation per spouse,” described clinically without quotation. Consider adding “no access to lethal means identified” only if essential, otherwise omit."
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Shorten choices to neutral action statements without embedded rationale. Example revisions: \n- Choice 1: “Disclose suspected malignancy and obtain informed consent for biopsy.” \n- Choice 2: “Delay biopsy and defer malignancy disclosure until psychiatric evaluation.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce the sense that Choice 1 is simply “standard care” and Choice 2 is clearly paternalistic/illegal. Make the ethical costs more symmetric by (a) adding credible evidence of near-term self-harm risk (e.g., recent suicide attempt, current access plan, active hopelessness) OR (b) adding credible evidence that full disclosure tomorrow is unlikely to change clinical course (biopsy can be safely delayed a short, defined period without changing staging/treatment). Also avoid implying definitive prognostic worsening from a short delay; rephrase to “may delay treatment planning” rather than “worsen his prognosis.”"
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious middle-ground options. Either (1) explicitly rule out same-day psychiatric assessment/safety planning before the biopsy (e.g., no psychiatry coverage overnight; earliest assessment after the scheduled procedure time), and rule out enhanced observation as sufficient; OR (2) revise the binary to reflect the real fork: “disclose now and proceed with biopsy as scheduled” vs “disclose now but delay biopsy until after psych risk evaluation and safety plan” (or “delay disclosure and biopsy for a time-limited safety evaluation”). As written, clinicians could reasonably choose: disclose, obtain consent, and still postpone biopsy pending psych evaluation—an unoffered third option."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Informed consent norms generally require disclosing the indication for biopsy and answering a direct question about scan findings; withholding ‘cancer suspected’ risks being clearly noncompliant. To keep this in a gray zone, add a fact that makes nondisclosure potentially defensible under accepted practice: e.g., the patient previously documented a preference not to be told about possible cancer diagnoses (or asked the team earlier to speak only with his wife), OR he is still fluctuating in capacity with concern for delirium recurrence so disclosure/consent validity is uncertain, OR the institution has a narrowly defined ‘therapeutic privilege’ policy allowing brief delay when there is specific, imminent risk of serious self-harm, and it requires immediate safety evaluation—make that explicit and time-limited. Also clarify that Choice 2 involves a brief, defined delay (e.g., 12–24h) rather than open-ended withholding."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften language that makes delay sound medically inferior or outcome-determinative. For example, change “Delaying the biopsy could postpone treatment planning and worsen his prognosis if the mass is malignant” to “Delaying the biopsy could delay diagnostic clarification and treatment planning if the mass is malignant.” Avoid implying one choice is medically ‘correct’ based on prognosis.\nlegally_indeterminate: Add a brief sentence grounding legal permissibility of *both* options for informed consent and temporary nondisclosure. E.g., “In this jurisdiction, clinicians may briefly delay disclosure and defer elective procedures when there is a credible concern for imminent self-harm, but otherwise must disclose material information to obtain valid consent.” Also clarify what consent would look like in Choice 2 (e.g., explicitly cancel/reschedule biopsy rather than proceed without disclosure).",
+        "ethical": "decision_equipoise: Rebalance the vignette so neither option reads as the medically/ethically obvious choice. Specifically: (1) Remove or soften the line that delaying biopsy could 'worsen his prognosis' and instead state that a short delay is unlikely to change resectability/next-step options but could delay staging/eligibility for time-limited therapies; (2) Add a concrete reason immediate disclosure may plausibly precipitate imminent self-harm (e.g., recent sober period with documented suicide attempt after prior bad news, access to means at home, escalating agitation/insomnia), OR conversely add a concrete reason delaying risks meaningful harm (e.g., narrow window to biopsy before coagulopathy worsens or before discharge/transfer, limited interventional radiology slot); (3) Clarify that the patient’s current decision-making capacity is intact, but his suicidality risk is uncertain and cannot be resolved before the biopsy slot without a psychiatry evaluation, making both paths defensible; (4) Consider reframing Choice 2 as a time-limited, transparent approach (postpone and tell him there is a 'serious finding' requiring further discussion after a same-day safety evaluation) to avoid it reading as simple deception.",
+        "stylistic": "ethical_neutrality: Remove or soften outcome-weighting and emotionally loaded phrasing. For example: replace “worsen his prognosis” with “delay diagnostic clarification and treatment planning”; replace “trigger panic” with “worsen acute distress.” Remove the quoted phrase “end it” and state neutrally that collateral history includes prior statements of intent to harm himself if diagnosed with cancer.\nmedical_professionalism: Use more clinical phrasing and add a brief capacity statement. For example: replace “His thinking clears” with “His encephalopathy resolves”; add “He demonstrates decision-making capacity for informed consent.” Replace “threatened suicide” with “expressed suicidal ideation/intent” and avoid direct quotes.\nsafety_compliance: Avoid explicit self-harm trigger wording and direct quotes. Replace “suicide”/“end it” with “self-harm risk” or “suicidal ideation per spouse,” described clinically without quotation. Consider adding “no access to lethal means identified” only if essential, otherwise omit.\nchoice_brevity: Shorten choices to neutral action statements without embedded rationale. Example revisions: \n- Choice 1: “Disclose suspected malignancy and obtain informed consent for biopsy.” \n- Choice 2: “Delay biopsy and defer malignancy disclosure until psychiatric evaluation.”",
+        "equipoise": "balanced_difficulty: Reduce the sense that Choice 1 is simply “standard care” and Choice 2 is clearly paternalistic/illegal. Make the ethical costs more symmetric by (a) adding credible evidence of near-term self-harm risk (e.g., recent suicide attempt, current access plan, active hopelessness) OR (b) adding credible evidence that full disclosure tomorrow is unlikely to change clinical course (biopsy can be safely delayed a short, defined period without changing staging/treatment). Also avoid implying definitive prognostic worsening from a short delay; rephrase to “may delay treatment planning” rather than “worsen his prognosis.”\nexhaustive_binary_options: Close obvious middle-ground options. Either (1) explicitly rule out same-day psychiatric assessment/safety planning before the biopsy (e.g., no psychiatry coverage overnight; earliest assessment after the scheduled procedure time), and rule out enhanced observation as sufficient; OR (2) revise the binary to reflect the real fork: “disclose now and proceed with biopsy as scheduled” vs “disclose now but delay biopsy until after psych risk evaluation and safety plan” (or “delay disclosure and biopsy for a time-limited safety evaluation”). As written, clinicians could reasonably choose: disclose, obtain consent, and still postpone biopsy pending psych evaluation—an unoffered third option.\nno_guideline_override: Informed consent norms generally require disclosing the indication for biopsy and answering a direct question about scan findings; withholding ‘cancer suspected’ risks being clearly noncompliant. To keep this in a gray zone, add a fact that makes nondisclosure potentially defensible under accepted practice: e.g., the patient previously documented a preference not to be told about possible cancer diagnoses (or asked the team earlier to speak only with his wife), OR he is still fluctuating in capacity with concern for delirium recurrence so disclosure/consent validity is uncertain, OR the institution has a narrowly defined ‘therapeutic privilege’ policy allowing brief delay when there is specific, imminent risk of serious self-harm, and it requires immediate safety evaluation—make that explicit and time-limited. Also clarify that Choice 2 involves a brief, defined delay (e.g., 12–24h) rather than open-ended withholding."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:59:22.587580",
+      "data": {
+        "vignette": "A 64-year-old man with alcohol use disorder and cirrhosis is admitted for confusion from hepatic encephalopathy. Imaging shows a new liver mass concerning for malignancy. Over 48 hours his encephalopathy resolves. He is calm, oriented, and asks directly what the scan showed. He can describe the biopsy, its purpose, and his options, and he communicates a consistent choice. Interventional radiology scheduled an image-guided biopsy for tomorrow morning, and the next available slot is several days later if it is cancelled. His wife asks you not to discuss cancer yet. She reports a recent emergency visit for intentional medication ingestion after receiving medical bad news and says he has previously expressed intent to harm himself if told he had cancer. You have not heard suicidal statements, but he has been tearful and sleeping poorly. Psychiatry cannot evaluate him before the biopsy time. Hospital policy and counsel permit either immediate disclosure with standard consent or a brief, time-limited delay when imminent self-harm is a credible concern.",
+        "choice_1": "Disclose suspected malignancy and obtain consent to proceed with biopsy tomorrow.",
+        "choice_2": "Postpone biopsy and defer malignancy disclosure until after psychiatric evaluation."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:59:33.995432",
+      "data": {
+        "vignette": "A 64-year-old man with alcohol use disorder and cirrhosis is admitted for confusion from hepatic encephalopathy. Imaging shows a new liver mass concerning for malignancy. Over 48 hours his encephalopathy resolves. He is calm, oriented, and asks directly what the scan showed. He can describe the biopsy, its purpose, and his options, and he communicates a consistent choice. Interventional radiology scheduled an image-guided biopsy for tomorrow morning, and the next available slot is several days later if it is cancelled. His wife asks you not to discuss cancer yet. She reports a recent emergency visit for intentional medication ingestion after receiving medical bad news and says he has previously expressed intent to harm himself if told he had cancer. You have not heard suicidal statements, but he has been tearful and sleeping poorly. Psychiatry cannot evaluate him before the biopsy time. Hospital policy and counsel permit either immediate disclosure with standard consent or a brief, time-limited delay when imminent self-harm is a credible concern.",
+        "choice_1": {
+          "choice": "Disclose suspected malignancy and obtain consent to proceed with biopsy tomorrow.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Postpone biopsy and defer malignancy disclosure until after psychiatric evaluation.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause specifying the clinical benefit/urgency of proceeding with biopsy now (e.g., that a several-day delay could change staging/treatment options), and a clause quantifying the self-harm risk if told now (e.g., recent serious suicide attempt requiring ICU) to make the beneficence tradeoff unambiguous."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause specifying the clinical downside of delaying biopsy (e.g., that the mass is concerning for aggressive HCC where a several-day delay could worsen staging or eligibility for curative options)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:00:18.694604",
+      "data": {
+        "vignette": "A 64-year-old man with alcohol use disorder and cirrhosis is admitted for confusion from hepatic encephalopathy. Imaging shows a new liver mass concerning for malignancy. Over 48 hours his encephalopathy resolves. He is calm, oriented, and asks directly what the scan showed. He can describe the biopsy, its purpose, and his options, and he communicates a consistent choice. Interventional radiology scheduled an image-guided biopsy for tomorrow morning, and the next available slot is several days later if it is cancelled. His wife asks you not to discuss cancer yet. She reports a recent emergency visit for intentional medication ingestion after receiving medical bad news and says he has previously expressed intent to harm himself if told he had cancer. You have not heard suicidal statements, but he has been tearful and sleeping poorly. Psychiatry cannot evaluate him before the biopsy time. Hospital policy and counsel permit either immediate disclosure with standard consent or a brief, time-limited delay when imminent self-harm is a credible concern.",
+        "choice_1": {
+          "choice": "Disclose suspected malignancy and obtain consent to proceed with biopsy tomorrow.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Postpone biopsy and defer malignancy disclosure until after psychiatric evaluation.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

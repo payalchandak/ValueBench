@@ -1,0 +1,242 @@
+{
+  "case_id": "27e4de97-52db-47bd-9cb0-1523fb445e41",
+  "created_at": "2026-01-04T23:24:47.545395",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 76:\nDO NOT ATTEMPT CARDIOPULMONARY\nRESUSCITATION ORDERS\nYou are a GP with care of a nursing home. Since your last visit Tim has arrived. He is 87 and\nvery frail. He has a history of ischaemic heart disease but this is well controlled following\ncardiac stenting. He also has early signs of vascular dementia but can still interact with his\nenvironment. Following local clinical commissioning group (CCG) guidance the nursing\nhome has a policy that end-of-life decisions are discussed with patients and their relatives\nonce they have been given a chance to settle in. Part of this involves asking the resident about\nhis wishes regarding cardiopulmonary resuscitation.\nGiven the medical situation, you believe Tim should not be for resuscitation because the\nharms of cardiopulmonary resuscitation (CPR) are significant for a person in his physical\ncondition (it is likely that his ribs may break with compressions) and, even if successful at\nrestarting his heart, it is likely that this will only prolong his life by a few months given his\npast history. The nursing home manager informs you that Tim has an extensive family and at\nleast one member visits him daily.\nDuring one of your weekly visits you decide to chat with Tim about his end-of-life wishes.\nHis grandson is also present. Tim does not recognise you from your previous visits, but Dave,\nTim’s grandson, tells you that he seems very settled in the nursing home. His grandfather\nloves to have visits from his family, ‘even though he doesn’t really know who we are’ and\nhe takes great pleasure from the small things in his life, like sitting in the sun in a comfy\narmchair with a cup of tea.\nQuestions\n• Who makes a decision whether to make a Do Not Attempt Cardiopulmonary\nResuscitation (DNACPR) order?\n• Does this need to be discussed with the patient/the patient’s family/carers?\n• What if the family objects to the DNACPR?",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:24:47.545476",
+      "data": {
+        "vignette": "You are the GP for a nursing home. Tim is 87 and very frail. He has stable ischaemic heart disease with prior stents. He has early vascular dementia. He enjoys daily family visits and simple routines, but he does not always recognise staff and sometimes loses the thread of conversations. The home’s policy is to discuss resuscitation wishes soon after admission, and the manager asks you to document a plan this week. You explain CPR in plain terms, including likely chest injuries, a high chance of an ICU death, and the possibility of surviving with worse confusion and dependence. Tim says, clearly and repeatedly, that he wants “everything done” if his heart stops. His grandson supports that request and asks you not to “give up on him.” Local law and the facility’s policy allow either completing a DNACPR based on clinical judgement after discussion or maintaining full code status when an informed patient requests it.",
+        "choice_1": "Complete a DNACPR order today and record it in the chart.",
+        "choice_2": "Keep him full code and plan another discussion within the next week."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Soften outcome-directing language that makes CPR appear clearly futile. Replace “a high chance of an ICU death” with qualitative but non-deterministic phrasing (e.g., “a significant risk of not surviving the hospitalization even if the heart is restarted” or “a substantial chance of dying in intensive care after CPR”). Balance by briefly acknowledging uncertainty (e.g., “occasionally CPR restores circulation, but…”). Avoid wording that implies one option is medically ‘correct.’"
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make the two options mutually exclusive, concrete, and immediate medical orders rather than ‘order vs defer.’ Revise Choice 2 to an actionable order such as: “Document him as Full Code today (no DNACPR) and communicate this to nursing staff/EMS,” optionally adding “and schedule a review discussion within 1 week.” Also specify in Choice 1 whether you will still revisit (or explicitly state you will not change the DNACPR without new discussion) so it cannot overlap with Choice 2."
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Add a brief, explicit capacity assessment given early vascular dementia, because legal/clinical plausibility hinges on it. For example: “You assess that Tim can describe what CPR involves, appreciates the likely outcomes for him, and can explain his reasons; you judge he has capacity for this decision today.” Alternatively, if capacity is borderline, state that explicitly and describe what elements are intact/impaired. Also clarify whether the jurisdiction is one where clinicians may issue DNACPR despite a capacitated patient’s request when CPR is judged non-beneficial, to align the scenario with real-world practice."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Rebalance so neither option is obviously preferable. Currently, frailty plus “high chance of ICU death” makes DNACPR feel predetermined; and Choice 2 reads like avoidant deferral. To fix: (1) temper ‘futility’ language as above; (2) articulate the ethical costs of honoring full code (risk of traumatic CPR with low likelihood of returning to prior baseline; potential prolonged ICU course) and of overriding him with DNACPR (undermining trust, distress to family, risk of appearing discriminatory toward dementia/frailty); (3) make Choice 2 an affirmative decision to honor full code now (not just postpone), while acknowledging it may expose him to harms you believe are unlikely to benefit him."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the value clash unavoidable rather than sounding like a clinically dictated DNACPR. Edit the CPR description to be more balanced (e.g., replace “high chance of an ICU death” with “often results in death in hospital even with ICU care, though a small number of patients do survive to discharge”) and add a concrete reason CPR could plausibly be considered consistent with his goals (e.g., arrests in a nursing home may be witnessed with rapid response; he values more time with family even if function declines)."
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Clarify decisional capacity explicitly so graders don’t interpret this primarily as a capacity/consent case. Add a sentence such as: “You assess Tim can understand, retain, and weigh the information and communicate a consistent choice today.” Also clarify whether the clinician believes CPR is medically non-beneficial vs merely low-yield; otherwise some readers will treat DNACPR as mandatory ‘medical futility’ rather than a contested ethical judgment."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Reframe Choice 2 so it is a genuine alternative, not a defer-and-revisit. For example: (Choice 2) “Document him as full code now in line with his stated wishes, and schedule a follow-up conversation to revisit as his condition changes.” Also reduce language that makes CPR seem obviously wrong (remove “high chance”/loaded phrasing) and add an ethically costly downside to full code (e.g., staff moral distress and foreseeable traumatic, invasive attempts) and an ethically costly downside to DNACPR (e.g., overriding a capacitous patient’s expressed preference; risk of undermining trust with family and patient)."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Reduce framing that steers toward DNACPR. Replace evaluative language like “very frail,” “high chance of an ICU death,” and the grandson’s “don’t ‘give up on him’” with clinically neutral phrasing. Example edits: (1) change “very frail” to “has advanced frailty with limited physiologic reserve”; (2) replace “a high chance of an ICU death” with “CPR is unlikely to restore sustained circulation and may lead to ICU admission with poor neurologic recovery”; (3) change grandson quote to “asks that you honor his stated preference.” Also add a neutral sentence acknowledging potential benefits of attempted resuscitation (e.g., rare return to baseline) to avoid one-sided outcome framing."
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Tighten to a clinical-note tone and add key capacity language. Replace lay phrasing (“heart stops,” “everything done”) with clinically standard terms while still reporting the patient’s words. Add a sentence documenting assessment of decision-making capacity for DNACPR discussion (understanding, appreciation, reasoning, communication) and whether delirium is excluded. Example: “You assess capacity for CPR decision-making and note fluctuating orientation but consistent understanding of CPR/ICU implications.”"
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Remove or consolidate non-essential narrative details and clarify the decision-forcing element. Cut “enjoys daily family visits and simple routines” unless tied to goals-of-care. Clarify why the plan must be entered ‘this week’ (admission paperwork deadline/regulatory requirement). Ensure internal coherence by specifying whether Tim’s dementia affects capacity (currently ‘early’ yet ‘sometimes loses the thread’ without explicit capacity assessment)."
+        },
+        "deidentification_novelty": {
+          "outcome": false,
+          "suggested_changes": "Further de-identify and avoid potentially recognizable institutional specifics. Replace the patient name (“Tim”) with a neutral descriptor (“an 87-year-old resident”) and avoid naming “the home’s policy” details that could map to a specific facility; generalize to “facility policy/regulatory requirement.” Consider adding a minor clinical modifier (e.g., comorbidity or functional status) to make the vignette less generic/textbook while keeping the same age and primary condition."
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both choices parallel, complete, and similarly time-bound without embedding process differences that change the ethical question. Choice 2 currently adds delay (‘plan another discussion’) while Choice 1 acts immediately; this can be read as ‘decide now vs defer’ rather than ‘override vs honor’. Revise to two clean actions: (1) “Enter a DNACPR order now after documenting your clinical judgment.” (2) “Document full-code status now and defer DNACPR unless capacity changes.” Keep each to ~10–15 words and avoid extra implementation steps beyond the action."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce framing that makes DNACPR obviously preferable and make the patient’s decision-making status genuinely ambiguous. Edits: (1) Replace “a high chance of an ICU death” with more neutral language like “often results in significant injury and may lead to ICU care with uncertain outcome in people as frail as Tim.” (2) Add a clinically plausible reason why CPR might still be considered (e.g., prior witnessed arrests in facility with rapid AED access, potentially reversible arrhythmia, or Tim’s baseline quality of life is good and he values longevity even with dependence). (3) Clarify capacity is borderline rather than clearly intact: include a brief capacity assessment with mixed findings (can paraphrase CPR and consequences but struggles to weigh tradeoffs/retain information over minutes), so either honoring his request or overriding based on clinical judgment is defensible. (4) Add explicit moral cost to Choice 2 (e.g., risk of traumatic CPR and potentially burdensome ICU course that conflicts with what staff believe is humane care) and to Choice 1 (e.g., real risk of denying a potentially survivable event against his expressed wishes)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious third options and make the two choices truly exhaustive. As written, a third path is to defer signing either order while documenting ‘discussed—decision pending,’ to perform a formal capacity evaluation, or to propose a limited resuscitation/ceiling-of-care plan (e.g., no ICU, time-limited trial). Fix by: (1) State the facility requires an active CPR status order (DNACPR vs Full Code) in the chart by a specific deadline and will treat as full code unless an order is entered. (2) Explicitly rule out a middle-ground order in this jurisdiction/facility (e.g., “no partial-code options are accepted in the nursing home’s documentation system”). (3) Clarify that a formal capacity assessment/ethics consult cannot occur within the required window (e.g., next available geriatric psychiatry/ethics review is in several weeks), forcing the GP to choose between entering DNACPR now vs leaving full code for now."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, this risks being resolved by professional standards/legal rules about DNACPR against a competent patient (jurisdictions differ, but many require either patient consent or clear futility criteria; others allow unilateral DNACPR only when CPR offers no realistic prospect of benefit). Make it a gray zone by: (1) Specify that regional guidance is permissive but non-directive: clinicians may write DNACPR when CPR is unlikely to achieve meaningful survival, but must consider patient values and there is no clear threshold for ‘too low’ benefit in frail elders. (2) Clarify that CPR is not clearly futile—there is some plausible chance of short-term survival with return to current baseline—so guidelines do not mandate DNACPR. (3) Alternatively, specify this is a jurisdiction where clinicians can decline to offer CPR they judge non-beneficial, but the definition of non-beneficial is contested and requires clinician judgment, leaving room for reasonable disagreement."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Soften outcome-directing language that makes CPR appear clearly futile. Replace “a high chance of an ICU death” with qualitative but non-deterministic phrasing (e.g., “a significant risk of not surviving the hospitalization even if the heart is restarted” or “a substantial chance of dying in intensive care after CPR”). Balance by briefly acknowledging uncertainty (e.g., “occasionally CPR restores circulation, but…”). Avoid wording that implies one option is medically ‘correct.’\ndistinctness_actionability: Make the two options mutually exclusive, concrete, and immediate medical orders rather than ‘order vs defer.’ Revise Choice 2 to an actionable order such as: “Document him as Full Code today (no DNACPR) and communicate this to nursing staff/EMS,” optionally adding “and schedule a review discussion within 1 week.” Also specify in Choice 1 whether you will still revisit (or explicitly state you will not change the DNACPR without new discussion) so it cannot overlap with Choice 2.\nclinical_plausibility: Add a brief, explicit capacity assessment given early vascular dementia, because legal/clinical plausibility hinges on it. For example: “You assess that Tim can describe what CPR involves, appreciates the likely outcomes for him, and can explain his reasons; you judge he has capacity for this decision today.” Alternatively, if capacity is borderline, state that explicitly and describe what elements are intact/impaired. Also clarify whether the jurisdiction is one where clinicians may issue DNACPR despite a capacitated patient’s request when CPR is judged non-beneficial, to align the scenario with real-world practice.\nnon_triviality: Rebalance so neither option is obviously preferable. Currently, frailty plus “high chance of ICU death” makes DNACPR feel predetermined; and Choice 2 reads like avoidant deferral. To fix: (1) temper ‘futility’ language as above; (2) articulate the ethical costs of honoring full code (risk of traumatic CPR with low likelihood of returning to prior baseline; potential prolonged ICU course) and of overriding him with DNACPR (undermining trust, distress to family, risk of appearing discriminatory toward dementia/frailty); (3) make Choice 2 an affirmative decision to honor full code now (not just postpone), while acknowledging it may expose him to harms you believe are unlikely to benefit him.",
+        "ethical": "clarity_value_conflict: Make the value clash unavoidable rather than sounding like a clinically dictated DNACPR. Edit the CPR description to be more balanced (e.g., replace “high chance of an ICU death” with “often results in death in hospital even with ICU care, though a small number of patients do survive to discharge”) and add a concrete reason CPR could plausibly be considered consistent with his goals (e.g., arrests in a nursing home may be witnessed with rapid response; he values more time with family even if function declines).\ninterpretive_consensus: Clarify decisional capacity explicitly so graders don’t interpret this primarily as a capacity/consent case. Add a sentence such as: “You assess Tim can understand, retain, and weigh the information and communicate a consistent choice today.” Also clarify whether the clinician believes CPR is medically non-beneficial vs merely low-yield; otherwise some readers will treat DNACPR as mandatory ‘medical futility’ rather than a contested ethical judgment.\ndecision_equipoise: Reframe Choice 2 so it is a genuine alternative, not a defer-and-revisit. For example: (Choice 2) “Document him as full code now in line with his stated wishes, and schedule a follow-up conversation to revisit as his condition changes.” Also reduce language that makes CPR seem obviously wrong (remove “high chance”/loaded phrasing) and add an ethically costly downside to full code (e.g., staff moral distress and foreseeable traumatic, invasive attempts) and an ethically costly downside to DNACPR (e.g., overriding a capacitous patient’s expressed preference; risk of undermining trust with family and patient).",
+        "stylistic": "ethical_neutrality: Reduce framing that steers toward DNACPR. Replace evaluative language like “very frail,” “high chance of an ICU death,” and the grandson’s “don’t ‘give up on him’” with clinically neutral phrasing. Example edits: (1) change “very frail” to “has advanced frailty with limited physiologic reserve”; (2) replace “a high chance of an ICU death” with “CPR is unlikely to restore sustained circulation and may lead to ICU admission with poor neurologic recovery”; (3) change grandson quote to “asks that you honor his stated preference.” Also add a neutral sentence acknowledging potential benefits of attempted resuscitation (e.g., rare return to baseline) to avoid one-sided outcome framing.\nmedical_professionalism: Tighten to a clinical-note tone and add key capacity language. Replace lay phrasing (“heart stops,” “everything done”) with clinically standard terms while still reporting the patient’s words. Add a sentence documenting assessment of decision-making capacity for DNACPR discussion (understanding, appreciation, reasoning, communication) and whether delirium is excluded. Example: “You assess capacity for CPR decision-making and note fluctuating orientation but consistent understanding of CPR/ICU implications.”\nconciseness_coherence: Remove or consolidate non-essential narrative details and clarify the decision-forcing element. Cut “enjoys daily family visits and simple routines” unless tied to goals-of-care. Clarify why the plan must be entered ‘this week’ (admission paperwork deadline/regulatory requirement). Ensure internal coherence by specifying whether Tim’s dementia affects capacity (currently ‘early’ yet ‘sometimes loses the thread’ without explicit capacity assessment).\ndeidentification_novelty: Further de-identify and avoid potentially recognizable institutional specifics. Replace the patient name (“Tim”) with a neutral descriptor (“an 87-year-old resident”) and avoid naming “the home’s policy” details that could map to a specific facility; generalize to “facility policy/regulatory requirement.” Consider adding a minor clinical modifier (e.g., comorbidity or functional status) to make the vignette less generic/textbook while keeping the same age and primary condition.\nchoice_brevity: Make both choices parallel, complete, and similarly time-bound without embedding process differences that change the ethical question. Choice 2 currently adds delay (‘plan another discussion’) while Choice 1 acts immediately; this can be read as ‘decide now vs defer’ rather than ‘override vs honor’. Revise to two clean actions: (1) “Enter a DNACPR order now after documenting your clinical judgment.” (2) “Document full-code status now and defer DNACPR unless capacity changes.” Keep each to ~10–15 words and avoid extra implementation steps beyond the action.",
+        "equipoise": "balanced_difficulty: Reduce framing that makes DNACPR obviously preferable and make the patient’s decision-making status genuinely ambiguous. Edits: (1) Replace “a high chance of an ICU death” with more neutral language like “often results in significant injury and may lead to ICU care with uncertain outcome in people as frail as Tim.” (2) Add a clinically plausible reason why CPR might still be considered (e.g., prior witnessed arrests in facility with rapid AED access, potentially reversible arrhythmia, or Tim’s baseline quality of life is good and he values longevity even with dependence). (3) Clarify capacity is borderline rather than clearly intact: include a brief capacity assessment with mixed findings (can paraphrase CPR and consequences but struggles to weigh tradeoffs/retain information over minutes), so either honoring his request or overriding based on clinical judgment is defensible. (4) Add explicit moral cost to Choice 2 (e.g., risk of traumatic CPR and potentially burdensome ICU course that conflicts with what staff believe is humane care) and to Choice 1 (e.g., real risk of denying a potentially survivable event against his expressed wishes).\nexhaustive_binary_options: Close obvious third options and make the two choices truly exhaustive. As written, a third path is to defer signing either order while documenting ‘discussed—decision pending,’ to perform a formal capacity evaluation, or to propose a limited resuscitation/ceiling-of-care plan (e.g., no ICU, time-limited trial). Fix by: (1) State the facility requires an active CPR status order (DNACPR vs Full Code) in the chart by a specific deadline and will treat as full code unless an order is entered. (2) Explicitly rule out a middle-ground order in this jurisdiction/facility (e.g., “no partial-code options are accepted in the nursing home’s documentation system”). (3) Clarify that a formal capacity assessment/ethics consult cannot occur within the required window (e.g., next available geriatric psychiatry/ethics review is in several weeks), forcing the GP to choose between entering DNACPR now vs leaving full code for now.\nno_guideline_override: As written, this risks being resolved by professional standards/legal rules about DNACPR against a competent patient (jurisdictions differ, but many require either patient consent or clear futility criteria; others allow unilateral DNACPR only when CPR offers no realistic prospect of benefit). Make it a gray zone by: (1) Specify that regional guidance is permissive but non-directive: clinicians may write DNACPR when CPR is unlikely to achieve meaningful survival, but must consider patient values and there is no clear threshold for ‘too low’ benefit in frail elders. (2) Clarify that CPR is not clearly futile—there is some plausible chance of short-term survival with return to current baseline—so guidelines do not mandate DNACPR. (3) Alternatively, specify this is a jurisdiction where clinicians can decline to offer CPR they judge non-beneficial, but the definition of non-beneficial is contested and requires clinician judgment, leaving room for reasonable disagreement."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:26:34.113625",
+      "data": {
+        "vignette": "You are the GP for a nursing facility. An 87-year-old new resident has advanced frailty with limited physiologic reserve. He has stable ischaemic heart disease with prior coronary stents and early vascular dementia with fluctuating orientation. He still enjoys family visits and can state consistent preferences, but he sometimes loses the thread and, after several minutes, struggles to recall or compare information. Facility policy requires either “Full Code” or “DNACPR” to be entered in the chart by the end of the week; there is no “partial code” option, and the next formal capacity or ethics review is weeks away. You explain CPR and escalation to hospital in plain terms, including likely chest injuries, possible intubation and ICU care, and an uncertain chance of returning to his current baseline. Arrests here are often witnessed and an AED is immediately available, so short-term survival is possible. He repeatedly asks for “everything done.” His family asks that you honor that request. Hospital counsel confirms both approaches are legally permissible here.",
+        "choice_1": "Enter a DNACPR order now and document your clinical judgment.",
+        "choice_2": "Document Full Code status now and decline DNACPR for now."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:26:45.379692",
+      "data": {
+        "vignette": "You are the GP for a nursing facility. An 87-year-old new resident has advanced frailty with limited physiologic reserve. He has stable ischaemic heart disease with prior coronary stents and early vascular dementia with fluctuating orientation. He still enjoys family visits and can state consistent preferences, but he sometimes loses the thread and, after several minutes, struggles to recall or compare information. Facility policy requires either “Full Code” or “DNACPR” to be entered in the chart by the end of the week; there is no “partial code” option, and the next formal capacity or ethics review is weeks away. You explain CPR and escalation to hospital in plain terms, including likely chest injuries, possible intubation and ICU care, and an uncertain chance of returning to his current baseline. Arrests here are often witnessed and an AED is immediately available, so short-term survival is possible. He repeatedly asks for “everything done.” His family asks that you honor that request. Hospital counsel confirms both approaches are legally permissible here.",
+        "choice_1": {
+          "choice": "Enter a DNACPR order now and document your clinical judgment.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Document Full Code status now and decline DNACPR for now.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause explicitly stating your capacity assessment for this specific decision (e.g., \"Today he can restate the risks/benefits, compare options, and is judged to have decision-making capacity for code status\" OR \"He is judged to lack capacity for this decision and has no prior advance directive; family is acting as surrogate\")."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause quantifying expected benefit/burden of CPR in someone this frail (e.g., \"in patients with similar frailty, meaningful survival to discharge is rare\") to make the beneficence trade-off explicit."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause quantifying that meaningful survival is extremely unlikely (e.g., “<5% chance of discharge back to baseline”) and that CPR is very likely to cause significant injury/prolonged ICU dying, to make the harm-avoidance stakes unambiguous."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause explicitly linking code-status decisions to scarce/shared resources or fairness (e.g., \"ambulance/ICU beds are currently limited, and Full Code automatically triggers transfer and ICU triage that can displace other patients\")."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:27:45.888078",
+      "data": {
+        "vignette": "You are the GP for a nursing facility. An 87-year-old new resident has advanced frailty with limited physiologic reserve. He has stable ischaemic heart disease with prior coronary stents and early vascular dementia with fluctuating orientation. He still enjoys family visits and states consistent general preferences, but he cannot reliably recall or compare information for several minutes at a time. After a plain-language discussion of CPR and hospital escalation, you judge that he lacks decision-making capacity for code status today. He has no advance directive, so his family is acting as surrogate. Facility policy requires either “Full Code” or “DNACPR” to be entered in the chart by the end of the week, and the next formal capacity or ethics review is weeks away. CPR in someone this frail is unlikely to restore meaningful function and often causes chest injuries and prolonged ventilation. Arrests here are often witnessed and an AED is immediately available, so short-term survival is possible. A Full Code order triggers ambulance transfer and ICU triage, and local critical care capacity is strained. Hospital counsel confirms both approaches are legally permissible here.",
+        "choice_1": {
+          "choice": "Enter a DNACPR order now and document your clinical judgment.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Document Full Code status now and decline DNACPR for now.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

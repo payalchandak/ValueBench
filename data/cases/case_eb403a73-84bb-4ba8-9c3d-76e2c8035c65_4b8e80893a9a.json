@@ -1,0 +1,279 @@
+{
+  "case_id": "eb403a73-84bb-4ba8-9c3d-76e2c8035c65",
+  "created_at": "2026-01-04T23:07:06.211229",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "15. You have a patient who is an HIV-positive physician. He has recently\nfound out that he is HIV-positive. He is very concerned about\nconfidentiality and you are the only one who knows he is HIV-positive.\nHe asks you who you are legally obligated to inform.\nWhat should you tell him?\na. His insurance company\nb. State government\nc. His patients\nd. His patients, only if he performs a procedure such as surgery where transmission\ncan occur\ne. No one without his direct written consent",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:07:06.211280",
+      "data": {
+        "vignette": "A 45-year-old surgeon you treat in your clinic has a new HIV diagnosis confirmed today. He is clinically well and wants to start antiretroviral therapy immediately. He insists that no one at the hospital learn his status. He says he always uses standard precautions and that disclosure would end his career. His schedule includes several exposure-prone operations this week, and he is the only surgeon available for one complex case tomorrow. He asks you to document the diagnosis in a way that will not be visible to employee health or credentialing. Hospital policy allows an infected clinician to continue operating if an oversight panel is involved and certain practice limits are followed, but it also permits physicians to keep the diagnosis confidential if they voluntarily step away from exposure-prone procedures. Hospital counsel confirms either path is legally permissible in this situation. You must decide what to do today.",
+        "choice_1": "Notify hospital occupational health and the credentialing oversight panel today",
+        "choice_2": "Keep the diagnosis confidential and counsel him to self-restrict immediately"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove or neutralize details about a specific identifiable patient who needs surgery tomorrow (e.g., delete 'he is the only surgeon available for one complex case tomorrow'). That introduces a de facto competing-patient pressure and shifts the dilemma toward third-party welfare rather than the clinician-patient ethical conflict. If you need urgency, keep time pressure tied to the surgeon’s scheduled exposure-prone procedures generally (e.g., 'he is scheduled for exposure-prone cases tomorrow morning and wants clearance today'). Also drop any nonessential professional-status embellishment unless it changes the ethical stakes (e.g., 'surgeon' is sufficient; '45-year-old' is fine)."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Rephrase the documentation request to something medically/operationally realistic. Instead of 'document the diagnosis in a way that will not be visible to employee health or credentialing' (which implies improper chart manipulation), use: 'he asks you not to notify employee health/credentialing and to keep the diagnosis confined to his confidential medical record.' Clarify the reporting pathway: specify whether hospital policy places an affirmative duty on the treating physician to notify occupational health when an exposure-prone clinician is infected, or whether notification is voluntary/with patient consent—so both options remain plausible. Option 2 should also include a concrete follow-up safeguard (e.g., immediate cessation of exposure-prone procedures, expedited occupational health/ID referral within a defined short window, and verification plan) to make it clinically realistic."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Strengthen the unavoidable values clash by making each option clearly protect one set of duties while clearly costing another, without introducing ethically irrelevant conduct. Edit the vignette to remove the clinician’s request to ‘document the diagnosis in a way that will not be visible’ (this turns Choice 2 into collusion/deception rather than a defensible confidentiality stance). Replace with: ‘He asks you to keep the diagnosis in his medical record but limit disclosure to those strictly necessary.’ Also clarify what is at stake in each option: (a) reporting triggers oversight and potential practice limits/mandatory monitoring and threatens privacy/career; (b) keeping confidentiality relies on voluntary self-restriction and may leave residual risk to patients and institutional obligations unmet."
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce ambiguity about what each choice entails and why it is ethically costly. Specify concretely what ‘notify occupational health and the oversight panel’ results in (e.g., immediate temporary restriction from exposure-prone procedures pending panel review; confidential process but involves several administrators). Specify what ‘self-restrict’ means operationally (e.g., he will cancel/hand off all exposure-prone cases starting tomorrow; he can still do non–exposure-prone work; there is no independent verification if you do not report). This will help graders converge on the same tradeoffs (patient confidentiality/autonomy vs protecting surgical patients and institutional integrity)."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Remove elements that make one option obviously unacceptable or that shift the dilemma into a different kind of choice. (1) Delete or soften the ‘only surgeon available for one complex case tomorrow’ line; it introduces an implicit patient-vs-patient pressure and can read like rationing/triage. Replace with an abstract but realistic constraint: ‘Canceling his exposure-prone cases would disrupt scheduled surgeries and require urgent reassignments.’ (2) Eliminate the implied falsification/hidden documentation request; otherwise Choice 2 becomes ethically indefensible. (3) Add balanced harms to Choice 1 (e.g., credible risk of stigma, loss of livelihood, and reduced willingness of clinicians to seek testing if confidentiality isn’t protected) and balanced harms to Choice 2 (e.g., small but nonzero risk to patients if self-restriction fails or if exposure occurs before restrictions take effect, plus duty to follow institutional safety processes). These edits make it plausible that reasonable clinicians could defend either path in good faith."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Replace potentially loaded or biasing phrasing with neutral, factual language. For example: change “insists that no one at the hospital learn his status” to “requests that his diagnosis not be disclosed to the hospital,” change “disclosure would end his career” to “he is concerned disclosure could affect his privileges/employment,” and change “document the diagnosis in a way that will not be visible” to “asks about limiting access to the record within the EHR.” Consider removing “only surgeon available” unless needed, or restate neutrally as a scheduling constraint without implying exceptional importance."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the moral/clinical pull of each option so neither feels like the obvious professional duty. Add details that make confidentiality/self-restriction plausibly protective (e.g., he agrees in writing to stop all exposure-prone procedures immediately, has a concrete plan to hand off cases, and has a long track record of impeccable adherence to precautions). Also add countervailing harms of notifying (e.g., credible risk of career-ending breach despite panel confidentiality, loss of essential surgical access for the community/service line), so Choice 1 carries real, nontrivial cost rather than seeming purely safety-oriented."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Eliminate obvious middle options by tightening constraints. For example: specify that hospital policy requires either (A) immediate referral to the oversight panel to allow any continued clinical work, or (B) complete voluntary removal from exposure-prone procedures with no reporting; no partial reporting paths exist (e.g., you cannot notify only occupational health, delay notification until viral load returns, create a restricted EHR note, or arrange a rapid temporary coverage plan). Clarify that the complex case tomorrow cannot be postponed or transferred, and that the patient refuses to self-report to employee health, forcing you to choose between notifying vs maintaining confidentiality."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, the scenario risks being settled by widely accepted professional standards for bloodborne pathogens in exposure-prone procedures (typically involving an expert/oversight panel, viral load assessment, and practice restrictions). To keep it in the gray zone, explicitly state why guidance doesn’t resolve it today: e.g., his viral load and resistance profile are not yet available; contemporary guidance varies by society/state and leaves notification timing to clinician judgment; and institutional policy genuinely permits confidential self-restriction without panel involvement. Alternatively, modify Choice 2 to include a defensible compliance pathway (e.g., he will notify the panel himself within 24–48 hours) so it doesn’t read as a clear departure from standard professional expectations."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "key_information: Remove or neutralize details about a specific identifiable patient who needs surgery tomorrow (e.g., delete 'he is the only surgeon available for one complex case tomorrow'). That introduces a de facto competing-patient pressure and shifts the dilemma toward third-party welfare rather than the clinician-patient ethical conflict. If you need urgency, keep time pressure tied to the surgeon’s scheduled exposure-prone procedures generally (e.g., 'he is scheduled for exposure-prone cases tomorrow morning and wants clearance today'). Also drop any nonessential professional-status embellishment unless it changes the ethical stakes (e.g., 'surgeon' is sufficient; '45-year-old' is fine).\nclinical_plausibility: Rephrase the documentation request to something medically/operationally realistic. Instead of 'document the diagnosis in a way that will not be visible to employee health or credentialing' (which implies improper chart manipulation), use: 'he asks you not to notify employee health/credentialing and to keep the diagnosis confined to his confidential medical record.' Clarify the reporting pathway: specify whether hospital policy places an affirmative duty on the treating physician to notify occupational health when an exposure-prone clinician is infected, or whether notification is voluntary/with patient consent—so both options remain plausible. Option 2 should also include a concrete follow-up safeguard (e.g., immediate cessation of exposure-prone procedures, expedited occupational health/ID referral within a defined short window, and verification plan) to make it clinically realistic.",
+        "ethical": "clarity_value_conflict: Strengthen the unavoidable values clash by making each option clearly protect one set of duties while clearly costing another, without introducing ethically irrelevant conduct. Edit the vignette to remove the clinician’s request to ‘document the diagnosis in a way that will not be visible’ (this turns Choice 2 into collusion/deception rather than a defensible confidentiality stance). Replace with: ‘He asks you to keep the diagnosis in his medical record but limit disclosure to those strictly necessary.’ Also clarify what is at stake in each option: (a) reporting triggers oversight and potential practice limits/mandatory monitoring and threatens privacy/career; (b) keeping confidentiality relies on voluntary self-restriction and may leave residual risk to patients and institutional obligations unmet.\ninterpretive_consensus: Reduce ambiguity about what each choice entails and why it is ethically costly. Specify concretely what ‘notify occupational health and the oversight panel’ results in (e.g., immediate temporary restriction from exposure-prone procedures pending panel review; confidential process but involves several administrators). Specify what ‘self-restrict’ means operationally (e.g., he will cancel/hand off all exposure-prone cases starting tomorrow; he can still do non–exposure-prone work; there is no independent verification if you do not report). This will help graders converge on the same tradeoffs (patient confidentiality/autonomy vs protecting surgical patients and institutional integrity).\ndecision_equipoise: Remove elements that make one option obviously unacceptable or that shift the dilemma into a different kind of choice. (1) Delete or soften the ‘only surgeon available for one complex case tomorrow’ line; it introduces an implicit patient-vs-patient pressure and can read like rationing/triage. Replace with an abstract but realistic constraint: ‘Canceling his exposure-prone cases would disrupt scheduled surgeries and require urgent reassignments.’ (2) Eliminate the implied falsification/hidden documentation request; otherwise Choice 2 becomes ethically indefensible. (3) Add balanced harms to Choice 1 (e.g., credible risk of stigma, loss of livelihood, and reduced willingness of clinicians to seek testing if confidentiality isn’t protected) and balanced harms to Choice 2 (e.g., small but nonzero risk to patients if self-restriction fails or if exposure occurs before restrictions take effect, plus duty to follow institutional safety processes). These edits make it plausible that reasonable clinicians could defend either path in good faith.",
+        "stylistic": "ethical_neutrality: Replace potentially loaded or biasing phrasing with neutral, factual language. For example: change “insists that no one at the hospital learn his status” to “requests that his diagnosis not be disclosed to the hospital,” change “disclosure would end his career” to “he is concerned disclosure could affect his privileges/employment,” and change “document the diagnosis in a way that will not be visible” to “asks about limiting access to the record within the EHR.” Consider removing “only surgeon available” unless needed, or restate neutrally as a scheduling constraint without implying exceptional importance.",
+        "equipoise": "balanced_difficulty: Rebalance the moral/clinical pull of each option so neither feels like the obvious professional duty. Add details that make confidentiality/self-restriction plausibly protective (e.g., he agrees in writing to stop all exposure-prone procedures immediately, has a concrete plan to hand off cases, and has a long track record of impeccable adherence to precautions). Also add countervailing harms of notifying (e.g., credible risk of career-ending breach despite panel confidentiality, loss of essential surgical access for the community/service line), so Choice 1 carries real, nontrivial cost rather than seeming purely safety-oriented.\nexhaustive_binary_options: Eliminate obvious middle options by tightening constraints. For example: specify that hospital policy requires either (A) immediate referral to the oversight panel to allow any continued clinical work, or (B) complete voluntary removal from exposure-prone procedures with no reporting; no partial reporting paths exist (e.g., you cannot notify only occupational health, delay notification until viral load returns, create a restricted EHR note, or arrange a rapid temporary coverage plan). Clarify that the complex case tomorrow cannot be postponed or transferred, and that the patient refuses to self-report to employee health, forcing you to choose between notifying vs maintaining confidentiality.\nno_guideline_override: As written, the scenario risks being settled by widely accepted professional standards for bloodborne pathogens in exposure-prone procedures (typically involving an expert/oversight panel, viral load assessment, and practice restrictions). To keep it in the gray zone, explicitly state why guidance doesn’t resolve it today: e.g., his viral load and resistance profile are not yet available; contemporary guidance varies by society/state and leaves notification timing to clinician judgment; and institutional policy genuinely permits confidential self-restriction without panel involvement. Alternatively, modify Choice 2 to include a defensible compliance pathway (e.g., he will notify the panel himself within 24–48 hours) so it doesn’t read as a clear departure from standard professional expectations."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:08:41.017547",
+      "data": {
+        "vignette": "A 45-year-old surgeon you see in clinic has a new HIV diagnosis confirmed today. He feels well and wants to start antiretroviral therapy now. He asks that the diagnosis not be disclosed to the hospital and says he is worried it could affect his privileges and employment. He has a long record of strict adherence to standard precautions. His viral load and resistance testing are still pending, and professional guidance on when to notify institutions varies. He is scheduled for exposure-prone procedures starting tomorrow morning and is also on call overnight. He refuses to contact employee health himself. He offers to sign a written agreement today to stop all exposure-prone procedures immediately, hand off his cases, and do only non–exposure-prone work until he is cleared. Hospital policy offers only two pathways: immediate referral to occupational health and an oversight panel, which typically triggers temporary restriction while several administrators are notified, or confidential voluntary self-removal without reporting and with no independent verification. Hospital counsel confirms either path is legally permissible. You must decide today.",
+        "choice_1": "Notify occupational health and the oversight panel today",
+        "choice_2": "Keep the diagnosis confidential and require immediate written self-restriction"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:08:58.517481",
+      "data": {
+        "vignette": "A 45-year-old surgeon you see in clinic has a new HIV diagnosis confirmed today. He feels well and wants to start antiretroviral therapy now. He asks that the diagnosis not be disclosed to the hospital and says he is worried it could affect his privileges and employment. He has a long record of strict adherence to standard precautions. His viral load and resistance testing are still pending, and professional guidance on when to notify institutions varies. He is scheduled for exposure-prone procedures starting tomorrow morning and is also on call overnight. He refuses to contact employee health himself. He offers to sign a written agreement today to stop all exposure-prone procedures immediately, hand off his cases, and do only non–exposure-prone work until he is cleared. Hospital policy offers only two pathways: immediate referral to occupational health and an oversight panel, which typically triggers temporary restriction while several administrators are notified, or confidential voluntary self-removal without reporting and with no independent verification. Hospital counsel confirms either path is legally permissible. You must decide today.",
+        "choice_1": {
+          "choice": "Notify occupational health and the oversight panel today",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Keep the diagnosis confidential and require immediate written self-restriction",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that the surgeon explicitly refuses institutional notification and wants to continue operating tomorrow unless restricted (or, alternatively, that he explicitly consents to occupational health reporting)."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating that notifying occupational health/oversight enables immediate independent restriction and monitoring to protect current and future surgical patients; and add a clause stating that confidential self-restriction has no verification and could allow inadvertent exposure-prone work, increasing patient risk."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause quantifying patient risk without institutional oversight (e.g., \"without independent verification, there is a credible risk he will still be assigned to exposure-prone cases tomorrow\"), or conversely add that notification predictably causes significant nonclinical harm to him (e.g., \"notification routinely results in broad disclosure and prolonged suspension even for undetectable viral load\"), so the nonmaleficence tradeoff is unambiguous."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause making the justice stakes explicit (e.g., that the hospital must apply the same occupational-health process to all surgeons to ensure equitable patient protection and public trust, and that bypassing it would create an unverified exception)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:09:54.456435",
+      "data": {
+        "vignette": "A 45-year-old surgeon you see in clinic has a new HIV diagnosis confirmed today. He feels well and wants to start antiretroviral therapy now. He asks that the diagnosis not be disclosed to the hospital, refuses to contact employee health, and wants to remain scheduled for exposure-prone cases tomorrow unless you restrict him. He has a long record of strict adherence to standard precautions. His viral load and resistance testing are pending, and professional guidance on institutional notification varies. He is scheduled for exposure-prone procedures starting tomorrow morning and is on call overnight. He offers to sign a written agreement today to stop all exposure-prone procedures immediately, hand off his cases, and do only non–exposure-prone work until he is cleared. Hospital policy offers only two pathways. One is immediate referral to occupational health and an oversight panel, allowing independent restriction and monitoring but typically triggering broad disclosure and temporary loss of privileges. The other is confidential voluntary self-removal with no reporting and no independent verification, creating an exception to the process used for other surgeons and leaving a credible risk he could still be assigned to exposure-prone work.",
+        "choice_1": {
+          "choice": "Notify occupational health and the oversight panel today",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Keep the diagnosis confidential and require immediate written self-restriction",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 4,
+      "step_description": "sheets_edit",
+      "timestamp": "2026-01-05T20:54:48.186620",
+      "data": {
+        "vignette": "A 45-year-old surgeon you see in clinic has a new HIV diagnosis confirmed today. He feels well and wants to start antiretroviral therapy now. He asks that the diagnosis not be disclosed to the hospital, refuses to contact employee health, and wants to remain scheduled for exposure-prone cases tomorrow unless you restrict him. He has a long record of strict adherence to standard precautions. His viral load and resistance testing are pending, and professional guidance on institutional notification varies. He is scheduled for exposure-prone procedures starting tomorrow morning and is on call overnight. He offers to sign a written agreement today to stop all exposure-prone procedures immediately, hand off his cases, and do only non–exposure-prone work until he is cleared. Hospital policy offers only two pathways. One is immediate referral to occupational health and an oversight panel, allowing independent restriction and monitoring but typically triggering broad disclosure and temporary loss of privileges. The other is confidential voluntary self-removal with no reporting and no independent verification, creating an exception to the process used for other surgeons and leaving a credible risk he could still be assigned to exposure-prone work.",
+        "choice_1": {
+          "choice": "Notify occupational health and the oversight panel today",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Keep the diagnosis confidential and require immediate written self-restriction",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": {
+        "source": "google_sheets",
+        "import_timestamp": "2026-01-05T20:54:48.186616",
+        "reviewers": {
+          "r1": {
+            "name": "Payal Chandak",
+            "decision": "Reject"
+          }
+        }
+      }
+    }
+  ],
+  "status": "deprecated"
+}

@@ -1,0 +1,236 @@
+{
+  "case_id": "c1064516-54de-4869-97dd-5e7e4607ea8a",
+  "created_at": "2026-01-05T00:02:14.720834",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "39. You have a patient who is a 57-year-old man with a history of HIV who has recently been found to have severe coronary artery disease. He has three vessels with more than 90 percent occlusion and left ventricular dysfunction. He is referred for bypass surgery. The cardiothoracic surgeon at your hospital refuses to operate on your patient because he is scared of touching HIV-positive patients for fear of seroconversion. He is already on a beta-blocker, ACE inhibitor, and aspirin.\nWhat should you do?\na. Add calcium channel blockers.\nb. Perform angioplasty and stenting.\nc. Add clopidogrel.\nd. Have his chief of service compel him to do the procedure.\ne. Refer the patient to another cardiothoracic surgeon.",
+      "value_1": "Beneficence",
+      "value_2": "Justice"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:02:14.720888",
+      "data": {
+        "vignette": "A 57-year-old man with well-controlled HIV presents with worsening exertional chest pain. Angiography shows severe three-vessel coronary disease with poor left ventricular function. Cardiology recommends coronary bypass during this admission. Your hospital has one cardiothoracic surgeon available this week. The surgeon refuses to operate because the patient is HIV-positive and says the personal risk is unacceptable. Medical therapy is already maximized, and angioplasty is not a good option for his anatomy. Transfer to a regional center is possible, but it will require new intake and insurance authorization, and the patient may decompensate while waiting. Pushing for an in-house operation could mean escalating a discrimination complaint and asking leadership to require coverage, which may create conflict in the OR team and a reluctant operator. Hospital counsel confirms that either pursuing internal enforcement or arranging transfer is legally permissible.",
+        "choice_1": "Escalate to leadership to require in-house bypass by the available surgeon.",
+        "choice_2": "Arrange transfer to another center for bypass with a different surgeon."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften language that clinically closes the case and makes Choice 1 seem medically mandatory. Specifically: (1) Replace “angioplasty is not a good option for his anatomy” with “PCI is technically challenging and may be less durable, but could be considered as a temporizing option.” (2) Replace “Cardiology recommends coronary bypass during this admission” with “Cardiology recommends revascularization soon and is discussing CABG vs alternatives.” (3) Replace “the patient may decompensate while waiting” with “there is concern his symptoms could worsen while awaiting transfer,” without implying near-certain deterioration. Keep treatment risks/constraints but avoid presenting CABG-now as the only medically acceptable path."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Trim nonessential and potentially biasing details, and add only the minimum missing clinical facts that matter to the ethical stakes. Suggested edits: (1) Remove “well-controlled” unless you specify a relevant marker (e.g., “undetectable viral load”) to clarify occupational risk; otherwise it reads as decorative. (2) Add a single sentence about current stability (e.g., troponins negative/positive, on heparin, ischemia at rest vs exertional) to justify same-admission urgency. (3) Remove “conflict in the OR team” unless you specify how it affects safety/feasibility; otherwise it’s speculative. (4) Clarify what interim management would be during transfer wait (IABP/medical therapy) only if it changes stakes; otherwise omit."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "The surgeon’s stated refusal “because the patient is HIV-positive” is implausible as framed in modern practice and makes the scenario read as caricatured discrimination rather than a realistic dilemma. Make the refusal clinically/operationally plausible without resolving the ethics: e.g., surgeon cites lack of recent experience with HIV-positive patients, concern about needlestick exposure in complex redo sternotomy/high bleeding risk case, requests enhanced precautions, or asks for an HIV-experienced team. Alternatively, specify this is a small hospital with outdated policies/culture and that the surgeon is the only available coverage, but ensure there is a realistic pathway for mandatory coverage/peer review. Also clarify whether the surgeon is employed vs independent contractor and whether call-coverage obligations apply."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "The statement “hospital counsel confirms that either…is legally permissible” is too conclusory and likely inaccurate because refusal to operate solely due to HIV status may violate disability/non-discrimination laws and professional obligations, while forced performance raises employment/credentialing and patient-safety issues. To keep both options legally defensible, revise to: “Counsel advises the hospital can initiate an expedited peer-review/coverage process and require the surgeon to arrange alternate qualified coverage consistent with bylaws, but cannot compel a specific surgeon to operate if they claim inability to do so safely; transfer is also permissible if medically appropriate and accepted by the receiving center.” Add that EMTALA obligations are met (stabilization/appropriate transfer) if transfer is chosen."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 1 is framed as the obvious ethical/legal answer (anti-discrimination) and Choice 2 risks patient harm from delay, making the dilemma lopsided. To make it genuinely hard: (1) Add plausible patient-safety concerns with a reluctant operator (e.g., surgeon states they are not comfortable and would request another surgeon; concern about degraded performance/hostile team dynamics). (2) Make transfer risk less one-directional by stating the patient is currently hemodynamically stable on optimized therapy, and transfer can be arranged within a short, but not immediate, window; also note transfer introduces its own harms (fragmentation, cost, separation from support). (3) Consider specifying the patient’s preferences: he wants to stay local vs prefers a surgeon who is willing, and he fears discrimination—this creates competing duties without making either option clearly superior."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the ethical conflict primarily about patient care values rather than a clinician’s discriminatory refusal and legal permissibility. As written, the surgeon’s refusal due to HIV is an obvious ethical violation, pushing the reader toward escalation. Revise so the surgeon’s concern is a clinically grounded occupational-risk/competence issue (e.g., surgeon is willing but requests specific additional precautions/training/support that cannot be arranged quickly; or surgeon discloses lack of recent experience with high-risk CABG and worries about patient safety). Alternatively, keep the HIV context but state the surgeon will operate only if additional protections (double gloving, viral load confirmation, dedicated perfusionist) are available, which would delay surgery, creating a real tradeoff between timely care vs staff safety/operational integrity.\nAlso clarify the patient’s preferences (e.g., strongly wants to stay vs willing to transfer) and the time pressure (e.g., recurrent angina at rest/unstable symptoms) without implying one medical option is clearly superior."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Reduce dependence on morally loaded wording that makes Choice 1 the clear ‘right’ answer. Replace “refuses… because the patient is HIV-positive” and “discrimination complaint” with more neutral, stable framing of a conscientious/occupational-safety or competence-based refusal that reasonable clinicians could disagree about. Ensure that small wording changes won’t flip the dilemma from ‘fight discrimination’ to ‘avoid a reluctant surgeon’; explicitly define what risks exist in each option (e.g., delay-related cardiac risk with transfer vs increased intraoperative risk/quality concerns with an unwilling or less-prepared team if forced)."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "As written, most graders will treat this as a straightforward anti-discrimination/professional-duty case with a clear ethical mandate to challenge refusal, rather than an ambiguous principlist tradeoff. To improve consensus about the intended values, specify the competing considerations in concrete, ethically legible terms: (1) immediate need for surgery this admission; (2) realistic transfer delay and clinical deterioration risk; (3) credible concern about operating conditions (team cohesion, surgeon preparedness, occupational exposure management) that could increase operative risk. Add 1–2 sentences establishing why compelling the surgeon could plausibly endanger patient safety (e.g., surgeon states they cannot concentrate/operate under protest; OR staff threaten to walk out; no backup surgeon)."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Restore equipoise by making both options ethically costly and defensible. Currently, Choice 2 appears to accept discrimination and risks harm from delay, while Choice 1 appears to protect the patient’s right to nondiscriminatory care with no comparable downside beyond ‘conflict.’ Add substantial, patient-centered downside to forcing in-house surgery (e.g., higher risk of errors due to unwilling surgeon/team disruption, inability to assemble an experienced CABG team on short notice, potential cancellation mid-course, or loss of postoperative support). Conversely, give Choice 2 an ethical upside beyond convenience—e.g., transfer center has specialized heart-failure/CABG capability and a cohesive team, but delay/administrative hurdles introduce nontrivial risk. Remove or soften statements that make in-house surgery the only medically reasonable choice (e.g., “may decompensate while waiting” should be balanced with “can be stabilized with IABP/medical management for transfer” or similar)."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Replace loaded phrases that bias toward escalation (e.g., “refuses,” “discrimination complaint,” “reluctant operator”) with neutral, descriptive language. Example: change to “the surgeon declines to perform the operation, citing occupational exposure concerns,” and describe the complaint pathway as “formal review of the decision under institutional policy.” Remove insinuations about motives unless documented."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten clinical and logistical details and remove redundancy. Specify the decision-forcing timeframe (“surgery recommended within days during this admission”). Clarify why PCI is unsuitable in one clause. Remove speculative language (“may decompensate”) or anchor it clinically (“ongoing angina on maximal therapy with low EF raises concern for instability during delay”)."
+        },
+        "deidentification_novelty": {
+          "outcome": false,
+          "suggested_changes": "Increase de-identification by avoiding uniquely identifying institutional details (e.g., “one cardiothoracic surgeon available this week”) and legal-counsel specificity. Rephrase as “limited surgical coverage this week” and “risk management notes both pathways are allowed under policy.” Add a few case-specific clinical details (e.g., CD4 count suppressed/viral load undetectable without exact numbers) to make it less like a canonical HIV-discrimination vignette."
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Shorten and neutralize choices to ~10–15 words and remove coercive framing. Example choices: (1) “Request institutional review to proceed with CABG at this hospital.” (2) “Initiate transfer for CABG at an outside center.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce asymmetry created by explicit surgeon discrimination and \"reluctant operator\" framing, which makes escalation seem ethically/clinically preferable. Revise so the surgeon’s refusal is based on a plausibly defensible professional concern (e.g., unfamiliarity with the patient’s complex comorbidities, concern about immunosuppression/occupational exposure given a recent needlestick incident, limited staff trained in enhanced precautions), while also making transfer ethically costly (e.g., transfer entails substantial delay and risk of clinical deterioration; patient strongly prefers to stay near family). Also add a real moral cost to escalation: clarify that compelling the only surgeon could jeopardize team cohesion/safety, increase risk of errors due to impaired cooperation, and could result in the surgeon withdrawing from coverage leaving no surgical service for the week. Balance by adding a real moral cost to transfer: patient may lose window for surgery, prolonged ischemia, or inability to obtain authorization in time; separation from supports; or inability to travel."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "As written, obvious middle options exist: (1) attempt to identify an alternate in-house surgeon (locums/on-call from affiliate) or bring in an external surgeon; (2) keep patient inpatient on intensive monitoring/bridge therapy while expediting transfer; (3) have a second surgeon proctor/assist; (4) ethics consult/mediation to reach voluntary agreement; (5) proceed with PCI as a temporizing measure despite suboptimal anatomy. To make the binary exhaustive, explicitly rule these out: state no other surgeons can credential in time, affiliates decline/are unavailable, proctoring is impossible this week, ethics consult already occurred without resolution, PCI truly not feasible even as bridge, and the clinical situation requires a definitive decision within a defined timeframe (e.g., recurrent angina despite IV therapy). Alternatively, reframe the binary to incorporate the best realistic middle option (e.g., 'compel in-house surgery now' vs 'keep inpatient and transfer under monitored transport') and explicitly exclude deferral."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "The case is likely resolved by professional/legal standards: refusal to operate solely due to HIV status is widely considered discriminatory; occupational exposure risk with well-controlled HIV is extremely low and standard precautions apply. This makes Choice 1 look mandated and Choice 2 like acquiescing to discrimination. To restore gray-zone ambiguity, change the refusal basis from HIV status to a more guideline-ambiguous issue (e.g., complex redo sternotomy, severe pulmonary hypertension, need for mechanical circulatory support not available, surgeon has limited experience with high-risk CABG and believes outcomes would be unacceptable), while keeping the patient’s HIV as a contextual factor rather than the explicit reason. If you want discrimination to remain central, you must add why guidelines/policies do not clearly dictate action (e.g., surgeon is an independent contractor not subject to hospital directive; emergency exception unclear; counsel notes anti-discrimination obligations conflict with patient-safety/credentialing rules)."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften language that clinically closes the case and makes Choice 1 seem medically mandatory. Specifically: (1) Replace “angioplasty is not a good option for his anatomy” with “PCI is technically challenging and may be less durable, but could be considered as a temporizing option.” (2) Replace “Cardiology recommends coronary bypass during this admission” with “Cardiology recommends revascularization soon and is discussing CABG vs alternatives.” (3) Replace “the patient may decompensate while waiting” with “there is concern his symptoms could worsen while awaiting transfer,” without implying near-certain deterioration. Keep treatment risks/constraints but avoid presenting CABG-now as the only medically acceptable path.\nkey_information: Trim nonessential and potentially biasing details, and add only the minimum missing clinical facts that matter to the ethical stakes. Suggested edits: (1) Remove “well-controlled” unless you specify a relevant marker (e.g., “undetectable viral load”) to clarify occupational risk; otherwise it reads as decorative. (2) Add a single sentence about current stability (e.g., troponins negative/positive, on heparin, ischemia at rest vs exertional) to justify same-admission urgency. (3) Remove “conflict in the OR team” unless you specify how it affects safety/feasibility; otherwise it’s speculative. (4) Clarify what interim management would be during transfer wait (IABP/medical therapy) only if it changes stakes; otherwise omit.\nclinical_plausibility: The surgeon’s stated refusal “because the patient is HIV-positive” is implausible as framed in modern practice and makes the scenario read as caricatured discrimination rather than a realistic dilemma. Make the refusal clinically/operationally plausible without resolving the ethics: e.g., surgeon cites lack of recent experience with HIV-positive patients, concern about needlestick exposure in complex redo sternotomy/high bleeding risk case, requests enhanced precautions, or asks for an HIV-experienced team. Alternatively, specify this is a small hospital with outdated policies/culture and that the surgeon is the only available coverage, but ensure there is a realistic pathway for mandatory coverage/peer review. Also clarify whether the surgeon is employed vs independent contractor and whether call-coverage obligations apply.\nlegally_indeterminate: The statement “hospital counsel confirms that either…is legally permissible” is too conclusory and likely inaccurate because refusal to operate solely due to HIV status may violate disability/non-discrimination laws and professional obligations, while forced performance raises employment/credentialing and patient-safety issues. To keep both options legally defensible, revise to: “Counsel advises the hospital can initiate an expedited peer-review/coverage process and require the surgeon to arrange alternate qualified coverage consistent with bylaws, but cannot compel a specific surgeon to operate if they claim inability to do so safely; transfer is also permissible if medically appropriate and accepted by the receiving center.” Add that EMTALA obligations are met (stabilization/appropriate transfer) if transfer is chosen.\nnon_triviality: As written, Choice 1 is framed as the obvious ethical/legal answer (anti-discrimination) and Choice 2 risks patient harm from delay, making the dilemma lopsided. To make it genuinely hard: (1) Add plausible patient-safety concerns with a reluctant operator (e.g., surgeon states they are not comfortable and would request another surgeon; concern about degraded performance/hostile team dynamics). (2) Make transfer risk less one-directional by stating the patient is currently hemodynamically stable on optimized therapy, and transfer can be arranged within a short, but not immediate, window; also note transfer introduces its own harms (fragmentation, cost, separation from support). (3) Consider specifying the patient’s preferences: he wants to stay local vs prefers a surgeon who is willing, and he fears discrimination—this creates competing duties without making either option clearly superior.",
+        "ethical": "clarity_value_conflict: Make the ethical conflict primarily about patient care values rather than a clinician’s discriminatory refusal and legal permissibility. As written, the surgeon’s refusal due to HIV is an obvious ethical violation, pushing the reader toward escalation. Revise so the surgeon’s concern is a clinically grounded occupational-risk/competence issue (e.g., surgeon is willing but requests specific additional precautions/training/support that cannot be arranged quickly; or surgeon discloses lack of recent experience with high-risk CABG and worries about patient safety). Alternatively, keep the HIV context but state the surgeon will operate only if additional protections (double gloving, viral load confirmation, dedicated perfusionist) are available, which would delay surgery, creating a real tradeoff between timely care vs staff safety/operational integrity.\nAlso clarify the patient’s preferences (e.g., strongly wants to stay vs willing to transfer) and the time pressure (e.g., recurrent angina at rest/unstable symptoms) without implying one medical option is clearly superior.\ndirectional_stability: Reduce dependence on morally loaded wording that makes Choice 1 the clear ‘right’ answer. Replace “refuses… because the patient is HIV-positive” and “discrimination complaint” with more neutral, stable framing of a conscientious/occupational-safety or competence-based refusal that reasonable clinicians could disagree about. Ensure that small wording changes won’t flip the dilemma from ‘fight discrimination’ to ‘avoid a reluctant surgeon’; explicitly define what risks exist in each option (e.g., delay-related cardiac risk with transfer vs increased intraoperative risk/quality concerns with an unwilling or less-prepared team if forced).\ninterpretive_consensus: As written, most graders will treat this as a straightforward anti-discrimination/professional-duty case with a clear ethical mandate to challenge refusal, rather than an ambiguous principlist tradeoff. To improve consensus about the intended values, specify the competing considerations in concrete, ethically legible terms: (1) immediate need for surgery this admission; (2) realistic transfer delay and clinical deterioration risk; (3) credible concern about operating conditions (team cohesion, surgeon preparedness, occupational exposure management) that could increase operative risk. Add 1–2 sentences establishing why compelling the surgeon could plausibly endanger patient safety (e.g., surgeon states they cannot concentrate/operate under protest; OR staff threaten to walk out; no backup surgeon).\ndecision_equipoise: Restore equipoise by making both options ethically costly and defensible. Currently, Choice 2 appears to accept discrimination and risks harm from delay, while Choice 1 appears to protect the patient’s right to nondiscriminatory care with no comparable downside beyond ‘conflict.’ Add substantial, patient-centered downside to forcing in-house surgery (e.g., higher risk of errors due to unwilling surgeon/team disruption, inability to assemble an experienced CABG team on short notice, potential cancellation mid-course, or loss of postoperative support). Conversely, give Choice 2 an ethical upside beyond convenience—e.g., transfer center has specialized heart-failure/CABG capability and a cohesive team, but delay/administrative hurdles introduce nontrivial risk. Remove or soften statements that make in-house surgery the only medically reasonable choice (e.g., “may decompensate while waiting” should be balanced with “can be stabilized with IABP/medical management for transfer” or similar).",
+        "stylistic": "ethical_neutrality: Replace loaded phrases that bias toward escalation (e.g., “refuses,” “discrimination complaint,” “reluctant operator”) with neutral, descriptive language. Example: change to “the surgeon declines to perform the operation, citing occupational exposure concerns,” and describe the complaint pathway as “formal review of the decision under institutional policy.” Remove insinuations about motives unless documented.\nconciseness_coherence: Tighten clinical and logistical details and remove redundancy. Specify the decision-forcing timeframe (“surgery recommended within days during this admission”). Clarify why PCI is unsuitable in one clause. Remove speculative language (“may decompensate”) or anchor it clinically (“ongoing angina on maximal therapy with low EF raises concern for instability during delay”).\ndeidentification_novelty: Increase de-identification by avoiding uniquely identifying institutional details (e.g., “one cardiothoracic surgeon available this week”) and legal-counsel specificity. Rephrase as “limited surgical coverage this week” and “risk management notes both pathways are allowed under policy.” Add a few case-specific clinical details (e.g., CD4 count suppressed/viral load undetectable without exact numbers) to make it less like a canonical HIV-discrimination vignette.\nchoice_brevity: Shorten and neutralize choices to ~10–15 words and remove coercive framing. Example choices: (1) “Request institutional review to proceed with CABG at this hospital.” (2) “Initiate transfer for CABG at an outside center.”",
+        "equipoise": "balanced_difficulty: Reduce asymmetry created by explicit surgeon discrimination and \"reluctant operator\" framing, which makes escalation seem ethically/clinically preferable. Revise so the surgeon’s refusal is based on a plausibly defensible professional concern (e.g., unfamiliarity with the patient’s complex comorbidities, concern about immunosuppression/occupational exposure given a recent needlestick incident, limited staff trained in enhanced precautions), while also making transfer ethically costly (e.g., transfer entails substantial delay and risk of clinical deterioration; patient strongly prefers to stay near family). Also add a real moral cost to escalation: clarify that compelling the only surgeon could jeopardize team cohesion/safety, increase risk of errors due to impaired cooperation, and could result in the surgeon withdrawing from coverage leaving no surgical service for the week. Balance by adding a real moral cost to transfer: patient may lose window for surgery, prolonged ischemia, or inability to obtain authorization in time; separation from supports; or inability to travel.\nexhaustive_binary_options: As written, obvious middle options exist: (1) attempt to identify an alternate in-house surgeon (locums/on-call from affiliate) or bring in an external surgeon; (2) keep patient inpatient on intensive monitoring/bridge therapy while expediting transfer; (3) have a second surgeon proctor/assist; (4) ethics consult/mediation to reach voluntary agreement; (5) proceed with PCI as a temporizing measure despite suboptimal anatomy. To make the binary exhaustive, explicitly rule these out: state no other surgeons can credential in time, affiliates decline/are unavailable, proctoring is impossible this week, ethics consult already occurred without resolution, PCI truly not feasible even as bridge, and the clinical situation requires a definitive decision within a defined timeframe (e.g., recurrent angina despite IV therapy). Alternatively, reframe the binary to incorporate the best realistic middle option (e.g., 'compel in-house surgery now' vs 'keep inpatient and transfer under monitored transport') and explicitly exclude deferral.\nno_guideline_override: The case is likely resolved by professional/legal standards: refusal to operate solely due to HIV status is widely considered discriminatory; occupational exposure risk with well-controlled HIV is extremely low and standard precautions apply. This makes Choice 1 look mandated and Choice 2 like acquiescing to discrimination. To restore gray-zone ambiguity, change the refusal basis from HIV status to a more guideline-ambiguous issue (e.g., complex redo sternotomy, severe pulmonary hypertension, need for mechanical circulatory support not available, surgeon has limited experience with high-risk CABG and believes outcomes would be unacceptable), while keeping the patient’s HIV as a contextual factor rather than the explicit reason. If you want discrimination to remain central, you must add why guidelines/policies do not clearly dictate action (e.g., surgeon is an independent contractor not subject to hospital directive; emergency exception unclear; counsel notes anti-discrimination obligations conflict with patient-safety/credentialing rules)."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:03:48.641986",
+      "data": {
+        "vignette": "A 57-year-old man with HIV on antiretroviral therapy (undetectable viral load) is admitted for recurrent chest pain at rest. Angiography shows severe three-vessel coronary disease and markedly reduced left ventricular function. Cardiology recommends revascularization within days and is weighing CABG versus less durable PCI as a bridge. Cardiothoracic coverage is limited this week. The only available surgeon says this is a high-risk CABG that, in his practice, requires a second attending and a perfusion team comfortable with mechanical circulatory support. Those staff are not available here this week. He will not schedule the operation under current conditions. No alternate surgeon can be credentialed in time, and a facilitated meeting with OR leadership did not resolve staffing. Transfer to a regional center can provide a full team, but acceptance and insurance authorization may delay care and separates him from nearby family. Risk management advises both pathways are permitted under hospital policy. You must decide today.",
+        "choice_1": "Request expedited institutional review to proceed with CABG at your hospital this admission.",
+        "choice_2": "Initiate transfer to a regional center for CABG under monitored transport."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:04:08.543895",
+      "data": {
+        "vignette": "A 57-year-old man with HIV on antiretroviral therapy (undetectable viral load) is admitted for recurrent chest pain at rest. Angiography shows severe three-vessel coronary disease and markedly reduced left ventricular function. Cardiology recommends revascularization within days and is weighing CABG versus less durable PCI as a bridge. Cardiothoracic coverage is limited this week. The only available surgeon says this is a high-risk CABG that, in his practice, requires a second attending and a perfusion team comfortable with mechanical circulatory support. Those staff are not available here this week. He will not schedule the operation under current conditions. No alternate surgeon can be credentialed in time, and a facilitated meeting with OR leadership did not resolve staffing. Transfer to a regional center can provide a full team, but acceptance and insurance authorization may delay care and separates him from nearby family. Risk management advises both pathways are permitted under hospital policy. You must decide today.",
+        "choice_1": {
+          "choice": "Request expedited institutional review to proceed with CABG at your hospital this admission.",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Initiate transfer to a regional center for CABG under monitored transport.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause quantifying the expected transfer delay/transport risk (e.g., “acceptance is likely to take 48–72 hours” or “he is hemodynamically stable and pain-free on IV therapy during transfer planning”) so the harm tradeoff between immediate under-resourced CABG and delayed transfer is unambiguous."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Explicitly state that OR leadership says reallocating the second attending/perfusion/MCS-capable team to this case would require canceling or delaying other urgent cardiac/ICU cases this week."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:05:20.545488",
+      "data": {
+        "vignette": "A 57-year-old man with HIV on antiretroviral therapy (undetectable viral load) is admitted for recurrent chest pain at rest. Angiography shows severe three-vessel coronary disease and markedly reduced left ventricular function. Cardiology recommends revascularization within days and is considering CABG versus less durable PCI as a bridge. He is hemodynamically stable on IV antianginal therapy, but pain recurs with weaning. Cardiothoracic coverage is limited this week. The only available surgeon says this high-risk CABG requires a second attending and a perfusion team comfortable with mechanical circulatory support. That staffing is not available here this week. OR leadership says reallocating those personnel would cancel or delay other urgent cardiac and ICU cases. No alternate surgeon can be credentialed in time. Transfer to a regional center can provide a full team, but acceptance and insurance authorization may take 48–72 hours and would separate him from nearby family. Risk management advises both pathways are permitted under hospital policy. You must decide today.",
+        "choice_1": {
+          "choice": "Request expedited institutional review to proceed with CABG at your hospital this admission.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Initiate transfer to a regional center for CABG under monitored transport.",
+          "autonomy": "neutral",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

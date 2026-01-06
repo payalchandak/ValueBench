@@ -1,0 +1,273 @@
+{
+  "case_id": "ca7a07df-ee22-4925-a4b9-89a0a7cd3a50",
+  "created_at": "2026-01-04T22:43:57.489499",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "2. You are working at the desk in your hospital when another employee of\nthe hospital asks for information about a patient who was admitted last\nnight with a pulmonary embolus secondary to cancer. You know the\ndetails of the case. The person requesting the information states that he\nis a close friend and co-worker of your patient. He shows you proper\nidentification proving he really is a co-worker of your patient who also\nworks in the hospital.\nWhich of the following is the most appropriate response to this request?\na. Give him the information on the patient.\nb. Give him the information only if he is a relative of the patient.\nc. Inform him that you are not at liberty to give details regarding the patient without\nthe patient’s permission.\nd. Have him sign a release or consent form before revealing the information.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T22:43:57.489536",
+      "data": {
+        "vignette": "A 58-year-old man with metastatic lung cancer is admitted overnight with a large pulmonary embolus. He is in the ICU on high-flow oxygen and is becoming confused. The team expects he may need intubation and sedation within hours. He has no family at the bedside, and the phone numbers in the chart go to voicemail. A hospital employee arrives with ID and says he is the patient’s closest friend and emergency contact. He asks what happened and whether the patient is going to die. He offers to bring the patient’s medication list and a document the patient kept at home about treatment wishes. In the ED note, the patient had said he “doesn’t want people at work to know about the cancer.” Hospital privacy policy permits limited disclosure to a person involved in care when the patient cannot consent, but it also supports waiting for the patient’s permission when feasible.",
+        "choice_1": "Share a limited clinical update with the coworker and document the rationale.",
+        "choice_2": "Decline to share any information until the patient can consent or a surrogate is confirmed."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Tighten the vignette to only facts that affect the disclosure decision. For example, remove or rephrase non-essential lines like “He asks what happened and whether the patient is going to die.” Add one clinically relevant sentence clarifying what information the coworker needs to bring (e.g., an advance directive/POLST, health care proxy form, or medication list) and why it matters before intubation. Clarify whether the patient has any documented code status or advance directive in the chart (even if ‘none on file’), since that directly affects the stakes of contacting the coworker."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Clarify key realism points: (1) the patient is currently able/unable to participate (e.g., ‘intermittently lucid but rapidly worsening confusion’), (2) whether the coworker is listed as ‘emergency contact’ in the chart or is merely claiming to be, and (3) whether the coworker is part of hospital staff but not assigned to the patient’s care (to avoid an implausible/awkward conflict-of-interest scenario). These details make the disclosure dilemma operational in a real ICU workflow."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Add a brief, jurisdiction-neutral sentence establishing that both options are legally/policy permissible. Example: “Under applicable privacy law and hospital policy, clinicians may share a limited update with a person the patient has identified as an emergency contact or who is reasonably involved in the patient’s care when the patient lacks capacity, unless doing so conflicts with the patient’s known wishes; clinicians may also decline disclosure until identity/role is verified.” Also clarify whether the ED statement about coworkers reflects a specific prior restriction that would apply to this individual (e.g., ‘he previously told staff he did not want any coworkers contacted or told about his cancer’ vs a general preference for privacy)."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Increase the moral symmetry so neither choice feels like the obvious policy answer. Add a concrete risk/cost to each path: \n- For sharing: specify that the coworker is a hospital employee in a non-care role and might inadvertently breach confidentiality at work; the patient previously expressed strong concern about workplace disclosure.\n- For not sharing: specify that intubation is imminent and the coworker may be able to provide an advance directive or named health care proxy that could change code status/goals-of-care decisions before sedation.\nAlso explicitly state that no other surrogate is reachable in the required timeframe (e.g., ‘no response after repeated calls over the past hour’) so waiting has a real downside."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Clarify the coworker’s identity and relationship to the patient (e.g., “a colleague from his workplace who is listed as emergency contact, but not a legally designated surrogate”), and clarify whether the patient’s statement about not wanting “people at work” to know includes this specific person. Also specify exactly what information would be disclosed under Choice 1 (e.g., ‘he is critically ill in ICU with a blood clot in the lung and may need a breathing tube today’), and whether cancer would be mentioned. This reduces ambiguity that could lead graders to read the dilemma as either an obvious confidentiality breach or an obvious permitted disclosure."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the tradeoffs so neither option is a near-default: (1) Strengthen the clinical stakes of withholding by stating the team urgently needs the medication list and the home document to guide imminent intubation goals-of-care/anticoagulation decisions, and that delays could meaningfully worsen care. (2) Strengthen the ethical cost of disclosure by stating the coworker works at the same workplace and has previously shared gossip, or that the patient recently expressed fear of workplace repercussions if his diagnosis becomes known. (3) Alternatively, make the patient’s prior preference more nuanced (e.g., he did not want the broader workplace to know but allowed this friend to be contacted), so Choice 2 is not automatically dictated by an explicit wish."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Rephrase potentially leading elements so neither option feels morally favored. For example: change the ED quote to a neutral statement such as “the patient previously requested that health information not be shared with coworkers” rather than “doesn’t want people at work to know about the cancer.” Avoid labeling the visitor as “closest friend”; instead say “a coworker who states he is the emergency contact per the chart.” Add one sentence that the team cannot confirm the relationship yet and that disclosure could either support care coordination or risk unwanted workplace disclosure."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the decision-forcing facts and the policy tension. Remove nonessential dialogue (e.g., “is he going to die”) and replace with clinically relevant questions (prognosis, code status, home meds, advance directive). Clarify whether the chart lists this person as emergency contact and whether any documented surrogate/advance directive is on file. Add a single sentence specifying what ‘limited disclosure’ could reasonably include (e.g., current location/critical illness) without implying the cancer diagnosis must be disclosed."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Make both choices carry clearer, comparable moral costs and ensure neither is framed as clearly safer. Edits: (1) Add that the coworker is listed as emergency contact in the EHR but the patient previously made an explicit, recent request: “Do not share anything with coworkers, even if I’m very sick,” OR alternatively soften the prior statement to be ambiguous (e.g., ‘preferred privacy at work’). (2) Add concrete potential harms of declining disclosure: coworker may be the only person who can immediately provide a current med list/allergies and locate an advance directive needed before intubation; delays could lead to unwanted escalation or medication error. (3) Add concrete potential harms of disclosing: coworker is also the patient’s supervisor/HR-linked role or has access to workplace communications, raising realistic risk of wider disclosure affecting employment/insurance; patient previously concealed diagnosis from workplace. (4) Balance language so policy does not sound like it endorses one option—rephrase to ‘policy allows limited disclosure in some circumstances but emphasizes minimum necessary and deference to known patient preferences’."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "The binary is not exhaustive because a middle-ground approach is obvious and clinically standard: verify identity/role and ask only for information without disclosing PHI, or disclose only that he is critically ill without diagnosis, or contact the privacy officer. To fix: explicitly rule out these intermediates or redefine choices to include them. Options: (A) ‘Provide a minimal update including diagnosis/PE and prognosis to enable the coworker to retrieve the document/med list’ vs (B) ‘Provide no clinical details at all and instead ask the coworker only to fetch documents/med list while you treat him as no-surrogate.’ Alternatively, make the decision binary about whether to disclose the cancer diagnosis specifically: (1) disclose PE/ICU status but not cancer; (2) disclose cancer status too—then clarify why the cancer disclosure is necessary for the coworker’s requested task."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, privacy law/policy may effectively determine the answer: if the patient expressed a clear preference not to disclose to coworkers, most HIPAA-based standards and institutional policies would require honoring that unless a true emergency exception applies. To restore gray zone: (1) Clarify that the ED note is ambiguous (‘doesn’t want gossip at work’ vs an explicit prohibition) or outdated, and that it is unclear whether the coworker is included in ‘people at work.’ (2) Clarify the coworker’s status: he is documented as the designated emergency contact but not formally appointed as health care proxy, and state law/policy is unclear whether emergency contact can receive updates when capacity is lost. (3) Add that immediate clinical decisions (intubation/code status) hinge on locating the document, creating tension between minimum-necessary disclosure standards and respecting possible confidentiality wishes."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "key_information: Tighten the vignette to only facts that affect the disclosure decision. For example, remove or rephrase non-essential lines like “He asks what happened and whether the patient is going to die.” Add one clinically relevant sentence clarifying what information the coworker needs to bring (e.g., an advance directive/POLST, health care proxy form, or medication list) and why it matters before intubation. Clarify whether the patient has any documented code status or advance directive in the chart (even if ‘none on file’), since that directly affects the stakes of contacting the coworker.\nclinical_plausibility: Clarify key realism points: (1) the patient is currently able/unable to participate (e.g., ‘intermittently lucid but rapidly worsening confusion’), (2) whether the coworker is listed as ‘emergency contact’ in the chart or is merely claiming to be, and (3) whether the coworker is part of hospital staff but not assigned to the patient’s care (to avoid an implausible/awkward conflict-of-interest scenario). These details make the disclosure dilemma operational in a real ICU workflow.\nlegally_indeterminate: Add a brief, jurisdiction-neutral sentence establishing that both options are legally/policy permissible. Example: “Under applicable privacy law and hospital policy, clinicians may share a limited update with a person the patient has identified as an emergency contact or who is reasonably involved in the patient’s care when the patient lacks capacity, unless doing so conflicts with the patient’s known wishes; clinicians may also decline disclosure until identity/role is verified.” Also clarify whether the ED statement about coworkers reflects a specific prior restriction that would apply to this individual (e.g., ‘he previously told staff he did not want any coworkers contacted or told about his cancer’ vs a general preference for privacy).\nnon_triviality: Increase the moral symmetry so neither choice feels like the obvious policy answer. Add a concrete risk/cost to each path: \n- For sharing: specify that the coworker is a hospital employee in a non-care role and might inadvertently breach confidentiality at work; the patient previously expressed strong concern about workplace disclosure.\n- For not sharing: specify that intubation is imminent and the coworker may be able to provide an advance directive or named health care proxy that could change code status/goals-of-care decisions before sedation.\nAlso explicitly state that no other surrogate is reachable in the required timeframe (e.g., ‘no response after repeated calls over the past hour’) so waiting has a real downside.",
+        "ethical": "interpretive_consensus: Clarify the coworker’s identity and relationship to the patient (e.g., “a colleague from his workplace who is listed as emergency contact, but not a legally designated surrogate”), and clarify whether the patient’s statement about not wanting “people at work” to know includes this specific person. Also specify exactly what information would be disclosed under Choice 1 (e.g., ‘he is critically ill in ICU with a blood clot in the lung and may need a breathing tube today’), and whether cancer would be mentioned. This reduces ambiguity that could lead graders to read the dilemma as either an obvious confidentiality breach or an obvious permitted disclosure.\ndecision_equipoise: Rebalance the tradeoffs so neither option is a near-default: (1) Strengthen the clinical stakes of withholding by stating the team urgently needs the medication list and the home document to guide imminent intubation goals-of-care/anticoagulation decisions, and that delays could meaningfully worsen care. (2) Strengthen the ethical cost of disclosure by stating the coworker works at the same workplace and has previously shared gossip, or that the patient recently expressed fear of workplace repercussions if his diagnosis becomes known. (3) Alternatively, make the patient’s prior preference more nuanced (e.g., he did not want the broader workplace to know but allowed this friend to be contacted), so Choice 2 is not automatically dictated by an explicit wish.",
+        "stylistic": "ethical_neutrality: Rephrase potentially leading elements so neither option feels morally favored. For example: change the ED quote to a neutral statement such as “the patient previously requested that health information not be shared with coworkers” rather than “doesn’t want people at work to know about the cancer.” Avoid labeling the visitor as “closest friend”; instead say “a coworker who states he is the emergency contact per the chart.” Add one sentence that the team cannot confirm the relationship yet and that disclosure could either support care coordination or risk unwanted workplace disclosure.\nconciseness_coherence: Tighten and clarify the decision-forcing facts and the policy tension. Remove nonessential dialogue (e.g., “is he going to die”) and replace with clinically relevant questions (prognosis, code status, home meds, advance directive). Clarify whether the chart lists this person as emergency contact and whether any documented surrogate/advance directive is on file. Add a single sentence specifying what ‘limited disclosure’ could reasonably include (e.g., current location/critical illness) without implying the cancer diagnosis must be disclosed.",
+        "equipoise": "balanced_difficulty: Make both choices carry clearer, comparable moral costs and ensure neither is framed as clearly safer. Edits: (1) Add that the coworker is listed as emergency contact in the EHR but the patient previously made an explicit, recent request: “Do not share anything with coworkers, even if I’m very sick,” OR alternatively soften the prior statement to be ambiguous (e.g., ‘preferred privacy at work’). (2) Add concrete potential harms of declining disclosure: coworker may be the only person who can immediately provide a current med list/allergies and locate an advance directive needed before intubation; delays could lead to unwanted escalation or medication error. (3) Add concrete potential harms of disclosing: coworker is also the patient’s supervisor/HR-linked role or has access to workplace communications, raising realistic risk of wider disclosure affecting employment/insurance; patient previously concealed diagnosis from workplace. (4) Balance language so policy does not sound like it endorses one option—rephrase to ‘policy allows limited disclosure in some circumstances but emphasizes minimum necessary and deference to known patient preferences’.\nexhaustive_binary_options: The binary is not exhaustive because a middle-ground approach is obvious and clinically standard: verify identity/role and ask only for information without disclosing PHI, or disclose only that he is critically ill without diagnosis, or contact the privacy officer. To fix: explicitly rule out these intermediates or redefine choices to include them. Options: (A) ‘Provide a minimal update including diagnosis/PE and prognosis to enable the coworker to retrieve the document/med list’ vs (B) ‘Provide no clinical details at all and instead ask the coworker only to fetch documents/med list while you treat him as no-surrogate.’ Alternatively, make the decision binary about whether to disclose the cancer diagnosis specifically: (1) disclose PE/ICU status but not cancer; (2) disclose cancer status too—then clarify why the cancer disclosure is necessary for the coworker’s requested task.\nno_guideline_override: As written, privacy law/policy may effectively determine the answer: if the patient expressed a clear preference not to disclose to coworkers, most HIPAA-based standards and institutional policies would require honoring that unless a true emergency exception applies. To restore gray zone: (1) Clarify that the ED note is ambiguous (‘doesn’t want gossip at work’ vs an explicit prohibition) or outdated, and that it is unclear whether the coworker is included in ‘people at work.’ (2) Clarify the coworker’s status: he is documented as the designated emergency contact but not formally appointed as health care proxy, and state law/policy is unclear whether emergency contact can receive updates when capacity is lost. (3) Add that immediate clinical decisions (intubation/code status) hinge on locating the document, creating tension between minimum-necessary disclosure standards and respecting possible confidentiality wishes."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T22:45:11.239471",
+      "data": {
+        "vignette": "A 58-year-old man with metastatic lung cancer is admitted overnight with a large pulmonary embolus. He is in the ICU on high-flow oxygen and is intermittently lucid but worsening, and the team expects to intubate and sedate him within hours. No advance directive or code status is in the chart. Repeated calls to the listed family numbers over the past hour go to voicemail. The EHR lists a workplace colleague as the emergency contact. The colleague arrives, confirms identity with photo ID, and says he can bring the patient’s current medication bottles and a folder the patient kept at home about treatment wishes. He also works in the patient’s HR chain at the same company, and the patient previously told ED staff he wanted health information kept from “people at work,” without clarifying whether that included this colleague. Hospital policy and privacy law allow either limited disclosure to an identified emergency contact when the patient lacks capacity or withholding details to honor possible prior preferences.",
+        "choice_1": "Give the coworker a minimal update about ICU status and the pulmonary embolus.",
+        "choice_2": "Ask the coworker only to retrieve documents and medications without sharing clinical details."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T22:45:28.037108",
+      "data": {
+        "vignette": "A 58-year-old man with metastatic lung cancer is admitted overnight with a large pulmonary embolus. He is in the ICU on high-flow oxygen and is intermittently lucid but worsening, and the team expects to intubate and sedate him within hours. No advance directive or code status is in the chart. Repeated calls to the listed family numbers over the past hour go to voicemail. The EHR lists a workplace colleague as the emergency contact. The colleague arrives, confirms identity with photo ID, and says he can bring the patient’s current medication bottles and a folder the patient kept at home about treatment wishes. He also works in the patient’s HR chain at the same company, and the patient previously told ED staff he wanted health information kept from “people at work,” without clarifying whether that included this colleague. Hospital policy and privacy law allow either limited disclosure to an identified emergency contact when the patient lacks capacity or withholding details to honor possible prior preferences.",
+        "choice_1": {
+          "choice": "Give the coworker a minimal update about ICU status and the pulmonary embolus.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Ask the coworker only to retrieve documents and medications without sharing clinical details.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause stating whether the coworker is legally authorized to receive information (e.g., named health care proxy or not) and whether the patient explicitly asked that this specific coworker not be told; without that, it’s ambiguous whether disclosure respects or violates autonomy."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating that updating the coworker would directly help urgent clinical decisions (e.g., “so he can immediately relay any known code status or anticoagulation history before intubation”), and that withholding details could delay time-sensitive treatment decisions/goal-concordant care."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause specifying that disclosure could foreseeably harm the patient (e.g., job-related repercussions, stigma, or distress) and/or that withholding details could risk harm (e.g., delay in identifying wishes/medications could lead to unwanted intubation or medication error) to make the nonmaleficence tradeoff explicit."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T22:45:48.286320",
+      "data": {
+        "vignette": "A 58-year-old man with metastatic lung cancer is admitted overnight with a large pulmonary embolus. He is in the ICU on high-flow oxygen. He is intermittently lucid but worsening, and the team expects to intubate and sedate him within hours. No advance directive, code status, or health care proxy is in the chart. Repeated calls to listed family numbers go to voicemail. The EHR lists a workplace colleague as the emergency contact. The colleague arrives and confirms identity with photo ID. He says he can quickly bring the patient’s current medication bottles and a folder kept at home about treatment wishes. The team also needs any known code status and anticoagulation history before intubation. The colleague is in the patient’s HR chain. The patient previously told ED staff he wanted health information kept from “people at work,” but he did not specify whether this colleague was included. Sharing details could expose the patient to workplace stigma or job-related consequences if the information spreads. Withholding details could delay time-sensitive, goal-concordant decisions or contribute to medication errors. Policy and privacy law allow limited disclosure to an identified emergency contact when the patient lacks capacity or withholding details to honor possible prior preferences.",
+        "choice_1": {
+          "choice": "Give the coworker a minimal update about ICU status and the pulmonary embolus.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Ask the coworker only to retrieve documents and medications without sharing clinical details.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 4,
+      "step_description": "sheets_edit",
+      "timestamp": "2026-01-05T20:54:48.201129",
+      "data": {
+        "vignette": "A 58-year-old man with metastatic lung cancer is admitted overnight with a large pulmonary embolus. He is in the ICU on high-flow oxygen. He is intermittently lucid but worsening, and the team expects to intubate and sedate him within hours. No advance directive, code status, or health care proxy is in the chart. Repeated calls to listed family numbers go to voicemail. The EHR lists a workplace colleague as the emergency contact. The colleague arrives and confirms identity with photo ID. He says he can quickly bring the patient’s current medication bottles and a folder kept at home about treatment wishes. The team also needs any known code status and anticoagulation history before intubation. The colleague is in the patient’s HR chain. The patient previously told ED staff he wanted health information kept from “people at work,” but he did not specify whether this colleague was included. Sharing details could expose the patient to workplace stigma or job-related consequences if the information spreads. Withholding details could delay time-sensitive, goal-concordant decisions or contribute to medication errors. Policy and privacy law allow limited disclosure to an identified emergency contact when the patient lacks capacity or withholding details to honor possible prior preferences.",
+        "choice_1": {
+          "choice": "Give the coworker a minimal update about ICU status and the pulmonary embolus.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Ask the coworker only to retrieve documents and medications without sharing clinical details.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": {
+        "source": "google_sheets",
+        "import_timestamp": "2026-01-05T20:54:48.201126",
+        "reviewers": {
+          "r1": {
+            "name": "Payal Chandak",
+            "decision": "Reject"
+          }
+        }
+      }
+    }
+  ],
+  "status": "deprecated"
+}

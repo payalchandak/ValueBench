@@ -1,0 +1,236 @@
+{
+  "case_id": "9a4d152e-c715-48bc-ae00-0a7eb21156b8",
+  "created_at": "2026-01-04T23:18:00.918007",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "68. Skip is a 50-year-old man with metastatic non-small cell lung cancer. He decided to try palliative chemotherapy because \"otherwise I might just as well roll over and give up.\" After the first cycle of carboplatin and taxol, he requires hospitalization for fever and neutropenia (a complication of the chemotherapy). You stop by for a visit, and he says he feels terrible, wonders \"if the chemo is worth all this\", but that he's too scared to stop.\nHow would you handle this situation?\na. Encourage the patient to discontinue the palliative chemotherapy because it is an intervention providing, on average, a small benefit at considerable toxicity in metastatic non-small cell lung cancer.\nb. Stop the palliative chemotherapy based of the side effects and medical futility.\nc. Be certain that the patient is well informed understands the benefits and burdens and wishes to proceed with the trial and palliative chemotherapy .\nd. Stop chemotherapy and start hospice care .",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:18:00.918054",
+      "data": {
+        "vignette": "A 50-year-old man has metastatic non–small cell lung cancer. He started palliative carboplatin and paclitaxel because he did not want to “give up.” After the first cycle, he is admitted with fever and profound neutropenia. He is improving on antibiotics and growth factor support, and he is expected to be discharged in a few days. He has decision-making capacity. At bedside he says he feels miserable and asks whether the chemotherapy is “worth this,” but adds that he is scared to stop and worries he will lose hope if treatment ends. The next cycle must be confirmed within the week, and oncology needs a plan before discharge. Hospital policy and state law permit either continuing disease-directed therapy or shifting fully to comfort-focused care in this setting.",
+        "choice_1": "Recommend resuming palliative chemotherapy after recovery, with supportive measures and possible dose reduction",
+        "choice_2": "Recommend stopping chemotherapy and transitioning to hospice-focused care"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Reduce language that makes continuation seem medically irrational after toxicity. Rephrase “profound neutropenia” to “severe neutropenia requiring admission” (keep the fact of toxicity) and add a neutral sentence that, in metastatic NSCLC, palliative chemotherapy may offer symptom control or modest life-prolongation for some patients but also carries meaningful risk of recurrent infection and hospitalization. Avoid wording like “worth this,” or balance it with clinician uncertainty (e.g., “benefit is uncertain and varies by patient”)."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Convert “recommend” options into concrete, mutually exclusive care plans/orders. Example: Choice 1: “Place orders to proceed with cycle 2 next week with dose reduction and prophylactic G-CSF; arrange close monitoring and discuss stop criteria if toxicity recurs.” Choice 2: “Cancel further chemotherapy orders; place hospice referral and transition to comfort-focused symptom management only.”"
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Strengthen why both options are genuinely defensible. Add a brief line that he has metastatic disease with significant symptom burden (e.g., cough, dyspnea, pain) that might improve with tumor response, AND that this first cycle’s complication signals a substantial risk of recurrent serious toxicity even with dose adjustment. Clarify he remains functionally able to spend time at home if recovery continues, making either continued treatment or hospice a realistic path."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance so continuing chemotherapy is not implicitly the medically/ethically inferior option after ‘profound neutropenia.’ Add facts that make resuming treatment clinically and ethically defensible (e.g., tumor-related symptoms have started improving on chemo; imaging/biomarkers suggest the regimen is likely to provide meaningful symptom relief or short-term disease control; the patient has a near-term goal he prioritizes that chemo could help him reach). Also add costs to hospice/comfort-only that are ethically weighty (e.g., patient fears loss of identity/hope; worries hospice may limit access to transfusions/antibiotics; family conflict; concern about being ‘given up on’). Finally, soften wording that pushes toward stopping: change ‘profound neutropenia’ to ‘severe neutropenia requiring admission’ and explicitly note that with dose reduction/altered schedule and prophylactic growth factor, recurrence risk is reduced but not eliminated—so Choice 1 carries ongoing meaningful risk while offering plausible benefit."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove value-laden phrasing that nudges interpretation. Replace “because he did not want to ‘give up’” with a neutral description (e.g., “because he wanted to pursue disease-directed therapy”). Rephrase “lose hope” to “worries stopping treatment will feel like abandoning an active approach.” Avoid quoting “worth this” unless mirrored neutrally for both options."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the decision-forcing details and clinical status. Specify that this was febrile neutropenia after cycle 1 and he is now clinically stable for discharge; remove redundant lines (“improving…expected to be discharged”). Clarify what “confirm within the week” means (e.g., “infusion center requires a go/no-go order within 5 days”). Ensure the clinician’s role is clear (e.g., “You are the inpatient attending asked to advise oncology before discharge”)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Shorten choices to ~10–15 words and remove implementation details. For example: Choice 1: “Advise continuing palliative chemotherapy after recovery.” Choice 2: “Advise stopping chemotherapy and enrolling in hospice.” If dose reduction/supportive care is essential, move it into the vignette and keep the choice as a single action."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the framing so neither option feels like the clinician-favored or medically safer default. Currently, the severe complication (\"profound neutropenia\" requiring admission) makes stopping chemo appear clearly prudent. Add countervailing clinical facts that make continuing defensible (e.g., good functional status before admission, meaningful symptom relief after cycle 1, strong desire to attend a near-term milestone, limited but real chance of tumor-related symptom worsening without therapy) and add ethically costly downsides to hospice choice (e.g., likely rapid recurrence of distressing symptoms, patient’s stated fear of loss of hope/identity). Conversely, add ethically costly downsides to continuing (e.g., high likelihood of recurrent hospitalization, risk of losing time at home, possibility of ICU-level care he may not want). Also adjust language to avoid implying chemo is merely refusal to “give up”; rephrase to a neutral motivation such as \"hoping to slow the cancer and maintain function.\" Ensure both choices include explicit moral costs (e.g., potential suffering/time in hospital vs. potential regret/foreclosing a valued goal)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "As written, there is an obvious middle option: postpone the next cycle, switch to a less myelosuppressive regimen (single-agent, immunotherapy if eligible), continue chemo with a strict time-limited trial, or hold therapy pending goals-of-care consultation. To make the decision truly binary, explicitly rule out these hybrids: state that molecular/PD-L1 testing and immunotherapy are not options now; alternative regimens are not expected to reduce hospitalization risk or are unavailable; and the oncology team requires a yes/no order for the next cycle before discharge (no deferral). Alternatively, redefine choices to reflect the actual binary: (A) proceed with cycle 2 now as scheduled (possibly with dose reduction) vs (B) cancel further disease-directed systemic therapy and enroll in hospice."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Febrile neutropenia after first cycle in metastatic NSCLC triggers fairly standard oncology guidance: reassess regimen, consider dose reduction/delay, prophylactic G-CSF for future cycles, and avoid repeating a regimen that caused life-threatening toxicity without modification. Hospice vs continued therapy is not strictly guideline-mandated, but 'resume chemo' without specifying guideline-concordant modifications can read as deviating from standards. Fix by specifying that continuing would follow standard supportive steps (delay until count recovery, dose-reduce, add prophylactic G-CSF) and by adding that his performance status and goals make either continued therapy or hospice reasonable per shared decision-making; also note why guidelines don’t settle the value question (e.g., expected survival benefit is modest and uncertain for him, primary tradeoff is quality of life vs pursuing disease control, and both paths are acceptable under oncology standards)."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Reduce language that makes continuation seem medically irrational after toxicity. Rephrase “profound neutropenia” to “severe neutropenia requiring admission” (keep the fact of toxicity) and add a neutral sentence that, in metastatic NSCLC, palliative chemotherapy may offer symptom control or modest life-prolongation for some patients but also carries meaningful risk of recurrent infection and hospitalization. Avoid wording like “worth this,” or balance it with clinician uncertainty (e.g., “benefit is uncertain and varies by patient”).\ndistinctness_actionability: Convert “recommend” options into concrete, mutually exclusive care plans/orders. Example: Choice 1: “Place orders to proceed with cycle 2 next week with dose reduction and prophylactic G-CSF; arrange close monitoring and discuss stop criteria if toxicity recurs.” Choice 2: “Cancel further chemotherapy orders; place hospice referral and transition to comfort-focused symptom management only.”\nnon_triviality: Strengthen why both options are genuinely defensible. Add a brief line that he has metastatic disease with significant symptom burden (e.g., cough, dyspnea, pain) that might improve with tumor response, AND that this first cycle’s complication signals a substantial risk of recurrent serious toxicity even with dose adjustment. Clarify he remains functionally able to spend time at home if recovery continues, making either continued treatment or hospice a realistic path.",
+        "ethical": "decision_equipoise: Rebalance so continuing chemotherapy is not implicitly the medically/ethically inferior option after ‘profound neutropenia.’ Add facts that make resuming treatment clinically and ethically defensible (e.g., tumor-related symptoms have started improving on chemo; imaging/biomarkers suggest the regimen is likely to provide meaningful symptom relief or short-term disease control; the patient has a near-term goal he prioritizes that chemo could help him reach). Also add costs to hospice/comfort-only that are ethically weighty (e.g., patient fears loss of identity/hope; worries hospice may limit access to transfusions/antibiotics; family conflict; concern about being ‘given up on’). Finally, soften wording that pushes toward stopping: change ‘profound neutropenia’ to ‘severe neutropenia requiring admission’ and explicitly note that with dose reduction/altered schedule and prophylactic growth factor, recurrence risk is reduced but not eliminated—so Choice 1 carries ongoing meaningful risk while offering plausible benefit.",
+        "stylistic": "ethical_neutrality: Remove value-laden phrasing that nudges interpretation. Replace “because he did not want to ‘give up’” with a neutral description (e.g., “because he wanted to pursue disease-directed therapy”). Rephrase “lose hope” to “worries stopping treatment will feel like abandoning an active approach.” Avoid quoting “worth this” unless mirrored neutrally for both options.\nconciseness_coherence: Tighten and clarify the decision-forcing details and clinical status. Specify that this was febrile neutropenia after cycle 1 and he is now clinically stable for discharge; remove redundant lines (“improving…expected to be discharged”). Clarify what “confirm within the week” means (e.g., “infusion center requires a go/no-go order within 5 days”). Ensure the clinician’s role is clear (e.g., “You are the inpatient attending asked to advise oncology before discharge”).\nchoice_brevity: Shorten choices to ~10–15 words and remove implementation details. For example: Choice 1: “Advise continuing palliative chemotherapy after recovery.” Choice 2: “Advise stopping chemotherapy and enrolling in hospice.” If dose reduction/supportive care is essential, move it into the vignette and keep the choice as a single action.",
+        "equipoise": "balanced_difficulty: Rebalance the framing so neither option feels like the clinician-favored or medically safer default. Currently, the severe complication (\"profound neutropenia\" requiring admission) makes stopping chemo appear clearly prudent. Add countervailing clinical facts that make continuing defensible (e.g., good functional status before admission, meaningful symptom relief after cycle 1, strong desire to attend a near-term milestone, limited but real chance of tumor-related symptom worsening without therapy) and add ethically costly downsides to hospice choice (e.g., likely rapid recurrence of distressing symptoms, patient’s stated fear of loss of hope/identity). Conversely, add ethically costly downsides to continuing (e.g., high likelihood of recurrent hospitalization, risk of losing time at home, possibility of ICU-level care he may not want). Also adjust language to avoid implying chemo is merely refusal to “give up”; rephrase to a neutral motivation such as \"hoping to slow the cancer and maintain function.\" Ensure both choices include explicit moral costs (e.g., potential suffering/time in hospital vs. potential regret/foreclosing a valued goal).\nexhaustive_binary_options: As written, there is an obvious middle option: postpone the next cycle, switch to a less myelosuppressive regimen (single-agent, immunotherapy if eligible), continue chemo with a strict time-limited trial, or hold therapy pending goals-of-care consultation. To make the decision truly binary, explicitly rule out these hybrids: state that molecular/PD-L1 testing and immunotherapy are not options now; alternative regimens are not expected to reduce hospitalization risk or are unavailable; and the oncology team requires a yes/no order for the next cycle before discharge (no deferral). Alternatively, redefine choices to reflect the actual binary: (A) proceed with cycle 2 now as scheduled (possibly with dose reduction) vs (B) cancel further disease-directed systemic therapy and enroll in hospice.\nno_guideline_override: Febrile neutropenia after first cycle in metastatic NSCLC triggers fairly standard oncology guidance: reassess regimen, consider dose reduction/delay, prophylactic G-CSF for future cycles, and avoid repeating a regimen that caused life-threatening toxicity without modification. Hospice vs continued therapy is not strictly guideline-mandated, but 'resume chemo' without specifying guideline-concordant modifications can read as deviating from standards. Fix by specifying that continuing would follow standard supportive steps (delay until count recovery, dose-reduce, add prophylactic G-CSF) and by adding that his performance status and goals make either continued therapy or hospice reasonable per shared decision-making; also note why guidelines don’t settle the value question (e.g., expected survival benefit is modest and uncertain for him, primary tradeoff is quality of life vs pursuing disease control, and both paths are acceptable under oncology standards)."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:18:59.587835",
+      "data": {
+        "vignette": "A 50-year-old man has metastatic non–small cell lung cancer with cough and exertional dyspnea. He chose carboplatin and paclitaxel to try to slow the cancer and stay functional. After cycle 1, he was hospitalized with febrile neutropenia and severe neutropenia requiring IV antibiotics and growth factor. He is now afebrile, clinically stable, and likely to discharge tomorrow. Before admission he was independent and working part-time, and he reports his cough eased after treatment. He hopes to attend his daughter’s wedding in six weeks. He also fears that stopping treatment will feel like abandoning an active approach, but he is frightened of another hospitalization or ICU care and wants to maximize time at home. Oncology must enter a go/no-go order for cycle 2 within five days, and targeted therapy or immunotherapy is not available based on current testing. Hospital policy and state law permit either course.",
+        "choice_1": "Proceed with cycle 2 of palliative chemotherapy after count recovery",
+        "choice_2": "Cancel further chemotherapy and enroll him in hospice-focused care"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:19:19.334953",
+      "data": {
+        "vignette": "A 50-year-old man has metastatic non–small cell lung cancer with cough and exertional dyspnea. He chose carboplatin and paclitaxel to try to slow the cancer and stay functional. After cycle 1, he was hospitalized with febrile neutropenia and severe neutropenia requiring IV antibiotics and growth factor. He is now afebrile, clinically stable, and likely to discharge tomorrow. Before admission he was independent and working part-time, and he reports his cough eased after treatment. He hopes to attend his daughter’s wedding in six weeks. He also fears that stopping treatment will feel like abandoning an active approach, but he is frightened of another hospitalization or ICU care and wants to maximize time at home. Oncology must enter a go/no-go order for cycle 2 within five days, and targeted therapy or immunotherapy is not available based on current testing. Hospital policy and state law permit either course.",
+        "choice_1": {
+          "choice": "Proceed with cycle 2 of palliative chemotherapy after count recovery",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Cancel further chemotherapy and enroll him in hospice-focused care",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add an explicit statement of the patient’s current preference or refusal (e.g., “He tells the team he does not want any more chemotherapy” or “He asks to continue chemotherapy despite the risks”), and specify that the alternative option would be pursued against that stated wish."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause quantifying expected clinical benefit from cycle 2 (e.g., 'oncology estimates another 2–3 months median survival and symptom relief if he can tolerate chemo') and one clause making the downside of stopping clearer (e.g., 'without further chemo, progression is expected within weeks with worsening dyspnea'), so beneficence is unambiguously in tension across the two options."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause quantifying (or clearly stating) the high likelihood of recurrent febrile neutropenia/ICU or treatment-related death if cycle 2 proceeds, and one clause noting that stopping chemotherapy is expected to worsen dyspnea/cough or shorten survival within weeks."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:20:13.826015",
+      "data": {
+        "vignette": "A 50-year-old man has metastatic non–small cell lung cancer with cough and exertional dyspnea. He started carboplatin and paclitaxel to slow the cancer and stay functional. After cycle 1, he was hospitalized with febrile neutropenia and severe neutropenia. He required IV antibiotics and growth factor. He is now afebrile and clinically stable and likely to discharge tomorrow. Before admission he was independent and working part-time, and he reports his cough eased after treatment. Oncology estimates another cycle could provide symptom relief and modest survival benefit for a few months if he can tolerate it. They also warn he has a high risk of recurrent febrile neutropenia and possible ICU care or treatment-related death. Without further chemotherapy, progression is expected within weeks with worsening dyspnea, though hospice could support him at home. He asks to continue chemotherapy to try to attend his daughter’s wedding in six weeks. Oncology must enter a go/no-go order for cycle 2 within five days, and targeted therapy or immunotherapy is not available based on current testing. Hospital policy and state law permit either course.",
+        "choice_1": {
+          "choice": "Proceed with cycle 2 of palliative chemotherapy after count recovery",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Cancel further chemotherapy and enroll him in hospice-focused care",
+          "autonomy": "violates",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

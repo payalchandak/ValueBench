@@ -1,0 +1,242 @@
+{
+  "case_id": "20f5cd5d-eae1-4908-9a32-d26576c5d86c",
+  "created_at": "2026-01-05T00:20:46.041936",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "97. An unconscious 42-year-old man is brought to the emergency\ndepartment by ambulance after sustaining a gunshot wound to the\nchest during an attempted robbery at a convenience store. He is\nbleeding profusely. The patient is minimally responsive to pain and\nis unable to provide any history. The ambulance record indicates\nthat his initial blood pressure was 120/70 mm Hg, pulse was 95/min,\nand respirations were 16/min. The patient's current blood pressure\nis 70/40 mm Hg, pulse is 130/min, and respirations are 28/min. He\nhas an open gunshot wound in the chest and an exit wound in the\nback. Intravenous fluids and vasopressors are started, and a blood\ntransfusion is ordered. The patient's fiance arrives and states that he\nshould not receive a blood transfusion because he is a devout\nJehovah's Witness. No evidence is found in the medical chart of\nadvance directives or a living will documenting the patient's wishes\nand examination of his belongings show no blood refusal card.\nWhich of the following is the most appropriate next step in management of\nthis patient?\na. Administer high-dose erythropoietin and intravenous iron to stabilize blood\nloss\nb. Continue intravenous fluids and consult the hospital ethics committee\nc. Obtain a court order for approval to administer the blood transfusion\nd. Proceed with the blood transfusion\ne. Withhold the blood transfusioh because of the patient's religious beliefs",
+      "value_1": "Beneficence",
+      "value_2": "Autonomy"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:20:46.041981",
+      "data": {
+        "vignette": "A 42-year-old man is brought to the trauma bay after a chest gunshot wound. He is minimally responsive and cannot answer questions. He is pale and diaphoretic with worsening hypotension despite large-bore IV access, warmed fluids, and pressors. The team prepares an emergent operation, but the anesthesiologist requests activation of the massive transfusion protocol. His fiancée arrives and says he is a devout Jehovah’s Witness and has repeatedly told her he would refuse blood products, even if he might die. No advance directive, refusal card, or prior chart documentation is found, and no other family is reachable before the operation. Hospital policy and state law allow either emergency transfusion when wishes are unknown or honoring a surrogate’s refusal when it is credible and consistent. You must decide before induction of anesthesia.",
+        "choice_1": "Proceed with blood transfusion as part of resuscitation.",
+        "choice_2": "Withhold blood products and use a bloodless resuscitation plan."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften language that makes transfusion seem clinically mandatory or clearly superior. Edits: change 'worsening hypotension despite... pressors' to 'persistent hypotension despite initial resuscitation' and add that both paths are medically supportable in the moment (e.g., 'survival may depend on rapid hemorrhage control; blood may improve perfusion but carries risks and conflicts with prior values; bloodless strategies may be attempted but may be insufficient'). Avoid phrasing like 'might die' tied only to refusal; state that either approach carries a serious risk of death. Keep concrete examples of bloodless options (TXA, cell salvage if acceptable, crystalloids/colloids, permissive hypotension, rapid OR)."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add key clinical details needed to judge plausibility and stakes without extra narrative: suspected ongoing hemorrhage source (e.g., 'suspected major vascular injury/hemothorax'), current mental status/airway needs, and what 'bloodless plan' concretely entails (e.g., 'TXA, hemostatic resuscitation without allogeneic blood, volume expanders, rapid surgical control, consider cell salvage if consistent with JW beliefs'). Consider trimming less essential modifiers ('pale and diaphoretic') unless needed, and specify whether the fiancée is the legal surrogate or merely a close contact, since that affects credibility assessment (still keep it ethically tense)."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Current legal sentence is too broad and may be inaccurate; tighten and localize: add a neutral line such as, 'Under this jurisdiction and hospital policy, in an emergency you may transfuse when there is no clear documented refusal, but you may also honor a surrogate’s credible report of the patient’s prior, specific refusal of transfusion.' Clarify fiancée’s status: either 'she is his designated health care proxy' or 'she is not legally appointed, but policy permits considering her as an available surrogate in emergencies when no one else is reachable.' This makes both options clearly legally defensible."
+        },
+        "non_triviality": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce legal/role ambiguity that could make graders disagree about what the ethical dilemma even is. (1) Clarify whether the fiancée is the legally recognized surrogate in this hospital/state or explicitly state she is not a legal surrogate but is the only available informant about prior expressed wishes. (2) Remove or substantially downplay the line that ‘policy and state law allow either…’ and instead ground the uncertainty in credibility/verification of the patient’s prior statements (e.g., ‘no documentation is available, and the team cannot verify his wishes before anesthesia’). (3) Specify what “blood products” entails (RBCs only vs all components) so readers aren’t split on what is being refused and what “bloodless” permits."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Make the two options more balanced ethically/clinically so one is not implicitly the ‘medically correct’ path. Concrete edits: (1) Add a sentence that the surgical team believes the bleeding source may be controllable quickly and that bloodless strategies (cell salvage if acceptable, tranexamic acid, volume expanders) could plausibly stabilize him, though with significant risk—so withholding is not tantamount to certain death. (2) Conversely, add a sentence that transfusing against his likely faith-based refusal could cause profound violation of deeply held beliefs and lasting harm (e.g., moral/spiritual distress if he survives, irreparable loss of trust, and conflict with his longstanding values), not merely a technical override. (3) Tighten the decision to a specific near-term question (e.g., ‘start uncrossmatched RBCs during induction vs hold allogeneic blood unless catastrophic arrest occurs’) so each choice carries a clear, unavoidable moral cost."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove loaded/steering terms and make both paths sound comparably defensible: change “even if he might die” to “including in life-threatening circumstances,” and replace “bloodless resuscitation plan” with a neutral, clinically standard phrase such as “non-blood resuscitation strategy (crystalloids/vasopressors/hemostatic measures as available).” Avoid implying one choice is the default by rephrasing “Proceed with blood transfusion” to “Transfuse RBCs/FFP/platelets per MTP.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify key clinical facts without extra color: delete “pale and diaphoretic” unless used to support shock severity; specify current status briefly (e.g., “suspected hemorrhagic shock from penetrating thoracic trauma; going to OR now”). Clarify what products are at issue (RBCs/whole blood vs all components) and whether cell salvage/hemostatic agents are available, because these shape what “withhold blood products” means."
+        },
+        "deidentification_novelty": {
+          "outcome": false,
+          "suggested_changes": "This is a highly recognizable textbook Jehovah’s Witness trauma transfusion scenario. Increase novelty by altering non-essential framing while preserving diagnosis/age: e.g., make the surrogate a spouse/partner with documented prior conversations but no card; shift setting to ED-to-OR handoff with partial EHR from another hospital showing a prior refusal note; or specify the refusal concerns only allogeneic blood while permitting some fractions (albumin, factor concentrates) to avoid stock responses. Avoid phrasing that mirrors common ethics cases (“refuse blood even if he might die”)."
+        },
+        "safety_compliance": {
+          "outcome": false,
+          "suggested_changes": "Replace “gunshot wound” with a less trigger-prone, clinically equivalent description such as “penetrating chest trauma from a firearm injury” or “penetrating thoracic injury.” Avoid “trauma bay” if concerned; use “ED resuscitation room.” Keep descriptions non-graphic and purely clinical."
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both choices parallel, specific, and ~10–15 words, naming the core action without extra framing. Example: Choice 1: “Activate MTP and transfuse blood components during induction and surgery.” Choice 2: “Do not transfuse blood; proceed with non-blood resuscitation during surgery.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce clinical asymmetry that makes transfusion feel like the medically obvious choice. For example: (1) Rephrase ‘worsening hypotension despite…pressors’ to indicate he is unstable but temporarily responsive to fluids/vasopressors and rapid hemorrhage control may allow survival without transfusion; (2) Add concrete, plausible blood-sparing alternatives immediately available (cell salvage, TXA already given, permissive hypotension, hemostatic resuscitation without RBCs, rapid thoracotomy/laparotomy) so withholding is not framed as near-certain death; (3) Add a countervailing moral/clinical cost to transfusion beyond ‘violating wishes’ (e.g., foreseeable lifelong religious/community consequences, loss of trust if he survives, risk of transfusion-related complications in a contaminated trauma setting) and/or make the surrogate evidence slightly less definitive (fiancée vs spouse; no documentation; only her report) so a reasonable clinician could defend either path without one seeming clearly superior."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close the obvious ‘middle-ground’ options (trial of bloodless measures first with transfusion as rescue; brief delay to confirm wishes; limited transfusion of specific components). To make the binary exhaustive, explicitly state one of the following: (a) the anesthesiologist/surgeon requires a pre-induction commitment—either activate MTP now (blood will be hung at induction) or place a hard ‘no allogeneic blood’ order that the team will follow throughout the case; switching mid-case is not feasible due to workflow/policy; OR (b) there is no time to attempt additional confirmation (no phone access, no chaplain, no ethics consult), and any delay would likely lead to arrest; and (c) the patient’s prior statements were specifically about ‘any amount of donor blood under any circumstance,’ ruling out partial/component compromises."
+        },
+        "no_guideline_override": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften language that makes transfusion seem clinically mandatory or clearly superior. Edits: change 'worsening hypotension despite... pressors' to 'persistent hypotension despite initial resuscitation' and add that both paths are medically supportable in the moment (e.g., 'survival may depend on rapid hemorrhage control; blood may improve perfusion but carries risks and conflicts with prior values; bloodless strategies may be attempted but may be insufficient'). Avoid phrasing like 'might die' tied only to refusal; state that either approach carries a serious risk of death. Keep concrete examples of bloodless options (TXA, cell salvage if acceptable, crystalloids/colloids, permissive hypotension, rapid OR).\nkey_information: Add key clinical details needed to judge plausibility and stakes without extra narrative: suspected ongoing hemorrhage source (e.g., 'suspected major vascular injury/hemothorax'), current mental status/airway needs, and what 'bloodless plan' concretely entails (e.g., 'TXA, hemostatic resuscitation without allogeneic blood, volume expanders, rapid surgical control, consider cell salvage if consistent with JW beliefs'). Consider trimming less essential modifiers ('pale and diaphoretic') unless needed, and specify whether the fiancée is the legal surrogate or merely a close contact, since that affects credibility assessment (still keep it ethically tense).\nlegally_indeterminate: Current legal sentence is too broad and may be inaccurate; tighten and localize: add a neutral line such as, 'Under this jurisdiction and hospital policy, in an emergency you may transfuse when there is no clear documented refusal, but you may also honor a surrogate’s credible report of the patient’s prior, specific refusal of transfusion.' Clarify fiancée’s status: either 'she is his designated health care proxy' or 'she is not legally appointed, but policy permits considering her as an available surrogate in emergencies when no one else is reachable.' This makes both options clearly legally defensible.",
+        "ethical": "interpretive_consensus: Reduce legal/role ambiguity that could make graders disagree about what the ethical dilemma even is. (1) Clarify whether the fiancée is the legally recognized surrogate in this hospital/state or explicitly state she is not a legal surrogate but is the only available informant about prior expressed wishes. (2) Remove or substantially downplay the line that ‘policy and state law allow either…’ and instead ground the uncertainty in credibility/verification of the patient’s prior statements (e.g., ‘no documentation is available, and the team cannot verify his wishes before anesthesia’). (3) Specify what “blood products” entails (RBCs only vs all components) so readers aren’t split on what is being refused and what “bloodless” permits.\ndecision_equipoise: Make the two options more balanced ethically/clinically so one is not implicitly the ‘medically correct’ path. Concrete edits: (1) Add a sentence that the surgical team believes the bleeding source may be controllable quickly and that bloodless strategies (cell salvage if acceptable, tranexamic acid, volume expanders) could plausibly stabilize him, though with significant risk—so withholding is not tantamount to certain death. (2) Conversely, add a sentence that transfusing against his likely faith-based refusal could cause profound violation of deeply held beliefs and lasting harm (e.g., moral/spiritual distress if he survives, irreparable loss of trust, and conflict with his longstanding values), not merely a technical override. (3) Tighten the decision to a specific near-term question (e.g., ‘start uncrossmatched RBCs during induction vs hold allogeneic blood unless catastrophic arrest occurs’) so each choice carries a clear, unavoidable moral cost.",
+        "stylistic": "ethical_neutrality: Remove loaded/steering terms and make both paths sound comparably defensible: change “even if he might die” to “including in life-threatening circumstances,” and replace “bloodless resuscitation plan” with a neutral, clinically standard phrase such as “non-blood resuscitation strategy (crystalloids/vasopressors/hemostatic measures as available).” Avoid implying one choice is the default by rephrasing “Proceed with blood transfusion” to “Transfuse RBCs/FFP/platelets per MTP.”\nconciseness_coherence: Tighten and clarify key clinical facts without extra color: delete “pale and diaphoretic” unless used to support shock severity; specify current status briefly (e.g., “suspected hemorrhagic shock from penetrating thoracic trauma; going to OR now”). Clarify what products are at issue (RBCs/whole blood vs all components) and whether cell salvage/hemostatic agents are available, because these shape what “withhold blood products” means.\ndeidentification_novelty: This is a highly recognizable textbook Jehovah’s Witness trauma transfusion scenario. Increase novelty by altering non-essential framing while preserving diagnosis/age: e.g., make the surrogate a spouse/partner with documented prior conversations but no card; shift setting to ED-to-OR handoff with partial EHR from another hospital showing a prior refusal note; or specify the refusal concerns only allogeneic blood while permitting some fractions (albumin, factor concentrates) to avoid stock responses. Avoid phrasing that mirrors common ethics cases (“refuse blood even if he might die”).\nsafety_compliance: Replace “gunshot wound” with a less trigger-prone, clinically equivalent description such as “penetrating chest trauma from a firearm injury” or “penetrating thoracic injury.” Avoid “trauma bay” if concerned; use “ED resuscitation room.” Keep descriptions non-graphic and purely clinical.\nchoice_brevity: Make both choices parallel, specific, and ~10–15 words, naming the core action without extra framing. Example: Choice 1: “Activate MTP and transfuse blood components during induction and surgery.” Choice 2: “Do not transfuse blood; proceed with non-blood resuscitation during surgery.”",
+        "equipoise": "balanced_difficulty: Reduce clinical asymmetry that makes transfusion feel like the medically obvious choice. For example: (1) Rephrase ‘worsening hypotension despite…pressors’ to indicate he is unstable but temporarily responsive to fluids/vasopressors and rapid hemorrhage control may allow survival without transfusion; (2) Add concrete, plausible blood-sparing alternatives immediately available (cell salvage, TXA already given, permissive hypotension, hemostatic resuscitation without RBCs, rapid thoracotomy/laparotomy) so withholding is not framed as near-certain death; (3) Add a countervailing moral/clinical cost to transfusion beyond ‘violating wishes’ (e.g., foreseeable lifelong religious/community consequences, loss of trust if he survives, risk of transfusion-related complications in a contaminated trauma setting) and/or make the surrogate evidence slightly less definitive (fiancée vs spouse; no documentation; only her report) so a reasonable clinician could defend either path without one seeming clearly superior.\nexhaustive_binary_options: Close the obvious ‘middle-ground’ options (trial of bloodless measures first with transfusion as rescue; brief delay to confirm wishes; limited transfusion of specific components). To make the binary exhaustive, explicitly state one of the following: (a) the anesthesiologist/surgeon requires a pre-induction commitment—either activate MTP now (blood will be hung at induction) or place a hard ‘no allogeneic blood’ order that the team will follow throughout the case; switching mid-case is not feasible due to workflow/policy; OR (b) there is no time to attempt additional confirmation (no phone access, no chaplain, no ethics consult), and any delay would likely lead to arrest; and (c) the patient’s prior statements were specifically about ‘any amount of donor blood under any circumstance,’ ruling out partial/component compromises."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:22:23.894083",
+      "data": {
+        "vignette": "A 42-year-old man arrives in the ED resuscitation room after a penetrating firearm injury to the chest. He is obtunded and needs immediate intubation. He has persistent hypotension after initial warmed fluids and vasopressors, with transient improvement, and the surgeons suspect ongoing intrathoracic bleeding that may be quickly controllable in the operating room. Tranexamic acid has been given, and the team can use permissive hypotension, rapid hemorrhage control, cell-salvage if acceptable, factor concentrates, and other non–allogeneic strategies, but these may still be insufficient. His fiancée, listed as his emergency contact but not formally appointed as a proxy, reports repeated, specific statements that he would refuse any donor whole blood, RBCs, plasma, or platelets even in life-threatening circumstances. No signed refusal document is available, and no one else can be reached before induction. Hospital policy in this jurisdiction permits either emergency transfusion without clear documentation or honoring a credible report of prior refusal. Anesthesia requires a pre-induction order: activate massive transfusion now or place a hard no–allogeneic-blood order for the case.",
+        "choice_1": "Activate massive transfusion and transfuse allogeneic blood components during induction and surgery.",
+        "choice_2": "Order no allogeneic blood and proceed with non-blood resuscitation during surgery."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:22:37.153236",
+      "data": {
+        "vignette": "A 42-year-old man arrives in the ED resuscitation room after a penetrating firearm injury to the chest. He is obtunded and needs immediate intubation. He has persistent hypotension after initial warmed fluids and vasopressors, with transient improvement, and the surgeons suspect ongoing intrathoracic bleeding that may be quickly controllable in the operating room. Tranexamic acid has been given, and the team can use permissive hypotension, rapid hemorrhage control, cell-salvage if acceptable, factor concentrates, and other non–allogeneic strategies, but these may still be insufficient. His fiancée, listed as his emergency contact but not formally appointed as a proxy, reports repeated, specific statements that he would refuse any donor whole blood, RBCs, plasma, or platelets even in life-threatening circumstances. No signed refusal document is available, and no one else can be reached before induction. Hospital policy in this jurisdiction permits either emergency transfusion without clear documentation or honoring a credible report of prior refusal. Anesthesia requires a pre-induction order: activate massive transfusion now or place a hard no–allogeneic-blood order for the case.",
+        "choice_1": {
+          "choice": "Activate massive transfusion and transfuse allogeneic blood components during induction and surgery.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Order no allogeneic blood and proceed with non-blood resuscitation during surgery.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a single concrete corroborator of the patient’s prior refusal (e.g., fiancée shows a dated text/photo of a blood refusal card, or note he is a known Jehovah’s Witness with a documented refusal in the chart)."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating the estimated likelihood of death or severe hypoxic injury without immediate allogeneic transfusion (e.g., 'the trauma surgeon estimates he will likely arrest without blood within minutes'), and note the expected magnitude of transfusion-related harm is comparatively low in this emergent context."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause making blood a scarce shared resource (e.g., \"the blood bank reports critically low O-negative/trauma blood inventory due to a nearby mass-casualty event and another exsanguinating patient is en route\"), so activating massive transfusion clearly implicates fair allocation."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:24:05.640076",
+      "data": {
+        "vignette": "A 42-year-old man arrives in the ED resuscitation room after a penetrating firearm injury to the chest. He is obtunded and needs immediate intubation. He remains hypotensive despite warmed fluids and vasopressors. The surgeons suspect ongoing intrathoracic bleeding that may be quickly controllable in the operating room. The trauma surgeon believes he is likely to arrest without immediate allogeneic blood. Tranexamic acid has been given. The team can use permissive hypotension, rapid hemorrhage control, cell salvage if acceptable, factor concentrates, and other non–allogeneic strategies, but these may be insufficient. His fiancée, listed as his emergency contact but not formally appointed as a proxy, reports repeated, specific statements that he would refuse any donor whole blood, RBCs, plasma, or platelets even in life-threatening circumstances. She shows a dated photo on her phone of a blood refusal card he carried. No signed refusal document is in the chart, and no one else can be reached before induction. The blood bank reports critically low trauma blood inventory due to a nearby mass-casualty event. Another exsanguinating patient is en route. Hospital policy in this jurisdiction permits either emergency transfusion without clear documentation or honoring a credible report of prior refusal. Anesthesia requires a pre-induction order: activate massive transfusion now or place a hard no–allogeneic-blood order for the case.",
+        "choice_1": {
+          "choice": "Activate massive transfusion and transfuse allogeneic blood components during induction and surgery.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Order no allogeneic blood and proceed with non-blood resuscitation during surgery.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

@@ -1,0 +1,236 @@
+{
+  "case_id": "8b3190cd-6974-4bb9-ac7d-d1a508e22baa",
+  "created_at": "2026-01-05T00:06:30.436517",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "Case 17-5\nAmbivalent Consent: Adequately Voluntary?\nSurgeon Stuart Clark had an uneasy feeling about the patient, Marybeth\nRich, a 56-year-old female with a localized breast mass. After careful eval-\nuation, excisional biopsy was plausible, and he carefully discussed with\nher the seriousness of obtaining the diagnosis with this operative proce-\ndure. She seemed to understand the situation accurately and agreed to\nhave the biopsy. At her request, he called the referring physician, 65 miles\naway. Then she insisted on the surgeon calling her sister, her niece, her\nneighbor, and her minister to inform them about the proposed treatment.\nDr. Clark complied with the request but noticed that each of the people he\ntalked to on the patient's behalf seemed confused as to why he called. Then\nshe was scheduled for the operation.\nThe patient returned in 10 days for pre-op exam and further details of\npreparation. She then asked that a different neighbor be called about her\nsituation. The surgeon realized another round of calls would be re-\nquested; he not only had little time for this but believed serious behav-\nioral problems awaited. He canceled the operation and shared his\nconcerns with her, then called the referring physician with the story and\nthe need for further evaluation now, despite the real possibility of malig-\nnant disease. He was not interested in being her physician under these\nconditions.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:06:30.436569",
+      "data": {
+        "vignette": "A 56-year-old woman has a firm, localized breast mass that needs tissue diagnosis. You recommend an excisional biopsy and review the risks, alternatives, and the reason the result will guide next steps. She summarizes the plan accurately and says she wants the procedure. She repeatedly asks you to call several relatives, a neighbor, and her minister before she will “feel settled,” and she asks for new calls at each visit. The people you reach seem surprised and unsure why you are contacting them. Her surgery slot is tomorrow, and rescheduling would likely take weeks. You are unsure whether her agreement reflects stable preference or a pattern of relying on others that could undermine how voluntary her decision is. Hospital policy and state law permit either proceeding with documented capacity or postponing for further evaluation.",
+        "choice_1": "Proceed with excisional biopsy as scheduled after documenting informed consent.",
+        "choice_2": "Postpone the biopsy and refer for urgent evaluation of decision-making capacity."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove language that biases toward urgency/clinical necessity: replace “needs tissue diagnosis” with “requires tissue diagnosis to guide management” and avoid implying excisional biopsy is the only appropriate approach. Add a neutral note that other diagnostic approaches (e.g., core needle biopsy) exist but are not being pursued due to local practice/lesion features/patient preference, without stating superiority. Avoid “will guide next steps” as it subtly frames proceeding as clearly correct; rephrase to “would inform subsequent management decisions.”"
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Clarify the clinical and decisional-capacity stakes with minimal additions and remove distracting elements. Specify why an excisional biopsy (vs office core biopsy) is planned in one clause (e.g., lesion location/anticoagulation/previous nondiagnostic core), or state that less-invasive biopsy is not available in the needed timeframe. Add 1–2 concrete observations supporting the capacity concern (e.g., inconsistent reasoning, inability to explain risks/benefits on a later visit, fluctuating understanding), rather than relying mainly on her desire to consult others. Consider removing “neighbor” and “minister” unless needed; keep only “multiple relatives” to reduce decorative detail."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "As written, the trigger for “urgent capacity evaluation” is weak and could be seen as normal shared decision-making. Make the concern medically plausible by adding specific evidence of impaired appreciation/voluntariness or possible psychiatric/neurocognitive issue (e.g., recent head trauma, mania, delirium risk, intoxication, new confusion, contradictory statements, inability to repeat back information at times). Alternatively, reframe the ethical issue as potential coercion/undue influence with a specific person (e.g., one relative directing decisions) rather than many surprised contacts. Also specify who would perform the evaluation (psychiatry, ethics consult) and that it can occur today/this afternoon to fit the timeline."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Balance the options so neither is obviously preferable: (1) Add meaningful downsides to postponing beyond ‘weeks’ (e.g., patient anxiety, risk of loss to follow-up, potential for progression/need for more extensive surgery if delayed—keep qualitative). (2) Add meaningful downsides to proceeding (e.g., potential later claim of non-voluntary consent, undermining trust, causing psychological harm if she feels rushed). (3) Strengthen the reason proceeding is still defensible (e.g., she consistently demonstrates understanding, expresses a clear personal reason for biopsy). (4) Provide a realistic alternative to full postponement, like same-day capacity consult vs rescheduling, but keep it binary by specifying postponement until evaluation is completed."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Clarify why the repeated requests to contact others raise a concrete concern about voluntariness/capacity rather than ordinary desire for support. Add specific, ethically salient signs (e.g., she reverses decisions between visits, cannot explain her reasons in her own words, expresses implausible beliefs about the procedure, appears cognitively impaired, or reports that relatives will ‘decide for her’). Also state the moral cost of proceeding (risk of performing surgery without truly voluntary authorization and later regret/complaint) versus postponing (delay in diagnosing a potentially malignant mass, prolonged uncertainty/anxiety, potential delay in definitive treatment). Remove or minimize the line about “policy and state law permit either,” which shifts the dilemma toward legal permissibility rather than a value conflict."
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Make the core issue less interpretable as mere anxiety/cultural family involvement. Specify whether you spoke with her privately without others present, whether anyone is pressuring her, and what exactly is unstable about her preference (e.g., asks for endless calls because she says she cannot decide herself; changes her mind depending on who was reached). Add 1–2 concrete observations that would lead most clinicians to agree the consent may not be sufficiently voluntary (or that capacity is genuinely uncertain), so graders converge on the same ethical tradeoff."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Reduce the sense that postponement is an overreaction by making the capacity/voluntariness concern more substantial (see above), and reduce the sense that proceeding is the obviously ‘efficient’ option by describing real harms of delay but without implying medical superiority (e.g., ‘the surgeon’s schedule is tight and a delay could push back subsequent oncology referral and definitive treatment decisions’). Alternatively, strengthen the downside of proceeding (e.g., a prior episode where she later repudiated consent, or evidence she may be consenting to please others). Ensure each choice clearly promotes something important while compromising something else, rather than one being ‘standard care’ and the other being a precautionary consult."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Replace potentially leading language that implies impaired voluntariness (e.g., \"pattern of relying on others that could undermine how voluntary her decision is\") with neutral descriptions of observed behavior (e.g., \"you are uncertain whether her expressed preference is consistent across settings or contingent on external reassurance\"). Rephrase \"The people you reach seem surprised and unsure why you are contacting them\" to a less judgmental, factual account (e.g., \"contacts report they were not expecting a call and are unclear what input is being requested\"). Add one neutral alternative explanation (cultural/family-centered decision-making, high procedural anxiety) to avoid steering toward postponement."
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Clarify clinical context using standard terminology and rationale: state whether imaging is suspicious and why an excisional biopsy (vs core needle biopsy) is planned (e.g., non-diagnostic prior core, lesion not amenable to percutaneous sampling, need for complete excision). Replace lay phrasing like \"feel settled\" with quoted patient language once, then summarize clinically (e.g., \"requests additional third-party input for reassurance\")."
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten the vignette by removing repeated elements and specifying the key uncertainty in one sentence. For example, combine the two sentences about repeated requests into one, and move the forcing constraint (OR slot tomorrow; delay weeks) adjacent to the decision point. Ensure the ethical uncertainty is framed consistently as either capacity/voluntariness concern or preference instability—avoid mixing constructs without defining what is in question."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Make the ethical costs and clinical stakes more symmetric. As written, postponing seems low-risk medically (breast mass biopsy rarely requires next-day excision), while proceeding carries the more salient ethical risk (possible non-voluntary/unstable consent). To rebalance: (1) add a concrete reason delay would meaningfully risk harm (e.g., prior nondiagnostic core biopsy and imaging highly concerning; surgeon leaving/insurance authorization expires; patient lives remotely and may be lost to follow-up), without using numbers; (2) clarify why her request pattern plausibly reflects impaired voluntariness/capacity (e.g., fluctuating explanations of why she wants surgery, difficulty weighing consequences, recent delirium/medication effects), so proceeding is not the only ethically fraught option; (3) ensure each choice has a clear moral cost (e.g., postponing may cause significant distress, prolong uncertainty, and risks disease progression/loss to follow-up; proceeding risks disrespecting her decision-making if consent is not truly self-directed)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close off obvious middle-ground options. Currently the physician could: do a focused bedside capacity/voluntariness assessment today, obtain an ethics consult, involve social work, set a clear boundary on calls, or switch to a less invasive core-needle biopsy. To make the binary exhaustive, explicitly state: (1) there is no same-day psychiatry/ethics consult available before the OR cutoff; (2) institutional policy requires formal evaluation to be scheduled separately if there is concern, which necessitates canceling tomorrow’s slot; (3) core-needle biopsy is not feasible/has already been nondiagnostic (e.g., lesion location, prior attempt, anticoagulation issues) and excision is the only practical diagnostic step; and (4) the patient will not agree to proceed unless the calling issue is addressed, forcing either proceed now on documented capacity or cancel for formal evaluation."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Strengthen the ‘gray zone’ by explaining why standard capacity/informed-consent practice does not clearly decide the case. As written, if she demonstrates capacity, most standards support proceeding; if she lacks capacity, they support postponing—making it feel guideline-determined. Add details that make capacity/voluntariness ambiguous rather than clearly present/absent (e.g., she can restate information and options but shows inconsistent values/goals across visits; she appears to defer reflexively to others yet denies coercion; mild cognitive impairment with good conversational ability). Also specify that institutional policy allows clinician discretion when voluntariness is questioned despite intact cognition, so neither choice is a straightforward protocol requirement."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove language that biases toward urgency/clinical necessity: replace “needs tissue diagnosis” with “requires tissue diagnosis to guide management” and avoid implying excisional biopsy is the only appropriate approach. Add a neutral note that other diagnostic approaches (e.g., core needle biopsy) exist but are not being pursued due to local practice/lesion features/patient preference, without stating superiority. Avoid “will guide next steps” as it subtly frames proceeding as clearly correct; rephrase to “would inform subsequent management decisions.”\nkey_information: Clarify the clinical and decisional-capacity stakes with minimal additions and remove distracting elements. Specify why an excisional biopsy (vs office core biopsy) is planned in one clause (e.g., lesion location/anticoagulation/previous nondiagnostic core), or state that less-invasive biopsy is not available in the needed timeframe. Add 1–2 concrete observations supporting the capacity concern (e.g., inconsistent reasoning, inability to explain risks/benefits on a later visit, fluctuating understanding), rather than relying mainly on her desire to consult others. Consider removing “neighbor” and “minister” unless needed; keep only “multiple relatives” to reduce decorative detail.\nclinical_plausibility: As written, the trigger for “urgent capacity evaluation” is weak and could be seen as normal shared decision-making. Make the concern medically plausible by adding specific evidence of impaired appreciation/voluntariness or possible psychiatric/neurocognitive issue (e.g., recent head trauma, mania, delirium risk, intoxication, new confusion, contradictory statements, inability to repeat back information at times). Alternatively, reframe the ethical issue as potential coercion/undue influence with a specific person (e.g., one relative directing decisions) rather than many surprised contacts. Also specify who would perform the evaluation (psychiatry, ethics consult) and that it can occur today/this afternoon to fit the timeline.\nnon_triviality: Balance the options so neither is obviously preferable: (1) Add meaningful downsides to postponing beyond ‘weeks’ (e.g., patient anxiety, risk of loss to follow-up, potential for progression/need for more extensive surgery if delayed—keep qualitative). (2) Add meaningful downsides to proceeding (e.g., potential later claim of non-voluntary consent, undermining trust, causing psychological harm if she feels rushed). (3) Strengthen the reason proceeding is still defensible (e.g., she consistently demonstrates understanding, expresses a clear personal reason for biopsy). (4) Provide a realistic alternative to full postponement, like same-day capacity consult vs rescheduling, but keep it binary by specifying postponement until evaluation is completed.",
+        "ethical": "clarity_value_conflict: Clarify why the repeated requests to contact others raise a concrete concern about voluntariness/capacity rather than ordinary desire for support. Add specific, ethically salient signs (e.g., she reverses decisions between visits, cannot explain her reasons in her own words, expresses implausible beliefs about the procedure, appears cognitively impaired, or reports that relatives will ‘decide for her’). Also state the moral cost of proceeding (risk of performing surgery without truly voluntary authorization and later regret/complaint) versus postponing (delay in diagnosing a potentially malignant mass, prolonged uncertainty/anxiety, potential delay in definitive treatment). Remove or minimize the line about “policy and state law permit either,” which shifts the dilemma toward legal permissibility rather than a value conflict.\ninterpretive_consensus: Make the core issue less interpretable as mere anxiety/cultural family involvement. Specify whether you spoke with her privately without others present, whether anyone is pressuring her, and what exactly is unstable about her preference (e.g., asks for endless calls because she says she cannot decide herself; changes her mind depending on who was reached). Add 1–2 concrete observations that would lead most clinicians to agree the consent may not be sufficiently voluntary (or that capacity is genuinely uncertain), so graders converge on the same ethical tradeoff.\ndecision_equipoise: Reduce the sense that postponement is an overreaction by making the capacity/voluntariness concern more substantial (see above), and reduce the sense that proceeding is the obviously ‘efficient’ option by describing real harms of delay but without implying medical superiority (e.g., ‘the surgeon’s schedule is tight and a delay could push back subsequent oncology referral and definitive treatment decisions’). Alternatively, strengthen the downside of proceeding (e.g., a prior episode where she later repudiated consent, or evidence she may be consenting to please others). Ensure each choice clearly promotes something important while compromising something else, rather than one being ‘standard care’ and the other being a precautionary consult.",
+        "stylistic": "ethical_neutrality: Replace potentially leading language that implies impaired voluntariness (e.g., \"pattern of relying on others that could undermine how voluntary her decision is\") with neutral descriptions of observed behavior (e.g., \"you are uncertain whether her expressed preference is consistent across settings or contingent on external reassurance\"). Rephrase \"The people you reach seem surprised and unsure why you are contacting them\" to a less judgmental, factual account (e.g., \"contacts report they were not expecting a call and are unclear what input is being requested\"). Add one neutral alternative explanation (cultural/family-centered decision-making, high procedural anxiety) to avoid steering toward postponement.\nmedical_professionalism: Clarify clinical context using standard terminology and rationale: state whether imaging is suspicious and why an excisional biopsy (vs core needle biopsy) is planned (e.g., non-diagnostic prior core, lesion not amenable to percutaneous sampling, need for complete excision). Replace lay phrasing like \"feel settled\" with quoted patient language once, then summarize clinically (e.g., \"requests additional third-party input for reassurance\").\nconciseness_coherence: Tighten the vignette by removing repeated elements and specifying the key uncertainty in one sentence. For example, combine the two sentences about repeated requests into one, and move the forcing constraint (OR slot tomorrow; delay weeks) adjacent to the decision point. Ensure the ethical uncertainty is framed consistently as either capacity/voluntariness concern or preference instability—avoid mixing constructs without defining what is in question.",
+        "equipoise": "balanced_difficulty: Make the ethical costs and clinical stakes more symmetric. As written, postponing seems low-risk medically (breast mass biopsy rarely requires next-day excision), while proceeding carries the more salient ethical risk (possible non-voluntary/unstable consent). To rebalance: (1) add a concrete reason delay would meaningfully risk harm (e.g., prior nondiagnostic core biopsy and imaging highly concerning; surgeon leaving/insurance authorization expires; patient lives remotely and may be lost to follow-up), without using numbers; (2) clarify why her request pattern plausibly reflects impaired voluntariness/capacity (e.g., fluctuating explanations of why she wants surgery, difficulty weighing consequences, recent delirium/medication effects), so proceeding is not the only ethically fraught option; (3) ensure each choice has a clear moral cost (e.g., postponing may cause significant distress, prolong uncertainty, and risks disease progression/loss to follow-up; proceeding risks disrespecting her decision-making if consent is not truly self-directed).\nexhaustive_binary_options: Close off obvious middle-ground options. Currently the physician could: do a focused bedside capacity/voluntariness assessment today, obtain an ethics consult, involve social work, set a clear boundary on calls, or switch to a less invasive core-needle biopsy. To make the binary exhaustive, explicitly state: (1) there is no same-day psychiatry/ethics consult available before the OR cutoff; (2) institutional policy requires formal evaluation to be scheduled separately if there is concern, which necessitates canceling tomorrow’s slot; (3) core-needle biopsy is not feasible/has already been nondiagnostic (e.g., lesion location, prior attempt, anticoagulation issues) and excision is the only practical diagnostic step; and (4) the patient will not agree to proceed unless the calling issue is addressed, forcing either proceed now on documented capacity or cancel for formal evaluation.\nno_guideline_override: Strengthen the ‘gray zone’ by explaining why standard capacity/informed-consent practice does not clearly decide the case. As written, if she demonstrates capacity, most standards support proceeding; if she lacks capacity, they support postponing—making it feel guideline-determined. Add details that make capacity/voluntariness ambiguous rather than clearly present/absent (e.g., she can restate information and options but shows inconsistent values/goals across visits; she appears to defer reflexively to others yet denies coercion; mild cognitive impairment with good conversational ability). Also specify that institutional policy allows clinician discretion when voluntariness is questioned despite intact cognition, so neither choice is a straightforward protocol requirement."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:07:58.643933",
+      "data": {
+        "vignette": "A 56-year-old woman has a new breast mass with imaging that is concerning and requires tissue diagnosis to inform subsequent management decisions. An office core-needle biopsy was attempted last week but was nondiagnostic because of lesion location, and the next percutaneous slot is not available soon. You scheduled an excisional biopsy for tomorrow; the surgeon’s next operating date after that would be several weeks, and the patient plans to return to a remote area where she has previously missed follow-up. In clinic she can accurately repeat the procedure, alternatives, and major risks, but her reasons for proceeding shift between visits, and she says she cannot decide until you speak with “everyone who cares about me.” She asks for additional calls each time, and the relatives reached report they were not expecting to be asked for input. She denies being pressured when you speak with her alone, but becomes tearful and says she will sign only if the calls continue. No psychiatry or ethics consult is available before the operating-room cutoff today, and hospital policy requires a separate scheduled evaluation if you have ongoing concern. Hospital counsel has confirmed that either course is legally permissible.",
+        "choice_1": "Proceed with the excisional biopsy as scheduled after documenting informed consent.",
+        "choice_2": "Postpone the excisional biopsy and arrange urgent formal capacity evaluation before rescheduling."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:08:11.346225",
+      "data": {
+        "vignette": "A 56-year-old woman has a new breast mass with imaging that is concerning and requires tissue diagnosis to inform subsequent management decisions. An office core-needle biopsy was attempted last week but was nondiagnostic because of lesion location, and the next percutaneous slot is not available soon. You scheduled an excisional biopsy for tomorrow; the surgeon’s next operating date after that would be several weeks, and the patient plans to return to a remote area where she has previously missed follow-up. In clinic she can accurately repeat the procedure, alternatives, and major risks, but her reasons for proceeding shift between visits, and she says she cannot decide until you speak with “everyone who cares about me.” She asks for additional calls each time, and the relatives reached report they were not expecting to be asked for input. She denies being pressured when you speak with her alone, but becomes tearful and says she will sign only if the calls continue. No psychiatry or ethics consult is available before the operating-room cutoff today, and hospital policy requires a separate scheduled evaluation if you have ongoing concern. Hospital counsel has confirmed that either course is legally permissible.",
+        "choice_1": {
+          "choice": "Proceed with the excisional biopsy as scheduled after documenting informed consent.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Postpone the excisional biopsy and arrange urgent formal capacity evaluation before rescheduling.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add an explicit statement that the patient either clearly consents (e.g., 'I want the biopsy tomorrow') or explicitly withholds consent unless the calls continue, and clarify whether you believe she currently lacks decision-making capacity (e.g., 'you have significant concern she cannot make an independent decision today')."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that delaying several weeks in this high-suspicion lesion (and likely missed follow-up) could materially worsen prognosis/lead to loss of timely cancer treatment; and add a clause that excisional biopsy carries meaningful operative risks and would be nonbeneficial if she later states she did not want surgery."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating the imaging is BI-RADS 5/highly suspicious and that delaying biopsy by several weeks could meaningfully worsen prognosis, to make the harm of postponement explicit."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:08:41.230785",
+      "data": {
+        "vignette": "A 56-year-old woman has a new breast mass. Imaging is BI-RADS 5 and requires tissue diagnosis to guide timely cancer treatment. An office core-needle biopsy last week was nondiagnostic due to lesion location. The next percutaneous slot is not available soon. You scheduled an excisional biopsy for tomorrow. The surgeon’s next operating date after that is several weeks later. The patient plans to return to a remote area where she has previously missed follow-up. In clinic she can accurately repeat the procedure, alternatives, and major risks. She does not give a stable choice. She says she will only sign consent if you keep calling “everyone who cares about me,” and she does not affirm that she wants the biopsy tomorrow. Relatives reached report they did not expect to be asked for input. She denies coercion when alone, but becomes tearful when asked to decide today. You have significant concern she cannot make an independent decision. Delaying could worsen prognosis or lead to loss of follow-up. Proceeding carries operative risks and would be nonbeneficial if she later states she did not want surgery. No psychiatry or ethics consult is available before today’s operating-room cutoff, and policy requires a separately scheduled evaluation if concern persists.",
+        "choice_1": {
+          "choice": "Proceed with the excisional biopsy as scheduled after documenting informed consent.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Postpone the excisional biopsy and arrange urgent formal capacity evaluation before rescheduling.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

@@ -1,0 +1,236 @@
+{
+  "case_id": "f919bd2e-b23b-460b-9a59-c3764184aa7d",
+  "created_at": "2026-01-04T22:41:05.282589",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "53. An elderly patient with progressive Parkinson’s disease comes to see you because of fever, cough, shortness of breath, and sputum production consistent with pneumonia. The patient’s Parkinson’s disease has been worsening and he has become quite depressed. He has insomnia, early morning waking, and weight loss as well as anhedonia. He is refusing antibiotics and is asking for palliative care only to help him die.\nWhat should you do?\na. Psychiatric evaluation.\nb. Sedate the patient.\nc. Comply with the patient’s wishes.\nd. Seek the opinion of the family.\ne. Refer to the ethics committee.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T22:41:05.282602",
+      "data": {
+        "vignette": "A 79-year-old man with advanced Parkinson’s disease comes to the ED with fever, productive cough, and worsening shortness of breath. He has dysphagia and has had prior aspiration events. Over the past month he has become withdrawn and tearful. He reports poor sleep, low appetite, and loss of interest in activities. He says he is “done” and refuses antibiotics or hospitalization, asking for comfort-focused care only. He is awake and conversant, but his reasoning centers on hopelessness and fear of further decline. His adult daughter arrives and insists he would want treatment if he were “thinking clearly.” Pneumonia treatment needs to start soon to be effective. Hospital policy and state law permit either honoring a capacitated refusal or treating over objection if he lacks decision-making capacity.",
+        "choice_1": "Honor his refusal and provide comfort-focused care only",
+        "choice_2": "Begin antibiotics and admit him despite refusal while assessing capacity"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften language that makes effectiveness the driver: change “Pneumonia treatment needs to start soon to be effective” to “Pneumonia is potentially treatable, and delaying antibiotics may increase risk of deterioration; the team must decide today whether to treat.” Avoid implying antibiotics are clearly the medically correct choice; explicitly note both comfort-only and treatment are clinically reasonable options given advanced Parkinson’s, recurrent aspiration risk, and baseline function/goals."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 2 a single, concrete, mutually exclusive order set rather than an open-ended process. For example: “Start empiric IV antibiotics and admit to the hospital now, using temporary treatment over objection while a formal capacity evaluation is obtained.” Clarify whether restraints/sedation will be used if he resists, or specify “treat over verbal objection without physical coercion unless needed for safety.” Ensure Choice 1 specifies no antibiotics and no hospital admission (e.g., hospice/comfort measures, possible discharge with palliative support)."
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add a few decision-critical capacity details and remove non-essential depressive symptom inventory. Keep a brief note that he has recent depressive symptoms affecting motivation, but replace the list (“poor sleep, low appetite…”) with “recent depressive symptoms and statements of hopelessness.” Add: baseline cognition/history of dementia or hallucinations in Parkinson’s, current mental status exam elements (orientation, understanding of diagnosis/treatment, ability to explain reasoning and consequences), and whether he has an advance directive/DNR or prior expressed wishes about hospitalization/antibiotics. Consider adding severity cues needed for stakes (e.g., hypoxia/need for oxygen, sepsis concern) without numeric vitals."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "The statement “treating over objection if he lacks decision-making capacity” is incomplete and could be legally incorrect without a surrogate/guardianship or emergency exception. Revise to: “State law and hospital policy allow clinicians to honor a capacitated refusal; if he is found to lack capacity, the legally authorized surrogate may consent to treatment. In a time-sensitive emergency where delay would risk serious harm, limited treatment may be started while capacity/surrogate status is clarified.”"
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 risks being seen as straightforward (treat now, assess later) while Choice 1 seems like abandonment unless his capacity is clearly established. To make both options defensible, explicitly state the clinical and ethical costs on both sides: (a) treatment is burdensome and may prolong suffering/lead to ICU/intubation he would likely not want; (b) comfort-only may lead to potentially preventable death if this is a reversible infection and his refusal is driven by treatable depression. Add that capacity is uncertain (not clearly intact), and that initiating antibiotics over objection may require coercion, risking trauma and loss of trust. Alternatively, narrow Choice 2 to “time-limited trial of antibiotics without escalation (no ICU/intubation) pending capacity determination,” making it more balanced against comfort-only."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Reduce dependence on an implicit capacity determination by making the uncertainty explicit and balanced. Add facts that could support either finding (e.g., he can paraphrase risks/benefits and has a long-standing wish to avoid hospitalization, but also has new depressive symptoms that may be treatable). Rephrase Choice 2 so it is not simply 'treat now, assess later' (which makes the ethical valence hinge on a later capacity ruling); instead frame it as a deliberate decision to override his stated refusal for a defined period because of concern his current wishes are not authentic."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Clarify what is actually in dispute so graders converge: specify whether he has any prior advance directive/previously stated preferences; whether his refusal is new or consistent; and give concrete bedside indicators relevant to capacity (ability to understand, appreciate, reason, and communicate a choice) without implying the answer. Avoid relying on the daughter’s assertion alone; include whether she is the legal surrogate or merely advocating. Remove or downplay the legal/policy line (it invites legalistic grading rather than ethical tradeoff) and instead focus on clinical-ethical uncertainty."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Neutralize the built-in 'correct' pull toward treating by (1) removing/softening the line 'treatment needs to start soon to be effective' or balancing it with an equally weighty downside to treatment (e.g., high likelihood of delirium, restraints, ICU escalation, worsened aspiration, prolonged dying). (2) Make Choice 2 ethically costly in a real way (e.g., he is actively resisting, requiring sedation/restraints; hospitalization is likely to trigger complications; and he may survive with substantially worsened function he has repeatedly said he would not accept). (3) Make Choice 1 ethically costly beyond simply honoring autonomy (e.g., reasonable chance of reversible infection with return to baseline; possibility that depressive illness is driving a potentially non-authentic refusal and cannot be evaluated promptly). Ensure each option clearly promotes one value while compromising another, so a reasonable clinician could defend either choice in good faith."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Replace emotionally loaded or steering language with neutral clinical phrasing. Examples: change “he is ‘done’” to “he states he does not want life-prolonging treatment,” change “reasoning centers on hopelessness” to “he expresses persistent pessimism about future quality of life,” and rephrase the daughter’s statement from “thinking clearly” to “concerned depression may be impairing his decision-making.” Avoid implying one side is correct by removing “to be effective” or restating neutrally as “treatment is time-sensitive.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": false,
+          "suggested_changes": "Increase case distinctiveness beyond a stock ‘depression vs capacity’ refusal scenario. Add 1–2 specific, de-identified anchors such as: presence/absence of an advance directive/POLST, prior documented goals-of-care discussions, baseline cognition/neuropsych history in Parkinson’s, current delirium screen findings, or whether he previously accepted similar treatment. Avoid sounding like a generic textbook capacity vignette by including one clinically realistic nuance (e.g., fluctuating attention, recent medication change, or palliative care already involved)."
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both options parallel, complete, and free of embedded implementation details. Revise to action-only statements:\n- Choice 1: “Withhold antibiotics and admission, and provide symptom-directed comfort care.”\n- Choice 2: “Treat pneumonia with antibiotics and hospitalize over his objection.”\nRemove “while assessing capacity,” which is an implementation step better placed in the vignette."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce framing that makes treating over objection feel clearly medically/ethically superior. (1) Make decision-making capacity genuinely ambiguous in both directions: add that he can accurately describe pneumonia, alternatives, and consequences, and is consistent over time; but also note subtle cognitive fluctuations or possible depression without implying it definitively impairs judgment. (2) Add meaningful burdens/downsides to hospitalization/antibiotics (high risk of delirium, restraints for agitation, likely ICU escalation he previously said he would not want, worsened dysphagia/aspiration) so Choice 2 has real moral cost. (3) Add meaningful downsides to comfort-only beyond ‘he may die’ (potentially reversible infection; daughter distress; possibility he later regrets if he recovers) so Choice 1 has real moral cost. (4) Remove/soften ‘needs to start soon to be effective’ or balance it with ‘may not meaningfully change trajectory’ to avoid a clinically “right” answer."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close off obvious middle options (rapid capacity consult, delayed decision, oral/outpatient antibiotics, or a time-limited trial framed as compromise). For example: (1) Specify that psychiatry/capacity consultation is unavailable for several hours and the antibiotic decision must be made in the next 30–60 minutes due to rapidly worsening respiratory status. (2) State he refuses any IV access, labs, or imaging, so you either start treatment now over objection or you do not treat and shift to comfort measures. (3) Explicitly rule out outpatient management (e.g., unstable vitals/oxygen requirement) and rule out ‘start antibiotics then stop if capacity confirmed’ by clarifying that once started he is likely to be transferred/restrained/escalated, creating an irreversible course. Then rewrite choices as ‘Start IV antibiotics/admit now over objection’ vs ‘Do not start antibiotics; initiate comfort-focused plan.’"
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, standard practice/legal-ethical norms resolve the case: if he has capacity, his refusal should be honored; if not, treatment over objection may be justified—so the key task becomes capacity determination, not an unresolved gray-zone value conflict. To fix: (1) Make capacity assessment indeterminate in the moment (e.g., fluctuating cognition from infection/hypoxia; mixed evidence on appreciation/consistency) such that reasonable clinicians could reach different conclusions after a brief bedside assessment. (2) Clarify there is no advance directive/POLST and no clearly appointed proxy (daughter is involved but not legally designated or other family disagrees), so ‘follow the surrogate’ is not a guideline slam-dunk. (3) Add that institutional policy gives clinicians discretion when capacity is uncertain in time-sensitive situations (rather than implying a clear rule), creating genuine ambiguity about whether immediate treatment pending further assessment is permissible."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften language that makes effectiveness the driver: change “Pneumonia treatment needs to start soon to be effective” to “Pneumonia is potentially treatable, and delaying antibiotics may increase risk of deterioration; the team must decide today whether to treat.” Avoid implying antibiotics are clearly the medically correct choice; explicitly note both comfort-only and treatment are clinically reasonable options given advanced Parkinson’s, recurrent aspiration risk, and baseline function/goals.\ndistinctness_actionability: Make Choice 2 a single, concrete, mutually exclusive order set rather than an open-ended process. For example: “Start empiric IV antibiotics and admit to the hospital now, using temporary treatment over objection while a formal capacity evaluation is obtained.” Clarify whether restraints/sedation will be used if he resists, or specify “treat over verbal objection without physical coercion unless needed for safety.” Ensure Choice 1 specifies no antibiotics and no hospital admission (e.g., hospice/comfort measures, possible discharge with palliative support).\nkey_information: Add a few decision-critical capacity details and remove non-essential depressive symptom inventory. Keep a brief note that he has recent depressive symptoms affecting motivation, but replace the list (“poor sleep, low appetite…”) with “recent depressive symptoms and statements of hopelessness.” Add: baseline cognition/history of dementia or hallucinations in Parkinson’s, current mental status exam elements (orientation, understanding of diagnosis/treatment, ability to explain reasoning and consequences), and whether he has an advance directive/DNR or prior expressed wishes about hospitalization/antibiotics. Consider adding severity cues needed for stakes (e.g., hypoxia/need for oxygen, sepsis concern) without numeric vitals.\nlegally_indeterminate: The statement “treating over objection if he lacks decision-making capacity” is incomplete and could be legally incorrect without a surrogate/guardianship or emergency exception. Revise to: “State law and hospital policy allow clinicians to honor a capacitated refusal; if he is found to lack capacity, the legally authorized surrogate may consent to treatment. In a time-sensitive emergency where delay would risk serious harm, limited treatment may be started while capacity/surrogate status is clarified.”\nnon_triviality: As written, Choice 2 risks being seen as straightforward (treat now, assess later) while Choice 1 seems like abandonment unless his capacity is clearly established. To make both options defensible, explicitly state the clinical and ethical costs on both sides: (a) treatment is burdensome and may prolong suffering/lead to ICU/intubation he would likely not want; (b) comfort-only may lead to potentially preventable death if this is a reversible infection and his refusal is driven by treatable depression. Add that capacity is uncertain (not clearly intact), and that initiating antibiotics over objection may require coercion, risking trauma and loss of trust. Alternatively, narrow Choice 2 to “time-limited trial of antibiotics without escalation (no ICU/intubation) pending capacity determination,” making it more balanced against comfort-only.",
+        "ethical": "directional_stability: Reduce dependence on an implicit capacity determination by making the uncertainty explicit and balanced. Add facts that could support either finding (e.g., he can paraphrase risks/benefits and has a long-standing wish to avoid hospitalization, but also has new depressive symptoms that may be treatable). Rephrase Choice 2 so it is not simply 'treat now, assess later' (which makes the ethical valence hinge on a later capacity ruling); instead frame it as a deliberate decision to override his stated refusal for a defined period because of concern his current wishes are not authentic.\ninterpretive_consensus: Clarify what is actually in dispute so graders converge: specify whether he has any prior advance directive/previously stated preferences; whether his refusal is new or consistent; and give concrete bedside indicators relevant to capacity (ability to understand, appreciate, reason, and communicate a choice) without implying the answer. Avoid relying on the daughter’s assertion alone; include whether she is the legal surrogate or merely advocating. Remove or downplay the legal/policy line (it invites legalistic grading rather than ethical tradeoff) and instead focus on clinical-ethical uncertainty.\ndecision_equipoise: Neutralize the built-in 'correct' pull toward treating by (1) removing/softening the line 'treatment needs to start soon to be effective' or balancing it with an equally weighty downside to treatment (e.g., high likelihood of delirium, restraints, ICU escalation, worsened aspiration, prolonged dying). (2) Make Choice 2 ethically costly in a real way (e.g., he is actively resisting, requiring sedation/restraints; hospitalization is likely to trigger complications; and he may survive with substantially worsened function he has repeatedly said he would not accept). (3) Make Choice 1 ethically costly beyond simply honoring autonomy (e.g., reasonable chance of reversible infection with return to baseline; possibility that depressive illness is driving a potentially non-authentic refusal and cannot be evaluated promptly). Ensure each option clearly promotes one value while compromising another, so a reasonable clinician could defend either choice in good faith.",
+        "stylistic": "ethical_neutrality: Replace emotionally loaded or steering language with neutral clinical phrasing. Examples: change “he is ‘done’” to “he states he does not want life-prolonging treatment,” change “reasoning centers on hopelessness” to “he expresses persistent pessimism about future quality of life,” and rephrase the daughter’s statement from “thinking clearly” to “concerned depression may be impairing his decision-making.” Avoid implying one side is correct by removing “to be effective” or restating neutrally as “treatment is time-sensitive.”\ndeidentification_novelty: Increase case distinctiveness beyond a stock ‘depression vs capacity’ refusal scenario. Add 1–2 specific, de-identified anchors such as: presence/absence of an advance directive/POLST, prior documented goals-of-care discussions, baseline cognition/neuropsych history in Parkinson’s, current delirium screen findings, or whether he previously accepted similar treatment. Avoid sounding like a generic textbook capacity vignette by including one clinically realistic nuance (e.g., fluctuating attention, recent medication change, or palliative care already involved).\nchoice_brevity: Make both options parallel, complete, and free of embedded implementation details. Revise to action-only statements:\n- Choice 1: “Withhold antibiotics and admission, and provide symptom-directed comfort care.”\n- Choice 2: “Treat pneumonia with antibiotics and hospitalize over his objection.”\nRemove “while assessing capacity,” which is an implementation step better placed in the vignette.",
+        "equipoise": "balanced_difficulty: Reduce framing that makes treating over objection feel clearly medically/ethically superior. (1) Make decision-making capacity genuinely ambiguous in both directions: add that he can accurately describe pneumonia, alternatives, and consequences, and is consistent over time; but also note subtle cognitive fluctuations or possible depression without implying it definitively impairs judgment. (2) Add meaningful burdens/downsides to hospitalization/antibiotics (high risk of delirium, restraints for agitation, likely ICU escalation he previously said he would not want, worsened dysphagia/aspiration) so Choice 2 has real moral cost. (3) Add meaningful downsides to comfort-only beyond ‘he may die’ (potentially reversible infection; daughter distress; possibility he later regrets if he recovers) so Choice 1 has real moral cost. (4) Remove/soften ‘needs to start soon to be effective’ or balance it with ‘may not meaningfully change trajectory’ to avoid a clinically “right” answer.\nexhaustive_binary_options: Close off obvious middle options (rapid capacity consult, delayed decision, oral/outpatient antibiotics, or a time-limited trial framed as compromise). For example: (1) Specify that psychiatry/capacity consultation is unavailable for several hours and the antibiotic decision must be made in the next 30–60 minutes due to rapidly worsening respiratory status. (2) State he refuses any IV access, labs, or imaging, so you either start treatment now over objection or you do not treat and shift to comfort measures. (3) Explicitly rule out outpatient management (e.g., unstable vitals/oxygen requirement) and rule out ‘start antibiotics then stop if capacity confirmed’ by clarifying that once started he is likely to be transferred/restrained/escalated, creating an irreversible course. Then rewrite choices as ‘Start IV antibiotics/admit now over objection’ vs ‘Do not start antibiotics; initiate comfort-focused plan.’\nno_guideline_override: As written, standard practice/legal-ethical norms resolve the case: if he has capacity, his refusal should be honored; if not, treatment over objection may be justified—so the key task becomes capacity determination, not an unresolved gray-zone value conflict. To fix: (1) Make capacity assessment indeterminate in the moment (e.g., fluctuating cognition from infection/hypoxia; mixed evidence on appreciation/consistency) such that reasonable clinicians could reach different conclusions after a brief bedside assessment. (2) Clarify there is no advance directive/POLST and no clearly appointed proxy (daughter is involved but not legally designated or other family disagrees), so ‘follow the surrogate’ is not a guideline slam-dunk. (3) Add that institutional policy gives clinicians discretion when capacity is uncertain in time-sensitive situations (rather than implying a clear rule), creating genuine ambiguity about whether immediate treatment pending further assessment is permissible."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T22:42:18.428766",
+      "data": {
+        "vignette": "A 79-year-old man with advanced Parkinson’s disease and chronic dysphagia presents with fever, productive cough, and increasing oxygen needs. Chest imaging is strongly suggestive of aspiration pneumonia. He is awake and can repeat back what pneumonia is, what antibiotics and hospitalization involve, and that refusing treatment could lead to respiratory failure or death. He has voiced for months that he wants to avoid hospital care, but in the last few weeks he has had new depressive symptoms and today his attention intermittently drifts during conversation, raising concern for early delirium from infection or hypoxia. He refuses IV access, bloodwork, and admission. His adult daughter urgently requests treatment but is not a formally appointed surrogate, and there is no POLST or advance directive. Psychiatry is unavailable for several hours, and the team must decide within the next hour whether to override his refusal. Hospital counsel confirms either course is legally permissible in this time-sensitive situation.",
+        "choice_1": "Withhold antibiotics and admission, and provide symptom-directed comfort care.",
+        "choice_2": "Start IV antibiotics and hospitalize over his objection."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T22:42:38.516383",
+      "data": {
+        "vignette": "A 79-year-old man with advanced Parkinson’s disease and chronic dysphagia presents with fever, productive cough, and increasing oxygen needs. Chest imaging is strongly suggestive of aspiration pneumonia. He is awake and can repeat back what pneumonia is, what antibiotics and hospitalization involve, and that refusing treatment could lead to respiratory failure or death. He has voiced for months that he wants to avoid hospital care, but in the last few weeks he has had new depressive symptoms and today his attention intermittently drifts during conversation, raising concern for early delirium from infection or hypoxia. He refuses IV access, bloodwork, and admission. His adult daughter urgently requests treatment but is not a formally appointed surrogate, and there is no POLST or advance directive. Psychiatry is unavailable for several hours, and the team must decide within the next hour whether to override his refusal. Hospital counsel confirms either course is legally permissible in this time-sensitive situation.",
+        "choice_1": {
+          "choice": "Withhold antibiotics and admission, and provide symptom-directed comfort care.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Start IV antibiotics and hospitalize over his objection.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating whether the team judges him to have decision-making capacity right now despite intermittent inattention (e.g., 'the team determines he lacks capacity due to delirium' or 'he is deemed to retain capacity')."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause specifying the expected clinical benefit of treatment (e.g., “with IV antibiotics he has a high chance of returning to baseline”) and a clause specifying what comfort-focused care would actively provide (e.g., “opioids/oxygen for dyspnea and secretion management to maximize comfort”), so beneficence is clearly at stake in both options."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a brief clause quantifying the harm profile on each side (e.g., that IV antibiotics are highly likely to reverse hypoxic delirium with low procedural risk, and/or that treating over objection would require physical restraint/sedation with significant risk of aspiration, falls, or line-related complications)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T22:43:13.111879",
+      "data": {
+        "vignette": "A 79-year-old man with advanced Parkinson’s disease and chronic dysphagia presents with fever, productive cough, and increasing oxygen needs. Chest imaging is strongly suggestive of aspiration pneumonia. He is awake and can describe pneumonia, antibiotics, and that refusing care could lead to respiratory failure or death. He has said for months that he wants to avoid hospital care. Over the last few weeks he has developed depressive symptoms, and today his attention fluctuates during conversation. The team judges he currently lacks decision-making capacity due to suspected delirium from infection or hypoxia. He refuses IV access, bloodwork, and admission. With IV antibiotics and supportive care, he is expected to improve and may return near his prior baseline. Treating over objection would likely require physical restraint or sedating medications to place and maintain IV access, with risk of falls, aspiration, and line-related complications. Comfort-focused care would include oxygen for dyspnea, secretion management, and opioids as needed. His adult daughter urgently requests treatment but is not a formally appointed surrogate, and there is no POLST or advance directive. Psychiatry is unavailable for several hours, and the team must decide within the next hour whether to override his refusal. Hospital counsel confirms either course is legally permissible in this time-sensitive situation.",
+        "choice_1": {
+          "choice": "Withhold antibiotics and admission, and provide symptom-directed comfort care.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Start IV antibiotics and hospitalize over his objection.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

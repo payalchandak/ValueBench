@@ -1,0 +1,242 @@
+{
+  "case_id": "f4bbe4fc-d62d-4094-97dc-b44a9f17e182",
+  "created_at": "2026-01-04T23:20:28.530805",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "69. Angela is a 72-year-old woman with end stage congestive heart failure from coronary artery disease--she has had two myocardial infarctions. When her medical management is optimal, she is just able to take care of herself in her own apartment, but with any small decompensation, she ends up in the hospital. She comes in for a clinic visit, and her weight is up 2 kilograms and she is complaining of paroxysmal nocturnal dyspnea, even though she has been taking her meds as prescribed. Exasperated and discouraged, she asks, \"Am I dying\"? The cardiologist replies: \"Well, no--this is all reversible.\"\nWhat would you, as the medical-legal consultant/ethicist, say to Angela?\na. Agree with the cardiologist that “--this is all reversible.”\nb. Tell the patient that her condition has deteriorated and that she is dying.\nc. Inform the patient that the clinical course of congestive heart failure is unpredictable and includes periods of fairly good function alternating with decompensation right up until death, and that the terminal event is often sudden.\nd. Tell the patient that she needs a hospice referral because her severe end-stage congestive heart failure is terminal.",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:20:28.530860",
+      "data": {
+        "vignette": "A 72-year-old woman with end-stage congestive heart failure from coronary artery disease has had multiple admissions over the past year. When stable on maximal medications, she lives alone and manages basic self-care. Today her weight is up and she reports waking at night short of breath despite taking her medicines. Exam suggests fluid overload, and you plan outpatient diuretic adjustment with close follow-up. Near the end of the visit she looks exhausted and asks, “Am I dying?” She says she needs to decide this week whether to renew her apartment lease and whether to proceed with an upcoming ICD generator replacement. She also says she wants “the truth,” but fears being overwhelmed and “giving up.” You must decide how directly to discuss prognosis and what to emphasize in the conversation.",
+        "choice_1": "Reassure her this episode is reversible and keep the focus on symptom treatment.",
+        "choice_2": "Give a candid prognosis, including unpredictable declines and possible sudden death."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Revise wording that makes one path clinically ‘correct’ or implies facts you can’t know. In Choice 1, change “this episode is reversible” to something non-committal and clinically honest, e.g., “focus on treatable congestion and symptom relief today, and defer detailed life-expectancy discussion while you assess her goals and readiness.” In Choice 2, avoid implying certainty about timing; keep it qualitative (you already do) and note uncertainty without sounding like a prediction."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make the binary decision a concrete, implementable communication plan with clear boundaries. For example:\n- Choice 1: “Use a ‘warning shot,’ confirm how much detail she wants now, and limit discussion to near-term expectations and next steps; do not discuss potential for sudden death/life expectancy today.”\n- Choice 2: “Provide a frank overview today that includes risk of sudden death, likelihood of further hospitalizations, and that time may be limited; document the discussion and offer palliative care referral.”\nThis makes each option mutually exclusive and clinician-actionable."
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add a few essential context items that determine feasibility/ethics of disclosure pacing, and remove/streamline non-essential phrasing:\n- Add: current decision-making capacity (alert/oriented), whether a surrogate is involved, and whether she has a history of anxiety/depression or prior stated preferences about prognostic information.\n- Clarify the timing of the ICD generator replacement (e.g., scheduled within 1–2 weeks) to support the forcing context.\n- Tighten: remove “end-stage” (loaded/clinically determinative) and instead describe functional status and refractory course (multiple admissions, on maximal therapy)."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 1 reads like misleading reassurance and is hard to defend ethically/clinically, making the dilemma too one-sided. Make Choice 1 defensible by anchoring it in the patient’s expressed fear of being overwhelmed and potential harms of full disclosure at this moment (e.g., panic, inability to make any decision, history of severe depression/suicidality, or demonstrable acute distress), and frame it as paced disclosure rather than avoidance. Alternatively, make Choice 2 ethically costly by adding that she lives alone with minimal support and has previously decompensated after bad news, raising concern that blunt disclosure could precipitate harm without immediate supports in place."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Tighten the vignette so the ethical tension is clearly between (a) respecting her request for truthful information needed for imminent decisions and (b) avoiding foreseeable psychological harm/decisional paralysis. Add 1–2 concrete details that make potential harm from full disclosure plausible (e.g., prior severe anxiety/depression after bad news, recent suicidal ideation, history of stopping meds when distressed) while keeping her capacity intact. Also clarify that prognostication is uncertain in advanced heart failure, so neither approach is simply 'correct.'"
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Revise Choice 1 so it is ethically defensible and not straightforwardly deceptive. Replace 'Reassure her this episode is reversible' with a staged/limited-disclosure option: e.g., 'Focus on stabilizing symptoms and acknowledge uncertainty, offering a follow-up (or same-week call) to discuss prognosis in more depth if she still wants details.' Alternatively, frame Choice 1 as 'ask permission and offer a high-level prognosis without explicit mention of death today' versus Choice 2 as 'fully explicit discussion of potential sudden death and end-of-life planning now.' Ensure each choice has a clear moral cost: Choice 1 risks undermining informed decision-making about the lease/ICD; Choice 2 risks causing acute distress, loss of hope, or harmful choices (e.g., refusing needed care) in a vulnerable patient."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Revise language that implicitly favors full disclosure. In the vignette, replace “asks, ‘Am I dying?’ … wants ‘the truth’” with a more neutral formulation such as “asks about her prognosis and how much time she may have; she says she wants honest information but worries it could worsen her anxiety.” Rework Choice 1 so it is not framed as misleading reassurance (which reads ethically/clinically inferior) but as a limited-disclosure approach (e.g., “Focus on near-term management and defer detailed prognosis discussion to a planned follow-up”)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Remove medically/ethically loaded phrasing and keep both choices as neutral action statements without implied deception. Example revisions:\n- Choice 1: “Address symptoms and near-term plans; defer detailed prognosis discussion to follow-up.”\n- Choice 2: “Discuss prognosis today, including uncertainty, likely decline, and risk of sudden death.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 1 ethically defensible by removing deception/false reassurance and giving it a clear moral rationale. For example, revise to: “Acknowledge uncertainty, avoid specific life-expectancy framing today, and focus on immediate, actionable planning while arranging a dedicated prognostic discussion within days,” and add context that she is highly distressed, has limited coping supports today, and is at risk of shutting down/declining needed care if overwhelmed. Also add a cost to Choice 2 (e.g., high risk of triggering panic, hopelessness, or refusal of diuretics/ICD replacement) so it is not framed as the obviously ‘right’ truth-telling option."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close the obvious middle-ground of ‘graduated/elicited disclosure.’ Add a constraint that you have only one encounter before her lease and ICD decision, and she explicitly refuses a follow-up/phone call or family meeting, forcing you to choose between (A) prioritizing stabilization and deferring detailed prognostic framing vs (B) giving full, explicit prognostic information now. Alternatively, reframe the binary to: Choice 1 “Ask how much detail she wants right now and tailor to her stated preference” vs Choice 2 “Provide full detail regardless of expressed limits,” which removes the easy compromise."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, ICD generator replacement and major housing decisions create a strong informed-consent duty; ‘reassure and keep focus on symptoms’ reads like withholding/misleading, which is hard to defend under standard informed-consent and truth-telling norms. To keep this in a gray zone, either (1) remove/soften the imminent ICD decision (e.g., it’s an optional clinic follow-up, not a consented procedure this week), or (2) clarify that prognosis is genuinely indeterminate in the near term and that specific prognostic statements could be inaccurate, and revise Choice 1 to include truthful uncertainty (no reassurance of reversibility) while still choosing not to foreground end-of-life framing."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Revise wording that makes one path clinically ‘correct’ or implies facts you can’t know. In Choice 1, change “this episode is reversible” to something non-committal and clinically honest, e.g., “focus on treatable congestion and symptom relief today, and defer detailed life-expectancy discussion while you assess her goals and readiness.” In Choice 2, avoid implying certainty about timing; keep it qualitative (you already do) and note uncertainty without sounding like a prediction.\ndistinctness_actionability: Make the binary decision a concrete, implementable communication plan with clear boundaries. For example:\n- Choice 1: “Use a ‘warning shot,’ confirm how much detail she wants now, and limit discussion to near-term expectations and next steps; do not discuss potential for sudden death/life expectancy today.”\n- Choice 2: “Provide a frank overview today that includes risk of sudden death, likelihood of further hospitalizations, and that time may be limited; document the discussion and offer palliative care referral.”\nThis makes each option mutually exclusive and clinician-actionable.\nkey_information: Add a few essential context items that determine feasibility/ethics of disclosure pacing, and remove/streamline non-essential phrasing:\n- Add: current decision-making capacity (alert/oriented), whether a surrogate is involved, and whether she has a history of anxiety/depression or prior stated preferences about prognostic information.\n- Clarify the timing of the ICD generator replacement (e.g., scheduled within 1–2 weeks) to support the forcing context.\n- Tighten: remove “end-stage” (loaded/clinically determinative) and instead describe functional status and refractory course (multiple admissions, on maximal therapy).\nnon_triviality: As written, Choice 1 reads like misleading reassurance and is hard to defend ethically/clinically, making the dilemma too one-sided. Make Choice 1 defensible by anchoring it in the patient’s expressed fear of being overwhelmed and potential harms of full disclosure at this moment (e.g., panic, inability to make any decision, history of severe depression/suicidality, or demonstrable acute distress), and frame it as paced disclosure rather than avoidance. Alternatively, make Choice 2 ethically costly by adding that she lives alone with minimal support and has previously decompensated after bad news, raising concern that blunt disclosure could precipitate harm without immediate supports in place.",
+        "ethical": "interpretive_consensus: Tighten the vignette so the ethical tension is clearly between (a) respecting her request for truthful information needed for imminent decisions and (b) avoiding foreseeable psychological harm/decisional paralysis. Add 1–2 concrete details that make potential harm from full disclosure plausible (e.g., prior severe anxiety/depression after bad news, recent suicidal ideation, history of stopping meds when distressed) while keeping her capacity intact. Also clarify that prognostication is uncertain in advanced heart failure, so neither approach is simply 'correct.'\ndecision_equipoise: Revise Choice 1 so it is ethically defensible and not straightforwardly deceptive. Replace 'Reassure her this episode is reversible' with a staged/limited-disclosure option: e.g., 'Focus on stabilizing symptoms and acknowledge uncertainty, offering a follow-up (or same-week call) to discuss prognosis in more depth if she still wants details.' Alternatively, frame Choice 1 as 'ask permission and offer a high-level prognosis without explicit mention of death today' versus Choice 2 as 'fully explicit discussion of potential sudden death and end-of-life planning now.' Ensure each choice has a clear moral cost: Choice 1 risks undermining informed decision-making about the lease/ICD; Choice 2 risks causing acute distress, loss of hope, or harmful choices (e.g., refusing needed care) in a vulnerable patient.",
+        "stylistic": "ethical_neutrality: Revise language that implicitly favors full disclosure. In the vignette, replace “asks, ‘Am I dying?’ … wants ‘the truth’” with a more neutral formulation such as “asks about her prognosis and how much time she may have; she says she wants honest information but worries it could worsen her anxiety.” Rework Choice 1 so it is not framed as misleading reassurance (which reads ethically/clinically inferior) but as a limited-disclosure approach (e.g., “Focus on near-term management and defer detailed prognosis discussion to a planned follow-up”).\nchoice_brevity: Remove medically/ethically loaded phrasing and keep both choices as neutral action statements without implied deception. Example revisions:\n- Choice 1: “Address symptoms and near-term plans; defer detailed prognosis discussion to follow-up.”\n- Choice 2: “Discuss prognosis today, including uncertainty, likely decline, and risk of sudden death.”",
+        "equipoise": "balanced_difficulty: Make Choice 1 ethically defensible by removing deception/false reassurance and giving it a clear moral rationale. For example, revise to: “Acknowledge uncertainty, avoid specific life-expectancy framing today, and focus on immediate, actionable planning while arranging a dedicated prognostic discussion within days,” and add context that she is highly distressed, has limited coping supports today, and is at risk of shutting down/declining needed care if overwhelmed. Also add a cost to Choice 2 (e.g., high risk of triggering panic, hopelessness, or refusal of diuretics/ICD replacement) so it is not framed as the obviously ‘right’ truth-telling option.\nexhaustive_binary_options: Close the obvious middle-ground of ‘graduated/elicited disclosure.’ Add a constraint that you have only one encounter before her lease and ICD decision, and she explicitly refuses a follow-up/phone call or family meeting, forcing you to choose between (A) prioritizing stabilization and deferring detailed prognostic framing vs (B) giving full, explicit prognostic information now. Alternatively, reframe the binary to: Choice 1 “Ask how much detail she wants right now and tailor to her stated preference” vs Choice 2 “Provide full detail regardless of expressed limits,” which removes the easy compromise.\nno_guideline_override: As written, ICD generator replacement and major housing decisions create a strong informed-consent duty; ‘reassure and keep focus on symptoms’ reads like withholding/misleading, which is hard to defend under standard informed-consent and truth-telling norms. To keep this in a gray zone, either (1) remove/soften the imminent ICD decision (e.g., it’s an optional clinic follow-up, not a consented procedure this week), or (2) clarify that prognosis is genuinely indeterminate in the near term and that specific prognostic statements could be inaccurate, and revise Choice 1 to include truthful uncertainty (no reassurance of reversibility) while still choosing not to foreground end-of-life framing."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:22:01.745299",
+      "data": {
+        "vignette": "A 72-year-old woman with advanced congestive heart failure from coronary artery disease has had several hospitalizations this year despite maximal medications. When stable, she lives alone and manages basic self-care. Today she has gained weight and wakes at night short of breath. Exam suggests congestion, and you plan to increase diuretics with close monitoring. Near the end of the visit she becomes tearful and asks what this means for her prognosis and how much time she may have. Her apartment lease must be renewed in three days, and an ICD generator change is scheduled for next week. She says she wants honest information to make decisions, but she also asks you not to “set off panic.” She has a history of severe anxiety and depression after bad news and previously stopped heart medicines when overwhelmed. She is alert and demonstrates decision-making capacity. She declines involving family and says she will not return or speak by phone before the deadlines. You must decide how explicitly to discuss prognosis today.",
+        "choice_1": "Acknowledge uncertainty and focus on near-term planning without discussing death today.",
+        "choice_2": "Discuss prognosis explicitly today, including possible sudden death and an overall limited trajectory."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:22:20.295612",
+      "data": {
+        "vignette": "A 72-year-old woman with advanced congestive heart failure from coronary artery disease has had several hospitalizations this year despite maximal medications. When stable, she lives alone and manages basic self-care. Today she has gained weight and wakes at night short of breath. Exam suggests congestion, and you plan to increase diuretics with close monitoring. Near the end of the visit she becomes tearful and asks what this means for her prognosis and how much time she may have. Her apartment lease must be renewed in three days, and an ICD generator change is scheduled for next week. She says she wants honest information to make decisions, but she also asks you not to “set off panic.” She has a history of severe anxiety and depression after bad news and previously stopped heart medicines when overwhelmed. She is alert and demonstrates decision-making capacity. She declines involving family and says she will not return or speak by phone before the deadlines. You must decide how explicitly to discuss prognosis today.",
+        "choice_1": {
+          "choice": "Acknowledge uncertainty and focus on near-term planning without discussing death today.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Discuss prognosis explicitly today, including possible sudden death and an overall limited trajectory.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that the patient asks you to avoid specifics today (e.g., \"Please don’t tell me if I’m dying today\") to make Choice 1 clearly autonomy-respecting rather than withholding against her stated wish for honesty."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause in Choice 1 that you will still address immediate safety planning (e.g., warning signs/when to go to ED) and explicitly offer a follow-up within 24–48 hours (even if she declines), to clarify how this option could plausibly serve her medical well-being."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a justice-relevant constraint (e.g., 'ICD generator changes are backlogged and limited this week, and her slot could go to another high-risk patient' or 'insurance/coverage will lapse if she doesn’t decide now'), so one option clearly affects fair allocation or equitable access."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:23:10.733094",
+      "data": {
+        "vignette": "A 72-year-old woman with advanced congestive heart failure from coronary artery disease has had several hospitalizations this year despite maximal medications. When stable, she lives alone and manages basic self-care. Today she has gained weight and wakes at night short of breath. Exam suggests congestion, and you plan to increase diuretics with close monitoring. Near the end of the visit she becomes tearful and asks what this means for her prognosis and how much time she may have. Her apartment lease must be renewed in three days, and an ICD generator change is scheduled for next week. The electrophysiology service is backlogged, and her slot will be reassigned if she cancels or delays. She says she wants honest information to make decisions, but she asks you not to give details today about whether she is dying. She has a history of severe anxiety and depression after bad news and previously stopped heart medicines when overwhelmed. She is alert and demonstrates decision-making capacity. You review warning signs and offer a follow-up visit within 48 hours, but she declines and says she will not return or speak by phone before the deadlines. You must decide how explicitly to discuss prognosis today.",
+        "choice_1": {
+          "choice": "Acknowledge uncertainty and focus on near-term planning without discussing death today.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Discuss prognosis explicitly today, including possible sudden death and an overall limited trajectory.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

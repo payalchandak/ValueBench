@@ -1,0 +1,236 @@
+{
+  "case_id": "dee07a00-bf07-49ab-b334-35158bab1b9d",
+  "created_at": "2026-01-04T23:31:43.891134",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "24. Mr. Sakiewiec is a 32-year-old man with severe mental retardation who\nhas been institutionalized since childhood. He is noncommunicative and\nhas never been able to verbalize his preferences on any decision. His\nparents are dead and the institution and a court-appointed guardian\nmanages him. He has developed leukemia that is severe and incurable.\nChemotherapy involves significant risk and discomfort and only a small\nchance of prolonging his survival.\nWhat should be done in terms of his medical treatment?\na. Proceed with the chemotherapy.\nb. Confer an “expert panel” to determine therapy.\nc. Bone marrow transplantation.\nd. Ask the guardian what is in the best interests of the patient.",
+      "value_1": "Non-maleficence",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:31:43.891202",
+      "data": {
+        "vignette": "A 32-year-old man with profound intellectual disability lives in a long-term care facility. He is nonverbal and has never been able to express preferences. He has no family. A court-appointed guardian makes medical decisions. He is diagnosed with aggressive leukemia that is not curable. The oncology team can offer induction chemotherapy. It would require prolonged hospitalization, repeated blood draws, restraints at times for line safety, and could cause severe infections, bleeding, and distress. It might also shorten his life if complications occur. Without chemotherapy, the focus would shift to transfusions as needed and symptom-focused care, with an expected steady decline. The team must decide within days because delaying chemotherapy will close the option of starting it. Hospital policy and the guardian’s authority allow either approach.",
+        "choice_1": "Start induction chemotherapy with inpatient supportive care",
+        "choice_2": "Forgo chemotherapy and provide comfort-focused treatment"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften language that implies one option is clinically better/worse by prognosis framing. Specifically: (1) Replace “aggressive leukemia that is not curable” with “aggressive leukemia with limited chance of long-term remission; treatment is unlikely to be curative.” (2) Replace “expected steady decline” with “likely progressive decline over weeks to months.” (3) Avoid implying chemotherapy could ‘shorten his life’ as a decisive clinical argument—rephrase to “may cause life-threatening complications and could hasten death in some cases.” Ensure both pathways include potential benefits/harms (e.g., chemo may offer temporary remission/symptom relief; comfort care may avoid burdens but may allow earlier progression)."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Tighten to essential decision-shaping facts and add missing decision-relevant details. Suggested edits: (1) Specify current clinical status/performance: e.g., “currently hemodynamically stable but pancytopenic with frequent transfusion needs” or similar. (2) Clarify what ‘transfusions as needed’ entails (likely repeated hospital/clinic visits) and whether central line is required either way. (3) Remove nonessential phrasing like “has never been able to express preferences” (keep ‘nonverbal, no known prior wishes’) and streamline restraint discussion to one sentence. (4) Add whether there is any known baseline distress with medical procedures, to justify anticipated suffering vs tolerability."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Improve medical realism around the ‘option closes’ and treatment pathways. (1) Justify why chemo must start “within days” (e.g., rising blast count with impending tumor lysis risk, rapidly worsening counts, or oncologist notes that delay will make him too unstable/poor performance status for induction). (2) Clarify that induction typically requires central venous access and intensive monitoring; if restraints are anticipated, explain prior behavior (pulling lines) or sensory intolerance. (3) Ensure the non-chemo plan is plausible: include whether hospice enrollment is available and that transfusions may be limited depending on goals-of-care/hospice policies."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Add a brief legal-context sentence clarifying the decision standard and permissibility. Example: “Under state law, the guardian may consent to or refuse life-prolonging treatment based on best-interest standards, and the hospital ethics committee can support either plan if adequately documented.” Also clarify whether a DNR/DNI decision is separate or included, to avoid legal ambiguity around life-sustaining treatment during chemo complications."
+        },
+        "non_triviality": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the vignette so neither option reads as the obvious ‘kind’ choice. (1) Add a clinically plausible upside to induction chemo despite non-curability (e.g., may achieve a remission that provides weeks–months of improved energy/less bleeding, allows discharge back to his familiar facility, or reduces symptomatic leukostasis/pain). (2) Add morally/clinically weighty downsides to comfort-focused care (e.g., escalating transfusion needs requiring repeated IV access/transport, risk of distressing hemorrhage/infection/air hunger that may still require hospitalization or sedation, and uncertainty whether symptoms can be well-controlled in the facility). (3) Reduce one-sided language about chemo burdens (e.g., replace ‘restraints at times’ with ‘may require additional supervision or temporary restraints to protect central access’ and note efforts to minimize). (4) Make clear that reasonable clinicians disagree: include that the guardian and team are divided about whether burdens are proportional to potential benefit, rather than implying comfort care is the default because disease is ‘not curable’."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Rebalance framing so neither option is implicitly favored. Add a neutral, clinically plausible potential benefit of induction chemotherapy (e.g., possibility of short-term remission, reduced transfusion needs, or additional time) and add neutral burdens of non-chemotherapy care (e.g., frequent transfusions/clinic visits, potential for recurrent infections/bleeding and unplanned hospitalizations). Replace value-laden phrasing like “distress” with more clinical terms such as “agitation/pain requiring symptom management,” and describe restraints neutrally as “temporary safety measures for line protection, per policy.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Revise both options to neutral, parallel action statements of ~10–15 words each, without rationale. Example: Choice 1: “Proceed with induction chemotherapy and inpatient monitoring, transfusions, and infection prophylaxis.” Choice 2: “Decline disease-directed chemotherapy; provide transfusions as needed and symptom-focused palliative care.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance framing so chemotherapy has a clearly articulated potential benefit, not just burdens. Add a plausible best-case outcome (e.g., remission with additional time and potential return to baseline in the facility) and a plausible worst-case for comfort care (e.g., recurrent bleeding/infections requiring frequent hospital transfers, distress from transfusions, or poorly controlled symptoms without central access). Remove or soften language that makes one option seem obviously kinder (e.g., replace “restraints at times” with “may require additional safety measures” and avoid emphasizing that chemo “might shorten his life” unless equally emphasizing that non-chemo may also involve distressing complications). Clarify that either course could be argued to better serve his interests, with genuine uncertainty about which produces less suffering overall."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close off obvious middle-ground options. Explicitly state why a time-limited trial, lower-intensity regimens, or outpatient/palliative chemotherapy are not feasible (e.g., the only available regimen at this center is standard induction; targeted/low-intensity options are not appropriate due to tumor genetics/rapid progression; hospice can be arranged only if chemo is declined). Also state why ‘start chemo and stop if intolerable’ is not realistically distinct (e.g., induction requires a full initial course to have any chance of benefit, and stopping mid-course would expose him to harms without benefit). If you want to keep strict binary, add a sentence that the guardian requests a single decisive plan rather than a trial, and the service cannot offer partial induction."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, a 32-year-old with ‘aggressive leukemia’ strongly triggers standard-of-care induction, making refusal look like deviation from usual practice unless contraindications are specified. Fix by clarifying the disease context where guidelines do not give a clear answer: e.g., relapsed/refractory leukemia after prior therapy, adverse cytogenetics with very low likelihood of durable remission, or major comorbidities/functional limitations that make intensive chemo of uncertain net benefit. Add that oncology agrees both approaches are medically acceptable (not ‘chemo is indicated’), and that professional guidance defers to best-interest judgment when the patient has never had capacity and burdens are extreme. If applicable, note that there is no advance directive and local law grants the guardian discretion within best-interest standards."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften language that implies one option is clinically better/worse by prognosis framing. Specifically: (1) Replace “aggressive leukemia that is not curable” with “aggressive leukemia with limited chance of long-term remission; treatment is unlikely to be curative.” (2) Replace “expected steady decline” with “likely progressive decline over weeks to months.” (3) Avoid implying chemotherapy could ‘shorten his life’ as a decisive clinical argument—rephrase to “may cause life-threatening complications and could hasten death in some cases.” Ensure both pathways include potential benefits/harms (e.g., chemo may offer temporary remission/symptom relief; comfort care may avoid burdens but may allow earlier progression).\nkey_information: Tighten to essential decision-shaping facts and add missing decision-relevant details. Suggested edits: (1) Specify current clinical status/performance: e.g., “currently hemodynamically stable but pancytopenic with frequent transfusion needs” or similar. (2) Clarify what ‘transfusions as needed’ entails (likely repeated hospital/clinic visits) and whether central line is required either way. (3) Remove nonessential phrasing like “has never been able to express preferences” (keep ‘nonverbal, no known prior wishes’) and streamline restraint discussion to one sentence. (4) Add whether there is any known baseline distress with medical procedures, to justify anticipated suffering vs tolerability.\nclinical_plausibility: Improve medical realism around the ‘option closes’ and treatment pathways. (1) Justify why chemo must start “within days” (e.g., rising blast count with impending tumor lysis risk, rapidly worsening counts, or oncologist notes that delay will make him too unstable/poor performance status for induction). (2) Clarify that induction typically requires central venous access and intensive monitoring; if restraints are anticipated, explain prior behavior (pulling lines) or sensory intolerance. (3) Ensure the non-chemo plan is plausible: include whether hospice enrollment is available and that transfusions may be limited depending on goals-of-care/hospice policies.\nlegally_indeterminate: Add a brief legal-context sentence clarifying the decision standard and permissibility. Example: “Under state law, the guardian may consent to or refuse life-prolonging treatment based on best-interest standards, and the hospital ethics committee can support either plan if adequately documented.” Also clarify whether a DNR/DNI decision is separate or included, to avoid legal ambiguity around life-sustaining treatment during chemo complications.",
+        "ethical": "decision_equipoise: Rebalance the vignette so neither option reads as the obvious ‘kind’ choice. (1) Add a clinically plausible upside to induction chemo despite non-curability (e.g., may achieve a remission that provides weeks–months of improved energy/less bleeding, allows discharge back to his familiar facility, or reduces symptomatic leukostasis/pain). (2) Add morally/clinically weighty downsides to comfort-focused care (e.g., escalating transfusion needs requiring repeated IV access/transport, risk of distressing hemorrhage/infection/air hunger that may still require hospitalization or sedation, and uncertainty whether symptoms can be well-controlled in the facility). (3) Reduce one-sided language about chemo burdens (e.g., replace ‘restraints at times’ with ‘may require additional supervision or temporary restraints to protect central access’ and note efforts to minimize). (4) Make clear that reasonable clinicians disagree: include that the guardian and team are divided about whether burdens are proportional to potential benefit, rather than implying comfort care is the default because disease is ‘not curable’.",
+        "stylistic": "ethical_neutrality: Rebalance framing so neither option is implicitly favored. Add a neutral, clinically plausible potential benefit of induction chemotherapy (e.g., possibility of short-term remission, reduced transfusion needs, or additional time) and add neutral burdens of non-chemotherapy care (e.g., frequent transfusions/clinic visits, potential for recurrent infections/bleeding and unplanned hospitalizations). Replace value-laden phrasing like “distress” with more clinical terms such as “agitation/pain requiring symptom management,” and describe restraints neutrally as “temporary safety measures for line protection, per policy.”\nchoice_brevity: Revise both options to neutral, parallel action statements of ~10–15 words each, without rationale. Example: Choice 1: “Proceed with induction chemotherapy and inpatient monitoring, transfusions, and infection prophylaxis.” Choice 2: “Decline disease-directed chemotherapy; provide transfusions as needed and symptom-focused palliative care.”",
+        "equipoise": "balanced_difficulty: Rebalance framing so chemotherapy has a clearly articulated potential benefit, not just burdens. Add a plausible best-case outcome (e.g., remission with additional time and potential return to baseline in the facility) and a plausible worst-case for comfort care (e.g., recurrent bleeding/infections requiring frequent hospital transfers, distress from transfusions, or poorly controlled symptoms without central access). Remove or soften language that makes one option seem obviously kinder (e.g., replace “restraints at times” with “may require additional safety measures” and avoid emphasizing that chemo “might shorten his life” unless equally emphasizing that non-chemo may also involve distressing complications). Clarify that either course could be argued to better serve his interests, with genuine uncertainty about which produces less suffering overall.\nexhaustive_binary_options: Close off obvious middle-ground options. Explicitly state why a time-limited trial, lower-intensity regimens, or outpatient/palliative chemotherapy are not feasible (e.g., the only available regimen at this center is standard induction; targeted/low-intensity options are not appropriate due to tumor genetics/rapid progression; hospice can be arranged only if chemo is declined). Also state why ‘start chemo and stop if intolerable’ is not realistically distinct (e.g., induction requires a full initial course to have any chance of benefit, and stopping mid-course would expose him to harms without benefit). If you want to keep strict binary, add a sentence that the guardian requests a single decisive plan rather than a trial, and the service cannot offer partial induction.\nno_guideline_override: As written, a 32-year-old with ‘aggressive leukemia’ strongly triggers standard-of-care induction, making refusal look like deviation from usual practice unless contraindications are specified. Fix by clarifying the disease context where guidelines do not give a clear answer: e.g., relapsed/refractory leukemia after prior therapy, adverse cytogenetics with very low likelihood of durable remission, or major comorbidities/functional limitations that make intensive chemo of uncertain net benefit. Add that oncology agrees both approaches are medically acceptable (not ‘chemo is indicated’), and that professional guidance defers to best-interest judgment when the patient has never had capacity and burdens are extreme. If applicable, note that there is no advance directive and local law grants the guardian discretion within best-interest standards."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:32:57.743467",
+      "data": {
+        "vignette": "A 32-year-old man with profound intellectual disability lives in a long-term care facility. He is nonverbal with no known prior wishes, no family, and a court-appointed guardian. He is hospitalized with newly diagnosed aggressive acute leukemia with adverse features; treatment is unlikely to be curative, but induction could produce a temporary remission and allow return to his facility with fewer transfusions. He is currently stable but severely pancytopenic and already needs frequent transfusions. Induction at this center requires a central line, weeks of inpatient care, daily labs, and close monitoring; based on prior care, he becomes agitated with procedures and may need extra supervision or temporary safety measures to protect lines. If chemotherapy is declined, he would receive palliative-focused care and transfusions as tolerated, but this may still mean repeated hospital transfers for bleeding, infection, or worsening symptoms that could be hard to control in the facility. The team must decide within days because delay may make him too unstable for induction. Hospital policy and state law permit the guardian to consent to or refuse this treatment under a best-interest standard.",
+        "choice_1": "Proceed with induction chemotherapy and inpatient monitoring with central venous access",
+        "choice_2": "Decline chemotherapy and provide transfusions as tolerated with comfort-focused care"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:33:10.547910",
+      "data": {
+        "vignette": "A 32-year-old man with profound intellectual disability lives in a long-term care facility. He is nonverbal with no known prior wishes, no family, and a court-appointed guardian. He is hospitalized with newly diagnosed aggressive acute leukemia with adverse features; treatment is unlikely to be curative, but induction could produce a temporary remission and allow return to his facility with fewer transfusions. He is currently stable but severely pancytopenic and already needs frequent transfusions. Induction at this center requires a central line, weeks of inpatient care, daily labs, and close monitoring; based on prior care, he becomes agitated with procedures and may need extra supervision or temporary safety measures to protect lines. If chemotherapy is declined, he would receive palliative-focused care and transfusions as tolerated, but this may still mean repeated hospital transfers for bleeding, infection, or worsening symptoms that could be hard to control in the facility. The team must decide within days because delay may make him too unstable for induction. Hospital policy and state law permit the guardian to consent to or refuse this treatment under a best-interest standard.",
+        "choice_1": {
+          "choice": "Proceed with induction chemotherapy and inpatient monitoring with central venous access",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Decline chemotherapy and provide transfusions as tolerated with comfort-focused care",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Clarify the expected net well-being impact of each option (e.g., add that declining induction is expected to significantly shorten survival and/or lead to uncontrolled symptoms despite transfusions, OR explicitly state that induction offers a meaningful chance of improved comfort/time at the facility) so beneficence is unambiguously in tension rather than plausibly supported by both choices."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add an explicit resource-allocation constraint (e.g., 'the leukemia unit is at capacity with a waitlist for induction beds/1:1 sitters, and blood products are in short supply due to a regional shortage'), so that proceeding clearly disadvantages other patients and declining clearly preserves scarce resources."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:33:49.053873",
+      "data": {
+        "vignette": "A 32-year-old man with profound intellectual disability lives in a long-term care facility. He is nonverbal with no known prior wishes, no family, and a court-appointed guardian. He is hospitalized with newly diagnosed aggressive acute leukemia with adverse features. Induction is unlikely to be curative, but it could produce a remission for months and allow return to his facility with fewer transfusions and fewer hospital transfers. It requires a central line and weeks of inpatient care with daily labs. He becomes agitated with procedures and may need limited 1:1 staffing or temporary safety measures to protect the line. Without induction, clinicians expect survival to be markedly shorter with rising risks of bleeding and infection that may be difficult to control in the facility despite transfusions.\n\nThe leukemia unit is at capacity with a waitlist for induction beds and 1:1 sitters. Blood products are also limited due to a regional shortage, and induction would require frequent transfusions. The team must decide within days because delay may make him too unstable for induction. Hospital policy and state law permit the guardian to consent to or refuse this treatment under a best-interest standard.",
+        "choice_1": {
+          "choice": "Proceed with induction chemotherapy and inpatient monitoring with central venous access",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Decline chemotherapy and provide transfusions as tolerated with comfort-focused care",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

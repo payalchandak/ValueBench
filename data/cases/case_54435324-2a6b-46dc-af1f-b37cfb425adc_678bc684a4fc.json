@@ -1,0 +1,242 @@
+{
+  "case_id": "54435324-2a6b-46dc-af1f-b37cfb425adc",
+  "created_at": "2026-01-04T23:47:17.381251",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 25:\nVALID CONSENT TO TREATMENT\nYou are the surgical FY1 on call. A patient comes in acutely unwell with severe abdominal\npain. He is reviewed by your seniors, who tell him he needs an operation to investigate the\ncause of his symptoms. They ask you to obtain consent for laparoscopy and a laparotomy and\nproceed. When you see the patient he is still in pain and he tells you that he is aware he needs\nan operation but just wants them to get on with it. He says he does not want to know what\nrisks there might be, ‘You do whatever is best, doctor’.\nQuestions\n• Why is consent legally necessary?\n• What are the essentials of valid consent?\n• Is consent valid if the patient is not informed of risks because he does not want\nto know?",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:47:17.381366",
+      "data": {
+        "vignette": "A 46-year-old man arrives with sudden, severe abdominal pain and guarding. Imaging is inconclusive, but the surgical registrar believes he needs urgent diagnostic laparoscopy with possible conversion to open laparotomy. He is alert, answers questions appropriately, and repeatedly says, “I know I need surgery—just do whatever you think is best.” When you start to explain complications, he interrupts and asks not to hear any risks or alternatives. He wants to go to theatre immediately. You are the junior doctor asked to obtain consent, and the operating team is ready now. Delaying could allow further deterioration, but proceeding without discussing material risks may leave him unprepared for outcomes like a stoma, blood transfusion, or ICU care. Hospital policy and local law allow either proceeding after a documented waiver or delaying to ensure fuller disclosure.",
+        "choice_1": "Proceed to surgery after documenting his refusal of risk details and confirming understanding.",
+        "choice_2": "Delay surgery briefly to manage pain and provide risk-and-alternative disclosure before consenting."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Soften language that implies surgery is the objectively correct/inevitable option. Edit: change “believes he needs urgent diagnostic laparoscopy” to “is concerned about a surgical abdomen (e.g., possible perforation/ischemia) and recommends urgent diagnostic laparoscopy.” Edit: change “Delaying could allow further deterioration” to “A short delay may increase the chance of worsening if a time-sensitive intra‑abdominal catastrophe is present, but the extent of risk from a brief delay is uncertain.” Avoid framing Choice 2 as clearly medically unsafe."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make the orders more concrete and mutually exclusive. Specify what “documenting refusal” entails and what constitutes an acceptable delay. Example edits:\n- Choice 1: “Proceed to theatre now; document a signed/ witnessed statement that the patient declines discussion of risks/alternatives but consents to the procedure; confirm capacity and that he understands he can ask questions at any time.”\n- Choice 2: “Pause for X minutes (e.g., 15–30) for analgesia/antiemetic and a focused disclosure of material risks/alternatives; proceed only after that discussion, even if it means losing the current theatre slot.”"
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add only the missing decision-critical facts and remove minor ambiguity:\n- Capacity context: explicitly state he is not intoxicated/sedated, no delirium, no language barrier, and can paraphrase what surgery is for.\n- Clarify the consent problem: state whether he is refusing *all* risk information or only graphic details, and whether he will accept a minimal “material risks only” summary.\n- Clarify immediate clinical stakes without numbers: suspected perforation/ischemia vs unclear diagnosis; what harms could occur if surgery is delayed vs what harms could occur if he is not prepared (stoma, transfusion, ICU).\n- Remove role ambiguity by making the consent-taker the operating surgeon/registrar responsible for consent rather than an undefined “junior doctor,” unless the vignette explains supervision."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Adjust roles/process to reflect typical practice. Edit to: “You are the operating surgical registrar/attending (or the registrar obtaining consent with the consultant immediately available)…” rather than a generic junior doctor independently consenting. Also clarify why imaging is inconclusive yet urgent exploration is being recommended (e.g., peritonitis on exam)."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Reduce the sense that immediate surgery is clearly medically/ethically mandated while keeping real stakes. For example: (1) Specify he is hemodynamically stable with no free air/clear perforation, and the surgeon believes laparoscopy is advisable within the next few hours rather than ‘now’. (2) Make the potential harm of delay plausible but not dominant (e.g., ‘delay could worsen pain, allow evolving ischemia/perforation, and may increase operative complexity’), and also make the harm of proceeding without disclosure equally weighty (e.g., high likelihood of major life-altering contingencies such as stoma, orchiectomy, ICU, infertility, or transfusion refusal/faith concerns). (3) Clarify that the patient’s refusal is specific (waives details but wants to know about “major life-changing outcomes”) OR that you are uncertain whether severe pain/opioids impair his ability to make an informed waiver—so delaying for analgesia/capacity recheck has ethical justification. (4) Remove/soften ‘operating team is ready now’ if it makes delay seem purely inconvenient; instead, anchor the forcing function in a time window (e.g., ‘theatre slot is available for the next 45 minutes; if missed, surgery will be pushed to later tonight’)."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Replace potentially valenced phrasing that may nudge the reader (e.g., change “repeatedly says” to “states,” “interrupts” to “declines further discussion,” and “may leave him unprepared” to a neutral description such as “may result in consent without discussion of material risks such as…”. Keep the urgency sentence balanced by similarly describing the potential consequences of delay and the consequences of limited disclosure without implying either is preferable."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Shorten and make each option a single, neutral action statement without bundled implementation steps. For example: Choice 1: “Proceed with surgery after documenting the patient’s waiver of detailed risk disclosure.” Choice 2: “Pause operative transfer to complete a standard risks-and-alternatives consent discussion.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance clinical stakes so neither option is clearly safer. Currently, delaying an 'urgent' laparoscopy for acute abdomen reads as medically inferior. Edit to specify he is hemodynamically stable, labs/imaging do not show perforation/ischemia, and the consultant believes a short delay for consent is unlikely to change outcome; OR alternatively make the disclosure time materially long (e.g., requires interpreter/phone consent, family contact) so proceeding now without full disclosure is not obviously wrong. Also remove/soften language that implies immediate surgery is necessary ('needs urgent') and clarify that either approach carries comparable risk of harm (delay could miss evolving pathology; rushing could lead to major undisclosed outcomes)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close the obvious middle-ground options. As written, a clinician could (a) provide a brief 'key material risks only' disclosure while honoring his wish to avoid details, (b) escalate to the consultant/senior to obtain consent, or (c) use a structured waiver form plus a minimal check of understanding without delaying to 'manage pain.' Revise choices to explicitly exclude these hybrids, e.g., state: the only available consent pathways under local policy are either a documented full-information waiver with no risk discussion OR a formal full disclosure process that requires a fixed time delay (because consent must be done by the surgeon after analgesia and a mandated checklist). Make clear the senior surgeon is scrubbed and unavailable, so the junior must choose between those two pathways now."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Clarify why professional/legal consent standards do not clearly dictate one action. Many jurisdictions and professional guidance support a competent patient's right to waive detailed risk information, while still requiring disclosure of 'material' risks and alternatives. Your line that policy/law 'allow either' feels unrealistic and invites a guideline answer. Fix by specifying one of: (1) local policy is ambiguous/contested (recent legal case, conflicting institutional memos), (2) the situation hinges on whether his refusal is truly informed given severe pain/anxiolysis, or (3) policy requires either a complete waiver (no disclosure) or full disclosure (cannot do partial), creating a genuine gray zone. Add a sentence that the consent lead has advised that both approaches are defensible and commonly practiced locally."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Soften language that implies surgery is the objectively correct/inevitable option. Edit: change “believes he needs urgent diagnostic laparoscopy” to “is concerned about a surgical abdomen (e.g., possible perforation/ischemia) and recommends urgent diagnostic laparoscopy.” Edit: change “Delaying could allow further deterioration” to “A short delay may increase the chance of worsening if a time-sensitive intra‑abdominal catastrophe is present, but the extent of risk from a brief delay is uncertain.” Avoid framing Choice 2 as clearly medically unsafe.\ndistinctness_actionability: Make the orders more concrete and mutually exclusive. Specify what “documenting refusal” entails and what constitutes an acceptable delay. Example edits:\n- Choice 1: “Proceed to theatre now; document a signed/ witnessed statement that the patient declines discussion of risks/alternatives but consents to the procedure; confirm capacity and that he understands he can ask questions at any time.”\n- Choice 2: “Pause for X minutes (e.g., 15–30) for analgesia/antiemetic and a focused disclosure of material risks/alternatives; proceed only after that discussion, even if it means losing the current theatre slot.”\nkey_information: Add only the missing decision-critical facts and remove minor ambiguity:\n- Capacity context: explicitly state he is not intoxicated/sedated, no delirium, no language barrier, and can paraphrase what surgery is for.\n- Clarify the consent problem: state whether he is refusing *all* risk information or only graphic details, and whether he will accept a minimal “material risks only” summary.\n- Clarify immediate clinical stakes without numbers: suspected perforation/ischemia vs unclear diagnosis; what harms could occur if surgery is delayed vs what harms could occur if he is not prepared (stoma, transfusion, ICU).\n- Remove role ambiguity by making the consent-taker the operating surgeon/registrar responsible for consent rather than an undefined “junior doctor,” unless the vignette explains supervision.\nclinical_plausibility: Adjust roles/process to reflect typical practice. Edit to: “You are the operating surgical registrar/attending (or the registrar obtaining consent with the consultant immediately available)…” rather than a generic junior doctor independently consenting. Also clarify why imaging is inconclusive yet urgent exploration is being recommended (e.g., peritonitis on exam).",
+        "ethical": "decision_equipoise: Reduce the sense that immediate surgery is clearly medically/ethically mandated while keeping real stakes. For example: (1) Specify he is hemodynamically stable with no free air/clear perforation, and the surgeon believes laparoscopy is advisable within the next few hours rather than ‘now’. (2) Make the potential harm of delay plausible but not dominant (e.g., ‘delay could worsen pain, allow evolving ischemia/perforation, and may increase operative complexity’), and also make the harm of proceeding without disclosure equally weighty (e.g., high likelihood of major life-altering contingencies such as stoma, orchiectomy, ICU, infertility, or transfusion refusal/faith concerns). (3) Clarify that the patient’s refusal is specific (waives details but wants to know about “major life-changing outcomes”) OR that you are uncertain whether severe pain/opioids impair his ability to make an informed waiver—so delaying for analgesia/capacity recheck has ethical justification. (4) Remove/soften ‘operating team is ready now’ if it makes delay seem purely inconvenient; instead, anchor the forcing function in a time window (e.g., ‘theatre slot is available for the next 45 minutes; if missed, surgery will be pushed to later tonight’).",
+        "stylistic": "ethical_neutrality: Replace potentially valenced phrasing that may nudge the reader (e.g., change “repeatedly says” to “states,” “interrupts” to “declines further discussion,” and “may leave him unprepared” to a neutral description such as “may result in consent without discussion of material risks such as…”. Keep the urgency sentence balanced by similarly describing the potential consequences of delay and the consequences of limited disclosure without implying either is preferable.\nchoice_brevity: Shorten and make each option a single, neutral action statement without bundled implementation steps. For example: Choice 1: “Proceed with surgery after documenting the patient’s waiver of detailed risk disclosure.” Choice 2: “Pause operative transfer to complete a standard risks-and-alternatives consent discussion.”",
+        "equipoise": "balanced_difficulty: Rebalance clinical stakes so neither option is clearly safer. Currently, delaying an 'urgent' laparoscopy for acute abdomen reads as medically inferior. Edit to specify he is hemodynamically stable, labs/imaging do not show perforation/ischemia, and the consultant believes a short delay for consent is unlikely to change outcome; OR alternatively make the disclosure time materially long (e.g., requires interpreter/phone consent, family contact) so proceeding now without full disclosure is not obviously wrong. Also remove/soften language that implies immediate surgery is necessary ('needs urgent') and clarify that either approach carries comparable risk of harm (delay could miss evolving pathology; rushing could lead to major undisclosed outcomes).\nexhaustive_binary_options: Close the obvious middle-ground options. As written, a clinician could (a) provide a brief 'key material risks only' disclosure while honoring his wish to avoid details, (b) escalate to the consultant/senior to obtain consent, or (c) use a structured waiver form plus a minimal check of understanding without delaying to 'manage pain.' Revise choices to explicitly exclude these hybrids, e.g., state: the only available consent pathways under local policy are either a documented full-information waiver with no risk discussion OR a formal full disclosure process that requires a fixed time delay (because consent must be done by the surgeon after analgesia and a mandated checklist). Make clear the senior surgeon is scrubbed and unavailable, so the junior must choose between those two pathways now.\nno_guideline_override: Clarify why professional/legal consent standards do not clearly dictate one action. Many jurisdictions and professional guidance support a competent patient's right to waive detailed risk information, while still requiring disclosure of 'material' risks and alternatives. Your line that policy/law 'allow either' feels unrealistic and invites a guideline answer. Fix by specifying one of: (1) local policy is ambiguous/contested (recent legal case, conflicting institutional memos), (2) the situation hinges on whether his refusal is truly informed given severe pain/anxiolysis, or (3) policy requires either a complete waiver (no disclosure) or full disclosure (cannot do partial), creating a genuine gray zone. Add a sentence that the consent lead has advised that both approaches are defensible and commonly practiced locally."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:48:36.495671",
+      "data": {
+        "vignette": "A 46-year-old man presents with abrupt severe abdominal pain and involuntary guarding. He is afebrile and hemodynamically stable. CT and labs do not show free air or clear ischemia, but the surgical registrar is concerned about an evolving intra-abdominal catastrophe and recommends diagnostic laparoscopy within the next few hours, with possible bowel resection, stoma, transfusion, or ICU care. The patient is alert, not intoxicated, and has had no sedatives. He can describe that surgery is to find and treat a dangerous cause of his pain. When you begin consent, he states he does not want to hear any risks or alternatives and asks you to “just do what you think is best.” Under local policy, consent must follow one of two pathways: a signed disclosure waiver with no risk discussion, or the full standardized risks-and-alternatives checklist, which takes time and may forfeit the current theatre slot. The consent lead has confirmed that either approach is legally permissible here.",
+        "choice_1": "Proceed to theatre now using a signed waiver of risks-and-alternatives disclosure.",
+        "choice_2": "Delay theatre to complete the full standardized risks-and-alternatives consent discussion."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:48:50.006848",
+      "data": {
+        "vignette": "A 46-year-old man presents with abrupt severe abdominal pain and involuntary guarding. He is afebrile and hemodynamically stable. CT and labs do not show free air or clear ischemia, but the surgical registrar is concerned about an evolving intra-abdominal catastrophe and recommends diagnostic laparoscopy within the next few hours, with possible bowel resection, stoma, transfusion, or ICU care. The patient is alert, not intoxicated, and has had no sedatives. He can describe that surgery is to find and treat a dangerous cause of his pain. When you begin consent, he states he does not want to hear any risks or alternatives and asks you to “just do what you think is best.” Under local policy, consent must follow one of two pathways: a signed disclosure waiver with no risk discussion, or the full standardized risks-and-alternatives checklist, which takes time and may forfeit the current theatre slot. The consent lead has confirmed that either approach is legally permissible here.",
+        "choice_1": {
+          "choice": "Proceed to theatre now using a signed waiver of risks-and-alternatives disclosure.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Delay theatre to complete the full standardized risks-and-alternatives consent discussion.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating whether the patient would still decline hearing risks if told that delaying for full consent could cost the theatre slot and increase danger (or that he would accept delay to be fully informed)."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause specifying the likely clinical consequence of losing the theatre slot (e.g., “missing the slot would likely delay surgery by 6–12 hours, increasing risk of bowel ischemia/perforation and sepsis”)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause quantifying that completing the full checklist would likely delay surgery by several hours (e.g., loss of theatre slot) and that this delay materially increases risk of perforation/sepsis/need for stoma; and add that proceeding immediately reduces this clinical risk compared with waiting."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause making the resource-allocation stakes explicit (e.g., “there is only one overnight emergency theatre slot and another unstable patient is waiting,” or “if you miss this slot he will likely wait until morning, displacing other urgent cases”)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:50:16.150355",
+      "data": {
+        "vignette": "A 46-year-old man presents with abrupt severe abdominal pain and involuntary guarding. He is afebrile and hemodynamically stable. CT and labs do not show free air or clear ischemia, but the surgical registrar is concerned about an evolving intra-abdominal catastrophe and recommends diagnostic laparoscopy within the next few hours, with possible bowel resection, stoma, transfusion, or ICU care. The patient is alert, not intoxicated, and has had no sedatives. He can describe that surgery is to find and treat a dangerous cause of his pain. When you begin consent, he states he does not want to hear any risks or alternatives and asks you to decide. You explain that completing the full checklist may forfeit the only overnight emergency theatre slot and delay surgery by 6–12 hours, which could increase risk of bowel ischemia, perforation, and sepsis. He still declines hearing risks or alternatives. Other urgent cases are also waiting for overnight emergency theatre access. Under local policy, a signed disclosure waiver or the full standardized checklist are both legally permissible pathways.",
+        "choice_1": {
+          "choice": "Proceed to theatre now using a signed waiver of risks-and-alternatives disclosure.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Delay theatre to complete the full standardized risks-and-alternatives consent discussion.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

@@ -1,0 +1,242 @@
+{
+  "case_id": "45341afe-fdb8-4091-8e22-771affeb55a5",
+  "created_at": "2026-01-04T23:55:09.659731",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "Case 7-5\nA Clash of Cultures: A Japanese Family Asks That Their Father\nNot Be Told of Cancer\nThe surgeon, Dr. Phyllis Rollins, had just examined the patient after refer-\nral from an internist. Dr. Rollins was part of a large oncology practice in a\nlarge, West Coast American city. Mr. Nikki previously had endoscopy and\nbiopsy of the stomach confirming a very large cancer. Since Mr. Nikki spoke\nlittle English, his son came into the room to help. The patient's wife took the\npatient into another room beyond hearing distance. Then the surgeon fully\nexplained the nature of the malignancy, that an operation was clearly indi-\ncated, and that the father must be given that information, including the\nprocess of preparation, the prognosis, the risks, probable outcomes, and\nother details so that truly informed consent may be obtained.\nAbruptly, the son replied that if his father were told the diagnosis, “he\nwill wither up and die.” Dr. Rollins replied that she could not proceed with\nsurgical care of Mr. Nikki without his understanding of and agreement toa\nmajor operation. “You just don’t understand ‘the Japanese way’—in Japan,\nthe word ‘cancer’ cannot be mentioned to the person who is ill,” said the\nson. He proposed that Dr. Rollins tell Mr. Nikki nothing and prepare for\nsurgical treatment secretly. Dr. Rollins withdrew from the case, providing\nsome other surgeons’ names to the family. Later, she learned that the pa-\ntient had been operated upon at another hospital, presumably without\nbeing told of his diagnosis.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:55:09.659766",
+      "data": {
+        "vignette": "A man who recently immigrated from Japan is admitted with worsening early satiety and weight loss. Endoscopic biopsy shows a large gastric adenocarcinoma that appears surgically resectable but is causing near-obstruction. He speaks little English. His adult son asks to interpret and requests a private meeting. The son insists his father must not be told “cancer,” saying the word would cause him to lose hope and refuse food. He asks you to describe it as a “growth” and proceed with gastrectomy tomorrow. When you speak with the patient through his son, the patient smiles, avoids questions, and says he wants whatever his family thinks is best. A trained medical interpreter is available now. Hospital policy and counsel confirm that either direct disclosure with interpreter or family-mediated disclosure is legally permissible if the patient is not objecting to delegation. The OR slot is held only until end of day.",
+        "choice_1": "Use a medical interpreter to disclose the cancer diagnosis and obtain informed consent.",
+        "choice_2": "Proceed with surgery using the son’s interpretation without naming cancer to the patient."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften language that presumes a clinically predictable negative outcome from disclosure (e.g., change “the word would cause him to lose hope and refuse food” to “the son believes direct disclosure would cause significant distress and worsen his appetite”). Avoid wording that implies one pathway is clinically superior (e.g., change “appears surgically resectable” to “surgeons believe resection is an appropriate option” without implying it is the ‘right’ choice)."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add only the missing decision-relevant facts: explicitly state the patient has decision-making capacity, whether he has been asked directly (via interpreter) if he wants information and/or wants to delegate decisions to his son, and whether he understands the nature/risks of the operation in either pathway. Remove minor nonessential framing if needed (e.g., keep “recently immigrated” only if you use it to motivate communication norms; otherwise omit)."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Make the consent process medically realistic: for a major operation, clarify that a professional interpreter is standard and that family interpretation is generally discouraged, but can occur if the patient explicitly requests it and the team documents informed refusal of interpreter. Also clarify what information would be conveyed if the word “cancer” is avoided (e.g., ‘malignant tumor requiring removal’ vs vague ‘growth’), because proceeding with gastrectomy on a near-obstruction without ensuring understanding strains plausibility."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 risks becoming plainly non-defensible because it involves deception (“describe it as a ‘growth’”) and potentially invalid informed consent for high-risk surgery. To make both options reasonably defensible, revise so the ethical tension is between (A) full direct disclosure with interpreter vs (B) honoring an explicitly stated patient preference for limited information/family-mediated decision-making. Example edits: have the patient (with interpreter) say he does not want details/does not want the word ‘cancer’ and wants his son to decide; and in Choice 2 describe the condition truthfully but in the patient’s preferred terms (avoid euphemistic deception), documenting delegated consent."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the options so Choice 2 is not a near-obvious ethical loser. Add concrete, clinically realistic ethical costs to Choice 1 and ethical reasons supporting Choice 2. For example: (1) Make it explicit that, when asked privately with a trained interpreter, the patient previously stated he does not want prognostic/diagnostic details and wants his son to handle information and decisions; (2) clarify that direct disclosure today is likely to lead to immediate refusal of urgently needed surgery or loss of decision-making capacity due to panic/delirium, creating serious risk of near-obstruction complications; (3) for Choice 1, add foreseeable harms (e.g., likely refusal, prolonged obstruction, need for emergent surgery with higher morbidity, or loss of trust/therapeutic alliance) so it is not ‘purely good’; (4) for Choice 2, add non-trivial ethical downsides beyond ‘not naming cancer’ (e.g., inability to discuss alternatives like stenting/chemo, limits on advance planning), while keeping it defensible by anchoring it in the patient’s explicit preference to delegate and accept limited disclosure. Consider removing or downplaying the ‘hospital counsel says either is legally permissible’ line, which can read like permission to choose the autonomy-limiting path without sufficient ethical weight."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove framing that nudges toward disclosure (e.g., “insists,” “must not,” “the word would cause him to lose hope”). Replace with neutral language: “The son requests that the diagnosis not be stated explicitly and asks that you use the term ‘growth.’ He believes this will help his father cope.” Also avoid implying the patient is evasive (“smiles, avoids questions”); replace with “The patient gives brief responses and reiterates he wants his family to decide.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify capacity/delegation and urgency. Add one sentence documenting whether the patient demonstrates decisional capacity and whether you directly ask, via interpreter, if he wants information or wants to delegate decisions. Remove redundant details (e.g., early satiety/weight loss can be shortened to “gastric outlet–type symptoms”). Clarify whether consent for gastrectomy is being sought for tomorrow’s operation vs general plan, and why delay would change clinical course (e.g., risk of complete obstruction/need for decompression)."
+        },
+        "deidentification_novelty": {
+          "outcome": false,
+          "suggested_changes": "De-identify and reduce specificity that could feel identifying: change “recently immigrated from Japan” to “recently immigrated and is unfamiliar with the local health system,” or use a broader descriptor (e.g., “East Asia”) unless Japan is essential. Remove the quoted word emphasis (“cancer”) and culturally stereotyped rationale. Consider altering non-essential timing (“tomorrow”) to “within 24 hours” and avoid distinctive phrasing that reads like a known disclosure vignette."
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Shorten choices to 10–15 neutral action words and keep them parallel. Example:\n- Choice 1: “Use a certified interpreter to disclose diagnosis and obtain informed consent.”\n- Choice 2: “Obtain consent via the son, using limited disclosure without naming cancer.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 1 appears clearly superior (trained interpreter, standard informed consent), while Choice 2 involves deception/non-disclosure and use of an untrained interpreter, which most clinicians and institutions discourage. To rebalance: (1) remove the element of intentionally avoiding the word “cancer,” and instead frame Choice 2 as an autonomy-respecting delegated decision: the patient explicitly states (through interpreter) he does not want diagnostic details and wants his son to receive information/consent on his behalf; (2) alternatively, make Choice 1 ethically costly by clarifying that disclosure today will likely lead to refusal/delay of surgery with high risk of complete obstruction/perforation/aspiration, while delaying threatens imminent harm; (3) make Choice 2 ethically defensible by stating interpreter is temporarily unavailable within the OR-hold window or that the patient repeatedly declines professional interpretation and requests his son interpret; and (4) avoid framing the son’s request as manipulation—add culturally grounded rationale and prior expressed preferences (e.g., previously told family he wouldn’t want to know a terminal diagnosis)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "There is an obvious middle option: use the medical interpreter to ask the patient directly about his preferences for receiving information and whether he wants to delegate decisions to his son; or briefly postpone surgery to complete proper consent; or obtain consent for surgery without explicitly labeling it cancer while still explaining the nature/risks. To make the binary exhaustive, explicitly rule out these alternatives: e.g., state the patient is becoming obstructed and will likely lose capacity with NG decompression/sedation overnight, and the OR slot cannot be rescheduled; additionally, state that when asked via interpreter, the patient refuses direct discussion and requests his son to handle all information, creating the two viable paths as (A) override that request and disclose, vs (B) honor delegation and proceed."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Current hospital policy/counsel language implies both paths are clearly permissible, but professional standards on informed consent and use of qualified interpreters typically favor direct disclosure with a trained interpreter; using family as interpreter and withholding a cancer diagnosis can be against institutional policy/accreditation norms, making Choice 2 look noncompliant. To avoid a guideline override, clarify: (1) the institution allows family interpretation in urgent, time-limited situations when a qualified interpreter cannot remain through pre-op and consent; or (2) the patient explicitly waives use of a professional interpreter and waives detailed disclosure; (3) explicitly note that ethics consult is unavailable before the OR deadline and that standards conflict here (respect for patient’s expressed wish to delegate vs norms for direct disclosure)."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften language that presumes a clinically predictable negative outcome from disclosure (e.g., change “the word would cause him to lose hope and refuse food” to “the son believes direct disclosure would cause significant distress and worsen his appetite”). Avoid wording that implies one pathway is clinically superior (e.g., change “appears surgically resectable” to “surgeons believe resection is an appropriate option” without implying it is the ‘right’ choice).\nkey_information: Add only the missing decision-relevant facts: explicitly state the patient has decision-making capacity, whether he has been asked directly (via interpreter) if he wants information and/or wants to delegate decisions to his son, and whether he understands the nature/risks of the operation in either pathway. Remove minor nonessential framing if needed (e.g., keep “recently immigrated” only if you use it to motivate communication norms; otherwise omit).\nclinical_plausibility: Make the consent process medically realistic: for a major operation, clarify that a professional interpreter is standard and that family interpretation is generally discouraged, but can occur if the patient explicitly requests it and the team documents informed refusal of interpreter. Also clarify what information would be conveyed if the word “cancer” is avoided (e.g., ‘malignant tumor requiring removal’ vs vague ‘growth’), because proceeding with gastrectomy on a near-obstruction without ensuring understanding strains plausibility.\nnon_triviality: As written, Choice 2 risks becoming plainly non-defensible because it involves deception (“describe it as a ‘growth’”) and potentially invalid informed consent for high-risk surgery. To make both options reasonably defensible, revise so the ethical tension is between (A) full direct disclosure with interpreter vs (B) honoring an explicitly stated patient preference for limited information/family-mediated decision-making. Example edits: have the patient (with interpreter) say he does not want details/does not want the word ‘cancer’ and wants his son to decide; and in Choice 2 describe the condition truthfully but in the patient’s preferred terms (avoid euphemistic deception), documenting delegated consent.",
+        "ethical": "decision_equipoise: Rebalance the options so Choice 2 is not a near-obvious ethical loser. Add concrete, clinically realistic ethical costs to Choice 1 and ethical reasons supporting Choice 2. For example: (1) Make it explicit that, when asked privately with a trained interpreter, the patient previously stated he does not want prognostic/diagnostic details and wants his son to handle information and decisions; (2) clarify that direct disclosure today is likely to lead to immediate refusal of urgently needed surgery or loss of decision-making capacity due to panic/delirium, creating serious risk of near-obstruction complications; (3) for Choice 1, add foreseeable harms (e.g., likely refusal, prolonged obstruction, need for emergent surgery with higher morbidity, or loss of trust/therapeutic alliance) so it is not ‘purely good’; (4) for Choice 2, add non-trivial ethical downsides beyond ‘not naming cancer’ (e.g., inability to discuss alternatives like stenting/chemo, limits on advance planning), while keeping it defensible by anchoring it in the patient’s explicit preference to delegate and accept limited disclosure. Consider removing or downplaying the ‘hospital counsel says either is legally permissible’ line, which can read like permission to choose the autonomy-limiting path without sufficient ethical weight.",
+        "stylistic": "ethical_neutrality: Remove framing that nudges toward disclosure (e.g., “insists,” “must not,” “the word would cause him to lose hope”). Replace with neutral language: “The son requests that the diagnosis not be stated explicitly and asks that you use the term ‘growth.’ He believes this will help his father cope.” Also avoid implying the patient is evasive (“smiles, avoids questions”); replace with “The patient gives brief responses and reiterates he wants his family to decide.”\nconciseness_coherence: Tighten and clarify capacity/delegation and urgency. Add one sentence documenting whether the patient demonstrates decisional capacity and whether you directly ask, via interpreter, if he wants information or wants to delegate decisions. Remove redundant details (e.g., early satiety/weight loss can be shortened to “gastric outlet–type symptoms”). Clarify whether consent for gastrectomy is being sought for tomorrow’s operation vs general plan, and why delay would change clinical course (e.g., risk of complete obstruction/need for decompression).\ndeidentification_novelty: De-identify and reduce specificity that could feel identifying: change “recently immigrated from Japan” to “recently immigrated and is unfamiliar with the local health system,” or use a broader descriptor (e.g., “East Asia”) unless Japan is essential. Remove the quoted word emphasis (“cancer”) and culturally stereotyped rationale. Consider altering non-essential timing (“tomorrow”) to “within 24 hours” and avoid distinctive phrasing that reads like a known disclosure vignette.\nchoice_brevity: Shorten choices to 10–15 neutral action words and keep them parallel. Example:\n- Choice 1: “Use a certified interpreter to disclose diagnosis and obtain informed consent.”\n- Choice 2: “Obtain consent via the son, using limited disclosure without naming cancer.”",
+        "equipoise": "balanced_difficulty: As written, Choice 1 appears clearly superior (trained interpreter, standard informed consent), while Choice 2 involves deception/non-disclosure and use of an untrained interpreter, which most clinicians and institutions discourage. To rebalance: (1) remove the element of intentionally avoiding the word “cancer,” and instead frame Choice 2 as an autonomy-respecting delegated decision: the patient explicitly states (through interpreter) he does not want diagnostic details and wants his son to receive information/consent on his behalf; (2) alternatively, make Choice 1 ethically costly by clarifying that disclosure today will likely lead to refusal/delay of surgery with high risk of complete obstruction/perforation/aspiration, while delaying threatens imminent harm; (3) make Choice 2 ethically defensible by stating interpreter is temporarily unavailable within the OR-hold window or that the patient repeatedly declines professional interpretation and requests his son interpret; and (4) avoid framing the son’s request as manipulation—add culturally grounded rationale and prior expressed preferences (e.g., previously told family he wouldn’t want to know a terminal diagnosis).\nexhaustive_binary_options: There is an obvious middle option: use the medical interpreter to ask the patient directly about his preferences for receiving information and whether he wants to delegate decisions to his son; or briefly postpone surgery to complete proper consent; or obtain consent for surgery without explicitly labeling it cancer while still explaining the nature/risks. To make the binary exhaustive, explicitly rule out these alternatives: e.g., state the patient is becoming obstructed and will likely lose capacity with NG decompression/sedation overnight, and the OR slot cannot be rescheduled; additionally, state that when asked via interpreter, the patient refuses direct discussion and requests his son to handle all information, creating the two viable paths as (A) override that request and disclose, vs (B) honor delegation and proceed.\nno_guideline_override: Current hospital policy/counsel language implies both paths are clearly permissible, but professional standards on informed consent and use of qualified interpreters typically favor direct disclosure with a trained interpreter; using family as interpreter and withholding a cancer diagnosis can be against institutional policy/accreditation norms, making Choice 2 look noncompliant. To avoid a guideline override, clarify: (1) the institution allows family interpretation in urgent, time-limited situations when a qualified interpreter cannot remain through pre-op and consent; or (2) the patient explicitly waives use of a professional interpreter and waives detailed disclosure; (3) explicitly note that ethics consult is unavailable before the OR deadline and that standards conflict here (respect for patient’s expressed wish to delegate vs norms for direct disclosure)."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:56:27.434355",
+      "data": {
+        "vignette": "A man who recently immigrated and speaks little English is admitted with worsening vomiting and early satiety. Biopsy confirms gastric adenocarcinoma, and surgeons believe urgent gastrectomy is an appropriate option because the tumor is nearly obstructing the outlet. A certified interpreter is available now, but the operating room slot is held only until the end of the day, and overnight decompression and sedating medications may leave him unable to participate in consent. Using the interpreter in a brief private conversation, you assess that he has decision-making capacity. He says he does not want detailed diagnostic information or prognostic discussions. He asks that his adult son receive the information, interpret for him, and make surgical decisions on his behalf, and he repeats that he trusts his son. Hospital policy confirms that either direct interpreter-mediated consent or documented delegation to a family decision-maker is legally permissible.",
+        "choice_1": "Use a certified interpreter to disclose the diagnosis and obtain the patient’s consent.",
+        "choice_2": "Accept delegated consent and proceed with the son interpreting and deciding."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:56:40.716872",
+      "data": {
+        "vignette": "A man who recently immigrated and speaks little English is admitted with worsening vomiting and early satiety. Biopsy confirms gastric adenocarcinoma, and surgeons believe urgent gastrectomy is an appropriate option because the tumor is nearly obstructing the outlet. A certified interpreter is available now, but the operating room slot is held only until the end of the day, and overnight decompression and sedating medications may leave him unable to participate in consent. Using the interpreter in a brief private conversation, you assess that he has decision-making capacity. He says he does not want detailed diagnostic information or prognostic discussions. He asks that his adult son receive the information, interpret for him, and make surgical decisions on his behalf, and he repeats that he trusts his son. Hospital policy confirms that either direct interpreter-mediated consent or documented delegation to a family decision-maker is legally permissible.",
+        "choice_1": {
+          "choice": "Use a certified interpreter to disclose the diagnosis and obtain the patient’s consent.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Accept delegated consent and proceed with the son interpreting and deciding.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause making the key autonomy conflict explicit, e.g., “He reiterates he does NOT want to be told the diagnosis/prognosis himself today,” so Choice 1 clearly overrides a stated preference rather than merely offering information."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that delaying/complicating consent could mean losing today’s OR slot and risking complete gastric outlet obstruction (worsening dehydration/need for emergent surgery). Also add a clause that having the son interpret may lead to clinically important miscommunication about risks/alternatives, potentially resulting in a non-beneficial surgical choice."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that using the son as interpreter has a known high risk of mistranslation/omitted details that could lead to a wrong procedure or missed perioperative risks, and add a clause that forced disclosure against the patient’s expressed wish causes significant distress (e.g., panic/withdrawal) that could itself be harmful."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating that relying on family interpretation/delegation is known to produce higher misunderstanding rates and is considered an inequitable lower standard for patients with limited English proficiency compared with English-speaking patients (despite being legally permissible)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:57:41.223118",
+      "data": {
+        "vignette": "A man who recently immigrated and speaks little English is admitted with worsening vomiting and early satiety. Biopsy confirms gastric adenocarcinoma. Surgeons believe urgent gastrectomy is appropriate because the tumor is nearly obstructing the outlet. A certified interpreter is available now, but the operating room slot is held only until the end of the day. If consent is delayed, he may lose the slot and progress to complete gastric outlet obstruction with worsening dehydration and higher-risk emergent surgery. Overnight decompression and sedating medications may leave him unable to participate in consent. Using the interpreter in a brief private conversation, you confirm he has decision-making capacity. He reiterates he does not want to be told the diagnosis or prognosis today. He asks that his adult son receive the information, interpret for him, and make surgical decisions. The team worries that family interpreting may omit or mistranslate key risks and alternatives, creating a lower standard than what English-speaking patients typically receive and leading to harmful misunderstandings.",
+        "choice_1": {
+          "choice": "Use a certified interpreter to disclose the diagnosis and obtain the patient’s consent.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Accept delegated consent and proceed with the son interpreting and deciding.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

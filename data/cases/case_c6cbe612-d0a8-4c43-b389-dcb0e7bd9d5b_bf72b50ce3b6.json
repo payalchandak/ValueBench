@@ -1,0 +1,242 @@
+{
+  "case_id": "c6cbe612-d0a8-4c43-b389-dcb0e7bd9d5b",
+  "created_at": "2026-01-04T23:58:25.238711",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "88. A 44-year-old psychology professor with a chronic history of\nrheumatoid arthritis presents for a follow-up examination. She is\ncurrently taking prednisone and infliximab, a regimen that has\nsuccessfully stabilized her condition. Physical examination reveals no\nsignificant changes. Toward the end of the visit, she mentions that\nshe would like to try acupuncture as an adjunct treatment in\naddition to the medications she is currently taking.\nWhat is the most appropriate response to her request?\na. \"I'm sorry, but I am not very familiar with acupuncture and am reluctant to\ncombine the two therapies.\"\nb. \"I hope you are aware that acupuncture has its limitations.\"\nc. \"If you want to try acupuncture, I cannot continue serving as your physician.\"\nd. \"Why do you want to try acupuncture?\"\ne. \"How can an educated woman like you suggest something like this?\"",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:58:25.238764",
+      "data": {
+        "vignette": "A 44-year-old psychology professor has long-standing rheumatoid arthritis. She has been stable for years on prednisone and infliximab. She has no active synovitis today and values staying functional for work. Near the end of the visit she says she wants to stop infliximab and pursue acupuncture instead, at least for several months. She worries about “what these drugs are doing to my body” after a friend developed a serious infection on a biologic. You review that her past flares caused rapid loss of hand function and that uncontrolled inflammation can leave lasting damage even if symptoms later improve. She demonstrates understanding and is calm and consistent. Her next infusion is scheduled this week and the insurer’s authorization will lapse if it is canceled. You must decide how to proceed with her care plan now.",
+        "choice_1": "Agree to pause infliximab and arrange acupuncture with close rheumatology follow-up.",
+        "choice_2": "Decline to pause infliximab and proceed with the scheduled infusion plan."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Rebalance clinical framing so the dilemma isn’t resolved by implying that stopping infliximab is clearly medically wrong. Edits:\n- Soften one-directional language: change “past flares caused rapid loss of hand function” to “past flares interfered with hand function and took months to regain.”\n- Add clinically specific countervailing facts that make a pause reasonable: e.g., “Her RA has been in sustained low disease activity for years, recent inflammatory markers are low, and ultrasound today shows no active synovitis.”\n- Add credible harms of continuing that matter to her (without numbers): e.g., “She has had recurrent sinus infections on biologic therapy,” or “she is due for travel/teaching obligations and fears needing urgent care for infection.”\n- Frame both as risk-laden: explicitly note that both continuing and pausing carry meaningful risks (flare/irreversible damage vs infection/medication toxicity and loss of trust)."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Fix Choice 2 to avoid implying treatment against a competent patient’s refusal (which would be legally/ethically impermissible). Options:\n- Reframe the patient stance as undecided and explicitly open to physician recommendation: add “She says she is leaning toward stopping but is willing to continue if you strongly advise it.” Then Choice 2 becomes “Recommend continuing, renew authorization, and schedule the infusion with her informed consent.”\nOR\n- Keep her desire to stop, but change the binary decision to something the physician can legally control: e.g., Choice 1 “Honor her request to stop infliximab and create a contingency plan (rapid access visit, bridge therapy)” vs Choice 2 “Decline to continue prescribing prednisone without a DMARD/decline to manage her RA without evidence-based therapy and offer transfer of care/second opinion,” with a sentence that both approaches are permissible in your jurisdiction and within professional standards."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Make both options defensible so it’s not an obvious autonomy-only refusal case or a clinically ‘correct’ continuation. Add 2–3 details that create genuine equipoise:\n- Reasons a supervised pause could be clinically acceptable: sustained remission/low activity, stable imaging, prior successful taper attempts, clear monitoring/flare rescue plan.\n- Reasons continuation could be ethically defensible despite her concerns: high personal stakes if flare returns (work-dependent hand function), prior difficulty regaining function, and the authorization lapse makes re-starting logistically hard.\n- Ensure each option has an unavoidable downside: \n  • If pausing: realistic plan includes risk of flare requiring higher steroids/urgent visits.\n  • If continuing: acknowledge nontrivial infection/side-effect risk and potential erosion of trust if she feels pressured.\n- Update Choice 1 to specify concrete safeguards (labs, symptom diary, rapid access, predetermined threshold to restart), and Choice 2 to include explicit shared decision steps rather than a flat refusal (e.g., informed consent discussion, offer second opinion, document concerns)."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Fix the core dilemma so it is not framed as the physician unilaterally overriding a competent patient’s informed refusal. Reframe the decision as something the physician can ethically and practically choose between, e.g.: (A) support a time-limited, structured pause with a documented contingency plan and rapid re-start criteria, accepting risk of flare/irreversible joint damage and possible loss of coverage; vs (B) strongly recommend continuing infliximab and *decline to facilitate* an acupuncture-only trial (e.g., refuse to cancel the infusion order/authorization until she explicitly refuses, and set boundaries about what care plan you will co-manage), accepting that this may damage trust and feels paternalistic. Also add a countervailing harm on the ‘continue’ side (e.g., prior serious infection, high infection risk factors) so each option clearly protects one set of interests while endangering another."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Make each choice’s ethical meaning robust by specifying the physician actions and limits. Replace vague wording like “decline to pause” with concrete clinician behaviors (e.g., ‘recommend against stopping and will not endorse acupuncture as monotherapy; offer continuing infliximab and, if she refuses, document refusal and arrange close monitoring’). Clarify that treatment cannot proceed without consent, so the difference is about endorsement/facilitation and care-plan structure, not coercion."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce ambiguity about what Choice 2 entails and what authority the physician has. Add one sentence clarifying the patient is requesting the clinician’s recommendation and whether she is willing to accept the infusion if advised. Explicitly state what happens if she refuses (e.g., ‘she says she will likely go through with the infusion if you advise it, but if you agree to pause she will cancel’). This makes it clear the conflict is between respecting her stated preference vs preventing foreseeable harm, rather than a confusing consent/force issue."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Create genuine tradeoffs on both sides. Currently Choice 1 largely respects preferences with manageable monitoring, while Choice 2 implies overriding autonomy and is hard to defend. To balance: (1) Add meaningful ethical/clinical costs to pausing (e.g., prior flares caused lasting disability; flare could impair her ability to work/care for dependents; re-initiation may be delayed if authorization lapses). (2) Add meaningful costs to continuing (e.g., she has recurrent infections, poorly controlled diabetes, or prior hospitalization for infection on biologics; she is unwilling unless you endorse her concerns). (3) Recast Choice 2 as continued therapy through shared decision-making rather than coercion, so a reasonable clinician could defend either approach in good faith."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove subtly persuasive framing that emphasizes irreversible harm from stopping therapy. Rebalance by adding comparable potential harms of continuing infliximab (e.g., infection risk, malignancy risk, infusion reactions) and by rephrasing value-laden lines. For example, change “uncontrolled inflammation can leave lasting damage” to “stopping biologic therapy increases risk of flare and joint damage, though timing and severity are uncertain,” and add “continuing therapy carries ongoing immunosuppression risks.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the forcing constraint and the clinician’s options. Specify whether the patient is on chronic prednisone (dose) and why it remains, or omit prednisone if not relevant. Clarify what “pause for several months” means (skip next infusion vs stop indefinitely). State the follow-up window and what would trigger restarting. Remove occupational detail (“psychology professor”) unless it changes functional priorities."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Shorten and neutralize choices to ~10–15 words without extra implementation detail. Example: Choice 1: “Hold infliximab this cycle and support trial of acupuncture.” Choice 2: “Continue infliximab as scheduled despite patient’s request to stop.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reframe Choice 2 so it does not imply treating without consent or overriding a capacitated refusal. As written, ‘decline to pause and proceed’ makes Choice 2 ethically/legally non-defensible and therefore lopsided. Edit Choice 2 to: ‘Strongly recommend continuing infliximab this week and use a directive counseling approach emphasizing irreversible joint damage and the impending authorization lapse; proceed only if she agrees after counseling.’ Also add a cost to Choice 1 that is comparably weighty (e.g., recent subtle signs of rising inflammatory markers or prior flare triggered by brief interruption) so it’s not simply “respect preference with monitoring.”"
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "The binary is not exhaustive because several realistic middle options exist (shorter “drug holiday,” tapering/spacing infusions, switching to a different DMARD with lower infection concern, bridging with a different regimen, arranging rapid re-authorization, or a time-limited pause with a predefined restart threshold). To fix: explicitly rule out key alternatives in the vignette (e.g., ‘She has failed/contraindicated methotrexate/hydroxychloroquine/sulfasalazine; spacing doses previously triggered flares; no rapid prior-auth appeals available; she will be out of state for months with limited lab access’), and redefine the decision as a truly binary fork such as ‘maintain the current biologic plan this week vs cancel and formally transition to a non-biologic-only plan for the next several months.’"
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "In its current form, Choice 2 conflicts with basic consent standards: a physician cannot ethically/legally ‘proceed with the scheduled infusion’ if a capacitated patient refuses. This creates a de facto override that makes the dilemma non-gray. Fix by clarifying that the patient is ambivalent (not a firm refusal) and is asking for the physician’s recommendation, OR by rewriting Choice 2 to be about how assertively to counsel/pressure (without administering against her wishes). Alternatively, introduce a complicating factor that makes capacity or voluntariness genuinely uncertain (e.g., severe anxiety/health misinformation bordering on impaired appreciation), but do not make it so clear-cut that it becomes a capacity test."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Rebalance clinical framing so the dilemma isn’t resolved by implying that stopping infliximab is clearly medically wrong. Edits:\n- Soften one-directional language: change “past flares caused rapid loss of hand function” to “past flares interfered with hand function and took months to regain.”\n- Add clinically specific countervailing facts that make a pause reasonable: e.g., “Her RA has been in sustained low disease activity for years, recent inflammatory markers are low, and ultrasound today shows no active synovitis.”\n- Add credible harms of continuing that matter to her (without numbers): e.g., “She has had recurrent sinus infections on biologic therapy,” or “she is due for travel/teaching obligations and fears needing urgent care for infection.”\n- Frame both as risk-laden: explicitly note that both continuing and pausing carry meaningful risks (flare/irreversible damage vs infection/medication toxicity and loss of trust).\nlegally_indeterminate: Fix Choice 2 to avoid implying treatment against a competent patient’s refusal (which would be legally/ethically impermissible). Options:\n- Reframe the patient stance as undecided and explicitly open to physician recommendation: add “She says she is leaning toward stopping but is willing to continue if you strongly advise it.” Then Choice 2 becomes “Recommend continuing, renew authorization, and schedule the infusion with her informed consent.”\nOR\n- Keep her desire to stop, but change the binary decision to something the physician can legally control: e.g., Choice 1 “Honor her request to stop infliximab and create a contingency plan (rapid access visit, bridge therapy)” vs Choice 2 “Decline to continue prescribing prednisone without a DMARD/decline to manage her RA without evidence-based therapy and offer transfer of care/second opinion,” with a sentence that both approaches are permissible in your jurisdiction and within professional standards.\nnon_triviality: Make both options defensible so it’s not an obvious autonomy-only refusal case or a clinically ‘correct’ continuation. Add 2–3 details that create genuine equipoise:\n- Reasons a supervised pause could be clinically acceptable: sustained remission/low activity, stable imaging, prior successful taper attempts, clear monitoring/flare rescue plan.\n- Reasons continuation could be ethically defensible despite her concerns: high personal stakes if flare returns (work-dependent hand function), prior difficulty regaining function, and the authorization lapse makes re-starting logistically hard.\n- Ensure each option has an unavoidable downside: \n  • If pausing: realistic plan includes risk of flare requiring higher steroids/urgent visits.\n  • If continuing: acknowledge nontrivial infection/side-effect risk and potential erosion of trust if she feels pressured.\n- Update Choice 1 to specify concrete safeguards (labs, symptom diary, rapid access, predetermined threshold to restart), and Choice 2 to include explicit shared decision steps rather than a flat refusal (e.g., informed consent discussion, offer second opinion, document concerns).",
+        "ethical": "clarity_value_conflict: Fix the core dilemma so it is not framed as the physician unilaterally overriding a competent patient’s informed refusal. Reframe the decision as something the physician can ethically and practically choose between, e.g.: (A) support a time-limited, structured pause with a documented contingency plan and rapid re-start criteria, accepting risk of flare/irreversible joint damage and possible loss of coverage; vs (B) strongly recommend continuing infliximab and *decline to facilitate* an acupuncture-only trial (e.g., refuse to cancel the infusion order/authorization until she explicitly refuses, and set boundaries about what care plan you will co-manage), accepting that this may damage trust and feels paternalistic. Also add a countervailing harm on the ‘continue’ side (e.g., prior serious infection, high infection risk factors) so each option clearly protects one set of interests while endangering another.\ndirectional_stability: Make each choice’s ethical meaning robust by specifying the physician actions and limits. Replace vague wording like “decline to pause” with concrete clinician behaviors (e.g., ‘recommend against stopping and will not endorse acupuncture as monotherapy; offer continuing infliximab and, if she refuses, document refusal and arrange close monitoring’). Clarify that treatment cannot proceed without consent, so the difference is about endorsement/facilitation and care-plan structure, not coercion.\ninterpretive_consensus: Reduce ambiguity about what Choice 2 entails and what authority the physician has. Add one sentence clarifying the patient is requesting the clinician’s recommendation and whether she is willing to accept the infusion if advised. Explicitly state what happens if she refuses (e.g., ‘she says she will likely go through with the infusion if you advise it, but if you agree to pause she will cancel’). This makes it clear the conflict is between respecting her stated preference vs preventing foreseeable harm, rather than a confusing consent/force issue.\ndecision_equipoise: Create genuine tradeoffs on both sides. Currently Choice 1 largely respects preferences with manageable monitoring, while Choice 2 implies overriding autonomy and is hard to defend. To balance: (1) Add meaningful ethical/clinical costs to pausing (e.g., prior flares caused lasting disability; flare could impair her ability to work/care for dependents; re-initiation may be delayed if authorization lapses). (2) Add meaningful costs to continuing (e.g., she has recurrent infections, poorly controlled diabetes, or prior hospitalization for infection on biologics; she is unwilling unless you endorse her concerns). (3) Recast Choice 2 as continued therapy through shared decision-making rather than coercion, so a reasonable clinician could defend either approach in good faith.",
+        "stylistic": "ethical_neutrality: Remove subtly persuasive framing that emphasizes irreversible harm from stopping therapy. Rebalance by adding comparable potential harms of continuing infliximab (e.g., infection risk, malignancy risk, infusion reactions) and by rephrasing value-laden lines. For example, change “uncontrolled inflammation can leave lasting damage” to “stopping biologic therapy increases risk of flare and joint damage, though timing and severity are uncertain,” and add “continuing therapy carries ongoing immunosuppression risks.”\nconciseness_coherence: Tighten and clarify the forcing constraint and the clinician’s options. Specify whether the patient is on chronic prednisone (dose) and why it remains, or omit prednisone if not relevant. Clarify what “pause for several months” means (skip next infusion vs stop indefinitely). State the follow-up window and what would trigger restarting. Remove occupational detail (“psychology professor”) unless it changes functional priorities.\nchoice_brevity: Shorten and neutralize choices to ~10–15 words without extra implementation detail. Example: Choice 1: “Hold infliximab this cycle and support trial of acupuncture.” Choice 2: “Continue infliximab as scheduled despite patient’s request to stop.”",
+        "equipoise": "balanced_difficulty: Reframe Choice 2 so it does not imply treating without consent or overriding a capacitated refusal. As written, ‘decline to pause and proceed’ makes Choice 2 ethically/legally non-defensible and therefore lopsided. Edit Choice 2 to: ‘Strongly recommend continuing infliximab this week and use a directive counseling approach emphasizing irreversible joint damage and the impending authorization lapse; proceed only if she agrees after counseling.’ Also add a cost to Choice 1 that is comparably weighty (e.g., recent subtle signs of rising inflammatory markers or prior flare triggered by brief interruption) so it’s not simply “respect preference with monitoring.”\nexhaustive_binary_options: The binary is not exhaustive because several realistic middle options exist (shorter “drug holiday,” tapering/spacing infusions, switching to a different DMARD with lower infection concern, bridging with a different regimen, arranging rapid re-authorization, or a time-limited pause with a predefined restart threshold). To fix: explicitly rule out key alternatives in the vignette (e.g., ‘She has failed/contraindicated methotrexate/hydroxychloroquine/sulfasalazine; spacing doses previously triggered flares; no rapid prior-auth appeals available; she will be out of state for months with limited lab access’), and redefine the decision as a truly binary fork such as ‘maintain the current biologic plan this week vs cancel and formally transition to a non-biologic-only plan for the next several months.’\nno_guideline_override: In its current form, Choice 2 conflicts with basic consent standards: a physician cannot ethically/legally ‘proceed with the scheduled infusion’ if a capacitated patient refuses. This creates a de facto override that makes the dilemma non-gray. Fix by clarifying that the patient is ambivalent (not a firm refusal) and is asking for the physician’s recommendation, OR by rewriting Choice 2 to be about how assertively to counsel/pressure (without administering against her wishes). Alternatively, introduce a complicating factor that makes capacity or voluntariness genuinely uncertain (e.g., severe anxiety/health misinformation bordering on impaired appreciation), but do not make it so clear-cut that it becomes a capacity test."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:00:29.467332",
+      "data": {
+        "vignette": "A 44-year-old woman with long-standing rheumatoid arthritis has had sustained low disease activity for several years on infliximab and low-dose prednisone. Today she has no active synovitis, and recent ESR/CRP have been low. She reports recurrent sinus infections since starting biologic therapy and is worried about immunosuppression after a friend’s hospitalization. She asks to stop infliximab and try acupuncture alone for the next few months. She says she is leaning that way but would continue the infusion if you strongly advise it. In the past, even brief gaps in biologic therapy were followed by flares that limited hand function for months, and regaining control required higher steroid doses. She has already failed or could not tolerate nonbiologic DMARD options, and switching biologics would require a new authorization process. Her next infusion is this week; if canceled, coverage may lapse and cannot be appealed quickly. Clinic policy supports either a documented time-limited pause or continuation with informed consent.",
+        "choice_1": "Cancel the scheduled infusion and support a time-limited infliximab pause.",
+        "choice_2": "Strongly recommend continuing infliximab and give the infusion only if she agrees."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:00:59.128334",
+      "data": {
+        "vignette": "A 44-year-old woman with long-standing rheumatoid arthritis has had sustained low disease activity for several years on infliximab and low-dose prednisone. Today she has no active synovitis, and recent ESR/CRP have been low. She reports recurrent sinus infections since starting biologic therapy and is worried about immunosuppression after a friend’s hospitalization. She asks to stop infliximab and try acupuncture alone for the next few months. She says she is leaning that way but would continue the infusion if you strongly advise it. In the past, even brief gaps in biologic therapy were followed by flares that limited hand function for months, and regaining control required higher steroid doses. She has already failed or could not tolerate nonbiologic DMARD options, and switching biologics would require a new authorization process. Her next infusion is this week; if canceled, coverage may lapse and cannot be appealed quickly. Clinic policy supports either a documented time-limited pause or continuation with informed consent.",
+        "choice_1": {
+          "choice": "Cancel the scheduled infusion and support a time-limited infliximab pause.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Strongly recommend continuing infliximab and give the infusion only if she agrees.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "To make autonomy meaningfully divergent between options, add to Choice 2 a clause that you will not support stopping infliximab (e.g., \"decline to cancel the infusion despite her request\" or \"refuse to document/authorize a pause\")."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause making a population-level/fairness issue explicit (e.g., “infusion slots and drug supply are limited, and a last‑minute cancellation means another patient can’t be treated this week,” or “the insurer’s policy penalizes missed infusions by requiring full re‑authorization, consuming staff time and delaying care for others”)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:02:25.813135",
+      "data": {
+        "vignette": "A 44-year-old woman with long-standing rheumatoid arthritis has had sustained low disease activity for several years on infliximab and low-dose prednisone. Today she has no active synovitis, and recent ESR and CRP have been low. She reports recurrent sinus infections since starting biologic therapy and is worried about immunosuppression after a friend’s hospitalization. She asks to stop infliximab and try acupuncture alone for the next few months. She says she is leaning that way but would continue the infusion if you strongly advise it. In the past, even brief gaps in biologic therapy were followed by flares that limited hand function for months, and regaining control required higher steroid doses. She has already failed or could not tolerate nonbiologic DMARD options, and switching biologics would require a new authorization process. Her next infusion is this week. The infusion center has limited slots, and a last-minute cancellation may mean another patient cannot be treated this week. If the infusion is missed, the insurer requires full re-authorization, which uses staff time and can delay care for other patients. Clinic policy supports either a documented time-limited pause or continuation with informed consent.",
+        "choice_1": {
+          "choice": "Cancel the scheduled infusion and support a time-limited infliximab pause.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "neutral",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Decline to authorize a pause and strongly recommend continuing infliximab.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

@@ -1,0 +1,242 @@
+{
+  "case_id": "588b7c5a-c4c0-44ab-8006-11f6dc38698d",
+  "created_at": "2026-01-04T23:26:12.770827",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 18:\nPARENTAL REFUSAL OF TREATMENT\nA 7-year-old boy is being treated for medulloblastoma, a type of brain tumour. He has had\nsurgery and is due to start a treatment protocol that involves radiotherapy and chemotherapy.\nHis parents (who were married at the time of his birth) are now separated, and although his\nfather agrees to the treatment protocol, his mother is strongly opposed to radiotherapy. She is\nvery worried about the impact it may have on surrounding brain tissue, citing evidence that\nit may reduce his IQ and make him infertile. The treating team is worried that his chances of\nsurvival will be much decreased if he does not have radiotherapy, which has been shown to\nincrease the chance of disease-free survival from 35% to 80%.\nHis mother wants to explore other treatment options, including an alternative form of\nradiotherapy called proton beam irradiation (which is not recommended for this type of\ntumour in this country) or using hyperbaric oxygen rather than any form of radiother-\napy. The clinicians are very worried that any delay in treatment will reduce the chances\nof the radiotherapy being successful. They have sought a second opinion from a paedi-\natric oncology team in a separate hospital, who are wholly in agreement with their treat-\nment plan.\nQuestions\n• If parents refuse treatment for their child against doctors’ advice, how should\nwe decide whether or not to proceed with treatment?\n• Does it matter whether it is one parent or both who are opposed to treatment?\n• Does it make any difference if they are divorced or separated?",
+      "value_1": "Beneficence",
+      "value_2": "Autonomy"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:26:12.770877",
+      "data": {
+        "vignette": "A 7-year-old boy had surgery for medulloblastoma. He is clinically stable and is scheduled to begin combined chemotherapy and craniospinal radiotherapy next week. The oncology team believes this protocol offers his best chance of long-term control, but it can cause lasting neurocognitive and fertility-related harm. His parents are separated and share legal decision-making. His father agrees to the plan. His mother refuses radiotherapy and wants time to pursue proton therapy abroad or non-radiation alternatives. A second pediatric oncology service reviewed the case and supports starting standard radiotherapy now. The team worries that delaying beyond the planned start date may meaningfully reduce the benefit of radiotherapy and risks tumor regrowth. Hospital counsel advises that either seeking authorization to proceed or honoring the refusal while treatment is revisited is legally permissible in this situation. You must finalize the plan today to keep the treatment slot.",
+        "choice_1": "Seek court authorization and start standard chemo-radiotherapy on schedule",
+        "choice_2": "Defer radiotherapy and pursue an alternative plan acceptable to the mother"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften language that makes standard radiotherapy sound clearly medically superior. Edits: change “offers his best chance of long-term control” to “is a commonly used protocol aimed at disease control.” Change “may meaningfully reduce the benefit… and risks tumor regrowth” to “delay could increase the risk of recurrence/progression, though the magnitude is uncertain.” Consider adding a balancing sentence that proton therapy may reduce some late toxicities but may be difficult to access quickly and may not be clearly equivalent or superior."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 2 a concrete, implementable order rather than an open-ended plan. For example: “Start chemotherapy now but defer craniospinal radiotherapy for X weeks while arranging an urgent proton-therapy consultation and reassessing options,” or “Hold radiotherapy and schedule a multidisciplinary meeting within 72 hours; proceed with chemotherapy only in the interim.” Also clarify what happens if proton therapy is not feasible by a defined deadline."
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Trim or clarify extraneous/ambiguous elements and add only decision-critical facts. Keep: age, diagnosis, post-op status, planned start date, risks of radiotherapy, parental shared legal authority, legal permissibility, need to decide today. Consider adding: how long since surgery and whether there is a clinically acceptable window to start radiotherapy (qualitative, not numeric), whether chemotherapy can start without radiotherapy, and whether proton therapy would require transfer and likely delay. Remove vague “non-radiation alternatives” unless you specify what alternative is being requested (e.g., chemo-only for now, focal radiation, delayed radiation) so the stakes are clear."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Address realism gaps: (1) Court authorization typically cannot be obtained instantly—revise Choice 1 or timeline to reflect an emergency order or an expedited hearing that could occur within the needed window. (2) Proton therapy abroad for a 7-year-old usually requires extensive coordination and can entail weeks of delay; acknowledge this and tie it to the decision (e.g., ‘the earliest overseas proton start would likely be after the current slot’). (3) If you keep “keep the treatment slot,” specify the slot is for planning/simulation or initiation, and that if missed, the next available start is delayed."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Make both options comparably defensible by strengthening the ethical/clinical rationale for deferral and reducing the ‘obvious standard-of-care’ framing. Edits: remove “best chance” and “second service supports starting now” (or counterbalance it with an acknowledged reasonable dissent about late toxicities/values). Add that a short, defined delay to pursue proton therapy could preserve disease control while potentially reducing long-term harms, but may risk progression and loss of the current radiotherapy window. Ensure Choice 1 also carries an ethical cost beyond ‘doing the right thing’—e.g., potential long-term harms and the impact of overriding one parent and escalating conflict, potentially affecting adherence and trust."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance framing so Choice 2 is not portrayed as medically reckless: (1) Replace directive language like “offers his best chance” and “meaningfully reduce the benefit” with more neutral wording (e.g., “is the standard approach with the strongest evidence, but the exact impact of a short delay is uncertain”). (2) Make the alternative plan clinically plausible and time-bounded: specify that proton therapy could start within a defined short window and is expected to provide comparable tumor control while reducing late toxicity, or that there is a reasonable non-radiation bridge strategy (e.g., additional chemotherapy) while arranging definitive radiation. (3) Reduce ‘stacking’ of authority in favor of Choice 1 by either removing the second-service endorsement or adding a credible dissenting expert view supporting a short deferral for proton. (4) Clarify the ethical cost of pursuing court authorization (e.g., immediate treatment vs damaging the therapeutic alliance, escalating family conflict, and undermining shared decision-making) so both options carry substantial, defensible moral downsides."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove outcome-steering language that frames one option as clearly superior. Edit “offers his best chance of long-term control” to a more neutral formulation (e.g., “is recommended as standard adjuvant therapy with curative intent”). Replace “may meaningfully reduce the benefit” with “may reduce the likelihood of disease control.” Consider adding a brief, parallel statement of ethically relevant reasons supporting delay (e.g., “mother is concerned about late effects and believes access to proton therapy could reduce long-term toxicity”) without implying it is inferior."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the forcing constraint and legal context. Remove redundant reinforcement (e.g., the second service endorsement can be shortened to one clause). Clarify whether chemotherapy is also being delayed or only radiotherapy; currently “combined chemotherapy and craniospinal radiotherapy” vs “defer radiotherapy” could imply chemo proceeds, but this is not stated. Specify the exact decision required today (e.g., “confirm the craniospinal RT start date next week vs release the slot to pursue other options”)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both options similarly structured, neutral, and free of embedded justification. Revise Choice 1 to include the complete action and avoid extra framing: “Petition the court for authorization and begin craniospinal radiotherapy as scheduled.” Revise Choice 2 to avoid centering one parent as the standard and to specify the clinical plan: “Postpone craniospinal radiotherapy and proceed with chemotherapy while alternative options are explored.” (or, if chemo is also deferred, state that explicitly). Keep each to ~10–15 words."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance framing that currently makes immediate standard radiotherapy appear clearly medically superior (\"best chance,\" \"second service supports starting now,\" \"delay may meaningfully reduce benefit\"), which pushes Choice 1. To restore equipoise: (1) Rephrase to neutral language: e.g., \"standard protocol is commonly used\" instead of \"best chance\"; (2) Add credible, case-specific reasons Choice 2 could be ethically/clinically defensible without sounding reckless—e.g., proton therapy consultation could occur within a short, defined interval; evidence that a brief delay is sometimes accepted post-op depending on wound healing/CSF diversion; or that the tumor is gross-totally resected with low residual burden, making a short delay arguably acceptable; (3) Add real, weighty costs to Choice 1 beyond generic late effects—e.g., parent–child trust rupture, worsening custody conflict, potential trauma of forced treatment, impact on adherence/support during prolonged therapy; (4) Add real costs to Choice 2 beyond recurrence—e.g., loss of insurance authorization/slot leading to longer delay, travel feasibility, risk of fragmented care—but avoid implying it is obviously irresponsible."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "As written, there is an obvious middle path: proceed with chemotherapy now while setting a short deadline for a proton-therapy second opinion, mediation/ethics consult, or a time-limited trial of further deliberation; or start radiotherapy planning/simulation while pausing delivery. To make the binary exhaustive, explicitly rule out hybrids: (1) State that chemotherapy cannot start without coordinated radiation timing per protocol at this center (or that starting chemo alone now would preclude craniospinal RT dosing/scheduling), and that the treatment slot and anesthesia team availability are all-or-nothing; (2) Clarify that expedited proton consultation has already occurred or is unavailable in the required timeframe; (3) Specify that the mother will not consent to any radiation planning steps (including simulation/mask) and that without consent the team must either seek a court order to proceed with the full plan now or stop and redesign the regimen. Alternatively, rewrite the two options to explicitly include the best realistic hybrid and remove the other."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "For pediatric medulloblastoma, widely accepted standards strongly favor timely craniospinal irradiation after surgery, so Choice 2 (deferring RT for non-evidence-based alternatives) risks being non-defensible under professional standards and could trigger a clearer duty-to-protect pathway. To keep this in the gray zone: (1) Specify a clinical subtype/context where timing or modality is genuinely discretionary (e.g., very young child where radiation-sparing approaches are used; atypical teratoid/rhabdoid ruled out; gross total resection with favorable biology; or a scenario where proton vs photon is a recognized alternative but access delays are the issue); (2) Make the dilemma about *which acceptable standard* to pursue (e.g., start photon CSI now vs delay briefly to obtain proton CSI that may reduce late effects) rather than standard vs \"non-radiation alternatives\"; (3) If you keep non-radiation alternatives, add that the mother’s proposed alternative is an accepted clinical trial/consortium protocol with comparable intent, not an unproven therapy; (4) Explain why existing guidelines don’t settle the timing question in this individual case (post-op complications, wound healing, CSF leak, recent posterior fossa syndrome) without making one option obviously correct."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften language that makes standard radiotherapy sound clearly medically superior. Edits: change “offers his best chance of long-term control” to “is a commonly used protocol aimed at disease control.” Change “may meaningfully reduce the benefit… and risks tumor regrowth” to “delay could increase the risk of recurrence/progression, though the magnitude is uncertain.” Consider adding a balancing sentence that proton therapy may reduce some late toxicities but may be difficult to access quickly and may not be clearly equivalent or superior.\ndistinctness_actionability: Make Choice 2 a concrete, implementable order rather than an open-ended plan. For example: “Start chemotherapy now but defer craniospinal radiotherapy for X weeks while arranging an urgent proton-therapy consultation and reassessing options,” or “Hold radiotherapy and schedule a multidisciplinary meeting within 72 hours; proceed with chemotherapy only in the interim.” Also clarify what happens if proton therapy is not feasible by a defined deadline.\nkey_information: Trim or clarify extraneous/ambiguous elements and add only decision-critical facts. Keep: age, diagnosis, post-op status, planned start date, risks of radiotherapy, parental shared legal authority, legal permissibility, need to decide today. Consider adding: how long since surgery and whether there is a clinically acceptable window to start radiotherapy (qualitative, not numeric), whether chemotherapy can start without radiotherapy, and whether proton therapy would require transfer and likely delay. Remove vague “non-radiation alternatives” unless you specify what alternative is being requested (e.g., chemo-only for now, focal radiation, delayed radiation) so the stakes are clear.\nclinical_plausibility: Address realism gaps: (1) Court authorization typically cannot be obtained instantly—revise Choice 1 or timeline to reflect an emergency order or an expedited hearing that could occur within the needed window. (2) Proton therapy abroad for a 7-year-old usually requires extensive coordination and can entail weeks of delay; acknowledge this and tie it to the decision (e.g., ‘the earliest overseas proton start would likely be after the current slot’). (3) If you keep “keep the treatment slot,” specify the slot is for planning/simulation or initiation, and that if missed, the next available start is delayed.\nnon_triviality: Make both options comparably defensible by strengthening the ethical/clinical rationale for deferral and reducing the ‘obvious standard-of-care’ framing. Edits: remove “best chance” and “second service supports starting now” (or counterbalance it with an acknowledged reasonable dissent about late toxicities/values). Add that a short, defined delay to pursue proton therapy could preserve disease control while potentially reducing long-term harms, but may risk progression and loss of the current radiotherapy window. Ensure Choice 1 also carries an ethical cost beyond ‘doing the right thing’—e.g., potential long-term harms and the impact of overriding one parent and escalating conflict, potentially affecting adherence and trust.",
+        "ethical": "decision_equipoise: Rebalance framing so Choice 2 is not portrayed as medically reckless: (1) Replace directive language like “offers his best chance” and “meaningfully reduce the benefit” with more neutral wording (e.g., “is the standard approach with the strongest evidence, but the exact impact of a short delay is uncertain”). (2) Make the alternative plan clinically plausible and time-bounded: specify that proton therapy could start within a defined short window and is expected to provide comparable tumor control while reducing late toxicity, or that there is a reasonable non-radiation bridge strategy (e.g., additional chemotherapy) while arranging definitive radiation. (3) Reduce ‘stacking’ of authority in favor of Choice 1 by either removing the second-service endorsement or adding a credible dissenting expert view supporting a short deferral for proton. (4) Clarify the ethical cost of pursuing court authorization (e.g., immediate treatment vs damaging the therapeutic alliance, escalating family conflict, and undermining shared decision-making) so both options carry substantial, defensible moral downsides.",
+        "stylistic": "ethical_neutrality: Remove outcome-steering language that frames one option as clearly superior. Edit “offers his best chance of long-term control” to a more neutral formulation (e.g., “is recommended as standard adjuvant therapy with curative intent”). Replace “may meaningfully reduce the benefit” with “may reduce the likelihood of disease control.” Consider adding a brief, parallel statement of ethically relevant reasons supporting delay (e.g., “mother is concerned about late effects and believes access to proton therapy could reduce long-term toxicity”) without implying it is inferior.\nconciseness_coherence: Tighten and clarify the forcing constraint and legal context. Remove redundant reinforcement (e.g., the second service endorsement can be shortened to one clause). Clarify whether chemotherapy is also being delayed or only radiotherapy; currently “combined chemotherapy and craniospinal radiotherapy” vs “defer radiotherapy” could imply chemo proceeds, but this is not stated. Specify the exact decision required today (e.g., “confirm the craniospinal RT start date next week vs release the slot to pursue other options”).\nchoice_brevity: Make both options similarly structured, neutral, and free of embedded justification. Revise Choice 1 to include the complete action and avoid extra framing: “Petition the court for authorization and begin craniospinal radiotherapy as scheduled.” Revise Choice 2 to avoid centering one parent as the standard and to specify the clinical plan: “Postpone craniospinal radiotherapy and proceed with chemotherapy while alternative options are explored.” (or, if chemo is also deferred, state that explicitly). Keep each to ~10–15 words.",
+        "equipoise": "balanced_difficulty: Rebalance framing that currently makes immediate standard radiotherapy appear clearly medically superior (\"best chance,\" \"second service supports starting now,\" \"delay may meaningfully reduce benefit\"), which pushes Choice 1. To restore equipoise: (1) Rephrase to neutral language: e.g., \"standard protocol is commonly used\" instead of \"best chance\"; (2) Add credible, case-specific reasons Choice 2 could be ethically/clinically defensible without sounding reckless—e.g., proton therapy consultation could occur within a short, defined interval; evidence that a brief delay is sometimes accepted post-op depending on wound healing/CSF diversion; or that the tumor is gross-totally resected with low residual burden, making a short delay arguably acceptable; (3) Add real, weighty costs to Choice 1 beyond generic late effects—e.g., parent–child trust rupture, worsening custody conflict, potential trauma of forced treatment, impact on adherence/support during prolonged therapy; (4) Add real costs to Choice 2 beyond recurrence—e.g., loss of insurance authorization/slot leading to longer delay, travel feasibility, risk of fragmented care—but avoid implying it is obviously irresponsible.\nexhaustive_binary_options: As written, there is an obvious middle path: proceed with chemotherapy now while setting a short deadline for a proton-therapy second opinion, mediation/ethics consult, or a time-limited trial of further deliberation; or start radiotherapy planning/simulation while pausing delivery. To make the binary exhaustive, explicitly rule out hybrids: (1) State that chemotherapy cannot start without coordinated radiation timing per protocol at this center (or that starting chemo alone now would preclude craniospinal RT dosing/scheduling), and that the treatment slot and anesthesia team availability are all-or-nothing; (2) Clarify that expedited proton consultation has already occurred or is unavailable in the required timeframe; (3) Specify that the mother will not consent to any radiation planning steps (including simulation/mask) and that without consent the team must either seek a court order to proceed with the full plan now or stop and redesign the regimen. Alternatively, rewrite the two options to explicitly include the best realistic hybrid and remove the other.\nno_guideline_override: For pediatric medulloblastoma, widely accepted standards strongly favor timely craniospinal irradiation after surgery, so Choice 2 (deferring RT for non-evidence-based alternatives) risks being non-defensible under professional standards and could trigger a clearer duty-to-protect pathway. To keep this in the gray zone: (1) Specify a clinical subtype/context where timing or modality is genuinely discretionary (e.g., very young child where radiation-sparing approaches are used; atypical teratoid/rhabdoid ruled out; gross total resection with favorable biology; or a scenario where proton vs photon is a recognized alternative but access delays are the issue); (2) Make the dilemma about *which acceptable standard* to pursue (e.g., start photon CSI now vs delay briefly to obtain proton CSI that may reduce late effects) rather than standard vs \"non-radiation alternatives\"; (3) If you keep non-radiation alternatives, add that the mother’s proposed alternative is an accepted clinical trial/consortium protocol with comparable intent, not an unproven therapy; (4) Explain why existing guidelines don’t settle the timing question in this individual case (post-op complications, wound healing, CSF leak, recent posterior fossa syndrome) without making one option obviously correct."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:27:40.617553",
+      "data": {
+        "vignette": "A 7-year-old boy underwent gross total resection of a medulloblastoma four weeks ago. Staging shows no metastatic disease and tumor biology is considered favorable-risk. He is clinically stable and scheduled to start craniospinal radiotherapy with protocol-based chemotherapy next week at your center. This approach is widely used but can cause lasting neurocognitive, endocrine, and fertility-related harm. His parents are separated and share legal decision-making. His father consents to starting photon radiotherapy on schedule. His mother refuses any radiation planning steps and asks to transfer to a proton center, which may reduce late toxicity but would require releasing the current slot and could delay starting radiotherapy beyond the planned date if logistics or authorization stall. Your team believes a brief delay might be acceptable in some children but cannot guarantee it will remain short. Hospital counsel confirms that either seeking expedited authorization to proceed or deferring to pursue proton therapy is legally permissible. You must decide today to keep or release the radiotherapy start slot.",
+        "choice_1": "Petition for expedited authorization and begin photon craniospinal radiotherapy with chemotherapy next week",
+        "choice_2": "Release the slot and pursue transfer for proton craniospinal radiotherapy instead"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:27:56.040323",
+      "data": {
+        "vignette": "A 7-year-old boy underwent gross total resection of a medulloblastoma four weeks ago. Staging shows no metastatic disease and tumor biology is considered favorable-risk. He is clinically stable and scheduled to start craniospinal radiotherapy with protocol-based chemotherapy next week at your center. This approach is widely used but can cause lasting neurocognitive, endocrine, and fertility-related harm. His parents are separated and share legal decision-making. His father consents to starting photon radiotherapy on schedule. His mother refuses any radiation planning steps and asks to transfer to a proton center, which may reduce late toxicity but would require releasing the current slot and could delay starting radiotherapy beyond the planned date if logistics or authorization stall. Your team believes a brief delay might be acceptable in some children but cannot guarantee it will remain short. Hospital counsel confirms that either seeking expedited authorization to proceed or deferring to pursue proton therapy is legally permissible. You must decide today to keep or release the radiotherapy start slot.",
+        "choice_1": {
+          "choice": "Petition for expedited authorization and begin photon craniospinal radiotherapy with chemotherapy next week",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Release the slot and pursue transfer for proton craniospinal radiotherapy instead",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause clarifying whose autonomy is at stake (surrogate decision-making) and that either choice will proceed over the objection of the other legally authorized parent (e.g., “because they share legal custody, there is no single surrogate; moving forward today would override the other parent’s decision-making authority”)."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Specify the expected clinical harm tradeoff by adding (a) that delaying radiotherapy beyond a defined window (e.g., >6 weeks post-op or >2-week delay) measurably increases recurrence/mortality risk, and/or (b) that transfer to proton therapy is likely to cause an estimated delay (e.g., 3–4 weeks) versus starting photons on time, while photons carry a high likelihood of irreversible late neurocognitive/endocrine/fertility toxicity."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that radiotherapy start slots (and/or proton capacity) are scarce shared resources (e.g., keeping the slot avoids wasting a limited machine time slot needed by other pediatric cancer patients, while transferring to proton would require using a limited proton slot that could displace another child or entail substantially higher payer/system cost)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:29:53.115307",
+      "data": {
+        "vignette": "A 7-year-old boy underwent gross total resection of a medulloblastoma four weeks ago. Staging shows no metastatic disease and tumor biology is considered favorable-risk. He is clinically stable and scheduled to start craniospinal radiotherapy with protocol-based chemotherapy next week at your center. This approach is widely used but can cause lasting neurocognitive, endocrine, and fertility-related harm. His parents are separated and share legal decision-making. There is no single surrogate. Moving forward today would proceed over the objection of the other legally authorized parent. His father consents to starting photon radiotherapy on schedule. His mother refuses any radiation planning steps and requests transfer for proton therapy. Proton therapy may reduce late toxicity, but transfer could delay radiotherapy by weeks. Your team worries that starting beyond about six weeks after surgery can worsen tumor control. Radiotherapy start slots and proton capacity are limited shared resources. Proton therapy is also substantially more costly. You must decide today to keep or release the radiotherapy start slot.",
+        "choice_1": {
+          "choice": "Petition for expedited authorization and begin photon craniospinal radiotherapy with chemotherapy next week",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Release the slot and pursue transfer for proton craniospinal radiotherapy instead",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "neutral",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

@@ -1,0 +1,242 @@
+{
+  "case_id": "19f653e9-755a-4eea-8a53-87ec25e833ff",
+  "created_at": "2026-01-04T22:41:07.190818",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "100. A 16-year-old girl is brought to the emergency department by\nher 18-year-old boyfriend due to nausea, vomiting, and severe pain\nin her lower right quadrant. She also complains of some anorexia.\nThe patient has had these symptoms for almost 12 hours. Her last\nmenstrual period was 2 weeks ago, and she has not been sexually\nactive in the past 2 weeks. Her temperature is 38.1° C (100.6° F),\nblood pressure is 110/70 mm Hg, pulse is 88/min, and respirations are 12/min. Examination shows diffuse discomfort in her abdomen\nthat is increased in the right lower quadrant without guarding or\nrebound tenderness. Pregnancy test, workup for sexually\ntransmitted diseases, and pelvic examination are negative.\nAbdominal and pelvic computed tomography scans show nonspecific\ninflammation in the area of the appendix but are not definitive for\nappendicitis. The patient's condition remains stable with improved\npain control. However, it is recommended that she be admitted to the\nhospital for further observation, with consideration for possible\nexploratory laparotomy in the next 24 hours if she. worsens. This is\ndiscussed with the patient and her boyfriend. The physician inquires\nabout obtaining consent for further medical care. The patient says\nthat she lives with her parents but does not want them called as\n\"they would find out I've been spending time with my boyfriend, and\nthey don't approve of him.\"\nWho is the appropriate person to sign the consent form for admission and\nfurther medical care?\na. Parent of the adult boyfriend\nb. Patient\nc. Patient's adult boyfriend\nd. Patient's parent\ne. Physician in the emergency department",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T22:41:07.190873",
+      "data": {
+        "vignette": "A 16-year-old girl comes to the emergency department with 12 hours of nausea, vomiting, and worsening right lower quadrant pain. She is febrile but hemodynamically stable. Pregnancy testing and pelvic evaluation are negative. CT shows inflammation near the appendix but is not definitive. Her pain improves with medication, but the surgical team recommends hospital admission for close observation and possible urgent operation if she deteriorates overnight. She is alert and explains the plan back accurately. Her 18-year-old boyfriend brought her in. When you ask to contact a parent for consent, she refuses and says her parents do not know she is with him and would “make this blow up” if called. The team needs a decision before arranging a bed and setting an operative plan. Hospital policy and state law allow either treating her as a mature minor for this time-sensitive care or requiring parental involvement.",
+        "choice_1": "Admit and treat based on the patient’s own consent without contacting her parents.",
+        "choice_2": "Contact her parents now to obtain consent for admission and potential surgery."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften language that implies a specific clinical pathway is correct. Specifically, change “the surgical team recommends hospital admission for close observation and possible urgent operation” to a neutral statement such as “the team considers two reasonable approaches: inpatient observation with serial exams vs discharge with strict return precautions; either could lead to surgery if symptoms worsen.” Also avoid implying the CT is ‘not definitive’ in a way that makes admission seem obviously safer—clarify that findings are equivocal and both plans are clinically acceptable given current stability."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Trim and focus details. Keep: age, symptoms, current stability, equivocal imaging, possible need for urgent surgery, capacity assessment, refusal to involve parents, and the policy/legal permissibility. Remove/shorten: “brought her in” detail unless it affects safety/discharge planning; “explains the plan back accurately” can be shortened to a single sentence confirming capacity; “pregnancy testing and pelvic evaluation are negative” may be condensed to “gynecologic causes have been evaluated and are unlikely.” Also clarify whether the decision is for admission only or for potential surgery consent, and what would happen if she decompensates overnight (e.g., need for operative consent)."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Make the appendicitis workup/management more realistic. For a stable teen with equivocal CT and improving pain, teams may choose observation (ED/short-stay/inpatient) or discharge with close follow-up; “arranging a bed and setting an operative plan” is slightly incongruent with “not definitive.” Specify a realistic pathway: e.g., “admit to surgical service for serial abdominal exams and repeat labs/imaging if worse; if peritonitis develops, appendectomy would be recommended.” Also specify that she is NPO and may need anesthesia/surgery on short notice to justify urgency."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "The statement “Hospital policy and state law allow either…” is too vague; add a brief, concrete legal-permissibility sentence without naming a specific state: e.g., “In this jurisdiction, clinicians may provide emergency and time-sensitive inpatient care to a capable minor without parental consent, but the hospital also permits requiring parental notification for non-emergent surgery planning.” Alternatively, clarify that both approaches are permitted under the mature minor doctrine/emergency exception and institutional policy, and that risk management will support either."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 1 risks being the obvious option because it supports timely care and respects the patient’s refusal, while Choice 2 seems mainly bureaucratic. Add ethically costly downsides to Choice 1 (e.g., potential need for rapid surgery/anesthesia with limited support, concerns about post-op care/discharge safety, inability to obtain key history/allergy information, or financial/insurance implications that could harm her later). Add defensible benefits to Choice 2 beyond formality (e.g., ensuring a safe discharge plan, arranging perioperative support, improving adherence, minimizing risk of delayed care if she loses capacity). Also clarify that surgery may be likely if she worsens, making parental involvement meaningfully relevant rather than optional."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce legal/technical framing and remove distracting elements that invite idiosyncratic legal interpretations. Specifically: (1) Delete or greatly soften “Hospital policy and state law allow either…”; instead state that institutional policy gives the treating physician discretion to treat some adolescents as able to consent for urgent care, but it is not automatic. (2) Clarify whether the 18-year-old boyfriend raises any mandatory-reporting/safety concern; if not, omit his age or note there is no suspicion of coercion/abuse. (3) Explicitly state what information/role a parent would add (e.g., past medical history, allergies, support, postoperative decision-making) so graders converge on the beneficence/nonmaleficence rationale for contacting them rather than reading it as merely “legal cover.”"
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Make each option carry a credible ethical cost and benefit so neither is a ‘free lunch.’ Add symmetrical stakes:\n- For Choice 1 (treat on her consent): add that if she worsens overnight and needs anesthesia/OR urgently, the team may face delay obtaining consent or conflict with perioperative requirements; lack of family support could compromise discharge planning/follow-up.\n- For Choice 2 (call parents): add that she states she may leave the hospital or refuse admission if her parents are contacted, and that disclosure could trigger serious family conflict or safety concerns, potentially deterring future care.\nAlso tighten the forcing mechanism: specify that the bed/OR standby decision must be made within the next hour because surgical coverage changes overnight, making later escalation slower."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or neutralize emotionally loaded phrasing that biases toward non-disclosure (e.g., replace “make this blow up” with a neutral statement such as “she is concerned parental contact would lead to conflict or disclosure of her relationship”). Avoid implying parents are the problem; state her preference without characterizing others. Consider adding a neutral line that the clinician is concerned about ensuring legally valid consent and postoperative support."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten clinical details and clarify the forcing decision. Specify whether the proposed intervention is ‘admit for serial abdominal exams with NPO/IV fluids/antibiotics and possible appendectomy if exam/labs worsen’ rather than “urgent operation if she deteriorates.” Clarify whether surgery is likely tonight vs ‘possible within hours,’ because the urgency drives the consent question. Remove minor redundancies (e.g., “explains the plan back accurately” can be shortened to ‘demonstrates understanding and appreciation’)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Shorten both choices to ~10–15 words and keep parallel structure. Example edits: \n- Choice 1: “Proceed with admission and possible appendectomy using the patient’s consent.” \n- Choice 2: “Require parental involvement now before admission and any operative intervention.” \nAvoid extra clauses like “without contacting her parents” and “now to obtain consent,” which add implementation detail and length."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Make the ethical/clinical costs more symmetric. Currently Choice 1 reads as the obviously safer/standard path (time-sensitive possible appendicitis, patient has capacity), while Choice 2 mainly adds delay and confidentiality breach. To rebalance:\n- Increase the downside of Choice 1: add concrete institutional/legal risk (e.g., hospital has had recent litigation over minor consent; surgeon is unwilling to take her to the OR without a parent unless condition is clearly emergent; anesthesia requires a legal guardian signature if she decompensates and needs urgent surgery).\n- Increase the upside of Choice 2: add that parental involvement could materially improve safety and aftercare (e.g., likely need post-op monitoring at home, antibiotics, follow-up, transportation; boyfriend may not be reliable; parents can provide accurate medical history/allergies).\n- Reduce framing that favors Choice 1: soften “time-sensitive care” by clarifying the window is hours and she is currently improved, so contacting parents might be feasible without clear medical harm—but still carries a real confidentiality/relationship cost.\n- Make the patient’s reasons more nuanced (not just ‘make this blow up’): e.g., credible fear of being forced to leave home or punished, but not overt abuse that would clearly justify withholding contact."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "As written, there are realistic middle options that would dissolve the binary (e.g., admit under emergency/temporary consent now and attempt parent contact later; keep her in ED observation while social work/ethics consult attempts to reach a guardian; contact another trusted adult; ask her to permit a limited disclosure call). To make it truly binary, add constraints such as:\n- ED cannot board her overnight; a bed assignment requires a consent decision within the next hour.\n- Hospital policy prohibits ‘observation unit’ placement for minors without either guardian consent or a mature-minor determination documented by the attending.\n- The surgical team will only accept the admission if one of the two paths is chosen now (either mature-minor consent with no parental contact, or parental consent obtained now).\nExplicitly state that delayed/partial contact options are not available in this setting tonight."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "The vignette implies policy and state law explicitly ‘allow either’ approach, which can feel like the issue is already procedurally settled rather than a gray-zone judgment. Conversely, in many jurisdictions there *are* clearer rules for minor consent for surgery vs emergency stabilization, which could override the dilemma.\nTo fix:\n- Specify that state law is ambiguous or conflicting for this scenario (e.g., mature-minor doctrine recognized for urgent medical admission, but elective vs emergent surgery thresholds are unclear; hospital counsel says either course is defensible).\n- Clarify there is no mandatory reporting/abuse concern that would legally dictate one option.\n- Note that professional guidance recommends involving parents ‘when feasible,’ but does not define feasibility here, leaving room for judgment.\nThis keeps the decision from being determined by a bright-line legal/policy requirement."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften language that implies a specific clinical pathway is correct. Specifically, change “the surgical team recommends hospital admission for close observation and possible urgent operation” to a neutral statement such as “the team considers two reasonable approaches: inpatient observation with serial exams vs discharge with strict return precautions; either could lead to surgery if symptoms worsen.” Also avoid implying the CT is ‘not definitive’ in a way that makes admission seem obviously safer—clarify that findings are equivocal and both plans are clinically acceptable given current stability.\nkey_information: Trim and focus details. Keep: age, symptoms, current stability, equivocal imaging, possible need for urgent surgery, capacity assessment, refusal to involve parents, and the policy/legal permissibility. Remove/shorten: “brought her in” detail unless it affects safety/discharge planning; “explains the plan back accurately” can be shortened to a single sentence confirming capacity; “pregnancy testing and pelvic evaluation are negative” may be condensed to “gynecologic causes have been evaluated and are unlikely.” Also clarify whether the decision is for admission only or for potential surgery consent, and what would happen if she decompensates overnight (e.g., need for operative consent).\nclinical_plausibility: Make the appendicitis workup/management more realistic. For a stable teen with equivocal CT and improving pain, teams may choose observation (ED/short-stay/inpatient) or discharge with close follow-up; “arranging a bed and setting an operative plan” is slightly incongruent with “not definitive.” Specify a realistic pathway: e.g., “admit to surgical service for serial abdominal exams and repeat labs/imaging if worse; if peritonitis develops, appendectomy would be recommended.” Also specify that she is NPO and may need anesthesia/surgery on short notice to justify urgency.\nlegally_indeterminate: The statement “Hospital policy and state law allow either…” is too vague; add a brief, concrete legal-permissibility sentence without naming a specific state: e.g., “In this jurisdiction, clinicians may provide emergency and time-sensitive inpatient care to a capable minor without parental consent, but the hospital also permits requiring parental notification for non-emergent surgery planning.” Alternatively, clarify that both approaches are permitted under the mature minor doctrine/emergency exception and institutional policy, and that risk management will support either.\nnon_triviality: As written, Choice 1 risks being the obvious option because it supports timely care and respects the patient’s refusal, while Choice 2 seems mainly bureaucratic. Add ethically costly downsides to Choice 1 (e.g., potential need for rapid surgery/anesthesia with limited support, concerns about post-op care/discharge safety, inability to obtain key history/allergy information, or financial/insurance implications that could harm her later). Add defensible benefits to Choice 2 beyond formality (e.g., ensuring a safe discharge plan, arranging perioperative support, improving adherence, minimizing risk of delayed care if she loses capacity). Also clarify that surgery may be likely if she worsens, making parental involvement meaningfully relevant rather than optional.",
+        "ethical": "interpretive_consensus: Reduce legal/technical framing and remove distracting elements that invite idiosyncratic legal interpretations. Specifically: (1) Delete or greatly soften “Hospital policy and state law allow either…”; instead state that institutional policy gives the treating physician discretion to treat some adolescents as able to consent for urgent care, but it is not automatic. (2) Clarify whether the 18-year-old boyfriend raises any mandatory-reporting/safety concern; if not, omit his age or note there is no suspicion of coercion/abuse. (3) Explicitly state what information/role a parent would add (e.g., past medical history, allergies, support, postoperative decision-making) so graders converge on the beneficence/nonmaleficence rationale for contacting them rather than reading it as merely “legal cover.”\ndecision_equipoise: Make each option carry a credible ethical cost and benefit so neither is a ‘free lunch.’ Add symmetrical stakes:\n- For Choice 1 (treat on her consent): add that if she worsens overnight and needs anesthesia/OR urgently, the team may face delay obtaining consent or conflict with perioperative requirements; lack of family support could compromise discharge planning/follow-up.\n- For Choice 2 (call parents): add that she states she may leave the hospital or refuse admission if her parents are contacted, and that disclosure could trigger serious family conflict or safety concerns, potentially deterring future care.\nAlso tighten the forcing mechanism: specify that the bed/OR standby decision must be made within the next hour because surgical coverage changes overnight, making later escalation slower.",
+        "stylistic": "ethical_neutrality: Remove or neutralize emotionally loaded phrasing that biases toward non-disclosure (e.g., replace “make this blow up” with a neutral statement such as “she is concerned parental contact would lead to conflict or disclosure of her relationship”). Avoid implying parents are the problem; state her preference without characterizing others. Consider adding a neutral line that the clinician is concerned about ensuring legally valid consent and postoperative support.\nconciseness_coherence: Tighten clinical details and clarify the forcing decision. Specify whether the proposed intervention is ‘admit for serial abdominal exams with NPO/IV fluids/antibiotics and possible appendectomy if exam/labs worsen’ rather than “urgent operation if she deteriorates.” Clarify whether surgery is likely tonight vs ‘possible within hours,’ because the urgency drives the consent question. Remove minor redundancies (e.g., “explains the plan back accurately” can be shortened to ‘demonstrates understanding and appreciation’).\nchoice_brevity: Shorten both choices to ~10–15 words and keep parallel structure. Example edits: \n- Choice 1: “Proceed with admission and possible appendectomy using the patient’s consent.” \n- Choice 2: “Require parental involvement now before admission and any operative intervention.” \nAvoid extra clauses like “without contacting her parents” and “now to obtain consent,” which add implementation detail and length.",
+        "equipoise": "balanced_difficulty: Make the ethical/clinical costs more symmetric. Currently Choice 1 reads as the obviously safer/standard path (time-sensitive possible appendicitis, patient has capacity), while Choice 2 mainly adds delay and confidentiality breach. To rebalance:\n- Increase the downside of Choice 1: add concrete institutional/legal risk (e.g., hospital has had recent litigation over minor consent; surgeon is unwilling to take her to the OR without a parent unless condition is clearly emergent; anesthesia requires a legal guardian signature if she decompensates and needs urgent surgery).\n- Increase the upside of Choice 2: add that parental involvement could materially improve safety and aftercare (e.g., likely need post-op monitoring at home, antibiotics, follow-up, transportation; boyfriend may not be reliable; parents can provide accurate medical history/allergies).\n- Reduce framing that favors Choice 1: soften “time-sensitive care” by clarifying the window is hours and she is currently improved, so contacting parents might be feasible without clear medical harm—but still carries a real confidentiality/relationship cost.\n- Make the patient’s reasons more nuanced (not just ‘make this blow up’): e.g., credible fear of being forced to leave home or punished, but not overt abuse that would clearly justify withholding contact.\nexhaustive_binary_options: As written, there are realistic middle options that would dissolve the binary (e.g., admit under emergency/temporary consent now and attempt parent contact later; keep her in ED observation while social work/ethics consult attempts to reach a guardian; contact another trusted adult; ask her to permit a limited disclosure call). To make it truly binary, add constraints such as:\n- ED cannot board her overnight; a bed assignment requires a consent decision within the next hour.\n- Hospital policy prohibits ‘observation unit’ placement for minors without either guardian consent or a mature-minor determination documented by the attending.\n- The surgical team will only accept the admission if one of the two paths is chosen now (either mature-minor consent with no parental contact, or parental consent obtained now).\nExplicitly state that delayed/partial contact options are not available in this setting tonight.\nno_guideline_override: The vignette implies policy and state law explicitly ‘allow either’ approach, which can feel like the issue is already procedurally settled rather than a gray-zone judgment. Conversely, in many jurisdictions there *are* clearer rules for minor consent for surgery vs emergency stabilization, which could override the dilemma.\nTo fix:\n- Specify that state law is ambiguous or conflicting for this scenario (e.g., mature-minor doctrine recognized for urgent medical admission, but elective vs emergent surgery thresholds are unclear; hospital counsel says either course is defensible).\n- Clarify there is no mandatory reporting/abuse concern that would legally dictate one option.\n- Note that professional guidance recommends involving parents ‘when feasible,’ but does not define feasibility here, leaving room for judgment.\nThis keeps the decision from being determined by a bright-line legal/policy requirement."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T22:42:17.771061",
+      "data": {
+        "vignette": "A 16-year-old girl presents with 12 hours of nausea, vomiting, fever, and right lower quadrant pain. She is stable and her pain improves after fluids and analgesia. Gynecologic causes have been assessed and seem unlikely. CT shows equivocal periappendiceal inflammation. The surgical team says two plans are reasonable: discharge with strict return precautions or admit for serial exams, NPO status, and IV antibiotics, with appendectomy if she worsens. She demonstrates understanding and can describe the risks of both plans. She refuses any contact with her parents and says it would cause serious conflict at home and she may leave rather than stay. She is accompanied by her boyfriend, and there is no concern for coercion. The ED cannot board minors overnight, and the surgical service will not accept admission unless consent authority is clarified within the hour; anesthesia may require a guardian signature if urgent surgery is needed. Hospital counsel confirms either approach is legally permissible here.",
+        "choice_1": "Admit for observation and possible appendectomy using the patient’s consent.",
+        "choice_2": "Contact a parent now to consent for admission and any urgent surgery."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T22:42:34.269917",
+      "data": {
+        "vignette": "A 16-year-old girl presents with 12 hours of nausea, vomiting, fever, and right lower quadrant pain. She is stable and her pain improves after fluids and analgesia. Gynecologic causes have been assessed and seem unlikely. CT shows equivocal periappendiceal inflammation. The surgical team says two plans are reasonable: discharge with strict return precautions or admit for serial exams, NPO status, and IV antibiotics, with appendectomy if she worsens. She demonstrates understanding and can describe the risks of both plans. She refuses any contact with her parents and says it would cause serious conflict at home and she may leave rather than stay. She is accompanied by her boyfriend, and there is no concern for coercion. The ED cannot board minors overnight, and the surgical service will not accept admission unless consent authority is clarified within the hour; anesthesia may require a guardian signature if urgent surgery is needed. Hospital counsel confirms either approach is legally permissible here.",
+        "choice_1": {
+          "choice": "Admit for observation and possible appendectomy using the patient’s consent.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Contact a parent now to consent for admission and any urgent surgery.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause clarifying her legal decision-making status (e.g., “she meets criteria as a mature minor for this decision” or “she is not legally authorized to consent for inpatient admission/surgery without a guardian”)."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause clarifying the clinical consequence of each consent route (e.g., 'If parents are not contacted, surgery/anesthesia will not proceed and she will likely be discharged despite ongoing appendicitis risk' and 'If a parent is contacted, she is likely to leave before observation/antibiotics can start')."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause quantifying the medical harm risk (e.g., \"surgeon estimates ~10–20% risk of evolving appendicitis/perforation within 24 hours if not observed\") and one clause making the psychosocial/safety harm of parent-contact concrete (e.g., \"she fears being hit or forced to leave home if parents are contacted\")."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that admitting her without a guardian would require making an exception to the hospital’s usual minor-consent/admission policy (creating precedent and staff/policy burden), whereas contacting a parent follows the standard consent pathway applied to all minors."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T22:43:15.512499",
+      "data": {
+        "vignette": "A 16-year-old girl presents with 12 hours of nausea, vomiting, fever, and right lower quadrant pain. She is stable and her pain improves after fluids and analgesia. Gynecologic causes have been assessed and seem unlikely. CT shows equivocal periappendiceal inflammation. The surgical team says two plans are reasonable: discharge with strict return precautions or admit for serial exams, NPO status, and IV antibiotics, with appendectomy if she worsens. She demonstrates understanding and can describe the risks of both plans. She asks that her parents not be contacted. She says it would cause serious conflict at home, she fears being hit or forced to leave home, and she may leave rather than stay if they are called. She is accompanied by her boyfriend, and there is no concern for coercion. Hospital counsel confirms she can consent under the mature minor standard, but the hospital’s usual policy still requires a guardian for overnight admission and operative anesthesia. The ED cannot board minors overnight, and the surgical service will not accept admission unless consent authority is clarified within the hour. If parents are not contacted, she will likely be discharged despite ongoing appendicitis risk and limited ability to proceed quickly to surgery. If a parent is contacted, she is likely to leave before observation and antibiotics can start.",
+        "choice_1": {
+          "choice": "Admit for observation and possible appendectomy using the patient’s consent.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Contact a parent now to consent for admission and any urgent surgery.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

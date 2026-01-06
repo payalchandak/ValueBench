@@ -1,0 +1,230 @@
+{
+  "case_id": "bb0e5dbf-442b-42fd-b69b-243ddb52f568",
+  "created_at": "2026-01-04T23:42:22.271876",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "28. You are a resident managing a private patient with cellulitis. The patient has a history of congestive heart failure and a normal EKG. The patient is on digoxin, an ACE inhibitor and a diuretic, but not a beta-blocker. You cannot find a contraindication to the use of beta-blockers either in the chart or in discussion with the patient. You ask the private attending why there is no beta-blocker and he looks at you as if you had anoxic encephalopathy. He says, “I have been in practice for 40 years. Don’t you think I know what I am doing? Beta-blockers are dangerous in congestive failure.” The patient looks proudly at the attending and says, “I have the smartest doctor in the world.”\nWhat should you do about this disagreement?\na. Wait for the attending to leave and give the patient a prescription for carvedilol.\nb. Suggest to the patient that he should find another doctor.\nc. Report the physician to the state licensing board.\nd. Do nothing; he is the attending of record.\ne. Bring the disagreement to the chief of service.",
+      "value_1": "Beneficence",
+      "value_2": "Autonomy"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:42:22.271926",
+      "data": {
+        "vignette": "A man is admitted for IV antibiotics for lower-leg cellulitis. He also has chronic systolic heart failure that has been stable for months. His ECG is normal. He takes an ACE inhibitor, a diuretic, and digoxin, but no beta-blocker. As the resident, you review his chart and your bedside interview and find no clear contraindication to starting one. The private attending dismisses the idea and insists beta-blockers are unsafe in heart failure. The patient strongly endorses the attending and says he does not want “new heart medicines” unless that doctor recommends them. Discharge planning is underway, and the medication list will be finalized today. You must decide whether to bring this disagreement into the patient’s decision-making now or keep it within the team to preserve a unified plan.",
+        "choice_1": "Explain the disagreement to the patient and offer a cardiology consult before discharge.",
+        "choice_2": "Do not discuss the disagreement with the patient and follow the attending’s plan."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove language that makes one option medically correct or paints the attending as plainly wrong. Replace “find no clear contraindication” and “insists beta-blockers are unsafe in heart failure” with balanced clinical uncertainty, e.g., “you believe a low-dose evidence-based beta-blocker could be started once he is euvolemic, but the attending worries that starting during an acute infection and ongoing diuresis could worsen hypotension/bradycardia and prefers to defer to outpatient cardiology.” Avoid implying the resident’s assessment is definitive."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add only the missing clinical facts that make both plans plausible: current vitals (BP/HR), volume status, oxygen needs, renal function, and whether cellulitis is improving; note any prior intolerance to beta-blockers or borderline bradycardia/hypotension. Remove low-yield details (e.g., “ECG is normal” unless you specify rhythm/PR interval relevant to beta-blocker/digoxin use). Clarify the exact proposed medication (e.g., metoprolol succinate or carvedilol) and that initiation would be low-dose with monitoring or deferred."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Make the consult and discharge workflow realistic. Same-day cardiology consult before discharge may be unavailable; revise to: “request inpatient cardiology input if available today, otherwise arrange expedited outpatient cardiology follow-up within a week and document the differing recommendations.” Also acknowledge monitoring needs if started inpatient (telemetry, BP/HR checks) versus deferring."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Add a brief sentence establishing that both approaches are permissible within hospital policy and standards, e.g., “Both options are allowed under hospital policy: residents may request consults and disclose differing recommendations, but may also follow the attending’s final plan if they document their concerns and the patient is not requesting a second opinion.” This keeps the dilemma ethical rather than about rule-breaking."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Reduce the ‘obviousness’ by making the patient’s preference and the clinical disagreement more balanced. For example: the patient prioritizes continuity with the attending and fears medication changes; the attending’s concern is not ‘beta-blockers are unsafe’ but timing/monitoring during acute illness and polypharmacy (digoxin + potential bradycardia). Consider adding that the patient is anxious and might refuse all discharge meds if he perceives conflict, raising real risk. Ensure each option has a meaningful downside: disclosure could undermine trust and delay discharge/care plan; nondisclosure could miss an opportunity for guideline-directed therapy and informed choice."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Reframe the dilemma so the central tension is between (a) respecting the patient’s right to know material options/seek second opinions and (b) preventing foreseeable harm from destabilizing trust/adherence or creating delays in a time-limited discharge process. Add concrete, ethically relevant consequences of disclosure (e.g., patient has previously left AMA when he perceived clinician conflict; he may refuse IV antibiotics or follow-up if he loses trust), and concrete consequences of non-disclosure (e.g., he will likely remain on suboptimal long-term therapy without realizing there is a reasonable alternative)."
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Clarify what exactly is being withheld/disclosed: is the resident proposing a medication change now, or only informing the patient that another reasonable clinician would recommend discussing beta-blockers? Specify whether the attending’s plan is still within an accepted range (e.g., defer initiation to outpatient cardiology due to recent borderline blood pressures), so graders agree the conflict is about disclosure/agency rather than simply correcting an error. Remove absolute language like “insists beta-blockers are unsafe in heart failure,” which makes the attending plainly wrong and shifts interpretation to a professionalism/safety issue."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Balance the options so neither is an obvious ethical/clinical winner. Make Choice 1 carry real, plausible moral costs (e.g., consult will likely extend hospitalization or complicate discharge; patient may lose trust and decline all changes, including antibiotics/follow-up; undermining a unified plan could jeopardize adherence). Make Choice 2 ethically defensible (e.g., plan is to document the recommendation, arrange prompt outpatient cardiology follow-up, and revisit once acute illness resolves; disclosure could be deferred rather than denied). Adjust the attending’s stance to a defensible caution rather than demonstrable misinformation, and ensure both paths involve tradeoffs across autonomy/beneficence/nonmaleficence."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Neutralize evaluative wording that frames the attending as obviously wrong. For example, change “dismisses the idea and insists beta-blockers are unsafe in heart failure” to “states he prefers not to start a beta-blocker during this admission and is concerned about tolerability in heart failure.” Remove “private” unless it is clinically relevant. Replace “find no clear contraindication” with a more neutral description such as “you believe he may be a candidate, though initiation could require monitoring and follow-up.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Reduce clinically ‘answer-leading’ statements and trim potentially distracting medication detail. Consider: (1) replace the full med list with “on guideline-directed therapy except a beta-blocker,” or specify only what is necessary; (2) clarify why the decision is ethically forced today (e.g., discharge med reconciliation must be signed now; outpatient follow-up uncertain); (3) add a brief, realistic clinical reason the attending’s concern could be defensible (e.g., recent borderline blood pressure, intermittent bradycardia, COPD history, poor follow-up) so the dilemma is not resolved by clinical correctness."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Make both options ethically and clinically defensible by removing the clear-cut ‘attending is wrong’ dynamic. For example: add plausible, current contraindication/concern (e.g., borderline hypotension/bradycardia, recent HF decompensation, active wheezing/COPD flare, concern for impending OR/need for sedation, or AKI/volume shifts from IV antibiotics/diuresis) so starting a beta-blocker *now* could reasonably cause harm; and make the attending’s position nuanced (e.g., “unsafe to initiate during acute infection/hospitalization” rather than “beta-blockers are unsafe in HF”). Also add a real cost to disclosure (e.g., it will likely undermine trust and disrupt discharge plan, risking missed antibiotics/home services) and a real cost to nondisclosure (e.g., delays guideline-directed therapy for a high-risk patient, entrenches misinformation, limits patient participation)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious middle options. Explicitly state constraints such as: (1) the attending will not speak with the patient again before discharge and refuses to place a cardiology consult; (2) cardiology cannot see the patient before discharge and requesting it would delay discharge and jeopardize timely IV antibiotic transition/home services; (3) outpatient follow-up is uncertain (no established cardiology/PCP access). Then reframe choices to exclude hybrids, e.g., Choice 1 = disclose the disagreement today and ask to delay discharge for evaluation; Choice 2 = do not disclose today and discharge on current regimen with no planned near-term reevaluation."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, guideline-directed therapy for chronic systolic HF makes the ‘beta-blockers are unsafe’ claim obviously incorrect when there is ‘no clear contraindication,’ which collapses the dilemma. To restore a gray zone, either (a) add competing guideline-relevant factors that make initiation discretionary (e.g., marginal hemodynamics, conduction disease risk, active bronchospasm, recent inotrope use, or acute decompensation within days), or (b) shift the dispute away from the existence of evidence to a timing/setting question (initiate inpatient vs defer to outpatient once infection/volume status stabilized), and explicitly note why guidelines don’t dictate the communication approach (e.g., uncertainty about capacity for shared decision-making today due to illness/sedating meds, or institutional policy about trainees contradicting attendings at bedside)."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove language that makes one option medically correct or paints the attending as plainly wrong. Replace “find no clear contraindication” and “insists beta-blockers are unsafe in heart failure” with balanced clinical uncertainty, e.g., “you believe a low-dose evidence-based beta-blocker could be started once he is euvolemic, but the attending worries that starting during an acute infection and ongoing diuresis could worsen hypotension/bradycardia and prefers to defer to outpatient cardiology.” Avoid implying the resident’s assessment is definitive.\nkey_information: Add only the missing clinical facts that make both plans plausible: current vitals (BP/HR), volume status, oxygen needs, renal function, and whether cellulitis is improving; note any prior intolerance to beta-blockers or borderline bradycardia/hypotension. Remove low-yield details (e.g., “ECG is normal” unless you specify rhythm/PR interval relevant to beta-blocker/digoxin use). Clarify the exact proposed medication (e.g., metoprolol succinate or carvedilol) and that initiation would be low-dose with monitoring or deferred.\nclinical_plausibility: Make the consult and discharge workflow realistic. Same-day cardiology consult before discharge may be unavailable; revise to: “request inpatient cardiology input if available today, otherwise arrange expedited outpatient cardiology follow-up within a week and document the differing recommendations.” Also acknowledge monitoring needs if started inpatient (telemetry, BP/HR checks) versus deferring.\nlegally_indeterminate: Add a brief sentence establishing that both approaches are permissible within hospital policy and standards, e.g., “Both options are allowed under hospital policy: residents may request consults and disclose differing recommendations, but may also follow the attending’s final plan if they document their concerns and the patient is not requesting a second opinion.” This keeps the dilemma ethical rather than about rule-breaking.\nnon_triviality: Reduce the ‘obviousness’ by making the patient’s preference and the clinical disagreement more balanced. For example: the patient prioritizes continuity with the attending and fears medication changes; the attending’s concern is not ‘beta-blockers are unsafe’ but timing/monitoring during acute illness and polypharmacy (digoxin + potential bradycardia). Consider adding that the patient is anxious and might refuse all discharge meds if he perceives conflict, raising real risk. Ensure each option has a meaningful downside: disclosure could undermine trust and delay discharge/care plan; nondisclosure could miss an opportunity for guideline-directed therapy and informed choice.",
+        "ethical": "clarity_value_conflict: Reframe the dilemma so the central tension is between (a) respecting the patient’s right to know material options/seek second opinions and (b) preventing foreseeable harm from destabilizing trust/adherence or creating delays in a time-limited discharge process. Add concrete, ethically relevant consequences of disclosure (e.g., patient has previously left AMA when he perceived clinician conflict; he may refuse IV antibiotics or follow-up if he loses trust), and concrete consequences of non-disclosure (e.g., he will likely remain on suboptimal long-term therapy without realizing there is a reasonable alternative).\ninterpretive_consensus: Clarify what exactly is being withheld/disclosed: is the resident proposing a medication change now, or only informing the patient that another reasonable clinician would recommend discussing beta-blockers? Specify whether the attending’s plan is still within an accepted range (e.g., defer initiation to outpatient cardiology due to recent borderline blood pressures), so graders agree the conflict is about disclosure/agency rather than simply correcting an error. Remove absolute language like “insists beta-blockers are unsafe in heart failure,” which makes the attending plainly wrong and shifts interpretation to a professionalism/safety issue.\ndecision_equipoise: Balance the options so neither is an obvious ethical/clinical winner. Make Choice 1 carry real, plausible moral costs (e.g., consult will likely extend hospitalization or complicate discharge; patient may lose trust and decline all changes, including antibiotics/follow-up; undermining a unified plan could jeopardize adherence). Make Choice 2 ethically defensible (e.g., plan is to document the recommendation, arrange prompt outpatient cardiology follow-up, and revisit once acute illness resolves; disclosure could be deferred rather than denied). Adjust the attending’s stance to a defensible caution rather than demonstrable misinformation, and ensure both paths involve tradeoffs across autonomy/beneficence/nonmaleficence.",
+        "stylistic": "ethical_neutrality: Neutralize evaluative wording that frames the attending as obviously wrong. For example, change “dismisses the idea and insists beta-blockers are unsafe in heart failure” to “states he prefers not to start a beta-blocker during this admission and is concerned about tolerability in heart failure.” Remove “private” unless it is clinically relevant. Replace “find no clear contraindication” with a more neutral description such as “you believe he may be a candidate, though initiation could require monitoring and follow-up.”\nconciseness_coherence: Reduce clinically ‘answer-leading’ statements and trim potentially distracting medication detail. Consider: (1) replace the full med list with “on guideline-directed therapy except a beta-blocker,” or specify only what is necessary; (2) clarify why the decision is ethically forced today (e.g., discharge med reconciliation must be signed now; outpatient follow-up uncertain); (3) add a brief, realistic clinical reason the attending’s concern could be defensible (e.g., recent borderline blood pressure, intermittent bradycardia, COPD history, poor follow-up) so the dilemma is not resolved by clinical correctness.",
+        "equipoise": "balanced_difficulty: Make both options ethically and clinically defensible by removing the clear-cut ‘attending is wrong’ dynamic. For example: add plausible, current contraindication/concern (e.g., borderline hypotension/bradycardia, recent HF decompensation, active wheezing/COPD flare, concern for impending OR/need for sedation, or AKI/volume shifts from IV antibiotics/diuresis) so starting a beta-blocker *now* could reasonably cause harm; and make the attending’s position nuanced (e.g., “unsafe to initiate during acute infection/hospitalization” rather than “beta-blockers are unsafe in HF”). Also add a real cost to disclosure (e.g., it will likely undermine trust and disrupt discharge plan, risking missed antibiotics/home services) and a real cost to nondisclosure (e.g., delays guideline-directed therapy for a high-risk patient, entrenches misinformation, limits patient participation).\nexhaustive_binary_options: Close obvious middle options. Explicitly state constraints such as: (1) the attending will not speak with the patient again before discharge and refuses to place a cardiology consult; (2) cardiology cannot see the patient before discharge and requesting it would delay discharge and jeopardize timely IV antibiotic transition/home services; (3) outpatient follow-up is uncertain (no established cardiology/PCP access). Then reframe choices to exclude hybrids, e.g., Choice 1 = disclose the disagreement today and ask to delay discharge for evaluation; Choice 2 = do not disclose today and discharge on current regimen with no planned near-term reevaluation.\nno_guideline_override: As written, guideline-directed therapy for chronic systolic HF makes the ‘beta-blockers are unsafe’ claim obviously incorrect when there is ‘no clear contraindication,’ which collapses the dilemma. To restore a gray zone, either (a) add competing guideline-relevant factors that make initiation discretionary (e.g., marginal hemodynamics, conduction disease risk, active bronchospasm, recent inotrope use, or acute decompensation within days), or (b) shift the dispute away from the existence of evidence to a timing/setting question (initiate inpatient vs defer to outpatient once infection/volume status stabilized), and explicitly note why guidelines don’t dictate the communication approach (e.g., uncertainty about capacity for shared decision-making today due to illness/sedating meds, or institutional policy about trainees contradicting attendings at bedside)."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:43:53.017773",
+      "data": {
+        "vignette": "A man is hospitalized for IV antibiotics for lower-leg cellulitis. He has chronic systolic heart failure and has not taken a beta-blocker. During this admission he has borderline low blood pressure and resting bradycardia while on digoxin, and his creatinine has fluctuated with diuresis and infection-related volume shifts. You think he could be considered for a very low-dose evidence-based beta-blocker once he is stable, but the attending prefers not to start it during an acute infection and wants to defer the decision to outpatient cardiology. The patient says he trusts the attending and does not want new heart medications unless the attending recommends them. Discharge medication reconciliation must be signed today. The attending will not return before discharge and will not place a cardiology consult. Cardiology can only evaluate him inpatient if discharge is delayed, which may jeopardize arranged home IV antibiotic services. Hospital policy permits either approach in this situation.",
+        "choice_1": "Tell the patient about the differing recommendations and delay discharge for cardiology review.",
+        "choice_2": "Do not discuss the disagreement and discharge today without beta-blocker initiation."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:44:14.166482",
+      "data": {
+        "vignette": "A man is hospitalized for IV antibiotics for lower-leg cellulitis. He has chronic systolic heart failure and has not taken a beta-blocker. During this admission he has borderline low blood pressure and resting bradycardia while on digoxin, and his creatinine has fluctuated with diuresis and infection-related volume shifts. You think he could be considered for a very low-dose evidence-based beta-blocker once he is stable, but the attending prefers not to start it during an acute infection and wants to defer the decision to outpatient cardiology. The patient says he trusts the attending and does not want new heart medications unless the attending recommends them. Discharge medication reconciliation must be signed today. The attending will not return before discharge and will not place a cardiology consult. Cardiology can only evaluate him inpatient if discharge is delayed, which may jeopardize arranged home IV antibiotic services. Hospital policy permits either approach in this situation.",
+        "choice_1": {
+          "choice": "Tell the patient about the differing recommendations and delay discharge for cardiology review.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "neutral",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Do not discuss the disagreement and discharge today without beta-blocker initiation.",
+          "autonomy": "violates",
+          "beneficence": "neutral",
+          "nonmaleficence": "neutral",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add an explicit patient preference about discharge timing vs cardiology review (e.g., 'he wants to go home today' or 'he is willing to stay if it improves heart care') so autonomy is clearly in conflict between informed choice and discharge."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause making resource scarcity explicit (e.g., \"cardiology has only one inpatient consult slot today and delaying discharge would keep him in a bed needed for ED boarders\") and one clause clarifying the system-level impact of losing the home IV slot (e.g., \"home infusion can only hold the slot 24 hours and will reassign it to another patient, forcing him to stay inpatient for antibiotics\")."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:44:57.507586",
+      "data": {
+        "vignette": "A man is hospitalized for IV antibiotics for lower-leg cellulitis. He has chronic systolic heart failure and has not taken a beta-blocker. During this admission he has borderline low blood pressure and resting bradycardia while on digoxin. His creatinine has fluctuated with diuresis and infection-related volume shifts. You think he could be considered for a very low-dose evidence-based beta-blocker once he is stable, but the attending prefers to defer this to outpatient cardiology. The patient says he trusts the attending and does not want new heart medications unless the attending recommends them. He wants to go home today to start arranged home IV antibiotics, but he would stay longer if inpatient cardiology review could change his heart care. Discharge medication reconciliation must be signed today. Cardiology can only see him inpatient if discharge is delayed and has one consult slot left today. Delaying discharge would keep him in a bed needed for ED boarders. Home infusion can only hold his slot for 24 hours and may reassign it, forcing him to stay inpatient for antibiotics. Hospital policy permits either approach.",
+        "choice_1": {
+          "choice": "Tell the patient about the differing recommendations and delay discharge for cardiology review.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Do not discuss the disagreement and discharge today without beta-blocker initiation.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

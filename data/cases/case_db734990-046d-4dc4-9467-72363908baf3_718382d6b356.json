@@ -1,0 +1,236 @@
+{
+  "case_id": "db734990-046d-4dc4-9467-72363908baf3",
+  "created_at": "2026-01-05T00:17:24.452122",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "95. A medical resident on call is asked to see a 72-year-old woman who\nhas a headache. The medical record indica.tes that she was admitted\n5 days ago after a fall that caused a hip fracture requiring surgical\ncorrection. The patient developed postoperative chest pain and was\ntransferred to the medical service for further care. She is stabilized\nand receiving morphine for her pain but frequently calls nurses to\nsay that she is uncomfortable. According to the nurse, the patient\ndeveloped an intermittent headache earlier in the day that recurred\nan hour ago after her daughter called to say she would be unable to\nvisit today. When she sees the resident, the patient snaps, \"You look\nso young. I hope you know what you're doing.\" The resident asks a\nfew questions about her headache, but she gives very little\ninformation. When the resident attempts to perform a basic physical\nexamination, the patient yells, \"Don't touch me. I'm going to\ncomplain to the hospital administrators about you because you have\nno idea how to properly deal with a patient.\"\nWhich of the following is the most appropriate response?\na. \"As you may know, this is a teaching hospital; I can assure you that I am well\ntrained and can consult an attending physician if necessary.\"\nb. \"I am sorry you are unhappy with your care; you are free to file a complaint as\ndescribed in the patient bill of rights.\"\nc. \"I see that you're upset; I imagine that you might be disappointed that your\ndaughter was unable to visit.\"\nd. \"I see that you're upset; would you prefer to be seen by my supervising\nattending physician?\"\ne. \"May I ask what is upsetting you so that I can help you as best I can?\"",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:17:24.452175",
+      "data": {
+        "vignette": "A 72-year-old woman is hospitalized after surgical repair of a hip fracture from a fall. She recently had postoperative chest pain that is now stabilized. She is receiving opioid analgesia and has been intermittently irritable with staff. This evening she reports a new, worsening headache and nausea. She is oriented to place and date but refuses further questions and yells when you attempt a neurologic exam. She says, “Do not touch me,” and refuses head CT and blood tests. She will allow pain medication. Her daughter, listed as emergency contact, cannot be reached tonight, and there is no advance directive on file. The team worries about an intracranial bleed or another serious complication that could become harder to treat if evaluation is delayed. Hospital policy supports either honoring a capable patient’s refusal or treating without consent if she is judged unable to decide in an urgent situation.",
+        "choice_1": "Accept her refusal and provide symptomatic treatment, reassessing capacity and consent later.",
+        "choice_2": "Determine she lacks capacity and proceed with urgent imaging and evaluation using restraints if needed."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Soften language that makes urgent imaging seem medically mandatory. Replace “The team worries about an intracranial bleed or another serious complication that could become harder to treat if evaluation is delayed” with wording that preserves concern but emphasizes uncertainty and competing risks, e.g., “Her symptoms could reflect a serious intracranial process, medication side effects, or delirium; some causes are time-sensitive, but forced evaluation also carries risks.” Add concrete downsides of Choice 2 (restraints/sedation worsening delirium, aspiration, injury, loss of trust) and of Choice 1 (missed time-sensitive diagnosis) without implying either is clearly superior."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add a small amount of missing clinically decision-relevant context and remove/clarify potentially distracting elements. Specify whether she had any head strike with the fall and whether she is on anticoagulation/antiplatelets (e.g., postoperative VTE prophylaxis), because this materially affects the stakes of delaying CT. Clarify whether she has fluctuating attention or other features of delirium beyond “irritable,” as this is central to capacity. Consider removing “postoperative chest pain that is now stabilized” unless it affects the decision (e.g., current antithrombotic therapy, hemodynamic instability, or inability to tolerate transport to CT)."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Replace the vague “Hospital policy supports either…” with a brief jurisdiction-neutral legal grounding statement: e.g., “Under local law/policy, a capable patient’s refusal must be honored; if she is found to lack decision-making capacity and delay would risk serious harm, clinicians may provide necessary emergency evaluation/treatment without surrogate consent using the least restrictive measures.” This makes both options clearly legally defensible."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Increase the ethical difficulty so neither option looks like the obvious ‘right’ medical answer. Add details that make Choice 1 defensible (e.g., she is hemodynamically stable, no focal deficits on limited observation, symptoms could plausibly be opioid-related/migraine, and forcing evaluation would likely require restraints/sedation with high risk of worsening delirium and physical harm). Also add details that make Choice 2 defensible but costly (e.g., concern for intracranial bleed given possible head strike/anticoagulation; limited window to intervene; inability to reach surrogate tonight; proceeding would require least-restrictive restraint/sedation and may cause significant psychological/physical harm and damage therapeutic relationship). Ensure the narrative does not frame delayed evaluation as clearly negligent."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the ethical tension independent of hospital policy/capacity labels by (a) giving concrete evidence that she may understand/appreciate risks and is making a values-based refusal (e.g., repeats back concern for brain bleed, says she would rather accept risk than be restrained/sedated), while (b) also giving concrete evidence she may be delirious or impaired (e.g., fluctuating attention, cannot explain consequences consistently). Add explicit, unavoidable harms on both sides: for proceeding—need restraints/sedation with real risks (respiratory depression with opioids, worsening delirium, hip repair dislocation, cardiac stress); for waiting—risk of missing a treatable intracranial bleed."
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce ambiguity about what each option morally represents by specifying what capacity assessment has already shown (e.g., brief assessment suggests fluctuating attention and inability to explain consequences; another clinician thinks she is capable but refusing touch). Clarify that the key dispute is whether to override a possibly-capable refusal to avoid catastrophic but uncertain harm, rather than a simple ‘incapacity = treat’ rule. Remove or de-emphasize the line about policy ‘supports either’ and instead describe competing professional judgments."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Balance the options so neither reads as the obvious ‘correct’ medical answer. Currently the narrative strongly signals ‘intracranial bleed’ and frames delay as clearly dangerous, making Choice 2 dominant. To restore equipoise: (1) present plausible alternative explanations (migraine, medication side effect, hypertensive headache) and note she is hemodynamically stable with no focal deficits observed yet; (2) increase the ethical/clinical costs of forced evaluation (sedation/restraints likely, high risk of respiratory compromise given opioids and recent chest pain; may precipitate delirium or loss of trust); (3) for Choice 1, add a concrete near-term reassessment plan and intermediate steps that respect refusal (optimize analgesia/antiemetic, quieter setting, different clinician, brief capacity re-check) while acknowledging the potential irreversible harm if bleeding is present."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove loaded descriptors (e.g., “yells,” “irritable”) or rephrase neutrally: “declines further questioning and will not permit a neurologic exam.” Avoid framing one option as more appropriate by saying “another serious complication” without parallel harms of forcing care; add the potential harms of sedation/restraints and loss of trust in similarly neutral language."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify capacity facts and urgency. Specify what makes capacity assessment difficult (e.g., cannot demonstrate understanding/appreciation) without implying conclusion. Remove extraneous details (postop chest pain unless it impacts differential or capacity). Clarify the forcing timeline (e.g., CT recommended tonight due to concern for acute intracranial hemorrhage) and what symptomatic treatment entails (analgesic/antiemetic only)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": false,
+          "suggested_changes": "Avoid the term “restraints” and any suggestion of physical force; rephrase Choice 2 and vignette to clinically acceptable language such as “use the least restrictive measures, including sedation if necessary, per policy.” Keep the focus on emergency evaluation under implied consent standards."
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Shorten and keep action-only. Revise to ~10–15 words each, remove extra clauses. Example: Choice 1: “Honor refusal; provide analgesia/antiemetics and readdress consent with repeat capacity check.” Choice 2: “Treat as lacking capacity; obtain urgent head CT/labs using least restrictive measures.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Make the patient’s decision-making capacity and the degree of urgency genuinely ambiguous so neither option is clearly safer/“more correct.” For example: (1) add mixed signals on capacity (she can state a consistent reason for refusal, paraphrase risks/benefits, but is intermittently confused/hallucinatory or has waxing/waning attention from opioids/hypoxia), and (2) temper the clinical framing so delay is plausibly acceptable (e.g., symptoms are concerning but vitals and neuro screen from observation are stable, no focal deficits observed, and CT availability is limited to a single overnight slot). Also remove wording that strongly telegraphs impending catastrophe (“could become harder to treat if delayed”) or balance it with harms of forced care (e.g., high delirium risk, recent cardiac ischemia so restraints/sedation carry serious risk)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close the obvious third-option loopholes by explicitly ruling out intermediate steps. As written, realistic alternatives include: structured bedside capacity assessment with de-escalation, offering a limited non-touch exam/observation, short-acting anxiolysis/analgesia to permit voluntary CT, involving an on-call surrogate/ethics consult, or waiting a defined short interval to reach the daughter. To fix: specify that (a) the patient refuses any discussion beyond ‘no,’ (b) she will not allow any monitoring or observation needed to safely wait, (c) de-escalation attempts failed, (d) daughter cannot be reached despite specific steps, and (e) CT slot will be lost overnight and next availability is meaningfully later—making “wait/try again” not a viable third path."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Adjust the policy/guideline context so the dilemma is not already decided by standard capacity/emergency-consent doctrine. Right now, widely accepted practice is: if she has capacity, refusal stands; if she lacks capacity and there is imminent risk, emergency evaluation can proceed—so the ‘either’ framing is misleading. To fix, explicitly state why capacity and ‘emergency’ status are contested (e.g., psychiatry not available overnight; mixed opinions among team about whether her refusal is reasoned vs delirious; symptoms could represent serious bleed but also medication side effect; no rapid surrogate access). Rephrase the policy line to reflect discretion in borderline cases rather than implying two equally sanctioned blanket choices."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Soften language that makes urgent imaging seem medically mandatory. Replace “The team worries about an intracranial bleed or another serious complication that could become harder to treat if evaluation is delayed” with wording that preserves concern but emphasizes uncertainty and competing risks, e.g., “Her symptoms could reflect a serious intracranial process, medication side effects, or delirium; some causes are time-sensitive, but forced evaluation also carries risks.” Add concrete downsides of Choice 2 (restraints/sedation worsening delirium, aspiration, injury, loss of trust) and of Choice 1 (missed time-sensitive diagnosis) without implying either is clearly superior.\nkey_information: Add a small amount of missing clinically decision-relevant context and remove/clarify potentially distracting elements. Specify whether she had any head strike with the fall and whether she is on anticoagulation/antiplatelets (e.g., postoperative VTE prophylaxis), because this materially affects the stakes of delaying CT. Clarify whether she has fluctuating attention or other features of delirium beyond “irritable,” as this is central to capacity. Consider removing “postoperative chest pain that is now stabilized” unless it affects the decision (e.g., current antithrombotic therapy, hemodynamic instability, or inability to tolerate transport to CT).\nlegally_indeterminate: Replace the vague “Hospital policy supports either…” with a brief jurisdiction-neutral legal grounding statement: e.g., “Under local law/policy, a capable patient’s refusal must be honored; if she is found to lack decision-making capacity and delay would risk serious harm, clinicians may provide necessary emergency evaluation/treatment without surrogate consent using the least restrictive measures.” This makes both options clearly legally defensible.\nnon_triviality: Increase the ethical difficulty so neither option looks like the obvious ‘right’ medical answer. Add details that make Choice 1 defensible (e.g., she is hemodynamically stable, no focal deficits on limited observation, symptoms could plausibly be opioid-related/migraine, and forcing evaluation would likely require restraints/sedation with high risk of worsening delirium and physical harm). Also add details that make Choice 2 defensible but costly (e.g., concern for intracranial bleed given possible head strike/anticoagulation; limited window to intervene; inability to reach surrogate tonight; proceeding would require least-restrictive restraint/sedation and may cause significant psychological/physical harm and damage therapeutic relationship). Ensure the narrative does not frame delayed evaluation as clearly negligent.",
+        "ethical": "clarity_value_conflict: Make the ethical tension independent of hospital policy/capacity labels by (a) giving concrete evidence that she may understand/appreciate risks and is making a values-based refusal (e.g., repeats back concern for brain bleed, says she would rather accept risk than be restrained/sedated), while (b) also giving concrete evidence she may be delirious or impaired (e.g., fluctuating attention, cannot explain consequences consistently). Add explicit, unavoidable harms on both sides: for proceeding—need restraints/sedation with real risks (respiratory depression with opioids, worsening delirium, hip repair dislocation, cardiac stress); for waiting—risk of missing a treatable intracranial bleed.\ninterpretive_consensus: Reduce ambiguity about what each option morally represents by specifying what capacity assessment has already shown (e.g., brief assessment suggests fluctuating attention and inability to explain consequences; another clinician thinks she is capable but refusing touch). Clarify that the key dispute is whether to override a possibly-capable refusal to avoid catastrophic but uncertain harm, rather than a simple ‘incapacity = treat’ rule. Remove or de-emphasize the line about policy ‘supports either’ and instead describe competing professional judgments.\ndecision_equipoise: Balance the options so neither reads as the obvious ‘correct’ medical answer. Currently the narrative strongly signals ‘intracranial bleed’ and frames delay as clearly dangerous, making Choice 2 dominant. To restore equipoise: (1) present plausible alternative explanations (migraine, medication side effect, hypertensive headache) and note she is hemodynamically stable with no focal deficits observed yet; (2) increase the ethical/clinical costs of forced evaluation (sedation/restraints likely, high risk of respiratory compromise given opioids and recent chest pain; may precipitate delirium or loss of trust); (3) for Choice 1, add a concrete near-term reassessment plan and intermediate steps that respect refusal (optimize analgesia/antiemetic, quieter setting, different clinician, brief capacity re-check) while acknowledging the potential irreversible harm if bleeding is present.",
+        "stylistic": "ethical_neutrality: Remove loaded descriptors (e.g., “yells,” “irritable”) or rephrase neutrally: “declines further questioning and will not permit a neurologic exam.” Avoid framing one option as more appropriate by saying “another serious complication” without parallel harms of forcing care; add the potential harms of sedation/restraints and loss of trust in similarly neutral language.\nconciseness_coherence: Tighten and clarify capacity facts and urgency. Specify what makes capacity assessment difficult (e.g., cannot demonstrate understanding/appreciation) without implying conclusion. Remove extraneous details (postop chest pain unless it impacts differential or capacity). Clarify the forcing timeline (e.g., CT recommended tonight due to concern for acute intracranial hemorrhage) and what symptomatic treatment entails (analgesic/antiemetic only).\nsafety_compliance: Avoid the term “restraints” and any suggestion of physical force; rephrase Choice 2 and vignette to clinically acceptable language such as “use the least restrictive measures, including sedation if necessary, per policy.” Keep the focus on emergency evaluation under implied consent standards.\nchoice_brevity: Shorten and keep action-only. Revise to ~10–15 words each, remove extra clauses. Example: Choice 1: “Honor refusal; provide analgesia/antiemetics and readdress consent with repeat capacity check.” Choice 2: “Treat as lacking capacity; obtain urgent head CT/labs using least restrictive measures.”",
+        "equipoise": "balanced_difficulty: Make the patient’s decision-making capacity and the degree of urgency genuinely ambiguous so neither option is clearly safer/“more correct.” For example: (1) add mixed signals on capacity (she can state a consistent reason for refusal, paraphrase risks/benefits, but is intermittently confused/hallucinatory or has waxing/waning attention from opioids/hypoxia), and (2) temper the clinical framing so delay is plausibly acceptable (e.g., symptoms are concerning but vitals and neuro screen from observation are stable, no focal deficits observed, and CT availability is limited to a single overnight slot). Also remove wording that strongly telegraphs impending catastrophe (“could become harder to treat if delayed”) or balance it with harms of forced care (e.g., high delirium risk, recent cardiac ischemia so restraints/sedation carry serious risk).\nexhaustive_binary_options: Close the obvious third-option loopholes by explicitly ruling out intermediate steps. As written, realistic alternatives include: structured bedside capacity assessment with de-escalation, offering a limited non-touch exam/observation, short-acting anxiolysis/analgesia to permit voluntary CT, involving an on-call surrogate/ethics consult, or waiting a defined short interval to reach the daughter. To fix: specify that (a) the patient refuses any discussion beyond ‘no,’ (b) she will not allow any monitoring or observation needed to safely wait, (c) de-escalation attempts failed, (d) daughter cannot be reached despite specific steps, and (e) CT slot will be lost overnight and next availability is meaningfully later—making “wait/try again” not a viable third path.\nno_guideline_override: Adjust the policy/guideline context so the dilemma is not already decided by standard capacity/emergency-consent doctrine. Right now, widely accepted practice is: if she has capacity, refusal stands; if she lacks capacity and there is imminent risk, emergency evaluation can proceed—so the ‘either’ framing is misleading. To fix, explicitly state why capacity and ‘emergency’ status are contested (e.g., psychiatry not available overnight; mixed opinions among team about whether her refusal is reasoned vs delirious; symptoms could represent serious bleed but also medication side effect; no rapid surrogate access). Rephrase the policy line to reflect discretion in borderline cases rather than implying two equally sanctioned blanket choices."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:19:27.065648",
+      "data": {
+        "vignette": "A 72-year-old woman is on the orthopedic floor after hip fracture repair from a fall with possible head strike. She is receiving opioid analgesia and prophylactic enoxaparin. This evening she reports a new severe headache with nausea. Her vital signs are stable. From the doorway she moves all extremities and speaks clearly, but she will not allow a neurologic exam, repeat vital checks, or bedside monitoring. She says, “Do not touch me,” and refuses CT and blood tests. When asked why, she consistently says she will not be “held down or put to sleep,” and she can repeat back that a brain bleed is a concern. At other moments she loses attention, answers inconsistently, and nurses report brief visual misperceptions. De-escalation, a quieter room, and a different clinician have not changed her refusal. Her daughter cannot be reached despite repeated calls, and psychiatry is not available overnight. CT has one overnight slot; the next is tomorrow afternoon. Local law and hospital policy permit honoring a capable refusal or proceeding under implied consent in a borderline emergency using the least restrictive measures.",
+        "choice_1": "Honor her refusal and continue symptom control with reassessment in the morning.",
+        "choice_2": "Proceed with urgent head CT and labs under implied consent using least restrictive measures."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:19:38.069008",
+      "data": {
+        "vignette": "A 72-year-old woman is on the orthopedic floor after hip fracture repair from a fall with possible head strike. She is receiving opioid analgesia and prophylactic enoxaparin. This evening she reports a new severe headache with nausea. Her vital signs are stable. From the doorway she moves all extremities and speaks clearly, but she will not allow a neurologic exam, repeat vital checks, or bedside monitoring. She says, “Do not touch me,” and refuses CT and blood tests. When asked why, she consistently says she will not be “held down or put to sleep,” and she can repeat back that a brain bleed is a concern. At other moments she loses attention, answers inconsistently, and nurses report brief visual misperceptions. De-escalation, a quieter room, and a different clinician have not changed her refusal. Her daughter cannot be reached despite repeated calls, and psychiatry is not available overnight. CT has one overnight slot; the next is tomorrow afternoon. Local law and hospital policy permit honoring a capable refusal or proceeding under implied consent in a borderline emergency using the least restrictive measures.",
+        "choice_1": {
+          "choice": "Honor her refusal and continue symptom control with reassessment in the morning.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Proceed with urgent head CT and labs under implied consent using least restrictive measures.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating the team’s bedside capacity determination (e.g., 'she is judged to have capacity despite irritability' OR 'she is judged to lack capacity due to fluctuating attention/delirium'), so it’s clear whether honoring refusal truly respects autonomy and whether implied consent truly overrides a valid autonomous choice."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that an immediate CT could enable time-sensitive interventions (e.g., neurosurgical consult/reversal of anticoagulation) and that waiting until tomorrow could lead to preventable neurologic injury or death."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that, given enoxaparin/possible head strike, delayed imaging could allow an intracranial bleed to worsen rapidly (e.g., herniation/death); add a clause that proceeding now may require physical restraint and/or sedation with risk of injury/aspiration/delirium."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:20:35.435684",
+      "data": {
+        "vignette": "A 72-year-old woman is on the orthopedic floor after hip fracture repair from a fall with possible head strike. She is receiving opioid analgesia and prophylactic enoxaparin. This evening she reports a new severe headache with nausea. Her vital signs are stable. From the doorway she moves all extremities and speaks clearly, but she will not allow a neurologic exam, repeat vital checks, or bedside monitoring. She refuses CT and blood tests. She says she will not be restrained or sedated, and she can repeat back that an intracranial bleed is a concern. At other moments she loses attention, answers inconsistently, and nurses report brief visual misperceptions. On bedside assessment, the team cannot confirm decision-making capacity because of fluctuating attention and perception. CT has one overnight slot; the next is tomorrow afternoon. An immediate CT could enable time-sensitive anticoagulation reversal and neurosurgical evaluation. Waiting could allow a bleed to expand, causing preventable neurologic injury or death. Proceeding now may require physical restraint and/or sedation, which risks injury, aspiration, and worsening delirium. Local law and hospital policy permit honoring a capable refusal or proceeding under implied consent in a borderline emergency using the least restrictive measures.",
+        "choice_1": {
+          "choice": "Honor her refusal and continue symptom control with reassessment in the morning.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Proceed with urgent head CT and labs under implied consent using least restrictive measures.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

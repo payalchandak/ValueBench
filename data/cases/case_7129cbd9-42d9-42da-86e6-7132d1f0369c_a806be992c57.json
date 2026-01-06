@@ -1,0 +1,230 @@
+{
+  "case_id": "7129cbd9-42d9-42da-86e6-7132d1f0369c",
+  "created_at": "2026-01-04T23:28:33.146785",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "The case of Mr C\nMr C, a 68-year-old patient suffering from paranoid schizophrenia, developed gangrene in a foot during his confinement in a secure hospital. He was removed to a general hospital, where the consultant surgeon diagnosed that he was likely to die imminently if the leg was not amputated below the knee. The prognosis was that he had a 15% chance of survival without amputation. Mr C refused to consider amputation. The hospital authorities considered whether the operation could be performed without Mr C’s consent and made arrangements for a solicitor to see him concerning his competence to give a reasoned decision. In the meantime, treatment with antibiotics and conservative surgery averted the immediate threat of imminent death, but the hospital refused to give an understanding to the solicitor that in recognition of his repeated refusals it would not amputate in any future circumstances. There was a possibility that Mr C would develop gangrene again. An application was made on Mr C’s behalf to the court for an injunction restraining the hospital from carrying out an amputation without his express written consent. On behalf of the hospital it was contended that Mr C’s capacity to give a definitive decision had been impaired by his mental illness and that he had failed to appreciate the risk of death if the operation was not performed. (Re C (Adult: Refusal of Treatment) [1994] 1 All ER 819.)\nNow consider the following additional facts. Which, if any, is relevant?\n* Mr C had emigrated from Jamaica in 1956, with his passage paid by the woman with whom he had lived since 1949. He stabbed her after she left him in 1961.\n* Since that time Mr C had been confined either in prison or in a secure hospital.\n* For the past six years he had been accommodated in an open ward and was described as having ‘mellowed’, having become more sociable and even-tempered.\n* Mr C was very adept with finances; he had saved all of his earnings during his 30 years’ time in the secure hospital.\n* However, when his solicitor asked him to whom he intended to leave his savings, he replied ‘I’ll leave it for myself, for when I come back’.\n* Mr C’s delusions included the belief that he was a world-famous vascular surgeon who had never lost a patient.\n* Mr C also believed that his doctors were torturers.\n* Mr C’s refusal of amputation reflected his religious convictions, although it was not part of a formal creed.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:28:33.146841",
+      "data": {
+        "vignette": "A 68-year-old man with long-standing paranoid schizophrenia is transferred from a secure hospital with recurrent wet gangrene of the right foot. He is febrile and the leg is becoming increasingly tender and discolored despite broad-spectrum antibiotics and debridement. The vascular team believes survival is unlikely without a below-knee amputation, but amputation would permanently end his chance of walking independently. He refuses repeatedly. He says the doctors are torturers and insists he is a famous vascular surgeon who “never loses a patient.” He also describes a personal religious conviction that his body must remain intact. Psychiatry finds he can repeat information about the operation and consequences, but his fixed delusions may be driving the refusal. His condition is worsening over hours, and he may soon require sedation and ICU support. Hospital counsel confirms that either honoring a competent refusal or treating under an incapacity standard is legally permissible here.",
+        "choice_1": "Proceed with below-knee amputation under incapacity best-interests authorization",
+        "choice_2": "Honor refusal and continue limb-sparing antibiotics with comfort-focused care"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften language that makes amputation the objectively medically correct option. Replace “survival is unlikely without a below-knee amputation” with a qualitative, non-deterministic statement (e.g., “the team believes amputation offers the best chance to control the infection, but even with surgery there remains a substantial risk of ongoing sepsis and death”). Avoid implying limb-sparing care is merely ‘comfort’ by default; describe it as an active alternative plan with recognized risks (e.g., “continued antibiotics/wound care with the understanding infection may progress”)."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make both choices mutually exclusive and written as concrete, implementable orders. For Choice 1 specify the immediate steps (e.g., “treat as lacking decision-making capacity for this decision; document capacity rationale; proceed with urgent below-knee amputation under emergency/incapacity pathway”). For Choice 2 remove the blended plan (“limb-sparing antibiotics with comfort-focused care”) and specify the ceiling of care (e.g., “do not amputate; continue antibiotics and debridement only; no escalation to ICU/vasopressors/intubation if he deteriorates” OR alternatively “do not amputate; continue full medical management including ICU if needed,” but pick one)."
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add essential decision-shaping facts and delete nonessential setting details. Add: whether he has an appointed surrogate/guardian, any advance directive, and whether there is time to seek a second psychiatric opinion/ethics consult before sedation. Clarify his capacity findings using the standard elements (understanding, appreciation, reasoning, ability to express a choice) rather than “can repeat information.” If “secure hospital” is not relevant to consent authority or available surrogate, remove it. Clarify expected functional outcome with/without prosthesis (e.g., likelihood of independent ambulation after BKA vs with limb salvage attempts) in qualitative terms without declaring one option superior."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Reduce the asymmetry that makes amputation feel mandatory. Balance the clinical and ethical costs by adding that: (a) even with amputation his prognosis is uncertain (e.g., frailty, poor vascular supply, high operative risk, risk of non-healing stump), and/or (b) limb-sparing management is not futile in the very short term (e.g., there is a reasonable chance of temporizing infection with further debridement/antibiotics while reassessing capacity). Strengthen the reasons his refusal might be capacitous (e.g., long-standing, stable religious belief or a consistent prior stated preference about bodily integrity), while keeping delusional content present enough to create real doubt. This makes both pathways defensible and ethically costly."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce capacity-signaling language that makes one option seem clearly mandated. For example, replace “his fixed delusions may be driving the refusal” with more equivocal capacity findings (e.g., he understands and can weigh some reasons but his suspiciousness intermittently overwhelms reasoning), and add that different clinicians disagree about whether this crosses the threshold for incapacity. Remove the line about hospital counsel and legality, which can steer graders toward a procedural/legal reading rather than an ethical one."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Neutralize the medical asymmetry that makes amputation look obviously ‘correct.’ Replace “survival is unlikely without a below-knee amputation” with qualitatively balanced wording such as “the team believes amputation offers the best chance to control infection, but limb-sparing treatment could still succeed, and amputation carries substantial perioperative risk and a high chance of prolonged ICU course/complications.” Also give Choice 2 a clinically serious, non-negligent posture (e.g., ‘honor refusal; continue intensive antibiotics/debridement as tolerated and transition to symptom-focused care if he deteriorates’) so it is not framed as simply letting him die."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Reduce language that makes amputation appear medically obligatory. For example, change “survival is unlikely without a below-knee amputation” to “the vascular team advises amputation offers the best chance of source control, but perioperative risk is substantial and outcome remains uncertain.” Add a sentence outlining serious downsides of amputation (e.g., high operative risk given sepsis/vascular disease, prolonged ICU course, uncertain functional recovery) so both options feel ethically defensible."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and remove or streamline nonessential statements. Example edits: (1) Replace “Hospital counsel confirms that either honoring a competent refusal or treating under an incapacity standard is legally permissible here” with “Local policy allows emergency treatment if he lacks decision-making capacity.” (2) Combine infection trajectory sentences into one. (3) Clarify the specific capacity concern in one line (understanding vs appreciation vs reasoning) instead of repeating ‘fixed delusions’ and quotes."
+        },
+        "deidentification_novelty": {
+          "outcome": false,
+          "suggested_changes": "This closely resembles a well-known capacity/amputation schizophrenia case. Alter multiple surface features while keeping age and diagnosis: change the site (e.g., left forefoot/ankle), etiology (e.g., diabetic foot osteomyelitis progressing to necrotizing soft-tissue infection), and setting (general hospital rather than “secure hospital”). Modify the delusional content (remove ‘famous vascular surgeon’), and avoid phrasing that echoes classic teaching cases. Add a distinct complicating factor (e.g., limited collateral history, no surrogate, prior advance statement about major surgery) to make the case less recognizable."
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Shorten and keep each option to a single neutral action without embedded legal/process terms. Example: Choice 1: “Perform below-knee amputation, treating him as lacking decision-making capacity.” Choice 2: “Do not amputate; continue antibiotics and provide comfort-focused supportive care.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce the one-sided clinical framing that makes amputation the obviously “right” medical choice. Edits:\n- Change “survival is unlikely without a below-knee amputation” to a more equivocal statement (e.g., “amputation may improve chances of survival, but conservative management could still succeed, and the infection trajectory is uncertain”).\n- Add ethically weighty downsides to Choice 1 beyond loss of independent walking (e.g., high perioperative mortality risk, high likelihood of prolonged ICU course, or poor expected functional recovery even with amputation).\n- Strengthen the non-amputation pathway so it isn’t de facto ‘choose death’: rephrase Choice 2 away from “comfort-focused care” unless the intent is explicitly palliative; instead describe a realistic limb-sparing plan with meaningful chance of stabilization (e.g., repeat debridement/limited amputation, targeted antibiotics, close monitoring), while acknowledging its risks.\n- Make the refusal plausibly value-based rather than dominated by psychosis: clarify that his religious belief about bodily integrity predates current illness and is consistently held, so clinicians can’t easily dismiss it as delusional."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "As written, multiple realistic middle options exist (urgent ethics/court review, time-limited trial of antibiotics while capacity is re-assessed, enhanced consent attempts, involvement of surrogate/advance directives, or a more limited ‘guillotine’/partial amputation). To force a true binary, add constraints such as:\n- Explicitly state there is no available surrogate/guardian, no advance directive, and no time to obtain an emergency court order or ethics committee input before he loses capacity.\n- Specify that vascular surgery agrees only two clinically viable options remain tonight: immediate below-knee amputation vs no amputation (no partial/limited amputation feasible due to proximal spread/poor tissue viability).\n- State that delaying for further evaluation would itself be equivalent to Choice 2 because deterioration is expected before reassessment can occur."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Capacity/refusal is usually governed by clear standards: if he has decisional capacity, his refusal must be honored; if he lacks capacity, treatment in best interests is standard. Your vignette implies both are acceptable without establishing why capacity remains genuinely indeterminate. Fix by:\n- Make the capacity finding explicitly borderline using the standard abilities (especially ‘appreciation’ and ‘reasoning’): e.g., psychiatry notes he can articulate risks/benefits and acknowledges he might die, but his delusional identity claims intermittently intrude; another consultant disagrees and deems him incapable.\n- Remove or qualify “Hospital counsel confirms… either… is legally permissible” (this reads like a blanket override). Replace with: “Counsel notes the law turns on the capacity determination, which is contestable in this case, and emergent court review is not feasible in the available time.”\n- Add a brief reason why existing institutional policy/guidance doesn’t settle it (e.g., conflicting consultant opinions; fluctuating mental status; long-standing religious refusal that could be competent despite psychosis)."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften language that makes amputation the objectively medically correct option. Replace “survival is unlikely without a below-knee amputation” with a qualitative, non-deterministic statement (e.g., “the team believes amputation offers the best chance to control the infection, but even with surgery there remains a substantial risk of ongoing sepsis and death”). Avoid implying limb-sparing care is merely ‘comfort’ by default; describe it as an active alternative plan with recognized risks (e.g., “continued antibiotics/wound care with the understanding infection may progress”).\ndistinctness_actionability: Make both choices mutually exclusive and written as concrete, implementable orders. For Choice 1 specify the immediate steps (e.g., “treat as lacking decision-making capacity for this decision; document capacity rationale; proceed with urgent below-knee amputation under emergency/incapacity pathway”). For Choice 2 remove the blended plan (“limb-sparing antibiotics with comfort-focused care”) and specify the ceiling of care (e.g., “do not amputate; continue antibiotics and debridement only; no escalation to ICU/vasopressors/intubation if he deteriorates” OR alternatively “do not amputate; continue full medical management including ICU if needed,” but pick one).\nkey_information: Add essential decision-shaping facts and delete nonessential setting details. Add: whether he has an appointed surrogate/guardian, any advance directive, and whether there is time to seek a second psychiatric opinion/ethics consult before sedation. Clarify his capacity findings using the standard elements (understanding, appreciation, reasoning, ability to express a choice) rather than “can repeat information.” If “secure hospital” is not relevant to consent authority or available surrogate, remove it. Clarify expected functional outcome with/without prosthesis (e.g., likelihood of independent ambulation after BKA vs with limb salvage attempts) in qualitative terms without declaring one option superior.\nnon_triviality: Reduce the asymmetry that makes amputation feel mandatory. Balance the clinical and ethical costs by adding that: (a) even with amputation his prognosis is uncertain (e.g., frailty, poor vascular supply, high operative risk, risk of non-healing stump), and/or (b) limb-sparing management is not futile in the very short term (e.g., there is a reasonable chance of temporizing infection with further debridement/antibiotics while reassessing capacity). Strengthen the reasons his refusal might be capacitous (e.g., long-standing, stable religious belief or a consistent prior stated preference about bodily integrity), while keeping delusional content present enough to create real doubt. This makes both pathways defensible and ethically costly.",
+        "ethical": "interpretive_consensus: Reduce capacity-signaling language that makes one option seem clearly mandated. For example, replace “his fixed delusions may be driving the refusal” with more equivocal capacity findings (e.g., he understands and can weigh some reasons but his suspiciousness intermittently overwhelms reasoning), and add that different clinicians disagree about whether this crosses the threshold for incapacity. Remove the line about hospital counsel and legality, which can steer graders toward a procedural/legal reading rather than an ethical one.\ndecision_equipoise: Neutralize the medical asymmetry that makes amputation look obviously ‘correct.’ Replace “survival is unlikely without a below-knee amputation” with qualitatively balanced wording such as “the team believes amputation offers the best chance to control infection, but limb-sparing treatment could still succeed, and amputation carries substantial perioperative risk and a high chance of prolonged ICU course/complications.” Also give Choice 2 a clinically serious, non-negligent posture (e.g., ‘honor refusal; continue intensive antibiotics/debridement as tolerated and transition to symptom-focused care if he deteriorates’) so it is not framed as simply letting him die.",
+        "stylistic": "ethical_neutrality: Reduce language that makes amputation appear medically obligatory. For example, change “survival is unlikely without a below-knee amputation” to “the vascular team advises amputation offers the best chance of source control, but perioperative risk is substantial and outcome remains uncertain.” Add a sentence outlining serious downsides of amputation (e.g., high operative risk given sepsis/vascular disease, prolonged ICU course, uncertain functional recovery) so both options feel ethically defensible.\nconciseness_coherence: Tighten and remove or streamline nonessential statements. Example edits: (1) Replace “Hospital counsel confirms that either honoring a competent refusal or treating under an incapacity standard is legally permissible here” with “Local policy allows emergency treatment if he lacks decision-making capacity.” (2) Combine infection trajectory sentences into one. (3) Clarify the specific capacity concern in one line (understanding vs appreciation vs reasoning) instead of repeating ‘fixed delusions’ and quotes.\ndeidentification_novelty: This closely resembles a well-known capacity/amputation schizophrenia case. Alter multiple surface features while keeping age and diagnosis: change the site (e.g., left forefoot/ankle), etiology (e.g., diabetic foot osteomyelitis progressing to necrotizing soft-tissue infection), and setting (general hospital rather than “secure hospital”). Modify the delusional content (remove ‘famous vascular surgeon’), and avoid phrasing that echoes classic teaching cases. Add a distinct complicating factor (e.g., limited collateral history, no surrogate, prior advance statement about major surgery) to make the case less recognizable.\nchoice_brevity: Shorten and keep each option to a single neutral action without embedded legal/process terms. Example: Choice 1: “Perform below-knee amputation, treating him as lacking decision-making capacity.” Choice 2: “Do not amputate; continue antibiotics and provide comfort-focused supportive care.”",
+        "equipoise": "balanced_difficulty: Reduce the one-sided clinical framing that makes amputation the obviously “right” medical choice. Edits:\n- Change “survival is unlikely without a below-knee amputation” to a more equivocal statement (e.g., “amputation may improve chances of survival, but conservative management could still succeed, and the infection trajectory is uncertain”).\n- Add ethically weighty downsides to Choice 1 beyond loss of independent walking (e.g., high perioperative mortality risk, high likelihood of prolonged ICU course, or poor expected functional recovery even with amputation).\n- Strengthen the non-amputation pathway so it isn’t de facto ‘choose death’: rephrase Choice 2 away from “comfort-focused care” unless the intent is explicitly palliative; instead describe a realistic limb-sparing plan with meaningful chance of stabilization (e.g., repeat debridement/limited amputation, targeted antibiotics, close monitoring), while acknowledging its risks.\n- Make the refusal plausibly value-based rather than dominated by psychosis: clarify that his religious belief about bodily integrity predates current illness and is consistently held, so clinicians can’t easily dismiss it as delusional.\nexhaustive_binary_options: As written, multiple realistic middle options exist (urgent ethics/court review, time-limited trial of antibiotics while capacity is re-assessed, enhanced consent attempts, involvement of surrogate/advance directives, or a more limited ‘guillotine’/partial amputation). To force a true binary, add constraints such as:\n- Explicitly state there is no available surrogate/guardian, no advance directive, and no time to obtain an emergency court order or ethics committee input before he loses capacity.\n- Specify that vascular surgery agrees only two clinically viable options remain tonight: immediate below-knee amputation vs no amputation (no partial/limited amputation feasible due to proximal spread/poor tissue viability).\n- State that delaying for further evaluation would itself be equivalent to Choice 2 because deterioration is expected before reassessment can occur.\nno_guideline_override: Capacity/refusal is usually governed by clear standards: if he has decisional capacity, his refusal must be honored; if he lacks capacity, treatment in best interests is standard. Your vignette implies both are acceptable without establishing why capacity remains genuinely indeterminate. Fix by:\n- Make the capacity finding explicitly borderline using the standard abilities (especially ‘appreciation’ and ‘reasoning’): e.g., psychiatry notes he can articulate risks/benefits and acknowledges he might die, but his delusional identity claims intermittently intrude; another consultant disagrees and deems him incapable.\n- Remove or qualify “Hospital counsel confirms… either… is legally permissible” (this reads like a blanket override). Replace with: “Counsel notes the law turns on the capacity determination, which is contestable in this case, and emergent court review is not feasible in the available time.”\n- Add a brief reason why existing institutional policy/guidance doesn’t settle it (e.g., conflicting consultant opinions; fluctuating mental status; long-standing religious refusal that could be competent despite psychosis)."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:30:08.066204",
+      "data": {
+        "vignette": "A 68-year-old man with long-standing paranoid schizophrenia and diabetes is admitted with rapidly worsening necrotizing infection and osteomyelitis of the left foot and ankle. He is febrile and hypotensive despite IV antibiotics and repeated bedside debridement. Vascular surgery says a below-knee amputation could control the source, but he is septic with poor circulation, and the stump may not heal. He may need prolonged ventilation and still might die. He refuses amputation. He can describe that he could die without surgery and that he would lose the leg with surgery, but he insists staff are part of a plot to “harvest” him. He also cites a lifelong religious belief that major body parts must remain intact, confirmed in old clinic notes. Psychiatry and the surgical team disagree on whether he can adequately apply the information to himself. He has no surrogate or advance directive, and he will likely need sedation within hours; emergency court review is not feasible. Hospital policy allows emergency treatment only if he lacks decision-making capacity, and that determination is contested here.",
+        "choice_1": "Perform urgent below-knee amputation, treating him as lacking decision-making capacity",
+        "choice_2": "Do not amputate; continue intensive antibiotics and debridement, escalating supportive care as needed"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:30:19.099379",
+      "data": {
+        "vignette": "A 68-year-old man with long-standing paranoid schizophrenia and diabetes is admitted with rapidly worsening necrotizing infection and osteomyelitis of the left foot and ankle. He is febrile and hypotensive despite IV antibiotics and repeated bedside debridement. Vascular surgery says a below-knee amputation could control the source, but he is septic with poor circulation, and the stump may not heal. He may need prolonged ventilation and still might die. He refuses amputation. He can describe that he could die without surgery and that he would lose the leg with surgery, but he insists staff are part of a plot to “harvest” him. He also cites a lifelong religious belief that major body parts must remain intact, confirmed in old clinic notes. Psychiatry and the surgical team disagree on whether he can adequately apply the information to himself. He has no surrogate or advance directive, and he will likely need sedation within hours; emergency court review is not feasible. Hospital policy allows emergency treatment only if he lacks decision-making capacity, and that determination is contested here.",
+        "choice_1": {
+          "choice": "Perform urgent below-knee amputation, treating him as lacking decision-making capacity",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Do not amputate; continue intensive antibiotics and debridement, escalating supportive care as needed",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a brief clause in each option explicitly stating the capacity stance: e.g., Choice 1 “after formally documenting he lacks decision-making capacity due to fixed delusions,” and Choice 2 “treat him as having decision-making capacity and honor his refusal/religious objection.”"
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating the teams’ best estimate of prognosis (e.g., 'Without amputation he is expected to die within 24–48 hours; with amputation there is a meaningful chance of survival despite high risk of nonhealing/ICU course'), to make the beneficence tradeoff explicit."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:31:02.080386",
+      "data": {
+        "vignette": "A 68-year-old man with long-standing paranoid schizophrenia and diabetes is admitted with rapidly worsening necrotizing infection and osteomyelitis of the left foot and ankle. He is febrile and hypotensive despite IV antibiotics and repeated bedside debridement. Vascular surgery says a below-knee amputation could control the source. He is septic with poor circulation, and the stump may not heal. He may need prolonged ventilation and could still die. The ICU team believes he is unlikely to survive without definitive source control in the next day or two. He refuses amputation. He can describe that he could die without surgery and that he would lose the leg with surgery. He insists staff are part of a plot to “harvest” him. He also cites a lifelong religious belief that major body parts must remain intact, confirmed in old clinic notes. Psychiatry and the surgical team disagree on whether fixed delusions prevent him from applying the information to himself. He has no surrogate or advance directive, and he will likely need sedation within hours. Emergency court review is not feasible. Proceeding over objection would require treating him as lacking decision-making capacity, while not amputating would treat him as having capacity and honor his refusal and religious objection.",
+        "choice_1": {
+          "choice": "Perform urgent below-knee amputation, treating him as lacking decision-making capacity",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Do not amputate; continue intensive antibiotics and debridement, escalating supportive care as needed",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

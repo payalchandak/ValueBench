@@ -1,0 +1,236 @@
+{
+  "case_id": "82d191f9-5472-4905-8c3d-de170b9dc85b",
+  "created_at": "2026-01-04T23:29:27.042391",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "75. A 32 year old woman was admitted to the Trauma Intensive Care\nUnit following a motor vehicle accident; she had multiple injuries\nand fractures, with several complications which continued to develop\nover the first couple of weeks. The patient rapidly developed Adult\nRespiratory Distress Syndrome, was on a ventilator, and was\ncontinuously sedated. Shortly after the patient's admission, her\nparents were contacted and remained vigilant at her bedside. The\nparents reported that the patient was one month away from having\nher divorce finalized. The patient's husband was reportedly\nphysically and emotionally abusive to her throughout their five years\nof marriage. The parents had not notified this man of the patient's\nhospitalization, and reported that visit by him would be distressing\nto the patient if she were aware of it. The patient's soon to be ex-\nhusband is her legal next of kin.\nShould the husband be responsible for treatment decisions which the\npatient cannot make?\na. No, because there is an implied consent by law for provision of \"emergency\"\nmedical treatment in such cases.\nb. Yes because there is a divorce proceeding.\nc. Yes because the law sets an explicit time limitation on implied consent based\non an \"emergency.\"\nd. Yes because the father is the surrogate decision-makers for the patient.",
+      "value_1": "Autonomy",
+      "value_2": "Justice"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:29:27.042442",
+      "data": {
+        "vignette": "A 32-year-old woman is in the trauma ICU after a high-speed crash. She has multiple fractures and evolving complications. She now has severe respiratory failure and is intubated, deeply sedated, and unable to communicate. She has no advance directive on file, and no documented health care proxy. Her parents are at the bedside and report she was separating from her husband after years of physical and emotional abuse; the divorce filing is in process but not finalized. The husband has not been contacted and remains her legal next of kin. The team must decide within hours about proceeding with a tracheostomy and feeding tube versus continuing short-term ventilation only, and the plan depends on surrogate consent. Hospital counsel and the ethics consultant confirm that either recognizing the legal spouse or using an alternate surrogate pathway is legally permissible in this situation.",
+        "choice_1": "Contact the husband and recognize him as the surrogate decision-maker.",
+        "choice_2": "Use the parents as surrogate decision-makers and do not involve the husband."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften language implying clinical deterioration makes one pathway clearly necessary (e.g., “evolving complications,” “severe respiratory failure”). Keep only what is needed to justify the time-sensitive airway/nutrition decision: “on mechanical ventilation with anticipated prolonged ventilatory support; tracheostomy and enteral access are being considered.” Avoid implying trach/PEG is the medically preferred plan; state that both trach/PEG now vs continued endotracheal ventilation for a limited period are medically reasonable options with different burdens/risks."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Trim extraneous or potentially biasing detail: replace “years of physical and emotional abuse” with a neutral, relevant statement such as “the patient recently separated and alleged intimate partner violence; parents express concern the spouse may not reflect her wishes.” Remove “high-speed” unless it changes management. Clarify the actual consent-dependent decision: specify what decision must be made now (e.g., “whether to proceed with tracheostomy and gastrostomy in the next 12–24 hours vs continue endotracheal ventilation and reassess”). Add one sentence on prognosis/trajectory qualitatively (e.g., “likely to require weeks of ventilatory support but neurologic prognosis uncertain”) to make stakes clear without numbers."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Make the tracheostomy/feeding-tube timing plausible: in most trauma ICUs, trach is considered after several days of ventilation or when prolonged ventilation is anticipated. Specify she has been intubated for several days and has failed attempts to lighten sedation/extubate, or that airway swelling/trauma makes prolonged intubation risky. If the decision is within hours, explain the trigger (e.g., endotracheal tube complications, repeated self-extubation risk when sedation is lightened, or OR slot/ENT availability within the next day)."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "The statement “either…is legally permissible” is too conclusory without minimal grounding. Add brief, jurisdiction-agnostic legal context that makes both options defensible: e.g., “State law prioritizes spouses but allows bypass if the spouse is reasonably believed to be unwilling/unable to act in the patient’s best interests or there is credible evidence of abuse; alternatively, the hospital can petition for an alternate surrogate/temporary guardian. Counsel confirms both contacting the spouse and initiating the alternate-surrogate process are permissible.” Also clarify that excluding the spouse would occur via a formal process, not merely clinician choice."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 (‘do not involve the husband’) risks being obviously favored given abuse allegations. Increase ethical difficulty by adding countervailing facts: e.g., the patient has had intermittent contact with the husband recently, no restraining order, the allegations are unadjudicated, or there are texts suggesting she wanted him involved in emergencies; or the parents have potential conflicts (estrangement, prior disagreements about care). Also articulate plausible harms of each choice: contacting spouse risks retraumatizing family/undermining patient safety and wishes; excluding spouse risks violating due process/ignoring potentially accurate knowledge of the patient’s preferences and delaying needed procedures."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Make the ethical tension about the patient's likely preferences vs the risk of harm and fairness of surrogate selection, not about what is 'legally permissible.' Remove/soften the sentence that counsel/ethics confirms both are legally permissible and instead state that policy allows either route but requires a documented rationale. Add concrete, competing concerns: (a) credible risk the husband will make decisions inconsistent with her wishes or could use access to further harm/control; (b) risk that excluding the legal spouse could undermine due process, invite bias, and set a precedent of bypassing spouses without clear evidence. Clarify what information exists about her values (e.g., prior statements to parents/friends about not wanting husband involved; any reconciliation attempts) so each option has a defensible basis."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "Stabilize the dilemma by specifying the evidentiary basis and stakes that make either surrogate plausible. Currently small wording changes (e.g., ‘years of abuse’ vs ‘alleged abuse’) or adding that she had recent contact with her husband could flip the ethical valence. Add details that lock in ambiguity: parents provide consistent accounts but no documentation; no restraining order; staff cannot verify claims quickly; husband is reachable and demands to be involved; parents fear retaliation. Also specify that trach/PEG is value-laden (prolonged life support/rehab vs comfort-focused time-limited trial) so surrogate choice meaningfully affects outcomes."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce interpretive drift by explicitly stating what decisions are on the table and why surrogate identity matters (e.g., trach/PEG likely commits to weeks-months ICU/rehab; declining means a time-limited trial with possible transition to comfort measures if no improvement). Clarify whether there is any evidence of incapacity prior to crash, any prior expressed wishes about life support, and whether the abuse history is substantiated or only reported. Without these, graders may disagree whether the case is chiefly about safety/abuse, legalism, or standard surrogate hierarchy."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the options so neither is an obvious ethical winner. As written, the abuse history makes ‘exclude husband’ look clearly preferable. To restore equipoise, add ethically costly downsides to using parents (e.g., parents are estranged from patient, have strong religious objections, may push aggressive care contrary to her prior statements; they may not know her current wishes). Add ethically defensible reasons to involve husband (e.g., despite separation he attended appointments, she recently allowed contact, he may know her preferences about long-term support; excluding him risks violating her legal/relational autonomy and could lead to conflict, delays, or court involvement). Ensure each choice carries both a moral benefit and a moral cost."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Reduce language that implicitly prejudges the spouse. Replace \"after years of physical and emotional abuse\" with a neutral, clinically framed statement such as: \"Parents report a history of intimate partner violence and current separation; no documentation is available in the chart.\" Consider adding that the husband’s perspective is unknown/unverified to avoid one-sided framing."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Remove or specify vague, non-decision-driving phrases (e.g., delete \"evolving complications\" or name the relevant complication). Clarify the decision-forcing context by stating why tracheostomy/PEG is needed now (e.g., prolonged ventilator dependence anticipated and procedure scheduled today/tomorrow) and what the alternative plan is (e.g., extubation trial vs continued endotracheal tube for a defined short interval)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance so neither option feels clearly ethically/clinically preferable. As written, the husband is framed as an abuser and estranged, which strongly biases against involving him. To restore equipoise: (1) soften/complicate the abuse report (e.g., allegations are contested, no restraining order, limited corroboration) OR add reasons the husband might still best represent her wishes (e.g., recent reconciliation attempts, he was present at prior hospitalizations, he knows her treatment preferences). (2) Add ethically significant downsides to bypassing him beyond abstract legality (e.g., risk of later legal challenge invalidating consent, delays in care, institutional precedent of bypassing default surrogates). (3) Add ethically significant downsides to involving him beyond ‘he abused her’ (e.g., he may make decisions inconsistent with her values, risk of psychological harm to patient’s family/team, safety concerns for staff/parents)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Make the binary truly forced by ruling out realistic middle paths. Currently, viable third options exist: (a) contact husband but limit his role pending evaluation; (b) seek emergency guardianship/court-appointed surrogate; (c) proceed under emergency treatment doctrine for a time-limited trach/PEG decision; (d) attempt substituted judgment via friends/medical record without choosing a single surrogate. To fix: explicitly state that (1) emergency exception does not apply because trach/PEG is not emergent and requires consent; (2) court/guardianship cannot be obtained in the required timeframe; (3) there is no other family/friend with standing; and (4) hospital policy requires naming one surrogate now for the consent. Then phrase choices as ‘designate husband now’ vs ‘bypass husband and designate parents now’ with no interim option."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Clarify why established law/policy does not clearly determine the surrogate. Many jurisdictions and hospital policies prioritize the legal spouse unless disqualified (e.g., legal separation, restraining/protective order, documented abuse, incapacity, ‘not reasonably available’). As written, counsel says either is permissible, but you don’t explain the gray zone. To fix: add one concrete ambiguity that makes guidelines/policy non-determinative (e.g., state statute allows bypass if ‘good faith belief’ spouse is inappropriate due to abuse but requires documentation; the only evidence is parents’ report and no court order; or policy allows ‘alternate surrogate pathway’ when there is credible concern of coercion/abuse, but the threshold is subjective). Explicitly note the institution has no clear, binding rule for this fact pattern, leaving clinician discretion."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften language implying clinical deterioration makes one pathway clearly necessary (e.g., “evolving complications,” “severe respiratory failure”). Keep only what is needed to justify the time-sensitive airway/nutrition decision: “on mechanical ventilation with anticipated prolonged ventilatory support; tracheostomy and enteral access are being considered.” Avoid implying trach/PEG is the medically preferred plan; state that both trach/PEG now vs continued endotracheal ventilation for a limited period are medically reasonable options with different burdens/risks.\nkey_information: Trim extraneous or potentially biasing detail: replace “years of physical and emotional abuse” with a neutral, relevant statement such as “the patient recently separated and alleged intimate partner violence; parents express concern the spouse may not reflect her wishes.” Remove “high-speed” unless it changes management. Clarify the actual consent-dependent decision: specify what decision must be made now (e.g., “whether to proceed with tracheostomy and gastrostomy in the next 12–24 hours vs continue endotracheal ventilation and reassess”). Add one sentence on prognosis/trajectory qualitatively (e.g., “likely to require weeks of ventilatory support but neurologic prognosis uncertain”) to make stakes clear without numbers.\nclinical_plausibility: Make the tracheostomy/feeding-tube timing plausible: in most trauma ICUs, trach is considered after several days of ventilation or when prolonged ventilation is anticipated. Specify she has been intubated for several days and has failed attempts to lighten sedation/extubate, or that airway swelling/trauma makes prolonged intubation risky. If the decision is within hours, explain the trigger (e.g., endotracheal tube complications, repeated self-extubation risk when sedation is lightened, or OR slot/ENT availability within the next day).\nlegally_indeterminate: The statement “either…is legally permissible” is too conclusory without minimal grounding. Add brief, jurisdiction-agnostic legal context that makes both options defensible: e.g., “State law prioritizes spouses but allows bypass if the spouse is reasonably believed to be unwilling/unable to act in the patient’s best interests or there is credible evidence of abuse; alternatively, the hospital can petition for an alternate surrogate/temporary guardian. Counsel confirms both contacting the spouse and initiating the alternate-surrogate process are permissible.” Also clarify that excluding the spouse would occur via a formal process, not merely clinician choice.\nnon_triviality: As written, Choice 2 (‘do not involve the husband’) risks being obviously favored given abuse allegations. Increase ethical difficulty by adding countervailing facts: e.g., the patient has had intermittent contact with the husband recently, no restraining order, the allegations are unadjudicated, or there are texts suggesting she wanted him involved in emergencies; or the parents have potential conflicts (estrangement, prior disagreements about care). Also articulate plausible harms of each choice: contacting spouse risks retraumatizing family/undermining patient safety and wishes; excluding spouse risks violating due process/ignoring potentially accurate knowledge of the patient’s preferences and delaying needed procedures.",
+        "ethical": "clarity_value_conflict: Make the ethical tension about the patient's likely preferences vs the risk of harm and fairness of surrogate selection, not about what is 'legally permissible.' Remove/soften the sentence that counsel/ethics confirms both are legally permissible and instead state that policy allows either route but requires a documented rationale. Add concrete, competing concerns: (a) credible risk the husband will make decisions inconsistent with her wishes or could use access to further harm/control; (b) risk that excluding the legal spouse could undermine due process, invite bias, and set a precedent of bypassing spouses without clear evidence. Clarify what information exists about her values (e.g., prior statements to parents/friends about not wanting husband involved; any reconciliation attempts) so each option has a defensible basis.\ndirectional_stability: Stabilize the dilemma by specifying the evidentiary basis and stakes that make either surrogate plausible. Currently small wording changes (e.g., ‘years of abuse’ vs ‘alleged abuse’) or adding that she had recent contact with her husband could flip the ethical valence. Add details that lock in ambiguity: parents provide consistent accounts but no documentation; no restraining order; staff cannot verify claims quickly; husband is reachable and demands to be involved; parents fear retaliation. Also specify that trach/PEG is value-laden (prolonged life support/rehab vs comfort-focused time-limited trial) so surrogate choice meaningfully affects outcomes.\ninterpretive_consensus: Reduce interpretive drift by explicitly stating what decisions are on the table and why surrogate identity matters (e.g., trach/PEG likely commits to weeks-months ICU/rehab; declining means a time-limited trial with possible transition to comfort measures if no improvement). Clarify whether there is any evidence of incapacity prior to crash, any prior expressed wishes about life support, and whether the abuse history is substantiated or only reported. Without these, graders may disagree whether the case is chiefly about safety/abuse, legalism, or standard surrogate hierarchy.\ndecision_equipoise: Rebalance the options so neither is an obvious ethical winner. As written, the abuse history makes ‘exclude husband’ look clearly preferable. To restore equipoise, add ethically costly downsides to using parents (e.g., parents are estranged from patient, have strong religious objections, may push aggressive care contrary to her prior statements; they may not know her current wishes). Add ethically defensible reasons to involve husband (e.g., despite separation he attended appointments, she recently allowed contact, he may know her preferences about long-term support; excluding him risks violating her legal/relational autonomy and could lead to conflict, delays, or court involvement). Ensure each choice carries both a moral benefit and a moral cost.",
+        "stylistic": "ethical_neutrality: Reduce language that implicitly prejudges the spouse. Replace \"after years of physical and emotional abuse\" with a neutral, clinically framed statement such as: \"Parents report a history of intimate partner violence and current separation; no documentation is available in the chart.\" Consider adding that the husband’s perspective is unknown/unverified to avoid one-sided framing.\nconciseness_coherence: Remove or specify vague, non-decision-driving phrases (e.g., delete \"evolving complications\" or name the relevant complication). Clarify the decision-forcing context by stating why tracheostomy/PEG is needed now (e.g., prolonged ventilator dependence anticipated and procedure scheduled today/tomorrow) and what the alternative plan is (e.g., extubation trial vs continued endotracheal tube for a defined short interval).",
+        "equipoise": "balanced_difficulty: Rebalance so neither option feels clearly ethically/clinically preferable. As written, the husband is framed as an abuser and estranged, which strongly biases against involving him. To restore equipoise: (1) soften/complicate the abuse report (e.g., allegations are contested, no restraining order, limited corroboration) OR add reasons the husband might still best represent her wishes (e.g., recent reconciliation attempts, he was present at prior hospitalizations, he knows her treatment preferences). (2) Add ethically significant downsides to bypassing him beyond abstract legality (e.g., risk of later legal challenge invalidating consent, delays in care, institutional precedent of bypassing default surrogates). (3) Add ethically significant downsides to involving him beyond ‘he abused her’ (e.g., he may make decisions inconsistent with her values, risk of psychological harm to patient’s family/team, safety concerns for staff/parents).\nexhaustive_binary_options: Make the binary truly forced by ruling out realistic middle paths. Currently, viable third options exist: (a) contact husband but limit his role pending evaluation; (b) seek emergency guardianship/court-appointed surrogate; (c) proceed under emergency treatment doctrine for a time-limited trach/PEG decision; (d) attempt substituted judgment via friends/medical record without choosing a single surrogate. To fix: explicitly state that (1) emergency exception does not apply because trach/PEG is not emergent and requires consent; (2) court/guardianship cannot be obtained in the required timeframe; (3) there is no other family/friend with standing; and (4) hospital policy requires naming one surrogate now for the consent. Then phrase choices as ‘designate husband now’ vs ‘bypass husband and designate parents now’ with no interim option.\nno_guideline_override: Clarify why established law/policy does not clearly determine the surrogate. Many jurisdictions and hospital policies prioritize the legal spouse unless disqualified (e.g., legal separation, restraining/protective order, documented abuse, incapacity, ‘not reasonably available’). As written, counsel says either is permissible, but you don’t explain the gray zone. To fix: add one concrete ambiguity that makes guidelines/policy non-determinative (e.g., state statute allows bypass if ‘good faith belief’ spouse is inappropriate due to abuse but requires documentation; the only evidence is parents’ report and no court order; or policy allows ‘alternate surrogate pathway’ when there is credible concern of coercion/abuse, but the threshold is subjective). Explicitly note the institution has no clear, binding rule for this fact pattern, leaving clinician discretion."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:30:41.329283",
+      "data": {
+        "vignette": "A 32-year-old woman is in the trauma ICU after a motor vehicle crash. She has been intubated for several days and remains unable to follow commands when sedation is lightened. The team anticipates prolonged ventilatory support. They must decide by tomorrow whether to proceed with tracheostomy and feeding tube placement or continue endotracheal ventilation for a short, time-limited period and reassess; both paths are medically reasonable but reflect different burdens and goals. She has no advance directive and no documented proxy. Her parents report a recent separation and alleged intimate partner violence, but there is no restraining order or corroborating documentation in the chart. The husband is reachable, says they were trying to reconcile, and states he knows her preferences from prior hospitalizations. Hospital policy prioritizes a spouse but allows an alternate-surrogate process when there is credible concern about appropriateness, and counsel confirms either route is legally permissible. A court-appointed guardian cannot be obtained in time, and the ICU requires one surrogate to consent now.",
+        "choice_1": "Contact the husband and designate him as surrogate decision-maker now.",
+        "choice_2": "Initiate the alternate-surrogate process and designate the parents as surrogates now."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:30:58.308062",
+      "data": {
+        "vignette": "A 32-year-old woman is in the trauma ICU after a motor vehicle crash. She has been intubated for several days and remains unable to follow commands when sedation is lightened. The team anticipates prolonged ventilatory support. They must decide by tomorrow whether to proceed with tracheostomy and feeding tube placement or continue endotracheal ventilation for a short, time-limited period and reassess; both paths are medically reasonable but reflect different burdens and goals. She has no advance directive and no documented proxy. Her parents report a recent separation and alleged intimate partner violence, but there is no restraining order or corroborating documentation in the chart. The husband is reachable, says they were trying to reconcile, and states he knows her preferences from prior hospitalizations. Hospital policy prioritizes a spouse but allows an alternate-surrogate process when there is credible concern about appropriateness, and counsel confirms either route is legally permissible. A court-appointed guardian cannot be obtained in time, and the ICU requires one surrogate to consent now.",
+        "choice_1": {
+          "choice": "Contact the husband and designate him as surrogate decision-maker now.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Initiate the alternate-surrogate process and designate the parents as surrogates now.",
+          "autonomy": "violates",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause stating the patient had previously told either her husband or her parents specific wishes about tracheostomy/feeding tube (e.g., ‘she previously told her husband she would not want long-term life support’), so it’s clear which surrogate better reflects her preferences."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause specifying a concrete harm risk tied to the surrogate choice (e.g., 'nursing notes document the husband previously threatened her in the hospital' or 'the husband insists on aggressive procedures despite prior stated refusals'), so the nonmaleficence stakes of choosing husband vs parents are explicit."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause making the justice stake explicit (e.g., “the hospital has had inconsistent surrogate assignments in IPV-suspected cases, raising concerns about equitable, policy-consistent treatment”) and/or specify what makes the IPV concern ‘credible’ enough to trigger the alternate process."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:32:43.523049",
+      "data": {
+        "vignette": "A 32-year-old woman is in the trauma ICU after a motor vehicle crash. She has been intubated for several days. She remains unable to follow commands when sedation is lightened. The team anticipates prolonged ventilatory support. By tomorrow, they must decide whether to proceed with tracheostomy and feeding tube placement or continue endotracheal ventilation for a short, time-limited period and reassess. Both options are medically reasonable but differ in invasiveness and long-term burden. She has no advance directive and no documented proxy. Her husband is reachable and requests to serve as surrogate. He says he knows her preferences from prior hospitalizations. Her parents report a recent separation and alleged intimate partner violence. A prior emergency visit note documents suspected IPV involving the husband. The parents report she previously told them she would want them, not her husband, to make decisions if she lacked capacity. The IPV concern raises safety and coercion risks if the husband controls consent and access. Hospital policy prioritizes a spouse but allows an alternate-surrogate process when there is credible concern about appropriateness. The hospital has applied this process inconsistently in IPV-suspected cases, raising fairness concerns. Counsel confirms either route is legally permissible. A court-appointed guardian cannot be obtained in time, and the ICU requires one surrogate to consent now.",
+        "choice_1": {
+          "choice": "Contact the husband and designate him as surrogate decision-maker now.",
+          "autonomy": "violates",
+          "beneficence": "neutral",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Initiate the alternate-surrogate process and designate the parents as surrogates now.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

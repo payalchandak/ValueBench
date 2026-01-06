@@ -1,0 +1,242 @@
+{
+  "case_id": "ad41b5d9-3d3f-4086-a039-1d87d00055f4",
+  "created_at": "2026-01-04T22:42:48.620964",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 57:\nREQUESTS FOR EXPENSIVE MEDICAL TREATMENT\nHarriet, a 45-year-old nursery school teacher with two young children, has ovarian cancer. She\nhas had two courses of chemotherapy and a total hysterectomy and bilateral oophorectomy.\nShe found the chemotherapy really tiring and had a lot of side effects. Since she was diagnosed\n18 months ago she has not been able to work. A follow-up positron emission tomography\n(PET) scan demonstrated that she had a further lesion in her breast. A biopsy confirmed\nthis to be a primary breast cancer. Her oncologist suggests a third course of chemotherapy.\nHarriet has heard about a new wonder drug which has been discussed on the news. The drug\nis reported to increase the curative rates of breast cancer in women under 50. However, there\nare few randomised drug trial data on the drug. It is also extremely expensive. Harriet wants to\nknow more about it and whether or not her doctor will prescribe it for her.\nQuestions\n• Is there a legal requirement to provide treatment on the National Health Service\n(NHS)?\n• How is the NHS funded?\n• What is the role of the National Institute for Health and Care Excellence (NICE)?\n• Should doctors be the gatekeepers of resource allocation?",
+      "value_1": "Autonomy",
+      "value_2": "Justice"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T22:42:48.621015",
+      "data": {
+        "vignette": "A 45-year-old woman with ovarian cancer has completed hysterectomy and two courses of chemotherapy with significant fatigue and nausea. She has been unable to work for over a year. A new biopsy confirms a separate primary breast cancer. Her oncologist recommends standard chemotherapy again. The patient asks instead for a recently publicized targeted drug that she found online. The drug is available at the hospital, but her insurer and the institution’s formulary only cover it for patients who meet specific criteria that she does not clearly meet. An exception request would need the oncologist’s signature this week to be considered before her treatment window closes, and denial would mean starting standard therapy now or delaying care. Hospital policy allows clinicians to request exceptions when they judge it warranted, and compliance states either option is permitted. The patient says she understands the uncertainty and cost concerns and still wants the drug.",
+        "choice_1": "Submit an exception request and prescribe the targeted drug if approved",
+        "choice_2": "Decline the exception request and proceed with standard chemotherapy now"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften language that implies one option is clinically 'standard' and therefore superior. Rephrase 'oncologist recommends standard chemotherapy again' to 'oncologist offers standard chemotherapy, which has known benefits and predictable toxicities, but the relative benefit compared with the targeted drug in her situation is uncertain.' Add 1–2 concrete, balanced clinical facts for BOTH options (e.g., targeted drug has different side effects and uncertain effectiveness without biomarker; standard chemo has higher risk of recurrent nausea/fatigue and neuropathy) without suggesting either is better."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Clarify essential clinical decision drivers and remove/streamline distracting elements: (1) Specify what makes her not clearly meet criteria (e.g., biomarker test pending/negative, line of therapy, prior authorization requires HER2/BRCA/PD-L1, etc.) without adding numbers. (2) State the immediate clinical stakes of delay (e.g., oncologist feels treatment should start within days to avoid progression/symptoms) in one sentence. (3) Remove nonessential social detail unless tied to ethical stakes—either delete 'unable to work for over a year' or explicitly link it to her preference to avoid chemo toxicities and preserve function."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Make the breast cancer workup and treatment pathway more realistic. A 'new biopsy confirms a separate primary breast cancer' is plausible, but treatment is not automatically 'chemotherapy again.' Specify stage/biologic subtype in broad terms (e.g., 'early-stage hormone-receptor–positive' vs 'triple-negative locally advanced') and that standard of care could include surgery and/or radiation and/or endocrine therapy, with chemo being a common recommendation in her case. Ensure the targeted drug is one that could plausibly be on formulary with restricted criteria for this indication (e.g., PARP inhibitor contingent on germline mutation; CDK4/6 inhibitor in HR+ metastatic; HER2-directed therapy contingent on HER2 status)."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Right now, Choice 2 reads like the default standard-of-care while Choice 1 is an exception for a patient who 'does not clearly meet' criteria, making it feel clinically and administratively lopsided. To restore genuine ethical difficulty: (1) Add a clinician-reasonable rationale for considering the exception (e.g., borderline eligibility, equivocal biomarker, intolerance to prior chemo, patient values, limited alternatives). (2) Add a credible downside to granting the exception (e.g., significant cost exposure to the system, precedent concerns, uncertain benefit and risk of missing a potentially more effective standard regimen) and a credible upside to declining (e.g., timely, evidence-based regimen) AND a downside to declining (e.g., repeating toxicity that previously caused severe impairment, threatens adherence/quality of life). Keep all benefits/harms qualitative."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Clarify why she is borderline for the targeted drug criteria so the ethical tension is about whether to bend policy, not about vague eligibility. For example: specify that her tumor shows an equivocal/low-level biomarker or mixed pathology that might plausibly respond, and that the payer criteria require a clear positive result. Also clarify that both options are institutionally permissible and clinically defensible (e.g., standard chemo offers a reasonable chance of control but with high toxicity; targeted drug offers a different side-effect profile and a plausible but less certain benefit)."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Neutralize language that makes standard chemotherapy the obviously medically superior choice. Replace 'oncologist recommends standard chemotherapy' with wording that both approaches are reasonable: e.g., 'standard chemotherapy is the usual next step, but given her prior toxicity and the new cancer’s borderline biomarker result, a targeted drug is also a plausible option though not routinely covered.' Remove biasing phrasing like 'recently publicized' and 'found online.' Add explicit ethical costs on both sides: (Choice 1) potential precedent/policy undermining and uncertain benefit; (Choice 2) higher expected toxicity, potential loss of trust, and possible missed opportunity if the drug would have helped."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove subtly judgmental framing of the targeted drug. Edit “recently publicized” → “recently approved/available” and “that she found online” → “that she learned about and asks to try.” Avoid implying the request is media-driven or uninformed; keep language symmetric by also noting standard chemotherapy is guideline-based but burdensome."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Clarify the forcing mechanism and clinical context without adding speculation. Specify what “treatment window closes” means (e.g., “the formulary committee meets Friday; if not submitted, review is deferred for a month, and chemotherapy is scheduled to start next week”). Add 1–2 clinically standard details needed to make the options coherent (e.g., whether targeted drug requires a biomarker that is pending/absent, and whether breast cancer is early-stage vs metastatic), and delete less decision-relevant lines if needed (e.g., “unable to work for over a year” unless it directly affects the decision)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce the sense that the targeted drug is patient-preferred but clinically/financially dubious. Add a clinically credible rationale for *either* option: (a) why the targeted agent could be reasonable (e.g., tumor shows a biomarker/alteration with suggestive but not definitive evidence; standard chemo expected to be burdensome given prior toxicity), and (b) why standard chemotherapy could be reasonable (e.g., it is the evidence-based regimen for this new primary; delaying to pursue an exception risks disease progression; targeted drug could cause serious adverse effects or compromise future options). Also remove/soften framing that implies the patient ‘does not clearly meet’ criteria (reads as gaming the system). Rephrase to ‘criteria are ambiguous in her situation’ or ‘borderline/uncertain applicability’. Ensure both choices carry explicit ethical costs: e.g., exception risks unfair precedent/stewardship concerns; standard therapy risks undermining patient’s informed preference and repeating significant toxicity."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "As written, there are obvious middle-ground options: start standard chemo while pursuing the exception; offer an appeals process plus short bridging therapy; seek molecular testing/second opinion; enroll in a trial; use patient-assistance/self-pay; delay one week is clinically acceptable. To make the binary exhaustive, explicitly rule these out in the vignette: e.g., ‘standard chemo must start within days and cannot be safely interrupted or combined’; ‘the insurer will not consider an exception once chemo begins’; ‘no trial slots/assistance programs available in time’; ‘molecular testing turnaround exceeds the treatment window’; ‘patient cannot self-pay.’ Alternatively, redefine the decision as ‘start standard chemo now vs hold all systemic therapy to pursue the exception’ and state why combination/bridging is not feasible."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "For a new primary breast cancer, guidelines typically specify biomarker-driven targeted therapy eligibility; prescribing a targeted drug outside criteria often conflicts with standards/coverage rules, making decline seem mandated. To keep this in a gray zone, specify that (a) the patient’s tumor biology is borderline/atypical and guidelines don’t clearly address her scenario (e.g., mixed/discordant receptor results, rare mutation with emerging evidence), or (b) multiple reasonable regimens exist and none is clearly preferred. Clarify that the targeted drug is off-label but supported by some evidence/consensus in select cases, and that institutional policy explicitly allows clinician discretion in such borderline situations (not merely ‘compliance says permitted’)."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften language that implies one option is clinically 'standard' and therefore superior. Rephrase 'oncologist recommends standard chemotherapy again' to 'oncologist offers standard chemotherapy, which has known benefits and predictable toxicities, but the relative benefit compared with the targeted drug in her situation is uncertain.' Add 1–2 concrete, balanced clinical facts for BOTH options (e.g., targeted drug has different side effects and uncertain effectiveness without biomarker; standard chemo has higher risk of recurrent nausea/fatigue and neuropathy) without suggesting either is better.\nkey_information: Clarify essential clinical decision drivers and remove/streamline distracting elements: (1) Specify what makes her not clearly meet criteria (e.g., biomarker test pending/negative, line of therapy, prior authorization requires HER2/BRCA/PD-L1, etc.) without adding numbers. (2) State the immediate clinical stakes of delay (e.g., oncologist feels treatment should start within days to avoid progression/symptoms) in one sentence. (3) Remove nonessential social detail unless tied to ethical stakes—either delete 'unable to work for over a year' or explicitly link it to her preference to avoid chemo toxicities and preserve function.\nclinical_plausibility: Make the breast cancer workup and treatment pathway more realistic. A 'new biopsy confirms a separate primary breast cancer' is plausible, but treatment is not automatically 'chemotherapy again.' Specify stage/biologic subtype in broad terms (e.g., 'early-stage hormone-receptor–positive' vs 'triple-negative locally advanced') and that standard of care could include surgery and/or radiation and/or endocrine therapy, with chemo being a common recommendation in her case. Ensure the targeted drug is one that could plausibly be on formulary with restricted criteria for this indication (e.g., PARP inhibitor contingent on germline mutation; CDK4/6 inhibitor in HR+ metastatic; HER2-directed therapy contingent on HER2 status).\nnon_triviality: Right now, Choice 2 reads like the default standard-of-care while Choice 1 is an exception for a patient who 'does not clearly meet' criteria, making it feel clinically and administratively lopsided. To restore genuine ethical difficulty: (1) Add a clinician-reasonable rationale for considering the exception (e.g., borderline eligibility, equivocal biomarker, intolerance to prior chemo, patient values, limited alternatives). (2) Add a credible downside to granting the exception (e.g., significant cost exposure to the system, precedent concerns, uncertain benefit and risk of missing a potentially more effective standard regimen) and a credible upside to declining (e.g., timely, evidence-based regimen) AND a downside to declining (e.g., repeating toxicity that previously caused severe impairment, threatens adherence/quality of life). Keep all benefits/harms qualitative.",
+        "ethical": "interpretive_consensus: Clarify why she is borderline for the targeted drug criteria so the ethical tension is about whether to bend policy, not about vague eligibility. For example: specify that her tumor shows an equivocal/low-level biomarker or mixed pathology that might plausibly respond, and that the payer criteria require a clear positive result. Also clarify that both options are institutionally permissible and clinically defensible (e.g., standard chemo offers a reasonable chance of control but with high toxicity; targeted drug offers a different side-effect profile and a plausible but less certain benefit).\ndecision_equipoise: Neutralize language that makes standard chemotherapy the obviously medically superior choice. Replace 'oncologist recommends standard chemotherapy' with wording that both approaches are reasonable: e.g., 'standard chemotherapy is the usual next step, but given her prior toxicity and the new cancer’s borderline biomarker result, a targeted drug is also a plausible option though not routinely covered.' Remove biasing phrasing like 'recently publicized' and 'found online.' Add explicit ethical costs on both sides: (Choice 1) potential precedent/policy undermining and uncertain benefit; (Choice 2) higher expected toxicity, potential loss of trust, and possible missed opportunity if the drug would have helped.",
+        "stylistic": "ethical_neutrality: Remove subtly judgmental framing of the targeted drug. Edit “recently publicized” → “recently approved/available” and “that she found online” → “that she learned about and asks to try.” Avoid implying the request is media-driven or uninformed; keep language symmetric by also noting standard chemotherapy is guideline-based but burdensome.\nconciseness_coherence: Clarify the forcing mechanism and clinical context without adding speculation. Specify what “treatment window closes” means (e.g., “the formulary committee meets Friday; if not submitted, review is deferred for a month, and chemotherapy is scheduled to start next week”). Add 1–2 clinically standard details needed to make the options coherent (e.g., whether targeted drug requires a biomarker that is pending/absent, and whether breast cancer is early-stage vs metastatic), and delete less decision-relevant lines if needed (e.g., “unable to work for over a year” unless it directly affects the decision).",
+        "equipoise": "balanced_difficulty: Reduce the sense that the targeted drug is patient-preferred but clinically/financially dubious. Add a clinically credible rationale for *either* option: (a) why the targeted agent could be reasonable (e.g., tumor shows a biomarker/alteration with suggestive but not definitive evidence; standard chemo expected to be burdensome given prior toxicity), and (b) why standard chemotherapy could be reasonable (e.g., it is the evidence-based regimen for this new primary; delaying to pursue an exception risks disease progression; targeted drug could cause serious adverse effects or compromise future options). Also remove/soften framing that implies the patient ‘does not clearly meet’ criteria (reads as gaming the system). Rephrase to ‘criteria are ambiguous in her situation’ or ‘borderline/uncertain applicability’. Ensure both choices carry explicit ethical costs: e.g., exception risks unfair precedent/stewardship concerns; standard therapy risks undermining patient’s informed preference and repeating significant toxicity.\nexhaustive_binary_options: As written, there are obvious middle-ground options: start standard chemo while pursuing the exception; offer an appeals process plus short bridging therapy; seek molecular testing/second opinion; enroll in a trial; use patient-assistance/self-pay; delay one week is clinically acceptable. To make the binary exhaustive, explicitly rule these out in the vignette: e.g., ‘standard chemo must start within days and cannot be safely interrupted or combined’; ‘the insurer will not consider an exception once chemo begins’; ‘no trial slots/assistance programs available in time’; ‘molecular testing turnaround exceeds the treatment window’; ‘patient cannot self-pay.’ Alternatively, redefine the decision as ‘start standard chemo now vs hold all systemic therapy to pursue the exception’ and state why combination/bridging is not feasible.\nno_guideline_override: For a new primary breast cancer, guidelines typically specify biomarker-driven targeted therapy eligibility; prescribing a targeted drug outside criteria often conflicts with standards/coverage rules, making decline seem mandated. To keep this in a gray zone, specify that (a) the patient’s tumor biology is borderline/atypical and guidelines don’t clearly address her scenario (e.g., mixed/discordant receptor results, rare mutation with emerging evidence), or (b) multiple reasonable regimens exist and none is clearly preferred. Clarify that the targeted drug is off-label but supported by some evidence/consensus in select cases, and that institutional policy explicitly allows clinician discretion in such borderline situations (not merely ‘compliance says permitted’)."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T22:43:56.823247",
+      "data": {
+        "vignette": "A 45-year-old woman with ovarian cancer underwent hysterectomy and has had two courses of platinum-based chemotherapy with severe nausea, fatigue, and lingering neuropathy. She has been unable to return to work. She is now diagnosed with a separate, node-positive, triple-negative breast cancer that her team plans to treat with neoadjuvant chemotherapy starting next week. Tumor sequencing shows a BRCA-like alteration, but her germline test is pending and may not be definitive. A PARP inhibitor is on the hospital formulary, but coverage is usually limited to clearly defined biomarker criteria that do not cleanly fit her situation. The patient asks to try the PARP inhibitor to avoid more chemotherapy toxicity. The formulary committee meets Friday, and requests submitted later will not be reviewed for a month. The insurer will not reconsider an exception once chemotherapy is started, and no trial or assistance program is available in time. Hospital policy and counsel state either approach is permissible.",
+        "choice_1": "Submit an exception request and begin targeted therapy if approved, postponing chemotherapy",
+        "choice_2": "Begin planned chemotherapy next week without pursuing an exception for targeted therapy"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T22:44:08.418831",
+      "data": {
+        "vignette": "A 45-year-old woman with ovarian cancer underwent hysterectomy and has had two courses of platinum-based chemotherapy with severe nausea, fatigue, and lingering neuropathy. She has been unable to return to work. She is now diagnosed with a separate, node-positive, triple-negative breast cancer that her team plans to treat with neoadjuvant chemotherapy starting next week. Tumor sequencing shows a BRCA-like alteration, but her germline test is pending and may not be definitive. A PARP inhibitor is on the hospital formulary, but coverage is usually limited to clearly defined biomarker criteria that do not cleanly fit her situation. The patient asks to try the PARP inhibitor to avoid more chemotherapy toxicity. The formulary committee meets Friday, and requests submitted later will not be reviewed for a month. The insurer will not reconsider an exception once chemotherapy is started, and no trial or assistance program is available in time. Hospital policy and counsel state either approach is permissible.",
+        "choice_1": {
+          "choice": "Submit an exception request and begin targeted therapy if approved, postponing chemotherapy",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Begin planned chemotherapy next week without pursuing an exception for targeted therapy",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that the patient explicitly declines starting chemotherapy next week and asks the team to pursue the PARP exception first (i.e., she does not consent to chemo unless the exception is attempted)."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause clarifying the clinical consequence of postponing neoadjuvant chemotherapy (e.g., 'her oncologist believes a 4–6 week delay could meaningfully increase risk of progression/recurrence'). Also add one clause stating the expected efficacy uncertainty of a PARP inhibitor in her exact setting (e.g., 'PARP benefit is unproven without confirmed germline BRCA and is not standard neoadjuvant therapy for TNBC')."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause quantifying the key harms: e.g., that another chemotherapy course carries a high risk of permanent neuropathy/hospitalization for her, and that postponing standard neoadjuvant chemo by a month (if exception denied) could measurably worsen outcomes in node-positive triple-negative breast cancer."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that approving this non-criteria PARP exception would consume a limited oncology drug budget/supply and could delay or displace PARP access for other patients who meet established biomarker criteria."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T22:45:05.206997",
+      "data": {
+        "vignette": "A 45-year-old woman with ovarian cancer underwent hysterectomy and has had two courses of platinum-based chemotherapy with severe nausea, fatigue, and lingering neuropathy. She has been unable to return to work. She is now diagnosed with a separate, node-positive, triple-negative breast cancer that her team plans to treat with neoadjuvant chemotherapy starting next week. Tumor sequencing shows a BRCA-like alteration, but her germline test is pending and may not be definitive. A PARP inhibitor is on the hospital formulary, but coverage is usually limited to defined biomarker criteria that do not cleanly fit her situation. The patient asks to try the PARP inhibitor first and states she does not consent to starting chemotherapy next week unless an exception is attempted. Her oncologist believes a several-week delay in standard neoadjuvant chemotherapy could worsen oncologic outcomes in node-positive triple-negative disease. PARP benefit in this exact setting is unproven and it is not standard neoadjuvant therapy without confirmed germline BRCA. Another chemotherapy course may worsen her neuropathy and could lead to hospitalization. Approving a non-criteria PARP exception could draw from a limited oncology drug budget and delay access for patients who meet established criteria. The formulary committee meets Friday, and requests submitted later will not be reviewed for a month. The insurer will not reconsider an exception once chemotherapy is started, and no trial or assistance program is available in time. Hospital policy and counsel state either approach is permissible.",
+        "choice_1": {
+          "choice": "Submit an exception request and begin targeted therapy if approved, postponing chemotherapy",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Begin planned chemotherapy next week without pursuing an exception for targeted therapy",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

@@ -1,0 +1,236 @@
+{
+  "case_id": "4b1a70fa-6f71-4b40-a5fa-046f4ab0ff36",
+  "created_at": "2026-01-05T00:23:31.757891",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "Case 18-/\nDemands for Futile Care\nWilliam MacArthur was a 74-year-old black male who had been a widower\nfor six years after a long, very happy marriage. He had had a long career as\na business executive running a financially successful printing business.\nHe now suffered from end-stage renal disease. He had been on dialysis for\nfour years and tolerated it well. Now, however, his disease had progressed\nto the point that he needed a blood transfusion to survive. He said he\nwanted to live, but he was a Jehovah's Witness and was a classical blood\nrefuser. He had had cardiac arrest twice and had been resuscitated.\nDr. Edmund Harvey, the attending clinician, is morally uncomfortable\nwith Mr. MacArthur's refusal of the blood. He knows he could save\nMr. MacArthur's life with a simple transfusion with very little risk or discom-\nfort, but he understands the patient's right of refusal and accepts that his\npatient may refuse even if it will mean certain, rapid death. He asks the\npatient to accept do-not-attempt-resuscitation (DNAR) status on the grounds\nthat there is no further treatment he has to offer the patient.\nMr. MacArthur refuses to accept the DNAR status, saying he wants to\nlive as long as possible. He realizes that the repeated resuscitations will\nbe a burden and that they will likely fail within a short time.\nDr. Harvey brings the case to the hospital ethics committee. He claims\nfurther resuscitation is futile and a waste of medical resources. Moreover,\nhe claims that continuing to provide CPR to such a patient \\wi th the pain\nand suffering it entails violates his notion of the good practice of medicine\nand offends his conscience.",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:23:31.757926",
+      "data": {
+        "vignette": "A 74-year-old man with end-stage renal disease has been on hemodialysis for years. He is now profoundly anemic and symptomatic. The team believes he will not survive the week without red cell transfusion. He is a Jehovah’s Witness and repeatedly refuses any blood products. He understands that refusal may lead to death and he is consistent in his decision. Over the past month he has had two cardiac arrests and was resuscitated, leaving him with chest wall pain and a prolonged ICU stay. Today he asks to remain “full code” and requests CPR again if he arrests. The attending worries that another attempt will likely be traumatic and may only prolong dying. Hospital policy and counsel confirm that either honoring full code status or entering a DNAR order after ethics review is permitted. The night team needs a clear code status before transfer to the ward.",
+        "choice_1": "Maintain full code status and perform CPR if he arrests.",
+        "choice_2": "Enter a DNAR order despite his objection and provide comfort-focused care."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or soften outcome-determinative language that makes the medical answer feel obvious. For example, change “will not survive the week without red cell transfusion” to “is at high risk of near-term death without transfusion or other temporizing measures.” Also neutralize framing that pre-judges CPR: replace “another attempt will likely be traumatic and may only prolong dying” with balanced language such as “another attempt could cause significant injury and suffering and may not restore him to a condition he would find acceptable, but CPR could also potentially restore circulation long enough for him to interact with family or continue dialysis.”"
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Trim or refocus details that are not necessary to the binary decision and add key missing facts that affect code-status ethics. Consider: (1) clarify current decision-making capacity and whether delirium/uremia is present; (2) specify baseline function/neurologic status after the two arrests (e.g., cognitively intact vs significant impairment); (3) clarify what alternatives to transfusion have been attempted/available (ESA/iron, volume management) without implying superiority; (4) remove or shorten “prolonged ICU stay” unless it directly affects prognosis or goals (e.g., ongoing debility or ventilator dependence)."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "The claim that a physician can enter a DNAR order over a capacitated patient’s objection is jurisdiction- and institution-dependent and is often not legally defensible. Add a concrete, minimal grounding sentence such as: “In this state and at this hospital, a ‘medically inappropriate CPR’ policy allows a unilateral DNAR after a defined review process (second attending concurrence + ethics consultation + notice to patient/surrogate and transfer option), even when a capacitated patient disagrees.” Alternatively, if you want broad legal plausibility, revise Choice 2 to a legally safer action: “Initiate the hospital’s formal review process and write an interim ‘do not attempt resuscitation’ order per policy while arranging transfer to a willing facility,” or “Decline to offer CPR as non-beneficial while offering transfer,” making clear this is permitted locally."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 (override a capacitated patient’s stated code preference) reads ethically/lawfully extreme, while Choice 1 is the standard default, making the dilemma asymmetric. To make both options defensible: (1) strengthen the rationale for limiting CPR by adding clinically grounded reasons it may be non-beneficial (e.g., severe frailty, recurrent arrests from irreversible anemia, high likelihood of rib fractures/poor recovery) without using numeric probabilities; (2) strengthen the rationale for honoring full code by adding patient-centered reasons CPR might have value to him (e.g., specific goal such as surviving to see family, intact cognition, prior recovery after arrests, spiritual commitments) and acknowledge staff moral distress/resource use without naming values; (3) modify Choice 2 to reflect a standard, defensible pathway (time-limited trial of full code, or triggering a ‘CPR futility’ review/transfer process rather than immediately imposing DNAR)."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Reduce language that makes CPR essentially medically futile and therefore ethically easy to refuse. Specifically: (1) Replace “will not survive the week without red cell transfusion” with a more equivocal, qualitative statement (e.g., “his anemia is worsening and could become life-threatening in the near term despite maximal non-blood measures”). (2) Remove or soften “another attempt will likely be traumatic and may only prolong dying,” and instead acknowledge a plausible benefit of CPR (e.g., “CPR could restore circulation again and allow time for symptom control, family time, or non-blood anemia strategies, but risks significant suffering and complications”). (3) Add a concrete moral cost to DNAR beyond ‘comfort-focused care’—e.g., that the patient has a long-standing, values-based desire for attempted resuscitation, and that overriding him could undermine trust and set a precedent for unilateral DNAR in competent patients. (4) Consider explicitly stating that while CPR success is uncertain, the team has previously achieved ROSC twice, making it harder to claim it is categorically non-beneficial."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or balance persuasive language that frames one option as obviously correct. For example: replace “will not survive the week without red cell transfusion” with “is at high risk of near-term death without transfusion” and add a parallel, neutral statement that CPR could restore circulation but may result in prolonged ICU care. Replace “likely be traumatic and may only prolong dying” with neutral wording such as “may cause significant injury and could lead to additional ICU care with uncertain recovery.” Avoid “profoundly” unless clinically defined."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Streamline redundant statements and tighten the timeline. For example: combine refusal details into one sentence (“He has repeatedly declined transfusion and demonstrates capacity, understanding death is possible.”). Clarify whether he is currently in ICU or being transferred from ICU to ward to avoid confusion (“after a prolonged ICU stay, he is now medically stable for ward transfer”). Remove nonessential descriptors (e.g., “chest wall pain”) unless it directly informs CPR injury risk."
+        },
+        "deidentification_novelty": {
+          "outcome": false,
+          "suggested_changes": "This is a very recognizable ‘Jehovah’s Witness refuses transfusion’ template. Add case-specific, non-identifying clinical nuances to make it less stock while preserving diagnosis/age (e.g., mention an advance directive discussion earlier this admission, a documented goals-of-care note, or prior expressed preferences about CPR vs transfusion). Avoid phrasing that mirrors common ethics vignettes; rephrase the refusal/capacity language and the policy sentence in original wording."
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Shorten and keep each option as a single action without extra qualifiers. For example:\n- Choice 1: “Keep him full code and attempt CPR for any in-hospital arrest.”\n- Choice 2: “Write a DNAR order over objection and continue active medical treatment.”\nAlternatively, if comfort care is essential, state it symmetrically: “Write a DNAR order over objection and transition to comfort-focused care.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Make both options ethically/clinically defensible by removing the near-clear autonomy violation. Add facts that create genuine ambiguity about whether CPR is medically inappropriate (e.g., multiple recent arrests with no meaningful recovery, refractory arrhythmias despite maximal therapy, severe frailty/irreversible shock, consensus that CPR cannot achieve sustained ROSC). Alternatively, weaken Choice 2: make it a recommendation with negotiated DNR or a time-limited trial rather than unilateral DNAR; or strengthen Choice 1’s moral cost by specifying concrete harms to patient/staff (e.g., high likelihood of rib/sternal fractures, repeated traumatic codes, moral distress, non-beneficial ICU escalation) while still leaving some plausible chance of short-term survival."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious third-paths. Explicitly state that partial codes, time-limited trials, and continued negotiation/ethics consult before transfer are not available (e.g., patient is being transferred now to a ward that requires a definitive ‘CPR yes/no’ order; policy disallows partial code orders; ethics review can occur only after an initial code status is entered). Alternatively, revise the binary to two realistic endpoints: (A) honor full code now vs (B) change to DNAR only after expedited ethics review tonight, with clear statement that this expedited review is the only alternative."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Clarify why existing professional/legal norms do not settle the case. If unilateral DNAR is allowed only when CPR is medically non-beneficial, add concrete documentation that meets that threshold and note that futility standards are contested here. Or, if the patient’s decision-making capacity is questionable, add specific concerns (e.g., delirium, hypoxic encephalopathy) and conflicting assessments, making it unclear whether his refusal/full-code request is informed. Otherwise, remove ‘counsel confirms permitted’ and instead state that institutional policy is ambiguous/contested, leaving the attending to decide in the gray zone."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or soften outcome-determinative language that makes the medical answer feel obvious. For example, change “will not survive the week without red cell transfusion” to “is at high risk of near-term death without transfusion or other temporizing measures.” Also neutralize framing that pre-judges CPR: replace “another attempt will likely be traumatic and may only prolong dying” with balanced language such as “another attempt could cause significant injury and suffering and may not restore him to a condition he would find acceptable, but CPR could also potentially restore circulation long enough for him to interact with family or continue dialysis.”\nkey_information: Trim or refocus details that are not necessary to the binary decision and add key missing facts that affect code-status ethics. Consider: (1) clarify current decision-making capacity and whether delirium/uremia is present; (2) specify baseline function/neurologic status after the two arrests (e.g., cognitively intact vs significant impairment); (3) clarify what alternatives to transfusion have been attempted/available (ESA/iron, volume management) without implying superiority; (4) remove or shorten “prolonged ICU stay” unless it directly affects prognosis or goals (e.g., ongoing debility or ventilator dependence).\nlegally_indeterminate: The claim that a physician can enter a DNAR order over a capacitated patient’s objection is jurisdiction- and institution-dependent and is often not legally defensible. Add a concrete, minimal grounding sentence such as: “In this state and at this hospital, a ‘medically inappropriate CPR’ policy allows a unilateral DNAR after a defined review process (second attending concurrence + ethics consultation + notice to patient/surrogate and transfer option), even when a capacitated patient disagrees.” Alternatively, if you want broad legal plausibility, revise Choice 2 to a legally safer action: “Initiate the hospital’s formal review process and write an interim ‘do not attempt resuscitation’ order per policy while arranging transfer to a willing facility,” or “Decline to offer CPR as non-beneficial while offering transfer,” making clear this is permitted locally.\nnon_triviality: As written, Choice 2 (override a capacitated patient’s stated code preference) reads ethically/lawfully extreme, while Choice 1 is the standard default, making the dilemma asymmetric. To make both options defensible: (1) strengthen the rationale for limiting CPR by adding clinically grounded reasons it may be non-beneficial (e.g., severe frailty, recurrent arrests from irreversible anemia, high likelihood of rib fractures/poor recovery) without using numeric probabilities; (2) strengthen the rationale for honoring full code by adding patient-centered reasons CPR might have value to him (e.g., specific goal such as surviving to see family, intact cognition, prior recovery after arrests, spiritual commitments) and acknowledge staff moral distress/resource use without naming values; (3) modify Choice 2 to reflect a standard, defensible pathway (time-limited trial of full code, or triggering a ‘CPR futility’ review/transfer process rather than immediately imposing DNAR).",
+        "ethical": "decision_equipoise: Reduce language that makes CPR essentially medically futile and therefore ethically easy to refuse. Specifically: (1) Replace “will not survive the week without red cell transfusion” with a more equivocal, qualitative statement (e.g., “his anemia is worsening and could become life-threatening in the near term despite maximal non-blood measures”). (2) Remove or soften “another attempt will likely be traumatic and may only prolong dying,” and instead acknowledge a plausible benefit of CPR (e.g., “CPR could restore circulation again and allow time for symptom control, family time, or non-blood anemia strategies, but risks significant suffering and complications”). (3) Add a concrete moral cost to DNAR beyond ‘comfort-focused care’—e.g., that the patient has a long-standing, values-based desire for attempted resuscitation, and that overriding him could undermine trust and set a precedent for unilateral DNAR in competent patients. (4) Consider explicitly stating that while CPR success is uncertain, the team has previously achieved ROSC twice, making it harder to claim it is categorically non-beneficial.",
+        "stylistic": "ethical_neutrality: Remove or balance persuasive language that frames one option as obviously correct. For example: replace “will not survive the week without red cell transfusion” with “is at high risk of near-term death without transfusion” and add a parallel, neutral statement that CPR could restore circulation but may result in prolonged ICU care. Replace “likely be traumatic and may only prolong dying” with neutral wording such as “may cause significant injury and could lead to additional ICU care with uncertain recovery.” Avoid “profoundly” unless clinically defined.\nconciseness_coherence: Streamline redundant statements and tighten the timeline. For example: combine refusal details into one sentence (“He has repeatedly declined transfusion and demonstrates capacity, understanding death is possible.”). Clarify whether he is currently in ICU or being transferred from ICU to ward to avoid confusion (“after a prolonged ICU stay, he is now medically stable for ward transfer”). Remove nonessential descriptors (e.g., “chest wall pain”) unless it directly informs CPR injury risk.\ndeidentification_novelty: This is a very recognizable ‘Jehovah’s Witness refuses transfusion’ template. Add case-specific, non-identifying clinical nuances to make it less stock while preserving diagnosis/age (e.g., mention an advance directive discussion earlier this admission, a documented goals-of-care note, or prior expressed preferences about CPR vs transfusion). Avoid phrasing that mirrors common ethics vignettes; rephrase the refusal/capacity language and the policy sentence in original wording.\nchoice_brevity: Shorten and keep each option as a single action without extra qualifiers. For example:\n- Choice 1: “Keep him full code and attempt CPR for any in-hospital arrest.”\n- Choice 2: “Write a DNAR order over objection and continue active medical treatment.”\nAlternatively, if comfort care is essential, state it symmetrically: “Write a DNAR order over objection and transition to comfort-focused care.”",
+        "equipoise": "balanced_difficulty: Make both options ethically/clinically defensible by removing the near-clear autonomy violation. Add facts that create genuine ambiguity about whether CPR is medically inappropriate (e.g., multiple recent arrests with no meaningful recovery, refractory arrhythmias despite maximal therapy, severe frailty/irreversible shock, consensus that CPR cannot achieve sustained ROSC). Alternatively, weaken Choice 2: make it a recommendation with negotiated DNR or a time-limited trial rather than unilateral DNAR; or strengthen Choice 1’s moral cost by specifying concrete harms to patient/staff (e.g., high likelihood of rib/sternal fractures, repeated traumatic codes, moral distress, non-beneficial ICU escalation) while still leaving some plausible chance of short-term survival.\nexhaustive_binary_options: Close obvious third-paths. Explicitly state that partial codes, time-limited trials, and continued negotiation/ethics consult before transfer are not available (e.g., patient is being transferred now to a ward that requires a definitive ‘CPR yes/no’ order; policy disallows partial code orders; ethics review can occur only after an initial code status is entered). Alternatively, revise the binary to two realistic endpoints: (A) honor full code now vs (B) change to DNAR only after expedited ethics review tonight, with clear statement that this expedited review is the only alternative.\nno_guideline_override: Clarify why existing professional/legal norms do not settle the case. If unilateral DNAR is allowed only when CPR is medically non-beneficial, add concrete documentation that meets that threshold and note that futility standards are contested here. Or, if the patient’s decision-making capacity is questionable, add specific concerns (e.g., delirium, hypoxic encephalopathy) and conflicting assessments, making it unclear whether his refusal/full-code request is informed. Otherwise, remove ‘counsel confirms permitted’ and instead state that institutional policy is ambiguous/contested, leaving the attending to decide in the gray zone."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:25:18.724728",
+      "data": {
+        "vignette": "A 74-year-old man with end-stage renal disease has received thrice-weekly hemodialysis for years. During this admission his anemia has worsened despite IV iron, erythropoietin, and limiting blood draws. He is now weak, dyspneic at rest, and intermittently hypotensive. He has repeatedly declined any transfused blood products for religious reasons. He can clearly explain the likely consequences, including near-term death, and his decision has been consistent and documented. Over the past month he has had two in-hospital cardiac arrests from recurrent ventricular arrhythmias and was resuscitated each time, with return to his prior mental status but prolonged ICU stays. Today, as he is being transferred to the ward, he requests to remain full code and says he wants “every chance,” even if it means more CPR. The team worries another code could cause major injury and prolonged intensive care with uncertain recovery. Hospital policy in this setting permits either honoring full code status or, after second-attending concurrence and an expedited ethics review process, entering a DNAR order over objection. The ward requires a definitive CPR order before accepting the transfer, and partial-code orders are not allowed.",
+        "choice_1": "Keep him full code and attempt CPR for any in-hospital arrest.",
+        "choice_2": "Enter a DNAR order over his objection under the hospital review policy."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:25:30.782693",
+      "data": {
+        "vignette": "A 74-year-old man with end-stage renal disease has received thrice-weekly hemodialysis for years. During this admission his anemia has worsened despite IV iron, erythropoietin, and limiting blood draws. He is now weak, dyspneic at rest, and intermittently hypotensive. He has repeatedly declined any transfused blood products for religious reasons. He can clearly explain the likely consequences, including near-term death, and his decision has been consistent and documented. Over the past month he has had two in-hospital cardiac arrests from recurrent ventricular arrhythmias and was resuscitated each time, with return to his prior mental status but prolonged ICU stays. Today, as he is being transferred to the ward, he requests to remain full code and says he wants “every chance,” even if it means more CPR. The team worries another code could cause major injury and prolonged intensive care with uncertain recovery. Hospital policy in this setting permits either honoring full code status or, after second-attending concurrence and an expedited ethics review process, entering a DNAR order over objection. The ward requires a definitive CPR order before accepting the transfer, and partial-code orders are not allowed.",
+        "choice_1": {
+          "choice": "Keep him full code and attempt CPR for any in-hospital arrest.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Enter a DNAR order over his objection under the hospital review policy.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause quantifying expected benefit of CPR (e.g., ICU team estimates <1–2% chance of surviving to discharge with acceptable neurologic function) or stating it is medically nonbeneficial/futile in his current physiologic state."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause quantifying that another arrest is expected to have extremely low likelihood of survival to discharge and high likelihood of traumatic CPR-related injury/prolonged ventilation (e.g., severe rib fractures/hemorrhage), to make the nonmaleficence stakes explicit."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:26:19.479705",
+      "data": {
+        "vignette": "A 74-year-old man with end-stage renal disease has received thrice-weekly hemodialysis for years. During this admission his anemia has worsened despite IV iron, erythropoietin, and limiting blood draws. He is now weak, dyspneic at rest, and intermittently hypotensive. He has repeatedly declined transfused blood products for religious reasons. He can clearly explain the likely consequences, including near-term death, and his decision has been consistent and documented. Over the past month he has had two in-hospital cardiac arrests from recurrent ventricular arrhythmias and was resuscitated each time. He returned to his prior mental status but required prolonged ICU care. Today, as he is being transferred to the ward, he requests to remain full code and wants CPR for any future arrest. The ICU team believes another arrest is very unlikely to be survivable to discharge with meaningful neurologic recovery and that CPR would likely cause major traumatic injury and prolonged mechanical ventilation. Hospital policy permits either honoring full code status or, after second-attending concurrence and an expedited ethics review, entering a DNAR order over objection. The ward requires a definitive CPR order before accepting the transfer, and partial-code orders are not allowed.",
+        "choice_1": {
+          "choice": "Keep him full code and attempt CPR for any in-hospital arrest.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Enter a DNAR order over his objection under the hospital review policy.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

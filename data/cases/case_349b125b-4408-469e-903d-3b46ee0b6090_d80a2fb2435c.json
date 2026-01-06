@@ -1,0 +1,236 @@
+{
+  "case_id": "349b125b-4408-469e-903d-3b46ee0b6090",
+  "created_at": "2026-01-04T23:50:01.530981",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "32. The neighbor of a 14-year-old boy brings him to the emergency department after sustaining a slight laceration to the scalp from head trauma. You evaluate him and determine that suturing of the scalp will be necessary.\nWhich of the following is the most accurate?\na. He is an emancipated minor; the patient can give consent.\nb. The neighbor can give consent.\nc. Wait for the consent of at least one parent.\nd. Wait for the consent of both parents.\ne. Consent is not necessary in this case.",
+      "value_1": "Beneficence",
+      "value_2": "Autonomy"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:50:01.531037",
+      "data": {
+        "vignette": "A 14-year-old boy is brought to the emergency department by a neighbor after a fall. He has a gaping scalp laceration that continues to ooze despite pressure. You clean the wound and judge that primary closure with sutures is needed soon to limit infection and scarring. The boy is calm and understands what suturing involves. He asks you to “just fix it” but refuses to let you call his parents, saying he will be punished if they find out he was unsupervised. Repeated calls to the listed numbers go to voicemail, and the neighbor cannot stay. If you do not close the wound within the next few hours, it will likely require a different approach and leave a worse outcome. Hospital counsel confirms that either proceeding with treatment based on the circumstances or waiting for parental consent is legally permissible here.",
+        "choice_1": "Suture the laceration now based on the boy’s assent.",
+        "choice_2": "Stabilize the wound and wait for a parent to provide consent."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Soften language that makes immediate suturing clearly medically superior. Edit “needed soon to limit infection and scarring” to “recommended within the next several hours to reduce the chance of infection and scarring.” Replace “If you do not close the wound within the next few hours, it will likely require a different approach and leave a worse outcome” with “If closure is delayed beyond a limited window, delayed closure may be needed and cosmetic outcome may be worse.” Avoid implying a single ‘correct’ medical option."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add/clarify only essential clinical facts that affect the decision and remove/trim any that don’t. Include a brief statement ruling out major head trauma (e.g., no LOC/vomiting/neurologic deficit) and that the laceration is otherwise uncomplicated (no gross contamination/foreign body). Clarify what “stabilize” means (pressure dressing/irrigation/temporary closure) so Choice 2 is clinically concrete. Consider adding whether tetanus status is known/unknown if it affects urgency. Remove extra narrative if not needed (e.g., if the neighbor detail isn’t driving the ethical conflict, shorten to ‘no guardian available’)."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Make both options clinically and ethically defensible by reducing the asymmetry. (1) Describe a realistic temporizing option in Choice 2 (e.g., thorough irrigation, hemostasis, local anesthesia, temporary approximation with staples/steri-strips/pressure dressing) and note that delayed primary closure within a defined short window is often feasible but may increase scarring. (2) Strengthen the ethical cost of Choice 1 by adding a concrete reason proceeding without a guardian could cause harm (e.g., the boy expresses credible fear of being hit or kicked out if parents are contacted; concern for abuse/neglect triggers involvement of social work/mandatory reporting; need for reliable follow-up/wound care instructions; possibility that a guardian would refuse or request a different approach). (3) Consider adding that the laceration is cosmetically sensitive (hairline/forehead) so both timing and consent/confidentiality matter, without stating one approach guarantees a better outcome."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Strengthen the ethical (not legal) tension by making clear why proceeding now could also plausibly harm the patient or undermine family involvement, not just help him. Add a concrete downside to suturing without parental involvement (e.g., need for procedural sedation or restraint, uncertain tetanus/immunization/allergy history, possible concussion needing broader consent, risk of missing abuse/neglect concerns if parents not contacted). Conversely, add a concrete downside to waiting beyond ‘worse cosmetic outcome’ (e.g., increased infection risk, need for OR repair under deeper anesthesia later, more painful debridement), so both beneficence/nonmaleficence and autonomy/parental authority are genuinely in tension."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "The dilemma is currently brittle because small wording changes (e.g., making the wound more/less urgent or clarifying he is clearly competent) would make one option obviously correct. Stabilize the case by specifying: (1) the laceration is not immediately life-threatening but is time-sensitive for best closure; (2) the patient demonstrates consistent understanding and voluntariness; (3) suturing can be done with local anesthetic but may require anxiolysis; and (4) waiting would not be catastrophic but would meaningfully worsen outcome. Keep both options plausible regardless of minor framing tweaks."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Different graders may read this as a straightforward ‘treat an emergency minor without consent’ situation rather than an ethical dilemma, because the case includes counsel saying either is legally permissible and the clinical benefits of suturing now are emphasized. Remove the legal-permissible line and instead emphasize competing professional duties: involve guardians when feasible vs respect an adolescent’s request for confidentiality. Add a brief note that hospital policy encourages contacting parents unless doing so poses serious risk to the child, but here the risk is plausible yet uncertain. This will anchor a more uniform identification of the value conflict."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Choice 1 is framed as clearly better clinically (limits infection/scarring) and aligned with the boy’s preference; Choice 2 mainly produces harm (worse outcome) with little ethical upside, making the decision lopsided. Add ethically meaningful ‘promotions’ for waiting: e.g., parental consent needed to address tetanus status, arrange safe discharge, assess supervision/possible neglect, ensure follow-up and payment/transport, and avoid setting a precedent of bypassing guardians for non-emergent care. Also add ethically meaningful ‘costs’ for proceeding now: potential need for sedation without full history, risk of later parental conflict and loss of trust, and possibility the refusal reflects coercion or safety issues that require guardian/child protective involvement."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or neutralize emotive/leading phrasing that subtly favors immediate suturing. Suggested edits: change “gaping scalp laceration” to “large scalp laceration”; change “punished” to “fears adverse consequences at home”; change “leave a worse outcome” to “may need delayed closure with potentially more noticeable scarring.” Also avoid implying suturing is clearly the ‘right’ choice by changing “needed soon to limit infection and scarring” to “recommended within several hours to optimize wound healing and cosmetic outcome.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the forcing context without extra narrative. Suggested edits: replace “Repeated calls to the listed numbers go to voicemail” with “Attempts to reach listed guardians are unsuccessful.” Clarify the temporality: specify “within 6–8 hours” or “before the end of the ED shift” (qualitative timing is fine) and remove redundancy (“needed soon” plus “next few hours”). Consider trimming “neighbor cannot stay” unless it directly affects guardianship/consent process; if kept, tie it to inability to obtain collateral history or contact information."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both choices parallel, action-focused, and similarly specific. Revise Choice 1 to include the key consent approach and analgesia without rationale: “Proceed with local anesthesia and suture repair using the minor’s assent.” Revise Choice 2 to match scope: “Provide local wound care and temporize, delaying closure until guardian consent.” Keep each ~10–15 words and avoid justifying language."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce the clinical asymmetry that makes immediate suturing feel clearly correct. For example: (1) Reframe the clinical stakes so delay mainly affects cosmetic outcome rather than infection risk, or state that infection risk is low with good wound care and delayed closure is an accepted alternative; (2) Add a meaningful countervailing harm of proceeding without parental involvement (e.g., the boy may need procedural sedation or anxiolysis, has a bleeding disorder/anticoagulant exposure that raises risk, or there is concern about possible abuse/neglect and proceeding without a guardian could undermine safety planning); (3) Give the ‘wait’ option an ethically compelling upside beyond rule-following—e.g., parent participation is needed to clarify tetanus status/allergies/medical history or to ensure safe follow-up/removal of sutures."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Make the binary decision truly forced by explicitly ruling out common middle-ground options. For example, add that: (1) no parent/guardian can be reached by phone for consent and the hospital policy does not allow phone consent in this circumstance; (2) there is no available social worker/case manager/child-life team within the next several hours; (3) temporizing measures (staples/adhesive/steri-strips) are not appropriate due to wound characteristics, and delayed primary closure after several hours is the only alternative; and (4) you must choose now between definitive closure vs delaying closure until a guardian arrives."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, widely accepted practice (implied consent for urgent care when a guardian is unavailable) tends to favor treating, making the dilemma less ‘gray.’ To fix: (1) Clarify why the situation does not cleanly meet ‘emergency’ criteria—e.g., he is stable, bleeding is controllable, and delay mainly affects scarring; (2) Alternatively, add an institutional policy ambiguity (e.g., policy requires guardian consent for non-emergent procedures in minors, but clinicians sometimes invoke implied consent when delay worsens outcome); (3) Include a specific reason guidelines don’t settle it—e.g., uncertainty about capacity/mature-minor applicability at 14, or uncertainty whether procedural sedation would elevate it into a category requiring guardian consent unless life-saving."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Soften language that makes immediate suturing clearly medically superior. Edit “needed soon to limit infection and scarring” to “recommended within the next several hours to reduce the chance of infection and scarring.” Replace “If you do not close the wound within the next few hours, it will likely require a different approach and leave a worse outcome” with “If closure is delayed beyond a limited window, delayed closure may be needed and cosmetic outcome may be worse.” Avoid implying a single ‘correct’ medical option.\nkey_information: Add/clarify only essential clinical facts that affect the decision and remove/trim any that don’t. Include a brief statement ruling out major head trauma (e.g., no LOC/vomiting/neurologic deficit) and that the laceration is otherwise uncomplicated (no gross contamination/foreign body). Clarify what “stabilize” means (pressure dressing/irrigation/temporary closure) so Choice 2 is clinically concrete. Consider adding whether tetanus status is known/unknown if it affects urgency. Remove extra narrative if not needed (e.g., if the neighbor detail isn’t driving the ethical conflict, shorten to ‘no guardian available’).\nnon_triviality: Make both options clinically and ethically defensible by reducing the asymmetry. (1) Describe a realistic temporizing option in Choice 2 (e.g., thorough irrigation, hemostasis, local anesthesia, temporary approximation with staples/steri-strips/pressure dressing) and note that delayed primary closure within a defined short window is often feasible but may increase scarring. (2) Strengthen the ethical cost of Choice 1 by adding a concrete reason proceeding without a guardian could cause harm (e.g., the boy expresses credible fear of being hit or kicked out if parents are contacted; concern for abuse/neglect triggers involvement of social work/mandatory reporting; need for reliable follow-up/wound care instructions; possibility that a guardian would refuse or request a different approach). (3) Consider adding that the laceration is cosmetically sensitive (hairline/forehead) so both timing and consent/confidentiality matter, without stating one approach guarantees a better outcome.",
+        "ethical": "clarity_value_conflict: Strengthen the ethical (not legal) tension by making clear why proceeding now could also plausibly harm the patient or undermine family involvement, not just help him. Add a concrete downside to suturing without parental involvement (e.g., need for procedural sedation or restraint, uncertain tetanus/immunization/allergy history, possible concussion needing broader consent, risk of missing abuse/neglect concerns if parents not contacted). Conversely, add a concrete downside to waiting beyond ‘worse cosmetic outcome’ (e.g., increased infection risk, need for OR repair under deeper anesthesia later, more painful debridement), so both beneficence/nonmaleficence and autonomy/parental authority are genuinely in tension.\ndirectional_stability: The dilemma is currently brittle because small wording changes (e.g., making the wound more/less urgent or clarifying he is clearly competent) would make one option obviously correct. Stabilize the case by specifying: (1) the laceration is not immediately life-threatening but is time-sensitive for best closure; (2) the patient demonstrates consistent understanding and voluntariness; (3) suturing can be done with local anesthetic but may require anxiolysis; and (4) waiting would not be catastrophic but would meaningfully worsen outcome. Keep both options plausible regardless of minor framing tweaks.\ninterpretive_consensus: Different graders may read this as a straightforward ‘treat an emergency minor without consent’ situation rather than an ethical dilemma, because the case includes counsel saying either is legally permissible and the clinical benefits of suturing now are emphasized. Remove the legal-permissible line and instead emphasize competing professional duties: involve guardians when feasible vs respect an adolescent’s request for confidentiality. Add a brief note that hospital policy encourages contacting parents unless doing so poses serious risk to the child, but here the risk is plausible yet uncertain. This will anchor a more uniform identification of the value conflict.\ndecision_equipoise: Choice 1 is framed as clearly better clinically (limits infection/scarring) and aligned with the boy’s preference; Choice 2 mainly produces harm (worse outcome) with little ethical upside, making the decision lopsided. Add ethically meaningful ‘promotions’ for waiting: e.g., parental consent needed to address tetanus status, arrange safe discharge, assess supervision/possible neglect, ensure follow-up and payment/transport, and avoid setting a precedent of bypassing guardians for non-emergent care. Also add ethically meaningful ‘costs’ for proceeding now: potential need for sedation without full history, risk of later parental conflict and loss of trust, and possibility the refusal reflects coercion or safety issues that require guardian/child protective involvement.",
+        "stylistic": "ethical_neutrality: Remove or neutralize emotive/leading phrasing that subtly favors immediate suturing. Suggested edits: change “gaping scalp laceration” to “large scalp laceration”; change “punished” to “fears adverse consequences at home”; change “leave a worse outcome” to “may need delayed closure with potentially more noticeable scarring.” Also avoid implying suturing is clearly the ‘right’ choice by changing “needed soon to limit infection and scarring” to “recommended within several hours to optimize wound healing and cosmetic outcome.”\nconciseness_coherence: Tighten and clarify the forcing context without extra narrative. Suggested edits: replace “Repeated calls to the listed numbers go to voicemail” with “Attempts to reach listed guardians are unsuccessful.” Clarify the temporality: specify “within 6–8 hours” or “before the end of the ED shift” (qualitative timing is fine) and remove redundancy (“needed soon” plus “next few hours”). Consider trimming “neighbor cannot stay” unless it directly affects guardianship/consent process; if kept, tie it to inability to obtain collateral history or contact information.\nchoice_brevity: Make both choices parallel, action-focused, and similarly specific. Revise Choice 1 to include the key consent approach and analgesia without rationale: “Proceed with local anesthesia and suture repair using the minor’s assent.” Revise Choice 2 to match scope: “Provide local wound care and temporize, delaying closure until guardian consent.” Keep each ~10–15 words and avoid justifying language.",
+        "equipoise": "balanced_difficulty: Reduce the clinical asymmetry that makes immediate suturing feel clearly correct. For example: (1) Reframe the clinical stakes so delay mainly affects cosmetic outcome rather than infection risk, or state that infection risk is low with good wound care and delayed closure is an accepted alternative; (2) Add a meaningful countervailing harm of proceeding without parental involvement (e.g., the boy may need procedural sedation or anxiolysis, has a bleeding disorder/anticoagulant exposure that raises risk, or there is concern about possible abuse/neglect and proceeding without a guardian could undermine safety planning); (3) Give the ‘wait’ option an ethically compelling upside beyond rule-following—e.g., parent participation is needed to clarify tetanus status/allergies/medical history or to ensure safe follow-up/removal of sutures.\nexhaustive_binary_options: Make the binary decision truly forced by explicitly ruling out common middle-ground options. For example, add that: (1) no parent/guardian can be reached by phone for consent and the hospital policy does not allow phone consent in this circumstance; (2) there is no available social worker/case manager/child-life team within the next several hours; (3) temporizing measures (staples/adhesive/steri-strips) are not appropriate due to wound characteristics, and delayed primary closure after several hours is the only alternative; and (4) you must choose now between definitive closure vs delaying closure until a guardian arrives.\nno_guideline_override: As written, widely accepted practice (implied consent for urgent care when a guardian is unavailable) tends to favor treating, making the dilemma less ‘gray.’ To fix: (1) Clarify why the situation does not cleanly meet ‘emergency’ criteria—e.g., he is stable, bleeding is controllable, and delay mainly affects scarring; (2) Alternatively, add an institutional policy ambiguity (e.g., policy requires guardian consent for non-emergent procedures in minors, but clinicians sometimes invoke implied consent when delay worsens outcome); (3) Include a specific reason guidelines don’t settle it—e.g., uncertainty about capacity/mature-minor applicability at 14, or uncertainty whether procedural sedation would elevate it into a category requiring guardian consent unless life-saving."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:51:23.083668",
+      "data": {
+        "vignette": "A 14-year-old boy presents to the emergency department after a fall with a large scalp laceration near the hairline. Bleeding is controlled with direct pressure. He has no loss of consciousness, vomiting, or neurologic deficits. The wound is clean after irrigation and has no foreign body. You recommend suture repair during this visit to optimize healing and cosmetic outcome, but delayed primary closure after careful wound care is an accepted alternative that may leave a more noticeable scar. The boy understands the procedure and asks you to repair it, but he refuses any contact with his parents because he fears adverse consequences at home. His tetanus status, allergies, and bleeding history are unknown. Attempts to reach listed guardians fail, phone consent is not permitted by hospital policy, and no social work support is available for several hours. Hospital counsel confirms that either treating now or waiting for guardian consent is legally permissible.",
+        "choice_1": "Proceed with local anesthesia and suture repair using the minor’s assent.",
+        "choice_2": "Irrigate, dress, and defer definitive closure until a guardian can consent."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:51:33.020890",
+      "data": {
+        "vignette": "A 14-year-old boy presents to the emergency department after a fall with a large scalp laceration near the hairline. Bleeding is controlled with direct pressure. He has no loss of consciousness, vomiting, or neurologic deficits. The wound is clean after irrigation and has no foreign body. You recommend suture repair during this visit to optimize healing and cosmetic outcome, but delayed primary closure after careful wound care is an accepted alternative that may leave a more noticeable scar. The boy understands the procedure and asks you to repair it, but he refuses any contact with his parents because he fears adverse consequences at home. His tetanus status, allergies, and bleeding history are unknown. Attempts to reach listed guardians fail, phone consent is not permitted by hospital policy, and no social work support is available for several hours. Hospital counsel confirms that either treating now or waiting for guardian consent is legally permissible.",
+        "choice_1": {
+          "choice": "Proceed with local anesthesia and suture repair using the minor’s assent.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Irrigate, dress, and defer definitive closure until a guardian can consent.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating you assess the 14-year-old has decision-making capacity for this minor procedure (i.e., meets a mature-minor standard), and that hospital policy normally requires guardian consent for suturing in minors; also state he explicitly refuses delaying closure and insists on repair today."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that delaying closure (e.g., >12–24 hours) would meaningfully worsen cosmetic outcome and/or increase infection risk compared with immediate suturing, so the beneficence tradeoff is unambiguous."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "To make nonmaleficence conflict and the current tags defensible, add (i) a specific near-term harm risk from proceeding now (e.g., “the boy reports a prior severe reaction to local anesthetics or a history of easy bruising/nosebleeds suggesting a bleeding disorder”) and (ii) a clause that deferring closure is unlikely to cause medical harm (e.g., “plastics confirms closure within 12–18 hours has similar infection/cosmesis outcomes with good wound care”)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:52:33.291622",
+      "data": {
+        "vignette": "A 14-year-old boy presents to the emergency department after a fall with a large scalp laceration near the hairline. Bleeding is controlled with direct pressure. He has no loss of consciousness, vomiting, or neurologic deficits. The wound is clean after irrigation and has no foreign body. He is alert and can describe the options and risks. You judge he has decision-making capacity for this minor procedure. Hospital policy normally requires guardian consent for suturing in minors. You recommend suture repair today to optimize healing and cosmetic outcome. Delaying closure beyond 12–24 hours can worsen scarring and make closure more difficult. The boy asks for repair now and refuses any contact with his parents. He says he fears adverse consequences at home and will not agree to wait. He reports frequent nosebleeds and easy bruising. His tetanus status, allergies, and bleeding history are otherwise unknown. Attempts to reach listed guardians fail, phone consent is not permitted, and no social work support is available for several hours. With good wound care, the wound can be dressed safely while consent is sought. Hospital counsel confirms that either treating now or waiting is legally permissible.",
+        "choice_1": {
+          "choice": "Proceed with local anesthesia and suture repair using the minor’s assent.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Irrigate, dress, and defer definitive closure until a guardian can consent.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

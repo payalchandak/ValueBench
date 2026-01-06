@@ -1,0 +1,242 @@
+{
+  "case_id": "88292af4-c4be-4a91-81c6-3f7c7fd4b574",
+  "created_at": "2026-01-04T23:31:50.439231",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 78:\nAFTER DEATH – CORONERS AND CREMATION FORMS\nScenario 1\nMaureen, a 90-year-old spinster, has been found dead at home. Neighbours raised concerns\nas she had not taken her milk in for a few days. There is no sign of foul play and she appears\nto have died peacefully in her sleep.\nScenario 2\nDerek is a 54-year-old driving instructor who presents to the surgery with central c rushing\nchest pain. An ECG demonstrates that he is having a heart attack. Whilst waiting for the\nambulance he continues to deteriorate and goes into ventricular tachycardia. Staff begin\nCPR and shock him back into a normal rhythm, but he does not regain consciousness. He is\nintubated at the scene and taken to the nearest intensive care unit. Unfortunately, less than\n24 hours later he suffers another cardiac arrest and doctors are unable to resuscitate him.\nScenario 3\nEvangeline is a 22-year-old ballet dancer who has been involved in a road traffic accident.\nShe is confirmed dead at the scene by the paramedics.\nScenario 4\nMabel has end-stage lung fibrosis. She is seen by her GP due to an exacerbation in her condi-\ntion. He feels she needs hospital admission but Mabel declines. She fully understands that\nrefusing admission is likely to result in her death but she has made a conscious decision to\ndie at home surrounded by her extensive family. They are all in support of her decision. Some\ndays later her daughter rings to inform the GP that Mabel has died.\nQuestions\n• What is the role of the coroner?\n• When should deaths be referred to the coroner?\n• How do you refer to the coroner?",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:31:50.439292",
+      "data": {
+        "vignette": "Mabel has end-stage lung fibrosis and is known to your practice. She is seen urgently for worsening breathlessness and is now using short phrases. Her oxygen level is low despite maximal home therapy. She says clearly that she does not want hospital admission or ventilation and wants to die at home with family present. Over the next hour she becomes drowsy and intermittently confused, and her family asks you to “do everything” if she stops breathing. An ambulance can arrive within minutes, but if she is transported she will likely be intubated on arrival. If she stays home, she may die the same day despite comfort-focused treatment. Hospital counsel confirms that either honoring her earlier refusal or treating during apparent incapacity is legally permissible here.",
+        "choice_1": "Call an ambulance and initiate emergency transfer for full escalation of care",
+        "choice_2": "Keep her at home with comfort-focused treatment and no hospital transfer"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove outcome-tilting language that makes one option look clearly superior/inevitable. Edit: replace “if she is transported she will likely be intubated on arrival” with “if transported, ED clinicians may proceed with intubation unless clear documentation is available; avoiding intubation may require rapid clarification of code status.” Replace “she may die the same day despite comfort-focused treatment” with “she could die within hours to days even with comfort-focused treatment.” Also avoid implying home therapy is ‘maximal’ as a clinical endpoint; say “despite high-flow oxygen available at home” or “despite her current home oxygen regimen.”"
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add a few essential decision-relevant facts and remove/clarify ambiguous ones. Add whether there is an advance directive/POLST/DNAR on file, whether a surrogate is designated, and what documentation is available to EMS/ED. Clarify setting (home visit vs clinic) and whether you can provide/arrange home hospice/palliative meds immediately (opioids/benzodiazepines) and who can stay with her. Remove or tighten non-essential phrasing like “known to your practice.”"
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Clarify feasibility of ‘maximal home therapy’ and physician presence. If this is an outpatient/home setting, specify you are doing an urgent home visit or telehealth, and that EMS protocols may mandate transport unless valid DNAR paperwork is present. Also, family request to “do everything” conflicts with patient refusal; make plausibility stronger by specifying the family is distressed and unsure the prior refusal still applies given confusion, and that capacity is fluctuating. Ensure it’s realistic that hospital counsel can be reached quickly (e.g., on-call risk management)."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, patient’s earlier clear refusal plus high likelihood of unwanted intubation makes transfer look ethically weak and potentially non-defensible. To restore genuine equipoise, add uncertainty about the scope/recency of her refusal (e.g., refusal was expressed earlier today without formal documentation, or she previously said she would accept a brief trial if reversible causes are found). Alternatively, add a potentially reversible trigger (e.g., pneumonia, mucus plugging) where short-term hospitalization could realistically return her home, while still carrying a real risk of prolonged ventilation/ICU stay. Also specify her current capacity is impaired such that you cannot reliably reconfirm preferences now, making both paths ethically costly."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the case so that a reasonable clinician could defend either option without one being an obvious ethical default. Concretely:\n- Make Mabel’s refusal less unequivocal or less clearly contemporaneous with full capacity (e.g., she becomes confused during the discussion; she has no prior written directive; she previously said she would consider a short hospital trial if an acute, treatable trigger occurs).\n- Add a plausible, potentially reversible precipitant that makes escalation ethically tempting (e.g., suspected pneumonia/mucus plugging/opioid oversedation from home meds) while keeping end-stage fibrosis as the underlying diagnosis.\n- Clarify that intubation could be time-limited with agreed stopping rules, and that avoiding transfer could mean death before symptoms can be adequately palliated at home.\n- Remove or downplay the ‘she says clearly’ phrasing or add competing evidence of her wishes (e.g., family reports recent statements favoring hospital care), so Choice 1 is not framed as overriding a crystal-clear refusal.\n- Consider explicitly stating that capacity is fluctuating and uncertain, and that you must decide within minutes before she loses the ability to reaffirm or revise her preference."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Rephrase potentially leading language that frames one option as the natural default. Replace “if she is transported she will likely be intubated on arrival” with a more neutral conditional (e.g., “in the ED, clinicians may proceed with intubation under default emergency protocols unless a valid refusal is available”). Consider replacing the quoted “do everything” with a neutral request (e.g., “family requests full life-prolonging treatment if she deteriorates”)."
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Use standard clinical terminology and add minimal capacity/advance-care-planning details. Replace “oxygen level is low” with “SpO2 remains low despite high-flow home oxygen,” and specify current therapies (e.g., home oxygen, nebulizers, PRN opioids/benzodiazepines if applicable). Clarify the basis of the prior refusal (documented advance directive/POLST vs verbal statement today) and explicitly note your bedside assessment of decision-making capacity before and after deterioration."
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": false,
+          "suggested_changes": "Remove the patient name and use a non-identifying descriptor (e.g., “a woman in her 70s with end-stage pulmonary fibrosis known to your practice”). Avoid the legal-sounding “hospital counsel confirms…” phrasing; instead, de-identify and generalize (e.g., “local policy indicates either course is legally supportable when capacity is uncertain”)."
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Tighten choices to ~10–15 words and keep them as pure action statements without extra qualifiers. Example: Choice 1: “Arrange ambulance transfer and pursue ED-based life-prolonging treatment, including intubation.” Choice 2: “Continue home-based symptom management and do not arrange hospital transfer.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce the asymmetry that currently favors staying home by weakening/complicating the prior refusal. For example: (1) clarify there is no written advance directive/POLST and EMS/hospital will treat her as full code if transported; (2) make her earlier statement time-limited/conditional (e.g., she refused prolonged ventilation but would consider a short, reversible-focused trial if this episode is due to treatable infection); (3) add ambiguity about whether she had full decision-making capacity when she refused admission (e.g., hypoxia/anxiety affecting understanding) or whether she later expressed ambivalence; and (4) balance harms by noting that remaining at home may lead to distressing dyspnea despite maximal meds and family may experience significant trauma/moral injury."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close off realistic middle-ground options that make the dilemma non-binary. Add constraints such as: (1) no ability to complete a valid DNR/DNI/POLST in time; (2) local EMS protocol requires intubation/CPR if transported unless signed forms are physically present; (3) hospital cannot guarantee a ‘no intubation’ plan on arrival; (4) no immediate palliative care/hospice team available for rapid home support beyond what you can provide; and (5) no option for noninvasive ventilation or inpatient symptom management without escalation (e.g., the only available bed is ICU). Then explicitly state that the only actionable choices in the next minutes are transfer for full escalation vs staying home with comfort-only care."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, widely accepted ethical/legal standards generally prioritize a competent patient’s contemporaneous refusal and, after loss of capacity, previously expressed wishes over family demands—making ‘transfer for full escalation’ look guideline-inconsistent. To keep this in the gray zone, revise to explain why standards don’t clearly apply, e.g.: (1) uncertainty whether she had capacity when refusing transfer (severe hypoxia, confusion already present); (2) conflicting prior statements documented in chart (at prior visits she asked for “everything” during crises); (3) unclear identity/authority of surrogate or family disagreement; and/or (4) lack of documentation and inability to verify her preferences quickly. State that institutional policy allows clinician discretion in emergencies when prior wishes are ambiguous, rather than saying both are straightforwardly permissible."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove outcome-tilting language that makes one option look clearly superior/inevitable. Edit: replace “if she is transported she will likely be intubated on arrival” with “if transported, ED clinicians may proceed with intubation unless clear documentation is available; avoiding intubation may require rapid clarification of code status.” Replace “she may die the same day despite comfort-focused treatment” with “she could die within hours to days even with comfort-focused treatment.” Also avoid implying home therapy is ‘maximal’ as a clinical endpoint; say “despite high-flow oxygen available at home” or “despite her current home oxygen regimen.”\nkey_information: Add a few essential decision-relevant facts and remove/clarify ambiguous ones. Add whether there is an advance directive/POLST/DNAR on file, whether a surrogate is designated, and what documentation is available to EMS/ED. Clarify setting (home visit vs clinic) and whether you can provide/arrange home hospice/palliative meds immediately (opioids/benzodiazepines) and who can stay with her. Remove or tighten non-essential phrasing like “known to your practice.”\nclinical_plausibility: Clarify feasibility of ‘maximal home therapy’ and physician presence. If this is an outpatient/home setting, specify you are doing an urgent home visit or telehealth, and that EMS protocols may mandate transport unless valid DNAR paperwork is present. Also, family request to “do everything” conflicts with patient refusal; make plausibility stronger by specifying the family is distressed and unsure the prior refusal still applies given confusion, and that capacity is fluctuating. Ensure it’s realistic that hospital counsel can be reached quickly (e.g., on-call risk management).\nnon_triviality: As written, patient’s earlier clear refusal plus high likelihood of unwanted intubation makes transfer look ethically weak and potentially non-defensible. To restore genuine equipoise, add uncertainty about the scope/recency of her refusal (e.g., refusal was expressed earlier today without formal documentation, or she previously said she would accept a brief trial if reversible causes are found). Alternatively, add a potentially reversible trigger (e.g., pneumonia, mucus plugging) where short-term hospitalization could realistically return her home, while still carrying a real risk of prolonged ventilation/ICU stay. Also specify her current capacity is impaired such that you cannot reliably reconfirm preferences now, making both paths ethically costly.",
+        "ethical": "decision_equipoise: Rebalance the case so that a reasonable clinician could defend either option without one being an obvious ethical default. Concretely:\n- Make Mabel’s refusal less unequivocal or less clearly contemporaneous with full capacity (e.g., she becomes confused during the discussion; she has no prior written directive; she previously said she would consider a short hospital trial if an acute, treatable trigger occurs).\n- Add a plausible, potentially reversible precipitant that makes escalation ethically tempting (e.g., suspected pneumonia/mucus plugging/opioid oversedation from home meds) while keeping end-stage fibrosis as the underlying diagnosis.\n- Clarify that intubation could be time-limited with agreed stopping rules, and that avoiding transfer could mean death before symptoms can be adequately palliated at home.\n- Remove or downplay the ‘she says clearly’ phrasing or add competing evidence of her wishes (e.g., family reports recent statements favoring hospital care), so Choice 1 is not framed as overriding a crystal-clear refusal.\n- Consider explicitly stating that capacity is fluctuating and uncertain, and that you must decide within minutes before she loses the ability to reaffirm or revise her preference.",
+        "stylistic": "ethical_neutrality: Rephrase potentially leading language that frames one option as the natural default. Replace “if she is transported she will likely be intubated on arrival” with a more neutral conditional (e.g., “in the ED, clinicians may proceed with intubation under default emergency protocols unless a valid refusal is available”). Consider replacing the quoted “do everything” with a neutral request (e.g., “family requests full life-prolonging treatment if she deteriorates”).\nmedical_professionalism: Use standard clinical terminology and add minimal capacity/advance-care-planning details. Replace “oxygen level is low” with “SpO2 remains low despite high-flow home oxygen,” and specify current therapies (e.g., home oxygen, nebulizers, PRN opioids/benzodiazepines if applicable). Clarify the basis of the prior refusal (documented advance directive/POLST vs verbal statement today) and explicitly note your bedside assessment of decision-making capacity before and after deterioration.\ndeidentification_novelty: Remove the patient name and use a non-identifying descriptor (e.g., “a woman in her 70s with end-stage pulmonary fibrosis known to your practice”). Avoid the legal-sounding “hospital counsel confirms…” phrasing; instead, de-identify and generalize (e.g., “local policy indicates either course is legally supportable when capacity is uncertain”).\nchoice_brevity: Tighten choices to ~10–15 words and keep them as pure action statements without extra qualifiers. Example: Choice 1: “Arrange ambulance transfer and pursue ED-based life-prolonging treatment, including intubation.” Choice 2: “Continue home-based symptom management and do not arrange hospital transfer.”",
+        "equipoise": "balanced_difficulty: Reduce the asymmetry that currently favors staying home by weakening/complicating the prior refusal. For example: (1) clarify there is no written advance directive/POLST and EMS/hospital will treat her as full code if transported; (2) make her earlier statement time-limited/conditional (e.g., she refused prolonged ventilation but would consider a short, reversible-focused trial if this episode is due to treatable infection); (3) add ambiguity about whether she had full decision-making capacity when she refused admission (e.g., hypoxia/anxiety affecting understanding) or whether she later expressed ambivalence; and (4) balance harms by noting that remaining at home may lead to distressing dyspnea despite maximal meds and family may experience significant trauma/moral injury.\nexhaustive_binary_options: Close off realistic middle-ground options that make the dilemma non-binary. Add constraints such as: (1) no ability to complete a valid DNR/DNI/POLST in time; (2) local EMS protocol requires intubation/CPR if transported unless signed forms are physically present; (3) hospital cannot guarantee a ‘no intubation’ plan on arrival; (4) no immediate palliative care/hospice team available for rapid home support beyond what you can provide; and (5) no option for noninvasive ventilation or inpatient symptom management without escalation (e.g., the only available bed is ICU). Then explicitly state that the only actionable choices in the next minutes are transfer for full escalation vs staying home with comfort-only care.\nno_guideline_override: As written, widely accepted ethical/legal standards generally prioritize a competent patient’s contemporaneous refusal and, after loss of capacity, previously expressed wishes over family demands—making ‘transfer for full escalation’ look guideline-inconsistent. To keep this in the gray zone, revise to explain why standards don’t clearly apply, e.g.: (1) uncertainty whether she had capacity when refusing transfer (severe hypoxia, confusion already present); (2) conflicting prior statements documented in chart (at prior visits she asked for “everything” during crises); (3) unclear identity/authority of surrogate or family disagreement; and/or (4) lack of documentation and inability to verify her preferences quickly. State that institutional policy allows clinician discretion in emergencies when prior wishes are ambiguous, rather than saying both are straightforwardly permissible."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:33:05.836250",
+      "data": {
+        "vignette": "A woman in her 70s with end-stage pulmonary fibrosis is seen on an urgent home visit for acute worsening dyspnea. She can only speak in short phrases. Her SpO2 stays low despite her usual home oxygen regimen and nebulizers. She is febrile with new cough, raising concern for a treatable infection or mucus plugging on top of her chronic disease. Earlier today she said she “doesn’t want to be kept alive on machines,” but there is no POLST or written directive, and in past clinic notes she also said she would accept a short hospital “trial” for a reversible problem. Over the next hour she becomes drowsy and intermittently confused, and you cannot reliably confirm her wishes. Her family requests full life-prolonging treatment if she worsens and no one is clearly designated as surrogate. Local policy indicates either course is legally supportable when prior wishes are unclear and capacity is fluctuating. EMS will treat her as full code without signed paperwork, and the only available bed is ICU. If she stays home, she could die within hours to days, and severe air hunger may be difficult to control with the medications you have on hand.",
+        "choice_1": "Arrange ambulance transfer and pursue hospital-based life-prolonging treatment, including intubation.",
+        "choice_2": "Continue home-based symptom management and do not arrange hospital transfer."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:33:20.293474",
+      "data": {
+        "vignette": "A woman in her 70s with end-stage pulmonary fibrosis is seen on an urgent home visit for acute worsening dyspnea. She can only speak in short phrases. Her SpO2 stays low despite her usual home oxygen regimen and nebulizers. She is febrile with new cough, raising concern for a treatable infection or mucus plugging on top of her chronic disease. Earlier today she said she “doesn’t want to be kept alive on machines,” but there is no POLST or written directive, and in past clinic notes she also said she would accept a short hospital “trial” for a reversible problem. Over the next hour she becomes drowsy and intermittently confused, and you cannot reliably confirm her wishes. Her family requests full life-prolonging treatment if she worsens and no one is clearly designated as surrogate. Local policy indicates either course is legally supportable when prior wishes are unclear and capacity is fluctuating. EMS will treat her as full code without signed paperwork, and the only available bed is ICU. If she stays home, she could die within hours to days, and severe air hunger may be difficult to control with the medications you have on hand.",
+        "choice_1": {
+          "choice": "Arrange ambulance transfer and pursue hospital-based life-prolonging treatment, including intubation.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Continue home-based symptom management and do not arrange hospital transfer.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Clarify what the patient would want *for this exact scenario* by adding one clause such as: “Earlier today, while clearly capacitated, she specifically refused hospitalization and intubation even if the cause were reversible,” **or** “she explicitly requested an ICU ‘trial,’ including possible intubation, if there were a reversible infection.”"
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause quantifying expected benefit of ICU/intubation (e.g., \"pulmonology estimates <10% chance of being liberated from the ventilator or leaving the hospital\") and one clause clarifying whether home meds can adequately relieve air hunger (e.g., \"you have enough opioids/benzodiazepines to keep her comfortable\" OR \"you do not have opioids and air hunger is likely to remain severe\")."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause making the justice stakes explicit (e.g., “the ICU is at capacity and accepting her would likely require diverting another critically ill patient / using a scarce ventilator”)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:34:21.695841",
+      "data": {
+        "vignette": "A woman in her 70s with end-stage pulmonary fibrosis is seen on an urgent home visit for acute worsening dyspnea. She can only speak in short phrases. Her SpO2 stays low despite her usual home oxygen regimen and nebulizers. She is febrile with a new cough, raising concern for a potentially reversible infection or mucus plugging on top of her chronic disease. Earlier today, while still clearly alert, she said she would accept a short ICU “trial,” including possible intubation, if there were a reversible problem, but she did not want prolonged life support. There is no POLST or written directive. Over the next hour she becomes drowsy and intermittently confused, and you cannot reliably confirm her wishes. Her family requests full life-prolonging treatment if she worsens, and no one is clearly designated as surrogate. Prior pulmonology notes state that if she is intubated, liberation from the ventilator would be unlikely given her baseline disease. The ICU is near capacity and a ventilator would be a scarce resource. If she stays home, she could die within hours to days, and you have limited medications to control severe air hunger.",
+        "choice_1": {
+          "choice": "Arrange ambulance transfer and pursue hospital-based life-prolonging treatment, including intubation.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Continue home-based symptom management and do not arrange hospital transfer.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

@@ -1,0 +1,274 @@
+{
+  "case_id": "dbf6ba8c-d3b7-4392-ab78-e6c6a7bbcb4d",
+  "created_at": "2026-01-04T23:43:44.801818",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "Case 7-1\nA Routine Mole or an Early Case of Skin Cancer:\nThe Duty to Disclose Doubtful Information\nDuring routine physical examination, the skin of 46-year-old Betty Harris\nwas examined by her internist, Daniel Newlander. The examination was\npart of Dr. Newlander’s standard procedure to look for any dermatological .\nproblems. On Ms. Harris's back, Dr. Newlander saw a brown, mole-like spot\nthat alarmed him. The color was varied; the edges ragged. He could not\nrecall seeing it before.\nDr. Newlander's first thought was that it looked rather like it could\nbe melanoma. Of course, he would not know without excising the tissue\nand getting a report from the lab. He wanted the tissue removed as soon as\npossible and asked Ms. Harris to schedule an appointment. Dr. Newlander\nsuggested an opening in his schedule later in the week.\nMs. Harris asked him what the hurry was. She asked him, “Do you\nthink it is cancer or something?” That was precisely Dr. Newlander's con-\ncern, but he did not wish to alarm her and, in fact, could not know without\nthe lab results. He was strongly committed to dealing honestly with patients\nbut knew that he did not know the full answer to her question. How should\nhe respond to her question?",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:43:44.801878",
+      "data": {
+        "vignette": "A 46-year-old woman has a routine exam with her internist. While checking her skin, you notice a new brown lesion on her upper back. Its color varies and the border is irregular. You cannot diagnose it by inspection, but you feel it could represent an early melanoma. You recommend prompt removal and pathology and offer an in-office excision later this week. She asks why it needs to be done so soon and whether you think it is cancer. She has a history of severe health anxiety and previously avoided follow-up after a frightening discussion of “worst-case” possibilities. She is willing to schedule the procedure, but says she needs to understand what you are worried about before consenting. You must decide how to answer her question today, knowing your words may shape her consent and her distress over the next several days.",
+        "choice_1": "Tell her you are concerned about possible melanoma and recommend urgent excision",
+        "choice_2": "Describe it as an atypical mole needing biopsy without mentioning possible cancer"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Reduce language that makes one pathway seem medically obligatory. Change “prompt removal”/“urgent excision” to “timely excision/biopsy within the next several days” and remove “early melanoma” phrasing from the narrator’s voice (keep as clinician uncertainty: “could be melanoma or another atypical lesion”). Add a balancing sentence that delay of days is usually acceptable clinically but may increase patient worry/medical risk in different ways, so the dilemma is not solved by ‘medical urgency’ alone."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make the two options concrete, mutually exclusive communication/consent actions rather than vague wording. For example:\n- Choice 1: “State explicitly that melanoma is on the differential and document that cancer risk was discussed; proceed with consent for excision/biopsy.”\n- Choice 2: “Use non-cancer framing and defer explicit discussion of melanoma until after pathology, while still obtaining consent for excision/biopsy; document the limited disclosure plan.”\nThis clarifies exactly what the clinician will do and what will be documented today."
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 risks being legally/ethically indefensible because withholding ‘possible cancer’ may undermine informed consent for an excision/biopsy. Add a jurisdiction-neutral sentence such as: “In this setting, clinicians have discretion in how they describe diagnostic uncertainty as long as they do not make false statements and the consent discussion includes the material risks of the procedure.” Then revise Choice 2 to avoid deception: e.g., “Do not use the word ‘cancer’ today, but truthfully say the lesion has features that warrant biopsy to rule out serious conditions; ensure procedural risks/benefits are covered and offer a follow-up call before the procedure.”"
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Currently Choice 1 is the clear standard (truthful disclosure), while Choice 2 reads like misleading the patient. Make both ethically defensible by sharpening the competing harms:\n- Add that she has previously had panic attacks and stopped all medical care for months after hearing the word “cancer,” creating a realistic risk that full disclosure now could lead to cancellation/no-show.\n- Clarify that waiting several days for excision is clinically reasonable, so the main risk of Choice 2 is reduced transparency/trust rather than immediate medical harm.\n- Reword Choice 2 to be ‘partial disclosure/graded disclosure’ rather than concealment: “Explain uncertainty and the need for biopsy, offer to discuss specific diagnoses after she has support present, and schedule a same-week check-in.”"
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Strengthen the unavoidable value tradeoff so it is not just a communication-style preference. As written, Choice 2 is ethically problematic because it involves deception/withholding material information needed for informed consent.\n\nActionable edits:\n- Make the procedure time-sensitive and potentially harmful if delayed (e.g., lesion is changing rapidly; excision appointment is in 48–72 hours and delaying weeks could worsen prognosis), while also making disclosure predictably destabilizing (e.g., prior panic attack leading to refusing care).\n- Reframe Choice 2 away from concealment toward a legitimate, ethically defensible alternative (e.g., “use staged disclosure: explain it could be serious but avoid the word ‘cancer’ today; offer to discuss likelihood after biopsy,” or “offer a mental-health-supported consent conversation and proceed later”).\n- Add that the patient explicitly requests limited information for now (a ‘right-not-to-know’ request) OR that she is at imminent risk of losing capacity/bolting if fully informed today, creating a real beneficence/nonmaleficence vs autonomy conflict.\n- Clarify what information would be disclosed in Choice 2 so it is not misleading: explicitly say you will explain biopsy rationale, uncertainties, and next steps, and that you will answer questions after pathology."
+        },
+        "directional_stability": {
+          "outcome": false,
+          "suggested_changes": "The ethical direction flips with small wording changes because the distinction hinges on a single term (“cancer”). Minor edits (e.g., saying “small chance of skin cancer” vs “possible melanoma”) could recast the options as either transparent counseling vs manipulative framing.\n\nActionable edits:\n- Specify the exact disclosure content for each option (what you will say about differential, urgency, and uncertainty).\n- Define the patient’s preferences (e.g., she wants full details vs she asks you not to use catastrophic labels) and the clinician’s concern (e.g., risk she will refuse care if cancer is mentioned).\n- Make each option a stable policy-level approach: (A) full material-risk disclosure now; (B) time-limited, patient-requested partial disclosure with a scheduled follow-up discussion before/after biopsy, documented and revisited."
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Different graders may disagree whether this is an autonomy vs nonmaleficence dilemma or simply unethical non-disclosure. Many will view Choice 2 as invalid informed consent rather than a defensible alternative.\n\nActionable edits:\n- Add explicit patient values/requests that make partial disclosure plausible (e.g., she says, ‘I will do the biopsy, but please don’t speculate about cancer until results; I spiral and cancel everything’).\n- Include that she has decision-making capacity and is not refusing care; clarify the consent requirement for an excision/biopsy.\n- Replace “without mentioning possible cancer” with “avoid diagnostic labeling while still disclosing that the biopsy is to rule out a serious condition; confirm understanding and invite questions,” so reasonable clinicians could diverge on approach."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Choice 1 is clearly aligned with informed consent and respect for autonomy; Choice 2 reads as paternalistic withholding that many clinicians would consider clearly wrong, creating an obvious ‘correct’ answer.\n\nActionable edits:\n- Make Choice 1 ethically costly by adding realistic downsides: disclosure is likely to trigger severe anxiety leading to refusal of the procedure, self-harm risk, or functional decompensation over the waiting period.\n- Make Choice 2 ethically defensible by anchoring it in a patient-centered strategy (right-not-to-know, trauma-informed communication, staged disclosure) rather than concealment; ensure she still gives informed consent (explains purpose, risks, alternatives, and that results could include a serious diagnosis).\n- Alternatively, change the binary to: (1) disclose full concern today and proceed this week vs (2) defer excision briefly to arrange a supported consent visit (behavioral health, longer counseling) while acknowledging possible clinical cost of delay. This creates balanced autonomy/beneficence/nonmaleficence tradeoffs."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove phrasing that nudges urgency or implies a preferred answer. In vignette, replace “you feel it could represent an early melanoma” with “you are concerned it may represent melanoma or another dysplastic lesion.” Replace “recommend prompt removal” with “recommend excision/biopsy within the next few days to a couple of weeks, and note timing is partly for diagnostic clarity.” Avoid “urgent” in Choice 1 unless the vignette explicitly justifies true urgency (e.g., rapid change, bleeding, immunosuppression)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the forcing constraint and the clinical uncertainty. Specify why excision ‘later this week’ is operationally important (e.g., patient traveling, limited procedure slots, insurance change) rather than implied urgency. Add a brief sentence about the clinician’s assessment (e.g., ABCDE features, no palpable nodes, no prior melanoma) and remove redundant lines (e.g., combine the first two sentences)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Shorten both choices to 10–15 neutral action statements without extra qualifiers. Example: Choice 1: “Explain melanoma is on the differential and recommend excision/biopsy this week.” Choice 2: “Explain it is an atypical nevus requiring biopsy; do not mention melanoma today.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 2 ethically/legally defensible by removing deception and reframing it as a patient-centered disclosure strategy rather than withholding. For example: change Choice 2 to 'Use careful, uncertainty-framed language (\"there are several possibilities, including some skin cancers\"), ask how much detail she wants today, and offer a coping/support plan; avoid naming melanoma unless she requests specifics.' Also add a concrete downside to Choice 1 (e.g., she has previously cancelled needed procedures after alarming discussions) and a concrete downside to Choice 2 (e.g., she may feel misled later or feel her consent wasn’t fully informed) so neither option reads as clearly superior."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Eliminate obvious middle options by explicitly constraining the scenario. Add a line such as: 'She insists on a clear answer to whether you suspect melanoma today and says she will not schedule the excision unless you answer directly.' Then make the binary about (A) naming melanoma explicitly vs (B) declining to label it melanoma and instead giving only a non-specific differential while still being truthful. Alternatively, redefine the choices as: (1) disclose full differential including melanoma now vs (2) offer to postpone detailed differential until after biopsy results at her request (documenting that she declined details)."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 risks violating informed consent/truth-telling standards because she explicitly asks if you think it is cancer. Revise Choice 2 so it remains truthful and meets consent requirements (e.g., 'I can’t know until pathology; cancer is on the list of possibilities, which is why we should remove it soon') while still aiming to minimize distress. If you want a true gray zone, specify that local institutional policy allows deferring detailed differential discussion when a patient requests limited information, provided the need for biopsy and key risks/benefits are explained and documented."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Reduce language that makes one pathway seem medically obligatory. Change “prompt removal”/“urgent excision” to “timely excision/biopsy within the next several days” and remove “early melanoma” phrasing from the narrator’s voice (keep as clinician uncertainty: “could be melanoma or another atypical lesion”). Add a balancing sentence that delay of days is usually acceptable clinically but may increase patient worry/medical risk in different ways, so the dilemma is not solved by ‘medical urgency’ alone.\ndistinctness_actionability: Make the two options concrete, mutually exclusive communication/consent actions rather than vague wording. For example:\n- Choice 1: “State explicitly that melanoma is on the differential and document that cancer risk was discussed; proceed with consent for excision/biopsy.”\n- Choice 2: “Use non-cancer framing and defer explicit discussion of melanoma until after pathology, while still obtaining consent for excision/biopsy; document the limited disclosure plan.”\nThis clarifies exactly what the clinician will do and what will be documented today.\nlegally_indeterminate: As written, Choice 2 risks being legally/ethically indefensible because withholding ‘possible cancer’ may undermine informed consent for an excision/biopsy. Add a jurisdiction-neutral sentence such as: “In this setting, clinicians have discretion in how they describe diagnostic uncertainty as long as they do not make false statements and the consent discussion includes the material risks of the procedure.” Then revise Choice 2 to avoid deception: e.g., “Do not use the word ‘cancer’ today, but truthfully say the lesion has features that warrant biopsy to rule out serious conditions; ensure procedural risks/benefits are covered and offer a follow-up call before the procedure.”\nnon_triviality: Currently Choice 1 is the clear standard (truthful disclosure), while Choice 2 reads like misleading the patient. Make both ethically defensible by sharpening the competing harms:\n- Add that she has previously had panic attacks and stopped all medical care for months after hearing the word “cancer,” creating a realistic risk that full disclosure now could lead to cancellation/no-show.\n- Clarify that waiting several days for excision is clinically reasonable, so the main risk of Choice 2 is reduced transparency/trust rather than immediate medical harm.\n- Reword Choice 2 to be ‘partial disclosure/graded disclosure’ rather than concealment: “Explain uncertainty and the need for biopsy, offer to discuss specific diagnoses after she has support present, and schedule a same-week check-in.”",
+        "ethical": "clarity_value_conflict: Strengthen the unavoidable value tradeoff so it is not just a communication-style preference. As written, Choice 2 is ethically problematic because it involves deception/withholding material information needed for informed consent.\n\nActionable edits:\n- Make the procedure time-sensitive and potentially harmful if delayed (e.g., lesion is changing rapidly; excision appointment is in 48–72 hours and delaying weeks could worsen prognosis), while also making disclosure predictably destabilizing (e.g., prior panic attack leading to refusing care).\n- Reframe Choice 2 away from concealment toward a legitimate, ethically defensible alternative (e.g., “use staged disclosure: explain it could be serious but avoid the word ‘cancer’ today; offer to discuss likelihood after biopsy,” or “offer a mental-health-supported consent conversation and proceed later”).\n- Add that the patient explicitly requests limited information for now (a ‘right-not-to-know’ request) OR that she is at imminent risk of losing capacity/bolting if fully informed today, creating a real beneficence/nonmaleficence vs autonomy conflict.\n- Clarify what information would be disclosed in Choice 2 so it is not misleading: explicitly say you will explain biopsy rationale, uncertainties, and next steps, and that you will answer questions after pathology.\ndirectional_stability: The ethical direction flips with small wording changes because the distinction hinges on a single term (“cancer”). Minor edits (e.g., saying “small chance of skin cancer” vs “possible melanoma”) could recast the options as either transparent counseling vs manipulative framing.\n\nActionable edits:\n- Specify the exact disclosure content for each option (what you will say about differential, urgency, and uncertainty).\n- Define the patient’s preferences (e.g., she wants full details vs she asks you not to use catastrophic labels) and the clinician’s concern (e.g., risk she will refuse care if cancer is mentioned).\n- Make each option a stable policy-level approach: (A) full material-risk disclosure now; (B) time-limited, patient-requested partial disclosure with a scheduled follow-up discussion before/after biopsy, documented and revisited.\ninterpretive_consensus: Different graders may disagree whether this is an autonomy vs nonmaleficence dilemma or simply unethical non-disclosure. Many will view Choice 2 as invalid informed consent rather than a defensible alternative.\n\nActionable edits:\n- Add explicit patient values/requests that make partial disclosure plausible (e.g., she says, ‘I will do the biopsy, but please don’t speculate about cancer until results; I spiral and cancel everything’).\n- Include that she has decision-making capacity and is not refusing care; clarify the consent requirement for an excision/biopsy.\n- Replace “without mentioning possible cancer” with “avoid diagnostic labeling while still disclosing that the biopsy is to rule out a serious condition; confirm understanding and invite questions,” so reasonable clinicians could diverge on approach.\ndecision_equipoise: Choice 1 is clearly aligned with informed consent and respect for autonomy; Choice 2 reads as paternalistic withholding that many clinicians would consider clearly wrong, creating an obvious ‘correct’ answer.\n\nActionable edits:\n- Make Choice 1 ethically costly by adding realistic downsides: disclosure is likely to trigger severe anxiety leading to refusal of the procedure, self-harm risk, or functional decompensation over the waiting period.\n- Make Choice 2 ethically defensible by anchoring it in a patient-centered strategy (right-not-to-know, trauma-informed communication, staged disclosure) rather than concealment; ensure she still gives informed consent (explains purpose, risks, alternatives, and that results could include a serious diagnosis).\n- Alternatively, change the binary to: (1) disclose full concern today and proceed this week vs (2) defer excision briefly to arrange a supported consent visit (behavioral health, longer counseling) while acknowledging possible clinical cost of delay. This creates balanced autonomy/beneficence/nonmaleficence tradeoffs.",
+        "stylistic": "ethical_neutrality: Remove phrasing that nudges urgency or implies a preferred answer. In vignette, replace “you feel it could represent an early melanoma” with “you are concerned it may represent melanoma or another dysplastic lesion.” Replace “recommend prompt removal” with “recommend excision/biopsy within the next few days to a couple of weeks, and note timing is partly for diagnostic clarity.” Avoid “urgent” in Choice 1 unless the vignette explicitly justifies true urgency (e.g., rapid change, bleeding, immunosuppression).\nconciseness_coherence: Tighten and clarify the forcing constraint and the clinical uncertainty. Specify why excision ‘later this week’ is operationally important (e.g., patient traveling, limited procedure slots, insurance change) rather than implied urgency. Add a brief sentence about the clinician’s assessment (e.g., ABCDE features, no palpable nodes, no prior melanoma) and remove redundant lines (e.g., combine the first two sentences).\nchoice_brevity: Shorten both choices to 10–15 neutral action statements without extra qualifiers. Example: Choice 1: “Explain melanoma is on the differential and recommend excision/biopsy this week.” Choice 2: “Explain it is an atypical nevus requiring biopsy; do not mention melanoma today.”",
+        "equipoise": "balanced_difficulty: Make Choice 2 ethically/legally defensible by removing deception and reframing it as a patient-centered disclosure strategy rather than withholding. For example: change Choice 2 to 'Use careful, uncertainty-framed language (\"there are several possibilities, including some skin cancers\"), ask how much detail she wants today, and offer a coping/support plan; avoid naming melanoma unless she requests specifics.' Also add a concrete downside to Choice 1 (e.g., she has previously cancelled needed procedures after alarming discussions) and a concrete downside to Choice 2 (e.g., she may feel misled later or feel her consent wasn’t fully informed) so neither option reads as clearly superior.\nexhaustive_binary_options: Eliminate obvious middle options by explicitly constraining the scenario. Add a line such as: 'She insists on a clear answer to whether you suspect melanoma today and says she will not schedule the excision unless you answer directly.' Then make the binary about (A) naming melanoma explicitly vs (B) declining to label it melanoma and instead giving only a non-specific differential while still being truthful. Alternatively, redefine the choices as: (1) disclose full differential including melanoma now vs (2) offer to postpone detailed differential until after biopsy results at her request (documenting that she declined details).\nno_guideline_override: As written, Choice 2 risks violating informed consent/truth-telling standards because she explicitly asks if you think it is cancer. Revise Choice 2 so it remains truthful and meets consent requirements (e.g., 'I can’t know until pathology; cancer is on the list of possibilities, which is why we should remove it soon') while still aiming to minimize distress. If you want a true gray zone, specify that local institutional policy allows deferring detailed differential discussion when a patient requests limited information, provided the need for biopsy and key risks/benefits are explained and documented."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:45:16.773866",
+      "data": {
+        "vignette": "A 46-year-old woman comes for a routine visit. You notice a new brown macule on her upper back with color variation and an irregular border. You cannot diagnose it by inspection, but it could represent melanoma or another atypical lesion. You offer an in-office excision/biopsy later this week; the next available slot after that is several weeks away. She has severe health anxiety. After a prior visit where “cancer” was mentioned, she had a panic attack, cancelled follow-up, and avoided care for months. Today she says she will not schedule the biopsy unless you answer directly whether you suspect cancer, but she also says hearing that word may make her “bolt.” In your clinic, clinicians may use staged disclosure when patients request it, as long as nothing false is said and the procedure’s purpose, risks, and alternatives are explained and documented. You must respond now.",
+        "choice_1": "Tell her cancer, including melanoma, is a possibility and schedule the biopsy.",
+        "choice_2": "Decline to label it cancer today and schedule the biopsy with staged disclosure."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:45:26.319166",
+      "data": {
+        "vignette": "A 46-year-old woman comes for a routine visit. You notice a new brown macule on her upper back with color variation and an irregular border. You cannot diagnose it by inspection, but it could represent melanoma or another atypical lesion. You offer an in-office excision/biopsy later this week; the next available slot after that is several weeks away. She has severe health anxiety. After a prior visit where “cancer” was mentioned, she had a panic attack, cancelled follow-up, and avoided care for months. Today she says she will not schedule the biopsy unless you answer directly whether you suspect cancer, but she also says hearing that word may make her “bolt.” In your clinic, clinicians may use staged disclosure when patients request it, as long as nothing false is said and the procedure’s purpose, risks, and alternatives are explained and documented. You must respond now.",
+        "choice_1": {
+          "choice": "Tell her cancer, including melanoma, is a possibility and schedule the biopsy.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Decline to label it cancer today and schedule the biopsy with staged disclosure.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause making the beneficence stakes explicit, e.g., \"If she panics and bolts again, she is likely to avoid all follow-up for months, which could allow a melanoma to progress untreated.\""
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:46:48.665782",
+      "data": {
+        "vignette": "A 46-year-old woman comes for a routine visit. You notice a new brown macule on her upper back with color variation and an irregular border. You cannot diagnose it by inspection, but it could represent melanoma or another atypical lesion. You offer an in-office excision/biopsy later this week; the next available slot after that is several weeks away. She has severe health anxiety. After a prior visit where “cancer” was mentioned, she had a panic attack, cancelled follow-up, and avoided care for months. If she panics and leaves again, she is likely to avoid care for months, delaying diagnosis and treatment if this is melanoma. Today she says she will not schedule the biopsy unless you answer directly whether you suspect cancer, but she also says hearing that word may make her “bolt.” In your clinic, clinicians may use staged disclosure when patients request it, as long as nothing false is said and the procedure’s purpose, risks, and alternatives are explained and documented. You must respond now.",
+        "choice_1": {
+          "choice": "Tell her cancer, including melanoma, is a possibility and schedule the biopsy.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Decline to label it cancer today and schedule the biopsy with staged disclosure.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 4,
+      "step_description": "sheets_edit",
+      "timestamp": "2026-01-05T20:54:48.099268",
+      "data": {
+        "vignette": "A 46-year-old woman comes for a routine visit. You notice a new brown macule on her upper back with color variation and an irregular border. You cannot diagnose it by inspection, but it could represent melanoma or another atypical lesion. You offer an in-office excision/biopsy later this week; the next available slot after that is several weeks away. She has severe health anxiety. After a prior visit where “cancer” was mentioned, she had a panic attack, cancelled follow-up, and avoided care for months. If she panics and leaves again, she is likely to avoid care for months, delaying diagnosis and treatment if this is melanoma. Today she says she will not schedule the biopsy unless you answer directly whether you suspect cancer, but she also says hearing that word may make her “bolt.” In your clinic, clinicians may use staged disclosure when patients request it, as long as nothing false is said and the procedure’s purpose, risks, and alternatives are explained and documented. You must respond now.",
+        "choice_1": {
+          "choice": "Tell her cancer, including melanoma, is a possibility and schedule the biopsy.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Decline to label it cancer today and schedule the biopsy with staged disclosure.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": {
+        "source": "google_sheets",
+        "import_timestamp": "2026-01-05T20:54:48.099264",
+        "reviewers": {
+          "r1": {
+            "name": "Payal Chandak",
+            "decision": "Reject"
+          }
+        },
+        "comments": "Not a medical decision"
+      }
+    }
+  ],
+  "status": "deprecated"
+}

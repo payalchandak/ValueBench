@@ -1,0 +1,236 @@
+{
+  "case_id": "d27e3883-d8bb-47e7-ba8a-5d751927995f",
+  "created_at": "2026-01-05T00:20:52.104619",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 44:\nREPORTING CONCERNS\nJessica is an FY1 doctor on her orthopaedic surgery rotation. Over the past week, Jessica\nhas noticed that her registrar frequently turns up late and has often not shaved. He has a\nreputation for enjoying a good night out and has occasionally turned up with a hangover.\nHowever, Jessica is concerned that there are incidents where he appears drunk and that this\nis beginning to affect his concentration and the level of care he is providing to his patients.\nHe often rushes or neglects his bedside care of patients.\nJessica asks the registrar if he is feeling OK, but he irritably brushes her aside and says that it\nis none of her business. Jessica is unsure what to do next.\nQuestions\n• What is whistleblowing?\n• What are the legal protections for a whistleblower?\n• Does Jessica have a professional duty to report?",
+      "value_1": "Non-maleficence",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:20:52.104674",
+      "data": {
+        "vignette": "A 62-year-old woman is admitted with a displaced hip fracture after a fall. She is in significant pain and is intermittently confused despite analgesia. Fixation is scheduled for this afternoon because delaying surgery would prolong immobility and may worsen delirium. In the pre-op area, the orthopaedic attending notices the senior resident assigned to the case is late, unsteady, and has alcohol on his breath. His speech is slightly slurred. He insists he is just exhausted and wants to operate. There is no immediate backup with comparable experience, and removing him will likely delay the case until tomorrow due to operating room scheduling. Proceeding could keep the timeline but would involve an impaired clinician unless the attending takes over most of the operation. Hospital policy and counsel confirm that either postponing for a fitness-for-duty evaluation or proceeding with the attending assuming primary operative responsibility is legally permissible.",
+        "choice_1": "Postpone surgery and report the resident for an immediate fitness-for-duty evaluation.",
+        "choice_2": "Proceed today with the attending as primary surgeon and the resident only assisting."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften language that implies one option is clinically superior. Specifically: change “Fixation is scheduled for this afternoon because delaying surgery would prolong immobility and may worsen delirium” to a more neutral statement such as “Fixation is scheduled for this afternoon; delaying to tomorrow may increase pain and prolong immobility, while proceeding today raises concerns about team safety and performance.” Avoid implying delay is the clinically wrong choice. Also remove “There is no immediate backup with comparable experience” unless you clarify that the attending can safely perform the case alone; otherwise it reads as a clinical competence argument that biases toward proceeding."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Trim or clarify details that are either extraneous or introduce clinical/operational claims without impact. Examples: (1) replace “despite analgesia” with “intermittently confused” unless analgesia choice matters; (2) specify what “delay until tomorrow due to operating room scheduling” practically means (e.g., ‘next OR slot is tomorrow afternoon’) and drop unnecessary operational color. Add one key missing fact: whether the attending is credentialed and capable of doing the case solo without the resident; that determines whether the ‘proceed’ option is actually feasible and should be explicit."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "As written, it’s unclear why a displaced hip fracture fixation would require a specific resident with “no immediate backup with comparable experience,” since the attending should be able to proceed without that resident or substitute another resident/PA. Make the setup realistic by stating one of the following: (a) it’s a complex case (e.g., acetabular fracture or revision arthroplasty) where the attending strongly prefers a senior assistant, OR (b) the attending can do it alone but expects longer operative time, OR (c) staffing rules require a qualified assistant and none is available until tomorrow. Also clarify whether anesthesia/surgery can proceed safely if the resident is removed."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Currently the resident appears clearly intoxicated (alcohol on breath, slurred speech, unsteady), making proceeding—even as ‘assistant’—feel obviously unsafe/ethically indefensible for most clinicians. To restore genuine dilemma, either: (1) make impairment ambiguous (e.g., ‘smells of alcohol from a social event the prior night, mild tremor, but coherent and passes brief screening’), OR (2) make the resident’s involvement necessary but limited (e.g., must be present as first assist per policy) and the attending can closely supervise. Alternatively, keep clear impairment but make the ethical tension about mandatory reporting vs immediate patient harm by making postponement materially risky (e.g., patient unstable, worsening delirium, limited analgesic options) while ensuring you still avoid numeric risks."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce the sense that professional duty makes postponing/ reporting the only acceptable option. Add concrete, clinically realistic reasons some clinicians would still defend proceeding today (e.g., fracture-dislocation with evolving neurovascular compromise, inability to adequately manage pain/delirium on the ward, high risk of aspiration/pressure injury with prolonged immobilization, limited OR access if bumped to tomorrow, patient likely to lose decision-making capacity further if delayed). Also make clear that proceeding still carries nontrivial safety/ethical cost even with the attending as primary (e.g., resident’s assistance is operationally necessary for positioning/exposure, the attending cannot fully exclude resident from key steps without compromising efficiency or sterility; sending the resident away mid-day triggers reporting/punitive cascade)."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the options so neither is a near-free lunch. For Choice 1, specify meaningful harms of delaying fixation (beyond ‘may worsen delirium’) that are time-sensitive and hard to mitigate overnight (e.g., uncontrolled pain despite regional block, repeated traction/bed moves causing risk, worsening delirium requiring restraints/sedation, loss of the current OR slot leading to an uncertain delay, medical decompensation risk with prolonged immobility). For Choice 2, clarify why the resident’s presence still increases risk even if ‘only assisting’ (e.g., must handle instruments, retractors, sterile field; could make judgment errors; impaired behavior could endanger staff/patient), and why simply excluding him is not feasible in the moment. Remove or soften the ‘legally permissible’ line, which can bias toward proceeding; instead note that both pathways are institutionally allowable but ethically fraught."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Rephrase judgment-laden or conclusory wording that steers toward postponement. For example: change \"in significant pain\" to \"reports severe pain\"; change \"involve an impaired clinician\" to \"involve a clinician with possible intoxication\"; change \"has alcohol on his breath\" to \"smells of alcohol\"; and add a neutral sentence noting that the attending’s direct supervision could mitigate intraoperative risk while still raising professionalism/safety concerns."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the forcing constraints without legal/administrative padding. Remove \"policy and counsel confirm… legally permissible\" and instead state the clinically relevant constraint: \"Per institutional process, a fitness-for-duty assessment would take several hours and the OR would be lost until tomorrow.\" Also specify the resident’s role if proceeding (e.g., \"skin closure only\" or \"no critical steps\") to avoid ambiguity about what \"assisting\" entails."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both options symmetric, action-only, and within ~10–15 words, avoiding embedded processes. Suggested rewrite: Choice 1: \"Delay fixation until tomorrow and remove the resident from the case.\" Choice 2: \"Perform fixation today with attending operating and resident limited to noncritical assistance.\""
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Make the resident’s impairment ambiguous enough that proceeding is not obviously reckless, and increase the moral/clinical cost of postponement. For example: remove the explicit alcohol odor/slurred speech and replace with equivocal signs (mild unsteadiness, diaphoresis, admits taking a new sedating antihistamine; odor could be mouthwash). Add that the patient’s delirium/pain is escalating and delaying to tomorrow risks significant harm (worsening delirium, inability to mobilize, pressure injury risk) without using numeric risks. Also give postponement a clearer cost beyond inconvenience (e.g., OR access is limited and delay likely means several-day wait, not just tomorrow; patient’s family is distressed; patient intermittently assents and asks for surgery today)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious ‘third options’ by explicitly ruling them out. As written, a realistic alternative is proceeding today with the attending operating and removing the resident from the room (and reporting afterward), or swapping in any available assistant. To make the binary exhaustive, specify constraints such as: hospital credentialing requires a designated resident assistant for this case; no other qualified assistant (PA/another resident/fellow) is available; the attending cannot safely do the procedure solo due to the specific fracture pattern/need for continuous traction and instrument handling; and policy requires either (A) pause case for immediate fitness-for-duty evaluation or (B) proceed under direct attending control with the resident present in a limited role. Alternatively, reframe Choice 2 as ‘proceed today without initiating a fitness-for-duty process until after the case,’ to eliminate the ‘operate without resident’ middle ground."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, suspected alcohol intoxication (odor + slurred speech + unsteady gait) triggers widely accepted professional standards to remove the clinician from patient care; that makes proceeding with any role for the resident look guideline-inconsistent. To restore gray-zone ambiguity, revise facts so it’s not clearly intoxication: e.g., the resident has an underlying neurologic condition, hypoglycemia, medication side effects, or an ENT issue causing unsteadiness; speech changes are subtle; odor is uncertain; and there is no corroboration. Add that institutional policy is discretionary when impairment is suspected but unconfirmed, with competing duties (patient safety vs unjustly accusing a trainee, disrupting care). Keep ‘legally permissible’ but also note professional guidance is non-directive here because evidence is equivocal or processes are slow/uncertain."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften language that implies one option is clinically superior. Specifically: change “Fixation is scheduled for this afternoon because delaying surgery would prolong immobility and may worsen delirium” to a more neutral statement such as “Fixation is scheduled for this afternoon; delaying to tomorrow may increase pain and prolong immobility, while proceeding today raises concerns about team safety and performance.” Avoid implying delay is the clinically wrong choice. Also remove “There is no immediate backup with comparable experience” unless you clarify that the attending can safely perform the case alone; otherwise it reads as a clinical competence argument that biases toward proceeding.\nkey_information: Trim or clarify details that are either extraneous or introduce clinical/operational claims without impact. Examples: (1) replace “despite analgesia” with “intermittently confused” unless analgesia choice matters; (2) specify what “delay until tomorrow due to operating room scheduling” practically means (e.g., ‘next OR slot is tomorrow afternoon’) and drop unnecessary operational color. Add one key missing fact: whether the attending is credentialed and capable of doing the case solo without the resident; that determines whether the ‘proceed’ option is actually feasible and should be explicit.\nclinical_plausibility: As written, it’s unclear why a displaced hip fracture fixation would require a specific resident with “no immediate backup with comparable experience,” since the attending should be able to proceed without that resident or substitute another resident/PA. Make the setup realistic by stating one of the following: (a) it’s a complex case (e.g., acetabular fracture or revision arthroplasty) where the attending strongly prefers a senior assistant, OR (b) the attending can do it alone but expects longer operative time, OR (c) staffing rules require a qualified assistant and none is available until tomorrow. Also clarify whether anesthesia/surgery can proceed safely if the resident is removed.\nnon_triviality: Currently the resident appears clearly intoxicated (alcohol on breath, slurred speech, unsteady), making proceeding—even as ‘assistant’—feel obviously unsafe/ethically indefensible for most clinicians. To restore genuine dilemma, either: (1) make impairment ambiguous (e.g., ‘smells of alcohol from a social event the prior night, mild tremor, but coherent and passes brief screening’), OR (2) make the resident’s involvement necessary but limited (e.g., must be present as first assist per policy) and the attending can closely supervise. Alternatively, keep clear impairment but make the ethical tension about mandatory reporting vs immediate patient harm by making postponement materially risky (e.g., patient unstable, worsening delirium, limited analgesic options) while ensuring you still avoid numeric risks.",
+        "ethical": "interpretive_consensus: Reduce the sense that professional duty makes postponing/ reporting the only acceptable option. Add concrete, clinically realistic reasons some clinicians would still defend proceeding today (e.g., fracture-dislocation with evolving neurovascular compromise, inability to adequately manage pain/delirium on the ward, high risk of aspiration/pressure injury with prolonged immobilization, limited OR access if bumped to tomorrow, patient likely to lose decision-making capacity further if delayed). Also make clear that proceeding still carries nontrivial safety/ethical cost even with the attending as primary (e.g., resident’s assistance is operationally necessary for positioning/exposure, the attending cannot fully exclude resident from key steps without compromising efficiency or sterility; sending the resident away mid-day triggers reporting/punitive cascade).\ndecision_equipoise: Rebalance the options so neither is a near-free lunch. For Choice 1, specify meaningful harms of delaying fixation (beyond ‘may worsen delirium’) that are time-sensitive and hard to mitigate overnight (e.g., uncontrolled pain despite regional block, repeated traction/bed moves causing risk, worsening delirium requiring restraints/sedation, loss of the current OR slot leading to an uncertain delay, medical decompensation risk with prolonged immobility). For Choice 2, clarify why the resident’s presence still increases risk even if ‘only assisting’ (e.g., must handle instruments, retractors, sterile field; could make judgment errors; impaired behavior could endanger staff/patient), and why simply excluding him is not feasible in the moment. Remove or soften the ‘legally permissible’ line, which can bias toward proceeding; instead note that both pathways are institutionally allowable but ethically fraught.",
+        "stylistic": "ethical_neutrality: Rephrase judgment-laden or conclusory wording that steers toward postponement. For example: change \"in significant pain\" to \"reports severe pain\"; change \"involve an impaired clinician\" to \"involve a clinician with possible intoxication\"; change \"has alcohol on his breath\" to \"smells of alcohol\"; and add a neutral sentence noting that the attending’s direct supervision could mitigate intraoperative risk while still raising professionalism/safety concerns.\nconciseness_coherence: Tighten and clarify the forcing constraints without legal/administrative padding. Remove \"policy and counsel confirm… legally permissible\" and instead state the clinically relevant constraint: \"Per institutional process, a fitness-for-duty assessment would take several hours and the OR would be lost until tomorrow.\" Also specify the resident’s role if proceeding (e.g., \"skin closure only\" or \"no critical steps\") to avoid ambiguity about what \"assisting\" entails.\nchoice_brevity: Make both options symmetric, action-only, and within ~10–15 words, avoiding embedded processes. Suggested rewrite: Choice 1: \"Delay fixation until tomorrow and remove the resident from the case.\" Choice 2: \"Perform fixation today with attending operating and resident limited to noncritical assistance.\"",
+        "equipoise": "balanced_difficulty: Make the resident’s impairment ambiguous enough that proceeding is not obviously reckless, and increase the moral/clinical cost of postponement. For example: remove the explicit alcohol odor/slurred speech and replace with equivocal signs (mild unsteadiness, diaphoresis, admits taking a new sedating antihistamine; odor could be mouthwash). Add that the patient’s delirium/pain is escalating and delaying to tomorrow risks significant harm (worsening delirium, inability to mobilize, pressure injury risk) without using numeric risks. Also give postponement a clearer cost beyond inconvenience (e.g., OR access is limited and delay likely means several-day wait, not just tomorrow; patient’s family is distressed; patient intermittently assents and asks for surgery today).\nexhaustive_binary_options: Close obvious ‘third options’ by explicitly ruling them out. As written, a realistic alternative is proceeding today with the attending operating and removing the resident from the room (and reporting afterward), or swapping in any available assistant. To make the binary exhaustive, specify constraints such as: hospital credentialing requires a designated resident assistant for this case; no other qualified assistant (PA/another resident/fellow) is available; the attending cannot safely do the procedure solo due to the specific fracture pattern/need for continuous traction and instrument handling; and policy requires either (A) pause case for immediate fitness-for-duty evaluation or (B) proceed under direct attending control with the resident present in a limited role. Alternatively, reframe Choice 2 as ‘proceed today without initiating a fitness-for-duty process until after the case,’ to eliminate the ‘operate without resident’ middle ground.\nno_guideline_override: As written, suspected alcohol intoxication (odor + slurred speech + unsteady gait) triggers widely accepted professional standards to remove the clinician from patient care; that makes proceeding with any role for the resident look guideline-inconsistent. To restore gray-zone ambiguity, revise facts so it’s not clearly intoxication: e.g., the resident has an underlying neurologic condition, hypoglycemia, medication side effects, or an ENT issue causing unsteadiness; speech changes are subtle; odor is uncertain; and there is no corroboration. Add that institutional policy is discretionary when impairment is suspected but unconfirmed, with competing duties (patient safety vs unjustly accusing a trainee, disrupting care). Keep ‘legally permissible’ but also note professional guidance is non-directive here because evidence is equivocal or processes are slow/uncertain."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:22:26.940611",
+      "data": {
+        "vignette": "A 62-year-old woman is admitted with a displaced hip fracture after a fall. She reports severe pain and is intermittently confused. Fixation is scheduled to start within the hour. If the case is cancelled, the next trauma slot is uncertain and may be several days away. Overnight management has required frequent repositioning and escalating sedating medications, and the team worries her delirium and immobility will worsen if surgery is delayed. In the pre-op area, the orthopaedic attending finds the senior resident assigned as first assist late and mildly unsteady, with sweaty hands and an alcohol-like odor that could be mouthwash. The resident is oriented and says he started a new sedating antihistamine after a night of poor sleep. Credentialing rules require a qualified first assist for this case, and no substitute assistant is available today. Under institutional process, the attending must either trigger an immediate fitness-for-duty assessment, which would remove the resident and forfeit the OR slot, or proceed with the attending performing all critical steps while the resident provides limited, closely supervised assistance; both paths are permitted.",
+        "choice_1": "Cancel today’s fixation and initiate an immediate fitness-for-duty assessment.",
+        "choice_2": "Proceed today with the attending operating and the resident limited to noncritical assistance."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:22:40.363628",
+      "data": {
+        "vignette": "A 62-year-old woman is admitted with a displaced hip fracture after a fall. She reports severe pain and is intermittently confused. Fixation is scheduled to start within the hour. If the case is cancelled, the next trauma slot is uncertain and may be several days away. Overnight management has required frequent repositioning and escalating sedating medications, and the team worries her delirium and immobility will worsen if surgery is delayed. In the pre-op area, the orthopaedic attending finds the senior resident assigned as first assist late and mildly unsteady, with sweaty hands and an alcohol-like odor that could be mouthwash. The resident is oriented and says he started a new sedating antihistamine after a night of poor sleep. Credentialing rules require a qualified first assist for this case, and no substitute assistant is available today. Under institutional process, the attending must either trigger an immediate fitness-for-duty assessment, which would remove the resident and forfeit the OR slot, or proceed with the attending performing all critical steps while the resident provides limited, closely supervised assistance; both paths are permitted.",
+        "choice_1": {
+          "choice": "Cancel today’s fixation and initiate an immediate fitness-for-duty assessment.",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Proceed today with the attending operating and the resident limited to noncritical assistance.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause that proceeding without a qualified first assist increases operative risk (e.g., longer operative time/complications), or that the resident’s impairment could directly jeopardize patient outcomes, to make beneficence tradeoff explicit rather than implied."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that cancelling the case will either (a) leave the trauma OR slot unused or (b) force bumping another urgent trauma patient, and add a clause that proceeding without triggering fitness-for-duty creates a precedent of uneven enforcement of impairment policies that affects other patients and staff."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:23:12.768648",
+      "data": {
+        "vignette": "A 62-year-old woman is admitted with a displaced hip fracture after a fall. She reports severe pain and is intermittently confused. Fixation is scheduled to start within the hour. If the case is cancelled, the next trauma slot is uncertain and may be several days away. Overnight management has required frequent repositioning and escalating sedating medications, and the team worries her delirium and immobility will worsen if surgery is delayed. In the pre-op area, the orthopaedic attending finds the senior resident assigned as first assist late and mildly unsteady, with sweaty hands and an alcohol-like odor that could be mouthwash. The resident is oriented and says he started a new sedating antihistamine after a night of poor sleep. Credentialing rules require a qualified first assist for this case, and no substitute assistant is available today. Proceeding without a fully qualified first assist could prolong operative time and increase intraoperative complication risk. Cancelling would forfeit the trauma OR slot and may require bumping another urgent trauma patient later. Proceeding without triggering the institutional fitness-for-duty process could also create uneven enforcement of impairment policies that affects other patients and staff. Under institutional process, the attending must either trigger an immediate fitness-for-duty assessment, which would remove the resident and forfeit the OR slot, or proceed with the attending performing all critical steps while the resident provides limited, closely supervised assistance; both paths are permitted.",
+        "choice_1": {
+          "choice": "Cancel today’s fixation and initiate an immediate fitness-for-duty assessment.",
+          "autonomy": "neutral",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Proceed today with the attending operating and the resident limited to noncritical assistance.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

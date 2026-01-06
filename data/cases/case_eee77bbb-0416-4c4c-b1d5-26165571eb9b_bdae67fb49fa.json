@@ -1,0 +1,230 @@
+{
+  "case_id": "eee77bbb-0416-4c4c-b1d5-26165571eb9b",
+  "created_at": "2026-01-04T22:59:24.704689",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 6:\nNARRATIVE ETHICS\nYou are the FY1 doctor attached to a general medical firm. During a typical on-call you admit a 78-year-old man with shortness of breath. He is acutely unwell. Investigations reveal that he has right lobar pneumonia. He also has dementia and ischaemic heart disease. Despite intravenous antibiotics and fluids, he does not make much improvement over the next few days. He is lethargic, yet occasionally agitated and needs full nursing care. You decide to discuss his medical issues with his wife and son to see how they had been coping at home before the pneumonia. You discover that there had been a gradual decline in his general well-being over the past 6 months. In particular, his son comments how his father seemed to have had increasing difficulty swallowing. He used to hold food in his mouth for long periods of time before swallowing and had choked on several occasions. You decide to get a swallowing assessment. The speech and language therapist grades him as unsafe to swallow and he is made nil by mouth. A nasogastric tube is inserted so that he can continue to be fed but he pulls it out on three occasions. He continues to deteriorate and his albumin drops due to sustained lack of intake. The only way to improve this would be to insert a percutaneous endoscopic gastrostomy (PEG) tube, but you feel that in a patient with so many comorbidities this may not be in his best interests. You discuss the pros and cons of PEG feeding with the patient’s relatives. You explain to them that without a PEG you can let him return home and continue to eat normally but that this may result in a fatal aspiration pneumonia at some point. The alternative is a PEG tube and keeping the patient nil by mouth permanently. A PEG tube is associated with a mortality of 3% and serious complications. You inform the relatives that the medical opinion of the team is to allow the patient to return home but that you would be willing to consider a PEG if the family felt that the patient would continue to have a good quality of life with one.\nQuestions\n• What is narrative ethics?\n• Which ‘voices’ should be listened to in this scenario?",
+      "value_1": "Beneficence",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T22:59:24.704743",
+      "data": {
+        "vignette": "A 78-year-old man with moderate dementia is admitted with right-sided pneumonia and dehydration. He remains lethargic despite antibiotics and oxygen. His wife says he has been declining for months and has choked repeatedly at meals. A swallow assessment finds him unsafe for oral intake. A nasogastric tube is tried, but he repeatedly pulls it out, and staff are considering mitts or sedation to keep it in. He cannot participate meaningfully in decisions, and there is no advance directive. His wife is his legal surrogate and wants “whatever will help him recover,” but she also fears he will suffer in hospital. The team must decide today because he is losing strength and discharge planning is stalled. Hospital policy and state law allow either long-term tube feeding or a comfort-focused oral feeding plan in this situation.",
+        "choice_1": "Arrange PEG placement and continue enteral feeding as the long-term plan.",
+        "choice_2": "Forgo PEG and pursue comfort-focused hand feeding with aspiration precautions."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove or neutralize language that implies a straightforward clinical trajectory or that one option is more likely to achieve “recovery.” For example: (1) Change “wants ‘whatever will help him recover’” to “wants life-prolonging measures and hopes he will regain enough strength to leave the hospital.” (2) Add one sentence acknowledging clinical uncertainty and tradeoffs without ranking: “Both PEG feeding and comfort-focused hand feeding may not prevent aspiration and each carries different burdens (procedure-related complications, restraints/sedation vs risk of aspiration and limited intake).” Avoid wording that suggests PEG is clearly ‘the’ recovery path."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": false,
+          "suggested_changes": "Tighten the forcing mechanism to a concrete, realistic decision point. For example: “Interventional radiology can place a PEG tomorrow morning if consent is obtained today; otherwise the earliest slot is in 1–2 weeks and he cannot be discharged to a facility without a feeding plan.” Or: “The SNF requires a documented feeding plan (tube vs comfort feeding) before accepting transfer, and he is approaching the limit for continued acute-care hospitalization without a disposition.” Remove vague phrasing like “losing strength” and “discharge planning is stalled” unless tied to a specific deadline."
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add a few essential decision-relevant facts and remove/condense nonessential phrasing. Needed: (1) baseline function and stage of dementia (e.g., ambulatory? recognizes family? dependent for ADLs?) to contextualize goals; (2) whether pneumonia is suspected aspiration-related; (3) current respiratory status (e.g., on nasal cannula vs high-flow) and overall prognosis phrased qualitatively; (4) alternatives already attempted (speech therapy/modified textures) and whether he is able to safely take small amounts for comfort. Condense: replace “declining for months” with one functional sentence; omit “dehydration” unless it changes the decision. Clarify what “comfort-focused oral feeding plan” entails (risk-feeding/hand feeding, no tube, treat symptoms, reassess)."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, the case leans toward PEG as the ‘recover’ option and comfort feeding as ‘allow aspiration,’ making the choice feel clinically/ethically lopsided. Make both options defensible by explicitly balancing burdens/benefits: (1) note PEG does not reliably eliminate aspiration and may require restraints/sedation or lead to complications; (2) note comfort hand feeding may better align with minimizing suffering and preserving dignity but risks inadequate intake/aspiration; (3) clarify wife’s mixed goals (life prolongation vs avoiding suffering) and any prior values (e.g., past statements about feeding tubes). This creates genuine moral cost on both sides."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Revise the clinical context so PEG vs comfort feeding is not a near-consensus ‘no-PEG in advanced dementia’ scenario. Either: (a) make the situation more prognostically reversible/rehabilitative (e.g., mild-to-moderate dementia with previously independent eating until this acute pneumonia; expected meaningful recovery if nutrition can be maintained for weeks), and explicitly note that consultants consider PEG a reasonable bridge to rehab/SNF discharge; AND/OR (b) increase the ethical cost of Choice 2 by stating that hand-feeding is likely to be inadequate despite skilled assistance (progressive dysphagia), with high likelihood of recurrent aspiration events and inability to meet hydration goals, raising risk of delirium/renal injury and earlier death. Also increase the ethical cost of Choice 1 by clarifying burdens: procedure risks, need for restraints/sedation even after PEG due to line pulling, potential for prolonged institutionalization, and possible worsening agitation. Remove/soften ‘policy and state law allow either’ and instead frame as ‘both approaches are commonly used and ethically debated in similar cases,’ to avoid implying legality/administration resolves the choice."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Replace value-laden phrasing with clinically neutral terms. For example: change “whatever will help him recover” to “prefers life-prolonging treatment if clinically reasonable,” and change “fears he will suffer in hospital” to “is concerned about distress and restraint/sedation burden.” Avoid wording that implies either plan is more compassionate or more appropriate; keep both framed as standard options."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Resolve capacity/diagnosis and feeding-plan coherence. Either (a) change “moderate dementia” to “moderate-to-severe dementia” OR (b) add that he has superimposed delirium/encephalopathy from infection/dehydration explaining lack of decision-making capacity. Also clarify that the comfort plan is “comfort feeding only despite known aspiration risk” to avoid contradiction with “unsafe for oral intake.” Trim minor process language (e.g., “discharge planning is stalled”) unless directly tied to the decision-forcing constraint; instead specify a concrete time pressure such as ‘nutrition plan must be finalized within 24 hours to proceed with placement/disposition.’"
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Shorten choices to neutral action statements and move implementation details into the vignette. Example revisions:\n- Choice 1: “Proceed with PEG placement for long-term enteral nutrition.”\n- Choice 2: “Do not place PEG; implement comfort feeding only.”\nRemove “with aspiration precautions” from the choice and, if needed, describe the precautions in the vignette."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce framing asymmetry that makes PEG seem like the ‘active recovery’ option and comfort feeding seem like ‘giving up.’ Add concrete, ethically weighty downsides to PEG (e.g., likely need for physical restraints/sedation due to tube pulling; procedural risks in frail pneumonia patient; potential for prolonged hospitalization/ICU transfer if complications). Also add ethically weighty downsides to comfort-feeding (e.g., higher likelihood of recurrent aspiration events and possible earlier death; wife’s concern about perceived starvation). Ensure the vignette states that prognosis for meaningful recovery is uncertain either way, and that PEG is not expected to clearly prevent aspiration pneumonia or improve survival in his dementia stage, but could allow hydration/nutrition for a limited trial—so either choice can be defended."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "As written, a clinically obvious middle option exists: a time-limited trial of nasogastric feeding with clearly defined goals, or a time-limited PEG trial, or a short period of IV fluids only while reassessing, or switching to a bridle/alternative securing method without sedation. To make the binary exhaustive, explicitly rule out these compromises (e.g., ‘NG repeatedly dislodged despite a trained sitter; nasal bridle not available; IV fluids already maximized and causing volume overload; endoscopy service requires a decision for PEG today or it will be delayed weeks; the wife declines restraints/sedation but wants a durable plan’). Alternatively, reframe the decision as: ‘Proceed with PEG knowing it will require restraints/sedation to maintain,’ vs ‘Do not place PEG and accept risk with comfort feeding,’ explicitly stating that further NG trials are not feasible."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "PEG in advanced/moderate dementia is addressed by widely cited professional guidance (e.g., geriatrics/palliative care recommendations often discourage PEG for advanced dementia because it does not reliably improve survival, aspiration, or pressure ulcers). Without acknowledging this, Choice 1 can look guideline-inappropriate. Fix by (a) clarifying dementia stage and why guidance is not definitive here (e.g., ‘moderate dementia with previously independent eating until recent weeks,’ potentially reversible acute illness), and/or (b) stating there is legitimate local practice variation and that consultants disagree, or (c) explicitly note that guidelines advise against PEG in advanced dementia but are less clear in moderate dementia with an acute reversible trigger, making this a gray zone."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove or neutralize language that implies a straightforward clinical trajectory or that one option is more likely to achieve “recovery.” For example: (1) Change “wants ‘whatever will help him recover’” to “wants life-prolonging measures and hopes he will regain enough strength to leave the hospital.” (2) Add one sentence acknowledging clinical uncertainty and tradeoffs without ranking: “Both PEG feeding and comfort-focused hand feeding may not prevent aspiration and each carries different burdens (procedure-related complications, restraints/sedation vs risk of aspiration and limited intake).” Avoid wording that suggests PEG is clearly ‘the’ recovery path.\ndecision_forcing_context: Tighten the forcing mechanism to a concrete, realistic decision point. For example: “Interventional radiology can place a PEG tomorrow morning if consent is obtained today; otherwise the earliest slot is in 1–2 weeks and he cannot be discharged to a facility without a feeding plan.” Or: “The SNF requires a documented feeding plan (tube vs comfort feeding) before accepting transfer, and he is approaching the limit for continued acute-care hospitalization without a disposition.” Remove vague phrasing like “losing strength” and “discharge planning is stalled” unless tied to a specific deadline.\nkey_information: Add a few essential decision-relevant facts and remove/condense nonessential phrasing. Needed: (1) baseline function and stage of dementia (e.g., ambulatory? recognizes family? dependent for ADLs?) to contextualize goals; (2) whether pneumonia is suspected aspiration-related; (3) current respiratory status (e.g., on nasal cannula vs high-flow) and overall prognosis phrased qualitatively; (4) alternatives already attempted (speech therapy/modified textures) and whether he is able to safely take small amounts for comfort. Condense: replace “declining for months” with one functional sentence; omit “dehydration” unless it changes the decision. Clarify what “comfort-focused oral feeding plan” entails (risk-feeding/hand feeding, no tube, treat symptoms, reassess).\nnon_triviality: As written, the case leans toward PEG as the ‘recover’ option and comfort feeding as ‘allow aspiration,’ making the choice feel clinically/ethically lopsided. Make both options defensible by explicitly balancing burdens/benefits: (1) note PEG does not reliably eliminate aspiration and may require restraints/sedation or lead to complications; (2) note comfort hand feeding may better align with minimizing suffering and preserving dignity but risks inadequate intake/aspiration; (3) clarify wife’s mixed goals (life prolongation vs avoiding suffering) and any prior values (e.g., past statements about feeding tubes). This creates genuine moral cost on both sides.",
+        "ethical": "decision_equipoise: Revise the clinical context so PEG vs comfort feeding is not a near-consensus ‘no-PEG in advanced dementia’ scenario. Either: (a) make the situation more prognostically reversible/rehabilitative (e.g., mild-to-moderate dementia with previously independent eating until this acute pneumonia; expected meaningful recovery if nutrition can be maintained for weeks), and explicitly note that consultants consider PEG a reasonable bridge to rehab/SNF discharge; AND/OR (b) increase the ethical cost of Choice 2 by stating that hand-feeding is likely to be inadequate despite skilled assistance (progressive dysphagia), with high likelihood of recurrent aspiration events and inability to meet hydration goals, raising risk of delirium/renal injury and earlier death. Also increase the ethical cost of Choice 1 by clarifying burdens: procedure risks, need for restraints/sedation even after PEG due to line pulling, potential for prolonged institutionalization, and possible worsening agitation. Remove/soften ‘policy and state law allow either’ and instead frame as ‘both approaches are commonly used and ethically debated in similar cases,’ to avoid implying legality/administration resolves the choice.",
+        "stylistic": "ethical_neutrality: Replace value-laden phrasing with clinically neutral terms. For example: change “whatever will help him recover” to “prefers life-prolonging treatment if clinically reasonable,” and change “fears he will suffer in hospital” to “is concerned about distress and restraint/sedation burden.” Avoid wording that implies either plan is more compassionate or more appropriate; keep both framed as standard options.\nconciseness_coherence: Resolve capacity/diagnosis and feeding-plan coherence. Either (a) change “moderate dementia” to “moderate-to-severe dementia” OR (b) add that he has superimposed delirium/encephalopathy from infection/dehydration explaining lack of decision-making capacity. Also clarify that the comfort plan is “comfort feeding only despite known aspiration risk” to avoid contradiction with “unsafe for oral intake.” Trim minor process language (e.g., “discharge planning is stalled”) unless directly tied to the decision-forcing constraint; instead specify a concrete time pressure such as ‘nutrition plan must be finalized within 24 hours to proceed with placement/disposition.’\nchoice_brevity: Shorten choices to neutral action statements and move implementation details into the vignette. Example revisions:\n- Choice 1: “Proceed with PEG placement for long-term enteral nutrition.”\n- Choice 2: “Do not place PEG; implement comfort feeding only.”\nRemove “with aspiration precautions” from the choice and, if needed, describe the precautions in the vignette.",
+        "equipoise": "balanced_difficulty: Reduce framing asymmetry that makes PEG seem like the ‘active recovery’ option and comfort feeding seem like ‘giving up.’ Add concrete, ethically weighty downsides to PEG (e.g., likely need for physical restraints/sedation due to tube pulling; procedural risks in frail pneumonia patient; potential for prolonged hospitalization/ICU transfer if complications). Also add ethically weighty downsides to comfort-feeding (e.g., higher likelihood of recurrent aspiration events and possible earlier death; wife’s concern about perceived starvation). Ensure the vignette states that prognosis for meaningful recovery is uncertain either way, and that PEG is not expected to clearly prevent aspiration pneumonia or improve survival in his dementia stage, but could allow hydration/nutrition for a limited trial—so either choice can be defended.\nexhaustive_binary_options: As written, a clinically obvious middle option exists: a time-limited trial of nasogastric feeding with clearly defined goals, or a time-limited PEG trial, or a short period of IV fluids only while reassessing, or switching to a bridle/alternative securing method without sedation. To make the binary exhaustive, explicitly rule out these compromises (e.g., ‘NG repeatedly dislodged despite a trained sitter; nasal bridle not available; IV fluids already maximized and causing volume overload; endoscopy service requires a decision for PEG today or it will be delayed weeks; the wife declines restraints/sedation but wants a durable plan’). Alternatively, reframe the decision as: ‘Proceed with PEG knowing it will require restraints/sedation to maintain,’ vs ‘Do not place PEG and accept risk with comfort feeding,’ explicitly stating that further NG trials are not feasible.\nno_guideline_override: PEG in advanced/moderate dementia is addressed by widely cited professional guidance (e.g., geriatrics/palliative care recommendations often discourage PEG for advanced dementia because it does not reliably improve survival, aspiration, or pressure ulcers). Without acknowledging this, Choice 1 can look guideline-inappropriate. Fix by (a) clarifying dementia stage and why guidance is not definitive here (e.g., ‘moderate dementia with previously independent eating until recent weeks,’ potentially reversible acute illness), and/or (b) stating there is legitimate local practice variation and that consultants disagree, or (c) explicitly note that guidelines advise against PEG in advanced dementia but are less clear in moderate dementia with an acute reversible trigger, making this a gray zone."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:00:35.297912",
+      "data": {
+        "vignette": "A 78-year-old man with moderate dementia is hospitalized for suspected aspiration pneumonia. Before this illness he lived with his wife, recognized family, and needed help with medications and meals but walked with a cane. He now has delirium and cannot make medical decisions. A swallow study shows severe dysphagia with overt aspiration. He coughs and chokes with even thickened liquids. A nasogastric tube was attempted but he repeatedly removes it despite a 1:1 sitter, and a nasal bridle is not available. IV fluids have been used but are now causing worsening edema, and he still cannot meet nutrition needs. Gastroenterology can place a PEG tomorrow if consent is obtained today; otherwise it will be delayed for weeks and a skilled nursing facility will not accept him without a documented feeding plan. Consultants disagree about PEG in this setting. Tube feeding may provide hydration and calories for rehabilitation but is unlikely to eliminate aspiration and may require restraints or sedating medications if he continues to pull at lines. Comfort feeding only could reduce restraints and allow small amounts by hand for pleasure, but he may take too little and is at high risk of recurrent aspiration and earlier death. Hospital counsel confirms either approach is legally permissible with surrogate consent.",
+        "choice_1": "Proceed with PEG placement for enteral nutrition.",
+        "choice_2": "Do not place PEG and implement comfort feeding only."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:00:59.409863",
+      "data": {
+        "vignette": "A 78-year-old man with moderate dementia is hospitalized for suspected aspiration pneumonia. Before this illness he lived with his wife, recognized family, and needed help with medications and meals but walked with a cane. He now has delirium and cannot make medical decisions. A swallow study shows severe dysphagia with overt aspiration. He coughs and chokes with even thickened liquids. A nasogastric tube was attempted but he repeatedly removes it despite a 1:1 sitter, and a nasal bridle is not available. IV fluids have been used but are now causing worsening edema, and he still cannot meet nutrition needs. Gastroenterology can place a PEG tomorrow if consent is obtained today; otherwise it will be delayed for weeks and a skilled nursing facility will not accept him without a documented feeding plan. Consultants disagree about PEG in this setting. Tube feeding may provide hydration and calories for rehabilitation but is unlikely to eliminate aspiration and may require restraints or sedating medications if he continues to pull at lines. Comfort feeding only could reduce restraints and allow small amounts by hand for pleasure, but he may take too little and is at high risk of recurrent aspiration and earlier death. Hospital counsel confirms either approach is legally permissible with surrogate consent.",
+        "choice_1": {
+          "choice": "Proceed with PEG placement for enteral nutrition.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Do not place PEG and implement comfort feeding only.",
+          "autonomy": "neutral",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "beneficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Clarify relative harms by adding one clause quantifying key risks: for PEG, note “high likelihood he will need soft restraints or sedating meds to prevent tube removal and has procedure-related complication risk (e.g., bleeding/infection),” and for comfort feeding, note “high likelihood of inadequate intake with dehydration/malnutrition and recurrent aspiration leading to earlier death.”"
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:02:38.107434",
+      "data": {
+        "vignette": "A 78-year-old man with moderate dementia is hospitalized for aspiration pneumonia. Before this illness he lived with his wife and still recognized family. He needed help with medications and meals but walked with a cane. He now has delirium and lacks decision-making capacity. A swallow study shows severe dysphagia with aspiration, and he coughs and chokes even with thickened liquids. A nasogastric tube was attempted, but he repeatedly removes it, and a nasal bridle is unavailable. IV fluids have caused edema, and he cannot meet nutrition needs. Gastroenterology can place a PEG tomorrow if surrogate consent is obtained today; otherwise it will be delayed for weeks, and a nursing facility will not accept him without a feeding plan. PEG may provide hydration and calories for rehabilitation but is unlikely to prevent aspiration. It carries bleeding or infection risk and may require restraints or sedating medications if he pulls at the tube. Comfort feeding only avoids tube-related harms but risks inadequate intake, dehydration, malnutrition, recurrent aspiration, and earlier death.",
+        "choice_1": {
+          "choice": "Proceed with PEG placement for enteral nutrition.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Do not place PEG and implement comfort feeding only.",
+          "autonomy": "neutral",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

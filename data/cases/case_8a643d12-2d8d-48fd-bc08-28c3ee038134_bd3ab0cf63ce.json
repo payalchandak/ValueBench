@@ -1,0 +1,242 @@
+{
+  "case_id": "8a643d12-2d8d-48fd-bc08-28c3ee038134",
+  "created_at": "2026-01-05T00:07:49.752333",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "The cases of C and F\nC and F were two girls, aged three and nine years of\nage respectively, both of whose parents were sepa-\nrated. The children lived with their mothers, each of\nwhom refused to consent to their daughters receiv-\ning a range of vaccinations, including the combined\nmeasles, mumps and rubella (MMR) jab. The girls\nmothers were opposed to vaccination because they\nfelt that it posed unacceptable risks – indeed, there\nhad, at the time, been much media coverage of\nresearch which suggested an association between\nreceiving the vaccine and developing autism and\nbowel problems (Wake eld et al., 1998).\n’\nThe girls fathers were, however, in favour of them\nbeing immunized, because they felt that this was in\n’\nthe children s best interests. The fathers approached\nthe courts for permission for the injections to be given\nand (although there were some di erences in their\nfi ff\nsituations) the two cases were considered together.\nACTIVITY: Stop here for a moment. Based on\nfi\nwhat little information you have, what do you think\n’\nyou would decide if you were the judge? Consider\narguments both for authorizing the vaccinations and\nfor prohibiting them.\nMr Justice Sumner, in the High Court, basically agreed\n’\nwith the girls fathers: he ruled that it would be in\n’\nfl each child s best interests to receive a range of vacci-\nnations. He did recognize that the mothers (and their\ndaughters) were owed the right to respect for their\nprivate and family life, but he further noted how these\nfi\nrights were quali ed by the need to protect the\nhealth of the children. He also thought that, in time,\nff\nthe mothers would be able to come to terms with his\ndecision, despite any initial upset they might feel.\nThe mothers decided to appeal to the Court of\nAppeal, but here too their case failed. This court ruled\nthat the trial judge had been guided by the right\nconsiderations, since he had determined the best\ninterests of the children by considering both the\nmedical evidence and other factors relevant to the\nwelfare of the children. However, the appeal judges\nconceded that Mr Justice Sumner had been particu-\nlarly thorough in his consideration of the medical\nevidence, but they felt that this was entirely appro-\npriate given the crucial importance of this evidence.\nLike the trial judge before them, the appeal judges\nfelt that the balance tipped considerably in favour of\nthe combined MMR vaccination and away from the\n’\nunreliable evidence presented by the mothers legal\nteam which was, said Lord Justice Sedley, ‘junk\n’\nscience .",
+      "value_1": "Beneficence",
+      "value_2": "Autonomy"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:07:49.752389",
+      "data": {
+        "vignette": "A 9-year-old girl is brought to clinic by her father for routine care. She has not received any childhood vaccines. Her parents are divorced and share legal custody. Her mother has repeatedly refused immunizations and asks you by phone not to vaccinate today. The father wants her to receive the MMR series now. The child says she is scared of shots and worries her mother will be angry if she gets vaccinated. A measles case was reported in her school district, and the school will require proof of immunization or an exemption form by the end of the week. Your next available visit is in two months. Clinic policy allows treatment with one custodial parent’s consent when the other parent objects, but also permits delaying non-emergent care to seek further agreement. You must decide what to do today.",
+        "choice_1": "Administer the MMR vaccine today with the father’s consent.",
+        "choice_2": "Defer vaccination today and arrange expedited mediation or court clarification."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften language that makes vaccination feel objectively medically mandatory due to outbreak context. Rephrase to keep stakes without implying one option is clinically superior: e.g., change “A measles case was reported in her school district” to “Measles has recently been reported locally, increasing concern about exposure,” and avoid implying imminent harm if not vaccinated today. Keep it as contextual risk rather than a determinative clinical argument."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Tighten legal/policy details and add only what is necessary for the clinician to act. Specify whether the father has authority to consent alone under the custody order (e.g., “either parent may consent to routine medical care” vs “both must agree”) instead of generic “share legal custody,” since that determines feasibility. Remove or condense less decision-relevant elements (e.g., “routine care”) and clarify the exact school deadline requirement (immunization vs signed exemption) without extra narrative."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Make the consent/legal setup more realistic: in many jurisdictions, ‘shared legal custody’ may still allow either parent to consent to routine care, but policies vary and mediation/court clarification is rarely ‘expedited’ within days. Revise to: (1) state the custody order language (either parent may consent vs joint consent required); (2) replace “expedited mediation” with a realistic step such as contacting the clinic’s legal/risk team, requesting written documentation of custody order, and/or advising parents to seek an emergency court order if needed. Also clarify whether administering MMR today would be the first dose and that a full series cannot be completed immediately."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Add a brief jurisdiction-neutral statement making both options legally permissible. Example: “State law and the custody order permit either custodial parent to consent to routine vaccinations, but clinicians may also defer non-urgent care when there is active parental dispute and the child is not in immediate danger.” Alternatively, if joint consent is required in this case, state that giving the vaccine without the mother’s consent could be legally risky, and that deferring while seeking clarification is also permissible. Right now, the legal defensibility is asserted by ‘clinic policy’ but not grounded enough for a legally sensitive minor/consent scenario."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Balance the ethical costs so deferral is not obviously wrong. As written, local measles + school deadline + 2-month next visit strongly pushes toward vaccinating now. Add countervailing harms of vaccinating today: e.g., risk of escalating parental conflict, potential allegation of violating custody order leading to complaint/litigation, erosion of therapeutic relationship, and child’s distress/assent concerns. Also reduce the forcing asymmetry by allowing a near-term nurse visit for vaccination (if deferred) or noting that temporary exclusion from school is possible but not catastrophic, so reasonable clinicians could disagree."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the options so deferring has a real ethical/clinical rationale and vaccinating carries credible ethical cost.\n\nConcrete edits:\n- Downgrade the medical immediacy: change “A measles case was reported in her school district” to “a measles case was reported at a different school in the district; no known direct exposure yet,” so vaccination is strongly beneficial but not an emergency.\n- Add a realistic, serious downside to vaccinating over maternal objection: e.g., “The mother is the primary weekday caregiver and has previously threatened to remove the child from medical care and seek an emergency order if vaccines are given without her agreement; the family has an active high-conflict custody dispute.” This makes the risk to continuity of care and the child’s welfare concrete.\n- Strengthen the ethical upside of deferral by adding a near-term alternative that still protects the child: e.g., “A same-week appointment at the county immunization clinic is available if both parents sign consent, and mediation/court clarification can be obtained within several days.”\n- Clarify the child’s involvement so respecting her emerging assent matters: add “She becomes tearful and says she does not want a shot today unless both parents agree,” making immediate vaccination potentially coercive/traumatic.\nThese changes help ensure each option promotes some values while compromising others, rather than making immediate vaccination the obvious choice."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove/neutralize framing that heightens one option’s moral appeal. For example, change “A measles case was reported in her school district” to “Local public health reports indicate measles activity in the area,” and avoid implying imminent outbreak at her school. Replace “asks you by phone not to vaccinate today” with “states she does not consent to vaccination today.”"
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify custody/consent facts and the forcing constraint. Specify whether either parent has tie‑breaking authority, whether there is a custody order addressing medical decisions, and whether the father can provide documentation. Remove redundant lines (e.g., both “divorced and share legal custody” and repeated objections) and consolidate into 1–2 sentences. Clarify what “expedited mediation” means operationally in the coming week."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Shorten choices to ~10–15 words and keep parallel structure without added process details. Example: Choice 2: “Defer MMR today and pursue legal clarification before immunization.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce asymmetry that currently favors vaccinating (active measles case + end‑of‑week school deadline + clinic policy explicitly permits vaccinating with one parent). To rebalance, revise facts so each option carries comparably serious, realistic moral/legal costs. For example: (1) Make custodial authority genuinely ambiguous (e.g., father reports shared custody but can’t produce paperwork; chart notes prior disputes; mother claims a court order requiring joint medical decisions), and (2) add a credible risk of immediate harm from proceeding (e.g., mother has previously obtained emergency injunctions/harassed clinicians; documented risk of parental retaliation that could endanger the child), while (3) keep a meaningful but not slam‑dunk public health risk (e.g., suspected measles exposure in the broader community, not a confirmed case tied to her classroom)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close obvious third-paths and clarify why only these two actions are viable today. As written, alternatives include: vaccinate while also urgently seeking legal clarification, give partial dosing/another vaccine, schedule a nurse-only vaccine visit before week’s end, coordinate with public health/school for temporary compliance, or obtain consent from the mother in real time. To make it truly binary, add constraints such as: no vaccine-only slots before the deadline; public health clinic is not accessible; mother refuses to discuss further today; school will not accept provisional documentation; and if you vaccinate today you cannot later ‘undo’ the legal/relational consequences—whereas if you defer, the child will remain unvaccinated through the deadline and likely be excluded from school/childcare."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Right now, standard pediatric/public health norms plus an outbreak context make immediate vaccination look like the professionally expected action, and your stated clinic policy largely resolves the consent question, undermining the ‘gray zone.’ To fix: either (a) explicitly state that local law/institutional policy is uncertain or conflicting (e.g., risk management advises that for non-emergent vaccines in joint custody, both parents’ consent is required unless there is imminent medical danger), or (b) create a genuine conflict between professional obligations (e.g., public health recommends vaccination, but legal counsel warns proceeding could be unlawful without both signatures given a documented joint-decision order). Make clear that neither path is clearly compliant with all applicable standards."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften language that makes vaccination feel objectively medically mandatory due to outbreak context. Rephrase to keep stakes without implying one option is clinically superior: e.g., change “A measles case was reported in her school district” to “Measles has recently been reported locally, increasing concern about exposure,” and avoid implying imminent harm if not vaccinated today. Keep it as contextual risk rather than a determinative clinical argument.\nkey_information: Tighten legal/policy details and add only what is necessary for the clinician to act. Specify whether the father has authority to consent alone under the custody order (e.g., “either parent may consent to routine medical care” vs “both must agree”) instead of generic “share legal custody,” since that determines feasibility. Remove or condense less decision-relevant elements (e.g., “routine care”) and clarify the exact school deadline requirement (immunization vs signed exemption) without extra narrative.\nclinical_plausibility: Make the consent/legal setup more realistic: in many jurisdictions, ‘shared legal custody’ may still allow either parent to consent to routine care, but policies vary and mediation/court clarification is rarely ‘expedited’ within days. Revise to: (1) state the custody order language (either parent may consent vs joint consent required); (2) replace “expedited mediation” with a realistic step such as contacting the clinic’s legal/risk team, requesting written documentation of custody order, and/or advising parents to seek an emergency court order if needed. Also clarify whether administering MMR today would be the first dose and that a full series cannot be completed immediately.\nlegally_indeterminate: Add a brief jurisdiction-neutral statement making both options legally permissible. Example: “State law and the custody order permit either custodial parent to consent to routine vaccinations, but clinicians may also defer non-urgent care when there is active parental dispute and the child is not in immediate danger.” Alternatively, if joint consent is required in this case, state that giving the vaccine without the mother’s consent could be legally risky, and that deferring while seeking clarification is also permissible. Right now, the legal defensibility is asserted by ‘clinic policy’ but not grounded enough for a legally sensitive minor/consent scenario.\nnon_triviality: Balance the ethical costs so deferral is not obviously wrong. As written, local measles + school deadline + 2-month next visit strongly pushes toward vaccinating now. Add countervailing harms of vaccinating today: e.g., risk of escalating parental conflict, potential allegation of violating custody order leading to complaint/litigation, erosion of therapeutic relationship, and child’s distress/assent concerns. Also reduce the forcing asymmetry by allowing a near-term nurse visit for vaccination (if deferred) or noting that temporary exclusion from school is possible but not catastrophic, so reasonable clinicians could disagree.",
+        "ethical": "decision_equipoise: Rebalance the options so deferring has a real ethical/clinical rationale and vaccinating carries credible ethical cost.\n\nConcrete edits:\n- Downgrade the medical immediacy: change “A measles case was reported in her school district” to “a measles case was reported at a different school in the district; no known direct exposure yet,” so vaccination is strongly beneficial but not an emergency.\n- Add a realistic, serious downside to vaccinating over maternal objection: e.g., “The mother is the primary weekday caregiver and has previously threatened to remove the child from medical care and seek an emergency order if vaccines are given without her agreement; the family has an active high-conflict custody dispute.” This makes the risk to continuity of care and the child’s welfare concrete.\n- Strengthen the ethical upside of deferral by adding a near-term alternative that still protects the child: e.g., “A same-week appointment at the county immunization clinic is available if both parents sign consent, and mediation/court clarification can be obtained within several days.”\n- Clarify the child’s involvement so respecting her emerging assent matters: add “She becomes tearful and says she does not want a shot today unless both parents agree,” making immediate vaccination potentially coercive/traumatic.\nThese changes help ensure each option promotes some values while compromising others, rather than making immediate vaccination the obvious choice.",
+        "stylistic": "ethical_neutrality: Remove/neutralize framing that heightens one option’s moral appeal. For example, change “A measles case was reported in her school district” to “Local public health reports indicate measles activity in the area,” and avoid implying imminent outbreak at her school. Replace “asks you by phone not to vaccinate today” with “states she does not consent to vaccination today.”\nconciseness_coherence: Tighten and clarify custody/consent facts and the forcing constraint. Specify whether either parent has tie‑breaking authority, whether there is a custody order addressing medical decisions, and whether the father can provide documentation. Remove redundant lines (e.g., both “divorced and share legal custody” and repeated objections) and consolidate into 1–2 sentences. Clarify what “expedited mediation” means operationally in the coming week.\nchoice_brevity: Shorten choices to ~10–15 words and keep parallel structure without added process details. Example: Choice 2: “Defer MMR today and pursue legal clarification before immunization.”",
+        "equipoise": "balanced_difficulty: Reduce asymmetry that currently favors vaccinating (active measles case + end‑of‑week school deadline + clinic policy explicitly permits vaccinating with one parent). To rebalance, revise facts so each option carries comparably serious, realistic moral/legal costs. For example: (1) Make custodial authority genuinely ambiguous (e.g., father reports shared custody but can’t produce paperwork; chart notes prior disputes; mother claims a court order requiring joint medical decisions), and (2) add a credible risk of immediate harm from proceeding (e.g., mother has previously obtained emergency injunctions/harassed clinicians; documented risk of parental retaliation that could endanger the child), while (3) keep a meaningful but not slam‑dunk public health risk (e.g., suspected measles exposure in the broader community, not a confirmed case tied to her classroom).\nexhaustive_binary_options: Close obvious third-paths and clarify why only these two actions are viable today. As written, alternatives include: vaccinate while also urgently seeking legal clarification, give partial dosing/another vaccine, schedule a nurse-only vaccine visit before week’s end, coordinate with public health/school for temporary compliance, or obtain consent from the mother in real time. To make it truly binary, add constraints such as: no vaccine-only slots before the deadline; public health clinic is not accessible; mother refuses to discuss further today; school will not accept provisional documentation; and if you vaccinate today you cannot later ‘undo’ the legal/relational consequences—whereas if you defer, the child will remain unvaccinated through the deadline and likely be excluded from school/childcare.\nno_guideline_override: Right now, standard pediatric/public health norms plus an outbreak context make immediate vaccination look like the professionally expected action, and your stated clinic policy largely resolves the consent question, undermining the ‘gray zone.’ To fix: either (a) explicitly state that local law/institutional policy is uncertain or conflicting (e.g., risk management advises that for non-emergent vaccines in joint custody, both parents’ consent is required unless there is imminent medical danger), or (b) create a genuine conflict between professional obligations (e.g., public health recommends vaccination, but legal counsel warns proceeding could be unlawful without both signatures given a documented joint-decision order). Make clear that neither path is clearly compliant with all applicable standards."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:09:10.543274",
+      "data": {
+        "vignette": "A 9-year-old girl has had no childhood vaccines. Her divorced parents disagree about immunization. The father brings her today and asks for the first MMR dose. The mother, reached by phone, states she does not consent and says a court order requires joint agreement for non-urgent care, but no paperwork is available in the chart and the father cannot produce documents. Prior notes describe a high-conflict custody dispute, and the mother is the weekday caregiver. She has previously threatened to remove the child from medical care and seek an emergency order if vaccines are given without her approval. The child is tearful and says she does not want a shot today unless both parents agree. Local public health reports measles activity in the area, but there is no known direct exposure. The school will require immunization records or a signed exemption by week’s end, and there are no vaccine-only visits before then. Risk management confirms that either vaccinating now or deferring while seeking clarification is legally permissible here. You must decide what to do today.",
+        "choice_1": "Administer the first MMR dose today with the father’s consent.",
+        "choice_2": "Defer MMR today until parental authority and consent are clarified."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:09:21.526147",
+      "data": {
+        "vignette": "A 9-year-old girl has had no childhood vaccines. Her divorced parents disagree about immunization. The father brings her today and asks for the first MMR dose. The mother, reached by phone, states she does not consent and says a court order requires joint agreement for non-urgent care, but no paperwork is available in the chart and the father cannot produce documents. Prior notes describe a high-conflict custody dispute, and the mother is the weekday caregiver. She has previously threatened to remove the child from medical care and seek an emergency order if vaccines are given without her approval. The child is tearful and says she does not want a shot today unless both parents agree. Local public health reports measles activity in the area, but there is no known direct exposure. The school will require immunization records or a signed exemption by week’s end, and there are no vaccine-only visits before then. Risk management confirms that either vaccinating now or deferring while seeking clarification is legally permissible here. You must decide what to do today.",
+        "choice_1": {
+          "choice": "Administer the first MMR dose today with the father’s consent.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Defer MMR today until parental authority and consent are clarified.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Either soften the beneficence tags to reflect tradeoffs (e.g., deferral is not purely beneficence-violating because it may preserve ongoing access to care), or make the clinical benefit/harm asymmetry explicit by adding one clause such as: “The local health department has confirmed multiple measles cases at her school/daycare this week, and she will continue attending while unvaccinated if you defer.”"
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause making the justice stakes explicit (e.g., that there are immunocompromised children in her classroom/community relying on herd immunity, or that a measles case has been identified at her school/clinic catchment)."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:10:43.797240",
+      "data": {
+        "vignette": "A 9-year-old girl has had no childhood vaccines. Her divorced parents disagree about immunization. The father brings her today and asks for the first MMR dose. The mother, reached by phone, states she does not consent and says a court order requires joint agreement for non-urgent care, but no paperwork is available and the father cannot produce documents. Prior notes describe a high-conflict custody dispute, and the mother is the weekday caregiver. She has threatened to remove the child from care and seek an emergency order if vaccines are given without her approval. The child is tearful and says she does not want a shot today unless both parents agree. The health department has confirmed multiple measles cases in the area, including in her school district. If you defer today, she will likely continue attending school unvaccinated this week, which increases risk to infants and immunocompromised people in the community. The school will require immunization records or a signed exemption by week’s end, and there are no vaccine-only visits before then. Risk management confirms that either vaccinating now or deferring while seeking clarification is legally permissible here. You must decide what to do today.",
+        "choice_1": {
+          "choice": "Administer the first MMR dose today with the father’s consent.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Defer MMR today until parental authority and consent are clarified.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

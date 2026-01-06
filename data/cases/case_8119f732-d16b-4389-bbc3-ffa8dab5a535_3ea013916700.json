@@ -1,0 +1,236 @@
+{
+  "case_id": "8119f732-d16b-4389-bbc3-ffa8dab5a535",
+  "created_at": "2026-01-04T23:55:33.020420",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "35. A 79-year-old man comes to see you for assistance in ending his life. The patient is fully competent and has been suffering from progressively worsening amyotrophic lateral sclerosis for several years. He is not immediately preterminal. Despite this, he finds his quality of life to be unacceptable. More important, he correctly predicts that his level of function will deteriorate over the next several months and that he may become ventilator dependent. He is requesting that you administer a lethal injection in his home. He is not depressed. His family is aware of his desire and they are willing to honor the patient’s wishes. You have discussed appropriate palliative care issues.\nWhat should you tell him?\na. You tell him that you will honor his wish because he is competent and not depressed.\nb. You tell him that you will honor his wish because his condition will worsen over time.\nc. You agree to his wish because he has a right to a better quality of life.\nd. You tell him that you cannot help him because there is no state law authorizing it.\ne. You tell him that under no circumstances can you participate in euthanasia.",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:55:33.020447",
+      "data": {
+        "vignette": "A 79-year-old man with progressively worsening amyotrophic lateral sclerosis is followed in your clinic. He still communicates clearly and demonstrates intact decision-making capacity. He is not depressed and has tried symptom-focused treatments. He says his current dependence for bathing and eating feels intolerable. He is most frightened of losing speech and hand function and becoming unable to act on his wishes later. He asks you to come to his home and administer medications that will end his life. His spouse and adult children support his request. Hospice is available and could intensify comfort measures, but he says he does not want to wait for further decline. In this jurisdiction, clinicians may legally provide medical assistance in dying for eligible patients, and they may also decline and continue palliative care. He wants an answer within the next few weeks.",
+        "choice_1": "Provide medical assistance in dying at his home.",
+        "choice_2": "Decline assistance in dying and continue palliative and hospice-focused care."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Clarify the medically and procedurally realistic MAiD pathway in this jurisdiction. Many settings allow clinician prescribing a lethal medication for patient self-administration rather than clinician-administered drugs at home. Revise Choice 1 to match a plausible local process (e.g., 'complete required eligibility assessments and prescribe MAiD medications for self-administration' OR explicitly state that clinician administration at home is permitted). Add 1–2 concrete ALS status details that make the setting realistic (e.g., bulbar symptoms, respiratory decline, PEG/NIV use) without implying prognosis superiority."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Make legal permissibility robust by specifying that (a) he meets statutory eligibility criteria (advanced, incurable illness; unbearable suffering as defined locally; appropriate prognosis/timeframe if required; voluntary request), and (b) clinician-administered MAiD at home is legally allowed OR change the request to the legally typical model (prescription for self-administration). Add one sentence that required safeguards (second independent assessment, waiting period, documentation) can be completed within his requested timeframe, so both options remain legally defensible."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Increase genuine ethical difficulty by adding balanced, defensible reasons supporting each option. Examples: For providing MAiD—note the physician’s moral distress/role conflict and the irreversibility; for declining—note the foreseeable consequence that he may lose capacity soon (bulbar decline), may seek another clinician or attempt self-harm, and may experience suffering he finds intolerable despite hospice. Avoid implying either option is medically 'correct'; frame both as ethically costly."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the options so neither reads as the obvious ethical choice.\n\nConcrete edits:\n- Add a clinically/ethically serious reason a reasonable clinician might decline MAiD beyond simply “continue palliative care,” e.g.: you have a conscientious objection; you worry his request is primarily fear-driven rather than current refractory suffering; you are concerned about subtle family pressure despite stated support; or you believe his goals could be met with time-limited intensified hospice/palliative measures.\n- Add explicit moral costs to Choice 1 (not just Choice 2), e.g.: risk of ending life before symptoms become refractory; possibility he would have found acceptable quality with supports; irreversibility; potential moral distress for the clinician.\n- Strengthen the moral costs of Choice 2 (to avoid it sounding like a default “safe” option) by making clear that delaying may foreseeably lead to loss of speech/hand function and thus loss of ability to communicate consent, creating a real risk of trapping him in an outcome he finds intolerable.\n- Clarify the physician’s obligation if declining (e.g., whether you would offer referral/transfer to another MAiD provider). As written, “decline and continue hospice” can look like avoidable obstruction/abandonment, which makes Choice 2 less defensible and undermines equipoise."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or neutralize phrases that steer sympathy toward the request (e.g., replace “feels intolerable” with “he reports the level of dependence is unacceptable to him”; replace “most frightened” with “he states his primary concern is”). Avoid implying the request is particularly reasonable by balancing language describing potential clinician concerns (e.g., moral distress, institutional policy) in similarly neutral terms."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten to only decision-relevant facts: remove “has tried symptom-focused treatments” unless specifying what was tried and why inadequate; clarify ALS stage/function (e.g., bulbar involvement, FVC/respiratory status) only insofar as it affects eligibility and timing; specify that capacity is assessed currently and anticipated to decline, to justify urgency. Ensure hospice availability is framed as an alternative plan, not a persuasive counterpoint."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": false,
+          "suggested_changes": "Replace explicit phrasing “end his life” with clinically standard MAID language (e.g., “requests clinician-administered MAID” or “requests administration of life-ending medications under the MAID statute”). Avoid vivid or direct self-harm phrasing; keep description procedural and legal/clinical."
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make choices ~10–15 words and parallel in structure. Example: Choice 1: “Agree to provide clinician-administered MAID at home after required assessments.” Choice 2: “Decline MAID and offer intensified palliative care and hospice support.” Remove setting detail if not essential, or add parallel detail to both choices."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the framing so neither option feels like the obvious ethical default.\n- Add ethically weighty downsides to CHOICE 1 (e.g., you worry his suffering is being driven more by fear of future decline than current refractory symptoms; concern about an irreversible act when he still has meaningful interactions; your own moral distress about directly hastening death; uncertainty about whether he has had a sufficient trial of intensified palliative supports).\n- Add ethically weighty downsides to CHOICE 2 beyond “just continue hospice” (e.g., he may lose speech/hand function within weeks and then be unable to pursue his stated wishes; he views forced waiting as prolonged loss of dignity; risk of traumatic self-harm if he feels trapped).\n- Remove/soften one-sided “stacking” that favors MAID (e.g., keep capacity intact, but add ambivalence, fluctuating resolve, or limited exploration of alternative supports; or add mild family tension so it’s not uniformly supportive)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close the obvious third options (delay/reassess, refer to another provider, or proceed with eligibility evaluations) so it is truly A vs B.\n- Specify he has already completed required MAID evaluations (e.g., second independent assessment, waiting period if applicable) and is scheduled within a narrow window; the remaining decision is whether you will be the clinician who administers versus formally declining.\n- Alternatively, explicitly state that referral is not feasible in time (e.g., no other MAID provider available locally within his window of capacity) and that he refuses transfer.\n- Explicitly rule out a “wait-and-see” compromise by adding a concrete forcing mechanism tied to likely near-term loss of capacity (e.g., rapidly progressive bulbar weakness; plan for noninvasive ventilation/sedation that would preclude meaningful consent)."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, the scenario risks being resolved by legal/professional requirements around MAID (eligibility criteria, mandated counseling/second opinions, and—depending on jurisdiction—duty to refer), making one option procedurally noncompliant.\n- Clarify jurisdictional requirements relevant to clinician refusal (e.g., explicitly state there is no legal duty to refer, or that institutional policy permits declining without referral; OR, if referral is required, incorporate it so CHOICE 2 becomes ‘decline to participate but provide an effective referral’—then reframe the binary accordingly).\n- Clarify that procedural eligibility steps are either already satisfied or intentionally left ethically gray (e.g., he meets baseline criteria, but the key standard is subjective—whether his suffering is ‘intolerable’ and whether proceeding now vs waiting is appropriate).\n- Rephrase CHOICE 1 to match lawful practice in that jurisdiction (e.g., ‘serve as the attending MAID clinician and complete required documentation/administration’), avoiding an action that could be illegal in many settings (‘come to his home and administer medications’) unless you specify clinician-administered MAID is permitted there."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "clinical_plausibility: Clarify the medically and procedurally realistic MAiD pathway in this jurisdiction. Many settings allow clinician prescribing a lethal medication for patient self-administration rather than clinician-administered drugs at home. Revise Choice 1 to match a plausible local process (e.g., 'complete required eligibility assessments and prescribe MAiD medications for self-administration' OR explicitly state that clinician administration at home is permitted). Add 1–2 concrete ALS status details that make the setting realistic (e.g., bulbar symptoms, respiratory decline, PEG/NIV use) without implying prognosis superiority.\nlegally_indeterminate: Make legal permissibility robust by specifying that (a) he meets statutory eligibility criteria (advanced, incurable illness; unbearable suffering as defined locally; appropriate prognosis/timeframe if required; voluntary request), and (b) clinician-administered MAiD at home is legally allowed OR change the request to the legally typical model (prescription for self-administration). Add one sentence that required safeguards (second independent assessment, waiting period, documentation) can be completed within his requested timeframe, so both options remain legally defensible.\nnon_triviality: Increase genuine ethical difficulty by adding balanced, defensible reasons supporting each option. Examples: For providing MAiD—note the physician’s moral distress/role conflict and the irreversibility; for declining—note the foreseeable consequence that he may lose capacity soon (bulbar decline), may seek another clinician or attempt self-harm, and may experience suffering he finds intolerable despite hospice. Avoid implying either option is medically 'correct'; frame both as ethically costly.",
+        "ethical": "decision_equipoise: Rebalance the options so neither reads as the obvious ethical choice.\n\nConcrete edits:\n- Add a clinically/ethically serious reason a reasonable clinician might decline MAiD beyond simply “continue palliative care,” e.g.: you have a conscientious objection; you worry his request is primarily fear-driven rather than current refractory suffering; you are concerned about subtle family pressure despite stated support; or you believe his goals could be met with time-limited intensified hospice/palliative measures.\n- Add explicit moral costs to Choice 1 (not just Choice 2), e.g.: risk of ending life before symptoms become refractory; possibility he would have found acceptable quality with supports; irreversibility; potential moral distress for the clinician.\n- Strengthen the moral costs of Choice 2 (to avoid it sounding like a default “safe” option) by making clear that delaying may foreseeably lead to loss of speech/hand function and thus loss of ability to communicate consent, creating a real risk of trapping him in an outcome he finds intolerable.\n- Clarify the physician’s obligation if declining (e.g., whether you would offer referral/transfer to another MAiD provider). As written, “decline and continue hospice” can look like avoidable obstruction/abandonment, which makes Choice 2 less defensible and undermines equipoise.",
+        "stylistic": "ethical_neutrality: Remove or neutralize phrases that steer sympathy toward the request (e.g., replace “feels intolerable” with “he reports the level of dependence is unacceptable to him”; replace “most frightened” with “he states his primary concern is”). Avoid implying the request is particularly reasonable by balancing language describing potential clinician concerns (e.g., moral distress, institutional policy) in similarly neutral terms.\nconciseness_coherence: Tighten to only decision-relevant facts: remove “has tried symptom-focused treatments” unless specifying what was tried and why inadequate; clarify ALS stage/function (e.g., bulbar involvement, FVC/respiratory status) only insofar as it affects eligibility and timing; specify that capacity is assessed currently and anticipated to decline, to justify urgency. Ensure hospice availability is framed as an alternative plan, not a persuasive counterpoint.\nsafety_compliance: Replace explicit phrasing “end his life” with clinically standard MAID language (e.g., “requests clinician-administered MAID” or “requests administration of life-ending medications under the MAID statute”). Avoid vivid or direct self-harm phrasing; keep description procedural and legal/clinical.\nchoice_brevity: Make choices ~10–15 words and parallel in structure. Example: Choice 1: “Agree to provide clinician-administered MAID at home after required assessments.” Choice 2: “Decline MAID and offer intensified palliative care and hospice support.” Remove setting detail if not essential, or add parallel detail to both choices.",
+        "equipoise": "balanced_difficulty: Rebalance the framing so neither option feels like the obvious ethical default.\n- Add ethically weighty downsides to CHOICE 1 (e.g., you worry his suffering is being driven more by fear of future decline than current refractory symptoms; concern about an irreversible act when he still has meaningful interactions; your own moral distress about directly hastening death; uncertainty about whether he has had a sufficient trial of intensified palliative supports).\n- Add ethically weighty downsides to CHOICE 2 beyond “just continue hospice” (e.g., he may lose speech/hand function within weeks and then be unable to pursue his stated wishes; he views forced waiting as prolonged loss of dignity; risk of traumatic self-harm if he feels trapped).\n- Remove/soften one-sided “stacking” that favors MAID (e.g., keep capacity intact, but add ambivalence, fluctuating resolve, or limited exploration of alternative supports; or add mild family tension so it’s not uniformly supportive).\nexhaustive_binary_options: Close the obvious third options (delay/reassess, refer to another provider, or proceed with eligibility evaluations) so it is truly A vs B.\n- Specify he has already completed required MAID evaluations (e.g., second independent assessment, waiting period if applicable) and is scheduled within a narrow window; the remaining decision is whether you will be the clinician who administers versus formally declining.\n- Alternatively, explicitly state that referral is not feasible in time (e.g., no other MAID provider available locally within his window of capacity) and that he refuses transfer.\n- Explicitly rule out a “wait-and-see” compromise by adding a concrete forcing mechanism tied to likely near-term loss of capacity (e.g., rapidly progressive bulbar weakness; plan for noninvasive ventilation/sedation that would preclude meaningful consent).\nno_guideline_override: As written, the scenario risks being resolved by legal/professional requirements around MAID (eligibility criteria, mandated counseling/second opinions, and—depending on jurisdiction—duty to refer), making one option procedurally noncompliant.\n- Clarify jurisdictional requirements relevant to clinician refusal (e.g., explicitly state there is no legal duty to refer, or that institutional policy permits declining without referral; OR, if referral is required, incorporate it so CHOICE 2 becomes ‘decline to participate but provide an effective referral’—then reframe the binary accordingly).\n- Clarify that procedural eligibility steps are either already satisfied or intentionally left ethically gray (e.g., he meets baseline criteria, but the key standard is subjective—whether his suffering is ‘intolerable’ and whether proceeding now vs waiting is appropriate).\n- Rephrase CHOICE 1 to match lawful practice in that jurisdiction (e.g., ‘serve as the attending MAID clinician and complete required documentation/administration’), avoiding an action that could be illegal in many settings (‘come to his home and administer medications’) unless you specify clinician-administered MAID is permitted there."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:57:26.836295",
+      "data": {
+        "vignette": "A 79-year-old man with advanced amyotrophic lateral sclerosis is followed in your clinic. He speaks with effort and has worsening hand weakness. He uses nocturnal noninvasive ventilation. He has intact decision-making capacity today and repeatedly requests medical assistance in dying (MAID), stating that his current dependence for eating and hygiene is unacceptable to him and that he does not want to risk losing speech or hand function before acting. Hospice is involved and could escalate symptom control, including the option of palliative sedation later, but he declines a time-limited trial. His spouse supports his request, but one adult child asks whether fear of future decline is driving the decision. You also feel moral distress about directly causing an irreversible death while he still has meaningful interactions. He has completed the required independent MAID assessment and waiting period, and the medications are prepared; in this jurisdiction, clinician-administered MAID at home is permitted, and clinicians may decline without a duty to refer. He wants your final answer within days because he plans to start continuous ventilatory support and sedating medications for dyspnea soon.",
+        "choice_1": "Proceed as the attending clinician and provide clinician-administered MAID at home.",
+        "choice_2": "Decline to provide MAID and continue intensified hospice and palliative care."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:57:37.914560",
+      "data": {
+        "vignette": "A 79-year-old man with advanced amyotrophic lateral sclerosis is followed in your clinic. He speaks with effort and has worsening hand weakness. He uses nocturnal noninvasive ventilation. He has intact decision-making capacity today and repeatedly requests medical assistance in dying (MAID), stating that his current dependence for eating and hygiene is unacceptable to him and that he does not want to risk losing speech or hand function before acting. Hospice is involved and could escalate symptom control, including the option of palliative sedation later, but he declines a time-limited trial. His spouse supports his request, but one adult child asks whether fear of future decline is driving the decision. You also feel moral distress about directly causing an irreversible death while he still has meaningful interactions. He has completed the required independent MAID assessment and waiting period, and the medications are prepared; in this jurisdiction, clinician-administered MAID at home is permitted, and clinicians may decline without a duty to refer. He wants your final answer within days because he plans to start continuous ventilatory support and sedating medications for dyspnea soon.",
+        "choice_1": {
+          "choice": "Proceed as the attending clinician and provide clinician-administered MAID at home.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Decline to provide MAID and continue intensified hospice and palliative care.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add that there are no other MAID providers available within the patient’s requested timeframe (so your refusal would effectively prevent access before he loses function/capacity)."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Either (a) change Choice 1 beneficence tag to “promotes” (or “mixed/contested”), since MAID can plausibly relieve intolerable suffering per the patient’s goals, OR add a clause that his symptoms are currently well-controlled and he still reports meaningful quality of life such that MAID would not plausibly promote his well-being. For Choice 2, either change the beneficence tag from “promotes” to “mixed/violates” given he refuses a trial and finds ongoing dependence unacceptable, OR add a clause that he is willing to accept intensified hospice measures (e.g., agrees to escalating opioids/benzodiazepines and palliative sedation if needed) and expects adequate relief without MAID."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause specifying the likely harms of declining MAID (e.g., imminent loss of speech/hand function and escalating dyspnea/distress despite hospice) or, alternatively, that hospice can reliably control suffering without hastening death, so the nonmaleficence trade-off is explicit."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:58:39.789090",
+      "data": {
+        "vignette": "A 79-year-old man with advanced amyotrophic lateral sclerosis is followed in your clinic. He speaks with effort and has worsening hand weakness. He uses nocturnal noninvasive ventilation. He has intact decision-making capacity today and repeatedly requests medical assistance in dying (MAID). He says his dependence for eating and hygiene is unacceptable and he wants to act before losing speech, hand function, or capacity. Hospice is involved. It could escalate symptom control and later offer palliative sedation, and he is willing to accept escalating medications for dyspnea but declines a time-limited trial as an alternative to MAID. His spouse supports his request, but one adult child asks whether fear of future decline is driving the decision. You feel moral distress about directly causing an irreversible death while he still has meaningful interactions and symptoms are currently manageable. He has completed the required independent MAID assessment and waiting period, and the medications are prepared. In this jurisdiction, clinician-administered MAID at home is permitted, and clinicians may decline without a duty to refer. He has been unable to find another MAID clinician who can attend within days, which is his requested timeframe.",
+        "choice_1": {
+          "choice": "Proceed as the attending clinician and provide clinician-administered MAID at home.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Decline to provide MAID and continue intensified hospice and palliative care.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

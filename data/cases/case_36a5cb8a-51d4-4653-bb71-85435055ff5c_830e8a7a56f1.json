@@ -1,0 +1,279 @@
+{
+  "case_id": "36a5cb8a-51d4-4653-bb71-85435055ff5c",
+  "created_at": "2026-01-05T00:09:12.271709",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "42. A 38-year-old bus driver is seen in clinic for fever, cough, and sputum with an apical infdtrate as well as sputum positive for acid-fast bacilli. The patient is unwilling to take tuberculosis (TB) medications consistently and his sputum remains positive for TB. Directly observed therapy while in his home has failed. You continue to cajole, discuss, encourage, threaten, educate, advise, and beg him to take the medications but he refuses.\nWhat should you do?\na. Nothing, he has a right to autonomy.\nb. Arrest the patient and put him in prison.\nc. Remove the family from the house.\nd. Remove the patient from his job as a bus driver and incarcerate him in a hospital to take medications.\ne. Physically restrain the patient and place a nasogastric tube to give the medications.",
+      "value_1": "Autonomy",
+      "value_2": "Justice"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:09:12.271748",
+      "data": {
+        "vignette": "A 38-year-old bus driver has several weeks of cough, fevers, weight loss, and an apical infiltrate. Sputum smears remain acid-fast bacilli–positive despite a confirmed drug-susceptible regimen being prescribed. He understands the diagnosis and the consequences, but he refuses to take medications consistently and declines further home-based directly observed therapy. He continues to work and to share a small apartment with family. He says he cannot risk losing income and does not want government involvement. The health department reports ongoing exposures and asks for your recommendation today on next steps. Hospital counsel and the health department advise that either continued outpatient care or a detention order for isolation is legally permissible in this situation. You must decide how to proceed.",
+        "choice_1": "Continue outpatient care without coercion and accept his refusal of consistent treatment.",
+        "choice_2": "Request involuntary isolation in a secure hospital unit with enforced directly observed therapy."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften language implying clear clinical failure of the current regimen and that coercion is medically necessary. Specifically: replace “Sputum smears remain acid-fast bacilli–positive despite a confirmed drug-susceptible regimen being prescribed” with “Sputum smears remain positive, raising concern for ongoing infectiousness; adherence has been inconsistent.” Avoid wording that suggests the only explanation is willful nonadherence or that inpatient enforced DOT is medically required. Add a sentence acknowledging clinical uncertainty (e.g., could be delayed conversion vs adherence) while keeping the ethical focus on public health vs liberty."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify clinically relevant facts while removing or qualifying potentially extraneous/loaded details. Edits: (1) Specify whether he is currently smear-positive and symptomatic today and whether there are children/immunocompromised contacts at home—only if it affects the stakes; otherwise remove “ongoing exposures” vagueness by stating “contact investigation suggests new close contacts have been exposed.” (2) Remove job detail unless directly relevant; if kept, link it to exposure risk (e.g., “works in a confined bus cabin with frequent passengers”). (3) Clarify what “continued outpatient care” entails (e.g., counseling, incentives, voluntary isolation, workplace leave note) so Choice 1 is a concrete plan rather than passive acceptance."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Make the TB management and public health steps more realistic. Suggested edits: (1) Replace “secure hospital unit with enforced directly observed therapy” with “involuntary isolation in a designated facility (hospital room or public health isolation unit) with directly observed therapy” to avoid implying a carceral ‘secure unit’ is standard. (2) Add that the diagnosis is pulmonary TB confirmed by NAAT/culture and that he has been counseled and offered supports (transportation vouchers, flexible DOT/video DOT) before escalation—this matches real escalation pathways. (3) Clarify that the health department is the party that would petition for a court order, with you providing a medical recommendation, rather than you directly ordering detention."
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 1 reads like permitting active transmission with no mitigating steps, making it ethically/clinically lopsided. Strengthen the defensibility of outpatient management so the dilemma is not trivial: revise Choice 1 to include a robust voluntary plan (e.g., intensive counseling, social work support, incentives, video DOT, temporary work restriction note, mask use, voluntary home isolation with check-ins) while acknowledging it still risks ongoing transmission. Alternatively, add patient factors that make detention ethically costly beyond ‘government involvement’ (e.g., caregiver for a dependent, significant mental health trauma history with confinement, or credible risk of job loss leading to homelessness), keeping it realistic. Ensure both options carry meaningful harms: outpatient plan risks community exposure; involuntary isolation risks liberty, trust, and collateral socioeconomic harm."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the case so Choice 1 is not plainly unacceptable and Choice 2 is not plainly obligatory in routine TB control. Add ethically weighty downsides to involuntary isolation (e.g., credible risk of job loss/housing loss leading to family hardship; history of trauma/psychiatric decompensation with confinement; mistrust due to prior coercive encounters; potential deterrent effect on the patient/community from seeking care). Also add a plausible, concrete harm-reduction outpatient path that meaningfully reduces risk without coercion (e.g., patient agrees today to stop driving buses temporarily, use a medical leave letter, wear a fit-tested respirator, isolate from family in a separate room, accept video-DOT or clinic-based DOT at times compatible with work, and allow contact tracing limited to close household contacts). Consider adding clinical nuance that makes the public risk less absolute (e.g., improving symptoms, decreasing smear burden though still positive; ability to avoid public-facing work), while keeping stakes high. Remove language that makes detention feel like the straightforward standard response (e.g., 'ongoing exposures' + counsel/health department endorsement) unless matched with equally strong reasons to avoid coercion."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Reduce language that implicitly steers toward isolation by reframing exposure statements more neutrally. For example, change “The health department reports ongoing exposures” to “The health department reports he has had close contacts since diagnosis, and asks for a recommendation today.” Avoid wording that implies a foregone conclusion (e.g., replace “ongoing exposures” with “continued contact with others”)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": false,
+          "suggested_changes": "Make the scenario less like the canonical ‘nonadherent infectious TB detention’ exemplar by adding a distinct, realistic complicating detail that preserves diagnosis/age (e.g., prior medication intolerance causing intermittent adherence, mistrust due to a recent immigration hearing, or a specific barrier such as shift work interfering with DOT), and remove overly textbook phrasing like “understands the diagnosis and the consequences.” Replace with a brief capacity/understanding statement tied to the consent discussion (e.g., “He can paraphrase the purpose and duration of therapy and the public health rationale for isolation.”)."
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce the obvious public-safety asymmetry created by a smear-positive, actively working bus driver with ongoing exposures. Edits: (1) Change infectiousness facts to a gray zone (e.g., NAAT-positive but smear-negative; or smear-positive initially but now smear-negative with clinical improvement; or uncertain whether AFB positivity reflects nonviable organisms). (2) Add ethically weighty downsides to detention that are not merely inconvenience (e.g., significant mental health history/trauma with confinement, sole caregiver responsibilities, credible risk of job loss leading to housing insecurity) while keeping detention still plausibly beneficial. (3) Strengthen the defensibility of non-coercive management by specifying robust voluntary alternatives (e.g., employer-supported medical leave, temporary housing paid by public health, intensive case management) but make clear the patient still may decline—so outpatient is not simply ‘do nothing’."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "As written, there are obvious intermediate options between ‘accept refusal’ and ‘secure-unit detention’ (e.g., workplace restriction without detention, voluntary isolation with temporary housing, conditional public health order with escalating steps, court-ordered DOT without confinement). To make it truly binary, either: (A) explicitly rule out intermediates (e.g., no isolation hotel/housing available, employer refuses modified duty/leave, outpatient DOT already attempted and failed, no legal mechanism for mandatory DOT without inpatient isolation), OR (B) redefine the choices to the two realistic remaining paths, such as ‘seek a court order for mandatory isolation’ vs ‘pursue an intensive voluntary plan with specific supports and allow him to remain in the community’."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "This scenario is close to being dictated by public health TB control standards and statutory authority: smear-positive pulmonary TB with ongoing community exposure and refusal of DOT commonly meets criteria for involuntary isolation. To avoid a guideline/legal override, revise facts to create genuine ambiguity about whether thresholds are met, for example: (1) uncertainty about contagiousness (smear-negative, culture pending, or alternative diagnosis still plausible), (2) partial adherence with improving symptoms and declining bacillary burden, (3) documented severe medication intolerance making enforced DOT ethically fraught, or (4) local policy requires specific criteria (e.g., demonstrated failure of less restrictive measures) that are only partially satisfied—state explicitly that the policy is discretionary in this borderline case."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften language implying clear clinical failure of the current regimen and that coercion is medically necessary. Specifically: replace “Sputum smears remain acid-fast bacilli–positive despite a confirmed drug-susceptible regimen being prescribed” with “Sputum smears remain positive, raising concern for ongoing infectiousness; adherence has been inconsistent.” Avoid wording that suggests the only explanation is willful nonadherence or that inpatient enforced DOT is medically required. Add a sentence acknowledging clinical uncertainty (e.g., could be delayed conversion vs adherence) while keeping the ethical focus on public health vs liberty.\nkey_information: Tighten and clarify clinically relevant facts while removing or qualifying potentially extraneous/loaded details. Edits: (1) Specify whether he is currently smear-positive and symptomatic today and whether there are children/immunocompromised contacts at home—only if it affects the stakes; otherwise remove “ongoing exposures” vagueness by stating “contact investigation suggests new close contacts have been exposed.” (2) Remove job detail unless directly relevant; if kept, link it to exposure risk (e.g., “works in a confined bus cabin with frequent passengers”). (3) Clarify what “continued outpatient care” entails (e.g., counseling, incentives, voluntary isolation, workplace leave note) so Choice 1 is a concrete plan rather than passive acceptance.\nclinical_plausibility: Make the TB management and public health steps more realistic. Suggested edits: (1) Replace “secure hospital unit with enforced directly observed therapy” with “involuntary isolation in a designated facility (hospital room or public health isolation unit) with directly observed therapy” to avoid implying a carceral ‘secure unit’ is standard. (2) Add that the diagnosis is pulmonary TB confirmed by NAAT/culture and that he has been counseled and offered supports (transportation vouchers, flexible DOT/video DOT) before escalation—this matches real escalation pathways. (3) Clarify that the health department is the party that would petition for a court order, with you providing a medical recommendation, rather than you directly ordering detention.\nnon_triviality: As written, Choice 1 reads like permitting active transmission with no mitigating steps, making it ethically/clinically lopsided. Strengthen the defensibility of outpatient management so the dilemma is not trivial: revise Choice 1 to include a robust voluntary plan (e.g., intensive counseling, social work support, incentives, video DOT, temporary work restriction note, mask use, voluntary home isolation with check-ins) while acknowledging it still risks ongoing transmission. Alternatively, add patient factors that make detention ethically costly beyond ‘government involvement’ (e.g., caregiver for a dependent, significant mental health trauma history with confinement, or credible risk of job loss leading to homelessness), keeping it realistic. Ensure both options carry meaningful harms: outpatient plan risks community exposure; involuntary isolation risks liberty, trust, and collateral socioeconomic harm.",
+        "ethical": "decision_equipoise: Rebalance the case so Choice 1 is not plainly unacceptable and Choice 2 is not plainly obligatory in routine TB control. Add ethically weighty downsides to involuntary isolation (e.g., credible risk of job loss/housing loss leading to family hardship; history of trauma/psychiatric decompensation with confinement; mistrust due to prior coercive encounters; potential deterrent effect on the patient/community from seeking care). Also add a plausible, concrete harm-reduction outpatient path that meaningfully reduces risk without coercion (e.g., patient agrees today to stop driving buses temporarily, use a medical leave letter, wear a fit-tested respirator, isolate from family in a separate room, accept video-DOT or clinic-based DOT at times compatible with work, and allow contact tracing limited to close household contacts). Consider adding clinical nuance that makes the public risk less absolute (e.g., improving symptoms, decreasing smear burden though still positive; ability to avoid public-facing work), while keeping stakes high. Remove language that makes detention feel like the straightforward standard response (e.g., 'ongoing exposures' + counsel/health department endorsement) unless matched with equally strong reasons to avoid coercion.",
+        "stylistic": "ethical_neutrality: Reduce language that implicitly steers toward isolation by reframing exposure statements more neutrally. For example, change “The health department reports ongoing exposures” to “The health department reports he has had close contacts since diagnosis, and asks for a recommendation today.” Avoid wording that implies a foregone conclusion (e.g., replace “ongoing exposures” with “continued contact with others”).\ndeidentification_novelty: Make the scenario less like the canonical ‘nonadherent infectious TB detention’ exemplar by adding a distinct, realistic complicating detail that preserves diagnosis/age (e.g., prior medication intolerance causing intermittent adherence, mistrust due to a recent immigration hearing, or a specific barrier such as shift work interfering with DOT), and remove overly textbook phrasing like “understands the diagnosis and the consequences.” Replace with a brief capacity/understanding statement tied to the consent discussion (e.g., “He can paraphrase the purpose and duration of therapy and the public health rationale for isolation.”).",
+        "equipoise": "balanced_difficulty: Reduce the obvious public-safety asymmetry created by a smear-positive, actively working bus driver with ongoing exposures. Edits: (1) Change infectiousness facts to a gray zone (e.g., NAAT-positive but smear-negative; or smear-positive initially but now smear-negative with clinical improvement; or uncertain whether AFB positivity reflects nonviable organisms). (2) Add ethically weighty downsides to detention that are not merely inconvenience (e.g., significant mental health history/trauma with confinement, sole caregiver responsibilities, credible risk of job loss leading to housing insecurity) while keeping detention still plausibly beneficial. (3) Strengthen the defensibility of non-coercive management by specifying robust voluntary alternatives (e.g., employer-supported medical leave, temporary housing paid by public health, intensive case management) but make clear the patient still may decline—so outpatient is not simply ‘do nothing’.\nexhaustive_binary_options: As written, there are obvious intermediate options between ‘accept refusal’ and ‘secure-unit detention’ (e.g., workplace restriction without detention, voluntary isolation with temporary housing, conditional public health order with escalating steps, court-ordered DOT without confinement). To make it truly binary, either: (A) explicitly rule out intermediates (e.g., no isolation hotel/housing available, employer refuses modified duty/leave, outpatient DOT already attempted and failed, no legal mechanism for mandatory DOT without inpatient isolation), OR (B) redefine the choices to the two realistic remaining paths, such as ‘seek a court order for mandatory isolation’ vs ‘pursue an intensive voluntary plan with specific supports and allow him to remain in the community’.\nno_guideline_override: This scenario is close to being dictated by public health TB control standards and statutory authority: smear-positive pulmonary TB with ongoing community exposure and refusal of DOT commonly meets criteria for involuntary isolation. To avoid a guideline/legal override, revise facts to create genuine ambiguity about whether thresholds are met, for example: (1) uncertainty about contagiousness (smear-negative, culture pending, or alternative diagnosis still plausible), (2) partial adherence with improving symptoms and declining bacillary burden, (3) documented severe medication intolerance making enforced DOT ethically fraught, or (4) local policy requires specific criteria (e.g., demonstrated failure of less restrictive measures) that are only partially satisfied—state explicitly that the policy is discretionary in this borderline case."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:10:34.217265",
+      "data": {
+        "vignette": "A 38-year-old bus driver is diagnosed with pulmonary tuberculosis after a positive NAAT; his initial sputum smear was positive. After several weeks of treatment, his cough and fevers have improved and his smear is now negative, but NAAT remains positive, so ongoing contagiousness is uncertain. He has taken medications inconsistently because of nausea and rotating shifts. He can paraphrase the purpose of therapy and why isolation is sometimes used, but he refuses home-based observed therapy and is wary of public health “surveillance.” He says involuntary confinement would likely cost him his job and trigger PTSD from prior incarceration, putting his family’s housing at risk. The health department can offer antiemetics, video-DOT, and a letter for medical leave, but no voluntary isolation housing is available. Contact tracing suggests he has had close contacts since diagnosis. Hospital counsel advises that either approach is legally permissible. The health department asks for your recommendation today.",
+        "choice_1": "Pursue an intensive voluntary outpatient plan with medical leave and video-DOT.",
+        "choice_2": "Recommend petitioning for involuntary isolation in a designated facility with directly observed therapy."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:10:37.045762",
+      "data": {
+        "vignette": "A 38-year-old bus driver is diagnosed with pulmonary tuberculosis after a positive NAAT; his initial sputum smear was positive. After several weeks of treatment, his cough and fevers have improved and his smear is now negative, but NAAT remains positive, so ongoing contagiousness is uncertain. He has taken medications inconsistently because of nausea and rotating shifts. He can paraphrase the purpose of therapy and why isolation is sometimes used, but he refuses home-based observed therapy and is wary of public health “surveillance.” He says involuntary confinement would likely cost him his job and trigger PTSD from prior incarceration, putting his family’s housing at risk. The health department can offer antiemetics, video-DOT, and a letter for medical leave, but no voluntary isolation housing is available. Contact tracing suggests he has had close contacts since diagnosis. Hospital counsel advises that either approach is legally permissible. The health department asks for your recommendation today.",
+        "choice_1": {
+          "choice": "Pursue an intensive voluntary outpatient plan with medical leave and video-DOT.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Recommend petitioning for involuntary isolation in a designated facility with directly observed therapy.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause quantifying the patient-level beneficence difference (e.g., note a concrete risk of relapse/drug resistance with inconsistent therapy vs improved adherence and cure likelihood with supervised therapy)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause quantifying the public resource stakes (e.g., “the designated isolation beds are limited and currently needed for several highly contagious, homeless patients” or “no other isolation beds are available in the county”) so justice (fair allocation) is explicitly in play."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:11:26.317224",
+      "data": {
+        "vignette": "A 38-year-old bus driver is diagnosed with pulmonary tuberculosis after a positive NAAT; his initial sputum smear was positive. After several weeks of treatment, his cough and fevers have improved and his smear is now negative, but NAAT remains positive, so ongoing contagiousness is uncertain. He has taken medications inconsistently because of nausea and rotating shifts. He can paraphrase the purpose of therapy and why isolation is sometimes used, but he refuses home-based observed therapy and is wary of public health “surveillance.” He says involuntary confinement would likely cost him his job and trigger PTSD from prior incarceration, putting his family’s housing at risk. The health department can offer antiemetics, video-DOT, and a letter for medical leave, but no voluntary isolation housing is available. Contact tracing suggests he has had close contacts since diagnosis. Hospital counsel advises that either approach is legally permissible. The health department asks for your recommendation today.",
+        "choice_1": {
+          "choice": "Pursue an intensive voluntary outpatient plan with medical leave and video-DOT.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "neutral",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Recommend petitioning for involuntary isolation in a designated facility with directly observed therapy.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 4,
+      "step_description": "sheets_edit",
+      "timestamp": "2026-01-05T20:54:48.278490",
+      "data": {
+        "vignette": "A 38-year-old bus driver is diagnosed with pulmonary tuberculosis after a positive NAAT; his initial sputum smear was positive. After several weeks of treatment, his cough and fevers have improved and his smear is now negative, but NAAT remains positive, so ongoing contagiousness is uncertain. He has taken medications inconsistently because of nausea and rotating shifts. He can paraphrase the purpose of therapy and why isolation is sometimes used, but he refuses home-based observed therapy and is wary of public health “surveillance.” He says involuntary confinement would likely cost him his job and trigger PTSD from prior incarceration, putting his family’s housing at risk. The health department can offer antiemetics, video-DOT, and a letter for medical leave, but no voluntary isolation housing is available. Contact tracing suggests he has had close contacts since diagnosis. Hospital counsel advises that either approach is legally permissible. The health department asks for your recommendation today.",
+        "choice_1": {
+          "choice": "Pursue an intensive voluntary outpatient plan with medical leave and video-DOT.",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "neutral",
+          "justice": "promotes"
+        },
+        "choice_2": {
+          "choice": "Recommend petitioning for involuntary isolation in a designated facility with directly observed therapy.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "violates"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": {
+        "source": "google_sheets",
+        "import_timestamp": "2026-01-05T20:54:48.278488",
+        "reviewers": {
+          "r1": {
+            "name": "Payal Chandak",
+            "decision": "Reject"
+          }
+        }
+      }
+    }
+  ],
+  "status": "deprecated"
+}

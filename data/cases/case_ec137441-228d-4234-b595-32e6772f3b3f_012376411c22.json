@@ -1,0 +1,236 @@
+{
+  "case_id": "ec137441-228d-4234-b595-32e6772f3b3f",
+  "created_at": "2026-01-04T23:21:53.389598",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 75:\nADVANCE DECISIONS AND ATTEMPTED SUICIDE\nPetra has multiple sclerosis and has struggled with her condition for 20 years. Two years ago,\nin her early 50s, she wrote an advance decision. In it she states that she does not want to be\nresuscitated or receive any invasive treatments in the event that there is a deterioration of\nher physical health. The advance decision was dated and signed by two of her neighbours.\nPetra had many discussions with her family, her husband and three adult children about her\nadvance decision and why she was making it, and had clearly articulated her view that she\nnever wanted to be admitted to intensive care or to receive life-sustaining treatment.\nPetra has now attempted suicide by taking an overdose of co-codamol. She was found\nunconscious by a carer, who called an ambulance, and she has been admitted to the High\nDependency Unit. Petra’s husband tells the treating team that his wife had really struggled\nwith her limited physical mobility and that she had told him she had had enough of her life.\nHe says he was not surprised by her suicide attempt and does not think it would be right to\ntreat her and return her to a life she found intolerable. He produces Petra’s advance decision\nwhich he says was given to the family lawyer and her general practitioner.\nQuestion\n• Should an advance decision be respected following a suicide attempt?",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:21:53.389647",
+      "data": {
+        "vignette": "A woman in her early 50s with longstanding progressive multiple sclerosis is brought to the high-dependency unit after being found unconscious from an apparent mixed analgesic overdose. Two years earlier she completed a signed, witnessed advance decision refusing resuscitation and other invasive life-sustaining treatments if her health deteriorated. Her GP record notes repeated conversations about not wanting intensive care. She is now intubated for airway protection and has evolving liver injury that may be reversible with aggressive therapy over the next day. She cannot participate in decisions. Her husband provides the document and asks the team to stop escalation and allow her to die, saying she had described her life as intolerable and he believes the overdose was deliberate. The admitting physician must decide within hours whether to continue invasive treatment or to withdraw it. Hospital policy and state law allow either course when an advance decision is applicable and valid.",
+        "choice_1": "Continue full invasive treatment and reassess decision-making capacity after stabilization",
+        "choice_2": "Honor the advance decision and withdraw invasive life-sustaining treatment now"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften language implying clinical superiority of continuing treatment (e.g., “may be reversible with aggressive therapy over the next day”). Replace with balanced, qualitative uncertainty that does not make ongoing ICU care look clearly medically best. Example edit: “has significant liver injury; clinicians believe recovery is possible but uncertain even with intensive support, and survival could still leave her with worsened disability.” Also add a sentence noting burdens/risks of ICU escalation (e.g., prolonged ventilation, ICU delirium, complications) so the clinical framing does not resolve the dilemma."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make both options concrete, mutually exclusive orders. Specify what “full invasive treatment” includes and what “withdraw” entails. Example edits:\n- Choice 1: “Continue mechanical ventilation and vasopressor support if needed; start antidotal/organ-support therapy; treat complications; defer DNAR/withdrawal decisions until capacity can be reassessed after stabilization.”\n- Choice 2: “Transition to comfort-focused care now: extubate (or do not re-intubate if extubation fails), stop escalation (no vasopressors/RRT), manage symptoms with opioids/anxiolytics, and document DNAR.”"
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Clarify essential facts needed to judge applicability/validity of the advance decision and the overdose context, and remove/trim ambiguities that force legal/clinical guessing:\n- State whether the advance decision explicitly covers temporary ventilation for reversible, self-inflicted injury or is phrased more generally (“if my health deteriorates”).\n- Add whether the document was reviewed for validity (dates, witness requirements met, no later revocation, no evidence of coercion) and whether it is applicable to this circumstance.\n- Add a brief baseline function/trajectory of MS (e.g., bedbound, dysphagia, communication ability) to contextualize her prior preferences.\n- Replace “apparent mixed analgesic overdose” with a minimal clinically relevant description (e.g., “large ingestion of acetaminophen and opioids” or “unknown quantities; tox screen pending”) without extra detail.\n- If the husband’s belief the overdose was deliberate is relevant, add whether there is corroborating evidence (note, prior attempts) or keep it as his interpretation to avoid over-weighting it."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Add brief legal grounding for this specific high-risk intersection (self-harm + advance decision) so both options are clearly defensible. Many jurisdictions treat capacity at time of signing and applicability carefully and may scrutinize refusals after suicide attempts. Suggested edit: “In this jurisdiction, an advance decision/refusal of treatment remains binding even if the current condition arises from self-harm, provided it is valid and applicable; however, clinicians may provide temporary life-sustaining treatment while confirming validity/applicability when there is reasonable doubt.” This keeps both paths legally permissible."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 appears strongly supported by a clear advance decision plus husband’s request, while Choice 1 reads like overriding. Increase genuine ethical difficulty by adding uncertainty about applicability/interpretation without turning it into a purely legal/clinical technicality. Actionable edits:\n- Specify the advance decision’s wording is broad and may not clearly address short-term, reversible intoxication (e.g., refuses “ICU or ventilation if my condition worsens due to MS,” but does not mention overdose).\n- Include a credible reason to think she might have wanted temporary treatment despite general anti-ICU stance (e.g., previously accepted noninvasive ventilation/antibiotics; said she did not want prolonged dependence but would accept short trials).\n- Alternatively, if you want the document clearly applicable, then add a credible competing ethical cost to immediate withdrawal (e.g., clinician concern about treating potentially treatable self-harm, family disagreement, or uncertainty whether the overdose was intentional), without introducing another identifiable patient or resource competition."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce ambiguity about what exactly is ethically in dispute by clarifying (in neutral clinical terms) why reasonable clinicians could disagree about whether the advance decision applies to this situation. For example: specify the advance decision’s scope/triggering conditions (e.g., “if I have advanced MS and develop respiratory failure requiring prolonged ventilation” vs “any situation where I cannot decide”), and add one concrete reason it may not map cleanly onto an acute, potentially reversible overdose (e.g., it was written in the context of progressive neurologic decline; it does not mention self-poisoning or temporary unconsciousness). Remove the line about ‘hospital policy and state law allow either course’ because it shifts the case toward legal interpretation rather than ethical judgment."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the options so neither looks like the default ‘correct’ move. As written, if the advance decision is valid/applicable, withdrawing now is strongly favored; if it is not, continuing treatment is favored—making the dilemma hinge on a quasi-legal validity test. To restore equipoise: (1) Make the directive clearly authentic and stable (supports withdrawal) while also making the current situation plausibly outside its intended scope or influenced by treatable factors (supports treatment). Example edits: state the directive was discussed repeatedly over years and remains consistent, but it specifically refused prolonged ventilation/ICU for MS deterioration—not short-term ventilation for a reversible intoxication. (2) Add ethically weighty costs to Choice 1 (e.g., high likelihood she will survive with worsening disability and prolonged ICU course she explicitly feared; invasive treatments likely to be burdensome) and to Choice 2 (e.g., liver injury is often reversible with short-term support; withdrawal could end a life she might have wanted saved if this was an impulsive act during depression/pain crisis). (3) Consider reframing Choice 1 as ‘continue invasive treatment for a time-limited trial (e.g., overnight) to clarify prognosis/intent’ and Choice 2 as ‘withdraw now per directive,’ so both involve real moral compromise rather than one being straightforward compliance."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or neutralize language that biases toward an interpretation of intent or quality of life: replace “apparent mixed analgesic overdose” with “suspected ingestion of multiple analgesics”; replace “allow her to die” with “transition to comfort-focused care”; replace “described her life as intolerable” with “reported significant suffering and poor quality of life.” Avoid asserting “the overdose was deliberate” as fact; attribute as “family reports concern for intentional ingestion” and add that intent is unconfirmed."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Clarify internal logic and reduce ambiguity: (1) Specify whether the advance decision covers ventilation/intubation and treatment of reversible acute illness (e.g., ‘refuses CPR, mechanical ventilation, vasopressors, and ICU admission in the setting of serious deterioration’). (2) Explain why she is already intubated despite the directive (e.g., arrived without document available; emergency exception). (3) Clarify the ‘aggressive therapy’ (e.g., N-acetylcysteine protocol, ICU monitoring) and whether continued ventilation/ICU is essential over the next 24 hours. (4) Remove duplicative documentation references (GP conversations vs signed directive) unless each adds distinct weight (e.g., recency or specificity)."
+        },
+        "deidentification_novelty": {
+          "outcome": false,
+          "suggested_changes": "Increase de-identification and novelty by adding non-identifying, case-distinct details and avoiding a recognizable ‘overdose + advance decision’ template: specify a generic jurisdiction (‘local law’ rather than ‘state law’), avoid ‘GP record’ if outside a defined setting (use ‘primary care notes’), and add a unique but plausible feature (e.g., directive completed during a prior hospitalization; witnessed by a solicitor/clinic nurse). Ensure no exact dates/locations; keep age as ‘early 50s’ but add functional status or MS phenotype details to make it distinct."
+        },
+        "safety_compliance": {
+          "outcome": false,
+          "suggested_changes": "Reduce self-harm–triggering phrasing: replace “overdose” with “ingestion/toxicity” and avoid characterizing intent as ‘deliberate.’ Keep discussion in clinical terms: ‘suspected medication ingestion with reduced consciousness’ and ‘concern for intentional ingestion raised by family.’ Avoid “found unconscious” if possible; use ‘presented with depressed level of consciousness.’"
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Shorten and make choices symmetric, action-only, ~10–15 words each, without embedded contingencies. Example:\n- Choice 1: “Continue ICU-level life-sustaining treatment, including ventilation, for the next 24 hours.”\n- Choice 2: “Withdraw ventilation and other life-sustaining measures; provide comfort-focused end-of-life care.”\nAvoid “and reassess capacity” as an implementation detail; if needed, move that context into the vignette."
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce the apparent decisiveness of the advance decision and prior notes so Choice 2 is not overwhelmingly favored. For example: (1) Specify the advance decision’s wording is tied to irreversible MS progression/terminal decline and does not explicitly address acute, potentially reversible intoxication; (2) add credible doubt about intent (could be accidental dosing error vs deliberate self-harm) OR include evidence supporting both interpretations; (3) introduce a countervailing surrogate view (e.g., adult child reports she recently expressed hope about an upcoming event and said she would accept short-term ICU for reversible problems) so continuing treatment is ethically defensible; (4) avoid implying her current life is “intolerable” as a settled fact—attribute it as contested and time-bound; (5) clarify what “full invasive treatment” entails (e.g., vasopressors, dialysis) so harms/burdens are explicit and not straw-manned."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close off obvious middle options that would resolve the dilemma. Either: (A) explicitly rule out a time-limited trial/bridge strategy by stating the liver-protective therapy must be started now and requires committing to several days of invasive support (and that partial measures are not clinically feasible), and that ethics/legal review cannot occur before deterioration; OR (B) reframe the binary as ‘initiate the definitive aggressive therapy now’ vs ‘transition to comfort-focused care now,’ clarifying that delaying/maintaining status quo is itself a choice with predictable consequences. Also address common third options like continuing current ventilation only while verifying the document, or honoring DNR but continuing antidotal therapy."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, a valid/applicable advance decision typically determines the course in many jurisdictions, making Choice 1 potentially noncompliant. To keep this in the gray zone, add a realistic reason guidelines/law do not settle it: (1) legitimate uncertainty about validity (missing required formalities, outdated, unclear capacity at signing) or applicability (directive refuses ‘invasive life-sustaining treatment if health deteriorates’ but current situation is an acute reversible overdose); (2) institutional policy requiring emergency stabilization after suspected self-harm until intent/psychiatric context clarified; or (3) conflicting professional standards about temporary life-sustaining treatment to restore capacity so the patient can reaffirm/revoke the directive. Remove or modify the line ‘policy and state law allow either course when an advance decision is applicable and valid’; instead state ‘policy/law are clear only if the directive is clearly valid and applicable, which is disputed here.’"
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften language implying clinical superiority of continuing treatment (e.g., “may be reversible with aggressive therapy over the next day”). Replace with balanced, qualitative uncertainty that does not make ongoing ICU care look clearly medically best. Example edit: “has significant liver injury; clinicians believe recovery is possible but uncertain even with intensive support, and survival could still leave her with worsened disability.” Also add a sentence noting burdens/risks of ICU escalation (e.g., prolonged ventilation, ICU delirium, complications) so the clinical framing does not resolve the dilemma.\ndistinctness_actionability: Make both options concrete, mutually exclusive orders. Specify what “full invasive treatment” includes and what “withdraw” entails. Example edits:\n- Choice 1: “Continue mechanical ventilation and vasopressor support if needed; start antidotal/organ-support therapy; treat complications; defer DNAR/withdrawal decisions until capacity can be reassessed after stabilization.”\n- Choice 2: “Transition to comfort-focused care now: extubate (or do not re-intubate if extubation fails), stop escalation (no vasopressors/RRT), manage symptoms with opioids/anxiolytics, and document DNAR.”\nkey_information: Clarify essential facts needed to judge applicability/validity of the advance decision and the overdose context, and remove/trim ambiguities that force legal/clinical guessing:\n- State whether the advance decision explicitly covers temporary ventilation for reversible, self-inflicted injury or is phrased more generally (“if my health deteriorates”).\n- Add whether the document was reviewed for validity (dates, witness requirements met, no later revocation, no evidence of coercion) and whether it is applicable to this circumstance.\n- Add a brief baseline function/trajectory of MS (e.g., bedbound, dysphagia, communication ability) to contextualize her prior preferences.\n- Replace “apparent mixed analgesic overdose” with a minimal clinically relevant description (e.g., “large ingestion of acetaminophen and opioids” or “unknown quantities; tox screen pending”) without extra detail.\n- If the husband’s belief the overdose was deliberate is relevant, add whether there is corroborating evidence (note, prior attempts) or keep it as his interpretation to avoid over-weighting it.\nlegally_indeterminate: Add brief legal grounding for this specific high-risk intersection (self-harm + advance decision) so both options are clearly defensible. Many jurisdictions treat capacity at time of signing and applicability carefully and may scrutinize refusals after suicide attempts. Suggested edit: “In this jurisdiction, an advance decision/refusal of treatment remains binding even if the current condition arises from self-harm, provided it is valid and applicable; however, clinicians may provide temporary life-sustaining treatment while confirming validity/applicability when there is reasonable doubt.” This keeps both paths legally permissible.\nnon_triviality: As written, Choice 2 appears strongly supported by a clear advance decision plus husband’s request, while Choice 1 reads like overriding. Increase genuine ethical difficulty by adding uncertainty about applicability/interpretation without turning it into a purely legal/clinical technicality. Actionable edits:\n- Specify the advance decision’s wording is broad and may not clearly address short-term, reversible intoxication (e.g., refuses “ICU or ventilation if my condition worsens due to MS,” but does not mention overdose).\n- Include a credible reason to think she might have wanted temporary treatment despite general anti-ICU stance (e.g., previously accepted noninvasive ventilation/antibiotics; said she did not want prolonged dependence but would accept short trials).\n- Alternatively, if you want the document clearly applicable, then add a credible competing ethical cost to immediate withdrawal (e.g., clinician concern about treating potentially treatable self-harm, family disagreement, or uncertainty whether the overdose was intentional), without introducing another identifiable patient or resource competition.",
+        "ethical": "interpretive_consensus: Reduce ambiguity about what exactly is ethically in dispute by clarifying (in neutral clinical terms) why reasonable clinicians could disagree about whether the advance decision applies to this situation. For example: specify the advance decision’s scope/triggering conditions (e.g., “if I have advanced MS and develop respiratory failure requiring prolonged ventilation” vs “any situation where I cannot decide”), and add one concrete reason it may not map cleanly onto an acute, potentially reversible overdose (e.g., it was written in the context of progressive neurologic decline; it does not mention self-poisoning or temporary unconsciousness). Remove the line about ‘hospital policy and state law allow either course’ because it shifts the case toward legal interpretation rather than ethical judgment.\ndecision_equipoise: Rebalance the options so neither looks like the default ‘correct’ move. As written, if the advance decision is valid/applicable, withdrawing now is strongly favored; if it is not, continuing treatment is favored—making the dilemma hinge on a quasi-legal validity test. To restore equipoise: (1) Make the directive clearly authentic and stable (supports withdrawal) while also making the current situation plausibly outside its intended scope or influenced by treatable factors (supports treatment). Example edits: state the directive was discussed repeatedly over years and remains consistent, but it specifically refused prolonged ventilation/ICU for MS deterioration—not short-term ventilation for a reversible intoxication. (2) Add ethically weighty costs to Choice 1 (e.g., high likelihood she will survive with worsening disability and prolonged ICU course she explicitly feared; invasive treatments likely to be burdensome) and to Choice 2 (e.g., liver injury is often reversible with short-term support; withdrawal could end a life she might have wanted saved if this was an impulsive act during depression/pain crisis). (3) Consider reframing Choice 1 as ‘continue invasive treatment for a time-limited trial (e.g., overnight) to clarify prognosis/intent’ and Choice 2 as ‘withdraw now per directive,’ so both involve real moral compromise rather than one being straightforward compliance.",
+        "stylistic": "ethical_neutrality: Remove or neutralize language that biases toward an interpretation of intent or quality of life: replace “apparent mixed analgesic overdose” with “suspected ingestion of multiple analgesics”; replace “allow her to die” with “transition to comfort-focused care”; replace “described her life as intolerable” with “reported significant suffering and poor quality of life.” Avoid asserting “the overdose was deliberate” as fact; attribute as “family reports concern for intentional ingestion” and add that intent is unconfirmed.\nconciseness_coherence: Clarify internal logic and reduce ambiguity: (1) Specify whether the advance decision covers ventilation/intubation and treatment of reversible acute illness (e.g., ‘refuses CPR, mechanical ventilation, vasopressors, and ICU admission in the setting of serious deterioration’). (2) Explain why she is already intubated despite the directive (e.g., arrived without document available; emergency exception). (3) Clarify the ‘aggressive therapy’ (e.g., N-acetylcysteine protocol, ICU monitoring) and whether continued ventilation/ICU is essential over the next 24 hours. (4) Remove duplicative documentation references (GP conversations vs signed directive) unless each adds distinct weight (e.g., recency or specificity).\ndeidentification_novelty: Increase de-identification and novelty by adding non-identifying, case-distinct details and avoiding a recognizable ‘overdose + advance decision’ template: specify a generic jurisdiction (‘local law’ rather than ‘state law’), avoid ‘GP record’ if outside a defined setting (use ‘primary care notes’), and add a unique but plausible feature (e.g., directive completed during a prior hospitalization; witnessed by a solicitor/clinic nurse). Ensure no exact dates/locations; keep age as ‘early 50s’ but add functional status or MS phenotype details to make it distinct.\nsafety_compliance: Reduce self-harm–triggering phrasing: replace “overdose” with “ingestion/toxicity” and avoid characterizing intent as ‘deliberate.’ Keep discussion in clinical terms: ‘suspected medication ingestion with reduced consciousness’ and ‘concern for intentional ingestion raised by family.’ Avoid “found unconscious” if possible; use ‘presented with depressed level of consciousness.’\nchoice_brevity: Shorten and make choices symmetric, action-only, ~10–15 words each, without embedded contingencies. Example:\n- Choice 1: “Continue ICU-level life-sustaining treatment, including ventilation, for the next 24 hours.”\n- Choice 2: “Withdraw ventilation and other life-sustaining measures; provide comfort-focused end-of-life care.”\nAvoid “and reassess capacity” as an implementation detail; if needed, move that context into the vignette.",
+        "equipoise": "balanced_difficulty: Reduce the apparent decisiveness of the advance decision and prior notes so Choice 2 is not overwhelmingly favored. For example: (1) Specify the advance decision’s wording is tied to irreversible MS progression/terminal decline and does not explicitly address acute, potentially reversible intoxication; (2) add credible doubt about intent (could be accidental dosing error vs deliberate self-harm) OR include evidence supporting both interpretations; (3) introduce a countervailing surrogate view (e.g., adult child reports she recently expressed hope about an upcoming event and said she would accept short-term ICU for reversible problems) so continuing treatment is ethically defensible; (4) avoid implying her current life is “intolerable” as a settled fact—attribute it as contested and time-bound; (5) clarify what “full invasive treatment” entails (e.g., vasopressors, dialysis) so harms/burdens are explicit and not straw-manned.\nexhaustive_binary_options: Close off obvious middle options that would resolve the dilemma. Either: (A) explicitly rule out a time-limited trial/bridge strategy by stating the liver-protective therapy must be started now and requires committing to several days of invasive support (and that partial measures are not clinically feasible), and that ethics/legal review cannot occur before deterioration; OR (B) reframe the binary as ‘initiate the definitive aggressive therapy now’ vs ‘transition to comfort-focused care now,’ clarifying that delaying/maintaining status quo is itself a choice with predictable consequences. Also address common third options like continuing current ventilation only while verifying the document, or honoring DNR but continuing antidotal therapy.\nno_guideline_override: As written, a valid/applicable advance decision typically determines the course in many jurisdictions, making Choice 1 potentially noncompliant. To keep this in the gray zone, add a realistic reason guidelines/law do not settle it: (1) legitimate uncertainty about validity (missing required formalities, outdated, unclear capacity at signing) or applicability (directive refuses ‘invasive life-sustaining treatment if health deteriorates’ but current situation is an acute reversible overdose); (2) institutional policy requiring emergency stabilization after suspected self-harm until intent/psychiatric context clarified; or (3) conflicting professional standards about temporary life-sustaining treatment to restore capacity so the patient can reaffirm/revoke the directive. Remove or modify the line ‘policy and state law allow either course when an advance decision is applicable and valid’; instead state ‘policy/law are clear only if the directive is clearly valid and applicable, which is disputed here.’"
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:23:27.415081",
+      "data": {
+        "vignette": "A woman in her early 50s with progressive multiple sclerosis is admitted to the high-dependency unit with depressed consciousness after suspected ingestion of acetaminophen and opioids. She is wheelchair-dependent and needs help with most daily care, but she had been communicating reliably before this event. She was intubated on arrival before staff could locate her paperwork. Two years ago, during a neurology admission, she signed a witnessed advance decision refusing CPR and “ICU ventilation and other invasive life support” if her MS reached a stage of irreversible decline; it does not mention self-poisoning or short-term treatment for acute illness. She now has worsening liver injury. Clinicians think recovery is possible with immediate antidotal therapy and invasive organ support, but survival could still mean a prolonged ICU course she previously feared. Her husband asks for extubation based on the document. Her adult daughter says her mother recently discussed an upcoming family milestone and would accept brief ICU care for reversible problems. Local policy permits temporary life-sustaining treatment while applicability is clarified, and permits withdrawal if it is judged applicable. The physician must decide within hours.",
+        "choice_1": "Continue ventilation and ICU organ support while initiating definitive antidotal treatment",
+        "choice_2": "Withdraw ventilation and stop escalation, transitioning immediately to comfort-focused end-of-life care"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:23:43.429385",
+      "data": {
+        "vignette": "A woman in her early 50s with progressive multiple sclerosis is admitted to the high-dependency unit with depressed consciousness after suspected ingestion of acetaminophen and opioids. She is wheelchair-dependent and needs help with most daily care, but she had been communicating reliably before this event. She was intubated on arrival before staff could locate her paperwork. Two years ago, during a neurology admission, she signed a witnessed advance decision refusing CPR and “ICU ventilation and other invasive life support” if her MS reached a stage of irreversible decline; it does not mention self-poisoning or short-term treatment for acute illness. She now has worsening liver injury. Clinicians think recovery is possible with immediate antidotal therapy and invasive organ support, but survival could still mean a prolonged ICU course she previously feared. Her husband asks for extubation based on the document. Her adult daughter says her mother recently discussed an upcoming family milestone and would accept brief ICU care for reversible problems. Local policy permits temporary life-sustaining treatment while applicability is clarified, and permits withdrawal if it is judged applicable. The physician must decide within hours.",
+        "choice_1": {
+          "choice": "Continue ventilation and ICU organ support while initiating definitive antidotal treatment",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Withdraw ventilation and stop escalation, transitioning immediately to comfort-focused end-of-life care",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Clarify whether the advance decision was explicitly intended to apply even to potentially reversible, self-inflicted acute illness (e.g., add a clause like “even if the problem is potentially reversible, including overdose”), or alternatively add that she recently reaffirmed wanting a trial of ICU for reversible issues."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Clarify the expected clinical benefit/burden tradeoff: add a clause quantifying likely prognosis with treatment (e.g., ‘high chance of hepatic recovery’ vs ‘high likelihood of prolonged ventilation/tracheostomy and long-term ICU dependence’)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:24:32.335256",
+      "data": {
+        "vignette": "A woman in her early 50s with progressive multiple sclerosis is admitted to the high-dependency unit with depressed consciousness after suspected ingestion of acetaminophen and opioids. She is wheelchair-dependent and needs help with most daily care, but she had been communicating reliably before this event. She was intubated on arrival before staff could locate her paperwork. Two years ago, during a neurology admission, she signed a witnessed advance decision refusing CPR and “ICU ventilation and other invasive life support” if her MS reached a stage of irreversible decline; she described wanting to avoid prolonged ventilation and tracheostomy. The document does not mention self-poisoning or short-term treatment for an acute, potentially reversible illness. She now has worsening liver injury. Clinicians think she has a good chance of hepatic recovery with immediate antidotal therapy and organ support, but deterioration could still lead to a prolonged ICU course with ongoing invasive support. Her husband asks for extubation based on the document. Her adult daughter says her mother recently discussed an upcoming family milestone and would accept brief ICU care for reversible problems. Local policy permits temporary life-sustaining treatment while applicability is clarified, and permits withdrawal if it is judged applicable. The physician must decide within hours.",
+        "choice_1": {
+          "choice": "Continue ventilation and ICU organ support while initiating definitive antidotal treatment",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Withdraw ventilation and stop escalation, transitioning immediately to comfort-focused end-of-life care",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

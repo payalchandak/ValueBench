@@ -1,0 +1,242 @@
+{
+  "case_id": "578db898-796f-4692-a364-e45dc2428e9a",
+  "created_at": "2026-01-04T23:02:24.316711",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "11. You have a patient with a strong family history of breast cancer. As a\nmatter of the patient’s request, you perform a BRCA genetic test to see\nif there is an increased risk for breast cancer. The patient’s employer is\nrequesting a copy of any genetic testing that may have been done.\nWhat should you do?\na. Give the employer the information.\nb. Refer the employer to the hospital lawyer.\nc. Bring the request to the ethics committee.\nd. Refuse to provide the information to the employer.\ne. Give the information if it is positive on a repeat exam.",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:02:24.316763",
+      "data": {
+        "vignette": "A 37-year-old woman with a strong family history of breast cancer asked you to order BRCA testing. The result is positive. She works for a small company that provides its own health plan. Human resources has demanded “any genetic test results” as part of a new benefits enrollment packet due in three days. The patient says she feels pressured and worries the information could be used against her, but she also says she cannot risk losing coverage for her family. She signs the employer’s broad medical release form and asks you to send the report today. Your clinic’s privacy officer confirms that sending the report with her written authorization is permitted, and that you are also allowed to decline and provide a more limited medical statement instead. You need to decide what to do before the deadline.",
+        "choice_1": "Send the full BRCA test report to the employer with the patient’s authorization",
+        "choice_2": "Decline to release the report and offer only a non-genetic work letter"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Remove or tighten extraneous background and clarify only what affects the release decision. Suggested edits: (1) Replace “strong family history of breast cancer” with a brief, decision-relevant phrase such as “met criteria for hereditary cancer testing” unless the family history is needed to explain why testing was done. (2) Delete “small company that provides its own health plan” unless self-insured status is essential to the ethical stakes; if it is, state why it matters (e.g., employer administers benefits and requests medical records directly). (3) Specify what the employer says it needs (e.g., ‘all medical records’ vs ‘proof of eligibility’) and why the request includes genetics—otherwise it reads like decorative villainy."
+        },
+        "clinical_plausibility": {
+          "outcome": false,
+          "suggested_changes": "Make the employer request and physician’s options more realistic. Actionable edits: (1) Clarify that the employer/plan is requesting records to determine eligibility for coverage or a wellness program, and that the patient is being asked to sign a standard HIPAA authorization directed to the plan/TPA (not “HR”). (2) Replace “Human resources has demanded ‘any genetic test results’” with a plausible phrasing: “The plan administrator sent a request for ‘all genetic testing results’ as part of a medical underwriting/benefits verification packet.” (3) Specify that the patient is not currently seeking employment-related accommodation; otherwise an employer demanding genetic results is atypical in many settings."
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Add one sentence grounding legal permissibility and acknowledging relevant protections to avoid the dilemma turning into a legal question. For example: “In your jurisdiction, a patient may authorize release of her own genetic test results, and you are not legally required to disclose more than the minimum necessary; the privacy officer confirms both actions would comply with applicable privacy law.” Also consider adding: “The patient is concerned about possible discrimination despite existing legal protections.” (Avoid naming specific statutes if unsure.)"
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Increase ethical symmetry so neither option is obviously preferable. Concrete edits: (1) Make the patient’s request more voluntary/considered (e.g., she has had counseling, understands potential downstream risks, and still prefers disclosure to avoid lapse in coverage). (2) Add a plausible harm to refusing (e.g., coverage enrollment will be denied or delayed without documentation, leading to immediate financial/medical vulnerability for her children). (3) Add a plausible harm to disclosing beyond abstract “could be used against her” (e.g., she fears workplace stigma or changes in job duties; or she previously experienced retaliation after disclosing a medical condition). (4) Consider refining Choice 2 to a more defensible middle path: “Decline to send the genetic report; instead send a limited verification letter stating that she meets plan criteria for coverage without disclosing results,” so the tradeoff is truly between respecting her explicit request versus protecting her from coercion/foreseeable harm."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the dilemma so neither option is the obvious ethical choice. As written, releasing the full BRCA report to an employer is widely seen as disproportionately risky (privacy breach, discrimination potential) while offering a non-genetic letter appears clearly safer, making Choice 2 the default.\n\nActionable edits:\n- Strengthen the morally serious downside of Choice 2: explicitly state the employer has already told the patient that failure to submit the requested documents by the 3‑day deadline will result in loss of enrollment for the next plan year (no midyear enrollment) and the patient has no affordable alternative coverage for her family.\n- Strengthen the defensibility of Choice 1 beyond mere compliance: add that the patient understands the discrimination risk, has had a detailed discussion, and still makes a sustained, consistent request because maintaining coverage is essential for ongoing surveillance/possible risk‑reducing care.\n- Reduce the “easy middle” that makes declining feel cost‑free: specify that the employer has rejected generic letters in the past and is requesting the actual lab report to verify eligibility, so a non-genetic letter is unlikely to satisfy the requirement.\n- Clarify why the patient’s consent is ethically complicated but not clearly invalid: note she is not cognitively impaired and demonstrates understanding, but is under economic pressure; avoid language that makes her authorization obviously coerced/incompetent.\nThese changes create a more symmetric tradeoff between honoring a competent patient’s informed request to protect her family’s coverage vs protecting her from foreseeable downstream harms of broad disclosure."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove loaded/one-sided phrasing that biases against disclosure. Replace “Human resources has demanded” with “HR requests as part of enrollment documentation.” Replace “broad medical release form” with “general medical authorization.” Replace “could be used against her” with neutral language such as “may affect employment or benefits decisions.” Add one sentence acknowledging the patient’s stated preference to disclose and her reasons, without implying coercion as the only driver."
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Use clinically and legally standard terminology and clarify roles. Specify this is genetic testing for hereditary breast/ovarian cancer susceptibility (pathogenic BRCA1/2 variant). Replace “employer” language with “plan administrator/HR” as appropriate. Note that the physician is considering scope of disclosure under HIPAA/GINA (without naming statutes explicitly in the vignette, e.g., “privacy and anti-discrimination protections may apply but are not absolute”). Replace “work letter” with “limited verification letter stating she is under care, without genetic details.”"
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the forcing constraint and the exact requested document. Remove redundant statements (“asked you to order… The result is positive” can be one sentence). Clarify what HR is asking for (full report vs confirmation of completion) and whether refusal risks enrollment denial. Ensure internal coherence by stating why a non-genetic letter would satisfy HR if you choose it, or that it may not. Add one sentence about the patient’s understanding of potential downstream disclosure implications."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Shorten and standardize choices to 10–15 neutral words and avoid extra qualifiers. For example: Choice 1: “Release the complete BRCA laboratory report to HR under signed authorization.” Choice 2: “Do not release genetic results; provide a limited medical verification letter only.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance by making Choice 2 carry clearer, immediate harms and Choice 1 carry clearer, plausible harms so neither is an easy ‘privacy good’ answer. Edits: (1) Add that the employer will deny enrollment without the requested documents by the 3‑day deadline, leading to a real lapse in coverage (or a costly COBRA-like bridge the patient cannot afford). (2) Add that the patient’s partner/child has an active condition requiring uninterrupted coverage, making refusal ethically costly. (3) Add that disclosure could lead to subtle adverse employment actions despite legal protections (e.g., reduction in hours/role change) but not guaranteed, and that the plan administrator claims it is for underwriting/eligibility documentation. (4) Avoid framing HR as coercive villain: change “has demanded” to “has requested under a new documentation policy,” and note the request is applied to all employees with recent specialty testing, to reduce moral asymmetry."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "As written, there is an obvious middle option: comply with the patient’s goal while limiting disclosure (e.g., send a redacted report; send a physician attestation that ‘testing was performed’ without results; have the patient transmit directly; delay pending legal counsel; ask privacy officer to negotiate scope with HR). Fix by explicitly ruling out these alternatives. Edits: (1) State the employer will only accept the laboratory PDF report (not summaries/attestations) and will not accept redactions. (2) State the patient cannot submit it herself because the portal requires clinician upload (or the lab will only release to clinicians). (3) State legal counsel/appeal would take longer than the 3‑day deadline and the employer won’t extend it. Then present the binary as: send full report now vs refuse and accept likely coverage lapse."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "This scenario is likely governed by clear legal/professional standards (HIPAA authorization rules; Genetic Information Nondiscrimination Act limits employer collection/use of genetic information; many employers generally cannot request genetic results for employment/benefits). That makes one option potentially clearly improper depending on jurisdiction and plan structure. Fix by adding why rules don’t settle it: (1) Specify this is for a self-insured plan’s enrollment/benefits administration (not employment decisions) and the privacy officer/health-plan compliance officer has reviewed GINA/HIPAA and states the request is legally permissible in this narrow context (or that laws conflict/are ambiguous in this state). (2) Alternatively, relocate the setting to a jurisdiction where employer access via explicit patient authorization is permitted but ethically fraught, and clarify there is no institutional policy prohibiting disclosure with authorization. (3) Add that the patient has capacity and the authorization meets HIPAA elements, so the question is ethical judgment about potentially coerced consent, not legality."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "key_information: Remove or tighten extraneous background and clarify only what affects the release decision. Suggested edits: (1) Replace “strong family history of breast cancer” with a brief, decision-relevant phrase such as “met criteria for hereditary cancer testing” unless the family history is needed to explain why testing was done. (2) Delete “small company that provides its own health plan” unless self-insured status is essential to the ethical stakes; if it is, state why it matters (e.g., employer administers benefits and requests medical records directly). (3) Specify what the employer says it needs (e.g., ‘all medical records’ vs ‘proof of eligibility’) and why the request includes genetics—otherwise it reads like decorative villainy.\nclinical_plausibility: Make the employer request and physician’s options more realistic. Actionable edits: (1) Clarify that the employer/plan is requesting records to determine eligibility for coverage or a wellness program, and that the patient is being asked to sign a standard HIPAA authorization directed to the plan/TPA (not “HR”). (2) Replace “Human resources has demanded ‘any genetic test results’” with a plausible phrasing: “The plan administrator sent a request for ‘all genetic testing results’ as part of a medical underwriting/benefits verification packet.” (3) Specify that the patient is not currently seeking employment-related accommodation; otherwise an employer demanding genetic results is atypical in many settings.\nlegally_indeterminate: Add one sentence grounding legal permissibility and acknowledging relevant protections to avoid the dilemma turning into a legal question. For example: “In your jurisdiction, a patient may authorize release of her own genetic test results, and you are not legally required to disclose more than the minimum necessary; the privacy officer confirms both actions would comply with applicable privacy law.” Also consider adding: “The patient is concerned about possible discrimination despite existing legal protections.” (Avoid naming specific statutes if unsure.)\nnon_triviality: Increase ethical symmetry so neither option is obviously preferable. Concrete edits: (1) Make the patient’s request more voluntary/considered (e.g., she has had counseling, understands potential downstream risks, and still prefers disclosure to avoid lapse in coverage). (2) Add a plausible harm to refusing (e.g., coverage enrollment will be denied or delayed without documentation, leading to immediate financial/medical vulnerability for her children). (3) Add a plausible harm to disclosing beyond abstract “could be used against her” (e.g., she fears workplace stigma or changes in job duties; or she previously experienced retaliation after disclosing a medical condition). (4) Consider refining Choice 2 to a more defensible middle path: “Decline to send the genetic report; instead send a limited verification letter stating that she meets plan criteria for coverage without disclosing results,” so the tradeoff is truly between respecting her explicit request versus protecting her from coercion/foreseeable harm.",
+        "ethical": "decision_equipoise: Rebalance the dilemma so neither option is the obvious ethical choice. As written, releasing the full BRCA report to an employer is widely seen as disproportionately risky (privacy breach, discrimination potential) while offering a non-genetic letter appears clearly safer, making Choice 2 the default.\n\nActionable edits:\n- Strengthen the morally serious downside of Choice 2: explicitly state the employer has already told the patient that failure to submit the requested documents by the 3‑day deadline will result in loss of enrollment for the next plan year (no midyear enrollment) and the patient has no affordable alternative coverage for her family.\n- Strengthen the defensibility of Choice 1 beyond mere compliance: add that the patient understands the discrimination risk, has had a detailed discussion, and still makes a sustained, consistent request because maintaining coverage is essential for ongoing surveillance/possible risk‑reducing care.\n- Reduce the “easy middle” that makes declining feel cost‑free: specify that the employer has rejected generic letters in the past and is requesting the actual lab report to verify eligibility, so a non-genetic letter is unlikely to satisfy the requirement.\n- Clarify why the patient’s consent is ethically complicated but not clearly invalid: note she is not cognitively impaired and demonstrates understanding, but is under economic pressure; avoid language that makes her authorization obviously coerced/incompetent.\nThese changes create a more symmetric tradeoff between honoring a competent patient’s informed request to protect her family’s coverage vs protecting her from foreseeable downstream harms of broad disclosure.",
+        "stylistic": "ethical_neutrality: Remove loaded/one-sided phrasing that biases against disclosure. Replace “Human resources has demanded” with “HR requests as part of enrollment documentation.” Replace “broad medical release form” with “general medical authorization.” Replace “could be used against her” with neutral language such as “may affect employment or benefits decisions.” Add one sentence acknowledging the patient’s stated preference to disclose and her reasons, without implying coercion as the only driver.\nmedical_professionalism: Use clinically and legally standard terminology and clarify roles. Specify this is genetic testing for hereditary breast/ovarian cancer susceptibility (pathogenic BRCA1/2 variant). Replace “employer” language with “plan administrator/HR” as appropriate. Note that the physician is considering scope of disclosure under HIPAA/GINA (without naming statutes explicitly in the vignette, e.g., “privacy and anti-discrimination protections may apply but are not absolute”). Replace “work letter” with “limited verification letter stating she is under care, without genetic details.”\nconciseness_coherence: Tighten and clarify the forcing constraint and the exact requested document. Remove redundant statements (“asked you to order… The result is positive” can be one sentence). Clarify what HR is asking for (full report vs confirmation of completion) and whether refusal risks enrollment denial. Ensure internal coherence by stating why a non-genetic letter would satisfy HR if you choose it, or that it may not. Add one sentence about the patient’s understanding of potential downstream disclosure implications.\nchoice_brevity: Shorten and standardize choices to 10–15 neutral words and avoid extra qualifiers. For example: Choice 1: “Release the complete BRCA laboratory report to HR under signed authorization.” Choice 2: “Do not release genetic results; provide a limited medical verification letter only.”",
+        "equipoise": "balanced_difficulty: Rebalance by making Choice 2 carry clearer, immediate harms and Choice 1 carry clearer, plausible harms so neither is an easy ‘privacy good’ answer. Edits: (1) Add that the employer will deny enrollment without the requested documents by the 3‑day deadline, leading to a real lapse in coverage (or a costly COBRA-like bridge the patient cannot afford). (2) Add that the patient’s partner/child has an active condition requiring uninterrupted coverage, making refusal ethically costly. (3) Add that disclosure could lead to subtle adverse employment actions despite legal protections (e.g., reduction in hours/role change) but not guaranteed, and that the plan administrator claims it is for underwriting/eligibility documentation. (4) Avoid framing HR as coercive villain: change “has demanded” to “has requested under a new documentation policy,” and note the request is applied to all employees with recent specialty testing, to reduce moral asymmetry.\nexhaustive_binary_options: As written, there is an obvious middle option: comply with the patient’s goal while limiting disclosure (e.g., send a redacted report; send a physician attestation that ‘testing was performed’ without results; have the patient transmit directly; delay pending legal counsel; ask privacy officer to negotiate scope with HR). Fix by explicitly ruling out these alternatives. Edits: (1) State the employer will only accept the laboratory PDF report (not summaries/attestations) and will not accept redactions. (2) State the patient cannot submit it herself because the portal requires clinician upload (or the lab will only release to clinicians). (3) State legal counsel/appeal would take longer than the 3‑day deadline and the employer won’t extend it. Then present the binary as: send full report now vs refuse and accept likely coverage lapse.\nno_guideline_override: This scenario is likely governed by clear legal/professional standards (HIPAA authorization rules; Genetic Information Nondiscrimination Act limits employer collection/use of genetic information; many employers generally cannot request genetic results for employment/benefits). That makes one option potentially clearly improper depending on jurisdiction and plan structure. Fix by adding why rules don’t settle it: (1) Specify this is for a self-insured plan’s enrollment/benefits administration (not employment decisions) and the privacy officer/health-plan compliance officer has reviewed GINA/HIPAA and states the request is legally permissible in this narrow context (or that laws conflict/are ambiguous in this state). (2) Alternatively, relocate the setting to a jurisdiction where employer access via explicit patient authorization is permitted but ethically fraught, and clarify there is no institutional policy prohibiting disclosure with authorization. (3) Add that the patient has capacity and the authorization meets HIPAA elements, so the question is ethical judgment about potentially coerced consent, not legality."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:03:32.198187",
+      "data": {
+        "vignette": "A 37-year-old woman meets criteria for hereditary breast and ovarian cancer testing. Her results show a pathogenic BRCA variant. She has had genetic counseling and can describe how disclosure could affect her privacy and workplace relationships despite existing protections. Her self-insured employer health plan is administered through the company benefits office. As part of a new enrollment documentation policy applied to employees with recent specialty testing, the plan administrator requests the actual laboratory PDF for “all genetic testing results” within three days to verify eligibility. They state they will not accept redactions or clinician summaries, and the upload portal requires a clinician submission. An appeal or legal review would not be completed before the deadline, and no extension is available. If the document is not received, she will lose family enrollment until the next plan year, and she cannot afford bridge coverage. Her child needs uninterrupted coverage for seizure medications. The privacy officer confirms either releasing the report under her signed authorization or declining and sending a limited verification letter is legally permissible.",
+        "choice_1": "Release the complete BRCA laboratory report under the patient’s signed authorization.",
+        "choice_2": "Do not release genetic results and send a limited verification letter only."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:03:42.908832",
+      "data": {
+        "vignette": "A 37-year-old woman meets criteria for hereditary breast and ovarian cancer testing. Her results show a pathogenic BRCA variant. She has had genetic counseling and can describe how disclosure could affect her privacy and workplace relationships despite existing protections. Her self-insured employer health plan is administered through the company benefits office. As part of a new enrollment documentation policy applied to employees with recent specialty testing, the plan administrator requests the actual laboratory PDF for “all genetic testing results” within three days to verify eligibility. They state they will not accept redactions or clinician summaries, and the upload portal requires a clinician submission. An appeal or legal review would not be completed before the deadline, and no extension is available. If the document is not received, she will lose family enrollment until the next plan year, and she cannot afford bridge coverage. Her child needs uninterrupted coverage for seizure medications. The privacy officer confirms either releasing the report under her signed authorization or declining and sending a limited verification letter is legally permissible.",
+        "choice_1": {
+          "choice": "Release the complete BRCA laboratory report under the patient’s signed authorization.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Do not release genetic results and send a limited verification letter only.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add an explicit sentence that the patient says she wants (or does not want) the full PDF released despite the risks (e.g., “She asks you to upload the full report to avoid losing her child’s coverage,” or “She refuses full disclosure even if it risks coverage”)."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Specify that the benefits office will only accept the full PDF (not a verification letter) and that sending only a limited letter will almost certainly result in loss of family coverage and interruption of the child’s seizure medication access."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause noting that complying with the administrator’s demand would reinforce an inequitable, coercive policy applied broadly (e.g., disproportionately affecting employees with genetic/specialty testing) versus refusing would protect fair privacy standards but risks loss of essential coverage for the child."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:04:18.948056",
+      "data": {
+        "vignette": "A 37-year-old woman meets criteria for hereditary breast and ovarian cancer testing. Her results show a pathogenic BRCA variant. She has had genetic counseling and can describe how disclosure could affect her privacy and workplace relationships despite existing protections. Her self-insured employer health plan is administered through the company benefits office. Under a new enrollment documentation policy applied to employees with recent specialty or genetic testing, the plan administrator requests the full laboratory PDF for all genetic testing results within three days to verify eligibility. They will not accept redactions, clinician summaries, or a verification letter. The upload portal requires a clinician submission. An appeal or legal review would not be completed before the deadline, and no extension is available. If the PDF is not received, she will almost certainly lose family enrollment until the next plan year. She cannot afford bridge coverage. Her child needs uninterrupted coverage for seizure medications. The patient asks you to upload the full report despite the privacy risks. The privacy officer confirms that either releasing the report under her signed authorization or declining and sending a limited verification letter is legally permissible.",
+        "choice_1": {
+          "choice": "Release the complete BRCA laboratory report under the patient’s signed authorization.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Do not release genetic results and send a limited verification letter only.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

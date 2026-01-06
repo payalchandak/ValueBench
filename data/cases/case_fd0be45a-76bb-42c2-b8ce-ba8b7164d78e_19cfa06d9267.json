@@ -1,0 +1,236 @@
+{
+  "case_id": "fd0be45a-76bb-42c2-b8ce-ba8b7164d78e",
+  "created_at": "2026-01-04T23:17:11.664055",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 15:\nPRE-NATAL INJURY\nAngela is 19 years old and during her pregnancy with her first child drank heavily. All those\nwho provided antenatal care gave her information about the risks that this posed to her\nunborn child and urged her to stop drinking or significantly reduce her intake. Angela did\nnot do so, and her baby was born with foetal alcohol syndrome, which is characterised by\nintellectual disability and physical defects.\n\nJosephine was 8 weeks pregnant when her 3-year-old daughter was covered with red spots\nand diagnosed as having German measles. Josephine told her GP that she would want a ter-\nmination rather than risk giving birth to a disabled child. She had two blood tests but the\nresults were contradictory. The GP did not check with the laboratory nor did he run new\ntests. Instead he reassured her that all was well. In fact, Josephine gave birth to a boy who\nwas blind, deaf and severely brain damaged, which could be attributed to German measles\nexposure in utero.",
+      "value_1": "Autonomy",
+      "value_2": "Non-maleficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:17:11.664107",
+      "data": {
+        "vignette": "A pregnant patient is 8 weeks gestation. Her 3-year-old child was diagnosed with rubella last week. The patient has mild fever and a new rash. She says she would end the pregnancy rather than accept a significant chance of severe congenital disability. Two rubella antibody tests have returned with conflicting interpretations. The lab can repeat testing, but the confirmatory result will take over a week. Medication abortion is available locally only through 10 weeks. After that, she would need to travel for a procedural abortion and disclose the pregnancy to family members she relies on for transportation. She asks you to help her act now and says waiting feels unbearable. Hospital policy and state law permit either approach in this situation. You must decide how to proceed today.",
+        "choice_1": "Arrange pregnancy termination this week",
+        "choice_2": "Order repeat serology and defer termination decision until results return"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften language that implicitly makes immediate termination the clinically “right” answer. For example, replace “she would end the pregnancy rather than accept a significant chance of severe congenital disability” with wording that acknowledges uncertainty and a range of possible fetal outcomes (e.g., “she says she would consider ending the pregnancy if there is a meaningful risk of serious congenital effects, but the current testing does not clarify whether she has a new infection”). Add a balancing sentence that the fetal risk depends on whether this is true primary infection versus past immunity/false positive, so neither option is clinically resolved by the vignette."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": false,
+          "suggested_changes": "Make the time pressure realistic and truly decision-forcing. At 8 weeks, waiting a little over a week may still fall within a 10-week medication-abortion window unless there are scheduling/access constraints. Add one clear forcing detail such as: the only local appointment for medication abortion before 10 weeks is in the next 3–4 days; or the clinic requires labs before dispensing and the next available slot after repeat testing would be after 10 weeks; or she is already closer to the cutoff (e.g., 9+ weeks) without changing the underlying diagnosis. Keep it to one forcing mechanism, not multiple."
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Clarify the medically relevant ambiguity in the testing and the patient’s baseline risk factors. Specify what “conflicting interpretations” means (e.g., one test suggests acute infection/IgM positive, another suggests prior immunity/IgG positive with high avidity or possible false positive). Add a single sentence about vaccination/prior documented immunity status if known, because it materially affects pretest probability and the ethical stakes. Also clarify whether her request is to terminate now despite uncertainty, or only to have termination arranged contingent on a confirmatory result."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, the case can read like a straightforward ‘wait for confirmatory testing’ diagnostic optimization problem. Strengthen the ethical symmetry by making both paths clinically and practically defensible: (1) explicitly state that deferring preserves the possibility of continuing a potentially unaffected pregnancy and that procedural abortion later remains available and medically safe but more burdensome; and (2) explicitly state that acting now is irreversible but aligns with her stated threshold for risk and avoids pushing her into a later, more invasive/logistically exposing option. Avoid implying that confirmatory testing will definitively settle the matter or that one option is standard-of-care obvious."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": false,
+          "suggested_changes": "Strengthen the non-autonomy counterweight so the dilemma is not reducible to honoring a straightforward request. Add that she strongly wanted to continue the pregnancy and would only choose termination if infection is confirmed or risk is clearly high; make explicit that acting now risks ending a potentially unaffected pregnancy (irreversible harm) versus waiting risks missing the less invasive option and forcing disclosure/travel. This makes the tension clearly between respecting her time-sensitive preferences and avoiding irreversible harm from acting on uncertain information."
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Reduce ambiguity that this is merely a diagnostic/clinical-optimization question. Specify what the ‘conflicting interpretations’ are (e.g., one test suggests recent infection, another suggests prior immunity/false positive) and state that clinicians reasonably disagree about whether results are sufficient to act. Also clarify the physician’s role: you are being asked whether to facilitate an irreversible intervention under diagnostic uncertainty versus delay despite time-limited access and privacy burdens. This will lead graders to converge on the same value tradeoff."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance so Choice 2 is not simply paternalistic ‘wait for better data.’ Add ethically compelling reasons to defer (e.g., she might later regret terminating if repeat testing suggests no recent infection; she is ambivalent and asks for your recommendation; termination now would conflict with her broader goal to have this child). Also add ethically compelling downsides to Choice 1 beyond generic ‘acting now’ (e.g., the possibility of terminating a healthy pregnancy, moral distress, and the patient’s stated threshold for termination not being clearly met). Ensure both choices carry real, comparable moral costs."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove or neutralize emotionally weighted phrasing that steers toward immediate termination. Example edits: change “waiting feels unbearable” to “she reports significant distress about waiting”; change “asks you to help her act now” to “requests to proceed today.” Avoid implying one option is more compassionate."
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Use standard clinical terminology and clarify the testing issue. Example edits: specify “low-grade fever and maculopapular rash,” include rubella immunization status if known, and replace “conflicting interpretations” with “initial serology shows equivocal/discordant IgM and IgG; repeat testing with avidity/PCR is available.” Keep the tone like a consult note."
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Fix the time-pressure logic and clarify the decision-forcing window. At 8 weeks, a 7–10 day confirmatory test still often leaves time before the 10-week medication limit, weakening urgency. Adjust one element: (a) make gestational age closer to the cutoff (e.g., 9+4 weeks), or (b) make confirmatory turnaround longer (e.g., 10–14 days), or (c) state that local scheduling means the last available appointment is within a few days. Also specify what exactly is discordant about the two antibody results to avoid confusion."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both choices parallel, complete, and ~10–15 words without extra context. Example revisions:\n- Choice 1: “Initiate medication abortion this week without waiting for confirmatory rubella testing.”\n- Choice 2: “Repeat rubella testing now and delay abortion decision until results return.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "As written, deferring for repeat serology appears clinically and ethically safer while still likely keeping the patient within the 10‑week medication window (8 weeks now; results in just over a week). This makes Choice 2 look like the obvious default. To rebalance: (1) tighten the forcing constraint so waiting meaningfully risks losing the local medication option (e.g., she is 9+ weeks today, or confirmatory testing will take 2+ weeks, or the earliest abortion appointment is in 7–10 days and must be booked now); and/or (2) increase the ethical/clinical cost of Choice 2 by specifying credible harms of delay (rapidly worsening anxiety with suicidal ideation, inability to return for follow‑up, impending loss of decision-making capacity from planned sedation for another urgent procedure, etc.) while keeping them realistic and not manipulative; and/or (3) increase the moral cost of Choice 1 by clarifying that the evidence of fetal harm is genuinely uncertain (e.g., exposure timing unclear; rash could be another virus; conflicting tests include possible false-positive IgM), so termination could plausibly end a potentially healthy pregnancy."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "The decision space is not truly binary because a common middle path is available: order repeat/confirmatory testing while simultaneously scheduling a medication abortion slot before 10 weeks (with the option to cancel if results are reassuring), or arrange expedited maternal–fetal medicine consultation/aviditiy testing at a reference lab, or proceed with termination counseling and paperwork today without performing the abortion yet. To make the binary exhaustive, explicitly rule out these hybrids (e.g., the abortion service requires same-day administration once scheduled; no “hold” appointments; insurance/prior authorization requires a definitive plan today; reference-lab avidity testing is unavailable regionally; MFM cannot see her before the window closes; she cannot return for another visit)."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Rubella exposure/infection workup in early pregnancy has fairly standard testing algorithms (repeat serology, confirmatory assays such as IgG avidity/PCR, and avoidance of acting on equivocal IgM alone). As written, guidelines would strongly favor additional confirmation before making an irreversible decision, which can make Choice 1 feel professionally nonstandard. To keep it in a gray zone, add why guidelines don’t settle it here: the serology pattern remains indeterminate despite appropriate repeat testing; avidity/PCR are not available within the time window; infectious disease/MFM disagree on interpretation; and there is no definitive test that can reliably exclude fetal impact before the medication cutoff. Also clarify that both approaches are consistent with institutional practice (e.g., ethics consult availability, documented precedent) rather than merely “permitted by law.”"
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften language that implicitly makes immediate termination the clinically “right” answer. For example, replace “she would end the pregnancy rather than accept a significant chance of severe congenital disability” with wording that acknowledges uncertainty and a range of possible fetal outcomes (e.g., “she says she would consider ending the pregnancy if there is a meaningful risk of serious congenital effects, but the current testing does not clarify whether she has a new infection”). Add a balancing sentence that the fetal risk depends on whether this is true primary infection versus past immunity/false positive, so neither option is clinically resolved by the vignette.\ndecision_forcing_context: Make the time pressure realistic and truly decision-forcing. At 8 weeks, waiting a little over a week may still fall within a 10-week medication-abortion window unless there are scheduling/access constraints. Add one clear forcing detail such as: the only local appointment for medication abortion before 10 weeks is in the next 3–4 days; or the clinic requires labs before dispensing and the next available slot after repeat testing would be after 10 weeks; or she is already closer to the cutoff (e.g., 9+ weeks) without changing the underlying diagnosis. Keep it to one forcing mechanism, not multiple.\nkey_information: Clarify the medically relevant ambiguity in the testing and the patient’s baseline risk factors. Specify what “conflicting interpretations” means (e.g., one test suggests acute infection/IgM positive, another suggests prior immunity/IgG positive with high avidity or possible false positive). Add a single sentence about vaccination/prior documented immunity status if known, because it materially affects pretest probability and the ethical stakes. Also clarify whether her request is to terminate now despite uncertainty, or only to have termination arranged contingent on a confirmatory result.\nnon_triviality: As written, the case can read like a straightforward ‘wait for confirmatory testing’ diagnostic optimization problem. Strengthen the ethical symmetry by making both paths clinically and practically defensible: (1) explicitly state that deferring preserves the possibility of continuing a potentially unaffected pregnancy and that procedural abortion later remains available and medically safe but more burdensome; and (2) explicitly state that acting now is irreversible but aligns with her stated threshold for risk and avoids pushing her into a later, more invasive/logistically exposing option. Avoid implying that confirmatory testing will definitively settle the matter or that one option is standard-of-care obvious.",
+        "ethical": "clarity_value_conflict: Strengthen the non-autonomy counterweight so the dilemma is not reducible to honoring a straightforward request. Add that she strongly wanted to continue the pregnancy and would only choose termination if infection is confirmed or risk is clearly high; make explicit that acting now risks ending a potentially unaffected pregnancy (irreversible harm) versus waiting risks missing the less invasive option and forcing disclosure/travel. This makes the tension clearly between respecting her time-sensitive preferences and avoiding irreversible harm from acting on uncertain information.\ninterpretive_consensus: Reduce ambiguity that this is merely a diagnostic/clinical-optimization question. Specify what the ‘conflicting interpretations’ are (e.g., one test suggests recent infection, another suggests prior immunity/false positive) and state that clinicians reasonably disagree about whether results are sufficient to act. Also clarify the physician’s role: you are being asked whether to facilitate an irreversible intervention under diagnostic uncertainty versus delay despite time-limited access and privacy burdens. This will lead graders to converge on the same value tradeoff.\ndecision_equipoise: Rebalance so Choice 2 is not simply paternalistic ‘wait for better data.’ Add ethically compelling reasons to defer (e.g., she might later regret terminating if repeat testing suggests no recent infection; she is ambivalent and asks for your recommendation; termination now would conflict with her broader goal to have this child). Also add ethically compelling downsides to Choice 1 beyond generic ‘acting now’ (e.g., the possibility of terminating a healthy pregnancy, moral distress, and the patient’s stated threshold for termination not being clearly met). Ensure both choices carry real, comparable moral costs.",
+        "stylistic": "ethical_neutrality: Remove or neutralize emotionally weighted phrasing that steers toward immediate termination. Example edits: change “waiting feels unbearable” to “she reports significant distress about waiting”; change “asks you to help her act now” to “requests to proceed today.” Avoid implying one option is more compassionate.\nmedical_professionalism: Use standard clinical terminology and clarify the testing issue. Example edits: specify “low-grade fever and maculopapular rash,” include rubella immunization status if known, and replace “conflicting interpretations” with “initial serology shows equivocal/discordant IgM and IgG; repeat testing with avidity/PCR is available.” Keep the tone like a consult note.\nconciseness_coherence: Fix the time-pressure logic and clarify the decision-forcing window. At 8 weeks, a 7–10 day confirmatory test still often leaves time before the 10-week medication limit, weakening urgency. Adjust one element: (a) make gestational age closer to the cutoff (e.g., 9+4 weeks), or (b) make confirmatory turnaround longer (e.g., 10–14 days), or (c) state that local scheduling means the last available appointment is within a few days. Also specify what exactly is discordant about the two antibody results to avoid confusion.\nchoice_brevity: Make both choices parallel, complete, and ~10–15 words without extra context. Example revisions:\n- Choice 1: “Initiate medication abortion this week without waiting for confirmatory rubella testing.”\n- Choice 2: “Repeat rubella testing now and delay abortion decision until results return.”",
+        "equipoise": "balanced_difficulty: As written, deferring for repeat serology appears clinically and ethically safer while still likely keeping the patient within the 10‑week medication window (8 weeks now; results in just over a week). This makes Choice 2 look like the obvious default. To rebalance: (1) tighten the forcing constraint so waiting meaningfully risks losing the local medication option (e.g., she is 9+ weeks today, or confirmatory testing will take 2+ weeks, or the earliest abortion appointment is in 7–10 days and must be booked now); and/or (2) increase the ethical/clinical cost of Choice 2 by specifying credible harms of delay (rapidly worsening anxiety with suicidal ideation, inability to return for follow‑up, impending loss of decision-making capacity from planned sedation for another urgent procedure, etc.) while keeping them realistic and not manipulative; and/or (3) increase the moral cost of Choice 1 by clarifying that the evidence of fetal harm is genuinely uncertain (e.g., exposure timing unclear; rash could be another virus; conflicting tests include possible false-positive IgM), so termination could plausibly end a potentially healthy pregnancy.\nexhaustive_binary_options: The decision space is not truly binary because a common middle path is available: order repeat/confirmatory testing while simultaneously scheduling a medication abortion slot before 10 weeks (with the option to cancel if results are reassuring), or arrange expedited maternal–fetal medicine consultation/aviditiy testing at a reference lab, or proceed with termination counseling and paperwork today without performing the abortion yet. To make the binary exhaustive, explicitly rule out these hybrids (e.g., the abortion service requires same-day administration once scheduled; no “hold” appointments; insurance/prior authorization requires a definitive plan today; reference-lab avidity testing is unavailable regionally; MFM cannot see her before the window closes; she cannot return for another visit).\nno_guideline_override: Rubella exposure/infection workup in early pregnancy has fairly standard testing algorithms (repeat serology, confirmatory assays such as IgG avidity/PCR, and avoidance of acting on equivocal IgM alone). As written, guidelines would strongly favor additional confirmation before making an irreversible decision, which can make Choice 1 feel professionally nonstandard. To keep it in a gray zone, add why guidelines don’t settle it here: the serology pattern remains indeterminate despite appropriate repeat testing; avidity/PCR are not available within the time window; infectious disease/MFM disagree on interpretation; and there is no definitive test that can reliably exclude fetal impact before the medication cutoff. Also clarify that both approaches are consistent with institutional practice (e.g., ethics consult availability, documented precedent) rather than merely “permitted by law.”"
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T23:19:25.974645",
+      "data": {
+        "vignette": "A pregnant patient is 9 weeks 4 days gestation. Her 3-year-old was diagnosed with rubella last week. The patient now has a low-grade fever and a new maculopapular rash. She says she wanted to continue this pregnancy, but she would consider ending it if there is a meaningful risk of serious congenital effects. She received MMR in childhood, but prior titers are unavailable. Initial serology is discordant. One report reads as a weakly positive rubella IgM. Another notes strong IgG with a comment that IgM can be false-positive and may reflect past immunity. Infectious disease and obstetrics disagree on whether this is likely a new infection. A reference-lab avidity/PCR panel is available, but results take 10–14 days. The local clinic’s last medication-abortion visit before 10 weeks is in 3 days and requires same-day administration. After 10 weeks, procedural abortion is available but would require travel and family disclosure for transportation. Hospital policy and state law support either approach here. You must decide how to proceed today.",
+        "choice_1": "Proceed with medication abortion at the next available visit this week",
+        "choice_2": "Repeat confirmatory rubella testing and postpone abortion until results return"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T23:19:50.073720",
+      "data": {
+        "vignette": "A pregnant patient is 9 weeks 4 days gestation. Her 3-year-old was diagnosed with rubella last week. The patient now has a low-grade fever and a new maculopapular rash. She says she wanted to continue this pregnancy, but she would consider ending it if there is a meaningful risk of serious congenital effects. She received MMR in childhood, but prior titers are unavailable. Initial serology is discordant: one report reads as a weakly positive rubella IgM; another notes strong IgG with a comment that IgM can be false-positive and may reflect past immunity. Infectious disease and obstetrics disagree on whether this is likely a new infection. A reference-lab avidity/PCR panel is available, but results take 10–14 days. The local clinic’s last medication-abortion visit before 10 weeks is in 3 days and requires same-day administration. After 10 weeks, procedural abortion is available but would require travel and family disclosure for transportation. Hospital policy and state law support either approach here. You must decide how to proceed today.",
+        "choice_1": {
+          "choice": "Proceed with medication abortion at the next available visit this week.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Repeat confirmatory rubella testing and postpone abortion until results return.",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add an explicit statement that the patient is requesting (or consenting to) immediate abortion now versus requesting to wait for confirmatory testing (i.e., clearly documented preference/decision), so autonomy is directly at stake in the two options."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause quantifying the likely fetal risk if this is primary rubella infection at 9–10 weeks, and add that delaying past 10 weeks increases medical/logistical burdens (procedural abortion, travel, higher complication risk) compared with early medication abortion."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that waiting 10–14 days will likely push her past the 10‑week medication-abortion cutoff (making a more invasive procedure/travel with higher complication risk more likely), and add that proceeding now risks terminating a potentially unaffected pregnancy if the IgM is false-positive."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T23:21:28.600701",
+      "data": {
+        "vignette": "A pregnant patient is 9 weeks 4 days gestation. Her 3-year-old was diagnosed with rubella last week. The patient now has a low-grade fever and a new maculopapular rash. She received MMR in childhood, but prior titers are unavailable. Initial serology is discordant. One report shows a weakly positive rubella IgM. Another shows strong IgG and notes IgM can be false-positive and may reflect past immunity. If this is primary rubella infection at 9–10 weeks, fetal risk of severe congenital rubella syndrome is substantial. A reference-lab avidity and PCR panel is available, but results take 10–14 days. Waiting would likely push her past the local clinic’s 10-week medication-abortion cutoff. After 10 weeks, abortion would be procedural and would require travel and family disclosure for transportation. She requests confirmatory testing before making an irreversible decision, but she also asks to preserve the option of early medication abortion if the risk appears meaningful. Hospital policy and state law support either approach. You must decide how to proceed today.",
+        "choice_1": {
+          "choice": "Proceed with medication abortion at the next available visit this week",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Repeat confirmatory rubella testing and postpone abortion until results return",
+          "autonomy": "promotes",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

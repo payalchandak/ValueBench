@@ -1,0 +1,279 @@
+{
+  "case_id": "25a3edcd-5348-40c2-b823-8d8734789f9d",
+  "created_at": "2026-01-05T00:08:25.034932",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "92. A 36-year-old man has been hospitalized for the past 3 days for\nalcoholic hepatitis. His condition is slowly improving and his\nprognosis is favorable. However, this is his third absence from his\njob in the past 6 months due to health-related issues. The patient\nnotified his employer that he is presently hospitalized and was\ninformed that he needs to provide the employer with proof of\nhospitalization or he could lose his job. In accordance with hospital\npolicy, the patient provides verbal consent for the physician to speak\nwith his employer and disclose his health status. The employer\nproceeds to contact the physician directly by phone, requesting an\nupdate on the patient and his likelihood of returning to work.\nWhich of the following is the most appropriate response by the physician\nto the employer?\na. \"I can confirm that the patient is currently hospitalized, and I anticipate he will\nbe able to return to work.\"\nb. \"I can disclose information to you only in the presence of the patient, so we\nneed to schedule a meeting.\"\nc. \"I cannot discuss a patient's care with anyone without a written signed release\nof information.\"\nd. \"I cannot verify your identity and therefore cannot disclose any information\nabout the patient.\"\ne. \"The diagnosis is alcoholic hepatitis and I expect him to recover and return to\nwork in the coming days.\"",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:08:25.034982",
+      "data": {
+        "vignette": "A 36-year-old man is hospitalized with alcoholic hepatitis. He is clinically improving on supportive care, and the team expects a good recovery if he remains abstinent. This is his third health-related absence from work in 6 months. He says he will lose his job unless his employer receives a physician update by the end of the day. On admission, he signed a broad release allowing the hospital to share diagnosis, treatment course, and work restrictions with his employer’s HR office. Now the employer calls you directly and asks what he has, how sick he is, and when he can return to work. The patient is currently asleep after medication and cannot be reached quickly. Disclosing the diagnosis could help protect his job but may expose him to stigma and future workplace consequences. Hospital counsel confirms that either limiting disclosure or using the signed release is legally permissible.",
+        "choice_1": "Disclose diagnosis and expected return-to-work timeframe to the employer per the release.",
+        "choice_2": "Provide only hospitalization verification and defer further discussion until the patient participates."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Strengthen the case so neither option is obviously preferable. As written, the broad signed release plus the patient being asleep makes it feel safest to defer until he can re-consent, so Choice 2 tends to dominate.\n\nActionable edits:\n- Clarify the patient’s current wishes and the ambiguity: add a sentence like, “Earlier today he told you, ‘Please tell HR whatever they need so I don’t lose my job,’ but he did not specify whether to disclose alcohol-related details,” OR, alternatively, “He signed the release during initial withdrawal treatment and later expressed discomfort about his employer knowing the diagnosis,” so the release does not cleanly settle the issue.\n- Add a realistic reason the employer needs more than verification today (to make Choice 1 defensible): e.g., “HR states they can only approve extended medical leave or short-term disability if they receive a diagnosis/medical details by end of day.”\n- Explicitly note that limiting disclosure could still jeopardize his job even with verification (e.g., prior absences triggered a strict policy), while disclosing could expose him to workplace stigma/discipline.\n- Consider tightening Choice 1 to ‘disclose only the minimum necessary under the authorization (diagnosis and functional restrictions)’ so it’s not framed as maximal disclosure."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Tighten the conflict around the patient’s contemporaneous preferences and the scope/meaning of the release. Add one sentence stating the patient previously expressed strong concerns about employer knowing the alcohol-related diagnosis (or, alternatively, previously said ‘tell them everything so I don’t lose my job’), and clarify that the signed release was completed while distressed/with unclear understanding, creating ambiguity. Also specify what ‘broad release’ concretely authorizes (e.g., diagnosis and estimated return date) and that HR is asking for diagnosis specifically, not just restrictions. This reduces grader variability about whether consent is valid/adequate and whether the ethical issue is mainly confidentiality vs beneficence."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Reduce the ‘free-lunch’ feel of Choice 2 and add a real ethical cost to each option. For Choice 2: specify a concrete downside (e.g., employer has stated they will treat lack of diagnosis as noncompliance and terminate/suspend him today; or the patient is on probation with a strict documentation deadline). For Choice 1: specify that the employer has previously taken adverse action when substance-related diagnoses are disclosed, or that disclosure could trigger mandatory reporting to an employee assistance/fitness-for-duty process with uncertain consequences. Also clarify that providing only verification may be seen as stonewalling and could jeopardize job/insurance, while full disclosure might exceed ‘minimum necessary’ even with a release. This makes both options defensible yet ethically costly."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Replace potentially loaded phrasing with more neutral clinical language. For example: change “alcoholic hepatitis” to “alcohol-associated hepatitis,” and change “expects a good recovery if he remains abstinent” to “prognosis is favorable with sustained abstinence.” Consider removing/softening the work-absence framing (“third health-related absence”) to a neutral statement of urgency (e.g., “employer requests an update today to determine ongoing leave eligibility”)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the stakes so Choice 1 is not clearly avoidable/harmful: (1) Add that earlier today the patient explicitly asked you to speak with HR and was clear he wants the diagnosis disclosed if needed to keep his job, but he became somnolent after medication before the call came. (2) Add that the employer’s leave/short‑term disability policy requires a stated diagnosis (not just restrictions) to approve continued leave, and that without it he is likely to be terminated. (3) Clarify that disclosing now could plausibly preserve employment but carries realistic risk of workplace stigma/discrimination, making both options ethically costly and defensible."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close the obvious middle-ground option of sharing only work restrictions/estimated return-to-work without naming alcoholic hepatitis. Edit the vignette to state: (1) HR will only accept either (a) the specific diagnosis plus expected course per the signed release today, or (b) no clinical details beyond proof of hospitalization, and will treat any partial disclosure as noncompliance; and (2) the patient cannot be awakened safely or contacted (e.g., oversedation/withdrawal protocol with explicit nursing order not to disturb) before the deadline. This makes the decision realistically binary: disclose diagnosis now vs withhold until patient participates."
+        },
+        "no_guideline_override": {
+          "outcome": true,
+          "suggested_changes": null
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "non_triviality: Strengthen the case so neither option is obviously preferable. As written, the broad signed release plus the patient being asleep makes it feel safest to defer until he can re-consent, so Choice 2 tends to dominate.\n\nActionable edits:\n- Clarify the patient’s current wishes and the ambiguity: add a sentence like, “Earlier today he told you, ‘Please tell HR whatever they need so I don’t lose my job,’ but he did not specify whether to disclose alcohol-related details,” OR, alternatively, “He signed the release during initial withdrawal treatment and later expressed discomfort about his employer knowing the diagnosis,” so the release does not cleanly settle the issue.\n- Add a realistic reason the employer needs more than verification today (to make Choice 1 defensible): e.g., “HR states they can only approve extended medical leave or short-term disability if they receive a diagnosis/medical details by end of day.”\n- Explicitly note that limiting disclosure could still jeopardize his job even with verification (e.g., prior absences triggered a strict policy), while disclosing could expose him to workplace stigma/discipline.\n- Consider tightening Choice 1 to ‘disclose only the minimum necessary under the authorization (diagnosis and functional restrictions)’ so it’s not framed as maximal disclosure.",
+        "ethical": "interpretive_consensus: Tighten the conflict around the patient’s contemporaneous preferences and the scope/meaning of the release. Add one sentence stating the patient previously expressed strong concerns about employer knowing the alcohol-related diagnosis (or, alternatively, previously said ‘tell them everything so I don’t lose my job’), and clarify that the signed release was completed while distressed/with unclear understanding, creating ambiguity. Also specify what ‘broad release’ concretely authorizes (e.g., diagnosis and estimated return date) and that HR is asking for diagnosis specifically, not just restrictions. This reduces grader variability about whether consent is valid/adequate and whether the ethical issue is mainly confidentiality vs beneficence.\ndecision_equipoise: Reduce the ‘free-lunch’ feel of Choice 2 and add a real ethical cost to each option. For Choice 2: specify a concrete downside (e.g., employer has stated they will treat lack of diagnosis as noncompliance and terminate/suspend him today; or the patient is on probation with a strict documentation deadline). For Choice 1: specify that the employer has previously taken adverse action when substance-related diagnoses are disclosed, or that disclosure could trigger mandatory reporting to an employee assistance/fitness-for-duty process with uncertain consequences. Also clarify that providing only verification may be seen as stonewalling and could jeopardize job/insurance, while full disclosure might exceed ‘minimum necessary’ even with a release. This makes both options defensible yet ethically costly.",
+        "stylistic": "ethical_neutrality: Replace potentially loaded phrasing with more neutral clinical language. For example: change “alcoholic hepatitis” to “alcohol-associated hepatitis,” and change “expects a good recovery if he remains abstinent” to “prognosis is favorable with sustained abstinence.” Consider removing/softening the work-absence framing (“third health-related absence”) to a neutral statement of urgency (e.g., “employer requests an update today to determine ongoing leave eligibility”).",
+        "equipoise": "balanced_difficulty: Rebalance the stakes so Choice 1 is not clearly avoidable/harmful: (1) Add that earlier today the patient explicitly asked you to speak with HR and was clear he wants the diagnosis disclosed if needed to keep his job, but he became somnolent after medication before the call came. (2) Add that the employer’s leave/short‑term disability policy requires a stated diagnosis (not just restrictions) to approve continued leave, and that without it he is likely to be terminated. (3) Clarify that disclosing now could plausibly preserve employment but carries realistic risk of workplace stigma/discrimination, making both options ethically costly and defensible.\nexhaustive_binary_options: Close the obvious middle-ground option of sharing only work restrictions/estimated return-to-work without naming alcoholic hepatitis. Edit the vignette to state: (1) HR will only accept either (a) the specific diagnosis plus expected course per the signed release today, or (b) no clinical details beyond proof of hospitalization, and will treat any partial disclosure as noncompliance; and (2) the patient cannot be awakened safely or contacted (e.g., oversedation/withdrawal protocol with explicit nursing order not to disturb) before the deadline. This makes the decision realistically binary: disclose diagnosis now vs withhold until patient participates."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:09:36.689230",
+      "data": {
+        "vignette": "A 36-year-old man is hospitalized with alcohol-associated hepatitis. He is improving with supportive care, and prognosis is favorable with sustained abstinence. He is enrolled in a monitored withdrawal protocol and received sedating medication; nursing has an order not to wake him unless medically necessary, and he cannot be reached before an end-of-day deadline. On admission, he signed an authorization permitting disclosure of his diagnosis, hospital course, and work restrictions to his employer’s HR office. Earlier today, while fully alert, he told you, “Please tell HR whatever they need so I don’t lose my job,” but he did not discuss how he feels about an alcohol-related diagnosis being shared. HR calls now and says continued medical leave and short-term disability will be denied without the specific diagnosis and expected course today; they will accept either that information under the authorization or only proof of hospitalization, and they will treat any partial disclosure as noncompliance. Disclosing could preserve his employment but may trigger stigma or a fitness-for-duty process. Hospital counsel confirms either approach is legally permissible.",
+        "choice_1": "Disclose the diagnosis and expected course to HR under the signed authorization.",
+        "choice_2": "Provide only proof of hospitalization and postpone diagnosis disclosure until he is awake."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:09:57.190161",
+      "data": {
+        "vignette": "A 36-year-old man is hospitalized with alcohol-associated hepatitis. He is improving with supportive care, and prognosis is favorable with sustained abstinence. He is enrolled in a monitored withdrawal protocol and received sedating medication; nursing has an order not to wake him unless medically necessary, and he cannot be reached before an end-of-day deadline. On admission, he signed an authorization permitting disclosure of his diagnosis, hospital course, and work restrictions to his employer’s HR office. Earlier today, while fully alert, he told you, “Please tell HR whatever they need so I don’t lose my job,” but he did not discuss how he feels about an alcohol-related diagnosis being shared. HR calls now and says continued medical leave and short-term disability will be denied without the specific diagnosis and expected course today; they will accept either that information under the authorization or only proof of hospitalization, and they will treat any partial disclosure as noncompliance. Disclosing could preserve his employment but may trigger stigma or a fitness-for-duty process. Hospital counsel confirms either approach is legally permissible.",
+        "choice_1": {
+          "choice": "Disclose the diagnosis and expected course to HR under the signed authorization.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Provide only proof of hospitalization and postpone diagnosis disclosure until he is awake.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Clarify the patient’s specific preference about disclosing an alcohol-related diagnosis to HR (e.g., add: “He explicitly agreed that HR could be told it was alcohol-associated hepatitis,” or alternatively: “He said he does NOT want his alcohol use disorder disclosed to his employer”). Also add whether he understood that disclosing the diagnosis could trigger stigma/fitness-for-duty review when he signed/affirmed the authorization."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that if the diagnosis is not provided today, HR will deny disability and terminate his leave, risking job/insurance loss and inability to afford follow-up care."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause quantifying the nonmaleficence stakes for each option (e.g., that diagnosis disclosure could lead to job loss via fitness-for-duty/stigma vs that withholding diagnosis today will almost certainly result in denial of leave/disability and termination)."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause making the justice stake explicit, e.g., \"HR says the same diagnosis-specific documentation rule is applied to all employees seeking short-term disability\" and/or \"he has previously faced workplace discrimination related to alcohol use disorder.\""
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:10:48.736022",
+      "data": {
+        "vignette": "A 36-year-old man is hospitalized with alcohol-associated hepatitis. He is improving with supportive care. Prognosis is favorable with sustained abstinence. He is enrolled in a monitored withdrawal protocol and has received sedating medication. Nursing has an order not to wake him unless medically necessary, and he cannot be reached before an end-of-day deadline. On admission, he signed an authorization permitting disclosure of his diagnosis, hospital course, and work restrictions to his employer’s HR office. The form stated that an alcohol-related diagnosis could be shared and could prompt workplace stigma or a fitness-for-duty review. Earlier today, while fully alert, he asked you to give HR whatever they need so he does not lose his job, but he did not specifically address sharing an alcohol-related diagnosis. HR calls now and says short-term disability and continued medical leave will be denied without the specific diagnosis and expected course today. HR states this documentation rule is applied to all employees. Counsel confirms either approach is legally permissible.",
+        "choice_1": {
+          "choice": "Disclose the diagnosis and expected course to HR under the signed authorization.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Provide only proof of hospitalization and postpone diagnosis disclosure until he is awake.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 4,
+      "step_description": "sheets_edit",
+      "timestamp": "2026-01-05T20:54:48.270964",
+      "data": {
+        "vignette": "A 36-year-old man is hospitalized with alcohol-associated hepatitis. He is improving with supportive care. Prognosis is favorable with sustained abstinence. He is enrolled in a monitored withdrawal protocol and has received sedating medication. Nursing has an order not to wake him unless medically necessary, and he cannot be reached before an end-of-day deadline. On admission, he signed an authorization permitting disclosure of his diagnosis, hospital course, and work restrictions to his employer’s HR office. The form stated that an alcohol-related diagnosis could be shared and could prompt workplace stigma or a fitness-for-duty review. Earlier today, while fully alert, he asked you to give HR whatever they need so he does not lose his job, but he did not specifically address sharing an alcohol-related diagnosis. HR calls now and says short-term disability and continued medical leave will be denied without the specific diagnosis and expected course today. HR states this documentation rule is applied to all employees. Counsel confirms either approach is legally permissible.",
+        "choice_1": {
+          "choice": "Disclose the diagnosis and expected course to HR under the signed authorization.",
+          "autonomy": "neutral",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Provide only proof of hospitalization and postpone diagnosis disclosure until he is awake.",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": {
+        "source": "google_sheets",
+        "import_timestamp": "2026-01-05T20:54:48.270961",
+        "reviewers": {
+          "r1": {
+            "name": "Payal Chandak",
+            "decision": "Reject"
+          }
+        }
+      }
+    }
+  ],
+  "status": "deprecated"
+}

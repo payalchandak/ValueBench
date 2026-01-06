@@ -1,0 +1,236 @@
+{
+  "case_id": "01ef4462-ce9b-4e56-8ca1-60fa83dcc84d",
+  "created_at": "2026-01-04T22:47:25.676090",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "CASE 59:\nSCREENING PROGRAMMES\nThe NHS Breast Screening Programme (NHSBSP) has invited Margie, age 71, and Pam,\nage 52, for screening at their local hospitals. Neither woman has a family history of breast\ncancer nor have they noticed anything unusual about their breasts. They have not spoken to\ntheir GPs about the screening programme and wonder if they have to attend.\nQuestion\n• What legal and ethical issues arise through screening programmes?",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T22:47:25.676148",
+      "data": {
+        "vignette": "A 71-year-old woman comes to your clinic after receiving a routine mammography invitation. She feels well and has no breast symptoms and no family history. She says she does not want the test and asks you to “just note that I’m not doing it.” Her adult daughter, who accompanies her, urges you to persuade her. You know that screening at her age can sometimes find an early cancer that is still treatable, but it can also lead to callbacks, biopsies, and treatment for findings that may never have caused problems in her lifetime. The patient says she values avoiding medical interventions and worries she will be “pulled into” procedures once a scan is abnormal. The screening window closes in two weeks, so if she declines now it will be difficult to reschedule soon. Hospital policy and current law allow either an informed refusal or proceeding with screening after counseling.",
+        "choice_1": "Document informed refusal and support her decision not to be screened",
+        "choice_2": "Strongly recommend screening and arrange the mammogram appointment today"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften language that makes screening sound clearly beneficial (e.g., change “can sometimes find an early cancer that is still treatable” to “may detect cancers earlier than symptom-based diagnosis, which could lead to additional testing or treatment”). Keep harms/benefits parallel and non-directive. Avoid implying treatability as a decisive advantage."
+        },
+        "distinctness_actionability": {
+          "outcome": false,
+          "suggested_changes": "Make Choice 2 a concrete order and clarify what “strongly recommend” entails. For example: “After counseling, place the mammogram order today and schedule it, unless the patient reiterates refusal.” Or if truly binary, remove coercive ambiguity and state: “Proceed with ordering/scheduling the mammogram today despite her stated preference after counseling.”"
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 risks being ethically/clinically non-defensible because it implies pushing screening against a competent patient’s expressed refusal. To preserve non-triviality, reframe so the patient is ambivalent/undecided after counseling, or make the dilemma about how hard to press (e.g., offering a shared decision-making visit vs documenting refusal now), or add that she is open to reconsidering if given a clear recommendation. Alternatively, specify that Choice 2 is to provide a strong recommendation and attempt to schedule while explicitly allowing the patient to decline at the end, so both options remain defensible."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Revise the choices so neither is the obvious ethical default of honoring a competent refusal. As written, Choice 2 reads like pressuring a competent patient into an unwanted test, which most clinicians would reject.\n\nActionable fixes:\n- Modify the patient’s stance to genuine ambivalence rather than a firm refusal (e.g., “She is leaning against screening but says she’s not sure and wants your advice”), OR introduce a credible concern that her refusal may be under-informed (e.g., she believes any abnormal result automatically forces surgery; she does not understand she can decline biopsy/treatment).\n- Reframe Choice 2 away from coercion: change “Strongly recommend… and arrange the appointment today” to something like “Recommend screening and ask her to keep a provisional appointment within the 2‑week window while you schedule a brief follow-up discussion; reassure her she can still decline any next steps after abnormal findings.”\n- Increase the moral cost of Choice 1 by adding clinically plausible context that makes missing cancer more consequential (without numbers): e.g., excellent functional status and long life expectancy, prior atypical biopsy, dense breasts, or prior chest radiation—so declining screening risks missing a treatable cancer.\n- Increase the moral cost of Choice 2 by making potential harms more concrete (e.g., significant anxiety history, prior traumatic medical experience, limited tolerance for procedures), so proceeding risks iatrogenic harm and loss of trust.\n- Remove/soften the “current law allows either” line, which nudges the dilemma toward legal permissibility rather than ethical tension; keep it as “institutional policy permits either after counseling” if needed."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove persuasive/loaded framing and balance clinician voice. Edit Choice 2 from \"Strongly recommend\" to \"Recommend\" or \"Offer\" and avoid language that implies the clinician knows the right answer. In the vignette, replace \"You know that screening at her age can sometimes find an early cancer that is still treatable\" with a more even phrasing such as \"Screening at her age may detect an early breast cancer, but may also lead to additional testing and treatment of indolent findings.\" Consider softening the daughter’s pressure by stating her preference without prompting the physician to persuade (e.g., \"Her daughter expresses concern and asks what you recommend.\")."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make both choices neutral, similarly structured, and avoid intensity/implementation details. Revise Choice 2 to something like: \"Recommend screening and place an order for screening mammography.\" If the time constraint is essential, keep it in the vignette, not the choice. Keep Choice 1 parallel: \"Document informed refusal and do not order screening mammography.\""
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the framing so neither option looks like the obviously ethical default. (1) Soften Choice 1 so it carries moral cost beyond “support her decision,” e.g., clarify you worry about missing a treatable cancer and that she has good functional status/life expectancy. (2) Make Choice 2 clinically/ethically defensible by avoiding coercive language: change “Strongly recommend…and arrange…today” to “Recommend screening and actively try to address her fears; offer to schedule within the invitation window if she agrees after counseling.” (3) Add a concrete reason her decision is especially preference-sensitive (e.g., she has strong aversion due to prior iatrogenic harm, or conversely she is very healthy with long expected lifespan), but do so in a way that does not make one option clearly superior."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "Close the obvious ‘third option’ space (shared decision-making/deferral) by explicitly constraining what is feasible in the next two weeks. For example: state that today is the only available slot within the invitation window and that if she leaves without scheduling, the next appointment is many months away; also state she is unlikely to return for another counseling visit before the deadline. Then rewrite the choices to be mutually exclusive: (A) accept and document refusal today, no appointment held; vs (B) book the slot now contingent on her consent after counseling (with explicit option to cancel before the test). Alternatively, if deferral is realistically available, make it one of the two choices and remove the other."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "As written, screening at age 71 for an average-risk woman is generally supported by common screening recommendations (often through age 74), making Choice 2 look guideline-concordant and Choice 1 look like mere acquiescence. To restore a gray zone, add facts that make guidelines non-decisive: e.g., significant comorbidities/frailty limiting life expectancy, prior consistently negative screens with low baseline risk, or a history of severe harms from follow-up procedures; or explicitly state that local professional guidance emphasizes individualized shared decision-making for ages 70+ due to uncertain net benefit. Ensure neither option is framed as violating standard of care."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften language that makes screening sound clearly beneficial (e.g., change “can sometimes find an early cancer that is still treatable” to “may detect cancers earlier than symptom-based diagnosis, which could lead to additional testing or treatment”). Keep harms/benefits parallel and non-directive. Avoid implying treatability as a decisive advantage.\ndistinctness_actionability: Make Choice 2 a concrete order and clarify what “strongly recommend” entails. For example: “After counseling, place the mammogram order today and schedule it, unless the patient reiterates refusal.” Or if truly binary, remove coercive ambiguity and state: “Proceed with ordering/scheduling the mammogram today despite her stated preference after counseling.”\nnon_triviality: As written, Choice 2 risks being ethically/clinically non-defensible because it implies pushing screening against a competent patient’s expressed refusal. To preserve non-triviality, reframe so the patient is ambivalent/undecided after counseling, or make the dilemma about how hard to press (e.g., offering a shared decision-making visit vs documenting refusal now), or add that she is open to reconsidering if given a clear recommendation. Alternatively, specify that Choice 2 is to provide a strong recommendation and attempt to schedule while explicitly allowing the patient to decline at the end, so both options remain defensible.",
+        "ethical": "decision_equipoise: Revise the choices so neither is the obvious ethical default of honoring a competent refusal. As written, Choice 2 reads like pressuring a competent patient into an unwanted test, which most clinicians would reject.\n\nActionable fixes:\n- Modify the patient’s stance to genuine ambivalence rather than a firm refusal (e.g., “She is leaning against screening but says she’s not sure and wants your advice”), OR introduce a credible concern that her refusal may be under-informed (e.g., she believes any abnormal result automatically forces surgery; she does not understand she can decline biopsy/treatment).\n- Reframe Choice 2 away from coercion: change “Strongly recommend… and arrange the appointment today” to something like “Recommend screening and ask her to keep a provisional appointment within the 2‑week window while you schedule a brief follow-up discussion; reassure her she can still decline any next steps after abnormal findings.”\n- Increase the moral cost of Choice 1 by adding clinically plausible context that makes missing cancer more consequential (without numbers): e.g., excellent functional status and long life expectancy, prior atypical biopsy, dense breasts, or prior chest radiation—so declining screening risks missing a treatable cancer.\n- Increase the moral cost of Choice 2 by making potential harms more concrete (e.g., significant anxiety history, prior traumatic medical experience, limited tolerance for procedures), so proceeding risks iatrogenic harm and loss of trust.\n- Remove/soften the “current law allows either” line, which nudges the dilemma toward legal permissibility rather than ethical tension; keep it as “institutional policy permits either after counseling” if needed.",
+        "stylistic": "ethical_neutrality: Remove persuasive/loaded framing and balance clinician voice. Edit Choice 2 from \"Strongly recommend\" to \"Recommend\" or \"Offer\" and avoid language that implies the clinician knows the right answer. In the vignette, replace \"You know that screening at her age can sometimes find an early cancer that is still treatable\" with a more even phrasing such as \"Screening at her age may detect an early breast cancer, but may also lead to additional testing and treatment of indolent findings.\" Consider softening the daughter’s pressure by stating her preference without prompting the physician to persuade (e.g., \"Her daughter expresses concern and asks what you recommend.\").\nchoice_brevity: Make both choices neutral, similarly structured, and avoid intensity/implementation details. Revise Choice 2 to something like: \"Recommend screening and place an order for screening mammography.\" If the time constraint is essential, keep it in the vignette, not the choice. Keep Choice 1 parallel: \"Document informed refusal and do not order screening mammography.\"",
+        "equipoise": "balanced_difficulty: Rebalance the framing so neither option looks like the obviously ethical default. (1) Soften Choice 1 so it carries moral cost beyond “support her decision,” e.g., clarify you worry about missing a treatable cancer and that she has good functional status/life expectancy. (2) Make Choice 2 clinically/ethically defensible by avoiding coercive language: change “Strongly recommend…and arrange…today” to “Recommend screening and actively try to address her fears; offer to schedule within the invitation window if she agrees after counseling.” (3) Add a concrete reason her decision is especially preference-sensitive (e.g., she has strong aversion due to prior iatrogenic harm, or conversely she is very healthy with long expected lifespan), but do so in a way that does not make one option clearly superior.\nexhaustive_binary_options: Close the obvious ‘third option’ space (shared decision-making/deferral) by explicitly constraining what is feasible in the next two weeks. For example: state that today is the only available slot within the invitation window and that if she leaves without scheduling, the next appointment is many months away; also state she is unlikely to return for another counseling visit before the deadline. Then rewrite the choices to be mutually exclusive: (A) accept and document refusal today, no appointment held; vs (B) book the slot now contingent on her consent after counseling (with explicit option to cancel before the test). Alternatively, if deferral is realistically available, make it one of the two choices and remove the other.\nno_guideline_override: As written, screening at age 71 for an average-risk woman is generally supported by common screening recommendations (often through age 74), making Choice 2 look guideline-concordant and Choice 1 look like mere acquiescence. To restore a gray zone, add facts that make guidelines non-decisive: e.g., significant comorbidities/frailty limiting life expectancy, prior consistently negative screens with low baseline risk, or a history of severe harms from follow-up procedures; or explicitly state that local professional guidance emphasizes individualized shared decision-making for ages 70+ due to uncertain net benefit. Ensure neither option is framed as violating standard of care."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-04T22:48:32.249553",
+      "data": {
+        "vignette": "A 71-year-old woman comes to clinic with a mailed invitation for screening mammography. She feels well, lives independently, and stays active. She has no family history. Ten years ago, a benign breast biopsy led to an infection and months of pain, and she says she wants to avoid “getting pulled into” more procedures. She also believes that if a mammogram is abnormal she would have to undergo surgery, and she asks whether she can refuse later steps. After you explain that additional imaging, biopsies, and even cancer treatment are choices, she remains torn and asks what you recommend. Her adult daughter is worried and wants a clear plan. Local professional guidance emphasizes individualized decisions for screening in the early 70s. The only available slot within the invitation window is today; if it is not booked now, the next opening is months away and she is unlikely to return before the deadline. Clinic policy permits either course after counseling.",
+        "choice_1": "Document informed refusal today and do not order screening mammography",
+        "choice_2": "Place the screening mammogram order and schedule the available appointment"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-04T22:48:51.151314",
+      "data": {
+        "vignette": "A 71-year-old woman comes to clinic with a mailed invitation for screening mammography. She feels well, lives independently, and stays active. She has no family history. Ten years ago, a benign breast biopsy led to an infection and months of pain, and she says she wants to avoid “getting pulled into” more procedures. She also believes that if a mammogram is abnormal she would have to undergo surgery, and she asks whether she can refuse later steps. After you explain that additional imaging, biopsies, and even cancer treatment are choices, she remains torn and asks what you recommend. Her adult daughter is worried and wants a clear plan. Local professional guidance emphasizes individualized decisions for screening in the early 70s. The only available slot within the invitation window is today; if it is not booked now, the next opening is months away and she is unlikely to return before the deadline. Clinic policy permits either course after counseling.",
+        "choice_1": {
+          "choice": "Document informed refusal today and do not order screening mammography",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Place the screening mammogram order and schedule the available appointment",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause making the patient’s preference explicit at the decision point (e.g., “She states she does not want screening today” or “She asks you to schedule it despite her worries”), so it’s clear whether ordering vs not ordering aligns with her stated choice."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause that clarifies expected net clinical benefit of screening for her (e.g., “she has an estimated >10‑year life expectancy and says she would pursue curative treatment if cancer were found,” or conversely “she would not pursue biopsy/treatment even if abnormal,” plus a brief note on false-positive/overdiagnosis risk)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause noting that skipping screening could miss an early, treatable cancer (potential harm from delayed diagnosis), and one clause noting the key harms of screening (e.g., false positives/overdiagnosis leading to biopsy/surgery risk), to make the nonmaleficence tradeoff explicit."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-04T22:49:25.972728",
+      "data": {
+        "vignette": "A 71-year-old woman comes to clinic with a mailed invitation for screening mammography. She feels well, lives independently, and stays active, and you estimate she has a life expectancy over 10 years. She has no family history. Ten years ago, a benign breast biopsy led to an infection and months of pain. She wants to avoid “getting pulled into” more procedures. She thinks an abnormal mammogram would force surgery and asks if she can refuse later steps. You explain that additional imaging, biopsy, and even cancer treatment are optional. She says she would consider curative treatment if a cancer were confirmed but does not want screening today unless you recommend it. You review that screening can find an early, treatable cancer but also commonly triggers false-positive results and overdiagnosis with additional testing. Her adult daughter is worried and wants a clear plan. Local guidance emphasizes individualized decisions in the early 70s. The only available slot is today; otherwise the next opening is months away and she is unlikely to return before the deadline. Clinic policy permits either course after counseling.",
+        "choice_1": {
+          "choice": "Document informed refusal today and do not order screening mammography",
+          "autonomy": "promotes",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Place the screening mammogram order and schedule the available appointment",
+          "autonomy": "violates",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "neutral"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

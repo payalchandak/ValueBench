@@ -1,0 +1,242 @@
+{
+  "case_id": "53b5738d-b1c4-487b-bc45-2ecd8db7c41b",
+  "created_at": "2026-01-04T23:59:00.234152",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "38. You have a patient who has recently been diagnosed with myeloma and he is discussing treatment options with you. You are the full-time employee of an outpatient facility run by a managed-care plan and you have recently received written instructions not to bring up subjects such as bone marrow transplantation in myeloma with patients. The reasoning was that they are outrageously expensive and do not cure the disease, although it may extend survival. The data that they extend survival are not entirely conclusive. In addition, in a private meeting with the medical director, you have been told that the expenditures per patient load of care of each of the physicians would be examined yearly to determine which physician would be promoted.\nWhat do you do?\na. Fully inform the patient about the risks and benefits of bone marrow transplantation.\nb. Refer your patient to an oncologist to have this discussion.\nc. Transfer the patient to another primary-care provider.\nd. Advise the patient to fde suit against the managed care plan.\ne. Inform the patient about bone marrow transplantation if he asks you about it.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-04T23:59:00.234199",
+      "data": {
+        "vignette": "A man with newly diagnosed multiple myeloma comes to your outpatient visit to choose an initial treatment plan. He has bone pain and anemia and is overwhelmed by the number of decisions. You are employed by a managed-care clinic. Leadership recently issued a written directive instructing clinicians not to raise autologous stem cell transplantation for myeloma in routine discussions, citing cost and uncertain added benefit for many patients. In a private meeting, the medical director also emphasized that physician “resource utilization” will be reviewed for promotion decisions. The patient is deciding this week whether to start therapy within the plan or seek outside consultation before committing. You know transplantation is not a cure, but it is considered a standard option for some eligible patients and can affect how early treatment is planned. You must decide what to say in today’s visit.",
+        "choice_1": "Discuss stem cell transplant as an option and offer referral to a transplant center.",
+        "choice_2": "Do not mention transplant now and proceed with covered standard therapy planning."
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften language that frames transplant as low-value. Edit “citing cost and uncertain added benefit for many patients” to something neutral like: “citing cost concerns and variable benefit across patients.” Also avoid implying either option is medically correct; keep it to ‘benefit varies and depends on eligibility and goals.’"
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Add only the minimum clinical facts needed to make transplant a realistic, ethically difficult option: (1) age and functional status; (2) key comorbidities affecting transplant eligibility (e.g., cardiac disease, frailty) and current renal function; (3) disease features that could influence early planning (e.g., high-risk cytogenetics vs standard-risk—qualitatively, not numerically); (4) patient priorities relevant to timing/toxicity (e.g., caregiver responsibilities, willingness to travel). Remove extraneous phrasing like “overwhelmed by the number of decisions” unless tied to decisional capacity or need for simplified counseling."
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 risks being legally non-defensible because omitting a commonly accepted alternative can violate informed-consent standards. Add a clarifying sentence making both options legally permissible in the setting, e.g.: “Clinic policy permits physicians to focus counseling on treatments covered within the plan provided they disclose this limitation and offer referral for a second opinion if the patient wants to hear about non-covered options.” Then modify Choice 2 to include that disclosure (see below)."
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Currently, Choice 2 reads as straightforwardly unethical (withholding information to protect promotion prospects), making the dilemma too one-sided. Make Choice 2 defensible by adding a patient-centered rationale and a more ethically complex alternative, e.g.: (a) transplant evaluation would likely delay starting urgently needed induction and worsen symptoms; (b) the nearest transplant center is far and the patient has limited support; (c) transplant candidacy is uncertain (borderline frailty/comorbidities), so discussing it now may overwhelm and distract from starting effective induction. Then rewrite Choice 2 as: “Explain you’re recommending starting covered induction now and explicitly disclose you are not reviewing every possible option today; offer to revisit transplant after initial response or facilitate a second-opinion referral if he wants.” This preserves the ethical tension without making one option obviously wrong."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "Rebalance so Choice 2 is not simply withholding a standard option and so Choice 1 has clearer, patient-centered ethical costs. (1) Modify Choice 2 to be a staged/limited disclosure rather than concealment: e.g., 'Explain that some patients later consider transplant after initial response; propose starting induction now and scheduling a dedicated follow-up (or second-opinion visit) within 1–2 weeks to revisit transplant eligibility before any point-of-no-return decisions (e.g., stem cell collection planning).' (2) Add concrete near-term clinical forcing that makes delay ethically costly: e.g., worsening anemia/bone pain or early renal impairment where prompt therapy this week is important, and outside consultation would likely delay initiation. (3) Add meaningful downsides to transplant discussion/referral beyond violating leadership: include significant upfront toxicity/burden (hospitalization risk, fertility impacts, prolonged time off work, travel/relocation), financial exposure if out-of-network, and that eligibility is uncertain pending evaluation; also note that early focus on transplant may derail adherence to effective induction. These edits create defensible reasons a clinician might prioritize immediate covered therapy planning while preserving later informed choice."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove emotionally loaded or coercive framing around leadership pressure. Rephrase “directive instructing clinicians not to raise” and “resource utilization will be reviewed for promotion decisions” to more neutral policy language (e.g., “clinic policy requests clinicians follow an internal pathway that does not routinely include transplant referral; utilization metrics factor into annual reviews”). Avoid implying bad faith (“not to raise”) and use neutral verbs (“not routinely discuss unless patient asks/eligible”)."
+        },
+        "medical_professionalism": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify the decision-forcing elements and clinical eligibility. Add 1–2 sentences on whether he is transplant-eligible (performance status, organ function, age-appropriate fitness) and what initial regimen is being planned. Remove redundancies (“overwhelmed by the number of decisions”) unless linked to decision-making capacity. Clarify timing: why he must decide this week (e.g., chemo start date, insurance authorization window)."
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Shorten and equalize choices to ~10–15 words without extra qualifiers.\n- Choice 1: “Discuss autologous transplant and offer referral to a transplant program.”\n- Choice 2: “Follow the clinic pathway and plan induction therapy without transplant discussion.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Reduce the ethical asymmetry between disclosure vs non-disclosure. As written, transplant is described as a ‘standard option’ that affects early planning, making non-mention look like clear violation of informed consent. To rebalance: (1) Specify the patient is borderline transplant-eligible (e.g., significant frailty, cardiac comorbidity, limited social support) and that early transplant may reasonably be deferred in some patients; (2) Clarify that the plan’s directive is framed as ‘do not routinely initiate transplant discussions at the first visit; revisit after induction response/eligibility workup’ rather than ‘do not raise transplant at all’; (3) Add real, patient-centered downsides to raising transplant today (e.g., may delay urgently needed induction, may trigger out-of-network bills the patient cannot absorb, may overwhelm a cognitively overloaded patient), so Choice 1 carries moral cost; (4) Add moral weight to Choice 2 beyond self-interest—e.g., institutional policy aims to prevent financially devastating out-of-network referrals and to standardize sequencing—so withholding is not purely deceptive."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "The binary is not decision-exhaustive because obvious middle options exist (e.g., disclose transplant briefly without recommending; offer second opinion generally; schedule a dedicated counseling visit; provide written information; ask what the patient wants to know; revisit after staging/eligibility testing). To make it truly binary, explicitly close off these alternatives: (1) State this is a single required ‘treatment-consent’ visit before chemo is ordered and there will be no follow-up slot before therapy must start; (2) State clinic policy forbids giving written materials or external referrals unless the clinician formally documents discussing transplant eligibility; (3) State the patient has asked a direct question such as ‘Are there any other major options I should know about before I start?’ so you must either disclose transplant now or intentionally not disclose it; (4) Clarify that delaying the decision to another visit will forfeit a narrow start-date/authorization window."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Widely accepted standards in oncology/informed consent typically require discussing reasonable alternatives when selecting initial therapy; autologous transplant is commonly a standard option for eligible myeloma patients. As written, Choice 2 risks being clearly noncompliant with professional norms, making the dilemma not ‘gray-zone.’ To fix: (1) Reframe transplant as a ‘reasonable but not routinely recommended’ option for this specific clinical profile (e.g., older age/frailty, comorbidities, high toxicity concern), with genuine clinician disagreement about whether it is a reasonable alternative to present at this stage; (2) Add that local standard practice is to assess eligibility after 2–4 cycles and only then discuss referral, and that guidelines allow timing flexibility; (3) Specify uncertainty about eligibility pending tests (cardiac function, performance status, cytogenetics) such that it is not yet clearly a ‘reasonable alternative’ today; (4) If you keep it as a standard option, change Choice 2 from ‘do not mention’ to ‘defer discussion until eligibility workup next week’ and justify why deferral is within accepted practice but risks missing the patient’s window to seek outside consultation."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften language that frames transplant as low-value. Edit “citing cost and uncertain added benefit for many patients” to something neutral like: “citing cost concerns and variable benefit across patients.” Also avoid implying either option is medically correct; keep it to ‘benefit varies and depends on eligibility and goals.’\nkey_information: Add only the minimum clinical facts needed to make transplant a realistic, ethically difficult option: (1) age and functional status; (2) key comorbidities affecting transplant eligibility (e.g., cardiac disease, frailty) and current renal function; (3) disease features that could influence early planning (e.g., high-risk cytogenetics vs standard-risk—qualitatively, not numerically); (4) patient priorities relevant to timing/toxicity (e.g., caregiver responsibilities, willingness to travel). Remove extraneous phrasing like “overwhelmed by the number of decisions” unless tied to decisional capacity or need for simplified counseling.\nlegally_indeterminate: As written, Choice 2 risks being legally non-defensible because omitting a commonly accepted alternative can violate informed-consent standards. Add a clarifying sentence making both options legally permissible in the setting, e.g.: “Clinic policy permits physicians to focus counseling on treatments covered within the plan provided they disclose this limitation and offer referral for a second opinion if the patient wants to hear about non-covered options.” Then modify Choice 2 to include that disclosure (see below).\nnon_triviality: Currently, Choice 2 reads as straightforwardly unethical (withholding information to protect promotion prospects), making the dilemma too one-sided. Make Choice 2 defensible by adding a patient-centered rationale and a more ethically complex alternative, e.g.: (a) transplant evaluation would likely delay starting urgently needed induction and worsen symptoms; (b) the nearest transplant center is far and the patient has limited support; (c) transplant candidacy is uncertain (borderline frailty/comorbidities), so discussing it now may overwhelm and distract from starting effective induction. Then rewrite Choice 2 as: “Explain you’re recommending starting covered induction now and explicitly disclose you are not reviewing every possible option today; offer to revisit transplant after initial response or facilitate a second-opinion referral if he wants.” This preserves the ethical tension without making one option obviously wrong.",
+        "ethical": "decision_equipoise: Rebalance so Choice 2 is not simply withholding a standard option and so Choice 1 has clearer, patient-centered ethical costs. (1) Modify Choice 2 to be a staged/limited disclosure rather than concealment: e.g., 'Explain that some patients later consider transplant after initial response; propose starting induction now and scheduling a dedicated follow-up (or second-opinion visit) within 1–2 weeks to revisit transplant eligibility before any point-of-no-return decisions (e.g., stem cell collection planning).' (2) Add concrete near-term clinical forcing that makes delay ethically costly: e.g., worsening anemia/bone pain or early renal impairment where prompt therapy this week is important, and outside consultation would likely delay initiation. (3) Add meaningful downsides to transplant discussion/referral beyond violating leadership: include significant upfront toxicity/burden (hospitalization risk, fertility impacts, prolonged time off work, travel/relocation), financial exposure if out-of-network, and that eligibility is uncertain pending evaluation; also note that early focus on transplant may derail adherence to effective induction. These edits create defensible reasons a clinician might prioritize immediate covered therapy planning while preserving later informed choice.",
+        "stylistic": "ethical_neutrality: Remove emotionally loaded or coercive framing around leadership pressure. Rephrase “directive instructing clinicians not to raise” and “resource utilization will be reviewed for promotion decisions” to more neutral policy language (e.g., “clinic policy requests clinicians follow an internal pathway that does not routinely include transplant referral; utilization metrics factor into annual reviews”). Avoid implying bad faith (“not to raise”) and use neutral verbs (“not routinely discuss unless patient asks/eligible”).\nconciseness_coherence: Tighten and clarify the decision-forcing elements and clinical eligibility. Add 1–2 sentences on whether he is transplant-eligible (performance status, organ function, age-appropriate fitness) and what initial regimen is being planned. Remove redundancies (“overwhelmed by the number of decisions”) unless linked to decision-making capacity. Clarify timing: why he must decide this week (e.g., chemo start date, insurance authorization window).\nchoice_brevity: Shorten and equalize choices to ~10–15 words without extra qualifiers.\n- Choice 1: “Discuss autologous transplant and offer referral to a transplant program.”\n- Choice 2: “Follow the clinic pathway and plan induction therapy without transplant discussion.”",
+        "equipoise": "balanced_difficulty: Reduce the ethical asymmetry between disclosure vs non-disclosure. As written, transplant is described as a ‘standard option’ that affects early planning, making non-mention look like clear violation of informed consent. To rebalance: (1) Specify the patient is borderline transplant-eligible (e.g., significant frailty, cardiac comorbidity, limited social support) and that early transplant may reasonably be deferred in some patients; (2) Clarify that the plan’s directive is framed as ‘do not routinely initiate transplant discussions at the first visit; revisit after induction response/eligibility workup’ rather than ‘do not raise transplant at all’; (3) Add real, patient-centered downsides to raising transplant today (e.g., may delay urgently needed induction, may trigger out-of-network bills the patient cannot absorb, may overwhelm a cognitively overloaded patient), so Choice 1 carries moral cost; (4) Add moral weight to Choice 2 beyond self-interest—e.g., institutional policy aims to prevent financially devastating out-of-network referrals and to standardize sequencing—so withholding is not purely deceptive.\nexhaustive_binary_options: The binary is not decision-exhaustive because obvious middle options exist (e.g., disclose transplant briefly without recommending; offer second opinion generally; schedule a dedicated counseling visit; provide written information; ask what the patient wants to know; revisit after staging/eligibility testing). To make it truly binary, explicitly close off these alternatives: (1) State this is a single required ‘treatment-consent’ visit before chemo is ordered and there will be no follow-up slot before therapy must start; (2) State clinic policy forbids giving written materials or external referrals unless the clinician formally documents discussing transplant eligibility; (3) State the patient has asked a direct question such as ‘Are there any other major options I should know about before I start?’ so you must either disclose transplant now or intentionally not disclose it; (4) Clarify that delaying the decision to another visit will forfeit a narrow start-date/authorization window.\nno_guideline_override: Widely accepted standards in oncology/informed consent typically require discussing reasonable alternatives when selecting initial therapy; autologous transplant is commonly a standard option for eligible myeloma patients. As written, Choice 2 risks being clearly noncompliant with professional norms, making the dilemma not ‘gray-zone.’ To fix: (1) Reframe transplant as a ‘reasonable but not routinely recommended’ option for this specific clinical profile (e.g., older age/frailty, comorbidities, high toxicity concern), with genuine clinician disagreement about whether it is a reasonable alternative to present at this stage; (2) Add that local standard practice is to assess eligibility after 2–4 cycles and only then discuss referral, and that guidelines allow timing flexibility; (3) Specify uncertainty about eligibility pending tests (cardiac function, performance status, cytogenetics) such that it is not yet clearly a ‘reasonable alternative’ today; (4) If you keep it as a standard option, change Choice 2 from ‘do not mention’ to ‘defer discussion until eligibility workup next week’ and justify why deferral is within accepted practice but risks missing the patient’s window to seek outside consultation."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:00:40.539538",
+      "data": {
+        "vignette": "A 68-year-old man has newly diagnosed multiple myeloma with painful lytic bone disease, symptomatic anemia, and rising creatinine. He is still working and has limited family support for travel or prolonged time off. He has heart failure with reduced ejection fraction and slow gait, making transplant eligibility uncertain until cardiac testing and functional assessment are completed. Your managed-care clinic uses an internal pathway that starts induction therapy promptly and reassesses transplant referral after the first few cycles if he appears fit and wants to pursue it. Leadership notes the pathway is meant to reduce unexpected out-of-network bills and standardize sequencing, and utilization metrics factor into annual reviews. Chemo orders and insurance authorization must be finalized today to start this week, and there is no follow-up slot before treatment begins. Hospital counsel has confirmed that either discussing transplant now or deferring it to the pathway review is legally permissible. He asks whether he should talk to a transplant program before starting.",
+        "choice_1": "Discuss autologous transplant now and place a referral before starting induction.",
+        "choice_2": "Start induction today and defer transplant discussion and referral until reassessment."
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:00:55.013950",
+      "data": {
+        "vignette": "A 68-year-old man has newly diagnosed multiple myeloma with painful lytic bone disease, symptomatic anemia, and rising creatinine. He is still working and has limited family support for travel or prolonged time off. He has heart failure with reduced ejection fraction and slow gait, making transplant eligibility uncertain until cardiac testing and functional assessment are completed. Your managed-care clinic uses an internal pathway that starts induction therapy promptly and reassesses transplant referral after the first few cycles if he appears fit and wants to pursue it. Leadership notes the pathway is meant to reduce unexpected out-of-network bills and standardize sequencing, and utilization metrics factor into annual reviews. Chemo orders and insurance authorization must be finalized today to start this week, and there is no follow-up slot before treatment begins. Hospital counsel has confirmed that either discussing transplant now or deferring it to the pathway review is legally permissible. He asks whether he should talk to a transplant program before starting.",
+        "choice_1": {
+          "choice": "Discuss autologous transplant now and place a referral before starting induction.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "neutral",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Start induction today and defer transplant discussion and referral until reassessment.",
+          "autonomy": "violates",
+          "beneficence": "neutral",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that starting induction under the pathway will lock in the treatment plan for several months (no chance to revisit/transfer care) unless a transplant referral is placed today, so deferring discussion prevents him from making an informed choice now."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that arranging a transplant consult now would likely delay starting induction this week (e.g., additional tests/visits required before authorization), OR add that early referral could change induction choice and improve survival; and add that deferring referral risks missing the window for transplant eligibility or worsened renal function reducing candidacy."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add one clause specifying the concrete harm tradeoff (e.g., 'given rising creatinine, any delay in induction risks irreversible kidney injury/dialysis,' and/or 'delaying transplant referral could miss an early stem-cell collection window or reduce eligibility')."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause explicitly stating that early transplant referral typically triggers out-of-network evaluation costs or uses limited transplant consult slots that the pathway is designed to allocate, whereas starting induction in-network follows a standardized coverage policy."
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:02:01.602367",
+      "data": {
+        "vignette": "A 68-year-old man has newly diagnosed multiple myeloma with painful lytic bone disease, symptomatic anemia, and rising creatinine. He is still working and has limited family support for travel or prolonged time off. He has heart failure with reduced ejection fraction and a slow gait. Transplant eligibility is uncertain until cardiac testing and functional assessment are complete. The managed-care clinic pathway starts induction promptly and revisits transplant referral after a few cycles. Once induction is authorized and started, changing regimens or transferring care is hard for several months unless a transplant referral is placed today. A transplant consult now would require additional tests and authorizations and could delay starting therapy this week. Given the rising creatinine, delay risks irreversible kidney injury and dialysis. Deferring referral may miss an early stem-cell collection window or allow worsening renal function to reduce candidacy. Leadership says the pathway limits out-of-network evaluation costs and allocates limited transplant consult slots. Utilization metrics affect annual reviews. Hospital counsel says either approach is legally permissible. He asks whether he should talk to a transplant program before starting.",
+        "choice_1": {
+          "choice": "Discuss autologous transplant now and place a referral before starting induction.",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "violates",
+          "justice": "violates"
+        },
+        "choice_2": {
+          "choice": "Start induction today and defer transplant discussion and referral until reassessment.",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "promotes",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    }
+  ],
+  "status": "needs_review"
+}

@@ -1,0 +1,279 @@
+{
+  "case_id": "b33dda23-d11b-4966-8255-c76900d8afac",
+  "created_at": "2026-01-05T00:33:40.884101",
+  "version": "1.0",
+  "model_name": "openai/gpt-5.2",
+  "generator_config": {
+    "seed_mode": "literature",
+    "seed_index": null,
+    "unified_cases_path": "data/seed/unified_ethics_cases.json",
+    "model_name": "openai/gpt-5.2",
+    "max_synthetic_feasibility_attempts": 5,
+    "refinement_iterations": 1,
+    "min_values_involved": 2,
+    "max_tagging_attempts": 2,
+    "verbose": false,
+    "diversity_gate": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "max_diversity_retries": 3,
+      "include_statuses": [
+        "needs_review"
+      ]
+    }
+  },
+  "seed": {
+    "mode": "literature",
+    "parameters": {
+      "source_text": "Case 10-1\nAbortion for Teratogenic Indications\nAfter Sally Baltimore had her third child at age 32, she and her husband\nMort thought that they had completed their family. The Baltimores certainly\ndid not live hand-to-mouth. They managed fairly well on Mr. Baltimore's\nconstruction worker's salary and what Mrs. Baltimore could make as a sub-\nstitute teacher. They were shocked when they learned that at 41, Mrs. Balti-\nmore was pregnant again. They were further shocked when after a routine\namniocentisis they learned from the obstetrician, Sandra Benton, that the\nfetus had Down syndrome.\nThis was particularly distressing to Mrs. Baltimore because her step-\nsister had Down syndrome too. Mrs. Baltimore had firsthand knowledge of\nwhat it meant to live in a family who had someone with this diagnosis. She\nknew that there would probably be multiple operations, hospital stays, and\nmedications since the fetus showed signs of significant cardiac problems\nas well. She had watched her stepsister suffer after each admission to the\nhospital. What made it worse is that her stepsister could not make any\nsense out of all of the trauma even as she reached an age when a “normal”\nperson would have appreciated why the treatment and surgery was neces-\nsary. She also knew about the sacrifices that the whole family would have\nto make for many years to come to accommodate the needs of this child.\nShe watched her stepmother and father struggle with her stepsister’s care\neven though she was now in her late thirties. Given all of this, the Balti-\nmores thought they just could not put this child or their family through it.\nTerminating the pregnancy seemed like the best course of action.",
+      "value_1": "Autonomy",
+      "value_2": "Beneficence"
+    }
+  },
+  "refinement_history": [
+    {
+      "iteration": 0,
+      "step_description": "initial_draft",
+      "timestamp": "2026-01-05T00:33:40.884152",
+      "data": {
+        "vignette": "A 41-year-old woman is 19 weeks pregnant. She had believed she was finished having children. Amniocentesis confirms trisomy 21. Fetal echocardiography shows a complex congenital heart defect that will likely require early surgery and repeated hospital care if the pregnancy continues. The patient has helped raise a relative with trisomy 21. She describes years of painful procedures and family strain. She says she does not want to continue this pregnancy and asks you to arrange a termination. You believe the fetus could survive to childhood with intensive treatment, and you worry that ending the pregnancy forecloses any chance at that life. The patient is calm, consistent, and understands alternatives, including perinatal palliative planning. The local clinic will only schedule terminations for another week at this gestational age. Hospital policy and state law permit either providing the service or transferring care to another clinician.",
+        "choice_1": "Arrange referral and schedule pregnancy termination this week",
+        "choice_2": "Decline to facilitate termination and continue prenatal care with specialty support"
+      },
+      "clinical_evaluation": {
+        "neutralize_clinical_considerations": {
+          "outcome": false,
+          "suggested_changes": "Remove/soften language that implies one option is medically or morally superior (i.e., that continuing the pregnancy is the ‘right’ clinical outcome). For example:\n- Change “You believe the fetus could survive to childhood with intensive treatment, and you worry that ending the pregnancy forecloses any chance at that life” to a more neutral framing such as “With intensive neonatal and cardiac care, survival to childhood is possible, but the course would likely involve multiple surgeries and prolonged hospitalizations; outcomes are uncertain and the burden of care can be significant.”\n- Add a parallel statement acknowledging burdens/risks of continuation for the pregnant patient (physical risks of pregnancy/cesarean, psychological impact, and caregiving burden) without making termination the ‘safer’ or ‘better’ option.\n- Avoid value-laden phrasing like “any chance at that life”; keep to clinical/experiential facts."
+        },
+        "distinctness_actionability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "decision_forcing_context": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "key_information": {
+          "outcome": false,
+          "suggested_changes": "Tighten and clarify to only what drives the decision and stakes.\n- Remove or condense “She had believed she was finished having children” unless it directly affects her reasoning.\n- Specify the key medically relevant counseling elements succinctly (gestational age, diagnosis, cardiac defect implies likely neonatal surgery, and that termination access is time-limited).\n- Clarify what “specialty support” entails (e.g., maternal–fetal medicine + pediatric cardiology + perinatal palliative care consult) and why it matters to the ethical stakes.\n- Keep the relative’s experience but shorten: e.g., “She previously helped care for a family member with trisomy 21 and recalls frequent procedures and major family strain.”"
+        },
+        "clinical_plausibility": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "legally_indeterminate": {
+          "outcome": false,
+          "suggested_changes": "Make both options explicitly legally/administratively defensible as written. Right now Choice 2 reads like refusal without ensuring access, which may violate institutional policy or create abandonment risk.\n- Revise Choice 2 to include transfer-of-care steps permitted by policy: e.g., “Decline to perform the termination but promptly arrange transfer/referral to another clinician/clinic that can provide it within the scheduling window, while continuing interim prenatal care.”\n- Add one clarifying sentence in the vignette: e.g., “Under hospital policy and state law, clinicians may conscientiously decline as long as they provide timely transfer to another qualified provider.”"
+        },
+        "non_triviality": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the options so neither is an obvious ethical default.\n- Ensure Choice 2 is not simply ‘deny requested care’; include timely transfer/referral to preserve realistic defensibility.\n- Add a concrete ethical cost to Choice 1 beyond ‘ending potential life,’ such as: clinician moral distress/conscience concerns, perceived complicity, impact on clinician–patient trust with other patients, or institutional implications.\n- Add a concrete ethical cost to Choice 2 beyond autonomy infringement, such as: risk the patient loses the narrow access window, increased physical/psychological burden from delaying action, or feeling coerced—while still allowing that some clinicians believe refusal with transfer is justified.\n- Consider reframing the binary as: (1) directly schedule/coordinate termination within your service vs (2) invoke conscientious refusal and initiate expedited transfer/referral now, documenting and providing bridging care."
+        }
+      },
+      "ethical_evaluation": {
+        "clarity_value_conflict": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "directional_stability": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "interpretive_consensus": {
+          "outcome": false,
+          "suggested_changes": "Tighten what the ethical conflict is *about* so graders converge: explicitly frame the physician’s reason for reluctance as a conscientious/moral objection to participating in termination (or a professional judgment about obligations to the fetus as a patient), rather than a vague feeling that ‘ending the pregnancy forecloses any chance at life.’ Also clarify whether the physician is willing to provide a timely transfer if declining, because that changes the ethical meaning substantially."
+        },
+        "decision_equipoise": {
+          "outcome": false,
+          "suggested_changes": "As written, Choice 2 is ethically lopsided because it effectively blocks access to a time-limited service (‘only another week’) without specifying a rapid alternative path. Make Choice 2 clinically/ethically defensible by rewriting it as: ‘Decline to provide termination due to conscientious objection, but immediately arrange transfer/referral to another clinician/clinic able to perform it within the one-week window.’ Then add a concrete moral cost to Choice 1 (e.g., clinician feels complicit against deeply held beliefs or worries about violating professional integrity), so each option has both an ethical upside and an unavoidable ethical cost."
+        }
+      },
+      "stylistic_evaluation": {
+        "ethical_neutrality": {
+          "outcome": false,
+          "suggested_changes": "Remove value-laden framing that nudges against termination. Replace “years of painful procedures and family strain” with neutral clinical phrasing (e.g., “recurrent medical interventions and significant caregiver burden reported by the family”). Replace “forecloses any chance at that life” with neutral wording (e.g., “would end the pregnancy and eliminate the possibility of postnatal survival”). Avoid “intensive treatment” as a persuasive modifier; specify “neonatal cardiac surgery and ongoing cardiology care” without evaluative language."
+        },
+        "medical_professionalism": {
+          "outcome": false,
+          "suggested_changes": "Tighten to a consult-note style and use standard terms: specify gravida/para, relevant PMH/OB history, and confirm gestational dating method. Replace “finished having children” with “did not plan further pregnancies.” Replace “asks you to arrange a termination” with “requests termination of pregnancy.” Clarify clinician role (e.g., MFM consult or OB attending) and whether the clinician provides abortions or is referring under policy."
+        },
+        "conciseness_coherence": {
+          "outcome": false,
+          "suggested_changes": "Remove or streamline nonessential narrative details and clarify the ethical fork. Consider deleting the relative’s anecdote or condense to one sentence linked to patient values. Clarify the prognostic statement: avoid implying clear survivability; rephrase to “potential for survival with surgical palliation, with uncertain long-term morbidity.” Ensure the forcing constraint is explicit and singular: “clinic scheduling deadline in 7 days.”"
+        },
+        "deidentification_novelty": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "safety_compliance": {
+          "outcome": true,
+          "suggested_changes": null
+        },
+        "choice_brevity": {
+          "outcome": false,
+          "suggested_changes": "Make choices symmetric, action-complete, and ~10–15 words without extra details. Example: Choice 1: “Provide referral and complete informed consent for termination within the legal window.” Choice 2: “Exercise conscientious refusal and transfer care for termination to another clinician.”"
+        }
+      },
+      "equipoise_evaluation": {
+        "balanced_difficulty": {
+          "outcome": false,
+          "suggested_changes": "Rebalance the framing so Choice 2 is not clearly a violation of a competent patient’s settled preference. Currently the patient is described as calm/consistent/fully informed and there is a strict 1‑week window, making facilitation feel obviously correct. To restore equipoise: (1) add a credible moral/clinical cost to Choice 1 beyond the physician’s abstract worry (e.g., the patient expresses ambivalence or moral distress about termination; significant family coercion risk either way; or foreseeable harms to the patient’s mental health/relationships if she proceeds now). (2) strengthen the defensibility of Choice 2 by anchoring it in a clearly articulated conscientious objection with obligations to the patient (e.g., the physician believes participation would be a profound violation of integrity and would compromise the therapeutic relationship), while still acknowledging patient impact. (3) remove or soften language that implicitly privileges one path (e.g., replace “forecloses any chance at that life” with a more neutral description of the clinician’s moral concern)."
+        },
+        "exhaustive_binary_options": {
+          "outcome": false,
+          "suggested_changes": "As written, a third realistic option exists: decline to participate but arrange an immediate transfer/referral to a willing clinician so the patient can still obtain termination within the 1‑week window. Your vignette even states policy/law permits transferring care. Fix by either: (A) make the binary explicitly ‘facilitate in-house this week’ vs ‘formally transfer/hand off now to another clinician for termination access’ (and clarify why only one of these two can happen), OR (B) add constraints that make transfer/referral infeasible within the window (e.g., no accepting clinicians/clinics within reachable distance, insurance blocks, or institutional rule that only the treating physician can place the time-sensitive referral), so the only viable choices are to facilitate yourself or not facilitate at all (with the consequence that termination will likely not be accessible in time)."
+        },
+        "no_guideline_override": {
+          "outcome": false,
+          "suggested_changes": "Choice 2 (‘Decline to facilitate termination and continue prenatal care’) likely conflicts with widely accepted professional standards around conscientious refusal (e.g., duties not to obstruct and to provide timely referral/transfer when declining). That makes the dilemma less gray-zone and more guideline-determined. To fix: rewrite Choice 2 so it remains within professional norms (e.g., ‘Decline to personally participate but initiate immediate transfer to a willing clinician/clinic and provide interim care’), and clarify that both pathways are institutionally accepted and commonly used. Alternatively, explicitly state that in this setting the professional/institutional policy does not require the treating physician to arrange referral and that multiple reasonable standards are in play—though this is harder to defend than modifying Choice 2."
+        }
+      },
+      "value_validations": {},
+      "feedback": {
+        "clinical": "neutralize_clinical_considerations: Remove/soften language that implies one option is medically or morally superior (i.e., that continuing the pregnancy is the ‘right’ clinical outcome). For example:\n- Change “You believe the fetus could survive to childhood with intensive treatment, and you worry that ending the pregnancy forecloses any chance at that life” to a more neutral framing such as “With intensive neonatal and cardiac care, survival to childhood is possible, but the course would likely involve multiple surgeries and prolonged hospitalizations; outcomes are uncertain and the burden of care can be significant.”\n- Add a parallel statement acknowledging burdens/risks of continuation for the pregnant patient (physical risks of pregnancy/cesarean, psychological impact, and caregiving burden) without making termination the ‘safer’ or ‘better’ option.\n- Avoid value-laden phrasing like “any chance at that life”; keep to clinical/experiential facts.\nkey_information: Tighten and clarify to only what drives the decision and stakes.\n- Remove or condense “She had believed she was finished having children” unless it directly affects her reasoning.\n- Specify the key medically relevant counseling elements succinctly (gestational age, diagnosis, cardiac defect implies likely neonatal surgery, and that termination access is time-limited).\n- Clarify what “specialty support” entails (e.g., maternal–fetal medicine + pediatric cardiology + perinatal palliative care consult) and why it matters to the ethical stakes.\n- Keep the relative’s experience but shorten: e.g., “She previously helped care for a family member with trisomy 21 and recalls frequent procedures and major family strain.”\nlegally_indeterminate: Make both options explicitly legally/administratively defensible as written. Right now Choice 2 reads like refusal without ensuring access, which may violate institutional policy or create abandonment risk.\n- Revise Choice 2 to include transfer-of-care steps permitted by policy: e.g., “Decline to perform the termination but promptly arrange transfer/referral to another clinician/clinic that can provide it within the scheduling window, while continuing interim prenatal care.”\n- Add one clarifying sentence in the vignette: e.g., “Under hospital policy and state law, clinicians may conscientiously decline as long as they provide timely transfer to another qualified provider.”\nnon_triviality: Rebalance the options so neither is an obvious ethical default.\n- Ensure Choice 2 is not simply ‘deny requested care’; include timely transfer/referral to preserve realistic defensibility.\n- Add a concrete ethical cost to Choice 1 beyond ‘ending potential life,’ such as: clinician moral distress/conscience concerns, perceived complicity, impact on clinician–patient trust with other patients, or institutional implications.\n- Add a concrete ethical cost to Choice 2 beyond autonomy infringement, such as: risk the patient loses the narrow access window, increased physical/psychological burden from delaying action, or feeling coerced—while still allowing that some clinicians believe refusal with transfer is justified.\n- Consider reframing the binary as: (1) directly schedule/coordinate termination within your service vs (2) invoke conscientious refusal and initiate expedited transfer/referral now, documenting and providing bridging care.",
+        "ethical": "interpretive_consensus: Tighten what the ethical conflict is *about* so graders converge: explicitly frame the physician’s reason for reluctance as a conscientious/moral objection to participating in termination (or a professional judgment about obligations to the fetus as a patient), rather than a vague feeling that ‘ending the pregnancy forecloses any chance at life.’ Also clarify whether the physician is willing to provide a timely transfer if declining, because that changes the ethical meaning substantially.\ndecision_equipoise: As written, Choice 2 is ethically lopsided because it effectively blocks access to a time-limited service (‘only another week’) without specifying a rapid alternative path. Make Choice 2 clinically/ethically defensible by rewriting it as: ‘Decline to provide termination due to conscientious objection, but immediately arrange transfer/referral to another clinician/clinic able to perform it within the one-week window.’ Then add a concrete moral cost to Choice 1 (e.g., clinician feels complicit against deeply held beliefs or worries about violating professional integrity), so each option has both an ethical upside and an unavoidable ethical cost.",
+        "stylistic": "ethical_neutrality: Remove value-laden framing that nudges against termination. Replace “years of painful procedures and family strain” with neutral clinical phrasing (e.g., “recurrent medical interventions and significant caregiver burden reported by the family”). Replace “forecloses any chance at that life” with neutral wording (e.g., “would end the pregnancy and eliminate the possibility of postnatal survival”). Avoid “intensive treatment” as a persuasive modifier; specify “neonatal cardiac surgery and ongoing cardiology care” without evaluative language.\nmedical_professionalism: Tighten to a consult-note style and use standard terms: specify gravida/para, relevant PMH/OB history, and confirm gestational dating method. Replace “finished having children” with “did not plan further pregnancies.” Replace “asks you to arrange a termination” with “requests termination of pregnancy.” Clarify clinician role (e.g., MFM consult or OB attending) and whether the clinician provides abortions or is referring under policy.\nconciseness_coherence: Remove or streamline nonessential narrative details and clarify the ethical fork. Consider deleting the relative’s anecdote or condense to one sentence linked to patient values. Clarify the prognostic statement: avoid implying clear survivability; rephrase to “potential for survival with surgical palliation, with uncertain long-term morbidity.” Ensure the forcing constraint is explicit and singular: “clinic scheduling deadline in 7 days.”\nchoice_brevity: Make choices symmetric, action-complete, and ~10–15 words without extra details. Example: Choice 1: “Provide referral and complete informed consent for termination within the legal window.” Choice 2: “Exercise conscientious refusal and transfer care for termination to another clinician.”",
+        "equipoise": "balanced_difficulty: Rebalance the framing so Choice 2 is not clearly a violation of a competent patient’s settled preference. Currently the patient is described as calm/consistent/fully informed and there is a strict 1‑week window, making facilitation feel obviously correct. To restore equipoise: (1) add a credible moral/clinical cost to Choice 1 beyond the physician’s abstract worry (e.g., the patient expresses ambivalence or moral distress about termination; significant family coercion risk either way; or foreseeable harms to the patient’s mental health/relationships if she proceeds now). (2) strengthen the defensibility of Choice 2 by anchoring it in a clearly articulated conscientious objection with obligations to the patient (e.g., the physician believes participation would be a profound violation of integrity and would compromise the therapeutic relationship), while still acknowledging patient impact. (3) remove or soften language that implicitly privileges one path (e.g., replace “forecloses any chance at that life” with a more neutral description of the clinician’s moral concern).\nexhaustive_binary_options: As written, a third realistic option exists: decline to participate but arrange an immediate transfer/referral to a willing clinician so the patient can still obtain termination within the 1‑week window. Your vignette even states policy/law permits transferring care. Fix by either: (A) make the binary explicitly ‘facilitate in-house this week’ vs ‘formally transfer/hand off now to another clinician for termination access’ (and clarify why only one of these two can happen), OR (B) add constraints that make transfer/referral infeasible within the window (e.g., no accepting clinicians/clinics within reachable distance, insurance blocks, or institutional rule that only the treating physician can place the time-sensitive referral), so the only viable choices are to facilitate yourself or not facilitate at all (with the consequence that termination will likely not be accessible in time).\nno_guideline_override: Choice 2 (‘Decline to facilitate termination and continue prenatal care’) likely conflicts with widely accepted professional standards around conscientious refusal (e.g., duties not to obstruct and to provide timely referral/transfer when declining). That makes the dilemma less gray-zone and more guideline-determined. To fix: rewrite Choice 2 so it remains within professional norms (e.g., ‘Decline to personally participate but initiate immediate transfer to a willing clinician/clinic and provide interim care’), and clarify that both pathways are institutionally accepted and commonly used. Alternatively, explicitly state that in this setting the professional/institutional policy does not require the treating physician to arrange referral and that multiple reasonable standards are in play—though this is harder to defend than modifying Choice 2."
+      },
+      "human_evaluation": null
+    },
+    {
+      "iteration": 1,
+      "step_description": "refinement_1",
+      "timestamp": "2026-01-05T00:35:03.440472",
+      "data": {
+        "vignette": "A 41-year-old G2P1 is 19 weeks pregnant by ultrasound dating. Amniocentesis confirms trisomy 21. Fetal echocardiography shows a complex congenital heart defect that would likely require neonatal surgery and ongoing cardiology care if the pregnancy continues, with uncertain long-term disability. She previously helped care for a family member with trisomy 21 and recalls frequent medical visits and major caregiver strain. She requests termination of pregnancy but also expresses moral distress and says she wants her longtime obstetrician involved in whatever happens. You do not have a medical contraindication to termination, but you have a deeply held objection to participating in it. The only local clinic that can perform a termination at this gestational age will stop scheduling in 7 days, and transfer can be delayed by insurance authorization and limited intake slots. Hospital policy and state law allow either providing the service or declining with prompt transfer of care.",
+        "choice_1": "Complete consent and schedule termination through your service this week",
+        "choice_2": "Decline to participate and transfer her today to a willing clinician"
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 2,
+      "step_description": "value_tagging",
+      "timestamp": "2026-01-05T00:35:32.100938",
+      "data": {
+        "vignette": "A 41-year-old G2P1 is 19 weeks pregnant by ultrasound dating. Amniocentesis confirms trisomy 21. Fetal echocardiography shows a complex congenital heart defect that would likely require neonatal surgery and ongoing cardiology care if the pregnancy continues, with uncertain long-term disability. She previously helped care for a family member with trisomy 21 and recalls frequent medical visits and major caregiver strain. She requests termination of pregnancy but also expresses moral distress and says she wants her longtime obstetrician involved in whatever happens. You do not have a medical contraindication to termination, but you have a deeply held objection to participating in it. The only local clinic that can perform a termination at this gestational age will stop scheduling in 7 days, and transfer can be delayed by insurance authorization and limited intake slots. Hospital policy and state law allow either providing the service or declining with prompt transfer of care.",
+        "choice_1": {
+          "choice": "Complete consent and schedule termination through your service this week",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Decline to participate and transfer her today to a willing clinician",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {
+        "autonomy": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that despite transferring her today, you cannot secure an appointment before the 7-day scheduling cutoff (or that you refuse to provide a referral), so your refusal likely prevents her from acting on her informed decision."
+          }
+        },
+        "beneficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause stating that, due to insurance authorization/backlog, a same-week appointment at the outside clinic is very unlikely and she will probably miss the 7-day scheduling window (increasing medical/psychological burden by forcing pregnancy continuation or a later, riskier termination)."
+          }
+        },
+        "nonmaleficence": {
+          "value_clarity": {
+            "outcome": false,
+            "suggested_changes": "Add a clause that even with same-day transfer, insurance authorization/intake delays make it likely she will miss the 7‑day scheduling deadline (or require a later, higher‑risk procedure)."
+          }
+        },
+        "justice": {
+          "value_clarity": {
+            "outcome": true,
+            "suggested_changes": null
+          }
+        }
+      },
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 3,
+      "step_description": "final_improvement",
+      "timestamp": "2026-01-05T00:36:35.072738",
+      "data": {
+        "vignette": "A 41-year-old G2P1 is 19 weeks pregnant by ultrasound dating. Amniocentesis confirms trisomy 21. Fetal echocardiography shows a complex congenital heart defect. It would likely require neonatal surgery and ongoing cardiology care if the pregnancy continues. Long-term disability is uncertain. She previously helped care for a family member with trisomy 21. She recalls frequent medical visits and major caregiver strain. She requests termination of pregnancy but also expresses moral distress. She says she wants her longtime obstetrician involved in whatever happens. You have no medical contraindication to termination, but you have a deeply held objection to participating in it. The only local clinic that can perform termination at this gestational age will stop scheduling in 7 days. Even with same-day transfer, insurance authorization and limited intake slots make a same-week appointment very unlikely. If she misses the cutoff, she may be forced to continue the pregnancy or seek a later, higher-risk procedure. Hospital policy and state law allow either providing the service or declining with prompt transfer of care.",
+        "choice_1": {
+          "choice": "Complete consent and schedule termination through your service this week",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Decline to participate and transfer her today to a willing clinician",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "equipoise_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": null
+    },
+    {
+      "iteration": 4,
+      "step_description": "sheets_edit",
+      "timestamp": "2026-01-05T20:54:48.289829",
+      "data": {
+        "vignette": "A 41-year-old G2P1 is 19 weeks pregnant by ultrasound dating. Amniocentesis confirms trisomy 21. Fetal echocardiography shows a complex congenital heart defect. It would likely require neonatal surgery and ongoing cardiology care if the pregnancy continues. Long-term disability is uncertain. She previously helped care for a family member with trisomy 21. She recalls frequent medical visits and major caregiver strain. She requests termination of pregnancy but also expresses moral distress. She says she wants her longtime obstetrician involved in whatever happens. You have no medical contraindication to termination, but you have a deeply held objection to participating in it. The only local clinic that can perform termination at this gestational age will stop scheduling in 7 days. Even with same-day transfer, insurance authorization and limited intake slots make a same-week appointment very unlikely. If she misses the cutoff, she may be forced to continue the pregnancy or seek a later, higher-risk procedure. Hospital policy and state law allow either providing the service or declining with prompt transfer of care.",
+        "choice_1": {
+          "choice": "Complete consent and schedule termination through your service this week",
+          "autonomy": "promotes",
+          "beneficence": "promotes",
+          "nonmaleficence": "promotes",
+          "justice": "neutral"
+        },
+        "choice_2": {
+          "choice": "Decline to participate and transfer her today to a willing clinician",
+          "autonomy": "violates",
+          "beneficence": "violates",
+          "nonmaleficence": "violates",
+          "justice": "promotes"
+        }
+      },
+      "clinical_evaluation": null,
+      "ethical_evaluation": null,
+      "stylistic_evaluation": null,
+      "value_validations": {},
+      "feedback": {},
+      "human_evaluation": {
+        "source": "google_sheets",
+        "import_timestamp": "2026-01-05T20:54:48.289826",
+        "reviewers": {
+          "r1": {
+            "name": "Payal Chandak",
+            "decision": "Reject"
+          }
+        }
+      }
+    }
+  ],
+  "status": "deprecated"
+}
