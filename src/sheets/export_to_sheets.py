@@ -447,9 +447,11 @@ def push_rows_to_sheet(
         worksheet = get_worksheet(spreadsheet, config=config, create_if_missing=True)
     
     # Check if worksheet is empty (needs header)
+    # Note: get_all_values() may return [[]] for empty/cleared sheets, not just []
     existing_data = worksheet.get_all_values()
+    sheet_is_empty = len(existing_data) == 0 or all(not any(cell for cell in row) for row in existing_data)
     
-    if include_header and len(existing_data) == 0:
+    if include_header and sheet_is_empty:
         # Worksheet is empty, add header first
         all_data = [get_header_row()] + rows
         worksheet.update(values=all_data, range_name="A1", value_input_option="RAW")
@@ -493,6 +495,17 @@ def prepare_cases_for_export(
         else:
             skipped.append(case_data.get("case_id", "unknown"))
     
+    # Sort rows by status priority: needs_review → approved → deprecated → draft → failed
+    status_priority = {
+        'needs_review': 1,
+        'approved': 2,
+        'deprecated': 3,
+        'draft': 4,
+        'failed': 5,
+    }
+    # Status is at index 7 (column H)
+    rows.sort(key=lambda r: status_priority.get(r[7].lower() if len(r) > 7 else '', 99))
+    
     return rows, skipped
 
 
@@ -528,22 +541,11 @@ def export_cases(
         print("   Create a Google Sheet and add its ID to the config file.")
         return 0
     
-    # Load cases directly from JSON (bypasses strict Pydantic validation)
+    # Load and prepare cases for export (includes status-based sorting)
     print(f"Loading cases from {cases_dir}...")
-    all_cases = load_cases_raw(cases_dir)
-    print(f"  Found {len(all_cases)} total case files")
-    
-    # Extract exportable rows
-    rows = []
-    skipped = []
-    for case_data in all_cases:
-        row = extract_case_row(case_data, config)
-        if row:
-            rows.append(row)
-        else:
-            skipped.append(case_data.get("case_id", "unknown"))
-    
-    print(f"  {len(rows)} cases ready for export")
+    rows, skipped = prepare_cases_for_export(cases_dir, config)
+    print(f"  Found {len(rows) + len(skipped)} total case files")
+    print(f"  {len(rows)} cases ready for export (sorted by status)")
     if skipped:
         print(f"  {len(skipped)} cases skipped (no finalized data)")
     

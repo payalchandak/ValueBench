@@ -36,6 +36,8 @@ from src.sheets.export_to_sheets import (
 )
 from src.sheets.import_from_sheets import (
     pull_sheet_changes,
+    write_validation_to_sheet,
+    write_status_to_sheet,
 )
 
 
@@ -347,6 +349,8 @@ def execute_sync(
     plan: SyncPlan,
     cases_dir: str = "data/cases",
     config: Optional[dict] = None,
+    spreadsheet: Optional[gspread.Spreadsheet] = None,
+    worksheet: Optional[gspread.Worksheet] = None,
     push_only: bool = False,
     pull_only: bool = False,
     dry_run: bool = False,
@@ -355,7 +359,6 @@ def execute_sync(
     """
     Execute the sync plan.
     
-    Note: This is a placeholder for Phase 3 implementation.
     Currently it will:
     - Execute push operations if not pull_only
     - Execute pull operations if not push_only
@@ -364,6 +367,8 @@ def execute_sync(
         plan: The SyncPlan from compare_cases()
         cases_dir: Path to the cases directory
         config: Optional config dict
+        spreadsheet: Optional spreadsheet object (opens from config if not provided)
+        worksheet: Optional worksheet object (gets from spreadsheet if not provided)
         push_only: If True, only push new cases
         pull_only: If True, only pull sheet changes
         dry_run: If True, preview without making changes
@@ -380,6 +385,23 @@ def execute_sync(
     """
     if config is None:
         config = load_config()
+    
+    # Open spreadsheet and worksheet if not provided (needed for pull operations)
+    if spreadsheet is None and not push_only and plan.to_pull:
+        try:
+            spreadsheet = open_spreadsheet(config)
+        except gspread.exceptions.SpreadsheetNotFound:
+            if verbose:
+                print("  ❌ Spreadsheet not found or not accessible")
+            return {"pushed": 0, "pulled": 0, "unchanged": 0, "errors": len(plan.to_pull)}
+    
+    if worksheet is None and spreadsheet is not None and not push_only and plan.to_pull:
+        try:
+            worksheet = get_worksheet(spreadsheet, config=config)
+        except gspread.exceptions.WorksheetNotFound:
+            if verbose:
+                print("  ❌ Worksheet not found")
+            return {"pushed": 0, "pulled": 0, "unchanged": 0, "errors": len(plan.to_pull)}
     
     results = {
         "pushed": 0,
@@ -441,9 +463,11 @@ def execute_sync(
                     print(f"  [DRY RUN] Would pull: {case.case_id}")
             
             # Still validate to get accurate counts
-            updated, unchanged, skipped, validation_results = pull_sheet_changes(
+            updated, unchanged, skipped, validation_results, headers, row_numbers, status_changes = pull_sheet_changes(
                 case_ids=pull_case_ids,
                 config=config,
+                spreadsheet=spreadsheet,
+                worksheet=worksheet,
                 cases_dir=cases_dir,
                 dry_run=True,
                 force=True,
@@ -460,9 +484,11 @@ def execute_sync(
                         print(f"    ❌ {result.case_id}: {', '.join(result.errors)}")
         else:
             # Actually execute the pull with detailed output
-            updated, unchanged, skipped, validation_results = pull_sheet_changes(
+            updated, unchanged, skipped, validation_results, headers, row_numbers, status_changes = pull_sheet_changes(
                 case_ids=pull_case_ids,
                 config=config,
+                spreadsheet=spreadsheet,
+                worksheet=worksheet,
                 cases_dir=cases_dir,
                 dry_run=False,
                 force=True,  # Pull even if validation warnings
@@ -473,10 +499,32 @@ def execute_sync(
             results["unchanged"] = unchanged
             results["errors"] += skipped
             
+            # Write validation results to sheet (so reviewers see errors/warnings)
+            if worksheet is not None and validation_results and headers:
+                try:
+                    if verbose:
+                        print("\n  Writing validation results to sheet...")
+                    write_validation_to_sheet(worksheet, validation_results, headers)
+                except Exception as e:
+                    if verbose:
+                        print(f"  ⚠️  Could not write validation to sheet: {e}")
+            
+            # Write status changes back to sheet
+            if worksheet is not None and status_changes and row_numbers:
+                try:
+                    if verbose:
+                        print(f"\n  Writing {len(status_changes)} status changes to sheet...")
+                    write_status_to_sheet(status_changes, worksheet, row_numbers)
+                except Exception as e:
+                    if verbose:
+                        print(f"  ⚠️  Could not write status to sheet: {e}")
+            
             if verbose:
                 print(f"\n  Pull summary:")
                 print(f"    Updated: {updated}")
                 print(f"    Unchanged: {unchanged}")
+                if status_changes:
+                    print(f"    Status changes written: {len(status_changes)}")
                 if skipped > 0:
                     print(f"    Skipped/Errors: {skipped}")
     
@@ -513,10 +561,26 @@ def sync(
         print("=" * 60)
         print()
     
+    # Open spreadsheet and worksheet once at the beginning
+    # These will be passed through to avoid multiple connections
+    spreadsheet = None
+    worksheet = None
+    try:
+        spreadsheet = open_spreadsheet(config)
+        worksheet = get_worksheet(spreadsheet, config=config)
+    except gspread.exceptions.SpreadsheetNotFound:
+        if verbose:
+            print("  ⚠️  Spreadsheet not found - will only push local cases")
+    except gspread.exceptions.WorksheetNotFound:
+        if verbose:
+            print("  ⚠️  Worksheet not found - will only push local cases")
+    
     # Compare cases to build plan
     plan = compare_cases(
         cases_dir=cases_dir,
         config=config,
+        spreadsheet=spreadsheet,
+        worksheet=worksheet,
         verbose=verbose,
     )
     
@@ -543,6 +607,8 @@ def sync(
         plan=plan,
         cases_dir=cases_dir,
         config=config,
+        spreadsheet=spreadsheet,
+        worksheet=worksheet,
         push_only=push_only,
         pull_only=pull_only,
         dry_run=dry_run,

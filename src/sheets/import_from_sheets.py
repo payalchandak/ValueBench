@@ -462,7 +462,7 @@ def pull_sheet_changes(
     dry_run: bool = False,
     force: bool = False,
     verbose: bool = False
-) -> tuple[int, int, int, list[ValidationResult]]:
+) -> tuple[int, int, int, list[ValidationResult], list[str], dict[str, int], dict[str, str]]:
     """
     Pull changes from the sheet for specified case IDs (or all if None).
     
@@ -480,11 +480,14 @@ def pull_sheet_changes(
         verbose: If True, print per-case progress during pull.
         
     Returns:
-        Tuple of (updated_count, unchanged_count, skipped_count, validation_results):
+        Tuple of (updated_count, unchanged_count, skipped_count, validation_results, headers, row_numbers, status_changes):
         - updated_count: Number of cases successfully updated
         - unchanged_count: Number of cases with no changes
         - skipped_count: Number of cases skipped due to errors
         - validation_results: List of ValidationResult objects
+        - headers: List of column headers from the sheet
+        - row_numbers: Dict mapping case_id -> row number in sheet (1-indexed)
+        - status_changes: Dict mapping case_id -> new_status for cases where status changed
     """
     if config is None:
         config = load_config()
@@ -508,7 +511,7 @@ def pull_sheet_changes(
                     row_numbers[row[case_id_idx].strip()] = i
     
     if not rows:
-        return 0, 0, 0, []
+        return 0, 0, 0, [], headers if headers else [], row_numbers, {}
     
     # Validate the rows
     validation_results = []
@@ -531,29 +534,32 @@ def pull_sheet_changes(
     error_count = sum(1 for r in validation_results if r.status == 'error')
     warning_count = sum(1 for r in validation_results if r.status == 'warning')
     
-    # Check if we can proceed
-    if error_count > 0:
-        return 0, 0, error_count, validation_results
+    # Note: We no longer block on errors - cases with errors will be skipped individually
+    # in the processing loop below, allowing valid cases to still be imported.
+    # Errors are already written to the sheet via write_validation_to_sheet().
     
-    if warning_count > 0 and not force:
-        return 0, 0, warning_count, validation_results
+    # Only block if there are warnings and force is not enabled
+    if warning_count > 0 and not force and error_count == 0:
+        # Only warnings, no errors - still require force flag
+        return 0, 0, warning_count, validation_results, headers, row_numbers, {}
     
     if dry_run:
         # Return counts as if we would have updated everything valid
         valid_count = sum(1 for r in validation_results if r.status in ['valid', 'warning'])
-        return valid_count, 0, 0, validation_results
+        return valid_count, 0, 0, validation_results, headers, row_numbers, {}
     
     # Apply changes
     updated = 0
     unchanged = 0
     skipped = 0
+    status_changes: dict[str, str] = {}  # Track status changes for write-back
     
     for result in validation_results:
         if result.status in ['valid', 'warning'] and result.data:
             case_data = result.data.get('case_data', {})
             reviewer_feedback = result.data.get('reviewer_feedback', {})
             
-            success, is_unchanged = update_case_json(
+            success, is_unchanged, new_status = update_case_json(
                 result.case_id,
                 case_data,
                 reviewer_feedback,
@@ -568,6 +574,9 @@ def pull_sheet_changes(
                         print(f"    ⏭️  {result.case_id}: unchanged")
                 else:
                     updated += 1
+                    # Track status change if one occurred
+                    if new_status is not None:
+                        status_changes[result.case_id] = new_status
                     if verbose:
                         # Show what reviewers said if available
                         reviewers_info = []
@@ -599,7 +608,7 @@ def pull_sheet_changes(
                 error_msg = ", ".join(result.errors) if result.errors else "validation error"
                 print(f"    ❌ {result.case_id}: {error_msg}")
     
-    return updated, unchanged, skipped, validation_results
+    return updated, unchanged, skipped, validation_results, headers, row_numbers, status_changes
 
 
 def validate_cases(rows: list[list], headers: list[str]) -> ImportReport:
@@ -670,6 +679,12 @@ def write_validation_to_sheet(
     
     status_col_idx = headers.index(status_col_name) + 1  # 1-indexed for gspread
     message_col_idx = headers.index(message_col_name) + 1
+    
+    # Ensure the sheet has enough columns for validation columns
+    current_col_count = worksheet.col_count
+    required_cols = max(status_col_idx, message_col_idx)
+    if current_col_count < required_cols:
+        worksheet.resize(cols=required_cols)
     
     # Prepare batch updates
     updates = []
@@ -752,6 +767,56 @@ def write_validation_to_sheet(
     if requests:
         worksheet.spreadsheet.batch_update({"requests": requests})
         print("  Applied color coding to validation status column")
+
+
+def write_status_to_sheet(
+    case_statuses: dict[str, str],
+    worksheet: gspread.Worksheet,
+    row_numbers: dict[str, int]
+) -> int:
+    """
+    Write computed status values back to the Google Sheet.
+    
+    This updates the Status column (column H) for cases that have had
+    their status computed based on reviewer decisions during pull.
+    
+    Args:
+        case_statuses: Dictionary mapping case_id -> new status value
+        worksheet: The gspread worksheet object
+        row_numbers: Dictionary mapping case_id -> row number in sheet (1-indexed)
+        
+    Returns:
+        Number of status values written
+    """
+    if not case_statuses:
+        return 0
+    
+    # Status is in column H (8th column)
+    status_col = "H"
+    
+    # Prepare batch updates
+    updates = []
+    
+    for case_id, status in case_statuses.items():
+        row_num = row_numbers.get(case_id)
+        if row_num is None:
+            continue
+        
+        # Build cell reference (e.g., "H5")
+        cell_ref = f"{status_col}{row_num}"
+        
+        updates.append({
+            'range': cell_ref,
+            'values': [[status]]
+        })
+    
+    # Execute batch update
+    if updates:
+        worksheet.batch_update(updates, value_input_option='RAW')
+        print(f"  Updated Status column for {len(updates)} cases")
+        return len(updates)
+    
+    return 0
 
 
 def _determine_case_status(reviewer_feedback: dict) -> CaseStatus:
@@ -889,7 +954,7 @@ def update_case_json(
     reviewer_feedback: dict,
     cases_dir: str = "data/cases",
     verbose: bool = False
-) -> tuple[bool, bool]:
+) -> tuple[bool, bool, Optional[str]]:
     """
     Update a case JSON file with new refinement iteration including reviewer feedback.
     
@@ -908,9 +973,10 @@ def update_case_json(
         verbose: If True, print status messages (default False to avoid duplicate output)
         
     Returns:
-        Tuple of (success: bool, unchanged: bool)
+        Tuple of (success: bool, unchanged: bool, new_status: Optional[str])
         - success: True if operation completed (file found), False otherwise
         - unchanged: True if data matched and no update was needed, False if updated
+        - new_status: The new status value if status changed, None otherwise
     """
     cases_path = Path(cases_dir)
     
@@ -920,7 +986,7 @@ def update_case_json(
     if not matching_files:
         if verbose:
             print(f"  ⚠️  Case file not found for {case_id}")
-        return False, False
+        return False, False, None
     
     if len(matching_files) > 1 and verbose:
         print(f"  ⚠️  Multiple files found for {case_id}, using most recent")
@@ -959,7 +1025,7 @@ def update_case_json(
         # Skip only if nothing changed
         if not content_changed and not status_changed and not reviewer_changed:
             # Note: verbose output handled by caller in pull_sheet_changes()
-            return True, True  # Success=True, Unchanged=True
+            return True, True, None  # Success=True, Unchanged=True, No status change
     
     last_iteration = max([h.get('iteration', -1) for h in refinement_history], default=-1)
     new_iteration = last_iteration + 1
@@ -1021,15 +1087,19 @@ def update_case_json(
     old_status = case_data.get('status', '')
     case_data['status'] = new_status.value
     
+    # Track if status actually changed
+    status_changed = old_status != new_status.value
+    
     # Log status change if it changed
-    if old_status != new_status.value and verbose:
+    if status_changed and verbose:
         print(f"      Status: {old_status or 'none'} → {new_status.value}")
     
     # Write back to file
     with open(case_file, 'w', encoding='utf-8') as f:
         json.dump(case_data, f, indent=2, ensure_ascii=False)
     
-    return True, False  # Success=True, Unchanged=False
+    # Return the new status value if it changed, None otherwise
+    return True, False, new_status.value if status_changed else None
 
 
 def import_cases(
@@ -1095,11 +1165,12 @@ def import_cases(
         return report
     
     # Check if we can proceed with import
+    # Note: We now skip cases with errors instead of blocking all imports.
+    # Cases with errors will be skipped individually in the loop below.
     if report.error_cases > 0:
-        print(f"\n❌ Cannot import: {report.error_cases} cases have validation errors")
-        print("   Fix errors in the spreadsheet and try again")
-        print("   Check the 'Validation Message' column in the sheet for details")
-        return report
+        print(f"\n⚠️  {report.error_cases} cases have validation errors and will be skipped")
+        print("   Valid cases will still be imported")
+        print("   Check the 'Validation Message' column in the sheet for error details")
     
     if report.warning_cases > 0 and not force:
         print(f"\n⚠️  {report.warning_cases} cases have warnings")
@@ -1156,7 +1227,7 @@ def import_cases(
         if result.status in ['valid', 'warning'] and result.data:
             case_data = result.data.get('case_data', {})
             reviewer_feedback = result.data.get('reviewer_feedback', {})
-            success, is_unchanged = update_case_json(
+            success, is_unchanged, _ = update_case_json(
                 result.case_id, 
                 case_data, 
                 reviewer_feedback,
