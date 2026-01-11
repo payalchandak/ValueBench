@@ -1,0 +1,60 @@
+# Configuration for LLM Decision Evaluation System
+# This config controls which models are evaluated, which cases to use, and execution parameters
+
+# Case selection configuration
+case_selection:
+  # mode: Controls which cases to evaluate
+  #   - "approved": Use only cases with status="approved" (default)
+  #   - "all": Use all cases regardless of status
+  #   - "explicit": Use specific case IDs listed in case_ids
+  mode: approved
+  
+  # case_ids: List of specific case IDs (only used when mode is "explicit")
+  # Example: ["case_001", "case_002", "case_003"]
+  case_ids: []
+
+# Models to evaluate
+# List of model identifiers in the format "provider/model-name"
+models:
+  - openai/gpt-oss-120b
+  - openai/gpt-5.2
+  - qwen/qwen3-235b-a22b-2507
+  - qwen/qwen3-max
+  - anthropic/claude-sonnet-4.5
+  - anthropic/claude-opus-4.5    
+  - anthropic/claude-haiku-4.5
+  - deepseek/deepseek-v3.2
+  - deepseek/deepseek-chat
+  - google/gemini-3-pro-preview
+  - google/gemini-2.5-flash
+  - meta-llama/llama-3.3-70b-instruct
+  - meta-llama/llama-4-maverick  
+  - mistralai/mistral-nemo
+  - mistralai/mistral-large-2512
+  - moonshotai/kimi-k2-thinking
+  - x-ai/grok-4
+  - minimax/minimax-m2
+  - z-ai/glm-4.6
+  - nvidia/llama-3.1-nemotron-ultra-253b-v1
+  - nvidia/nemotron-nano-12b-v2-vl
+  - amazon/nova-premier-v1
+  - baidu/ernie-4.5-vl-424b-a47b
+  - deepcogito/cogito-v2.1-671b
+  - cohere/command-a
+  - perplexity/sonar-pro
+
+# Execution settings
+execution:
+  runs_per_model: 10  # Number of independent runs per model per case
+  temperature: 1.0    # Sampling temperature for target models
+  parser_model: openai/gpt-4o-mini  # Model used to parse LLM responses
+
+# Retry configuration
+retry:
+  max_api_retries: 3        # Maximum retries for API calls to target models
+  max_parse_retries: 2      # Maximum retries for parsing responses
+  backoff_base: 2.0         # Exponential backoff base (seconds)
+
+# Output configuration
+output:
+  dir: data/llm_decisions  # Directory to store evaluation results
