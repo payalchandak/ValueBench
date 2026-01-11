@@ -1,9 +1,9 @@
 """Models for LLM decision evaluation."""
 
 from pydantic import BaseModel, Field
-from dataclasses import dataclass, field
-from typing import Literal
+from typing import Literal, Optional
 from datetime import datetime
+import math
 
 from src.response_models.case import BenchmarkCandidate
 
@@ -25,16 +25,33 @@ class ParsedDecision(BaseModel):
     )
 
 
-@dataclass
-class RunResult:
-    """A single run result from evaluating an LLM on a case."""
-    raw_response: str
-    parsed_choice: Literal["choice_1", "choice_2", "REFUSAL"]
-    timestamp: datetime = field(default_factory=datetime.now)
+class RunResult(BaseModel):
+    """A single run result from evaluating an LLM on a case.
+    
+    Stores the complete LLM response dict from all-the-llms, which includes:
+    - Response text (choices[0].message.content)
+    - Model version (model field)
+    - Token usage and cost (usage field)
+    - Timestamp (created field)
+    - And any other metadata the LLM provider returns
+    """
+    
+    full_response: dict = Field(
+        ..., 
+        description="Full response dict from all-the-llms completion (includes model, usage, etc.)"
+    )
+    parsed_choice: Literal["choice_1", "choice_2", "REFUSAL"] = Field(
+        ..., 
+        description="Extracted choice from the response"
+    )
+    
+    @property
+    def response_text(self) -> str:
+        """Extract the text response from the LLM response dict."""
+        return self.full_response.get("choices", [{}])[0].get("message", {}).get("content", "")
+    
 
-
-@dataclass
-class RunSummary:
+class RunSummary(BaseModel):
     """Summary statistics computed dynamically from runs.
     
     All statistics are computed on-the-fly from the runs list.
@@ -86,8 +103,6 @@ class RunSummary:
         - Entropy = 0: All runs chose the same option (no uncertainty)
         - Entropy = 1: Perfect 50/50 split (maximum uncertainty)
         """
-        import math
-        
         if self.total_valid_runs == 0:
             return None
         
@@ -104,12 +119,16 @@ class RunSummary:
         return entropy
 
 
-@dataclass
-class ModelDecisionData:
+class ModelDecisionData(BaseModel):
     """Data for a single model's evaluation on a case."""
-    temperature: float
-    runs_completed: int = 0
-    runs: list[RunResult] = field(default_factory=list)
+    
+    temperature: float = Field(..., description="Temperature used for generation")
+    runs: list[RunResult] = Field(default_factory=list, description="All run results")
+    
+    @property
+    def runs_completed(self) -> int:
+        """Number of successfully completed runs (computed from runs list)."""
+        return len(self.runs)
     
     @property
     def summary(self) -> RunSummary:
@@ -117,13 +136,23 @@ class ModelDecisionData:
         return RunSummary(runs=self.runs)
 
 
-@dataclass
-class DecisionRecord:
+class DecisionRecord(BaseModel):
     """Complete record of LLM decisions for a single case.
     
     One JSON file per case at data/llm_decisions/{case_id}.json
+    
+    This record is fully self-contained, embedding the complete case definition
+    along with all model evaluations. This ensures that each record is an
+    immutable snapshot - if the original case changes, the decision record
+    preserves the exact vignette and choices that were presented to the models.
     """
-    case_id: str
-    case: BenchmarkCandidate
-    models: dict[str, ModelDecisionData] = field(default_factory=dict)
+    case_id: str = Field(..., description="Unique identifier for the case")
+    case: BenchmarkCandidate = Field(
+        ...,
+        description="Complete case definition (vignette, choices, value tags)"
+    )
+    models: dict[str, ModelDecisionData] = Field(
+        default_factory=dict,
+        description="Evaluation results keyed by model name (e.g., 'openai/gpt-4o')"
+    )
     
