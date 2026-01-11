@@ -7,6 +7,7 @@ This module provides utilities for:
 """
 
 import json
+import logging
 import tempfile
 import shutil
 import time
@@ -22,6 +23,11 @@ from src.response_models.status import CaseStatus
 from src.llm_decisions.models import DecisionRecord, ModelDecisionData, RunResult
 from src.llm_decisions.parser import parse_response
 from src.prompt_manager import PromptManager
+
+# Suppress LiteLLM logging
+logging.getLogger("LiteLLM").setLevel(logging.WARNING)
+logging.getLogger("all_the_llms.model_router").setLevel(logging.WARNING)
+logging.getLogger("all_the_llms.llm").setLevel(logging.WARNING)
 
 
 def _load_case_record(case_file: Path) -> CaseRecord | None:
@@ -165,7 +171,7 @@ def get_or_create_model_data(record: DecisionRecord, model_name: str, temperatur
 
 
 def call_target_llm(
-    model_name: str,
+    llm: LLM,
     case: BenchmarkCandidate,
     temperature: float,
     max_api_retries: int = 3,
@@ -185,7 +191,6 @@ def call_target_llm(
         }
     )
     
-    llm = LLM(model_name)
     last_exception = None
     
     for attempt in range(max_api_retries):
@@ -211,7 +216,7 @@ def call_target_llm(
             print(f"Retrying in {delay:.1f} seconds...")
             time.sleep(delay)
     
-    raise Exception(f"Failed to get response from {model_name} after {max_api_retries} attempts") from last_exception
+    raise Exception(f"Failed to get response after {max_api_retries} attempts") from last_exception
 
 
 def get_case_ids_from_config(config: DictConfig, cases_dir: str | Path = "data/cases") -> list[str]:
@@ -269,7 +274,7 @@ def _parse_with_retry(
 
 
 def _run_single_evaluation(
-    model_name: str,
+    llm: LLM,
     case: BenchmarkCandidate,
     temperature: float,
     max_api_retries: int,
@@ -282,7 +287,7 @@ def _run_single_evaluation(
     try:
         # Call target LLM
         full_response = call_target_llm(
-            model_name=model_name,
+            llm=llm,
             case=case,
             temperature=temperature,
             max_api_retries=max_api_retries,
@@ -321,6 +326,9 @@ def run_evaluation(cfg: DictConfig, cases_dir: str | Path = "data/cases", verbos
     prompt_manager = PromptManager()
     parser_llm = LLM(cfg.execution.parser_model)
     
+    # Create model instances once and reuse them
+    model_llms = {model_name: LLM(model_name) for model_name in cfg.models}
+    
     total_runs_completed = 0
     total_expected_runs = len(cfg.models) * len(case_ids) * cfg.execution.runs_per_model
     
@@ -355,7 +363,7 @@ def run_evaluation(cfg: DictConfig, cases_dir: str | Path = "data/cases", verbos
                 for _ in runs_pbar:
                     try:
                         result = _run_single_evaluation(
-                            model_name=model_name,
+                            llm=model_llms[model_name],
                             case=record.case,
                             temperature=cfg.execution.temperature,
                             max_api_retries=cfg.retry.max_api_retries,
