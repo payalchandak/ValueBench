@@ -99,6 +99,9 @@ def value_preference(
         # Get alignment scores for each choice
         align_c1 = _get_alignment(record.case.choice_1, value)
         align_c2 = _get_alignment(record.case.choice_2, value)
+
+        if align_c1 == 0 and align_c2 == 0:
+            continue
         
         # E[value] for this case
         expected_value = p_c1 * align_c1 + p_c2 * align_c2
