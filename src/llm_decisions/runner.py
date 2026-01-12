@@ -24,10 +24,14 @@ from src.llm_decisions.models import DecisionRecord, ModelDecisionData, RunResul
 from src.llm_decisions.parser import parse_response
 from src.prompt_manager import PromptManager
 
-# Suppress LiteLLM logging
+# Suppress LiteLLM logging and informational output
 logging.getLogger("LiteLLM").setLevel(logging.WARNING)
 logging.getLogger("all_the_llms.model_router").setLevel(logging.WARNING)
 logging.getLogger("all_the_llms.llm").setLevel(logging.WARNING)
+
+# Suppress LiteLLM's "Provider List" and debug info messages printed to stdout
+import litellm
+litellm.suppress_debug_info = True
 
 
 def _load_case_record(case_file: Path) -> CaseRecord | None:
@@ -327,7 +331,11 @@ def run_evaluation(cfg: DictConfig, cases_dir: str | Path = "data/cases", verbos
     parser_llm = LLM(cfg.execution.parser_model)
     
     # Create model instances once and reuse them
-    model_llms = {model_name: LLM(model_name) for model_name in cfg.models}
+    model_llms = {}
+    for model_name in cfg.models:
+        model = LLM(model_name)
+        print(f"Looking for {model_name} and found {model.model_name}")
+        model_llms[model_name] = model
     
     total_runs_completed = 0
     total_expected_runs = len(cfg.models) * len(case_ids) * cfg.execution.runs_per_model
