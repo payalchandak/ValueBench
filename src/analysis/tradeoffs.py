@@ -172,7 +172,7 @@ def value_weights(
     of runs per case to account for varying precision in P(choice_1) estimates.
     
     Args:
-        decisions: List of DecisionRecord objects from load_decisions()
+        decisions: List of DecisionRecord objects from load_llm_decisions()
         model: Model identifier (e.g., "openai/gpt-5.2")
         indices: Optional bootstrap indices from bootstrap_indices(). If None,
             returns point estimate with standard errors from statsmodels.
@@ -188,7 +188,7 @@ def value_weights(
         ValueError: If model has no valid runs on any case
     
     Example:
-        >>> decisions = load_decisions()
+        >>> decisions = load_llm_decisions()
         >>> # Point estimate with standard errors
         >>> result = value_weights(decisions, "openai/gpt-5.2")
         >>> print(result.coefficients)
