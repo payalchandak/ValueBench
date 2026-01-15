@@ -46,6 +46,10 @@ class QualtricsParseResult(BaseModel):
         description="List of (case_id, participant_id, response_text) tuples that could not be matched"
     )
     case_ids_found: set[str] = Field(default_factory=set, description="All case UUIDs found in the CSV")
+    warnings: list[str] = Field(
+        default_factory=list,
+        description="List of warning messages about data quality issues"
+    )
 
 
 def generate_participant_id(name: str, email: str) -> str:
@@ -247,7 +251,7 @@ def load_case_by_uuid(
     return None
 
 
-def _parse_qualtrics_timestamp(timestamp_str: str) -> datetime:
+def _parse_qualtrics_timestamp(timestamp_str: str) -> tuple[datetime, str | None]:
     """Parse a Qualtrics timestamp string into a datetime object.
     
     Handles common Qualtrics date formats.
@@ -256,8 +260,11 @@ def _parse_qualtrics_timestamp(timestamp_str: str) -> datetime:
         timestamp_str: Timestamp string from Qualtrics (e.g., "2026-01-12 07:32:34")
         
     Returns:
-        Parsed datetime object
+        Tuple of (parsed datetime object, warning message or None)
     """
+    if not timestamp_str or not timestamp_str.strip():
+        return datetime.now(), "Empty timestamp field, using current time"
+    
     # Try common Qualtrics formats
     formats = [
         "%Y-%m-%d %H:%M:%S",
@@ -270,23 +277,25 @@ def _parse_qualtrics_timestamp(timestamp_str: str) -> datetime:
     
     for fmt in formats:
         try:
-            return datetime.strptime(timestamp_str.strip(), fmt)
+            return datetime.strptime(timestamp_str.strip(), fmt), None
         except ValueError:
             continue
     
     # Fall back to current time if parsing fails
-    return datetime.now()
+    warning = f"Could not parse timestamp '{timestamp_str}', using current time"
+    return datetime.now(), warning
 
 
 def _detect_qualtrics_format(rows: list[list[str]]) -> tuple[list[str], int]:
     """Detect Qualtrics CSV format and return headers and data start row.
     
-    Qualtrics exports can have two formats:
+    Qualtrics exports can have multiple formats:
     1. Standard: Row 1 = headers, Row 2+ = data
     2. Two-header: Row 1 = short names (QID304), Row 2 = descriptions (with UUIDs), Row 3+ = data
+    3. Two-header with metadata: Row 1 = short names, Row 2 = descriptions, Row 3 = JSON metadata, Row 4+ = data
     
     This function detects which format is used by checking if row 2 contains UUIDs
-    that row 1 doesn't have.
+    that row 1 doesn't have, and whether row 3 looks like JSON metadata.
     
     Args:
         rows: First few rows of the CSV file
@@ -299,16 +308,52 @@ def _detect_qualtrics_format(rows: list[list[str]]) -> tuple[list[str], int]:
     
     row1, row2 = rows[0], rows[1]
     
-    # Check if row 1 has any UUIDs
+    # Check if row 1 has any UUIDs (just UUIDs, no descriptive text)
     row1_has_uuids = any(extract_case_uuid_from_column(col) for col in row1)
+    row1_has_only_uuids = row1_has_uuids and not any(" - " in col for col in row1 if extract_case_uuid_from_column(col))
+    
+    # Check if row 2 has descriptive headers (UUIDs followed by " - " and text)
+    # This indicates row 2 is the descriptive header row
+    row2_has_descriptive_headers = any(
+        extract_case_uuid_from_column(col) and " - " in col 
+        for col in row2
+    )
+    
+    # Check if row 2 has long descriptive text (vignettes) in columns where row 1 has UUIDs
+    # This is another two-header format: row 1 = UUIDs, row 2 = vignette text
+    row2_has_vignettes = False
+    if row1_has_uuids:
+        # Check if columns with UUIDs in row 1 have long descriptive text in row 2
+        uuid_cols_with_vignettes = sum(
+            1 for i, col1 in enumerate(row1)
+            if extract_case_uuid_from_column(col1) 
+            and i < len(row2) 
+            and len(row2[i]) > 50  # Long text suggests vignette
+        )
+        row2_has_vignettes = uuid_cols_with_vignettes > 0
     
     # Check if row 2 has UUIDs (and more than row 1)
     row2_uuid_count = sum(1 for col in row2 if extract_case_uuid_from_column(col))
     
-    # If row 2 has UUIDs but row 1 doesn't, this is the two-header format
-    if row2_uuid_count > 0 and not row1_has_uuids:
-        # Use row 2 as headers, data starts at row 3 (index 2)
-        return row2, 2
+    # If row 2 has descriptive headers (UUIDs with vignette text), use two-header format
+    # OR if row 1 has only UUIDs and row 2 has vignettes (another two-header format)
+    # OR if row 2 has UUIDs but row 1 doesn't
+    if row2_has_descriptive_headers or (row1_has_only_uuids and row2_has_vignettes) or (row2_uuid_count > 0 and not row1_has_uuids):
+        # Check if row 3 (index 2) looks like JSON metadata
+        # JSON metadata rows typically start with {"ImportId":...}
+        data_start = 2
+        if len(rows) > 2:
+            row3 = rows[2]
+            # Check if first few columns look like JSON (contain "ImportId" or start with "{")
+            if row3 and any(
+                cell.strip().startswith("{") and "ImportId" in cell 
+                for cell in row3[:5] if cell
+            ):
+                # Row 3 is metadata, data starts at row 4 (index 3)
+                data_start = 3
+        
+        # Use row 2 as headers, data starts at determined index
+        return row2, data_start
     
     # Standard format: row 1 is headers, data starts at row 2 (index 1)
     return row1, 1
@@ -412,14 +457,23 @@ def parse_qualtrics_csv(
     
     # Build column mapping for Qualtrics two-header format
     short_to_desc = {}
-    if data_start_idx == 2:
+    if data_start_idx >= 2:
         # Two-header format: build mapping from short names to descriptive names
         short_to_desc = _build_column_mapping(all_rows[0], all_rows[1])
     
     # Identify case columns (those starting with a UUID)
+    # In two-header format, UUIDs may be in row 1 while row 2 has vignette text
     case_columns: dict[str, str] = {}  # column_header -> case_id
-    for col in headers:
+    row1_headers = all_rows[0] if len(all_rows) > 0 else []
+    
+    for i, col in enumerate(headers):
+        # First try to extract UUID from the header itself
         case_id = extract_case_uuid_from_column(col)
+        
+        # If not found and we're in two-header format, check row 1 for UUID
+        if not case_id and data_start_idx >= 2 and i < len(row1_headers):
+            case_id = extract_case_uuid_from_column(row1_headers[i])
+        
         if case_id:
             case_columns[col] = case_id
             result.case_ids_found.add(case_id)
@@ -436,18 +490,36 @@ def parse_qualtrics_csv(
     # In two-header format, we need to look up by short name or description
     def find_column_index(column_name: str) -> int | None:
         """Find column index by name, checking both short and descriptive headers."""
-        # Direct match in headers
+        column_lower = column_name.lower()
+        
+        # First try exact match (case-insensitive)
         for i, h in enumerate(headers):
-            if column_name.lower() in h.lower():
+            if h.lower() == column_lower:
                 return i
+        
+        # Then try partial match in headers
+        for i, h in enumerate(headers):
+            if column_lower in h.lower():
+                return i
+        
         # If two-header format, check short headers too
         if short_to_desc:
+            # Exact match in short headers
             for i, short in enumerate(all_rows[0]):
-                if column_name.lower() in short.lower():
+                if short.lower() == column_lower:
+                    return i
+                # Also check if the descriptive header matches exactly
+                desc = short_to_desc.get(short, "")
+                if desc.lower() == column_lower:
+                    return i
+            
+            # Partial match in short headers
+            for i, short in enumerate(all_rows[0]):
+                if column_lower in short.lower():
                     return i
                 # Also check if the descriptive header matches
                 desc = short_to_desc.get(short, "")
-                if column_name.lower() in desc.lower():
+                if column_lower in desc.lower():
                     return i
         return None
     
@@ -456,6 +528,14 @@ def parse_qualtrics_csv(
     email_idx = find_column_index(email_column)
     expertise_idx = find_column_index(expertise_column)
     timestamp_idx = find_column_index(timestamp_column)
+    
+    # Warn if required columns are missing
+    if name_idx is None:
+        result.warnings.append(f"Column '{name_column}' not found - participant names cannot be extracted")
+    if email_idx is None:
+        result.warnings.append(f"Column '{email_column}' not found - participant emails cannot be extracted")
+    if timestamp_idx is None:
+        result.warnings.append(f"Column '{timestamp_column}' not found - using current time for all timestamps")
     
     # Parse each data row (participant)
     for row_num, row in enumerate(all_rows[data_start_idx:], start=data_start_idx + 1):
@@ -466,16 +546,31 @@ def parse_qualtrics_csv(
         # Get participant info by index
         name = row[name_idx].strip() if name_idx is not None and name_idx < len(row) else ""
         email = row[email_idx].strip() if email_idx is not None and email_idx < len(row) else ""
+        
+        # Check for email with spaces (before normalization)
+        original_email = email
+        # Normalize email by removing all spaces (common data entry error)
+        email = email.replace(" ", "") if email else ""
+        if original_email != email and original_email:
+            result.warnings.append(f"Row {row_num}: Email had spaces removed: '{original_email}' -> '{email}'")
             
         # Skip rows without participant info
         if not name or not email:
+            if name or email:  # Only warn if one field is present
+                result.warnings.append(f"Row {row_num}: Skipped - missing name or email (name: {name!r}, email: {email!r})")
             continue
         
         expertise = row[expertise_idx].strip() if expertise_idx is not None and expertise_idx < len(row) else ""
         
         # Parse timestamp
         timestamp_str = row[timestamp_idx].strip() if timestamp_idx is not None and timestamp_idx < len(row) else ""
-        timestamp = _parse_qualtrics_timestamp(timestamp_str) if timestamp_str else datetime.now()
+        if timestamp_str:
+            timestamp, timestamp_warning = _parse_qualtrics_timestamp(timestamp_str)
+            if timestamp_warning:
+                result.warnings.append(f"Row {row_num}, Participant {name}: {timestamp_warning}")
+        else:
+            timestamp = datetime.now()
+            result.warnings.append(f"Row {row_num}, Participant {name}: Empty timestamp field, using current time")
         
         # Generate participant ID
         participant_id = generate_participant_id(name, email)
@@ -500,6 +595,8 @@ def parse_qualtrics_csv(
             except ValueError as e:
                 # Invalid email format - skip this participant
                 error_msg = f"Row {row_num}: Invalid participant data - {e}"
+                warning_msg = f"Row {row_num}, Participant {name}: Invalid email format '{email}' - {e}"
+                result.warnings.append(warning_msg)
                 if strict:
                     validation_errors.append(error_msg)
                 continue
@@ -507,18 +604,27 @@ def parse_qualtrics_csv(
         # Build a dict for this row using headers
         row_dict = dict(zip(headers, row))
         
+        # Track empty responses for this participant
+        empty_responses = []
+        participant_has_responses = False
+        
         # Parse responses for each case column
         for col_header, case_id in case_columns.items():
             response_text = row_dict.get(col_header, "").strip()
             
-            # Skip empty responses
+            # Track empty responses
             if not response_text:
+                empty_responses.append(case_id)
                 continue
+            
+            participant_has_responses = True
             
             # Load the case
             case = case_cache.get(case_id)
             if case is None:
                 error_msg = f"Row {row_num}: Case {case_id} not found in llm_decisions or cases directory"
+                warning_msg = f"Row {row_num}, Case {case_id}: Case file not found - response cannot be matched"
+                result.warnings.append(warning_msg)
                 if strict:
                     validation_errors.append(error_msg)
                 else:
@@ -536,12 +642,21 @@ def parse_qualtrics_csv(
                     timestamp=timestamp,
                 ))
             except HumanResponseValidationError as e:
+                warning_msg = f"Row {row_num}, Case {case_id}, Participant {participant_id}: Response text does not match either choice"
+                result.warnings.append(warning_msg)
                 if strict:
                     validation_errors.append(
                         f"Row {row_num}, Case {case_id}, Participant {participant_id}: {e}"
                     )
                 else:
                     result.unmatched_responses.append((case_id, participant_id, response_text))
+        
+        # Warn about empty responses if participant has other valid responses
+        if empty_responses and participant_has_responses:
+            if len(empty_responses) == 1:
+                result.warnings.append(f"Row {row_num}, Participant {name}: Empty response for case {empty_responses[0]}")
+            else:
+                result.warnings.append(f"Row {row_num}, Participant {name}: Empty responses for {len(empty_responses)} cases")
     
     # Raise collected errors if in strict mode
     if strict and validation_errors:

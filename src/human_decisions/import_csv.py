@@ -51,6 +51,46 @@ def print_parse_result(result, verbose: bool = False):
     print(f"  Participants: {len(result.participants)}")
     print(f"  Total responses: {len(result.responses)}")
     
+    # Print warnings
+    if result.warnings:
+        print(f"\n  ⚠️  Warnings: {len(result.warnings)}")
+        if verbose:
+            for warning in result.warnings[:10]:
+                print(f"      • {warning}")
+            if len(result.warnings) > 10:
+                print(f"      ... and {len(result.warnings) - 10} more warnings")
+        else:
+            # Show summary of warning types
+            warning_types = {}
+            for warning in result.warnings:
+                # Extract warning type from key phrases
+                if "Email had spaces removed" in warning:
+                    warning_type = "Emails with spaces"
+                elif "Invalid email format" in warning:
+                    warning_type = "Invalid email formats"
+                elif "Empty timestamp" in warning or "Could not parse timestamp" in warning:
+                    warning_type = "Timestamp parsing issues"
+                elif "Case file not found" in warning:
+                    warning_type = "Missing case files"
+                elif "Response text does not match" in warning:
+                    warning_type = "Unmatched responses"
+                elif "Empty response" in warning:
+                    warning_type = "Empty responses"
+                elif "Skipped - missing" in warning:
+                    warning_type = "Missing participant data"
+                elif "Column" in warning and "not found" in warning:
+                    warning_type = "Missing columns"
+                else:
+                    warning_type = "Other issues"
+                
+                warning_types[warning_type] = warning_types.get(warning_type, 0) + 1
+            
+            for warning_type, count in sorted(warning_types.items(), key=lambda x: x[1], reverse=True)[:5]:
+                print(f"      • {warning_type}: {count} occurrence(s)")
+            if len(warning_types) > 5:
+                print(f"      ... and {len(warning_types) - 5} more warning type(s)")
+            print(f"      Use --verbose to see all warnings")
+    
     if result.unmatched_responses:
         print(f"\n  ⚠️  Unmatched responses: {len(result.unmatched_responses)}")
         if verbose:
@@ -191,6 +231,13 @@ def import_csv(
     
     print_save_stats(stats)
     print_registry_info()
+    
+    # Show warnings summary if any (warnings already shown in print_parse_result, but show summary again)
+    if result.warnings:
+        print(f"\n⚠️  Data Quality Summary:")
+        print(f"   {len(result.warnings)} warning(s) generated during import.")
+        if not verbose:
+            print(f"   Use --verbose to see detailed warnings.")
     
     # Final output directory info
     data_root = Path(__file__).parent.parent.parent / "data"
