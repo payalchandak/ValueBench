@@ -6,9 +6,11 @@ from LLM decision records, with optional bootstrap support for inference.
 
 from dataclasses import dataclass
 from typing import Literal, Union
+import math
 
 import numpy as np
 from numpy.typing import NDArray
+import pandas as pd
 
 from src.analysis.result_types import BootstrapResult
 from src.llm_decisions.models import DecisionRecord
@@ -50,6 +52,37 @@ class HumanCaseConsensus:
             f"HumanCaseConsensus({self.case_id}: {self.majority_choice} "
             f"[{self.choice_1_votes}:{self.choice_2_votes}], conf={self.confidence:.2f})"
         )
+
+
+@dataclass
+class EntropyStatistics:
+    """Descriptive statistics for entropy values across cases.
+    
+    Attributes:
+        mean: Mean entropy across all cases with valid data
+        median: Median entropy across all cases with valid data
+        std: Standard deviation of entropy values
+        min: Minimum entropy value
+        max: Maximum entropy value
+        p25: 25th percentile (first quartile)
+        p75: 75th percentile (third quartile)
+        p10: 10th percentile
+        p90: 90th percentile
+        n_cases: Number of cases with valid entropy values (excluding None)
+        n_total: Total number of cases evaluated
+    """
+    
+    mean: float
+    median: float
+    std: float
+    min: float
+    max: float
+    p25: float
+    p75: float
+    p10: float
+    p90: float
+    n_cases: int
+    n_total: int
 
 
 def _get_alignment(choice: ChoiceWithValues, value: str) -> int:
@@ -417,6 +450,364 @@ def refusal_rate(
         bootstrap_samples[i] = np.mean(sample_rates) if sample_rates else np.nan
     
     return BootstrapResult(samples=bootstrap_samples)
+
+
+def _compute_binary_entropy(k: int, n: int) -> float:
+    """Compute binary entropy in bits for k successes out of n trials.
+    
+    Uses the formula: H = -[p*log2(p) + (1-p)*log2(1-p)]
+    where p = k/n.
+    
+    Args:
+        k: Number of "successes" (e.g., choice_1 votes)
+        n: Total number of trials (e.g., total valid votes)
+    
+    Returns:
+        Entropy in bits. Returns 0.0 if p = 0 or p = 1.
+    """
+    if n == 0:
+        return 0.0
+    
+    p = k / n
+    
+    # p = 0 or p = 1 -> entropy is 0
+    if p == 0 or p == 1:
+        return 0.0
+    
+    # H = -[p*log2(p) + (1-p)*log2(1-p)]
+    return -(p * math.log2(p) + (1 - p) * math.log2(1 - p))
+
+
+def entropy_per_case(
+    decisions: list[DecisionRecord],
+    model: str,
+) -> dict[str, float | None]:
+    """Compute entropy values for a model across all cases.
+    
+    Entropy measures the uncertainty in a model's decision-making. For each case,
+    entropy is computed from the distribution of choices across runs using the
+    binary entropy formula:
+    
+        H = -[p*log2(p) + (1-p)*log2(1-p)]
+    
+    where p = k/n (k = choice_1 count, n = total valid runs).
+    
+    - Entropy = 0: All runs chose the same option (p = 0 or p = 1, no uncertainty)
+    - Entropy = 1: Perfect 50/50 split (p = 0.5, maximum uncertainty)
+    
+    Supports three types of decision-makers:
+    - LLM models (e.g., "openai/gpt-5.2", "anthropic/claude-4")
+    - Individual human participants (e.g., "human/participant_abc123")
+    - Collective human consensus ("human_consensus") - aggregates votes from all
+      human participants for each case, then computes entropy from the aggregated
+      distribution
+    
+    Args:
+        decisions: List of DecisionRecord objects from load_llm_decisions(),
+            load_human_decisions(), or load_all_decisions()
+        model: Model identifier. Can be:
+            - A model ID (e.g., "openai/gpt-5.2")
+            - A human participant ID (e.g., "human/participant_abc123")
+            - "human_consensus" for collective human majority vote
+    
+    Returns:
+        Dictionary mapping case_id to entropy (float | None). Entropy is None if:
+        - The model is not present in the record
+        - There are no valid (non-refusal) runs
+        - For human_consensus: no human participants or no valid votes
+    
+    Example:
+        >>> decisions = load_all_decisions()
+        >>> # Get entropy for an LLM model
+        >>> entropies = entropy_per_case(decisions, "openai/gpt-5.2")
+        >>> print(entropies["case_001"])  # 0.72
+        >>> # Get entropy for human consensus
+        >>> human_entropies = entropy_per_case(decisions, "human_consensus")
+        >>> # Get entropy for individual human participant
+        >>> participant_entropies = entropy_per_case(decisions, "human/participant_abc123")
+    """
+    results: dict[str, float | None] = {}
+    
+    for record in decisions:
+        # Handle human consensus separately
+        if model == HUMAN_CONSENSUS:
+            # Find all human participants for this case
+            human_models = [m for m in record.models.keys() if m.startswith("human/")]
+            if not human_models:
+                results[record.case_id] = None
+                continue
+            
+            # Aggregate votes across all human participants
+            choice_1_votes = 0
+            choice_2_votes = 0
+            
+            for model_name in human_models:
+                model_data = record.models[model_name]
+                summary = model_data.summary
+                choice_1_votes += summary.choice_1_count
+                choice_2_votes += summary.choice_2_count
+            
+            total_votes = choice_1_votes + choice_2_votes
+            if total_votes == 0:
+                results[record.case_id] = None
+                continue
+            
+            # Compute binary entropy: H = -[p*log2(p) + (1-p)*log2(1-p)]
+            results[record.case_id] = _compute_binary_entropy(choice_1_votes, total_votes)
+        else:
+            # Regular model or individual human participant
+            if model not in record.models:
+                results[record.case_id] = None
+                continue
+            
+            model_data = record.models[model]
+            summary = model_data.summary
+            
+            # Skip if no valid runs
+            if summary.total_valid_runs == 0:
+                results[record.case_id] = None
+                continue
+            
+            # Compute binary entropy: H = -[p*log2(p) + (1-p)*log2(1-p)]
+            results[record.case_id] = _compute_binary_entropy(
+                summary.choice_1_count, summary.total_valid_runs
+            )
+    
+    return results
+
+
+def entropy_statistics(
+    decisions: list[DecisionRecord],
+    model: str,
+) -> EntropyStatistics:
+    """Compute descriptive statistics for entropy values across cases.
+    
+    Computes mean, median, standard deviation, min, max, and percentiles
+    for entropy values across all cases where the model has valid data.
+    Entropy values of None (cases where the model has no valid runs) are
+    excluded from the statistics.
+    
+    Supports three types of decision-makers:
+    - LLM models (e.g., "openai/gpt-5.2", "anthropic/claude-4")
+    - Individual human participants (e.g., "human/participant_abc123")
+    - Collective human consensus ("human_consensus") - aggregates votes from all
+      human participants for each case, then computes entropy from the aggregated
+      distribution
+    
+    Args:
+        decisions: List of DecisionRecord objects from load_llm_decisions(),
+            load_human_decisions(), or load_all_decisions()
+        model: Model identifier. Can be:
+            - A model ID (e.g., "openai/gpt-5.2")
+            - A human participant ID (e.g., "human/participant_abc123")
+            - "human_consensus" for collective human majority vote
+    
+    Returns:
+        EntropyStatistics dataclass with descriptive statistics. If no valid
+        entropy values are found, raises ValueError.
+    
+    Raises:
+        ValueError: If no cases have valid entropy values for the model
+    
+    Example:
+        >>> decisions = load_all_decisions()
+        >>> # Get statistics for an LLM model
+        >>> stats = entropy_statistics(decisions, "openai/gpt-5.2")
+        >>> print(f"Mean entropy: {stats.mean:.3f}")
+        >>> print(f"Median entropy: {stats.median:.3f}")
+        >>> print(f"Std: {stats.std:.3f}")
+        >>> # Get statistics for human consensus
+        >>> human_stats = entropy_statistics(decisions, "human_consensus")
+    """
+    # Get entropy values per case
+    entropy_dict = entropy_per_case(decisions, model)
+    
+    # Filter out None values and collect valid entropy values
+    valid_entropies = [e for e in entropy_dict.values() if e is not None]
+    
+    if len(valid_entropies) == 0:
+        raise ValueError(
+            f"Model '{model}' has no valid entropy values across any case"
+        )
+    
+    # Convert to numpy array for efficient computation
+    entropy_array = np.array(valid_entropies)
+    
+    # Compute statistics
+    return EntropyStatistics(
+        mean=float(np.mean(entropy_array)),
+        median=float(np.median(entropy_array)),
+        std=float(np.std(entropy_array, ddof=1)),  # Sample standard deviation
+        min=float(np.min(entropy_array)),
+        max=float(np.max(entropy_array)),
+        p25=float(np.percentile(entropy_array, 25)),
+        p75=float(np.percentile(entropy_array, 75)),
+        p10=float(np.percentile(entropy_array, 10)),
+        p90=float(np.percentile(entropy_array, 90)),
+        n_cases=len(valid_entropies),
+        n_total=len(entropy_dict),
+    )
+
+
+def entropy_correlation_matrix(
+    decisions: list[DecisionRecord],
+    models: list[str] | None = None,
+) -> pd.DataFrame:
+    """Compute pairwise Pearson correlations between models' entropy vectors.
+    
+    For each model, creates a vector of entropy values across all cases (aligned
+    by case_id), then computes pairwise Pearson correlations. Only cases where
+    both models have valid entropy values are used for each correlation pair.
+    
+    Supports three types of decision-makers:
+    - LLM models (e.g., "openai/gpt-5.2", "anthropic/claude-4")
+    - Individual human participants (e.g., "human/participant_abc123")
+    - Collective human consensus ("human_consensus") - aggregates votes from all
+      human participants for each case, then computes entropy from the aggregated
+      distribution
+    
+    Args:
+        decisions: List of DecisionRecord objects from load_llm_decisions(),
+            load_human_decisions(), or load_all_decisions()
+        models: Optional list of model identifiers to include in the correlation
+            matrix. If None, includes all models that appear in the decisions
+            (including "human_consensus" if human participants exist). Each model
+            identifier can be:
+            - A model ID (e.g., "openai/gpt-5.2")
+            - A human participant ID (e.g., "human/participant_abc123")
+            - "human_consensus" for collective human majority vote
+    
+    Returns:
+        pandas DataFrame with models as both rows and columns. Values are Pearson
+        correlation coefficients (ranging from -1 to 1). The diagonal is 1.0
+        (each model perfectly correlates with itself). NaN values indicate that
+        there were no cases where both models had valid entropy values.
+    
+    Example:
+        >>> decisions = load_all_decisions()
+        >>> # Compute correlation matrix for all models
+        >>> corr_matrix = entropy_correlation_matrix(decisions)
+        >>> print(corr_matrix)
+        >>> # Compute correlation matrix for specific models
+        >>> llm_models = ["openai/gpt-5.2", "anthropic/claude-4", "human_consensus"]
+        >>> corr_matrix = entropy_correlation_matrix(decisions, models=llm_models)
+        >>> # Visualize with seaborn
+        >>> import seaborn as sns
+        >>> sns.heatmap(corr_matrix, annot=True, cmap="coolwarm", center=0)
+    """
+    # Collect all unique models from decisions if not specified
+    if models is None:
+        all_models = set()
+        has_humans = False
+        
+        for record in decisions:
+            for model_name in record.models.keys():
+                all_models.add(model_name)
+                if model_name.startswith("human/"):
+                    has_humans = True
+        
+        models = sorted(all_models)
+        
+        # Add human_consensus if there are human participants
+        if has_humans:
+            models.append(HUMAN_CONSENSUS)
+    
+    # Get entropy values for each model
+    entropy_data: dict[str, dict[str, float | None]] = {}
+    for model in models:
+        entropy_data[model] = entropy_per_case(decisions, model)
+    
+    # Get all unique case IDs
+    all_case_ids = set()
+    for record in decisions:
+        all_case_ids.add(record.case_id)
+    all_case_ids = sorted(all_case_ids)
+    
+    # Build DataFrame: rows = case_ids, columns = models
+    # Values are entropy (float) or NaN if None
+    df_data: dict[str, list[float | None]] = {}
+    for model in models:
+        df_data[model] = [entropy_data[model].get(case_id) for case_id in all_case_ids]
+    
+    df = pd.DataFrame(df_data, index=all_case_ids)
+    
+    # Compute pairwise Pearson correlations
+    # pandas corr() automatically handles NaN values by using only cases
+    # where both models have valid data (pairwise deletion)
+    correlation_matrix = df.corr(method="pearson")
+    
+    return correlation_matrix
+
+
+def aggregate_entropy_per_case(
+    decisions: list[DecisionRecord],
+    models: list[str],
+) -> dict[str, float | None]:
+    """Compute average entropy per case across multiple models.
+    
+    For each case, collects entropy values from all specified models and computes
+    the mean. This is useful for comparing overall entropy patterns across a group
+    of models (e.g., all LLMs, or a subset of models).
+    
+    Supports three types of decision-makers:
+    - LLM models (e.g., "openai/gpt-5.2", "anthropic/claude-4")
+    - Individual human participants (e.g., "human/participant_abc123")
+    - Collective human consensus ("human_consensus") - aggregates votes from all
+      human participants for each case, then computes entropy from the aggregated
+      distribution
+    
+    Args:
+        decisions: List of DecisionRecord objects from load_llm_decisions(),
+            load_human_decisions(), or load_all_decisions()
+        models: List of model identifiers to aggregate. Each model identifier can be:
+            - A model ID (e.g., "openai/gpt-5.2")
+            - A human participant ID (e.g., "human/participant_abc123")
+            - "human_consensus" for collective human majority vote
+    
+    Returns:
+        Dictionary mapping case_id to mean entropy (float | None). The mean is
+        computed from all non-None entropy values for that case across the specified
+        models. Returns None if no models have valid entropy values for that case.
+    
+    Example:
+        >>> decisions = load_all_decisions()
+        >>> # Aggregate entropy across all LLM models
+        >>> llm_models = ["openai/gpt-5.2", "anthropic/claude-4", "google/gemini-2.0"]
+        >>> aggregated = aggregate_entropy_per_case(decisions, llm_models)
+        >>> print(aggregated["case_001"])  # Mean entropy across all LLMs for case_001
+        >>> # Aggregate entropy across human participants
+        >>> human_models = ["human/participant_abc123", "human/participant_def456"]
+        >>> human_aggregated = aggregate_entropy_per_case(decisions, human_models)
+    """
+    if not models:
+        raise ValueError("models list cannot be empty")
+    
+    # Get entropy values for each model
+    entropy_by_model: dict[str, dict[str, float | None]] = {}
+    for model in models:
+        entropy_by_model[model] = entropy_per_case(decisions, model)
+    
+    # Get all unique case IDs from decisions
+    all_case_ids = {record.case_id for record in decisions}
+    
+    # Aggregate entropy per case
+    results: dict[str, float | None] = {}
+    
+    for case_id in all_case_ids:
+        # Collect all non-None entropy values for this case across all models
+        valid_entropies = []
+        for model in models:
+            entropy = entropy_by_model[model].get(case_id)
+            if entropy is not None:
+                valid_entropies.append(entropy)
+        
+        # Compute mean if we have at least one valid value
+        if valid_entropies:
+            results[case_id] = float(np.mean(valid_entropies))
+        else:
+            results[case_id] = None
+    
+    return results
 
 
 def human_consensus(

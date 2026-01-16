@@ -13,6 +13,11 @@ from src.analysis.loader import (
 )
 from src.analysis.metrics import (
     agreement_rate,
+    aggregate_entropy_per_case,
+    entropy_correlation_matrix,
+    entropy_per_case,
+    entropy_statistics,
+    EntropyStatistics,
     HUMAN_CONSENSUS,
     HumanCaseConsensus,
     human_consensus,
@@ -34,12 +39,17 @@ __all__ = [
     "value_preference",
     "refusal_rate",
     "agreement_rate",
+    "entropy_per_case",
+    "entropy_statistics",
+    "entropy_correlation_matrix",
+    "aggregate_entropy_per_case",
     "human_consensus",
     "value_weights",
     # Constants
     "HUMAN_CONSENSUS",
     # Result types
     "BootstrapResult",
+    "EntropyStatistics",
     "HumanCaseConsensus",
     "ValueWeightsResult",
 ]
