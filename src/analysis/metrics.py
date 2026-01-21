@@ -111,6 +111,7 @@ def value_preference(
     model: str,
     value: str,
     indices: NDArray[np.intp] | None = None,
+    return_all_cases = False,
 ) -> Union[float, BootstrapResult]:
     """Compute expected value alignment for a model on a specific value.
     
@@ -217,6 +218,9 @@ def value_preference(
     
     if len(case_values) == 0:
         raise ValueError(f"Model '{model}' has no valid runs on any case")
+    
+    if return_all_cases:
+        return case_values
     
     # Point estimate: return mean over all cases with data
     if indices is None:
