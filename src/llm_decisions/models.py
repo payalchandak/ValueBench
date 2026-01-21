@@ -151,6 +151,14 @@ class DecisionRecord(BaseModel):
         ...,
         description="Complete case definition (vignette, choices, value tags)"
     )
+    system_prompt: Optional[str] = Field(
+        default=None,
+        description="The rendered system prompt used for LLM evaluation"
+    )
+    user_prompt: Optional[str] = Field(
+        default=None,
+        description="The rendered user prompt used for LLM evaluation"
+    )
     models: dict[str, ModelDecisionData] = Field(
         default_factory=dict,
         description="Evaluation results keyed by model name (e.g., 'openai/gpt-4o')"

@@ -125,7 +125,7 @@ def sanitize_model_name(model: str) -> str:
 def get_decision_record(
     case_id: str,
     output_dir: str | Path = "data/llm_decisions",
-    cases_dir: str | Path = "data/cases"
+    cases_dir: str | Path = "data/cases",
 ) -> DecisionRecord:
     """Load existing decision record or create new one for a case.
     
@@ -178,16 +178,17 @@ def call_target_llm(
     llm: LLM,
     case: BenchmarkCandidate,
     temperature: float,
+    prompt_workflow: str,
     max_api_retries: int = 3,
     backoff_base: float = 2.0,
     prompt_manager: PromptManager | None = None
 ) -> dict:
-    """Call target LLM with physician recommendation prompt and retry logic."""
+    """Call target LLM with specified prompt workflow and retry logic."""
     if prompt_manager is None:
         prompt_manager = PromptManager()
     
     messages = prompt_manager.build_messages(
-        "workflows/physician_recommendation",
+        prompt_workflow,
         {
             "vignette": case.vignette,
             "choice_1": case.choice_1.choice,
@@ -281,6 +282,7 @@ def _run_single_evaluation(
     llm: LLM,
     case: BenchmarkCandidate,
     temperature: float,
+    prompt_workflow: str,
     max_api_retries: int,
     max_parse_retries: int,
     backoff_base: float,
@@ -294,6 +296,7 @@ def _run_single_evaluation(
             llm=llm,
             case=case,
             temperature=temperature,
+            prompt_workflow=prompt_workflow,
             max_api_retries=max_api_retries,
             backoff_base=backoff_base,
             prompt_manager=prompt_manager
@@ -348,6 +351,46 @@ def run_evaluation(cfg: DictConfig, cases_dir: str | Path = "data/cases", verbos
             tqdm.write(f"ERROR: Failed to load case {case_id}: {e}")
             continue
         
+        # Build prompts from workflow
+        messages = prompt_manager.build_messages(
+            cfg.execution.prompt_workflow,
+            {
+                "vignette": record.case.vignette,
+                "choice_1": record.case.choice_1.choice,
+                "choice_2": record.case.choice_2.choice
+            }
+        )
+        # Extract system and user prompts from messages
+        current_system_prompt = None
+        current_user_prompt = None
+        for msg in messages:
+            if msg["role"] == "system":
+                current_system_prompt = msg["content"]
+            elif msg["role"] == "user":
+                current_user_prompt = msg["content"]
+        
+        # Validate or store prompts
+        prompts_updated = False
+        if record.system_prompt is None:
+            tqdm.write(f"Found DecisionRecord with no system_prompt for {case_id}, setting it")
+            record.system_prompt = current_system_prompt
+            prompts_updated = True
+        elif record.system_prompt != current_system_prompt:
+            tqdm.write(f"ERROR: System prompt mismatch for case {case_id}. Cannot write model runs to record. Skipping.")
+            continue
+        
+        if record.user_prompt is None:
+            tqdm.write(f"Found DecisionRecord with no user_prompt for {case_id}, setting it")
+            record.user_prompt = current_user_prompt
+            prompts_updated = True
+        elif record.user_prompt != current_user_prompt:
+            tqdm.write(f"ERROR: User prompt mismatch for case {case_id}. Skipping.")
+            continue
+        
+        # Save immediately if prompts were updated
+        if prompts_updated:
+            save_decision_record(record, cfg.output.dir)
+        
         for model_name in tqdm(cfg.models, desc="Models", position=1, leave=False, disable=not verbose):
             try:
                 model_data = get_or_create_model_data(record, model_name, cfg.execution.temperature)
@@ -374,6 +417,7 @@ def run_evaluation(cfg: DictConfig, cases_dir: str | Path = "data/cases", verbos
                             llm=model_llms[model_name],
                             case=record.case,
                             temperature=cfg.execution.temperature,
+                            prompt_workflow=cfg.execution.prompt_workflow,
                             max_api_retries=cfg.retry.max_api_retries,
                             max_parse_retries=cfg.retry.max_parse_retries,
                             backoff_base=cfg.retry.backoff_base,
