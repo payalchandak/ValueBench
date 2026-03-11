@@ -7,7 +7,7 @@ from src.human_decisions.models import ParticipantRegistry
 from src.llm_decisions.models import DecisionRecord
 
 # Default path to LLM decisions data
-DEFAULT_LLM_DECISIONS_DIR = Path(__file__).parent.parent.parent / "data" / "llm_decisions"
+DEFAULT_LLM_DECISIONS_DIR = Path(__file__).parent.parent.parent / "data" / "llm_decisions" / "physician_recommendation"
 
 # Default path to human decisions data
 DEFAULT_HUMAN_DECISIONS_DIR = Path(__file__).parent.parent.parent / "data" / "human_decisions"
