@@ -74,9 +74,11 @@ def build_kappa_input_table(
         for rater in raters:
             if rater not in record.models:
                 continue
-            summary = record.models[rater].summary
-            c1 += summary.choice_1_count
-            c2 += summary.choice_2_count
+            majority = record.models[rater].summary.majority_choice
+            if majority == "choice_1":
+                c1 += 1
+            elif majority == "choice_2":
+                c2 += 1
 
         if c1 + c2 == 0:
             continue
