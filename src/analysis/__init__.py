@@ -24,6 +24,8 @@ from src.analysis.metrics import (
     refusal_rate,
     value_preference,
 )
+from src.analysis.pluralism import build_kappa_input_table, value_tension_pairs
+from statsmodels.stats.inter_rater import fleiss_kappa
 from src.analysis.tradeoffs import value_weights
 from src.analysis.result_types import BootstrapResult, ValueWeightsResult
 
@@ -47,6 +49,10 @@ __all__ = [
     "value_weights",
     # Constants
     "HUMAN_CONSENSUS",
+    # Pluralism
+    "value_tension_pairs",
+    "fleiss_kappa",
+    "build_kappa_input_table",
     # Result types
     "BootstrapResult",
     "EntropyStatistics",
