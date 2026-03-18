@@ -11,7 +11,7 @@ import numpy as np
 from numpy.typing import NDArray
 import statsmodels.api as sm
 
-from src.analysis.metrics import _get_alignment
+from src.analysis.metrics import _get_alignment, HUMAN_CONSENSUS
 from src.analysis.result_types import ValueWeightsResult
 from src.llm_decisions.models import DecisionRecord
 from src.response_models.case import VALUE_NAMES
@@ -57,16 +57,30 @@ def _build_regression_data(
         if index_weights is not None and idx not in index_weights:
             continue
         
-        # Skip if model didn't evaluate this case
-        if model not in record.models:
-            continue
-        
-        model_data = record.models[model]
-        summary = model_data.summary
-        
-        # Skip if no valid (non-refusal) runs
-        if summary.total_valid_runs == 0:
-            continue
+        # Resolve p_c1 and n_trials depending on model type
+        if model == HUMAN_CONSENSUS:
+            human_models = [m for m in record.models if m.startswith("human/")]
+            if not human_models:
+                continue
+            choice_1_votes = 0
+            choice_2_votes = 0
+            for hm in human_models:
+                s = record.models[hm].summary
+                choice_1_votes += s.choice_1_count
+                choice_2_votes += s.choice_2_count
+            total_votes = choice_1_votes + choice_2_votes
+            if total_votes == 0:
+                continue
+            p_c1 = choice_1_votes / total_votes
+            n_trials = total_votes
+        else:
+            if model not in record.models:
+                continue
+            summary = record.models[model].summary
+            if summary.total_valid_runs == 0:
+                continue
+            p_c1 = summary.choice_1_count / summary.total_valid_runs
+            n_trials = summary.total_valid_runs
         
         # Compute Δ_value = align(C1, value) - align(C2, value) for each value
         delta_row = []
@@ -74,10 +88,6 @@ def _build_regression_data(
             align_c1 = _get_alignment(record.case.choice_1, value)
             align_c2 = _get_alignment(record.case.choice_2, value)
             delta_row.append(float(align_c1 - align_c2))
-        
-        # P(choice_1) and number of trials
-        p_c1 = summary.choice_1_count / summary.total_valid_runs
-        n_trials = summary.total_valid_runs
         
         # For bootstrap: multiply weight by bootstrap count instead of duplicating rows
         if index_weights is not None:
