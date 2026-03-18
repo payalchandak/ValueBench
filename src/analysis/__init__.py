@@ -28,6 +28,13 @@ from src.analysis.pluralism import build_kappa_input_table, value_tension_pairs
 from statsmodels.stats.inter_rater import fleiss_kappa
 from src.analysis.tradeoffs import value_weights
 from src.analysis.result_types import BootstrapResult, ValueWeightsResult
+from src.analysis.value_profiles import (
+    bootstrap_mean_jsd,
+    lrt_uniform_null,
+    pairwise_jsd_matrix,
+    permutation_test_jsd,
+    softmax_profile,
+)
 
 __all__ = [
     # Data loading
@@ -58,4 +65,10 @@ __all__ = [
     "EntropyStatistics",
     "HumanCaseConsensus",
     "ValueWeightsResult",
+    # Value profiles
+    "softmax_profile",
+    "pairwise_jsd_matrix",
+    "lrt_uniform_null",
+    "bootstrap_mean_jsd",
+    "permutation_test_jsd",
 ]
