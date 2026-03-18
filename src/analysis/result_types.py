@@ -5,11 +5,16 @@ Provides result containers for bootstrap-based inference:
 - ValueWeightsResult: Specialized container for logistic regression coefficients
 """
 
-from dataclasses import dataclass
-from typing import Optional
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+from typing import TYPE_CHECKING, Optional
 
 import numpy as np
 from numpy.typing import NDArray
+
+if TYPE_CHECKING:
+    import statsmodels.api as sm
 
 
 @dataclass
@@ -97,6 +102,10 @@ class ValueWeightsResult:
         bootstrap_samples: Optional dict mapping value name to array of
             bootstrap β samples, shape (n_samples,) each. Present when
             bootstrap indices were provided.
+        glm_result: Optional fitted GLMResults object from statsmodels.
+            Available for point estimates; None for bootstrapped results
+            and edge-case fallbacks. Useful for goodness-of-fit metrics
+            like McFadden R² via ``glm_result.pseudo_rsquared(kind='mcf')``.
     
     Example:
         >>> result = ValueWeightsResult(
@@ -114,6 +123,7 @@ class ValueWeightsResult:
     std_errors: Optional[dict[str, float]] = None
     p_values: Optional[dict[str, float]] = None
     bootstrap_samples: Optional[dict[str, NDArray[np.floating]]] = None
+    glm_result: Optional[sm.GLMResults] = field(default=None, repr=False)
     
     def get_bootstrap_result(self, value: str) -> Optional[BootstrapResult]:
         """Get BootstrapResult for a specific value's coefficient.

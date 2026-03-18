@@ -4,6 +4,8 @@ Estimates how strongly an LLM weighs each value dimension when making
 ethical tradeoffs, using logistic regression on choice probabilities.
 """
 
+from __future__ import annotations
+
 from typing import Union
 import warnings
 
@@ -114,7 +116,12 @@ def _fit_logistic_regression(
     X: NDArray[np.floating],
     y: NDArray[np.floating],
     n_trials: NDArray[np.intp],
-) -> tuple[dict[str, float], dict[str, float] | None, dict[str, float] | None]:
+) -> tuple[
+    dict[str, float],
+    dict[str, float] | None,
+    dict[str, float] | None,
+    sm.GLMResults | None,
+]:
     """Fit logistic regression and return coefficients.
     
     Uses GLM with Binomial family and logit link, no intercept.
@@ -125,17 +132,17 @@ def _fit_logistic_regression(
         n_trials: Array of shape (n_cases,) with trial counts per case
     
     Returns:
-        Tuple of (coefficients dict, std_errors dict or None, p_values dict or None)
+        Tuple of (coefficients, std_errors, p_values, glm_result) where
+        glm_result is the fitted GLMResults object (None on edge-case fallback).
     """
     # Handle edge cases
     # If y is all 0s or all 1s, logistic regression will fail
     if np.all(y == 0) or np.all(y == 1):
-        # Return zeros with None for std errors and p-values
-        return {v: 0.0 for v in VALUE_NAMES}, None, None
+        return {v: 0.0 for v in VALUE_NAMES}, None, None, None
     
     # Check if X has any variation
     if np.all(X == 0):
-        return {v: 0.0 for v in VALUE_NAMES}, None, None
+        return {v: 0.0 for v in VALUE_NAMES}, None, None, None
     
     try:
         # Suppress convergence warnings during bootstrap
@@ -158,11 +165,11 @@ def _fit_logistic_regression(
             std_errors = {v: float(result.bse[i]) for i, v in enumerate(VALUE_NAMES)}
             p_values = {v: float(result.pvalues[i]) for i, v in enumerate(VALUE_NAMES)}
             
-            return coefficients, std_errors, p_values
+            return coefficients, std_errors, p_values, result
             
     except Exception:
         # If fitting fails (e.g., perfect separation), return zeros
-        return {v: 0.0 for v in VALUE_NAMES}, None, None
+        return {v: 0.0 for v in VALUE_NAMES}, None, None, None
 
 
 def value_weights(
@@ -215,13 +222,14 @@ def value_weights(
     if indices is None:
         # Point estimate: fit on all data
         X, y, n_trials = _build_regression_data(decisions, model)
-        coefficients, std_errors, p_values = _fit_logistic_regression(X, y, n_trials)
+        coefficients, std_errors, p_values, glm_result = _fit_logistic_regression(X, y, n_trials)
         
         return ValueWeightsResult(
             coefficients=coefficients,
             std_errors=std_errors,
             p_values=p_values,
             bootstrap_samples=None,
+            glm_result=glm_result,
         )
     
     # Bootstrapped: fit on each resampled dataset
@@ -231,7 +239,7 @@ def value_weights(
     for i in range(n_samples):
         try:
             X, y, n_trials = _build_regression_data(decisions, model, indices[i])
-            coefficients, _, _ = _fit_logistic_regression(X, y, n_trials)
+            coefficients, _, _, _ = _fit_logistic_regression(X, y, n_trials)
             
             for v in VALUE_NAMES:
                 bootstrap_samples[v].append(coefficients[v])
