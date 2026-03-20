@@ -21,23 +21,38 @@ from src.analysis.tradeoffs import _build_regression_data
 from src.llm_decisions.models import DecisionRecord
 
 
-def softmax_profile(coefficients: dict[str, float]) -> dict[str, float]:
+def softmax_profile(
+    coefficients: dict[str, float],
+    temperature: float = 1.0,
+) -> dict[str, float]:
     """Softmax-normalize raw regression betas into a value priority distribution.
 
-    Applies the softmax function to the coefficient values so they sum to 1
+    Applies ``softmax(β / T)`` to the coefficient values so they sum to 1
     and can be interpreted as a probability distribution over values (π_V).
+
+    At ``T = 1.0`` this is the standard softmax.  Higher temperatures
+    flatten the distribution toward uniform; lower temperatures sharpen
+    it toward a one-hot vector on the largest coefficient.
 
     Args:
         coefficients: Mapping of value name to raw β coefficient,
             e.g. ``{"autonomy": 0.8, "beneficence": 1.2, ...}``.
+        temperature: Positive scaling constant *T*.  The coefficients are
+            divided by *T* before the softmax is applied.  Default ``1.0``
+            (standard softmax).
 
     Returns:
         Dict with the same keys, values replaced by softmax probabilities
         that sum to 1.
+
+    Raises:
+        ValueError: If *temperature* is not strictly positive.
     """
+    if temperature <= 0:
+        raise ValueError(f"temperature must be > 0, got {temperature}")
     names = list(coefficients.keys())
     betas = np.array([coefficients[n] for n in names], dtype=np.float64)
-    probs = _scipy_softmax(betas)
+    probs = _scipy_softmax(betas / temperature)
     return {name: float(p) for name, p in zip(names, probs)}
 
 
