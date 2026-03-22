@@ -17,8 +17,10 @@ from scipy.stats import chi2
 import statsmodels.api as sm
 
 from src.analysis.result_types import BootstrapResult
-from src.analysis.tradeoffs import _build_regression_data
+from src.analysis.metrics import _get_alignment
+from src.analysis.tradeoffs import _build_regression_data, _fit_logistic_regression
 from src.llm_decisions.models import DecisionRecord
+from src.response_models.case import VALUE_NAMES
 
 
 def softmax_profile(
@@ -54,6 +56,78 @@ def softmax_profile(
     betas = np.array([coefficients[n] for n in names], dtype=np.float64)
     probs = _scipy_softmax(betas / temperature)
     return {name: float(p) for name, p in zip(names, probs)}
+
+
+def consensus_profile_from_subset(
+    decisions: list[DecisionRecord],
+    physician_ids: list[str],
+    temperature: float = 1.0,
+) -> dict[str, float]:
+    """Compute a consensus value profile from a subset of physicians.
+
+    Aggregates choice-1 / choice-2 votes from only the specified
+    *physician_ids* across all cases, fits a binomial logistic
+    regression (mirroring the ``HUMAN_CONSENSUS`` branch of
+    :func:`~src.analysis.tradeoffs._build_regression_data`), and
+    returns the softmax-normalised value profile.
+
+    Args:
+        decisions: Decision records from :func:`load_llm_decisions`.
+        physician_ids: Physician model identifiers to include
+            (e.g. ``["human/P001", "human/P002", ...]``).
+        temperature: Positive scaling constant *T* passed to
+            :func:`softmax_profile`.  Default ``1.0``.
+
+    Returns:
+        Dict mapping value names to softmax probabilities that sum to 1.
+
+    Raises:
+        ValueError: If no cases have votes from any of the specified
+            physicians, or if *temperature* is not strictly positive.
+    """
+    physician_set = set(physician_ids)
+
+    X_rows: list[list[float]] = []
+    y_values: list[float] = []
+    n_trials_values: list[int] = []
+
+    for record in decisions:
+        choice_1_votes = 0
+        choice_2_votes = 0
+        for pid in physician_set:
+            if pid not in record.models:
+                continue
+            s = record.models[pid].summary
+            choice_1_votes += s.choice_1_count
+            choice_2_votes += s.choice_2_count
+
+        total_votes = choice_1_votes + choice_2_votes
+        if total_votes == 0:
+            continue
+
+        p_c1 = choice_1_votes / total_votes
+
+        delta_row = [
+            float(
+                _get_alignment(record.case.choice_1, value)
+                - _get_alignment(record.case.choice_2, value)
+            )
+            for value in VALUE_NAMES
+        ]
+
+        X_rows.append(delta_row)
+        y_values.append(p_c1)
+        n_trials_values.append(total_votes)
+
+    if not X_rows:
+        raise ValueError("No valid cases found for the given physician subset")
+
+    X = np.array(X_rows, dtype=np.float64)
+    y = np.array(y_values, dtype=np.float64)
+    n_trials = np.array(n_trials_values, dtype=np.intp)
+
+    coefficients, _, _, _ = _fit_logistic_regression(X, y, n_trials)
+    return softmax_profile(coefficients, temperature)
 
 
 def pairwise_jsd_matrix(
