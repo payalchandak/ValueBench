@@ -27,7 +27,7 @@ from src.analysis.value_profiles import (
     softmax_profile,
 )
 
-LN2 = math.log(2)
+LOG2 = 1.0
 
 # ---------------------------------------------------------------------------
 # Fixtures: reusable profile sets
@@ -171,7 +171,7 @@ class TestPairwiseJsdMatrix:
     def test_upper_bound_ln2(self):
         profiles = _make_profiles(8, seed=99)
         mat = pairwise_jsd_matrix(profiles)
-        assert (mat.values <= LN2 + 1e-10).all()
+        assert (mat.values <= LOG2 + 1e-10).all()
 
     def test_returns_dataframe_with_correct_labels(self):
         profiles = {"alice": _uniform_profile(), "bob": _peaked_profile()}
@@ -190,7 +190,7 @@ class TestPairwiseJsdMatrix:
         p = {"a": 0.7, "b": 0.2, "c": 0.1}
         q = {"a": 0.1, "b": 0.3, "c": 0.6}
         mat = pairwise_jsd_matrix({"p": p, "q": q})
-        expected = jensenshannon([0.7, 0.2, 0.1], [0.1, 0.3, 0.6]) ** 2
+        expected = jensenshannon([0.7, 0.2, 0.1], [0.1, 0.3, 0.6], base=2.0) ** 2
         assert math.isclose(mat.loc["p", "q"], expected, rel_tol=1e-12)
         assert math.isclose(mat.loc["q", "p"], expected, rel_tol=1e-12)
 
@@ -199,7 +199,7 @@ class TestPairwiseJsdMatrix:
         p = {"a": 1.0, "b": 0.0}
         q = {"a": 0.0, "b": 1.0}
         mat = pairwise_jsd_matrix({"p": p, "q": q})
-        assert math.isclose(mat.loc["p", "q"], LN2, rel_tol=1e-10)
+        assert math.isclose(mat.loc["p", "q"], LOG2, rel_tol=1e-10)
 
     def test_triangle_inequality_on_sqrt(self):
         """sqrt(JSD) is a metric and should satisfy triangle inequality."""
@@ -352,8 +352,8 @@ class TestBootstrapMeanJsd:
     def test_within_group_divergence_bounded(self, diverse_profiles, group_ids):
         a, b = group_ids
         result = bootstrap_mean_jsd(diverse_profiles, a, b, n_bootstrap=500, seed=0)
-        assert (result["group_a_mean"].samples <= LN2 + 1e-10).all()
-        assert (result["group_b_mean"].samples <= LN2 + 1e-10).all()
+        assert (result["group_a_mean"].samples <= LOG2 + 1e-10).all()
+        assert (result["group_b_mean"].samples <= LOG2 + 1e-10).all()
 
     # -- Reproducibility --
 
@@ -571,7 +571,7 @@ class TestIntegration:
         assert mat.shape == (3, 3)
         assert (np.diag(mat.values) == 0.0).all()
         assert (mat.values >= 0).all()
-        assert (mat.values <= LN2 + 1e-10).all()
+        assert (mat.values <= LOG2 + 1e-10).all()
 
     def test_full_pipeline_softmax_bootstrap_permutation(self):
         """Run the complete pipeline: softmax → JSD matrix → bootstrap → permutation."""
@@ -618,7 +618,7 @@ class TestIntegration:
         mat = pairwise_jsd_matrix(profiles)
         assert mat.shape == (4, 4)
         assert (mat.values >= -1e-15).all()
-        assert (mat.values <= LN2 + 1e-10).all()
+        assert (mat.values <= LOG2 + 1e-10).all()
 
     def test_bootstrap_ci_width_decreases_with_n(self):
         """More bootstrap samples → narrower CI (on average)."""
@@ -656,7 +656,7 @@ class TestIntegration:
                 if i < j:
                     p = [profiles[id_i][v] for v in value_names]
                     q = [profiles[id_j][v] for v in value_names]
-                    expected = jensenshannon(p, q) ** 2
+                    expected = jensenshannon(p, q, base=2.0) ** 2
                     assert math.isclose(
                         mat.loc[id_i, id_j], expected, rel_tol=1e-12
                     )
