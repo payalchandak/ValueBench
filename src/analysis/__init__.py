@@ -30,6 +30,7 @@ from src.analysis.tradeoffs import value_weights
 from src.analysis.result_types import BootstrapResult, ValueWeightsResult
 from src.analysis.value_profiles import (
     bootstrap_mean_jsd,
+    consensus_profile_from_subset,
     lrt_uniform_null,
     pairwise_jsd_matrix,
     permutation_test_jsd,
@@ -67,6 +68,7 @@ __all__ = [
     "ValueWeightsResult",
     # Value profiles
     "softmax_profile",
+    "consensus_profile_from_subset",
     "pairwise_jsd_matrix",
     "lrt_uniform_null",
     "bootstrap_mean_jsd",
