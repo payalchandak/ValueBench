@@ -62,8 +62,8 @@ def pairwise_jsd_matrix(
     """Compute pairwise Jensen-Shannon divergence between value profiles.
 
     Returns the JSD *divergence* (not distance): for each pair the
-    ``scipy.spatial.distance.jensenshannon`` distance is squared so the
-    result lives in [0, ln 2] rather than [0, sqrt(ln 2)].
+    ``scipy.spatial.distance.jensenshannon`` distance (computed with
+    base 2) is squared so the result lives in [0, 1].
 
     Args:
         profiles: Mapping of decision-maker identifier to its value
@@ -87,7 +87,7 @@ def pairwise_jsd_matrix(
     mat = np.zeros((n, n), dtype=np.float64)
     for i in range(n):
         for j in range(i + 1, n):
-            jsd = jensenshannon(vectors[i], vectors[j]) ** 2
+            jsd = jensenshannon(vectors[i], vectors[j], base=2.0) ** 2
             mat[i, j] = jsd
             mat[j, i] = jsd
 
@@ -220,7 +220,7 @@ def bootstrap_mean_jsd(
     jsd_mat = np.zeros((n_all, n_all), dtype=np.float64)
     for i in range(n_all):
         for j in range(i + 1, n_all):
-            d = jensenshannon(vectors[i], vectors[j]) ** 2
+            d = jensenshannon(vectors[i], vectors[j], base=2.0) ** 2
             jsd_mat[i, j] = d
             jsd_mat[j, i] = d
 
@@ -323,7 +323,7 @@ def permutation_test_jsd(
     jsd_mat = np.zeros((n_all, n_all), dtype=np.float64)
     for i in range(n_all):
         for j in range(i + 1, n_all):
-            d = jensenshannon(vectors[i], vectors[j]) ** 2
+            d = jensenshannon(vectors[i], vectors[j], base=2.0) ** 2
             jsd_mat[i, j] = d
             jsd_mat[j, i] = d
 
