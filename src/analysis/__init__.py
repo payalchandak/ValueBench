@@ -14,6 +14,8 @@ from src.analysis.loader import (
 from src.analysis.metrics import (
     agreement_rate,
     aggregate_entropy_per_case,
+    case_entropy_correlation,
+    CaseEntropyCorrelation,
     entropy_correlation_matrix,
     entropy_per_case,
     entropy_statistics,
@@ -53,6 +55,7 @@ __all__ = [
     "entropy_statistics",
     "entropy_correlation_matrix",
     "aggregate_entropy_per_case",
+    "case_entropy_correlation",
     "human_consensus",
     "value_weights",
     # Constants
@@ -63,6 +66,7 @@ __all__ = [
     "build_kappa_input_table",
     # Result types
     "BootstrapResult",
+    "CaseEntropyCorrelation",
     "EntropyStatistics",
     "HumanCaseConsensus",
     "ValueWeightsResult",

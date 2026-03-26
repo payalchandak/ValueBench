@@ -11,6 +11,7 @@ import math
 import numpy as np
 from numpy.typing import NDArray
 import pandas as pd
+from scipy.stats import spearmanr
 
 from src.analysis.result_types import BootstrapResult
 from src.llm_decisions.models import DecisionRecord
@@ -83,6 +84,27 @@ class EntropyStatistics:
     p90: float
     n_cases: int
     n_total: int
+
+
+@dataclass
+class CaseEntropyCorrelation:
+    """Spearman correlation between a reference and a model's per-case entropy.
+
+    Attributes:
+        reference_entropies: Aligned array of reference (e.g. physician) entropy values
+        model_entropies: Aligned array of model entropy values
+        case_ids: Case identifiers in the same order as the arrays
+        spearman_rho: Spearman rank-correlation coefficient
+        spearman_pvalue: Two-sided p-value for the correlation
+        n_cases: Number of cases used (both reference and model non-None)
+    """
+
+    reference_entropies: NDArray
+    model_entropies: NDArray
+    case_ids: list[str]
+    spearman_rho: float
+    spearman_pvalue: float
+    n_cases: int
 
 
 def _get_alignment(choice: ChoiceWithValues, value: str) -> int:
@@ -812,6 +834,66 @@ def aggregate_entropy_per_case(
             results[case_id] = None
     
     return results
+
+
+def case_entropy_correlation(
+    decisions: list[DecisionRecord],
+    model: str,
+    reference: str = HUMAN_CONSENSUS,
+) -> CaseEntropyCorrelation:
+    """Spearman correlation between reference and model per-case entropy.
+
+    Computes per-case binary Shannon entropy for both the reference
+    decision-maker and the model, intersects on cases where both have
+    non-None values, and returns the Spearman rank-correlation.
+
+    A positive rho indicates case-level distributional pluralism: cases
+    that divide the reference group also produce more variable model
+    responses.
+
+    Args:
+        decisions: Decision records (from any loader).
+        model: Model identifier to correlate against the reference.
+        reference: Reference decision-maker (default ``HUMAN_CONSENSUS``).
+
+    Returns:
+        CaseEntropyCorrelation with aligned arrays and Spearman statistics.
+
+    Raises:
+        ValueError: If fewer than 3 overlapping cases have valid entropy.
+    """
+    ref_entropies = entropy_per_case(decisions, reference)
+    mod_entropies = entropy_per_case(decisions, model)
+
+    shared_ids: list[str] = []
+    ref_vals: list[float] = []
+    mod_vals: list[float] = []
+
+    for case_id, ref_e in ref_entropies.items():
+        mod_e = mod_entropies.get(case_id)
+        if ref_e is not None and mod_e is not None:
+            shared_ids.append(case_id)
+            ref_vals.append(ref_e)
+            mod_vals.append(mod_e)
+
+    if len(shared_ids) < 3:
+        raise ValueError(
+            f"Need >= 3 overlapping cases with valid entropy for "
+            f"reference='{reference}' and model='{model}', got {len(shared_ids)}"
+        )
+
+    ref_arr = np.array(ref_vals)
+    mod_arr = np.array(mod_vals)
+    rho, pval = spearmanr(ref_arr, mod_arr)
+
+    return CaseEntropyCorrelation(
+        reference_entropies=ref_arr,
+        model_entropies=mod_arr,
+        case_ids=shared_ids,
+        spearman_rho=float(rho),
+        spearman_pvalue=float(pval),
+        n_cases=len(shared_ids),
+    )
 
 
 def human_consensus(
