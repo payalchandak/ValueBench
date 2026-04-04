@@ -5,6 +5,7 @@ and tradeoff matrices with bootstrap confidence intervals.
 """
 
 from src.analysis.bootstrap import bootstrap_indices
+from src.analysis.display_names import MODEL_DISPLAY_NAMES, get_display_name
 from src.analysis.loader import (
     load_all_decisions,
     load_human_decisions,
@@ -60,6 +61,8 @@ __all__ = [
     "value_weights",
     # Constants
     "HUMAN_CONSENSUS",
+    "MODEL_DISPLAY_NAMES",
+    "get_display_name",
     # Pluralism
     "value_tension_pairs",
     "fleiss_kappa",
